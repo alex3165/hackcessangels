@@ -110,7 +110,7 @@ public class BluetoothService {
             Log.e(TAG, "startBroadcastingBluetooth: BT is not enabled");
         }
         mainActivity.setStatusText("Scanning..");
-        Log.e(TAG, "startBroadcastingBluetooth");
+        Log.d(TAG, "startBroadcastingBluetooth");
     }
 
     private void onListenerFoundBroadcaster(BluetoothSocket client) {
@@ -121,6 +121,7 @@ public class BluetoothService {
 
     private void onServerFoundClient(BluetoothSocket client, String name) {
         Log.d(TAG, "onServerFoundClient: " + name);
+        setStatusMessage("Scanning " + name);
         try {
             client.connect();
         } catch (IOException e) {
@@ -159,8 +160,8 @@ public class BluetoothService {
 
             // Write a dummy var
             if (mmSocketType == SocketType.WRITE_ONLY) {
-                setStatusMessage("Sending message..");
                 write(alertMessage.getBytes());
+                //setStatusMessage("Sending message..");
                 cancel();
             }
         }
