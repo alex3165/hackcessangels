@@ -32,7 +32,7 @@ public class MainActivity extends ActionBarActivity {
 
     private Handler mHandler = new Handler() {
         public void handleMessage(Message msg) {
-            String aResponse = msg.getData().getString("message");
+            String aResponse = msg.obj.toString();
             if (aResponse == "ALERT") {
                 // Notification
                 NotificationCompat.Builder mBuilder =
@@ -42,7 +42,7 @@ public class MainActivity extends ActionBarActivity {
                                 .setContentText("Thomas a besoin d'aide!")
                                 .setVibrate(new long[]{0,500,110,500,110,450,110,200,110,170,40,450,110,200,110,170,40,500});
                 // Creates an explicit intent for an Activity in your app
-                Intent resultIntent = new Intent(context, MainActivity.class);
+                Intent resultIntent = new Intent(context, DetailActivity.class);
                 PendingIntent resultPendingIntent =
                         PendingIntent.getActivity(
                                 context,
@@ -158,7 +158,10 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void broadcast_Clicked(View v) {
-        bluetoothService.startBroadcastingBluetooth();
+        Message msg = Message.obtain();
+        msg.obj = "ALERT"; // Some Arbitrary object
+        mHandler.sendMessage(msg);
+        //bluetoothService.startBroadcastingBluetooth();
     }
 
 }
