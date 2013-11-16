@@ -32,6 +32,18 @@ public class DetailMap extends Activity {
             //Affiche les accès fauteuils roulants
 
         }
+        if (Blind.isSelected()){
+            //Affiche les infos pour les malvoyants
+
+        }
+        if (Move.isSelected()){
+            //Affiche les accès
+
+        }
+        if (Deaf.isSelected()){
+            //Affiche les infos audio
+
+        }
     }
 
     protected void onActivityResult(int requestCode, int resultCode,
