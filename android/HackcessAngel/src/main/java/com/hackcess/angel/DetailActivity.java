@@ -1,28 +1,20 @@
 package com.hackcess.angel;
 
-import android.annotation.TargetApi;
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBar;
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.os.Build;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
 public class DetailActivity extends ActionBarActivity {
 
-    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
+        //super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_detail);
 
         TextView textViewHandicap = (TextView) findViewById(R.id.textViewHandicap);
         HandicapType message=HandicapType.PHYSICAL;
@@ -52,25 +44,34 @@ public class DetailActivity extends ActionBarActivity {
         CheckBox CheckBox1=(CheckBox) findViewById(R.id.checkBox2);
         CheckBox CheckBox2=(CheckBox) findViewById(R.id.checkBox3);
         CheckBox CheckBox3=(CheckBox) findViewById(R.id.checkBox3);
-        CheckBox1.setActivated(true);
-        if (Submit.isActivated()){
-            if (CheckBox1.isActivated()){
+        CheckBox1.setChecked(true);
+        if (true){
+            if (CheckBox1.isChecked()){
                 //Affiche la carte avec le choix 1
 
 
             }
-            if (CheckBox2.isActivated()){
+            if (CheckBox2.isChecked()){
                 //Affiche la carte avec le choix 1
 
 
             }
-            if (CheckBox3.isActivated()){
+            if (CheckBox3.isChecked()){
                 //Affiche la carte avec le choix 1
 
 
             }
 
         }
+    }
+
+    protected void onActivityResult(int requestCode, int resultCode,
+                                    Intent data) {
+        android.util.Log.d("TEST", "truc");
+    }
+
+    protected void onStart() {
+        android.util.Log.d("TEST", "truc");
     }
 
     @Override
