@@ -34,32 +34,20 @@ public class MainActivity extends ActionBarActivity {
         public void handleMessage(Message msg) {
             String aResponse = msg.getData().getString("message");
             if (aResponse == "ALERT") {
-                // Vibrator
-                Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-                long[] pattern = {0,500,110,500,110,450,110,200,110,170,40,450,110,200,110,170,40,500};
-                v.vibrate(pattern, -1);
-
                 // Notification
                 NotificationCompat.Builder mBuilder =
                         new NotificationCompat.Builder(context)
                                 //.setSmallIcon(R.drawable.notification_icon)
                                 .setContentTitle("Hackcess Angel")
-                                .setContentText("Thomas a besoin d'aide!");
+                                .setContentText("Thomas a besoin d'aide!")
+                                .setVibrate(new long[]{0,500,110,500,110,450,110,200,110,170,40,450,110,200,110,170,40,500});
                 // Creates an explicit intent for an Activity in your app
                 Intent resultIntent = new Intent(context, MainActivity.class);
-
-                // The stack builder object will contain an artificial back stack for the
-                // started Activity.
-                // This ensures that navigating backward from the Activity leads out of
-                // your application to the Home screen.
-                TaskStackBuilder stackBuilder = TaskStackBuilder.create(context);
-                // Adds the back stack for the Intent (but not the Intent itself)
-                stackBuilder.addParentStack(MainActivity.class);
-                // Adds the Intent that starts the Activity to the top of the stack
-                stackBuilder.addNextIntent(resultIntent);
                 PendingIntent resultPendingIntent =
-                        stackBuilder.getPendingIntent(
+                        PendingIntent.getActivity(
+                                context,
                                 0,
+                                resultIntent,
                                 PendingIntent.FLAG_UPDATE_CURRENT
                         );
                 mBuilder.setContentIntent(resultPendingIntent);
