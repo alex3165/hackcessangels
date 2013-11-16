@@ -11,9 +11,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.os.Build;
 
-import org.osmdroid.views.MapView;
-
-
 public class MainActivity extends ActionBarActivity {
 
     @Override
@@ -73,7 +70,7 @@ public class MainActivity extends ActionBarActivity {
         {
             super.onCreate(savedInstanceState);
 
-            mapView = new MapView(this, 256);
+            View mapView = new MapView(this, 128);
             mapView.setClickable(true);
             mapView.setBuiltInZoomControls(true);
 
