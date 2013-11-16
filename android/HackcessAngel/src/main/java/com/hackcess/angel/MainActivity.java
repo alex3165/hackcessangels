@@ -2,8 +2,11 @@ package com.hackcess.angel;
 
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
+import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.os.Message;
+import android.os.Vibrator;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
@@ -19,9 +22,18 @@ public class MainActivity extends ActionBarActivity {
 
     public final String TAG = "MainActivity";
     private int REQUEST_ENABLE_BT = 1;
-    private Handler mHandler;
     private BluetoothService bluetoothService;
 
+    private Handler mHandler = new Handler() {
+        public void handleMessage(Message msg) {
+            String aResponse = msg.getData().getString("message");
+            if (aResponse == "ALERT") {
+                Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                long[] pattern = {0,500,110,500,110,450,110,200,110,170,40,450,110,200,110,170,40,500};
+                v.vibrate(pattern, -1);
+            }
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -119,6 +131,10 @@ public class MainActivity extends ActionBarActivity {
             View rootView = inflater.inflate(R.layout.fragment_main, container, false);
             return rootView;
         }
+    }
+
+    public void broadcast_Clicked(View v) {
+        bluetoothService.startBroadcastingBluetooth();
     }
 
 }

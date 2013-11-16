@@ -40,6 +40,7 @@ public class BluetoothService {
                 Log.d(TAG, "ACTION_FOUND");
                 // Get the BluetoothDevice object from the Intent
                 BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
+                Log.d(TAG, "Found potentiel client: " + device.getName());
                 try {
                     onServerFoundClient(device.createInsecureRfcommSocketToServiceRecord(BT_UUID));
                 } catch (IOException e) {
@@ -101,7 +102,6 @@ public class BluetoothService {
     }
 
     private void onServerFoundClient(BluetoothSocket client) throws IOException {
-        //BluetoothServerClientSockets.add(client);
         Log.d(TAG, "Broadcaster: new client found");
         client.connect();
         ConnectedThread mConnectedThread = new ConnectedThread(client, SocketType.WRITE_ONLY);
@@ -137,7 +137,7 @@ public class BluetoothService {
 
             // Write a dummy var
             if (mmSocketType == SocketType.WRITE_ONLY) {
-                write("J'ai faim. Tout de suite!".getBytes());
+                write("ALERT".getBytes());
                 cancel();
             }
         }
