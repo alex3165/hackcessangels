@@ -1,5 +1,7 @@
 package com.hackcess.angel;
 
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.content.Context;
@@ -7,6 +9,8 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Message;
 import android.os.Vibrator;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.TaskStackBuilder;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
@@ -22,15 +26,47 @@ public class MainActivity extends ActionBarActivity {
 
     public final String TAG = "MainActivity";
     private int REQUEST_ENABLE_BT = 1;
+    private int NOTIFICATION_ID = 1;
     private BluetoothService bluetoothService;
+    private Context context = this;
 
     private Handler mHandler = new Handler() {
         public void handleMessage(Message msg) {
             String aResponse = msg.getData().getString("message");
             if (aResponse == "ALERT") {
+                // Vibrator
                 Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
                 long[] pattern = {0,500,110,500,110,450,110,200,110,170,40,450,110,200,110,170,40,500};
                 v.vibrate(pattern, -1);
+
+                // Notification
+                NotificationCompat.Builder mBuilder =
+                        new NotificationCompat.Builder(context)
+                                //.setSmallIcon(R.drawable.notification_icon)
+                                .setContentTitle("Hackcess Angel")
+                                .setContentText("Thomas a besoin d'aide!");
+                // Creates an explicit intent for an Activity in your app
+                Intent resultIntent = new Intent(context, MainActivity.class);
+
+                // The stack builder object will contain an artificial back stack for the
+                // started Activity.
+                // This ensures that navigating backward from the Activity leads out of
+                // your application to the Home screen.
+                TaskStackBuilder stackBuilder = TaskStackBuilder.create(context);
+                // Adds the back stack for the Intent (but not the Intent itself)
+                stackBuilder.addParentStack(MainActivity.class);
+                // Adds the Intent that starts the Activity to the top of the stack
+                stackBuilder.addNextIntent(resultIntent);
+                PendingIntent resultPendingIntent =
+                        stackBuilder.getPendingIntent(
+                                0,
+                                PendingIntent.FLAG_UPDATE_CURRENT
+                        );
+                mBuilder.setContentIntent(resultPendingIntent);
+                NotificationManager mNotificationManager =
+                        (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+                // mId allows you to update the notification later on.
+                mNotificationManager.notify(NOTIFICATION_ID, mBuilder.build());
             }
         }
     };
