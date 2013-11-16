@@ -1,16 +1,33 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    tools:ignore="MergeRootFrame" >
+    tools:ignore="MergeRootFrame"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Medium Text"
+        android:id="@+id/textViewInfo"
+        android:layout_gravity="center_horizontal|top" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/button"
-        android:layout_gravity="center"
-        android:text="Broadcast!"
-        android:onClick="broadcast_Clicked" />
-</FrameLayout>
+        android:id="@+id/help1"
+        android:layout_gravity="center_horizontal"
+        android:text="Broadcast1!"
+        android:onClick="broadcast1_Clicked" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/help2"
+        android:layout_gravity="center_horizontal|bottom"
+        android:text="Broadcast2!"
+        android:onClick="broadcast2_Clicked" />
+</LinearLayout>

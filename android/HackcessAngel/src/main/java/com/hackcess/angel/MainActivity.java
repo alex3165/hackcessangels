@@ -21,6 +21,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.os.Handler;
+import android.widget.TextView;
 
 public class MainActivity extends ActionBarActivity {
 
@@ -30,48 +31,41 @@ public class MainActivity extends ActionBarActivity {
     private BluetoothService bluetoothService;
     private Context context = this;
 
-    private Handler mHandler = new Handler() {
-        public void handleMessage(Message msg) {
-            String aResponse = msg.obj.toString();
-            if (aResponse == "ALERT") {
-                // Notification
-                NotificationCompat.Builder mBuilder =
-                        new NotificationCompat.Builder(context)
-                                //.setSmallIcon(R.drawable.notification_icon)
-                                .setContentTitle("Hackcess Angel")
-                                .setContentText("Thomas a besoin d'aide!")
-                                .setVibrate(new long[]{0,500,110,500,110,450,110,200,110,170,40,450,110,200,110,170,40,500});
-                // Creates an explicit intent for an Activity in your app
-                Intent resultIntent = new Intent(context, DetailActivity.class);
-                PendingIntent resultPendingIntent =
-                        PendingIntent.getActivity(
-                                context,
-                                0,
-                                resultIntent,
-                                PendingIntent.FLAG_UPDATE_CURRENT
-                        );
-                mBuilder.setContentIntent(resultPendingIntent);
-                NotificationManager mNotificationManager =
-                        (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-                // mId allows you to update the notification later on.
-                mNotificationManager.notify(NOTIFICATION_ID, mBuilder.build());
-            }
-        }
-    };
+    void onAlertReceived() {
+        // Notification
+        NotificationCompat.Builder mBuilder =
+                new NotificationCompat.Builder(context)
+                        //.setSmallIcon(R.drawable.notification_icon)
+                        .setContentTitle("Hackcess Angel")
+                        .setContentText("Thomas a besoin d'aide!")
+                        .setVibrate(new long[]{0,500,110,500,110,450,110,200,110,170,40,450,110,200,110,170,40,500});
+        // Creates an explicit intent for an Activity in your app
+        Intent resultIntent = new Intent(context, DetailActivity.class);
+        PendingIntent resultPendingIntent =
+                PendingIntent.getActivity(
+                        context,
+                        0,
+                        resultIntent,
+                        PendingIntent.FLAG_UPDATE_CURRENT
+                );
+        mBuilder.setContentIntent(resultPendingIntent);
+        NotificationManager mNotificationManager =
+                (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        // mId allows you to update the notification later on.
+        mNotificationManager.notify(NOTIFICATION_ID, mBuilder.build());
+    }
+
+    void setStatusText(String text) {
+        TextView textView = (TextView) findViewById(R.id.textViewInfo);
+        textView.setText(text);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction()
-                    .add(R.id.container, new PlaceholderFragment())
-                    .commit();
-        }
-
-        mHandler = new Handler();
-        bluetoothService = new BluetoothService(mHandler);
+        bluetoothService = new BluetoothService(this);
 
         // Register a receiver for when a new bt device has been found during discovery
         IntentFilter filter = new IntentFilter(BluetoothDevice.ACTION_FOUND);
@@ -141,27 +135,14 @@ public class MainActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    /**
-     * A placeholder fragment containing a simple view.
-     */
-    public static class PlaceholderFragment extends Fragment {
 
-        public PlaceholderFragment() {
-        }
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_main, container, false);
-            return rootView;
-        }
+    public void broadcast1_Clicked(View v) {
+        bluetoothService.alertMessage = "ALERT1";
+        bluetoothService.startBroadcastingBluetooth();
     }
-
-    public void broadcast_Clicked(View v) {
-        Message msg = Message.obtain();
-        msg.obj = "ALERT"; // Some Arbitrary object
-        mHandler.sendMessage(msg);
-        //bluetoothService.startBroadcastingBluetooth();
+    public void broadcast2_Clicked(View v) {
+        bluetoothService.alertMessage = "ALERT2";
+        bluetoothService.startBroadcastingBluetooth();
     }
 
 }

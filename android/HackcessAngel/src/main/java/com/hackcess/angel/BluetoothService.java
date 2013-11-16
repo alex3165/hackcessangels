@@ -8,6 +8,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.os.Looper;
 import android.os.Vibrator;
 import android.util.Log;
 import android.widget.TextView;
@@ -29,6 +30,17 @@ public class BluetoothService {
     public BluetoothAdapter mBluetoothAdapter;
     public BluetoothServerSocket mBluetoothListenerSocket;
 
+    public String alertMessage = "";
+
+    void setStatusMessage(final String str) {
+        mainActivity.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                mainActivity.setStatusText(str);
+            }
+        });
+    }
+
     // The BroadcastReceiver that listens for discovered devices
     public final BroadcastReceiver mReceiver = new BroadcastReceiver() {
         @Override
@@ -40,20 +52,24 @@ public class BluetoothService {
                 Log.d(TAG, "ACTION_FOUND");
                 // Get the BluetoothDevice object from the Intent
                 BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
-                Log.d(TAG, "Found potentiel client: " + device.getName());
                 try {
-                    onServerFoundClient(device.createInsecureRfcommSocketToServiceRecord(BT_UUID));
+                    onServerFoundClient(device.createInsecureRfcommSocketToServiceRecord(BT_UUID),
+                            device.getName());
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
                 // When discovery is finished, change the Activity title
             } else if (BluetoothAdapter.ACTION_DISCOVERY_FINISHED.equals(action)) {
                 Log.d(TAG, "ACTION_DISCOVERY_FINISHED");
+                setStatusMessage("Finished");
             }
         }
     };
 
-    public BluetoothService(Handler mHandler) {
+
+    MainActivity mainActivity;
+    public BluetoothService(MainActivity mainActivity) {
+        this.mainActivity = mainActivity;
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
     }
 
@@ -93,6 +109,8 @@ public class BluetoothService {
         } else {
             Log.e(TAG, "startBroadcastingBluetooth: BT is not enabled");
         }
+        mainActivity.setStatusText("Scanning..");
+        Log.e(TAG, "startBroadcastingBluetooth");
     }
 
     private void onListenerFoundBroadcaster(BluetoothSocket client) {
@@ -101,9 +119,13 @@ public class BluetoothService {
         mConnectedThread.start();
     }
 
-    private void onServerFoundClient(BluetoothSocket client) throws IOException {
-        Log.d(TAG, "Broadcaster: new client found");
-        client.connect();
+    private void onServerFoundClient(BluetoothSocket client, String name) {
+        Log.d(TAG, "onServerFoundClient: " + name);
+        try {
+            client.connect();
+        } catch (IOException e) {
+            Log.d(TAG, "Skipping this client - can't connect.");
+        }
         ConnectedThread mConnectedThread = new ConnectedThread(client, SocketType.WRITE_ONLY);
         mConnectedThread.start();
     }
@@ -137,7 +159,8 @@ public class BluetoothService {
 
             // Write a dummy var
             if (mmSocketType == SocketType.WRITE_ONLY) {
-                write("ALERT".getBytes());
+                setStatusMessage("Sending message..");
+                write(alertMessage.getBytes());
                 cancel();
             }
         }
@@ -154,16 +177,13 @@ public class BluetoothService {
                     bytes = mmInStream.read(buffer);
                     String str = new String(buffer, 0, bytes);
                     Log.e(TAG, "Message received: " + str);
-                    //Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-                    //long[] pattern = {0,500,110,500,110,450,110,200,110,170,40,450,110,200,110,170,40,500};
-                    //v.vibrate(pattern, -1);
-                    /*TextView t = (TextView) findViewById(R.id.textView);
-                    t.setText(str);*/
-                    /*mHandler.obtainMessage(BluetoothChat.MESSAGE_READ, bytes, -1, buffer)
-                            .sendToTarget();*/
+                    mainActivity.runOnUiThread(new Runnable(){
+                        public void run(){
+                            mainActivity.onAlertReceived();
+                        }
+                    });
                 } catch (IOException e) {
                     Log.d(TAG, "disconnected", e);
-                    //connectionLost();
                     // Start the service over to restart listening mode
                     break;
                 }
