@@ -138,7 +138,8 @@ public class MainActivity extends ActionBarActivity {
 
     public void broadcast1_Clicked(View v) {
         bluetoothService.alertMessage = "ALERT1";
-        bluetoothService.startBroadcastingBluetooth();
+        //bluetoothService.startBroadcastingBluetooth();
+        this.onAlertReceived();
     }
     public void broadcast2_Clicked(View v) {
         bluetoothService.alertMessage = "ALERT2";
