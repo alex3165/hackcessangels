@@ -1,16 +1,34 @@
 package com.hackcess.angel;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
+import org.osmdroid.ResourceProxy;
+import org.osmdroid.api.IMapController;
+import org.osmdroid.tileprovider.tilesource.ITileSource;
+import org.osmdroid.tileprovider.tilesource.OnlineTileSourceBase;
+import org.osmdroid.tileprovider.tilesource.XYTileSource;
+import org.osmdroid.util.GeoPoint;
+import org.osmdroid.views.MapView;
+
 public class DetailMap extends Activity {
+    private static final int TILE_SIZE = 512;
+    private MapView myOpenMapView;
+    private IMapController myMapController;
+
+    public static final OnlineTileSourceBase MAPNIK = new XYTileSource("Mapnik",
+            ResourceProxy.string.mapnik, 0, 20, TILE_SIZE, ".png",
+            "http://a.tile.openstreetmap.fr/osmfr/", "http://b.tile.openstreetmap.fr/osmfr/",
+            "http://c.tile.openstreetmap.fr/osmfr/");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +41,19 @@ public class DetailMap extends Activity {
         Button Move=(Button) findViewById(R.id.buttonMove);
         Button Deaf=(Button) findViewById(R.id.buttonDeaf);
 
+        // Create a custom tile source
+        final ITileSource tileSource = MAPNIK;
+
+        // Create the mapview with the custom tile provider array
+        myOpenMapView = findViewById(R.id.openmapview);
+        myOpenMapView.setTileSource(tileSource);
+        myOpenMapView.setBuiltInZoomControls(true);
+        myOpenMapView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.MATCH_PARENT));
+
+        myMapController = myOpenMapView.getController();
+        myMapController.setZoom(13);
+        myMapController.setCenter(new GeoPoint(48.8534100, 2.3488000));
 
         if (Info.isSelected()){
             //Affiche les infos générales sur la map
