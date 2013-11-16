@@ -3,7 +3,7 @@ package com.example.testapplication;
 import android.app.Fragment;
 import android.app.ActionBar;
 import android.os.Bundle;
-import android.app.ActionBarActivity;
+import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
