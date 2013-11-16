@@ -45,7 +45,7 @@ public class DetailMap extends Activity {
         final ITileSource tileSource = MAPNIK;
 
         // Create the mapview with the custom tile provider array
-        myOpenMapView = findViewById(R.id.openmapview);
+        myOpenMapView = (MapView) findViewById(R.id.openmapview);
         myOpenMapView.setTileSource(tileSource);
         myOpenMapView.setBuiltInZoomControls(true);
         myOpenMapView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
