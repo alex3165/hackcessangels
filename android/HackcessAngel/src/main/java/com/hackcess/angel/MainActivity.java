@@ -35,7 +35,7 @@ public class MainActivity extends ActionBarActivity {
         // Notification
         NotificationCompat.Builder mBuilder =
                 new NotificationCompat.Builder(context)
-                        //.setSmallIcon(R.drawable.notification_icon)
+                        .setSmallIcon(R.drawable.ic_launcher)
                         .setContentTitle("Hackcess Angel")
                         .setContentText("Thomas a besoin d'aide!")
                         .setVibrate(new long[]{0,500,110,500,110,450,110,200,110,170,40,450,110,200,110,170,40,500});
@@ -138,7 +138,8 @@ public class MainActivity extends ActionBarActivity {
 
     public void broadcast1_Clicked(View v) {
         bluetoothService.alertMessage = "ALERT1";
-        bluetoothService.startBroadcastingBluetooth();
+        //bluetoothService.startBroadcastingBluetooth();
+        this.onAlertReceived();
     }
     public void broadcast2_Clicked(View v) {
         bluetoothService.alertMessage = "ALERT2";
