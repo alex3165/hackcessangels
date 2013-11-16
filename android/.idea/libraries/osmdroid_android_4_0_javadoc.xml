@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="osmdroid-android-4.0-javadoc">
+    <CLASSES />
+    <JAVADOC>
+      <root url="jar://$PROJECT_DIR$/HackcessAngel/libs/osmdroid-android-4.0-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES />
+  </library>
+</component>

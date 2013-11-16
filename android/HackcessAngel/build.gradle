@@ -24,4 +24,10 @@ android {
 
 dependencies {
 	compile 'com.android.support:appcompat-v7:+'
+    compile files("libs/osmdroid-android-4.0.jar")
+    compile files("libs/osmdroid-android-4.0-javadoc.jar")
+    compile files("libs/osmdroid-packager-4.0.jar")
+    compile files("libs/osmdroid-third-party-4.0.jar")
+    compile files("libs/slf4j-android-1.5.8.jar")
+
 }
