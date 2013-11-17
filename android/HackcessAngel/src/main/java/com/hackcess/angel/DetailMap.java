@@ -112,7 +112,7 @@ public class DetailMap extends Fragment {
                 elev1ItemizedOverlay.addOverlay(elev1Item);
                 mapOverlays.add(elev1ItemizedOverlay);
 
-                Drawable elev2Drawable = fragment.getResources().getDrawable(R.drawable.elevator);
+                Drawable elev2Drawable = fragment.getResources().getDrawable(R.drawable.elevator_broken);
                 AccessItemizedOverlay elev2ItemizedOverlay = new AccessItemizedOverlay(elev2Drawable, myOpenMapView.getResourceProxy());
                 GeoPoint elev2Point = new GeoPoint(48.84375,2.37435);
                 OverlayItem elev2Item = new OverlayItem("Ascenseur", "2", elev2Point);
