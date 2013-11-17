@@ -52,12 +52,8 @@ public class BluetoothService {
                 Log.d(TAG, "ACTION_FOUND");
                 // Get the BluetoothDevice object from the Intent
                 BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
-                try {
-                    onServerFoundClient(device.createInsecureRfcommSocketToServiceRecord(BT_UUID),
-                            device.getName());
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                // Start a new thread to connect to it
+                createInsecureConnectionToClient(device);
                 // When discovery is finished, change the Activity title
             } else if (BluetoothAdapter.ACTION_DISCOVERY_FINISHED.equals(action)) {
                 Log.d(TAG, "ACTION_DISCOVERY_FINISHED");
@@ -65,6 +61,20 @@ public class BluetoothService {
             }
         }
     };
+
+    private void createInsecureConnectionToClient(final BluetoothDevice device) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    onServerFoundClient(device.createInsecureRfcommSocketToServiceRecord(BT_UUID),
+                            device.getName());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+    }
 
 
     MainActivity mainActivity;
