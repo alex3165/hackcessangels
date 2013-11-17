@@ -21,6 +21,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import java.util.logging.Handler;
@@ -67,6 +68,16 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        final Context context = this;
+
+        final ImageButton button = (ImageButton) findViewById(R.id.buttonMap);
+        button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(context, AlertSliderActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void bindToService() {
@@ -175,5 +186,4 @@ public class MainActivity extends ActionBarActivity {
     public void broadcast2_Clicked(View v) {
         startBroadcastAlert(BluetoothService.MSG_TYPE_PHYSICAL);
     }
-
 }

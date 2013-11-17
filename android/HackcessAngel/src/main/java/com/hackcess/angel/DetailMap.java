@@ -1,6 +1,7 @@
 package com.hackcess.angel;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -16,6 +17,10 @@ import org.osmdroid.tileprovider.tilesource.OnlineTileSourceBase;
 import org.osmdroid.tileprovider.tilesource.XYTileSource;
 import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.MapView;
+import org.osmdroid.views.overlay.Overlay;
+import org.osmdroid.views.overlay.OverlayItem;
+
+import java.util.List;
 
 public class DetailMap extends Fragment {
     private static final int TILE_SIZE = 512;
@@ -78,7 +83,43 @@ public class DetailMap extends Fragment {
 
         myMapController = myOpenMapView.getController();
         myMapController.setZoom(17);
-        myMapController.setCenter(new GeoPoint(48.843906, 2.375278));
+        myMapController.setCenter(new GeoPoint(48.84484, 2.37348));
+
+        final List<Overlay> mapOverlays = myOpenMapView.getOverlays();
+        Drawable myLocDrawable = this.getResources().getDrawable(R.drawable.my_loc);
+        AccessItemizedOverlay itemizedOverlay = new AccessItemizedOverlay(myLocDrawable, myOpenMapView.getResourceProxy());
+        GeoPoint myLocPoint = new GeoPoint(48.84468,2.37319);
+        OverlayItem myLocItem = new OverlayItem("Ma position", "", myLocPoint);
+        itemizedOverlay.addOverlay(myLocItem);
+        mapOverlays.add(itemizedOverlay);
+
+        Drawable thomasDrawable = this.getResources().getDrawable(R.drawable.thomas_pin);
+        AccessItemizedOverlay thomasItemizedOverlay = new AccessItemizedOverlay(thomasDrawable, myOpenMapView.getResourceProxy());
+        GeoPoint thomasPoint = new GeoPoint(48.84505,2.37393);
+        OverlayItem thomasItem = new OverlayItem("Ma position", "", thomasPoint);
+        thomasItemizedOverlay.addOverlay(thomasItem);
+        mapOverlays.add(thomasItemizedOverlay);
+
+        ImageButton button = (ImageButton) rootView.findViewById(R.id.buttonMove);
+        final Fragment fragment = this;
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Drawable elev1Drawable = fragment.getResources().getDrawable(R.drawable.elevator);
+                AccessItemizedOverlay elev1ItemizedOverlay = new AccessItemizedOverlay(elev1Drawable, myOpenMapView.getResourceProxy());
+                GeoPoint elev1Point = new GeoPoint(48.84490,2.37387);
+                OverlayItem elev1Item = new OverlayItem("Ascenseur", "1", elev1Point);
+                elev1ItemizedOverlay.addOverlay(elev1Item);
+                mapOverlays.add(elev1ItemizedOverlay);
+
+                Drawable elev2Drawable = fragment.getResources().getDrawable(R.drawable.elevator);
+                AccessItemizedOverlay elev2ItemizedOverlay = new AccessItemizedOverlay(elev2Drawable, myOpenMapView.getResourceProxy());
+                GeoPoint elev2Point = new GeoPoint(48.84461,2.37347);
+                OverlayItem elev2Item = new OverlayItem("Ascenseur", "2", elev2Point);
+                elev2ItemizedOverlay.addOverlay(elev2Item);
+                mapOverlays.add(elev2ItemizedOverlay);
+            }
+        });
 
         if (Info.isSelected()) {
             //Affiche les infos générales sur la map
