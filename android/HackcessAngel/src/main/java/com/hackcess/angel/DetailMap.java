@@ -1,16 +1,15 @@
 package com.hackcess.angel;
 
-import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.view.Menu;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.TextView;
+import android.widget.ImageButton;
+import android.widget.TableRow;
 
 import org.osmdroid.ResourceProxy;
 import org.osmdroid.api.IMapController;
@@ -20,7 +19,7 @@ import org.osmdroid.tileprovider.tilesource.XYTileSource;
 import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.MapView;
 
-public class DetailMap extends Activity {
+public class DetailMap extends Fragment {
     private static final int TILE_SIZE = 512;
     private MapView myOpenMapView;
     private IMapController myMapController;
@@ -57,25 +56,29 @@ public class DetailMap extends Activity {
     }*/
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detail);
+    }
 
-        Button Info=(Button) findViewById(R.id.buttonInfo);
-        Button Chair=(Button) findViewById(R.id.buttonChair);
-        Button Blind=(Button) findViewById(R.id.buttonBlind);
-        Button Move=(Button) findViewById(R.id.buttonMove);
-        Button Deaf=(Button) findViewById(R.id.buttonDeaf);
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View rootView = inflater.inflate(R.layout.map_detail, container, false);
+
+        ImageButton Info=(ImageButton) rootView.findViewById(R.id.buttonInfo);
+        ImageButton Chair=(ImageButton) rootView.findViewById(R.id.buttonChair);
+        ImageButton Blind=(ImageButton) rootView.findViewById(R.id.buttonBlind);
+        ImageButton Move=(ImageButton) rootView.findViewById(R.id.buttonMove);
+        ImageButton Deaf=(ImageButton) rootView.findViewById(R.id.buttonDeaf);
 
         // Create a custom tile source
         final ITileSource tileSource = MAPNIK;
 
         // Create the mapview with the custom tile provider array
-        myOpenMapView = (MapView) findViewById(R.id.openmapview);
+        myOpenMapView = (MapView) rootView.findViewById(R.id.openmapview);
         myOpenMapView.setTileSource(tileSource);
         myOpenMapView.setBuiltInZoomControls(true);
-        myOpenMapView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT));
+        myOpenMapView.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT,
+                TableRow.LayoutParams.MATCH_PARENT));
 
         myMapController = myOpenMapView.getController();
         myMapController.setZoom(13);
@@ -101,23 +104,16 @@ public class DetailMap extends Activity {
             //Affiche les infos audio
 
         }
+        return rootView;
     }
 
-    protected void onActivityResult(int requestCode, int resultCode,
+    public void onActivityResult(int requestCode, int resultCode,
                                     Intent data) {
         android.util.Log.d("TEST", "truc");
     }
 
-    protected void onStart() {
+    public void onStart() {
         super.onStart();
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
     }
 
     @Override

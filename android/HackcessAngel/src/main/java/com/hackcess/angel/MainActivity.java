@@ -15,6 +15,8 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 public class MainActivity extends ActionBarActivity {
@@ -34,7 +36,7 @@ public class MainActivity extends ActionBarActivity {
                         .setContentText("Thomas a besoin d'aide!")
                         .setVibrate(new long[]{0,500,110,500,110,450,110,200,110,170,40,450,110,200,110,170,40,500});
         // Creates an explicit intent for an Activity in your app
-        Intent resultIntent = new Intent(context, DetailActivity.class);
+        Intent resultIntent = new Intent(context, AlertSliderActivity.class);
         PendingIntent resultPendingIntent =
                 PendingIntent.getActivity(
                         context,
@@ -82,6 +84,16 @@ public class MainActivity extends ActionBarActivity {
                 bluetoothService.startListening();
             }
         }
+
+        final Context context = this;
+
+        final ImageButton button = (ImageButton) findViewById(R.id.imageButton2);
+        button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(context, AlertSliderActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
