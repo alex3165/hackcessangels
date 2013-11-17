@@ -5,28 +5,22 @@
     android:layout_height="match_parent"
     android:gravity="bottom">
 
+    <org.osmdroid.views.MapView
+        android:id="@+id/openmapview"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"/>
+
 
     <TableLayout
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-
+        android:layout_height="fill_parent"
+        android:layout_weight="6"
         android:layout_gravity="center_horizontal">
 
         <TableRow
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_weight="1"
-            >
-        <org.osmdroid.views.MapView
-            android:id="@+id/openmapview"
-            android:layout_width="fill_parent"
-        android:layout_height="fill_parent"/>
-        </TableRow>
-
-        <TableRow
-            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             >
 
             <ImageButton
@@ -45,7 +39,7 @@
                 android:src="@drawable/move"
                 android:background="#fffef6"
                 android:paddingEnd="20dp"
-                android:layout_gravity="center_horizontal"
+
                 android:layout_column="6" />
 
             <ImageButton
@@ -55,18 +49,19 @@
                 android:src="@drawable/audio"
                 android:background="#f6fff1"
                 android:paddingEnd="20dp"
-                android:layout_gravity="right"
+
                 android:layout_column="7" />
 
             <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/buttonChair"
-            android:src="@drawable/moteur"
-            android:background="#f6fff1"
-            android:paddingEnd="20dp"
-            android:layout_gravity="right"
-            android:layout_column="9" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/buttonChair"
+                android:src="@drawable/moteur"
+                android:background="#f6fff1"
+                android:paddingEnd="20dp"
+
+                android:layout_column="9" />
+
             <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -74,8 +69,7 @@
                 android:src="@drawable/visuel"
                 android:background="#f6fff1"
                 android:paddingEnd="20dp"
-                android:layout_gravity="right"
-                android:layout_column="10" />
+                android:layout_column="14" />
         </TableRow>
 
 

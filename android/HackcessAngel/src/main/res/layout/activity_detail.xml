@@ -9,110 +9,64 @@
     tools:ignore="MergeRootFrame"
     android:orientation="vertical">
 
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="87dp"
+        android:id="@+id/imageViewNotif"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/notif" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Aide"
-        android:id="@+id/textViewTittle"
-        android:layout_gravity="center_horizontal" />
+        android:text="Fauteuil électrique"
+        android:id="@+id/textViewChair"
+        android:layout_gravity="center_horizontal"
+        android:textSize="15dp" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="123dp"
+        android:id="@+id/imageViewInfoSup"
+        android:src="@drawable/info_sup" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageViewUrgenceCall"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/icon_urgencecall"
+        android:layout_marginTop="-18dp" />
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="271dp"
+        android:layout_height="66dp"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Nécessité morale"
-        android:id="@+id/textViewMoral"
+        android:text="En cas d'urgence, veuillez utiliser les bornes d'appel à votre disposition ou apeller le 3117."
+        android:id="@+id/textViewUrgence"
+        android:autoText="false"
+        android:textIsSelectable="false"
+        android:textAlignment="center"
+        android:layout_gravity="center"
+        android:textSize="15dp"
+        android:layout_marginRight="-24dp" />
 
-        />
+    <ImageButton
+        android:layout_width="208dp"
+        android:layout_height="38dp"
+        android:id="@+id/imageButtonJmd"
+        android:src="@drawable/button_jmd"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="5dp" />
 
-    <RatingBar
+    <ImageView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/ratingBarMoral"
-        android:layout_gravity="right"
-        />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Nécessité Physique"
-        android:id="@+id/textView2Physical"
-
-        />
-
-    <RatingBar
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/ratingBarPhysical"
-        android:layout_gravity="right"
-        />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Handicap"
-        android:id="@+id/textViewHandicap"
-
-        />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Medium Text"
-        android:id="@+id/textViewHandicap"
-
-        />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Autonomie"
-
-        />
-    <RatingBar
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/ratingBarAutonomie"
-        android:layout_gravity="right"
-        />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Infos complémentaires remplies par l'aidé"
-        android:id="@+id/textViewMoreInfo"
-        />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Que souhaitez-vous afficher sur la carte ? "
-        android:id="@+id/textViewItemMap"
-        />
-
-    <CheckBox
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New CheckBox"
-        android:id="@+id/checkBox1" />
-    <CheckBox
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New CheckBox2"
-        android:id="@+id/checkBox2" />
-    <CheckBox
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New CheckBox3"
-        android:id="@+id/checkBox3" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="OK"
-        android:id="@+id/buttonSubmit" />
-
-
+        android:layout_height="fill_parent"
+        android:id="@+id/imageViewButtonMap"
+        android:src="@drawable/button_carte"
+        android:layout_gravity="center_horizontal|bottom"
+        android:layout_marginTop="35dp" />
 </LinearLayout>
+
