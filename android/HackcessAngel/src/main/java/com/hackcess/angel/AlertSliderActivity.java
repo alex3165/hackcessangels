@@ -20,14 +20,16 @@ public class AlertSliderActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         super.setContentView(R.layout.alert_viewpager);
 
-        Intent intent = getIntent();
-        int message_type = intent.getExtras().getInt("requestCode");
-
         // Création de la liste de Fragments que fera défiler le PagerAdapter
         List fragments = new Vector();
 
-        // Ajout des Fragments dans la liste
-        fragments.add(Fragment.instantiate(this, DetailActivity.class.getName()));
+        Intent intent = getIntent();
+        if (intent.hasExtra("requestCode")) {
+            int message_type = intent.getExtras().getInt("requestCode");
+
+            // Ajout des Fragments dans la liste
+            fragments.add(Fragment.instantiate(this, DetailActivity.class.getName()));
+        }
         fragments.add(Fragment.instantiate(this, DetailMap.class.getName()));
 
         // Création de l'adapter qui s'occupera de l'affichage de la liste de
