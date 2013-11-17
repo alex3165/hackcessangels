@@ -1,6 +1,5 @@
 package com.hackcess.angel;
 
-import android.app.Activity;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.bluetooth.BluetoothAdapter;
@@ -15,7 +14,6 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -87,7 +85,7 @@ public class MainActivity extends ActionBarActivity {
 
         final Context context = this;
 
-        final ImageButton button = (ImageButton) findViewById(R.id.imageButton2);
+        final ImageButton button = (ImageButton) findViewById(R.id.buttonMap);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent intent = new Intent(context, AlertSliderActivity.class);
