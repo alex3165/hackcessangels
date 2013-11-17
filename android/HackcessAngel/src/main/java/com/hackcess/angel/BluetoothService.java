@@ -1,7 +1,5 @@
 package com.hackcess.angel;
 
-import android.app.NotificationManager;
-import android.app.PendingIntent;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothServerSocket;
@@ -10,29 +8,21 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.os.Binder;
-import android.os.IBinder;
 import android.os.Looper;
-import android.os.Message;
-import android.os.Messenger;
-import android.os.RemoteException;
 import android.os.Vibrator;
-import android.support.v4.app.NotificationCompat;
 import android.util.Log;
+import android.widget.TextView;
 import android.os.Handler;
-import android.widget.Toast;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.UUID;
 
-import static java.lang.Integer.parseInt;
-
 /**
  * Created by olc on 16/11/13.
  */
-public class BluetoothService extends android.app.Service {
+public class BluetoothService {
 
     public final String TAG = "BluetoothService";
 
@@ -40,61 +30,15 @@ public class BluetoothService extends android.app.Service {
     public BluetoothAdapter mBluetoothAdapter;
     public BluetoothServerSocket mBluetoothListenerSocket;
 
-    private NotificationManager mNM;
-    private int alertMessage = MSG_TYPE_INFORMATION;
-    private int NOTIFICATION_ID = 1;
-
-    static final int MSG_START_BROADCASTING = 1;
-    static final int MSG_BROADCASTING_FINISHED = 2;
-
-    static final int MSG_TYPE_PHYSICAL = 1;
-    static final int MSG_TYPE_MENTAL = 2;
-    static final int MSG_TYPE_DEAF = 3;
-    static final int MSG_TYPE_PREGNANT = 4;
-    static final int MSG_TYPE_LUGGAGE = 5;
-    static final int MSG_TYPE_INFORMATION = 6;
-
-    class IncomingHandler extends Handler {
-        @Override
-        public void handleMessage(Message msg) {
-            switch (msg.what) {
-                case MSG_START_BROADCASTING:
-                    startBroadcastingBluetooth(msg.arg1);
-                    break;
-                default:
-                    super.handleMessage(msg);
-            }
-        }
-    }
-
-    final Messenger mMessenger = new Messenger(new IncomingHandler());
-
+    public String alertMessage = "";
 
     void setStatusMessage(final String str) {
-        Toast.makeText(this, str, Toast.LENGTH_SHORT).show();
-    }
-
-    void doNotification(int message) {
-        NotificationCompat.Builder mBuilder =
-                new NotificationCompat.Builder(this)
-                        .setSmallIcon(R.drawable.ic_launcher)
-                        .setContentTitle("Hackcess Angel")
-                        .setContentText("Thomas a besoin d'aide: " + message)
-                        .setVibrate(new long[]{0,500,110,500,110,450,110,200,110,170,40,450,110,200,110,170,40,500});
-        // Creates an explicit intent for an Activity in your app
-        Intent resultIntent = new Intent(this, DetailActivity.class);
-        PendingIntent resultPendingIntent =
-                PendingIntent.getActivity(
-                        this,
-                        message,
-                        resultIntent,
-                        PendingIntent.FLAG_UPDATE_CURRENT
-                );
-        mBuilder.setContentIntent(resultPendingIntent);
-        NotificationManager mNotificationManager =
-                (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        // mId allows you to update the notification later on.
-        mNotificationManager.notify(NOTIFICATION_ID, mBuilder.build());
+        mainActivity.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                mainActivity.setStatusText(str);
+            }
+        });
     }
 
     // The BroadcastReceiver that listens for discovered devices
@@ -108,96 +52,64 @@ public class BluetoothService extends android.app.Service {
                 Log.d(TAG, "ACTION_FOUND");
                 // Get the BluetoothDevice object from the Intent
                 BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
-                // Start a new thread to connect to it
-                createInsecureConnectionToClient(device);
-                // When discovery is finished, change the Activity title
-            } else if (BluetoothAdapter.ACTION_DISCOVERY_FINISHED.equals(action)) {
-                Log.d(TAG, "ACTION_DISCOVERY_FINISHED");
-                setStatusMessage("Finished discovering devices");
-            }
-        }
-    };
-
-    @Override
-    public int onStartCommand(Intent intent, int flags, int startId) {
-        Log.i("LocalService", "Received start id " + startId + ": " + intent);
-        // We want this service to continue running until it is explicitly
-        // stopped, so return sticky.
-        return START_STICKY;
-    }
-
-    @Override
-    public void onDestroy() {
-        // Cancel the persistent notification.
-        mNM.cancel(NOTIFICATION_ID);
-
-        // Tell the user we stopped.
-        Toast.makeText(this, "Bluetooth listener stopped", Toast.LENGTH_SHORT).show();
-    }
-
-    private void createInsecureConnectionToClient(final BluetoothDevice device) {
-        Toast.makeText(this, "Polling " + device.getName(), Toast.LENGTH_SHORT).show();
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                Looper.prepare();
                 try {
                     onServerFoundClient(device.createInsecureRfcommSocketToServiceRecord(BT_UUID),
                             device.getName());
                 } catch (IOException e) {
-
+                    e.printStackTrace();
                 }
-                Looper.loop();
+                // When discovery is finished, change the Activity title
+            } else if (BluetoothAdapter.ACTION_DISCOVERY_FINISHED.equals(action)) {
+                Log.d(TAG, "ACTION_DISCOVERY_FINISHED");
+                setStatusMessage("Finished");
             }
-        }).start();
+        }
+    };
+
+
+    MainActivity mainActivity;
+    public BluetoothService(MainActivity mainActivity) {
+        this.mainActivity = mainActivity;
+        mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
     }
 
-    Thread listenerThread;
+
     // Starts listening for incoming connections
     public final void startListening() {
         try {
             mBluetoothListenerSocket = mBluetoothAdapter.listenUsingInsecureRfcommWithServiceRecord(
                     "BluetoothAlertReceiver", BT_UUID);
             // Launch thread waiting for connection
-            listenerThread = new Thread()
+            Thread thread = new Thread()
             {
                 @Override
                 public void run() {
-                    Looper.prepare();
-                    Log.d(TAG, "Listening..");
-                    //setStatusMessage("Listening..");
-                    while(true) {
-                        try {
+                    try {
+                        Log.d(TAG, "Listening..");
+                        while(true) {
                             onListenerFoundBroadcaster(mBluetoothListenerSocket.accept());
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                            try {
-                                sleep(1000);
-                            } catch (InterruptedException e1) {
-                                e1.printStackTrace();
-                                break;
-                            }
                         }
+                    } catch (IOException e) {
+                        e.printStackTrace();
                     }
-                    Looper.loop();
                 }
             };
 
-            listenerThread.start();
+            thread.start();
 
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public final void startBroadcastingBluetooth(int message) {
-        this.alertMessage = message;
+    public final void startBroadcastingBluetooth() {
         if (mBluetoothAdapter.isEnabled()) {
             // Get discoverable devices to send them messages
             mBluetoothAdapter.startDiscovery();
         } else {
             Log.e(TAG, "startBroadcastingBluetooth: BT is not enabled");
         }
+        mainActivity.setStatusText("Scanning..");
         Log.d(TAG, "startBroadcastingBluetooth");
     }
 
@@ -209,40 +121,14 @@ public class BluetoothService extends android.app.Service {
 
     private void onServerFoundClient(BluetoothSocket client, String name) {
         Log.d(TAG, "onServerFoundClient: " + name);
+        setStatusMessage("Scanning " + name);
         try {
             client.connect();
-            Log.d(TAG, "connect() performed: " + name);
-            ConnectedThread mConnectedThread = new ConnectedThread(client, SocketType.WRITE_ONLY);
-            mConnectedThread.start();
         } catch (IOException e) {
-            Log.d(TAG, "Skipping client " + name + ": can't connect.");
+            Log.d(TAG, "Skipping this client - can't connect.");
         }
-    }
-
-    @Override
-    public IBinder onBind(Intent intent) {
-        Toast.makeText(this, "Bluetooth service bind", Toast.LENGTH_SHORT).show();
-        Log.d(TAG, "Bluetooth service bind");
-        return mMessenger.getBinder();
-    }
-
-    @Override
-    public void onCreate() {
-        mNM = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
-        mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-
-        Toast.makeText(this, "Bluetooth listener service started", Toast.LENGTH_SHORT).show();
-
-        // Register a receiver for when a new bt device has been found during discovery
-        IntentFilter filter = new IntentFilter(BluetoothDevice.ACTION_FOUND);
-        registerReceiver(mReceiver, filter);
-
-        // Register for broadcasts when discovery has finished
-        filter = new IntentFilter(BluetoothAdapter.ACTION_DISCOVERY_FINISHED);
-        registerReceiver(mReceiver, filter);
-
-        // Start listening
-        this.startListening();
+        ConnectedThread mConnectedThread = new ConnectedThread(client, SocketType.WRITE_ONLY);
+        mConnectedThread.start();
     }
 
     private enum SocketType {
@@ -274,7 +160,7 @@ public class BluetoothService extends android.app.Service {
 
             // Write a dummy var
             if (mmSocketType == SocketType.WRITE_ONLY) {
-                write(("" + alertMessage).getBytes());
+                write(alertMessage.getBytes());
                 //setStatusMessage("Sending message..");
                 cancel();
             }
@@ -292,7 +178,11 @@ public class BluetoothService extends android.app.Service {
                     bytes = mmInStream.read(buffer);
                     String str = new String(buffer, 0, bytes);
                     Log.e(TAG, "Message received: " + str);
-                    doNotification(parseInt(str));
+                    mainActivity.runOnUiThread(new Runnable(){
+                        public void run(){
+                            mainActivity.onAlertReceived();
+                        }
+                    });
                 } catch (IOException e) {
                     Log.d(TAG, "disconnected", e);
                     // Start the service over to restart listening mode
@@ -307,10 +197,9 @@ public class BluetoothService extends android.app.Service {
          */
         public void write(byte[] buffer) {
             try {
-                Log.d(TAG, "Trying to write..");
                 mmOutStream.write(buffer);
             } catch (IOException e) {
-                Log.e(TAG, "Could not write", e);
+                Log.e(TAG, "Exception during write", e);
             }
         }
 
