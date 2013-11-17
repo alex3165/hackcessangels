@@ -1,10 +1,14 @@
 package com.hackcess.angel;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.res.AssetManager;
+import android.graphics.Typeface;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -20,11 +24,16 @@ public class DetailActivity extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
+
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.activity_detail, container, false);
+
 
         /*TextView textViewHandicap = (TextView) rootView.findViewById(R.id.textViewHandicap);
         HandicapType message=HandicapType.PHYSICAL;
@@ -48,9 +57,11 @@ public class DetailActivity extends Fragment {
                 break;
         }*/
 
-        ImageButton submit=(ImageButton) rootView.findViewById(R.id.imageButton);
+       // ImageButton submit=(ImageButton) rootView.findViewById(R.id.imageButton);
         return rootView;
     }
+
+
 
     public void onActivityResult(int requestCode, int resultCode,
                                     Intent data) {
@@ -73,11 +84,35 @@ public class DetailActivity extends Fragment {
         return super.onOptionsItemSelected(item);
     }
 
+
     public enum HandicapType{
         PHYSICAL, MENTAL, DEAF, PREGNANT, LUGGAGE
 
     } ;
+    public class MyTextView extends TextView {
 
+        public MyTextView(Context context, AttributeSet attrs, int defStyle) {
+            super(context, attrs, defStyle);
+            init();
+        }
+
+        public MyTextView(Context context, AttributeSet attrs) {
+            super(context, attrs);
+            init();
+        }
+
+        public MyTextView(Context context) {
+            super(context);
+            init();
+        }
+
+        public void init() {
+            Typeface tf = Typeface.createFromAsset(getContext().getAssets(), "Loto-Lig.ttf");
+            setTypeface(tf ,1);
+
+        }
+
+    }
 
 
 }

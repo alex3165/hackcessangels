@@ -4,7 +4,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:ignore="MergeRootFrame"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        >
 
         <ImageButton
             android:layout_width="fill_parent"
