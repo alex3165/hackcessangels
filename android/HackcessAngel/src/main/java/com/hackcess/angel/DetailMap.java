@@ -24,7 +24,8 @@ public class DetailMap extends Fragment {
 
     public static final OnlineTileSourceBase MAPNIK = new XYTileSource("Mapnik",
             ResourceProxy.string.mapnik, 0, 20, TILE_SIZE, ".png",
-            "http://a.tile.openstreetmap.fr/osmfr/", "http://b.tile.openstreetmap.fr/osmfr/",
+            "http://a.tile.openstreetmap.fr/osmfr/",
+            "http://b.tile.openstreetmap.fr/osmfr/",
             "http://c.tile.openstreetmap.fr/osmfr/");
 
     /*private abstract class Worker extends AsyncTask<URL, Void, Response> {
@@ -76,7 +77,7 @@ public class DetailMap extends Fragment {
         myOpenMapView.setTileSource(tileSource);
 
         myMapController = myOpenMapView.getController();
-        myMapController.setZoom(18);
+        myMapController.setZoom(14);
         myMapController.setCenter(new GeoPoint(48.843906, 2.375278));
 
         if (Info.isSelected()){
@@ -122,9 +123,4 @@ public class DetailMap extends Fragment {
         }
         return super.onOptionsItemSelected(item);
     }
-
-
-
-
-
 }

@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 public class DetailActivity extends Fragment {
@@ -25,7 +26,7 @@ public class DetailActivity extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.activity_detail, container, false);
 
-        TextView textViewHandicap = (TextView) rootView.findViewById(R.id.textViewHandicap);
+        /*TextView textViewHandicap = (TextView) rootView.findViewById(R.id.textViewHandicap);
         HandicapType message=HandicapType.PHYSICAL;
         switch(message)  {
             case PHYSICAL :
@@ -45,11 +46,9 @@ public class DetailActivity extends Fragment {
             case LUGGAGE :
                 textViewHandicap.setText("J'ai des baggages lourds.");
                 break;
+        }*/
 
-
-        }
-
-        Button Submit=(Button) rootView.findViewById(R.id.buttonSubmit);
+        ImageButton submit=(ImageButton) rootView.findViewById(R.id.imageButton);
         return rootView;
     }
 
