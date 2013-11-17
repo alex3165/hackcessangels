@@ -50,28 +50,6 @@ public class DetailActivity extends Fragment {
         }
 
         Button Submit=(Button) rootView.findViewById(R.id.buttonSubmit);
-        CheckBox CheckBox1=(CheckBox) rootView.findViewById(R.id.checkBox2);
-        CheckBox CheckBox2=(CheckBox) rootView.findViewById(R.id.checkBox3);
-        CheckBox CheckBox3=(CheckBox) rootView.findViewById(R.id.checkBox3);
-        CheckBox1.setChecked(true);
-        if (true){
-            if (CheckBox1.isChecked()){
-                //Affiche la carte avec le choix 1
-
-
-            }
-            if (CheckBox2.isChecked()){
-                //Affiche la carte avec le choix 1
-
-
-            }
-            if (CheckBox3.isChecked()){
-                //Affiche la carte avec le choix 1
-
-
-            }
-
-        }
         return rootView;
     }
 

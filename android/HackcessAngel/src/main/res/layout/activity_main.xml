@@ -9,7 +9,7 @@
         <ImageButton
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             android:layout_marginBottom="30dp"
             android:id="@+id/help1"
             android:onClick="broadcast1_Clicked"
@@ -21,7 +21,7 @@
         <ImageButton
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             android:id="@+id/help2"
             android:onClick="broadcast2_Clicked"
             android:layout_gravity="center_horizontal"
@@ -29,35 +29,24 @@
             android:layout_weight="1"
             android:layout_marginBottom="40dp" />
 
+        <ImageButton
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:scaleType="centerCrop"
+            android:id="@+id/buttonMap"
+            android:onClick="broadcast2_Clicked"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/button_map"
+            android:layout_weight="1"
+            android:layout_marginBottom="40dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginLeft="50dp"/>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/textViewInfo"
             android:layout_gravity="center"/>
 
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:layout_marginBottom="30px">
-
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/imageButton2"
-                android:src="@drawable/button_map"
-                android:layout_gravity="right"
-                android:layout_marginLeft="70dp" />
-
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/imageButton"
-                android:src="@drawable/button_profile"
-                android:layout_gravity="right" />
-
-
-        </LinearLayout>
 
     </LinearLayout>
