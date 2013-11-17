@@ -10,7 +10,7 @@
         <ImageButton
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:scaleType="centerCrop"
+            android:scaleType="centerInside"
             android:layout_marginBottom="30dp"
             android:id="@+id/help1"
             android:onClick="broadcast1_Clicked"
@@ -22,7 +22,7 @@
         <ImageButton
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:scaleType="centerCrop"
+            android:scaleType="centerInside"
             android:id="@+id/help2"
             android:onClick="broadcast2_Clicked"
             android:layout_gravity="center_horizontal"
@@ -42,12 +42,6 @@
             android:layout_marginBottom="40dp"
             android:layout_marginRight="50dp"
             android:layout_marginLeft="50dp"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textViewInfo"
-            android:layout_gravity="center"/>
 
 
     </LinearLayout>
