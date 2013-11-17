@@ -10,13 +10,14 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
-public class MainActivity extends Activity {
+public class MainActivity extends ActionBarActivity {
 
     public final String TAG = "MainActivity";
     private int REQUEST_ENABLE_BT = 1;
@@ -81,6 +82,18 @@ public class MainActivity extends Activity {
                 bluetoothService.startListening();
             }
         }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        //unregisterReceiver(bluetoothService.mReceiver);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        //unregisterReceiver(bluetoothService.mReceiver);
     }
 
     // Starts a thread which keeps the device discoverable

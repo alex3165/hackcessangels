@@ -57,7 +57,7 @@ public class BluetoothService {
                 // When discovery is finished, change the Activity title
             } else if (BluetoothAdapter.ACTION_DISCOVERY_FINISHED.equals(action)) {
                 Log.d(TAG, "ACTION_DISCOVERY_FINISHED");
-                setStatusMessage("Finished");
+                setStatusMessage("Finished discovering devices");
             }
         }
     };
