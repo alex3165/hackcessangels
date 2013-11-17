@@ -27,48 +27,46 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/buttonInfo"
-                android:src="@drawable/info"
+                android:src="@drawable/pictoinfo"
                 android:background="#f6fff1"
-                android:paddingEnd="20dp"
-                android:layout_column="3" />
+                android:layout_weight="1"
+                android:layout_column="1" />
 
             <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/buttonMove"
-                android:src="@drawable/move"
+                android:src="@drawable/picto_deplacements_601_bleu"
                 android:background="#fffef6"
-                android:paddingEnd="20dp"
-                android:layout_column="6" />
+                android:layout_weight="1"
+                android:layout_column="2" />
 
             <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/buttonDeaf"
-                android:src="@drawable/audio"
+                android:src="@drawable/picto_handicap_auditif_60_gris"
                 android:background="#f6fff1"
-                android:paddingEnd="20dp"
-
-                android:layout_column="7" />
+                android:layout_weight="1"
+                android:layout_column="3" />
 
             <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/buttonChair"
-                android:src="@drawable/moteur"
+                android:src="@drawable/picto_handicap_moteur_60_gris"
                 android:background="#f6fff1"
-                android:paddingEnd="20dp"
-
-                android:layout_column="9" />
+                android:layout_weight="1"
+                android:layout_column="4" />
 
             <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/buttonBlind"
-                android:src="@drawable/visuel"
+                android:src="@drawable/picto_handicap_auditif_60_gris"
                 android:background="#f6fff1"
-                android:paddingEnd="20dp"
-                android:layout_column="14" />
+                android:layout_weight="1"
+                android:layout_column="5" />
         </TableRow>
 
 
