@@ -34,7 +34,7 @@ public class MainActivity extends ActionBarActivity {
                         .setContentText("Thomas a besoin d'aide!")
                         .setVibrate(new long[]{0,500,110,500,110,450,110,200,110,170,40,450,110,200,110,170,40,500});
         // Creates an explicit intent for an Activity in your app
-        Intent resultIntent = new Intent(context, DetailActivity.class);
+        Intent resultIntent = new Intent(context, AlertSliderActivity.class);
         PendingIntent resultPendingIntent =
                 PendingIntent.getActivity(
                         context,

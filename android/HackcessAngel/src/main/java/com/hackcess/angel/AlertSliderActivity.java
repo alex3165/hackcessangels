@@ -29,6 +29,8 @@ public class AlertSliderActivity extends FragmentActivity {
 
             // Ajout des Fragments dans la liste
             fragments.add(Fragment.instantiate(this, DetailActivity.class.getName()));
+        } else {
+            fragments.add(Fragment.instantiate(this, DetailActivity.class.getName()));
         }
         fragments.add(Fragment.instantiate(this, DetailMap.class.getName()));
 
