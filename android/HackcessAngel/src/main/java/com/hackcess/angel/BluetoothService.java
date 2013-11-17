@@ -86,7 +86,7 @@ public class BluetoothService extends android.app.Service {
         PendingIntent resultPendingIntent =
                 PendingIntent.getActivity(
                         this,
-                        0,
+                        message,
                         resultIntent,
                         PendingIntent.FLAG_UPDATE_CURRENT
                 );
@@ -145,35 +145,45 @@ public class BluetoothService extends android.app.Service {
                     onServerFoundClient(device.createInsecureRfcommSocketToServiceRecord(BT_UUID),
                             device.getName());
                 } catch (IOException e) {
-                    e.printStackTrace();
+
                 }
                 Looper.loop();
             }
         }).start();
     }
 
+    Thread listenerThread;
     // Starts listening for incoming connections
     public final void startListening() {
         try {
             mBluetoothListenerSocket = mBluetoothAdapter.listenUsingInsecureRfcommWithServiceRecord(
                     "BluetoothAlertReceiver", BT_UUID);
             // Launch thread waiting for connection
-            Thread thread = new Thread()
+            listenerThread = new Thread()
             {
                 @Override
                 public void run() {
-                    try {
-                        Log.d(TAG, "Listening..");
-                        while(true) {
+                    Looper.prepare();
+                    Log.d(TAG, "Listening..");
+                    //setStatusMessage("Listening..");
+                    while(true) {
+                        try {
                             onListenerFoundBroadcaster(mBluetoothListenerSocket.accept());
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                            try {
+                                sleep(1000);
+                            } catch (InterruptedException e1) {
+                                e1.printStackTrace();
+                                break;
+                            }
                         }
-                    } catch (IOException e) {
-                        e.printStackTrace();
                     }
+                    Looper.loop();
                 }
             };
 
-            thread.start();
+            listenerThread.start();
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -199,14 +209,14 @@ public class BluetoothService extends android.app.Service {
 
     private void onServerFoundClient(BluetoothSocket client, String name) {
         Log.d(TAG, "onServerFoundClient: " + name);
-        setStatusMessage("Scanning " + name);
         try {
             client.connect();
+            Log.d(TAG, "connect() performed: " + name);
+            ConnectedThread mConnectedThread = new ConnectedThread(client, SocketType.WRITE_ONLY);
+            mConnectedThread.start();
         } catch (IOException e) {
-            Log.d(TAG, "Skipping this client - can't connect.");
+            Log.d(TAG, "Skipping client " + name + ": can't connect.");
         }
-        ConnectedThread mConnectedThread = new ConnectedThread(client, SocketType.WRITE_ONLY);
-        mConnectedThread.start();
     }
 
     @Override
@@ -297,9 +307,10 @@ public class BluetoothService extends android.app.Service {
          */
         public void write(byte[] buffer) {
             try {
+                Log.d(TAG, "Trying to write..");
                 mmOutStream.write(buffer);
             } catch (IOException e) {
-                Log.e(TAG, "Exception during write", e);
+                Log.e(TAG, "Could not write", e);
             }
         }
 

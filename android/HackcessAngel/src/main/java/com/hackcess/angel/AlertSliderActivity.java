@@ -2,6 +2,7 @@ package com.hackcess.angel;
 import java.util.List;
 import java.util.Vector;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -18,6 +19,9 @@ public class AlertSliderActivity extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         super.setContentView(R.layout.alert_viewpager);
+
+        Intent intent = getIntent();
+        int message_type = intent.getExtras().getInt("requestCode");
 
         // Création de la liste de Fragments que fera défiler le PagerAdapter
         List fragments = new Vector();
@@ -42,4 +46,6 @@ public class AlertSliderActivity extends FragmentActivity {
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
+
+
 }

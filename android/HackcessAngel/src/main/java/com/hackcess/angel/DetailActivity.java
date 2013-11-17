@@ -51,7 +51,7 @@ public class DetailActivity extends Fragment {
                 break;
         }*/
 
-        ImageButton submit=(ImageButton) rootView.findViewById(R.id.imageButton);
+        //ImageButton submit=(ImageButton) rootView.findViewById(R.id.imageButton);
         return rootView;
     }
 
