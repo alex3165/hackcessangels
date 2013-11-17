@@ -5,8 +5,10 @@ import java.util.Vector;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
+import android.view.Menu;
+
+import com.hackcess.angel.verticalviewpager.PagerAdapter;
+import com.hackcess.angel.verticalviewpager.VerticalViewPager;
 
 public class AlertSliderActivity extends FragmentActivity {
 
@@ -28,9 +30,16 @@ public class AlertSliderActivity extends FragmentActivity {
         // Fragments
         this.mPagerAdapter = new AlertPagerAdapter(super.getSupportFragmentManager(), fragments);
 
-        ViewPager pager = (ViewPager) super.findViewById(R.id.alert_viewpager);
+        VerticalViewPager pager = (VerticalViewPager) super.findViewById(R.id.alert_viewpager);
         // Affectation de l'adapter au ViewPager
         pager.setAdapter(this.mPagerAdapter);
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
 }
-    

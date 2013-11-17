@@ -2,35 +2,43 @@ package com.hackcess.angel;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
-public class DetailActivity extends Activity {
+public class DetailActivity extends Fragment {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detail);
+    }
 
-        TextView textViewHandicap = (TextView) findViewById(R.id.textViewHandicap);
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View rootView = inflater.inflate(R.layout.activity_detail, container, false);
+
+        TextView textViewHandicap = (TextView) rootView.findViewById(R.id.textViewHandicap);
         HandicapType message=HandicapType.PHYSICAL;
         switch(message)  {
             case PHYSICAL :
-                textViewHandicap.setText("Handicape physique");
+                textViewHandicap.setText("Handicap physique");
                 break;
             case MENTAL :
-                textViewHandicap.setText("handicape mental");
+                textViewHandicap.setText("Handicap mental");
                 break;
             case DEAF :
                 textViewHandicap.setText("Je suis sourd.");
                 break;
 
-            case PRAGNENT :
+            case PREGNANT:
                 textViewHandicap.setText("Je suis enceinte");
                 break;
 
@@ -41,10 +49,10 @@ public class DetailActivity extends Activity {
 
         }
 
-        Button Submit=(Button) findViewById(R.id.buttonSubmit);
-        CheckBox CheckBox1=(CheckBox) findViewById(R.id.checkBox2);
-        CheckBox CheckBox2=(CheckBox) findViewById(R.id.checkBox3);
-        CheckBox CheckBox3=(CheckBox) findViewById(R.id.checkBox3);
+        Button Submit=(Button) rootView.findViewById(R.id.buttonSubmit);
+        CheckBox CheckBox1=(CheckBox) rootView.findViewById(R.id.checkBox2);
+        CheckBox CheckBox2=(CheckBox) rootView.findViewById(R.id.checkBox3);
+        CheckBox CheckBox3=(CheckBox) rootView.findViewById(R.id.checkBox3);
         CheckBox1.setChecked(true);
         if (true){
             if (CheckBox1.isChecked()){
@@ -64,23 +72,16 @@ public class DetailActivity extends Activity {
             }
 
         }
+        return rootView;
     }
 
-    protected void onActivityResult(int requestCode, int resultCode,
+    public void onActivityResult(int requestCode, int resultCode,
                                     Intent data) {
         android.util.Log.d("TEST", "truc");
     }
 
-    protected void onStart() {
+    public void onStart() {
         super.onStart();
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
     }
 
     @Override
@@ -96,7 +97,7 @@ public class DetailActivity extends Activity {
     }
 
     public enum HandicapType{
-        PHYSICAL, MENTAL, DEAF, PRAGNENT, LUGGAGE
+        PHYSICAL, MENTAL, DEAF, PREGNANT, LUGGAGE
 
     } ;
 
