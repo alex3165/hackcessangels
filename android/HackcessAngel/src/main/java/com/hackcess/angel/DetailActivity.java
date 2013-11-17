@@ -1,10 +1,13 @@
 package com.hackcess.angel;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -78,6 +81,30 @@ public class DetailActivity extends Fragment {
 
     } ;
 
+    public class MyTextView extends TextView {
+
+        public MyTextView(Context context, AttributeSet attrs, int defStyle) {
+            super(context, attrs, defStyle);
+            init();
+        }
+
+        public MyTextView(Context context, AttributeSet attrs) {
+            super(context, attrs);
+            init();
+        }
+
+        public MyTextView(Context context) {
+            super(context);
+            init();
+        }
+
+        public void init() {
+            Typeface tf = Typeface.createFromAsset(getContext().getAssets(), "Lato-Lig.ttf");
+            setTypeface(tf ,1);
+
+        }
+
+    }
 
 
 }
