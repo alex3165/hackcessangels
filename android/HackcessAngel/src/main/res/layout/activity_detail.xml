@@ -28,7 +28,7 @@
             android:layout_height="67dp"
             android:id="@+id/imageViewNotif"
             android:layout_gravity="center_horizontal"
-            android:src="@drawable/icon_fauteuil" />
+            android:src="@drawable/moteur" />
 
         <TextView
             android:layout_width="271dp"
