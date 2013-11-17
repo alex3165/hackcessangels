@@ -12,7 +12,7 @@
             android:scaleType="fitCenter"
             android:layout_marginBottom="30dp"
             android:id="@+id/help1"
-            android:onClick="broadcast2_Clicked"
+            android:onClick="broadcast1_Clicked"
             android:layout_gravity="center_horizontal"
             android:src="@drawable/button1"
             android:maxHeight="10dp"
