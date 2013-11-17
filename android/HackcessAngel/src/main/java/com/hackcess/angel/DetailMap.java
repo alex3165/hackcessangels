@@ -7,9 +7,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.TableRow;
 
 import org.osmdroid.ResourceProxy;
 import org.osmdroid.api.IMapController;
@@ -26,7 +24,8 @@ public class DetailMap extends Fragment {
 
     public static final OnlineTileSourceBase MAPNIK = new XYTileSource("Mapnik",
             ResourceProxy.string.mapnik, 0, 20, TILE_SIZE, ".png",
-            "http://a.tile.openstreetmap.fr/osmfr/", "http://b.tile.openstreetmap.fr/osmfr/",
+            "http://a.tile.openstreetmap.fr/osmfr/",
+            "http://b.tile.openstreetmap.fr/osmfr/",
             "http://c.tile.openstreetmap.fr/osmfr/");
 
     /*private abstract class Worker extends AsyncTask<URL, Void, Response> {
@@ -76,13 +75,10 @@ public class DetailMap extends Fragment {
         // Create the mapview with the custom tile provider array
         myOpenMapView = (MapView) rootView.findViewById(R.id.openmapview);
         myOpenMapView.setTileSource(tileSource);
-        myOpenMapView.setBuiltInZoomControls(true);
-        myOpenMapView.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT,
-                TableRow.LayoutParams.MATCH_PARENT));
 
         myMapController = myOpenMapView.getController();
-        myMapController.setZoom(13);
-        myMapController.setCenter(new GeoPoint(48.8534100, 2.3488000));
+        myMapController.setZoom(14);
+        myMapController.setCenter(new GeoPoint(48.843906, 2.375278));
 
         if (Info.isSelected()){
             //Affiche les infos générales sur la map
@@ -127,9 +123,4 @@ public class DetailMap extends Fragment {
         }
         return super.onOptionsItemSelected(item);
     }
-
-
-
-
-
 }
