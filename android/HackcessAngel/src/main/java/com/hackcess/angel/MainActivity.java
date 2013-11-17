@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 public class MainActivity extends ActionBarActivity {
@@ -80,6 +81,16 @@ public class MainActivity extends ActionBarActivity {
                 bluetoothService.startListening();
             }
         }
+
+        final Context context = this;
+        ImageButton mapButton = (ImageButton) findViewById(R.id.buttonMap);
+        mapButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, AlertSliderActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     // Starts a thread which keeps the device discoverable
