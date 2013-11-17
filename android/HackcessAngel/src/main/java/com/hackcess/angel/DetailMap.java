@@ -30,7 +30,7 @@ public class DetailMap extends Activity {
             "http://a.tile.openstreetmap.fr/osmfr/", "http://b.tile.openstreetmap.fr/osmfr/",
             "http://c.tile.openstreetmap.fr/osmfr/");
 
-    private abstract class Worker extends AsyncTask<URL, Void, Response> {
+    /*private abstract class Worker extends AsyncTask<URL, Void, Response> {
         AppEngineClient client;
 
         protected Response doInBackground(URL... params) {
@@ -54,7 +54,7 @@ public class DetailMap extends Activity {
         }
 
         protected abstract int displayMarkers(int i);
-    }
+    }*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
