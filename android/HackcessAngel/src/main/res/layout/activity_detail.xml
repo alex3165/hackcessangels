@@ -10,5 +10,57 @@
     android:orientation="vertical">
 
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/notif" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Fauteuil électrique"
+        android:id="@+id/textViewChair"
+        android:layout_gravity="center_horizontal" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="123dp"
+        android:id="@+id/imageView2"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/info_sup" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView3"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/icon_urgencecall" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="En cas d'urgens, veuilez utiliser les bornes d'appel à votre disposition ou apeller le 3117"
+        android:id="@+id/textView"
+        android:autoText="false"
+        android:textIsSelectable="false"
+        android:textAlignment="center" />
+
+    <ImageButton
+        android:layout_width="208dp"
+        android:layout_height="38dp"
+        android:id="@+id/imageButton"
+        android:src="@drawable/button_jmd"
+        android:layout_gravity="center_horizontal" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView4"
+        android:src="@drawable/button_carte"
+        android:layout_gravity="center|bottom" />
 </LinearLayout>
 
