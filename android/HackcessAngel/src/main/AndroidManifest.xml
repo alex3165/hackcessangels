@@ -19,7 +19,6 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
-        <service android:name=".BluetoothService" android:exported="false" />
         <activity
             android:name="com.hackcess.angel.MainActivity"
             android:theme="@style/Theme.AppCompat.Light"
