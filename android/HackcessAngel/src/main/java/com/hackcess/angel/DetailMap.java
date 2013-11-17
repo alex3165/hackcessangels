@@ -30,6 +30,32 @@ public class DetailMap extends Activity {
             "http://a.tile.openstreetmap.fr/osmfr/", "http://b.tile.openstreetmap.fr/osmfr/",
             "http://c.tile.openstreetmap.fr/osmfr/");
 
+    /*private abstract class Worker extends AsyncTask<URL, Void, Response> {
+        AppEngineClient client;
+
+        protected Response doInBackground(URL... params) {
+            // client = new HTTPClient();
+            return client.get(params[1], null);
+        }
+
+        protected void onPostExecute(Response response) {
+            TextView text = (TextView) activity.findViewById(R.id.current_page);
+            if (response == null)
+                Toast.makeText(getApplicationContext(), client.errorMessage(),
+                        Toast.LENGTH_LONG).show();
+            else if ((response.status / 100) != 2)
+                Toast.makeText(getApplicationContext(),
+                        new String(response.body), Toast.LENGTH_LONG).show();
+            else {
+                int i = Integer.parseInt(text.getText().toString());
+                i = this.move(i);
+                text.setText(Integer.toString(i));
+            }
+        }
+
+        protected abstract int displayMarkers(int i);
+    }*/
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
