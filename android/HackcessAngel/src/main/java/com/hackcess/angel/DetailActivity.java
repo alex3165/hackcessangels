@@ -80,6 +80,32 @@ public class DetailActivity extends Fragment {
         PHYSICAL, MENTAL, DEAF, PREGNANT, LUGGAGE
 
     }
+
+    public class MyTextView extends TextView {
+
+        public MyTextView(Context context, AttributeSet attrs, int defStyle) {
+            super(context, attrs, defStyle);
+            init();
+        }
+
+        public MyTextView(Context context, AttributeSet attrs) {
+            super(context, attrs);
+            init();
+        }
+
+        public MyTextView(Context context) {
+            super(context);
+            init();
+        }
+
+        public void init() {
+            Typeface tf = Typeface.createFromAsset(getContext().getAssets(), "Lato-Lig.ttf");
+            setTypeface(tf ,1);
+
+        }
+
+    }
+
 }
         //pour ajouter une police à mes TextView
 
