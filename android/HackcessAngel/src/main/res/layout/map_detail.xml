@@ -39,7 +39,6 @@
                 android:src="@drawable/move"
                 android:background="#fffef6"
                 android:paddingEnd="20dp"
-
                 android:layout_column="6" />
 
             <ImageButton
