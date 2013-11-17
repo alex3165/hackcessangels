@@ -51,7 +51,7 @@ public class DetailActivity extends Fragment {
                 break;
         }*/
 
-        ImageButton submit=(ImageButton) rootView.findViewById(R.id.imageButton);
+        //ImageButton submit=(ImageButton) rootView.findViewById(R.id.imageButton);
         return rootView;
     }
 
@@ -80,7 +80,7 @@ public class DetailActivity extends Fragment {
         PHYSICAL, MENTAL, DEAF, PREGNANT, LUGGAGE
 
     } ;
-
+        //pour ajouter une police à mes TextView
     public class MyTextView extends TextView {
 
         public MyTextView(Context context, AttributeSet attrs, int defStyle) {
