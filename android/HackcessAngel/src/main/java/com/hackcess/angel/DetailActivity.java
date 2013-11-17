@@ -107,7 +107,6 @@ public class DetailActivity extends Fragment {
     }
 
 }
-        //pour ajouter une police à mes TextView
 
 
 
