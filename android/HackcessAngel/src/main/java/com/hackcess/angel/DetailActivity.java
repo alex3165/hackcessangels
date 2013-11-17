@@ -79,7 +79,7 @@ public class DetailActivity extends Fragment {
     public enum HandicapType{
         PHYSICAL, MENTAL, DEAF, PREGNANT, LUGGAGE
 
-    } ;
+    }
 
     public class MyTextView extends TextView {
 
@@ -106,5 +106,8 @@ public class DetailActivity extends Fragment {
 
     }
 
-
 }
+        //pour ajouter une police à mes TextView
+
+
+

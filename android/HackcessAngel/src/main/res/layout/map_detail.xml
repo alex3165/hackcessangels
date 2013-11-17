@@ -15,13 +15,12 @@
     <TableLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_weight="6"
+        android:layout_weight="8"
         android:layout_gravity="center_horizontal">
 
         <TableRow
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            >
+            android:layout_height="wrap_content">
 
             <ImageButton
                 android:layout_width="wrap_content"
@@ -29,8 +28,9 @@
                 android:id="@+id/buttonInfo"
                 android:src="@drawable/pictoinfo"
                 android:background="#f6fff1"
-                android:layout_weight="1"
-                android:layout_column="1" />
+
+                android:paddingRight="5dp"
+                android:paddingLeft="15dp" />
 
             <ImageButton
                 android:layout_width="wrap_content"
@@ -38,8 +38,8 @@
                 android:id="@+id/buttonMove"
                 android:src="@drawable/picto_deplacements_601_bleu"
                 android:background="#fffef6"
-                android:layout_weight="1"
-                android:layout_column="2" />
+                android:paddingRight="5dp"
+                android:paddingLeft="5dp" />
 
             <ImageButton
                 android:layout_width="wrap_content"
@@ -47,8 +47,8 @@
                 android:id="@+id/buttonDeaf"
                 android:src="@drawable/picto_handicap_auditif_60_gris"
                 android:background="#f6fff1"
-                android:layout_weight="1"
-                android:layout_column="3" />
+                android:paddingRight="5dp"
+                android:paddingLeft="5dp" />
 
             <ImageButton
                 android:layout_width="wrap_content"
@@ -56,17 +56,17 @@
                 android:id="@+id/buttonChair"
                 android:src="@drawable/picto_handicap_moteur_60_gris"
                 android:background="#f6fff1"
-                android:layout_weight="1"
-                android:layout_column="4" />
+                android:paddingRight="5dp"
+                android:paddingLeft="5dp" />
 
             <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/buttonBlind"
-                android:src="@drawable/picto_handicap_auditif_60_gris"
+                android:src="@drawable/picto_handicap_visuel_60_gris"
                 android:background="#f6fff1"
-                android:layout_weight="1"
-                android:layout_column="5" />
+                android:paddingRight="5dp"
+                android:paddingLeft="5dp" />
         </TableRow>
 
 
