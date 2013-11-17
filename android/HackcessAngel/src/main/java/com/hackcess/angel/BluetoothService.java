@@ -13,15 +13,21 @@ import android.content.IntentFilter;
 import android.os.Binder;
 import android.os.IBinder;
 import android.os.Looper;
+import android.os.Message;
+import android.os.Messenger;
+import android.os.RemoteException;
 import android.os.Vibrator;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
+import android.os.Handler;
 import android.widget.Toast;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.UUID;
+
+import static java.lang.Integer.parseInt;
 
 /**
  * Created by olc on 16/11/13.
@@ -35,20 +41,40 @@ public class BluetoothService extends android.app.Service {
     public BluetoothServerSocket mBluetoothListenerSocket;
 
     private NotificationManager mNM;
-    private final IBinder mBinder = new Binder();
-    private String alertMessage = "";
+    private int alertMessage = MSG_TYPE_INFORMATION;
     private int NOTIFICATION_ID = 1;
 
-    void setStatusMessage(final String str) {
-        /*mainActivity.runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                mainActivity.setStatusText(str);
+    static final int MSG_START_BROADCASTING = 1;
+    static final int MSG_BROADCASTING_FINISHED = 2;
+
+    static final int MSG_TYPE_PHYSICAL = 1;
+    static final int MSG_TYPE_MENTAL = 2;
+    static final int MSG_TYPE_DEAF = 3;
+    static final int MSG_TYPE_PREGNANT = 4;
+    static final int MSG_TYPE_LUGGAGE = 5;
+    static final int MSG_TYPE_INFORMATION = 6;
+
+    class IncomingHandler extends Handler {
+        @Override
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+                case MSG_START_BROADCASTING:
+                    startBroadcastingBluetooth(msg.arg1);
+                    break;
+                default:
+                    super.handleMessage(msg);
             }
-        });*/
+        }
     }
 
-    void doNotification(String message) {
+    final Messenger mMessenger = new Messenger(new IncomingHandler());
+
+
+    void setStatusMessage(final String str) {
+        Toast.makeText(this, str, Toast.LENGTH_SHORT).show();
+    }
+
+    void doNotification(int message) {
         NotificationCompat.Builder mBuilder =
                 new NotificationCompat.Builder(this)
                         .setSmallIcon(R.drawable.ic_launcher)
@@ -110,15 +136,18 @@ public class BluetoothService extends android.app.Service {
     }
 
     private void createInsecureConnectionToClient(final BluetoothDevice device) {
+        Toast.makeText(this, "Polling " + device.getName(), Toast.LENGTH_SHORT).show();
         new Thread(new Runnable() {
             @Override
             public void run() {
+                Looper.prepare();
                 try {
                     onServerFoundClient(device.createInsecureRfcommSocketToServiceRecord(BT_UUID),
                             device.getName());
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+                Looper.loop();
             }
         }).start();
     }
@@ -151,7 +180,7 @@ public class BluetoothService extends android.app.Service {
         }
     }
 
-    public final void startBroadcastingBluetooth(String message) {
+    public final void startBroadcastingBluetooth(int message) {
         this.alertMessage = message;
         if (mBluetoothAdapter.isEnabled()) {
             // Get discoverable devices to send them messages
@@ -184,7 +213,7 @@ public class BluetoothService extends android.app.Service {
     public IBinder onBind(Intent intent) {
         Toast.makeText(this, "Bluetooth service bind", Toast.LENGTH_SHORT).show();
         Log.d(TAG, "Bluetooth service bind");
-        return mBinder;
+        return mMessenger.getBinder();
     }
 
     @Override
@@ -235,7 +264,7 @@ public class BluetoothService extends android.app.Service {
 
             // Write a dummy var
             if (mmSocketType == SocketType.WRITE_ONLY) {
-                write(alertMessage.getBytes());
+                write(("" + alertMessage).getBytes());
                 //setStatusMessage("Sending message..");
                 cancel();
             }
@@ -253,7 +282,7 @@ public class BluetoothService extends android.app.Service {
                     bytes = mmInStream.read(buffer);
                     String str = new String(buffer, 0, bytes);
                     Log.e(TAG, "Message received: " + str);
-                    doNotification(str);
+                    doNotification(parseInt(str));
                 } catch (IOException e) {
                     Log.d(TAG, "disconnected", e);
                     // Start the service over to restart listening mode
