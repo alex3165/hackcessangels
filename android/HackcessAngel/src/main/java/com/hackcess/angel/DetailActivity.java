@@ -79,32 +79,9 @@ public class DetailActivity extends Fragment {
     public enum HandicapType{
         PHYSICAL, MENTAL, DEAF, PREGNANT, LUGGAGE
 
-    } ;
-        //pour ajouter une police à mes TextView
-    public class MyTextView extends TextView {
-
-        public MyTextView(Context context, AttributeSet attrs, int defStyle) {
-            super(context, attrs, defStyle);
-            init();
-        }
-
-        public MyTextView(Context context, AttributeSet attrs) {
-            super(context, attrs);
-            init();
-        }
-
-        public MyTextView(Context context) {
-            super(context);
-            init();
-        }
-
-        public void init() {
-            Typeface tf = Typeface.createFromAsset(getContext().getAssets(), "Lato-Lig.ttf");
-            setTypeface(tf ,1);
-
-        }
-
     }
-
-
 }
+        //pour ajouter une police à mes TextView
+
+
+
