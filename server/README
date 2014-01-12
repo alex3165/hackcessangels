@@ -1,0 +1,6 @@
+Prérequis
+============
+ - Python (>= 2.7)
+ - Flask
+ - pyMongo
+ - mongokit
