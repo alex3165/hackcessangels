@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>63C58AE5-2508-49C4-BA51-2218410C9F72</string>
+	<key>IDESourceControlProjectName</key>
+	<string>hackcessangels</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>AB97A2E7-6D5E-4AB8-B32C-E7B60D41F49D</key>
+		<string>https://github.com/alex3165/hackcessangels.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>ios/hackcessangels/hackcessangels.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>AB97A2E7-6D5E-4AB8-B32C-E7B60D41F49D</key>
+		<string>../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/alex3165/hackcessangels.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>AB97A2E7-6D5E-4AB8-B32C-E7B60D41F49D</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>AB97A2E7-6D5E-4AB8-B32C-E7B60D41F49D</string>
+			<key>IDESourceControlWCCName</key>
+			<string>hackcessangels</string>
+		</dict>
+	</array>
+</dict>
+</plist>
