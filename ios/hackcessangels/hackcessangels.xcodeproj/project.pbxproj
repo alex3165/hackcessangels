@@ -7,204 +7,231 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		22B43D5D1885EF6A0058AA5B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22B43D5C1885EF6A0058AA5B /* Foundation.framework */; };
-		22B43D5F1885EF6A0058AA5B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22B43D5E1885EF6A0058AA5B /* CoreGraphics.framework */; };
-		22B43D611885EF6A0058AA5B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22B43D601885EF6A0058AA5B /* UIKit.framework */; };
-		22B43D671885EF6A0058AA5B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 22B43D651885EF6A0058AA5B /* InfoPlist.strings */; };
-		22B43D691885EF6A0058AA5B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B43D681885EF6A0058AA5B /* main.m */; };
-		22B43D6D1885EF6A0058AA5B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B43D6C1885EF6A0058AA5B /* AppDelegate.m */; };
-		22B43D701885EF6A0058AA5B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22B43D6E1885EF6A0058AA5B /* Main.storyboard */; };
-		22B43D731885EF6A0058AA5B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B43D721885EF6A0058AA5B /* ViewController.m */; };
-		22B43D751885EF6A0058AA5B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22B43D741885EF6A0058AA5B /* Images.xcassets */; };
-		22B43D7C1885EF6A0058AA5B /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22B43D7B1885EF6A0058AA5B /* XCTest.framework */; };
-		22B43D7D1885EF6A0058AA5B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22B43D5C1885EF6A0058AA5B /* Foundation.framework */; };
-		22B43D7E1885EF6A0058AA5B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22B43D601885EF6A0058AA5B /* UIKit.framework */; };
-		22B43D861885EF6A0058AA5B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 22B43D841885EF6A0058AA5B /* InfoPlist.strings */; };
-		22B43D881885EF6A0058AA5B /* hackcessangelsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B43D871885EF6A0058AA5B /* hackcessangelsTests.m */; };
+		22085DDD18883EAE00A4BE75 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22085DDC18883EAE00A4BE75 /* CoreLocation.framework */; };
+		22085DE018883F6200A4BE75 /* localisation.m in Sources */ = {isa = PBXBuildFile; fileRef = 22085DDF18883F6200A4BE75 /* localisation.m */; };
+		22601F041886E2DE008B0179 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22601F031886E2DE008B0179 /* Foundation.framework */; };
+		22601F061886E2DE008B0179 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22601F051886E2DE008B0179 /* CoreGraphics.framework */; };
+		22601F081886E2DE008B0179 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22601F071886E2DE008B0179 /* UIKit.framework */; };
+		22601F0E1886E2DE008B0179 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 22601F0C1886E2DE008B0179 /* InfoPlist.strings */; };
+		22601F101886E2DE008B0179 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 22601F0F1886E2DE008B0179 /* main.m */; };
+		22601F141886E2DE008B0179 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 22601F131886E2DE008B0179 /* AppDelegate.m */; };
+		22601F171886E2DE008B0179 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22601F151886E2DE008B0179 /* Main.storyboard */; };
+		22601F1A1886E2DE008B0179 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22601F191886E2DE008B0179 /* ViewController.m */; };
+		22601F1C1886E2DE008B0179 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22601F1B1886E2DE008B0179 /* Images.xcassets */; };
+		22601F231886E2DE008B0179 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22601F221886E2DE008B0179 /* XCTest.framework */; };
+		22601F241886E2DE008B0179 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22601F031886E2DE008B0179 /* Foundation.framework */; };
+		22601F251886E2DE008B0179 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22601F071886E2DE008B0179 /* UIKit.framework */; };
+		22601F2D1886E2DE008B0179 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 22601F2B1886E2DE008B0179 /* InfoPlist.strings */; };
+		22601F2F1886E2DE008B0179 /* HackcessAngelsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 22601F2E1886E2DE008B0179 /* HackcessAngelsTests.m */; };
+		22601F3F18871EAC008B0179 /* TileOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 22601F3C18871EAC008B0179 /* TileOverlay.m */; };
+		22601F4018871EAC008B0179 /* TileOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22601F3E18871EAC008B0179 /* TileOverlayView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		22B43D7F1885EF6A0058AA5B /* PBXContainerItemProxy */ = {
+		22601F261886E2DE008B0179 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 22B43D511885EF6A0058AA5B /* Project object */;
+			containerPortal = 22601EF81886E2DE008B0179 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 22B43D581885EF6A0058AA5B;
-			remoteInfo = hackcessangels;
+			remoteGlobalIDString = 22601EFF1886E2DE008B0179;
+			remoteInfo = HackcessAngels;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		22B43D591885EF6A0058AA5B /* hackcessangels.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hackcessangels.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		22B43D5C1885EF6A0058AA5B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		22B43D5E1885EF6A0058AA5B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		22B43D601885EF6A0058AA5B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		22B43D641885EF6A0058AA5B /* hackcessangels-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "hackcessangels-Info.plist"; sourceTree = "<group>"; };
-		22B43D661885EF6A0058AA5B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		22B43D681885EF6A0058AA5B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		22B43D6A1885EF6A0058AA5B /* hackcessangels-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "hackcessangels-Prefix.pch"; sourceTree = "<group>"; };
-		22B43D6B1885EF6A0058AA5B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		22B43D6C1885EF6A0058AA5B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		22B43D6F1885EF6A0058AA5B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		22B43D711885EF6A0058AA5B /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		22B43D721885EF6A0058AA5B /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		22B43D741885EF6A0058AA5B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		22B43D7A1885EF6A0058AA5B /* hackcessangelsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = hackcessangelsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		22B43D7B1885EF6A0058AA5B /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		22B43D831885EF6A0058AA5B /* hackcessangelsTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "hackcessangelsTests-Info.plist"; sourceTree = "<group>"; };
-		22B43D851885EF6A0058AA5B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		22B43D871885EF6A0058AA5B /* hackcessangelsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = hackcessangelsTests.m; sourceTree = "<group>"; };
+		22085DDC18883EAE00A4BE75 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		22085DDE18883F6200A4BE75 /* localisation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = localisation.h; sourceTree = "<group>"; };
+		22085DDF18883F6200A4BE75 /* localisation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = localisation.m; sourceTree = "<group>"; };
+		22601F001886E2DE008B0179 /* HackcessAngels.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HackcessAngels.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		22601F031886E2DE008B0179 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		22601F051886E2DE008B0179 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		22601F071886E2DE008B0179 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		22601F0B1886E2DE008B0179 /* HackcessAngels-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "HackcessAngels-Info.plist"; sourceTree = "<group>"; };
+		22601F0D1886E2DE008B0179 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		22601F0F1886E2DE008B0179 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		22601F111886E2DE008B0179 /* HackcessAngels-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HackcessAngels-Prefix.pch"; sourceTree = "<group>"; };
+		22601F121886E2DE008B0179 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		22601F131886E2DE008B0179 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		22601F161886E2DE008B0179 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		22601F181886E2DE008B0179 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		22601F191886E2DE008B0179 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		22601F1B1886E2DE008B0179 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		22601F211886E2DE008B0179 /* HackcessAngelsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HackcessAngelsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		22601F221886E2DE008B0179 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		22601F2A1886E2DE008B0179 /* HackcessAngelsTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "HackcessAngelsTests-Info.plist"; sourceTree = "<group>"; };
+		22601F2C1886E2DE008B0179 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		22601F2E1886E2DE008B0179 /* HackcessAngelsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HackcessAngelsTests.m; sourceTree = "<group>"; };
+		22601F3B18871EAC008B0179 /* TileOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TileOverlay.h; sourceTree = "<group>"; };
+		22601F3C18871EAC008B0179 /* TileOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TileOverlay.m; sourceTree = "<group>"; };
+		22601F3D18871EAC008B0179 /* TileOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TileOverlayView.h; sourceTree = "<group>"; };
+		22601F3E18871EAC008B0179 /* TileOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TileOverlayView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		22B43D561885EF6A0058AA5B /* Frameworks */ = {
+		22601EFD1886E2DE008B0179 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				22B43D5F1885EF6A0058AA5B /* CoreGraphics.framework in Frameworks */,
-				22B43D611885EF6A0058AA5B /* UIKit.framework in Frameworks */,
-				22B43D5D1885EF6A0058AA5B /* Foundation.framework in Frameworks */,
+				22085DDD18883EAE00A4BE75 /* CoreLocation.framework in Frameworks */,
+				22601F061886E2DE008B0179 /* CoreGraphics.framework in Frameworks */,
+				22601F081886E2DE008B0179 /* UIKit.framework in Frameworks */,
+				22601F041886E2DE008B0179 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		22B43D771885EF6A0058AA5B /* Frameworks */ = {
+		22601F1E1886E2DE008B0179 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				22B43D7C1885EF6A0058AA5B /* XCTest.framework in Frameworks */,
-				22B43D7E1885EF6A0058AA5B /* UIKit.framework in Frameworks */,
-				22B43D7D1885EF6A0058AA5B /* Foundation.framework in Frameworks */,
+				22601F231886E2DE008B0179 /* XCTest.framework in Frameworks */,
+				22601F251886E2DE008B0179 /* UIKit.framework in Frameworks */,
+				22601F241886E2DE008B0179 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		22B43D501885EF6A0058AA5B = {
+		22601EF71886E2DE008B0179 = {
 			isa = PBXGroup;
 			children = (
-				22B43D621885EF6A0058AA5B /* hackcessangels */,
-				22B43D811885EF6A0058AA5B /* hackcessangelsTests */,
-				22B43D5B1885EF6A0058AA5B /* Frameworks */,
-				22B43D5A1885EF6A0058AA5B /* Products */,
+				22601F091886E2DE008B0179 /* HackcessAngels */,
+				22601F281886E2DE008B0179 /* HackcessAngelsTests */,
+				22601F021886E2DE008B0179 /* Frameworks */,
+				22601F011886E2DE008B0179 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		22B43D5A1885EF6A0058AA5B /* Products */ = {
+		22601F011886E2DE008B0179 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				22B43D591885EF6A0058AA5B /* hackcessangels.app */,
-				22B43D7A1885EF6A0058AA5B /* hackcessangelsTests.xctest */,
+				22601F001886E2DE008B0179 /* HackcessAngels.app */,
+				22601F211886E2DE008B0179 /* HackcessAngelsTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		22B43D5B1885EF6A0058AA5B /* Frameworks */ = {
+		22601F021886E2DE008B0179 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				22B43D5C1885EF6A0058AA5B /* Foundation.framework */,
-				22B43D5E1885EF6A0058AA5B /* CoreGraphics.framework */,
-				22B43D601885EF6A0058AA5B /* UIKit.framework */,
-				22B43D7B1885EF6A0058AA5B /* XCTest.framework */,
+				22085DDC18883EAE00A4BE75 /* CoreLocation.framework */,
+				22601F031886E2DE008B0179 /* Foundation.framework */,
+				22601F051886E2DE008B0179 /* CoreGraphics.framework */,
+				22601F071886E2DE008B0179 /* UIKit.framework */,
+				22601F221886E2DE008B0179 /* XCTest.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		22B43D621885EF6A0058AA5B /* hackcessangels */ = {
+		22601F091886E2DE008B0179 /* HackcessAngels */ = {
 			isa = PBXGroup;
 			children = (
-				22B43D6B1885EF6A0058AA5B /* AppDelegate.h */,
-				22B43D6C1885EF6A0058AA5B /* AppDelegate.m */,
-				22B43D6E1885EF6A0058AA5B /* Main.storyboard */,
-				22B43D711885EF6A0058AA5B /* ViewController.h */,
-				22B43D721885EF6A0058AA5B /* ViewController.m */,
-				22B43D741885EF6A0058AA5B /* Images.xcassets */,
-				22B43D631885EF6A0058AA5B /* Supporting Files */,
+				22601F4118871EBC008B0179 /* contrôleur */,
+				22601F151886E2DE008B0179 /* Main.storyboard */,
+				22601F1B1886E2DE008B0179 /* Images.xcassets */,
+				22601F0A1886E2DE008B0179 /* Supporting Files */,
 			);
-			path = hackcessangels;
+			path = HackcessAngels;
 			sourceTree = "<group>";
 		};
-		22B43D631885EF6A0058AA5B /* Supporting Files */ = {
+		22601F0A1886E2DE008B0179 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				22B43D641885EF6A0058AA5B /* hackcessangels-Info.plist */,
-				22B43D651885EF6A0058AA5B /* InfoPlist.strings */,
-				22B43D681885EF6A0058AA5B /* main.m */,
-				22B43D6A1885EF6A0058AA5B /* hackcessangels-Prefix.pch */,
+				22601F0B1886E2DE008B0179 /* HackcessAngels-Info.plist */,
+				22601F0C1886E2DE008B0179 /* InfoPlist.strings */,
+				22601F0F1886E2DE008B0179 /* main.m */,
+				22601F111886E2DE008B0179 /* HackcessAngels-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		22B43D811885EF6A0058AA5B /* hackcessangelsTests */ = {
+		22601F281886E2DE008B0179 /* HackcessAngelsTests */ = {
 			isa = PBXGroup;
 			children = (
-				22B43D871885EF6A0058AA5B /* hackcessangelsTests.m */,
-				22B43D821885EF6A0058AA5B /* Supporting Files */,
+				22601F2E1886E2DE008B0179 /* HackcessAngelsTests.m */,
+				22601F291886E2DE008B0179 /* Supporting Files */,
 			);
-			path = hackcessangelsTests;
+			path = HackcessAngelsTests;
 			sourceTree = "<group>";
 		};
-		22B43D821885EF6A0058AA5B /* Supporting Files */ = {
+		22601F291886E2DE008B0179 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				22B43D831885EF6A0058AA5B /* hackcessangelsTests-Info.plist */,
-				22B43D841885EF6A0058AA5B /* InfoPlist.strings */,
+				22601F2A1886E2DE008B0179 /* HackcessAngelsTests-Info.plist */,
+				22601F2B1886E2DE008B0179 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		22601F4118871EBC008B0179 /* contrôleur */ = {
+			isa = PBXGroup;
+			children = (
+				22601F121886E2DE008B0179 /* AppDelegate.h */,
+				22601F131886E2DE008B0179 /* AppDelegate.m */,
+				22601F181886E2DE008B0179 /* ViewController.h */,
+				22601F3B18871EAC008B0179 /* TileOverlay.h */,
+				22601F3C18871EAC008B0179 /* TileOverlay.m */,
+				22601F3D18871EAC008B0179 /* TileOverlayView.h */,
+				22601F3E18871EAC008B0179 /* TileOverlayView.m */,
+				22601F191886E2DE008B0179 /* ViewController.m */,
+				22085DDE18883F6200A4BE75 /* localisation.h */,
+				22085DDF18883F6200A4BE75 /* localisation.m */,
+			);
+			name = "contrôleur";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		22B43D581885EF6A0058AA5B /* hackcessangels */ = {
+		22601EFF1886E2DE008B0179 /* HackcessAngels */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 22B43D8B1885EF6A0058AA5B /* Build configuration list for PBXNativeTarget "hackcessangels" */;
+			buildConfigurationList = 22601F321886E2DE008B0179 /* Build configuration list for PBXNativeTarget "HackcessAngels" */;
 			buildPhases = (
-				22B43D551885EF6A0058AA5B /* Sources */,
-				22B43D561885EF6A0058AA5B /* Frameworks */,
-				22B43D571885EF6A0058AA5B /* Resources */,
+				22601EFC1886E2DE008B0179 /* Sources */,
+				22601EFD1886E2DE008B0179 /* Frameworks */,
+				22601EFE1886E2DE008B0179 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = hackcessangels;
-			productName = hackcessangels;
-			productReference = 22B43D591885EF6A0058AA5B /* hackcessangels.app */;
+			name = HackcessAngels;
+			productName = HackcessAngels;
+			productReference = 22601F001886E2DE008B0179 /* HackcessAngels.app */;
 			productType = "com.apple.product-type.application";
 		};
-		22B43D791885EF6A0058AA5B /* hackcessangelsTests */ = {
+		22601F201886E2DE008B0179 /* HackcessAngelsTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 22B43D8E1885EF6A0058AA5B /* Build configuration list for PBXNativeTarget "hackcessangelsTests" */;
+			buildConfigurationList = 22601F351886E2DE008B0179 /* Build configuration list for PBXNativeTarget "HackcessAngelsTests" */;
 			buildPhases = (
-				22B43D761885EF6A0058AA5B /* Sources */,
-				22B43D771885EF6A0058AA5B /* Frameworks */,
-				22B43D781885EF6A0058AA5B /* Resources */,
+				22601F1D1886E2DE008B0179 /* Sources */,
+				22601F1E1886E2DE008B0179 /* Frameworks */,
+				22601F1F1886E2DE008B0179 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				22B43D801885EF6A0058AA5B /* PBXTargetDependency */,
+				22601F271886E2DE008B0179 /* PBXTargetDependency */,
 			);
-			name = hackcessangelsTests;
-			productName = hackcessangelsTests;
-			productReference = 22B43D7A1885EF6A0058AA5B /* hackcessangelsTests.xctest */;
+			name = HackcessAngelsTests;
+			productName = HackcessAngelsTests;
+			productReference = 22601F211886E2DE008B0179 /* HackcessAngelsTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		22B43D511885EF6A0058AA5B /* Project object */ = {
+		22601EF81886E2DE008B0179 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "RIEUX Alexandre";
 				TargetAttributes = {
-					22B43D791885EF6A0058AA5B = {
-						TestTargetID = 22B43D581885EF6A0058AA5B;
+					22601F201886E2DE008B0179 = {
+						TestTargetID = 22601EFF1886E2DE008B0179;
 					};
 				};
 			};
-			buildConfigurationList = 22B43D541885EF6A0058AA5B /* Build configuration list for PBXProject "hackcessangels" */;
+			buildConfigurationList = 22601EFB1886E2DE008B0179 /* Build configuration list for PBXProject "HackcessAngels" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -212,88 +239,91 @@
 				en,
 				Base,
 			);
-			mainGroup = 22B43D501885EF6A0058AA5B;
-			productRefGroup = 22B43D5A1885EF6A0058AA5B /* Products */;
+			mainGroup = 22601EF71886E2DE008B0179;
+			productRefGroup = 22601F011886E2DE008B0179 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				22B43D581885EF6A0058AA5B /* hackcessangels */,
-				22B43D791885EF6A0058AA5B /* hackcessangelsTests */,
+				22601EFF1886E2DE008B0179 /* HackcessAngels */,
+				22601F201886E2DE008B0179 /* HackcessAngelsTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		22B43D571885EF6A0058AA5B /* Resources */ = {
+		22601EFE1886E2DE008B0179 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				22B43D751885EF6A0058AA5B /* Images.xcassets in Resources */,
-				22B43D671885EF6A0058AA5B /* InfoPlist.strings in Resources */,
-				22B43D701885EF6A0058AA5B /* Main.storyboard in Resources */,
+				22601F1C1886E2DE008B0179 /* Images.xcassets in Resources */,
+				22601F0E1886E2DE008B0179 /* InfoPlist.strings in Resources */,
+				22601F171886E2DE008B0179 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		22B43D781885EF6A0058AA5B /* Resources */ = {
+		22601F1F1886E2DE008B0179 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				22B43D861885EF6A0058AA5B /* InfoPlist.strings in Resources */,
+				22601F2D1886E2DE008B0179 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		22B43D551885EF6A0058AA5B /* Sources */ = {
+		22601EFC1886E2DE008B0179 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				22B43D731885EF6A0058AA5B /* ViewController.m in Sources */,
-				22B43D6D1885EF6A0058AA5B /* AppDelegate.m in Sources */,
-				22B43D691885EF6A0058AA5B /* main.m in Sources */,
+				22601F1A1886E2DE008B0179 /* ViewController.m in Sources */,
+				22601F4018871EAC008B0179 /* TileOverlayView.m in Sources */,
+				22601F141886E2DE008B0179 /* AppDelegate.m in Sources */,
+				22085DE018883F6200A4BE75 /* localisation.m in Sources */,
+				22601F101886E2DE008B0179 /* main.m in Sources */,
+				22601F3F18871EAC008B0179 /* TileOverlay.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		22B43D761885EF6A0058AA5B /* Sources */ = {
+		22601F1D1886E2DE008B0179 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				22B43D881885EF6A0058AA5B /* hackcessangelsTests.m in Sources */,
+				22601F2F1886E2DE008B0179 /* HackcessAngelsTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		22B43D801885EF6A0058AA5B /* PBXTargetDependency */ = {
+		22601F271886E2DE008B0179 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 22B43D581885EF6A0058AA5B /* hackcessangels */;
-			targetProxy = 22B43D7F1885EF6A0058AA5B /* PBXContainerItemProxy */;
+			target = 22601EFF1886E2DE008B0179 /* HackcessAngels */;
+			targetProxy = 22601F261886E2DE008B0179 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		22B43D651885EF6A0058AA5B /* InfoPlist.strings */ = {
+		22601F0C1886E2DE008B0179 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				22B43D661885EF6A0058AA5B /* en */,
+				22601F0D1886E2DE008B0179 /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		22B43D6E1885EF6A0058AA5B /* Main.storyboard */ = {
+		22601F151886E2DE008B0179 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				22B43D6F1885EF6A0058AA5B /* Base */,
+				22601F161886E2DE008B0179 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		22B43D841885EF6A0058AA5B /* InfoPlist.strings */ = {
+		22601F2B1886E2DE008B0179 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				22B43D851885EF6A0058AA5B /* en */,
+				22601F2C1886E2DE008B0179 /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -301,7 +331,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		22B43D891885EF6A0058AA5B /* Debug */ = {
+		22601F301886E2DE008B0179 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -340,7 +370,7 @@
 			};
 			name = Debug;
 		};
-		22B43D8A1885EF6A0058AA5B /* Release */ = {
+		22601F311886E2DE008B0179 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -373,68 +403,72 @@
 			};
 			name = Release;
 		};
-		22B43D8C1885EF6A0058AA5B /* Debug */ = {
+		22601F331886E2DE008B0179 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "hackcessangels/hackcessangels-Prefix.pch";
-				INFOPLIST_FILE = "hackcessangels/hackcessangels-Info.plist";
+				GCC_PREFIX_HEADER = "HackcessAngels/HackcessAngels-Prefix.pch";
+				INFOPLIST_FILE = "HackcessAngels/HackcessAngels-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
 		};
-		22B43D8D1885EF6A0058AA5B /* Release */ = {
+		22601F341886E2DE008B0179 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "hackcessangels/hackcessangels-Prefix.pch";
-				INFOPLIST_FILE = "hackcessangels/hackcessangels-Info.plist";
+				GCC_PREFIX_HEADER = "HackcessAngels/HackcessAngels-Prefix.pch";
+				INFOPLIST_FILE = "HackcessAngels/HackcessAngels-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
 		};
-		22B43D8F1885EF6A0058AA5B /* Debug */ = {
+		22601F361886E2DE008B0179 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/hackcessangels.app/hackcessangels";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/HackcessAngels.app/HackcessAngels";
+				CLANG_ENABLE_OBJC_ARC = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "hackcessangels/hackcessangels-Prefix.pch";
+				GCC_PREFIX_HEADER = "HackcessAngels/HackcessAngels-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "hackcessangelsTests/hackcessangelsTests-Info.plist";
+				INFOPLIST_FILE = "HackcessAngelsTests/HackcessAngelsTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
 			name = Debug;
 		};
-		22B43D901885EF6A0058AA5B /* Release */ = {
+		22601F371886E2DE008B0179 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/hackcessangels.app/hackcessangels";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/HackcessAngels.app/HackcessAngels";
+				CLANG_ENABLE_OBJC_ARC = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "hackcessangels/hackcessangels-Prefix.pch";
-				INFOPLIST_FILE = "hackcessangelsTests/hackcessangelsTests-Info.plist";
+				GCC_PREFIX_HEADER = "HackcessAngels/HackcessAngels-Prefix.pch";
+				INFOPLIST_FILE = "HackcessAngelsTests/HackcessAngelsTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
@@ -444,32 +478,34 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		22B43D541885EF6A0058AA5B /* Build configuration list for PBXProject "hackcessangels" */ = {
+		22601EFB1886E2DE008B0179 /* Build configuration list for PBXProject "HackcessAngels" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				22B43D891885EF6A0058AA5B /* Debug */,
-				22B43D8A1885EF6A0058AA5B /* Release */,
+				22601F301886E2DE008B0179 /* Debug */,
+				22601F311886E2DE008B0179 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		22B43D8B1885EF6A0058AA5B /* Build configuration list for PBXNativeTarget "hackcessangels" */ = {
+		22601F321886E2DE008B0179 /* Build configuration list for PBXNativeTarget "HackcessAngels" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				22B43D8C1885EF6A0058AA5B /* Debug */,
-				22B43D8D1885EF6A0058AA5B /* Release */,
+				22601F331886E2DE008B0179 /* Debug */,
+				22601F341886E2DE008B0179 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
-		22B43D8E1885EF6A0058AA5B /* Build configuration list for PBXNativeTarget "hackcessangelsTests" */ = {
+		22601F351886E2DE008B0179 /* Build configuration list for PBXNativeTarget "HackcessAngelsTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				22B43D8F1885EF6A0058AA5B /* Debug */,
-				22B43D901885EF6A0058AA5B /* Release */,
+				22601F361886E2DE008B0179 /* Debug */,
+				22601F371886E2DE008B0179 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 22B43D511885EF6A0058AA5B /* Project object */;
+	rootObject = 22601EF81886E2DE008B0179 /* Project object */;
 }

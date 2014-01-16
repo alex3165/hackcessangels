@@ -4,7 +4,7 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>hackcessangels.xcscheme</key>
+		<key>HackcessAngels.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
@@ -12,12 +12,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>22B43D581885EF6A0058AA5B</key>
+		<key>22601EFF1886E2DE008B0179</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>22B43D791885EF6A0058AA5B</key>
+		<key>22601F201886E2DE008B0179</key>
 		<dict>
 			<key>primary</key>
 			<true/>

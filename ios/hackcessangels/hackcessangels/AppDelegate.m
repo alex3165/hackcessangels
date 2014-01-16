@@ -1,8 +1,8 @@
 //
 //  AppDelegate.m
-//  hackcessangels
+//  HackcessAngels
 //
-//  Created by RIEUX Alexandre on 14/01/2014.
+//  Created by RIEUX Alexandre on 15/01/2014.
 //  Copyright (c) 2014 RIEUX Alexandre. All rights reserved.
 //
 

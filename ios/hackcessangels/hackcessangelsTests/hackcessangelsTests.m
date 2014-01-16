@@ -1,18 +1,18 @@
 //
-//  hackcessangelsTests.m
-//  hackcessangelsTests
+//  HackcessAngelsTests.m
+//  HackcessAngelsTests
 //
-//  Created by RIEUX Alexandre on 14/01/2014.
+//  Created by RIEUX Alexandre on 15/01/2014.
 //  Copyright (c) 2014 RIEUX Alexandre. All rights reserved.
 //
 
 #import <XCTest/XCTest.h>
 
-@interface hackcessangelsTests : XCTestCase
+@interface HackcessAngelsTests : XCTestCase
 
 @end
 
-@implementation hackcessangelsTests
+@implementation HackcessAngelsTests
 
 - (void)setUp
 {
