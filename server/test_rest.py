@@ -35,6 +35,15 @@ def user():
         return json.dumps(user)
     return "", 405
 
+@app.route('/user/all')
+def dumpall():
+    return json.dumps(USERS)
+
+@app.route('/user/reset')
+def reset():
+    USERS = {}
+    return json.dumps(USERS)
+
 if __name__ == '__main__':
     parser = OptionParser()
     parser.add_option("-l", "--listen", dest="listen", default="localhost",
