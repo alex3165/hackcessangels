@@ -17,11 +17,12 @@ def user():
         USERS[user["id"]] = user
         return json.dumps(user)
     elif request.method == "GET":
-        if not "id" in request.form:
+        print request.form
+        if not "id" in request.args:
             return "", 400
-        if not int(request.form["id"]) in USERS:
+        if not int(request.args["id"]) in USERS:
             return "", 404
-        return json.dumps(USERS[int(request.form["id"])])
+        return json.dumps(USERS[int(request.args["id"])])
     elif request.method == "PUT":
         if not "id" in request.form:
             return "", 400
