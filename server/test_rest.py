@@ -7,7 +7,7 @@ app = Flask(__name__)
 from optparse import OptionParser
 
 USERS = {}
-@app.route('/user')
+@app.route('/user',methods=['GET', 'POST', 'PUT'])
 def user():
     if request.method == "POST":
         # Creates a new user
