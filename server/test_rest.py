@@ -4,6 +4,8 @@ import json
 
 app = Flask(__name__)
 
+from optparse import OptionParser
+
 USERS = {}
 @app.route('/user')
 def user():
@@ -33,4 +35,13 @@ def user():
     return "", 405
 
 if __name__ == '__main__':
-    app.run()
+    parser = OptionParser()
+    parser.add_option("-l", "--listen", dest="listen", default="localhost",
+                      help="address to listen to")
+    parser.add_option("-d", "--debug", action="store_true",
+                      dest="debug", default=False,
+                      help="Enable debug mode")
+
+    (options, args) = parser.parse_args()
+
+    app.run(host=options.listen,debug=options.debug)
