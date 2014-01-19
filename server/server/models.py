@@ -33,7 +33,7 @@ class AuthUser(object):
 
 
 @connection.register
-class Agent(AuthUser, Document):
+class Agent(Document, AuthUser):
     structure = {
         'name': str,
         'email': str,
@@ -45,7 +45,7 @@ class Agent(AuthUser, Document):
 
 
 @connection.register
-class User(AuthUser, Document):
+class User(Document, AuthUser):
     structure = {
         'name': str,
         'email': str,
@@ -55,6 +55,13 @@ class User(AuthUser, Document):
     }
     required_fields = ['email', 'password']
 
+    def to_json(self):
+        return {
+            "email": self["email"],
+            "name": self["name"],
+            "description": self["description"],
+            # TODO(etienne): return serving URL for binary blob
+        }
 
 class Point(object):
     """A 2-dimensional point on a sphere."""
