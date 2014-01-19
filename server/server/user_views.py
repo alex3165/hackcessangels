@@ -1,23 +1,25 @@
 from server import app
-from models import User
-from database import db
+from server.database import db
+import server.error_messages
+from server.models import User
+
 from flask import request
-import error_messages
+import json
 
 collection = db.user
 
 # POST: Creates a new user. Needed parameters: email, password
 # GET: Get an existing user. Needed parameters: email
 # PUT: Updates an existing user. Needed parameters: email, data
-@app.route("/api/user",methods=['GET', 'POST', 'PUT']))
-def user():
+@app.route("/api/user",methods=['GET', 'POST', 'PUT'])
+def user_api():
     if request.method == "POST":
         if "email" not in request.form and "password" not in request.form:
             # Malformed request
             return "", 400
         already_existing = collection.find_one({"email": request.form["email"]})
         if already_existing != None:
-            return error_messages.USER_ALREADY_EXISTING, 403
+            return server.error_messages.USER_ALREADY_EXISTING, 403
         # Creates a new user
         user = collection.User()
         user["email"] = request.form["email"]
@@ -33,7 +35,7 @@ def user():
             return "", 400
         user = collection.find_one({"email": request.form["email"]})
         if user == None:
-            return error_messages.UNKNOWN_USER, 404
+            return server.error_messages.UNKNOWN_USER, 404
         return json.dumps(user.to_json())
 
     elif request.method == "PUT":
@@ -44,8 +46,8 @@ def user():
         updated_user = json.loads(request.form["data"])
         user = collection.find_one({"email": request.form["email"]})
         if user == None:
-            return error_messages.UNKNOWN_USER, 404
-        for k, v in updated_user:
+            return server.error_messages.UNKNOWN_USER, 404
+        for k, v in updated_user.items():
             if k == "password":
                 user.set_password(v)
             else:
