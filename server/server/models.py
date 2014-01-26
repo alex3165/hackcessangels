@@ -10,7 +10,7 @@ class AuthUser(object):
         """ Hash password on the fly """
         password_salt = hashlib.sha1(os.urandom(60)).hexdigest()
         crypt = hashlib.sha1(password + password_salt).hexdigest()
-        self['password'] = str(password_salt + crypt)
+        self['password'] = unicode(password_salt + crypt)
 
     def get_password(self):
         """ Return the password hashed """
@@ -47,10 +47,10 @@ class Agent(Document, AuthUser):
 @connection.register
 class User(Document, AuthUser):
     structure = {
-        'name': str,
-        'email': str,
-        'password': str,
-        'description': str,
+        'name': unicode,
+        'email': unicode,
+        'password': unicode,
+        'description': unicode,
         'profile': bson.binary.Binary,
     }
     required_fields = ['email', 'password']

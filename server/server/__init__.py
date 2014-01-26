@@ -9,6 +9,7 @@ MONGODB_PORT = 27017
 
 from flask import Flask
 app = Flask(__name__)
+app.debug = True
 app.config.from_object(__name__)
 
 import server.agent_views

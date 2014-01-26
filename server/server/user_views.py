@@ -1,8 +1,10 @@
+# coding=utf-8
+
 from server import app
 from server.database import db
 import server.error_messages
 from server.models import User
-
+from flask import render_template
 from flask import request
 import json
 
@@ -16,21 +18,29 @@ def user_api():
     if request.method == "POST":
         if "email" not in request.form and "password" not in request.form:
             # Malformed request
+            app.logger.debug("Not the necessary data available: " + str(request.form))
             return "", 400
         already_existing = collection.find_one({"email": request.form["email"]})
         if already_existing != None:
             return server.error_messages.USER_ALREADY_EXISTING, 403
         # Creates a new user
         user = collection.User()
+        app.logger.debug("setting email")
         user["email"] = request.form["email"]
+        app.logger.debug("setting password")
         user.set_password(request.form["password"])
-        user["name"] = request.form["name"]
-        user["description"] = request.form["description"]
+        app.logger.debug("setting name")
+        if "name" in request.form:
+            user["name"] = request.form["name"]
+        app.logger.debug("setting description")
+        if "description" in request.form:
+            user["description"] = request.form["description"]
+        app.logger.debug("Saving user")
         user.save()
-        return user.to_json()
+        app.logger.debug("User saved")
+        return json.dumps(user.to_json())
 
     elif request.method == "GET":
-        print request.form
         if not "email" in request.args:
             return "", 400
         user = collection.find_one({"email": request.form["email"]})
@@ -54,4 +64,15 @@ def user_api():
                 user[k] = v
         user.save()
         return user.to_json()
+
+    elif request.method == "DELETE":
+        if not "email" in request.form:
+            return "", 400
+        if not "password" in request.form:
+            return "", 400
+
     return "", 405
+
+@app.route("/user",methods=['GET'])
+def user():
+    return render_template('users.html')
