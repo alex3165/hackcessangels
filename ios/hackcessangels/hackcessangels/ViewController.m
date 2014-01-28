@@ -21,8 +21,15 @@
 
 @synthesize map;
 @synthesize overlay;
-localisation *userLoc;
-NSString * userPosition;
+//localisation *userLoc;
+//NSString * userPosition;
+CLLocationCoordinate2D coordinate;
+
+// Localisation de test
+NSString * latitude = @"48.8566140";
+NSString * longitude = @"2.3522219";
+NSString * crimeDescription =@"Marc Fogel";
+NSString * address = @"10 adresse des jonquilles";
 
 - (void)viewDidLoad
 {
@@ -35,16 +42,36 @@ NSString * userPosition;
     visibleRect.origin.x += visibleRect.size.width / 2;
     visibleRect.origin.y += visibleRect.size.height / 2;
     map.visibleMapRect = visibleRect;
+    [map setUserTrackingMode:true];
     
-    // récupération de la position utilisateur
-    userLoc = [[localisation alloc] init];
-    //NSLog(@"%@",maPosition);
-    [userLoc viewDidLoad];
-    userPosition = [userLoc maPosition];
-    if (userPosition != Nil) {
-       NSLog(@"%@",userPosition);
-    }
+    // Ajoute d'un marqueur de test
     
+    coordinate.latitude = latitude.doubleValue;;
+    coordinate.longitude = longitude.doubleValue;
+    localisation *annotation = [[localisation alloc] initWithName:crimeDescription address:address coordinate:coordinate];
+    //MKPinAnnotationView *MyPin=[[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"current"];
+    //MyPin.image = [UIImage imageNamed:@"pin.png"];
+    [map addAnnotation:annotation];
+//    NSURL *url = [NSURL URLWithString:@"http://www.32133.com/test?name=xx"];
+//    NSData *data = [NSData dataWithContentsOfURL:url];
+//    NSString *ret = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+//    NSLog(@"ret=%@", ret);
+    NSString *serverAddress = @"http://polaris.membrives.fr:5000/user?id=63550";
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:serverAddress]
+                                                           cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData
+                                                       timeoutInterval:10];
+    
+    [request setHTTPMethod: @"GET"];
+    
+    NSError *requestError;
+    NSURLResponse *urlResponse = nil;
+    //NSError *test;
+    
+    NSData *response1 = [NSURLConnection sendSynchronousRequest:request returningResponse:&urlResponse error:&requestError];
+    NSString *ret = [[NSString alloc] initWithData:response1 encoding:NSUTF8StringEncoding];
+    //NSString *ret2 = [[NSString alloc] initWithContentsOfURL:urlResponse encoding:NSUTF8StringEncoding error:test ];
+    //NSLog(@"ret=%@", ret);
+    //NSLog(@"%p", &ret);
 }
 
 - (MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id <MKOverlay>)ovl

@@ -8,7 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		22085DDD18883EAE00A4BE75 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22085DDC18883EAE00A4BE75 /* CoreLocation.framework */; };
-		22085DE018883F6200A4BE75 /* localisation.m in Sources */ = {isa = PBXBuildFile; fileRef = 22085DDF18883F6200A4BE75 /* localisation.m */; };
+		22130BFF188964C200191955 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22130BFE188964C200191955 /* MapKit.framework */; };
+		22130C02188966E500191955 /* localisation.m in Sources */ = {isa = PBXBuildFile; fileRef = 22130C01188966E500191955 /* localisation.m */; };
 		22601F041886E2DE008B0179 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22601F031886E2DE008B0179 /* Foundation.framework */; };
 		22601F061886E2DE008B0179 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22601F051886E2DE008B0179 /* CoreGraphics.framework */; };
 		22601F081886E2DE008B0179 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22601F071886E2DE008B0179 /* UIKit.framework */; };
@@ -39,8 +40,9 @@
 
 /* Begin PBXFileReference section */
 		22085DDC18883EAE00A4BE75 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		22085DDE18883F6200A4BE75 /* localisation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = localisation.h; sourceTree = "<group>"; };
-		22085DDF18883F6200A4BE75 /* localisation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = localisation.m; sourceTree = "<group>"; };
+		22130BFE188964C200191955 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		22130C00188966E500191955 /* localisation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = localisation.h; sourceTree = "<group>"; };
+		22130C01188966E500191955 /* localisation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = localisation.m; sourceTree = "<group>"; };
 		22601F001886E2DE008B0179 /* HackcessAngels.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HackcessAngels.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22601F031886E2DE008B0179 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		22601F051886E2DE008B0179 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -71,6 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22130BFF188964C200191955 /* MapKit.framework in Frameworks */,
 				22085DDD18883EAE00A4BE75 /* CoreLocation.framework in Frameworks */,
 				22601F061886E2DE008B0179 /* CoreGraphics.framework in Frameworks */,
 				22601F081886E2DE008B0179 /* UIKit.framework in Frameworks */,
@@ -91,6 +94,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		22130C03188966F400191955 /* modele */ = {
+			isa = PBXGroup;
+			children = (
+				22601F3B18871EAC008B0179 /* TileOverlay.h */,
+				22601F3C18871EAC008B0179 /* TileOverlay.m */,
+				22601F3D18871EAC008B0179 /* TileOverlayView.h */,
+				22601F3E18871EAC008B0179 /* TileOverlayView.m */,
+				22130C00188966E500191955 /* localisation.h */,
+				22130C01188966E500191955 /* localisation.m */,
+			);
+			name = modele;
+			sourceTree = "<group>";
+		};
 		22601EF71886E2DE008B0179 = {
 			isa = PBXGroup;
 			children = (
@@ -113,6 +129,7 @@
 		22601F021886E2DE008B0179 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				22130BFE188964C200191955 /* MapKit.framework */,
 				22085DDC18883EAE00A4BE75 /* CoreLocation.framework */,
 				22601F031886E2DE008B0179 /* Foundation.framework */,
 				22601F051886E2DE008B0179 /* CoreGraphics.framework */,
@@ -125,6 +142,7 @@
 		22601F091886E2DE008B0179 /* HackcessAngels */ = {
 			isa = PBXGroup;
 			children = (
+				22130C03188966F400191955 /* modele */,
 				22601F4118871EBC008B0179 /* contrôleur */,
 				22601F151886E2DE008B0179 /* Main.storyboard */,
 				22601F1B1886E2DE008B0179 /* Images.xcassets */,
@@ -168,13 +186,7 @@
 				22601F121886E2DE008B0179 /* AppDelegate.h */,
 				22601F131886E2DE008B0179 /* AppDelegate.m */,
 				22601F181886E2DE008B0179 /* ViewController.h */,
-				22601F3B18871EAC008B0179 /* TileOverlay.h */,
-				22601F3C18871EAC008B0179 /* TileOverlay.m */,
-				22601F3D18871EAC008B0179 /* TileOverlayView.h */,
-				22601F3E18871EAC008B0179 /* TileOverlayView.m */,
 				22601F191886E2DE008B0179 /* ViewController.m */,
-				22085DDE18883F6200A4BE75 /* localisation.h */,
-				22085DDF18883F6200A4BE75 /* localisation.m */,
 			);
 			name = "contrôleur";
 			sourceTree = "<group>";
@@ -279,7 +291,7 @@
 				22601F1A1886E2DE008B0179 /* ViewController.m in Sources */,
 				22601F4018871EAC008B0179 /* TileOverlayView.m in Sources */,
 				22601F141886E2DE008B0179 /* AppDelegate.m in Sources */,
-				22085DE018883F6200A4BE75 /* localisation.m in Sources */,
+				22130C02188966E500191955 /* localisation.m in Sources */,
 				22601F101886E2DE008B0179 /* main.m in Sources */,
 				22601F3F18871EAC008B0179 /* TileOverlay.m in Sources */,
 			);
