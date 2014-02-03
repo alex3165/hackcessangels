@@ -6,32 +6,28 @@
 //  Copyright (c) 2014 RIEUX Alexandre. All rights reserved.
 //
 
-#import "localisation.h"
+#import "HALocalisation.h"
 
 @implementation localisation
-@synthesize name = _name;
-@synthesize address = _address;
-@synthesize coordinate = _coordinate;
 
-//- (id)initWithName:(CLLocationCoordinate2D)coordinate {
 - (id)initWithName:(NSString*)name address:(NSString*)address coordinate:(CLLocationCoordinate2D)coordinate {
     if ((self = [super init])) {
-        _name = [name copy];
-        _address = [address copy];
-        _coordinate = coordinate;
+        self.name = [name copy];
+        self.address = [address copy];
+        self.coordinate = coordinate;
     }
     return self;
 }
 
 - (NSString *)title {
-    if ([_name isKindOfClass:[NSNull class]])
+    if ([self.name isKindOfClass:[NSNull class]])
         return @"Unknown charge";
     else
-        return _name;
+        return self.name;
 }
 
 - (NSString *)subtitle {
-    return _address;
+    return self.address;
 }
 
 @end

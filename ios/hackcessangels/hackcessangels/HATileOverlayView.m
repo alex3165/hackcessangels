@@ -1,6 +1,6 @@
-//     File: TileOverlay.h
+//     File: TileOverlayView.m
 // Abstract: 
-//     MKOverlay model class representing a tiled raster map overlay described by a directory hierarchy of tile images.
+//     MKOverlayView subclass to display a raster tiled map overlay.
 //   
 //  Version: 1.0
 // 
@@ -45,27 +45,62 @@
 // Copyright (C) 2010 Apple Inc. All Rights Reserved.
 // 
 
+#import "HATileOverlayView.h"
+#import "HATileOverlay.h"
 
-#import <MapKit/MapKit.h>
+@implementation HATileOverlayView
 
-@interface ImageTile : NSObject {
-    NSString *imagePath;
-    MKMapRect frame;
+- (id)initWithOverlay:(id <MKOverlay>)overlay
+{
+    if (self = [super initWithOverlay:overlay]) {
+        self.tileAlpha = 1.0; // 0.75 // base map alpha
+    }
+    return self;
 }
 
-@property (nonatomic, readonly) MKMapRect frame;
-@property (nonatomic, readonly) NSString *imagePath;
+- (BOOL)canDrawMapRect:(MKMapRect)mapRect
+             zoomScale:(MKZoomScale)zoomScale
+{
+    // Return YES only if there are some tiles in this mapRect and at this zoomScale.
 
-@end
+    HATileOverlay *tileOverlay = (HATileOverlay *)self.overlay;
+    NSArray *tilesInRect = [tileOverlay tilesInMapRect:mapRect zoomScale:zoomScale];
 
-@interface TileOverlay : NSObject <MKOverlay> {
-    MKMapRect boundingMapRect;
-    NSSet *tilePaths;
+    return [tilesInRect count] > 0;    
 }
 
-- (id)initOverlay;
+- (void)drawMapRect:(MKMapRect)mapRect
+          zoomScale:(MKZoomScale)zoomScale
+          inContext:(CGContextRef)context
+{
+    HATileOverlay *tileOverlay = (HATileOverlay *)self.overlay;
+    
+    // Get the list of tile images from the model object for this mapRect.  The
+    // list may be 1 or more images (but not 0 because canDrawMapRect would have
+    // returned NO in that case).
+    NSArray *tilesInRect = [tileOverlay tilesInMapRect:mapRect zoomScale:zoomScale];
+    
+    CGContextSetAlpha(context, self.tileAlpha);
+        
+    for (ImageTile *tile in tilesInRect) {
+        // For each image tile, draw it in its corresponding MKMapRect frame
+        CGRect rect = [self rectForMapRect:tile.frame];
+        
+      //  UIImage *image = [[UIImage alloc] initWithContentsOfFile:tile.imagePath];
+        NSString *path = [[NSString alloc] initWithFormat:@"http://tile.openstreetmap.org/%@.png", tile.imagePath];
+        // NSLog(@"Loading tile from URL %@", path);
+        UIImage *image =[UIImage imageWithData: [NSData   
+                                                 dataWithContentsOfURL:[NSURL URLWithString: path]]];
+        CGContextSaveGState(context);
+        CGContextTranslateCTM(context, CGRectGetMinX(rect), CGRectGetMinY(rect));
+        CGContextScaleCTM(context, 1/zoomScale, 1/zoomScale);
+        CGContextTranslateCTM(context, 0, image.size.height);
+        CGContextScaleCTM(context, 1, -1);
+        CGContextDrawImage(context, CGRectMake(0, 0, image.size.width, image.size.height), [image CGImage]);
+        CGContextRestoreGState(context);
+        //[path release];
 
-// Return an array of ImageTile objects for the given MKMapRect and MKZoomScale
-- (NSArray *)tilesInMapRect:(MKMapRect)rect zoomScale:(MKZoomScale)scale;
+    }
+}
 
 @end

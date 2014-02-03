@@ -49,9 +49,7 @@
 #import <MapKit/MapKit.h>
 
 
-@interface TileOverlayView : MKOverlayView {
-    CGFloat tileAlpha;
-}
+@interface HATileOverlayView : MKOverlayView 
 
 @property (nonatomic, assign) CGFloat tileAlpha;
 @end
