@@ -6,18 +6,18 @@
 //  Copyright (c) 2014 RIEUX Alexandre. All rights reserved.
 //
 
-#import "ViewController.h"
-#import "TileOverlay.h"
-#import "TileOverlayView.h"
-#import "localisation.h"
+#import "HAHomeViewController.h"
+#import "HATileOverlay.h"
+#import "HATileOverlayView.h"
+#import "HALocalisation.h"
 
 
-@interface ViewController ()
+@interface HAHomeViewController ()
 
 @end
 
 
-@implementation ViewController
+@implementation HAHomeViewController
 
 @synthesize map;
 @synthesize overlay;
@@ -28,13 +28,21 @@ CLLocationCoordinate2D coordinate;
 // Localisation de test
 NSString * latitude = @"48.8566140";
 NSString * longitude = @"2.3522219";
-NSString * crimeDescription =@"Marc Fogel";
+NSString * crimeDescription = @"Marc Fogel";
 NSString * address = @"10 adresse des jonquilles";
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    overlay = [[TileOverlay alloc] initOverlay];
+    
+   // NSArray *array = [[NSArray alloc] initWithObjects:@"1",@"2", nil];
+   // NSArray *array = @[@"1",@"2"];
+   // NSDictionary *dico = @{@"key",@"value"};
+   // int test = 24;
+   // NSNumber *number = @(test);
+   // int integer = [number intValue];
+    
+    overlay = [[HATileOverlay alloc] initOverlay];
     [map addOverlay:overlay];
     MKMapRect visibleRect = [map mapRectThatFits:overlay.boundingMapRect];
     visibleRect.size.width /= 2;
@@ -76,7 +84,7 @@ NSString * address = @"10 adresse des jonquilles";
 
 - (MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id <MKOverlay>)ovl
 {
-    TileOverlayView *view = [[TileOverlayView alloc] initWithOverlay:ovl];
+    HATileOverlayView *view = [[HATileOverlayView alloc] initWithOverlay:ovl];
     view.tileAlpha = 1.0;
     return view ;
 }
