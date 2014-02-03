@@ -45,9 +45,9 @@ NSString * address = @"10 adresse des jonquilles";
         if ([responseObject objectForKey:@"description"]== [NSNull null]) {
             NSLog(@"hehe c'est nil");
         }
-        NSLog(@"%@", responseObject);
+       // NSLog(@"%@", responseObject);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"%@", error);
+       // NSLog(@"%@", error);
     }];
 
     
