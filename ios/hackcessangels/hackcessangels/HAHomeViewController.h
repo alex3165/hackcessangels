@@ -16,4 +16,5 @@
 @property (nonatomic, strong) HATileOverlay *overlay;
 @property (nonatomic, weak) IBOutlet MKMapView *map;
 
+
 @end
