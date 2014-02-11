@@ -35,6 +35,12 @@ NSString * address = @"10 adresse des jonquilles";
 {
     [super viewDidLoad];
     
+    /* Initialisation de l'objet request ! */
+    
+    _requests = [[DCRestRequests alloc] init];
+    
+    /**********************************/
+    
     self.manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL: [NSURL URLWithString:@"http://terra.membrives.fr/app/api/"]];
     
     self.manager.responseSerializer = [AFJSONResponseSerializer serializer];
