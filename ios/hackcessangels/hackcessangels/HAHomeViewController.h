@@ -8,11 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "HATileOverlay.h"
-
+#import "DCRestRequests.h"
 #import "AFNetworking.h"
 
 @interface HAHomeViewController : UIViewController <MKMapViewDelegate> 
 
+
+/* Objet de la classe DCRestRequest (à voir) */
+@property (nonatomic, strong) DCRestRequests *requests;
 @property (nonatomic, strong) HATileOverlay *overlay;
 @property (nonatomic, weak) IBOutlet MKMapView *map;
 
