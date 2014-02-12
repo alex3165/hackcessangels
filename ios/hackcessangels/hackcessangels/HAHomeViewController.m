@@ -13,7 +13,7 @@
 //commentaire pour tester le git
 
 @interface HAHomeViewController ()
-@property (nonatomic, strong) AFHTTPRequestOperationManager *manager;
+//@property (nonatomic, strong) AFHTTPRequestOperationManager *manager;
 @end
 
 
@@ -41,20 +41,26 @@ NSString * address = @"10 adresse des jonquilles";
     
     /**********************************/
     
-    self.manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL: [NSURL URLWithString:@"http://terra.membrives.fr/app/api/"]];
     
-    self.manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    //NSDictionary * user = [_requests GETrequest:@"user" : @""];
     
-    self.manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/html",nil];
-    //self.manager.baseURL = [NSURL URLWithString:@"http://terra.membrives.fr/app/api"];
-    [self.manager GET:@"user" parameters:@{@"email":@"etienne@membrives.fr"} success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        if ([responseObject objectForKey:@"description"]== [NSNull null]) {
-            NSLog(@"hehe c'est nil");
-        }
-       // NSLog(@"%@", responseObject);
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-       // NSLog(@"%@", error);
-    }];
+    
+    
+    
+//    self.manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL: [NSURL URLWithString:@"http://terra.membrives.fr/app/api/"]];
+//    
+//    self.manager.responseSerializer = [AFJSONResponseSerializer serializer];
+//    
+//    self.manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/html",nil];
+//    //self.manager.baseURL = [NSURL URLWithString:@"http://terra.membrives.fr/app/api"];
+//    [self.manager GET:@"user" parameters:@{@"email":@"etienne@membrives.fr"} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+//        if ([responseObject objectForKey:@"description"]== [NSNull null]) {
+//            NSLog(@"hehe c'est nil");
+//        }
+//       // NSLog(@"%@", responseObject);
+//    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+//       // NSLog(@"%@", error);
+//    }];
 
     
    // NSArray *array = [[NSArray alloc] initWithObjects:@"1",@"2", nil];
@@ -79,29 +85,8 @@ NSString * address = @"10 adresse des jonquilles";
     coordinate.latitude = latitude.doubleValue;;
     coordinate.longitude = longitude.doubleValue;
     localisation *annotation = [[localisation alloc] initWithName:crimeDescription address:address coordinate:coordinate];
-    //MKPinAnnotationView *MyPin=[[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"current"];
-    //MyPin.image = [UIImage imageNamed:@"pin.png"];
     [self.map addAnnotation:annotation];
-//    NSURL *url = [NSURL URLWithString:@"http://www.32133.com/test?name=xx"];
-//    NSData *data = [NSData dataWithContentsOfURL:url];
-//    NSString *ret = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-//    NSLog(@"ret=%@", ret);
-    NSString *serverAddress = @"http://polaris.membrives.fr:5000/user?id=63550";
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:serverAddress]
-                                                           cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData
-                                                       timeoutInterval:10];
-    
-    [request setHTTPMethod: @"GET"];
-    
-    NSError *requestError;
-    NSURLResponse *urlResponse = nil;
-    //NSError *test;
-    
-    NSData *response1 = [NSURLConnection sendSynchronousRequest:request returningResponse:&urlResponse error:&requestError];
-    NSString *ret = [[NSString alloc] initWithData:response1 encoding:NSUTF8StringEncoding];
-    //NSString *ret2 = [[NSString alloc] initWithContentsOfURL:urlResponse encoding:NSUTF8StringEncoding error:test ];
-    //NSLog(@"ret=%@", ret);
-    //NSLog(@"%p", &ret);
+
 }
 
 - (MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id <MKOverlay>)ovl

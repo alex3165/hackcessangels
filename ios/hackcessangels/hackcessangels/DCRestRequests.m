@@ -20,6 +20,7 @@
         NSURL *urlrequests = [NSURL URLWithString:@"http://terra.membrives.fr/app/api/"];
         self.manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:urlrequests];
         self.manager.responseSerializer = [AFJSONResponseSerializer serializer];
+        //NSDictionary *response;
         
     }
     
@@ -29,16 +30,18 @@
 
 -(NSDictionary *)GETrequest: (NSString *)getstring : (NSDictionary *)parameters {
     
-    NSString *response;
+    NSDictionary *response;
     self.manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/html",nil];
     [self.manager GET:getstring parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
-        // Voir comment retourner un objet par rapport à la requête GET.
-        return response = responseObject;
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSDictionary *data = [NSJSONSerialization JSONObjectWithData:responseObject options:kNilOptions error:nil];
+        __block response = data;
         
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        __block response = [error localizedDescription];
     }];
 
+    return response;
 }
 
 
