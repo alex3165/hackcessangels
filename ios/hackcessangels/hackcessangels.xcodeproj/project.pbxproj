@@ -29,6 +29,9 @@
 		229CF60218AA14D900B35488 /* DCRestRequests.m in Sources */ = {isa = PBXBuildFile; fileRef = 229CF60118AA14D900B35488 /* DCRestRequests.m */; };
 		8FCE639F18AD5E3E00D4C957 /* HAUserService.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FCE639E18AD5E3E00D4C957 /* HAUserService.m */; };
 		8FCE63A018AD5E3E00D4C957 /* HAUserService.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FCE639E18AD5E3E00D4C957 /* HAUserService.m */; };
+		A1330B0718AD62B5002B1828 /* HAUser.m in Sources */ = {isa = PBXBuildFile; fileRef = A1330B0618AD62B5002B1828 /* HAUser.m */; };
+		A1330B0818AD62B5002B1828 /* HAUser.m in Sources */ = {isa = PBXBuildFile; fileRef = A1330B0618AD62B5002B1828 /* HAUser.m */; };
+		A1330B0A18AD632E002B1828 /* HAUserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A1330B0918AD632E002B1828 /* HAUserTests.m */; };
 		CADA4BECEC92479A8F6CB0F0 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18DAFC5302E94F25AE48D512 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -76,6 +79,9 @@
 		75B5CDE6C7954202AF2565B3 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		8FCE639D18AD5E3E00D4C957 /* HAUserService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HAUserService.h; path = hackcessangels/services/HAUserService.h; sourceTree = SOURCE_ROOT; };
 		8FCE639E18AD5E3E00D4C957 /* HAUserService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HAUserService.m; path = hackcessangels/services/HAUserService.m; sourceTree = SOURCE_ROOT; };
+		A1330B0518AD62B5002B1828 /* HAUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HAUser.h; path = hackcessangels/model/HAUser.h; sourceTree = SOURCE_ROOT; };
+		A1330B0618AD62B5002B1828 /* HAUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HAUser.m; path = hackcessangels/model/HAUser.m; sourceTree = SOURCE_ROOT; };
+		A1330B0918AD632E002B1828 /* HAUserTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HAUserTests.m; path = hackcessangelsTests/HAUserTests.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,14 +114,14 @@
 		22130C03188966F400191955 /* model */ = {
 			isa = PBXGroup;
 			children = (
-				229CF60018AA14D900B35488 /* DCRestRequests.h */,
-				229CF60118AA14D900B35488 /* DCRestRequests.m */,
 				22601F3B18871EAC008B0179 /* HATileOverlay.h */,
 				22601F3C18871EAC008B0179 /* HATileOverlay.m */,
 				22601F3D18871EAC008B0179 /* HATileOverlayView.h */,
 				22601F3E18871EAC008B0179 /* HATileOverlayView.m */,
 				22130C00188966E500191955 /* HALocalisation.h */,
 				22130C01188966E500191955 /* HALocalisation.m */,
+				A1330B0518AD62B5002B1828 /* HAUser.h */,
+				A1330B0618AD62B5002B1828 /* HAUser.m */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -182,6 +188,7 @@
 			isa = PBXGroup;
 			children = (
 				22601F2E1886E2DE008B0179 /* HackcessAngelsTests.m */,
+				A1330B0918AD632E002B1828 /* HAUserTests.m */,
 				22601F291886E2DE008B0179 /* Supporting Files */,
 			);
 			path = HackcessAngelsTests;
@@ -212,6 +219,8 @@
 			children = (
 				8FCE639D18AD5E3E00D4C957 /* HAUserService.h */,
 				8FCE639E18AD5E3E00D4C957 /* HAUserService.m */,
+				229CF60018AA14D900B35488 /* DCRestRequests.h */,
+				229CF60118AA14D900B35488 /* DCRestRequests.m */,
 			);
 			name = services;
 			sourceTree = "<group>";
@@ -355,6 +364,7 @@
 				22601F141886E2DE008B0179 /* AppDelegate.m in Sources */,
 				22130C02188966E500191955 /* HALocalisation.m in Sources */,
 				22601F101886E2DE008B0179 /* main.m in Sources */,
+				A1330B0718AD62B5002B1828 /* HAUser.m in Sources */,
 				22601F3F18871EAC008B0179 /* HATileOverlay.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -364,7 +374,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				22601F2F1886E2DE008B0179 /* HackcessAngelsTests.m in Sources */,
+				A1330B0818AD62B5002B1828 /* HAUser.m in Sources */,
 				8FCE63A018AD5E3E00D4C957 /* HAUserService.m in Sources */,
+				A1330B0A18AD632E002B1828 /* HAUserTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
