@@ -28,11 +28,6 @@
     [super tearDown];
 }
 
-- (void)testExample
-{
-    XCTFail(@"No implementation for \"%s\"", __PRETTY_FUNCTION__);
-}
-
 - (void)testInitWithDictionaryUser
 {
     NSDictionary *dico;
@@ -40,5 +35,15 @@
     
     XCTAssertNotNil(user, @"");
 }
+
+- (void)testInitWithDictionaryUser_withEmail_and_password
+{
+    NSDictionary *dico = @{@"email":@"toto@titi.com",@"password":@"password"};
+    HAUser *user = [[HAUser alloc] initWithDictionary:dico];
+    
+    XCTAssertEqualObjects(user.email, @"toto@titi.com", @"");
+    XCTAssertEqualObjects(user.password, @"password", @"");
+}
+
 
 @end

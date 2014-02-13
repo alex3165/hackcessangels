@@ -10,6 +10,9 @@
 
 @interface HAUser : NSObject
 
+@property (nonatomic, strong, readonly) NSString *email;
+@property (nonatomic, strong) NSString *password;
+
 - (id)initWithDictionary:(NSDictionary *)dico;
 
 @end

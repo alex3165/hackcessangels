@@ -12,7 +12,15 @@
 
 - (id)initWithDictionary:(NSDictionary *)dico
 {
+    self = [super init];
     
+    if (self) {
+        
+        _email = [dico objectForKey:@"email"];
+        self.password = [dico objectForKey:@"password"];
+    }
+    
+    return self;
 }
 
 @end
