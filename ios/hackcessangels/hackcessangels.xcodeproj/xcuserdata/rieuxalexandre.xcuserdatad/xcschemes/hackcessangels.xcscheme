@@ -17,7 +17,7 @@
                BlueprintIdentifier = "22601EFF1886E2DE008B0179"
                BuildableName = "HackcessAngels.app"
                BlueprintName = "HackcessAngels"
-               ReferencedContainer = "container:HackcessAngels.xcodeproj">
+               ReferencedContainer = "container:hackcessangels.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -35,7 +35,7 @@
                BlueprintIdentifier = "22601F201886E2DE008B0179"
                BuildableName = "HackcessAngelsTests.xctest"
                BlueprintName = "HackcessAngelsTests"
-               ReferencedContainer = "container:HackcessAngels.xcodeproj">
+               ReferencedContainer = "container:hackcessangels.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -45,7 +45,7 @@
             BlueprintIdentifier = "22601EFF1886E2DE008B0179"
             BuildableName = "HackcessAngels.app"
             BlueprintName = "HackcessAngels"
-            ReferencedContainer = "container:HackcessAngels.xcodeproj">
+            ReferencedContainer = "container:hackcessangels.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -64,7 +64,7 @@
             BlueprintIdentifier = "22601EFF1886E2DE008B0179"
             BuildableName = "HackcessAngels.app"
             BlueprintName = "HackcessAngels"
-            ReferencedContainer = "container:HackcessAngels.xcodeproj">
+            ReferencedContainer = "container:hackcessangels.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -82,7 +82,7 @@
             BlueprintIdentifier = "22601EFF1886E2DE008B0179"
             BuildableName = "HackcessAngels.app"
             BlueprintName = "HackcessAngels"
-            ReferencedContainer = "container:HackcessAngels.xcodeproj">
+            ReferencedContainer = "container:hackcessangels.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
