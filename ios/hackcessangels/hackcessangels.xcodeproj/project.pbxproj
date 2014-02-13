@@ -27,6 +27,8 @@
 		22601F3F18871EAC008B0179 /* HATileOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 22601F3C18871EAC008B0179 /* HATileOverlay.m */; };
 		22601F4018871EAC008B0179 /* HATileOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22601F3E18871EAC008B0179 /* HATileOverlayView.m */; };
 		229CF60218AA14D900B35488 /* DCRestRequests.m in Sources */ = {isa = PBXBuildFile; fileRef = 229CF60118AA14D900B35488 /* DCRestRequests.m */; };
+		8FCE639F18AD5E3E00D4C957 /* HAUserService.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FCE639E18AD5E3E00D4C957 /* HAUserService.m */; };
+		8FCE63A018AD5E3E00D4C957 /* HAUserService.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FCE639E18AD5E3E00D4C957 /* HAUserService.m */; };
 		CADA4BECEC92479A8F6CB0F0 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18DAFC5302E94F25AE48D512 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -72,6 +74,8 @@
 		229CF60018AA14D900B35488 /* DCRestRequests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCRestRequests.h; sourceTree = "<group>"; };
 		229CF60118AA14D900B35488 /* DCRestRequests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCRestRequests.m; sourceTree = "<group>"; };
 		75B5CDE6C7954202AF2565B3 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		8FCE639D18AD5E3E00D4C957 /* HAUserService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HAUserService.h; path = hackcessangels/services/HAUserService.h; sourceTree = SOURCE_ROOT; };
+		8FCE639E18AD5E3E00D4C957 /* HAUserService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HAUserService.m; path = hackcessangels/services/HAUserService.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +157,7 @@
 		22601F091886E2DE008B0179 /* HackcessAngels */ = {
 			isa = PBXGroup;
 			children = (
+				8FCE639C18AD5DEF00D4C957 /* services */,
 				22130C03188966F400191955 /* model */,
 				22601F4118871EBC008B0179 /* controler */,
 				22601F151886E2DE008B0179 /* Main.storyboard */,
@@ -200,6 +205,15 @@
 				22601F191886E2DE008B0179 /* HAHomeViewController.m */,
 			);
 			name = controler;
+			sourceTree = "<group>";
+		};
+		8FCE639C18AD5DEF00D4C957 /* services */ = {
+			isa = PBXGroup;
+			children = (
+				8FCE639D18AD5E3E00D4C957 /* HAUserService.h */,
+				8FCE639E18AD5E3E00D4C957 /* HAUserService.m */,
+			);
+			name = services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -337,6 +351,7 @@
 				229CF60218AA14D900B35488 /* DCRestRequests.m in Sources */,
 				22601F1A1886E2DE008B0179 /* HAHomeViewController.m in Sources */,
 				22601F4018871EAC008B0179 /* HATileOverlayView.m in Sources */,
+				8FCE639F18AD5E3E00D4C957 /* HAUserService.m in Sources */,
 				22601F141886E2DE008B0179 /* AppDelegate.m in Sources */,
 				22130C02188966E500191955 /* HALocalisation.m in Sources */,
 				22601F101886E2DE008B0179 /* main.m in Sources */,
@@ -349,6 +364,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				22601F2F1886E2DE008B0179 /* HackcessAngelsTests.m in Sources */,
+				8FCE63A018AD5E3E00D4C957 /* HAUserService.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
