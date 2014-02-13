@@ -19,7 +19,7 @@
 
     if (self) {
         
-        NSURL *urlrequests = [NSURL URLWithString:@"http://terra.membrives.fr/app/api/"];
+        NSURL *urlrequests = [NSURL URLWithString:@"http://192.168.1.12/app/api/"];
         self.manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:urlrequests];
         self.manager.responseSerializer = [AFJSONResponseSerializer serializer];
         self.manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/html",nil];
@@ -70,7 +70,25 @@
     }];
 }
 
+-(void) DELETErequest:(NSString *)getstring withParameters:(NSDictionary *)params success:(DCRestRequestsSuccess)success failure:(DCRestRequestsFailure)failure;
 
+{
+    
+    [self.manager DELETE:getstring parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        if (success)
+        {
+            success(responseObject);
+        }
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        if (failure)
+        {
+            failure(error);
+        }
+    }];
+}
 
 
 

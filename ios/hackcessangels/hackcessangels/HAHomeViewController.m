@@ -10,6 +10,8 @@
 #import "HATileOverlay.h"
 #import "HATileOverlayView.h"
 #import "HALocalisation.h"
+#import "HAUserService.h"
+
 //commentaire pour tester le git
 
 @interface HAHomeViewController ()
@@ -37,25 +39,19 @@ NSString * address = @"10 adresse des jonquilles";
     
     /* Initialisation de l'objet request ! */
     
-    self.request = [[DCRestRequests alloc] init];
+    self.userService = [[HAUserService alloc] init];
     
     /**********************************/
     
     
-    [self.request GETrequest:@"user" withParameters:@{@"email":@"etienne@membrives.fr"} success:^(NSDictionary *dico){
-        
-        NSLog(@"Success");
-        
+    [self.userService getUserWithEmail:
+     @"etienne@membrives.fr" success:^(NSDictionary *dico){
+         NSLog(@"Success");
     } failure:^(NSError *error){
-        
         NSLog(@"Failure");
-        
-
-        
     }];
     
-    
-    [self.request POSTrequest:@"user" withParameters:@{@"email":@"julia.dirand@gmail.com",@"password":@"motdepasse"} success:^(NSDictionary *dico){
+    /*[self.userService POSTrequest:@"user" withParameters:@{@"email":@"julia.dirand@gmail.com",@"password":@"motdepasse"} success:^(NSDictionary *dico){
         
         NSLog(@"Success");
         
@@ -64,7 +60,14 @@ NSString * address = @"10 adresse des jonquilles";
         NSLog(@"Failure");
     }];
     
-    
+    [self.userService DELETErequest:@"user" withParameters:@{@"email":@"julia.dirand@gmail.com",@"password":@"motdepasse"} success:^(NSDictionary *dico){
+        
+        NSLog(@"Delete Success");
+        
+    } failure:^(NSError *error){
+        
+        NSLog(@"Delete Failure");
+    }];*/
     
     
 //    self.manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL: [NSURL URLWithString:@"http://terra.membrives.fr/app/api/"]];
