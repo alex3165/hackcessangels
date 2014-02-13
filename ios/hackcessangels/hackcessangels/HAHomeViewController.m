@@ -50,6 +50,18 @@ NSString * address = @"10 adresse des jonquilles";
         
         NSLog(@"Failure");
         
+
+        
+    }];
+    
+    
+    [self.request POSTrequest:@"user" withParameters:@{@"email":@"julia.dirand@gmail.com",@"password":@"motdepasse"} success:^(NSDictionary *dico){
+        
+        NSLog(@"Success");
+        
+    } failure:^(NSError *error){
+        
+        NSLog(@"Failure");
     }];
     
     
