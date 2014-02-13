@@ -37,12 +37,20 @@ NSString * address = @"10 adresse des jonquilles";
     
     /* Initialisation de l'objet request ! */
     
-    _requests = [[DCRestRequests alloc] init];
+    self.request = [[DCRestRequests alloc] init];
     
     /**********************************/
     
     
-    //NSDictionary * user = [_requests GETrequest:@"user" : @""];
+    [self.request GETrequest:@"user" withParameters:@{@"email":@"etienne@membrives.fr"} success:^(NSDictionary *dico){
+        
+        NSLog(@"Success");
+        
+    } failure:^(NSError *error){
+        
+        NSLog(@"Failure");
+        
+    }];
     
     
     

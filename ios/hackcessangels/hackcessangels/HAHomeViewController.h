@@ -15,7 +15,7 @@
 
 
 /* Objet de la classe DCRestRequest (à voir) */
-@property (nonatomic, strong) DCRestRequests *requests;
+@property (nonatomic, strong) DCRestRequests *request;
 @property (nonatomic, strong) HATileOverlay *overlay;
 @property (nonatomic, weak) IBOutlet MKMapView *map;
 

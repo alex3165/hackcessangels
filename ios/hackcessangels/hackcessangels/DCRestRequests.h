@@ -9,6 +9,13 @@
 #import <Foundation/Foundation.h>
 #import "AFNetworking.h"
 
+typedef void(^DCRestRequestsSuccess)();
+typedef void(^DCRestRequestsFailure)(NSError *error);
+
 @interface DCRestRequests : NSObject
-    @property (nonatomic, strong) AFHTTPRequestOperationManager *manager;
+
+@property (nonatomic, strong) AFHTTPRequestOperationManager *manager;
+
+-(void)GETrequest:(NSString *)getstring withParameters:(NSDictionary *)params success:(DCRestRequestsSuccess)success failure:(DCRestRequestsFailure)failure;
+
 @end
