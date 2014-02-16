@@ -15,7 +15,7 @@ collection = db.user
 # POST: Creates a new user. Needed parameters: email, password
 # GET: Get an existing user. Needed parameters: email
 # PUT: Updates an existing user. Needed parameters: email, data
-@app.route("/api/user",methods=['GET', 'POST', 'PUT'])
+@app.route("/api/user",methods=['GET', 'POST', 'PUT', 'DELETE'])
 def user_api():
     if request.method == "POST":
         if "email" not in request.form and "password" not in request.form:
@@ -72,10 +72,18 @@ def user_api():
         return user.to_json()
 
     elif request.method == "DELETE":
-        if not "email" in request.form:
+        if not "email" in request.args:
             return "", 400
-        if not "password" in request.form:
+        if not "password" in request.args:
             return "", 400
+        user = collection.find_one({"email": request.args["email"]})
+        if user == None:
+            return server.error_messages.UNKNOWN_USER, 404
+        if not user.verify_password(request.args["password"]):
+            return "", 403
+        user.delete()
+        return "", 200
+
 
     return "", 405
 
