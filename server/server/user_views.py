@@ -1,12 +1,17 @@
 # coding=utf-8
 
 from server import app
+from server import utils
 from server.database import db
 import server.error_messages
-from server.models import User
+
+from flask import Response
+from flask import redirect
 from flask import render_template
 from flask import request
-from flask import Response
+from flask import session
+from flask import url_for
+
 import json
 import copy
 
@@ -14,55 +19,53 @@ collection = db.user
 
 # POST: Creates a new user. Needed parameters: email, password
 # GET: Get an existing user. Needed parameters: email
-# PUT: Updates an existing user. Needed parameters: email, data
+# PUT: Updates an existing user. Needed parameters: email, password, user
+# DELETE: Delets an existing user. Needed parameters: email, password
 @app.route("/api/user",methods=['GET', 'POST', 'PUT', 'DELETE'])
+@utils.json_response
 def user_api():
+    # Create a new user
     if request.method == "POST":
         if "email" not in request.form and "password" not in request.form:
-            # Malformed request
-            app.logger.debug("Not the necessary data available: " + str(request.form))
-            return "", 400
+            return server.error_messages.MALFORMED_REQUEST, 400
+
         already_existing = collection.find_one({"email": request.form["email"]})
         if already_existing != None:
             return server.error_messages.USER_ALREADY_EXISTING, 403
-        # Creates a new user
+        
         user = collection.User()
-        app.logger.debug("setting email")
         user["email"] = request.form["email"]
-        app.logger.debug("setting password")
         user.set_password(request.form["password"])
-        app.logger.debug("setting name")
-        if "name" in request.form:
-            user["name"] = request.form["name"]
-        app.logger.debug("setting description")
-        if "description" in request.form:
-            user["description"] = request.form["description"]
-        app.logger.debug("Saving user")
         user.save()
-        app.logger.debug("User saved")
-        return json.dumps(user.to_json())
+        session["email"] = user["email"]
+        return user.to_json()
 
-    elif request.method == "GET":
+    # All methods below should be authenticated
+    if "email" not in session:
+        return redirect(url_for('user_login', next=request.url))
+
+    # Get the current user
+    if request.method == "GET":
         if not "email" in request.args:
             return "", 400
+        if session["email"] != request.args["email"]:
+            return "", 403
         user = collection.find_one({"email": request.args["email"]})
         if user == None:
             return server.error_messages.UNKNOWN_USER, 404
-        new_user = copy.copy(user)
-        del new_user["_id"]
-        new_user["password"] = None
-        return Response(json.dumps(new_user), status=200,
-                content_type="application/json")
+        user = collection.User(user)
+        return user.to_json()
 
     elif request.method == "PUT":
         if not "email" in request.form:
             return "", 400
         if not "data" in request.form:
             return "", 400
-        updated_user = json.loads(request.form["data"])
+        updated_user = json.loads(request.form["user"])
         user = collection.find_one({"email": request.form["email"]})
         if user == None:
             return server.error_messages.UNKNOWN_USER, 404
+        user = collection.User(user)
         for k, v in updated_user.items():
             if k == "password":
                 user.set_password(v)
@@ -79,12 +82,31 @@ def user_api():
         user = collection.find_one({"email": request.args["email"]})
         if user == None:
             return server.error_messages.UNKNOWN_USER, 404
+        user = collection.User(user)
         if not user.verify_password(request.args["password"]):
             return "", 403
         user.delete()
         return "", 200
 
+    return "", 405
 
+@app.route("/user/login",methods=['GET', 'POST'])
+def user_login():
+    if request.method == "POST":
+        if "email" not in request.form and "password" not in request.form:
+            # Malformed request
+            return "", 400
+        user = collection.find_one({"email": request.form["email"]})
+        if user == None:
+            return server.error_messages.UNKNOWN_USER, 403
+        user = collection.User(user)
+        if not user.verify_password(request.form["password"]):
+            return server.error_messages.UNKNOWN_USER, 403
+        session['email'] = user["email"]
+        if "next" in request.args:
+            return redirect(request.args["next"])
+        else:
+            return "", 200
     return "", 405
 
 @app.route("/user",methods=['GET'])

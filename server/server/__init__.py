@@ -2,10 +2,13 @@
 # -*- coding: utf-8 -*-
 """Main entry point for the HackcessAngel server.
 """
+import os
 
-# configuration
+### Configuration
 MONGODB_HOST = 'localhost'
 MONGODB_PORT = 27017
+# This will disconnect everyone at each server restart
+SECRET_KEY = os.urandom(64)
 
 from flask import Flask
 app = Flask(__name__)

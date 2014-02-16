@@ -91,6 +91,7 @@ class Request(Document):
         },
         'date_requested': datetime.datetime,
         'agent': bson.objectid.ObjectId,
+        'active': bool
     }
 
 
