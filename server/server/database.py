@@ -5,4 +5,4 @@ from mongokit import Connection
 connection = Connection(app.config['MONGODB_HOST'],
                         app.config['MONGODB_PORT'])
 
-db = connection['hackcessangels']
+db = connection[app.config['MONGODB_DB']]

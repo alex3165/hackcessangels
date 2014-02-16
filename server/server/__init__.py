@@ -7,6 +7,7 @@ import os
 ### Configuration
 MONGODB_HOST = 'localhost'
 MONGODB_PORT = 27017
+MONGODB_DB = 'hackcessangels'
 # This will disconnect everyone at each server restart
 SECRET_KEY = os.urandom(64)
 
