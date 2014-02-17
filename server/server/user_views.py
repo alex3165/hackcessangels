@@ -59,8 +59,10 @@ def user_api():
     elif request.method == "PUT":
         if not "email" in request.form:
             return "", 400
-        if not "data" in request.form:
+        if not "user" in request.form:
             return "", 400
+        if session["email"] != request.args["email"]:
+            return "", 403
         updated_user = json.loads(request.form["user"])
         user = collection.find_one({"email": request.form["email"]})
         if user == None:
@@ -77,14 +79,12 @@ def user_api():
     elif request.method == "DELETE":
         if not "email" in request.args:
             return "", 400
-        if not "password" in request.args:
-            return "", 400
+        if session["email"] != request.args["email"]:
+            return "", 403
         user = collection.find_one({"email": request.args["email"]})
         if user == None:
             return server.error_messages.UNKNOWN_USER, 404
         user = collection.User(user)
-        if not user.verify_password(request.args["password"]):
-            return "", 403
         user.delete()
         return "", 200
 
