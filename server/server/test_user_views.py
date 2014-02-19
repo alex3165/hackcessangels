@@ -31,7 +31,7 @@ class UserViewsTestCase(unittest.TestCase):
             "password": "password"})
 
         with self.app.session_transaction() as sess:
-            rv = self.app.post("/user/login", data={
+            rv = self.app.post("/api/user/login", data={
                 "email": "user@domain.tld",
                 "password": "password"})
             assert 200 == rv.status_code
@@ -48,7 +48,7 @@ class UserViewsTestCase(unittest.TestCase):
             "password": "password"})
 
         with self.app.session_transaction() as sess:
-            rv = self.app.post("/user/login", data={
+            rv = self.app.post("/api/user/login", data={
                 "email": "user@domain.tld",
                 "password": "password"})
 
@@ -65,7 +65,7 @@ class UserViewsTestCase(unittest.TestCase):
             "password": "password"})
 
         with self.app.session_transaction() as sess:
-            rv = self.app.post("/user/login", data={
+            rv = self.app.post("/api/user/login", data={
                 "email": "user@domain.tld",
                 "password": "password"})
 

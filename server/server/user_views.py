@@ -42,7 +42,7 @@ def user_api():
 
     # All methods below should be authenticated
     if "email" not in session:
-        return redirect(url_for('user_login', next=request.url))
+        return "", 403
 
     # Get the current user
     if request.method == "GET":
@@ -90,7 +90,8 @@ def user_api():
 
     return "", 405
 
-@app.route("/user/login",methods=['GET', 'POST'])
+@app.route("/api/user/login",methods=['GET', 'POST'])
+@utils.json_response
 def user_login():
     collection = get_db().user
 
