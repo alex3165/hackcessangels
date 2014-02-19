@@ -42,14 +42,14 @@ def user_api():
 
     # All methods below should be authenticated
     if "email" not in session:
-        return "", 403
+        return [], 403
 
     # Get the current user
     if request.method == "GET":
         if not "email" in request.args:
-            return "", 400
+            return [], 400
         if session["email"] != request.args["email"]:
-            return "", 403
+            return [], 403
         user = collection.find_one({"email": request.args["email"]})
         if user == None:
             return server.error_messages.UNKNOWN_USER, 404
@@ -58,11 +58,11 @@ def user_api():
 
     elif request.method == "PUT":
         if not "email" in request.form:
-            return "", 400
+            return [], 400
         if not "user" in request.form:
-            return "", 400
+            return [], 400
         if session["email"] != request.form["email"]:
-            return "", 403
+            return [], 403
         updated_user = json.loads(request.form["user"])
         user = collection.find_one({"email": request.form["email"]})
         if user == None:
@@ -78,17 +78,17 @@ def user_api():
 
     elif request.method == "DELETE":
         if not "email" in request.args:
-            return "", 400
+            return [], 400
         if session["email"] != request.args["email"]:
-            return "", 403
+            return [], 403
         user = collection.find_one({"email": request.args["email"]})
         if user == None:
             return server.error_messages.UNKNOWN_USER, 404
         user = collection.User(user)
         user.delete()
-        return "", 200
+        return [], 200
 
-    return "", 405
+    return [], 405
 
 @app.route("/api/user/login",methods=['GET', 'POST'])
 @utils.json_response
@@ -98,7 +98,7 @@ def user_login():
     if request.method == "POST":
         if "email" not in request.form and "password" not in request.form:
             # Malformed request
-            return "", 400
+            return [], 400
         user = collection.find_one({"email": request.form["email"]})
         if user == None:
             return server.error_messages.UNKNOWN_USER, 403
@@ -109,8 +109,8 @@ def user_login():
         if "next" in request.args:
             return redirect(request.args["next"])
         else:
-            return "", 200
-    return "", 405
+            return [], 200
+    return [], 405
 
 @app.route("/user",methods=['GET'])
 def user():
