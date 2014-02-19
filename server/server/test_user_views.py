@@ -7,7 +7,7 @@ import server
 
 import flask
 
-class FlaskrTestCase(unittest.TestCase):
+class UserViewsTestCase(unittest.TestCase):
     def setUp(self):
         server.app.config['TESTING'] = True
         server.app.config['MONGODB_DB'] = 'hackcessangels_test'
