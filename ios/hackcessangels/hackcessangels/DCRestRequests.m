@@ -19,7 +19,7 @@
 
     if (self) {
         
-        NSURL *urlrequests = [NSURL URLWithString:@"http://192.168.1.12/app/api/"];
+        NSURL *urlrequests = [NSURL URLWithString:@"http://polaris.membrives.fr/app/api/"];
         self.manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:urlrequests];
         self.manager.responseSerializer = [AFJSONResponseSerializer serializer];
         self.manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/html",nil];
