@@ -10,7 +10,7 @@ Endpoints
 /user
     Content-Type: text/html
   - GET: Retourne un formulaire web pour créer un nouvel utilisateur
-/user/login
+/api/user/login
     Content-Type: application/json
   - POST: Authentifie un utilisateur
         Paramètres: email; password
