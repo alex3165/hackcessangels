@@ -43,13 +43,30 @@ NSString * address = @"10 adresse des jonquilles";
     
     /**********************************/
     
-    
-    [self.userService getUserWithEmail:
-     @"etienne@membrives.fr" success:^(NSDictionary *dico){
-         NSLog(@"Success");
-    } failure:^(NSError *error){
-        NSLog(@"Failure");
-    }];
+    [self.userService createUserWithEmailAndPassword:
+     @"user@domain.tld" password:@"password" success:^(NSDictionary *dico){
+         NSLog(@"Create success");
+         [self.userService loginWithEmailAndPassword:
+          @"user@domain.tld" password:@"password" success:^(NSDictionary *dico){
+              NSLog(@"Login success");
+              [self.userService getUserWithEmail:
+               @"user@domain.tld" success:^(NSDictionary *dico){
+                   NSLog(@"Get success");
+                   [self.userService deleteUserWithEmail:
+                    @"user@domain.tld" success:^(NSDictionary *dico){
+                        NSLog(@"Delete success");
+                    } failure:^(NSError *error){
+                        NSLog(@"Delete failure: %@", error);
+                    }];
+               } failure:^(NSError *error){
+                   NSLog(@"Get failure: %@", error);
+               }];
+          } failure:^(NSError *error){
+              NSLog(@"Login failure: %@", error);
+          }];
+     } failure:^(NSError *error){
+         NSLog(@"Create failure: %@", error);
+     }];
     
     /*[self.userService POSTrequest:@"user" withParameters:@{@"email":@"julia.dirand@gmail.com",@"password":@"motdepasse"} success:^(NSDictionary *dico){
         
