@@ -2,7 +2,7 @@
 
 from server import app
 from server import utils
-from server.database import db
+from server.database import get_db
 from server.models import Point
 import server.error_messages
 
@@ -14,9 +14,6 @@ from flask import session
 
 import datetime
 
-requests = db.request
-users = db.user
-
 # POST: Creates a new user. Needed parameters: email, password
 # GET: Get an existing user. Needed parameters: email
 # PUT: Updates an existing user. Needed parameters: email, password, user
@@ -25,6 +22,9 @@ users = db.user
 @utils.json_response
 @utils.user_login_required
 def request_api():
+    requests = get_db().request
+    users = get_db().user
+
     # Create a new request
     if request.method == "POST":
         if "lat" not in request.form and "lng" not in request.form:

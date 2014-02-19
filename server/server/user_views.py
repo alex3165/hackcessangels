@@ -2,7 +2,7 @@
 
 from server import app
 from server import utils
-from server.database import db
+from server.database import get_db
 import server.error_messages
 
 from flask import Response
@@ -15,8 +15,6 @@ from flask import url_for
 import json
 import copy
 
-collection = db.user
-
 # POST: Creates a new user. Needed parameters: email, password
 # GET: Get an existing user. Needed parameters: email
 # PUT: Updates an existing user. Needed parameters: email, password, user
@@ -24,6 +22,8 @@ collection = db.user
 @app.route("/api/user",methods=['GET', 'POST', 'PUT', 'DELETE'])
 @utils.json_response
 def user_api():
+    collection = get_db().user
+
     # Create a new user
     if request.method == "POST":
         if "email" not in request.form and "password" not in request.form:
@@ -61,7 +61,7 @@ def user_api():
             return "", 400
         if not "user" in request.form:
             return "", 400
-        if session["email"] != request.args["email"]:
+        if session["email"] != request.form["email"]:
             return "", 403
         updated_user = json.loads(request.form["user"])
         user = collection.find_one({"email": request.form["email"]})
@@ -92,6 +92,8 @@ def user_api():
 
 @app.route("/user/login",methods=['GET', 'POST'])
 def user_login():
+    collection = get_db().user
+
     if request.method == "POST":
         if "email" not in request.form and "password" not in request.form:
             # Malformed request

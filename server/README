@@ -18,7 +18,6 @@ Endpoints
             - 200: OK; Retourne un cookie dans l'en-tête "Set-Cookie"
             - 400: Paramètre manquant
             - 403: Utilisateur inconnu ou mot de passe invalide
-            
 /api/user
     Content-type: application/json
   - POST: Crée un nouvel utilisateur
