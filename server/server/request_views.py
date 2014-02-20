@@ -25,9 +25,11 @@ def request_api():
     requests = get_db().request
     users = get_db().user
 
+    request_data = utils.load_form_or_json_params(request)
+
     # Create a new request
     if request.method == "POST":
-        if "lat" not in request.form and "lng" not in request.form:
+        if "lat" not in request_data and "lng" not in request_data:
             return server.error_messages.MALFORMED_REQUEST, 400
 
         user = users.find_one({"email": session["email"]})
@@ -38,7 +40,7 @@ def request_api():
         help_request = requests.Request()
         help_request["user"] = user["_id"]
         help_request["location"]["user_location"] = Point(
-                request.form["lat"], request.form["lng"])
+                request_data["lat"], request_data["lng"])
         help_request["location"]["last_update"] = datetime.datetime.today()
         help_request["date_requested"] = datetime.datetime.today()
         help_request["active"] = True

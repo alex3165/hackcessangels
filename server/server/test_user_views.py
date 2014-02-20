@@ -69,11 +69,11 @@ class UserViewsTestCase(unittest.TestCase):
                 "email": "user@domain.tld",
                 "password": "password"})
 
-        rv = self.app.put("/api/user", data={
+        rv = self.app.put("/api/user", data=json.dumps({
             "email": "user@domain.tld",
-            "user": json.dumps({
+            "user": {
                 "email": "user@domain.tld",
-                "name": "Joe Doe"})})
+                "name": "Joe Doe"}}))
         assert 200 == rv.status_code
 
         rv = self.app.get("/api/user?email=user@domain.tld")

@@ -24,18 +24,20 @@ import copy
 def user_api():
     collection = get_db().user
 
+    request_data = utils.load_form_or_json_params(request)
+
     # Create a new user
     if request.method == "POST":
-        if "email" not in request.form and "password" not in request.form:
+        if "email" not in request_data and "password" not in request_data:
             return server.error_messages.MALFORMED_REQUEST, 400
 
-        already_existing = collection.find_one({"email": request.form["email"]})
+        already_existing = collection.find_one({"email": request_data["email"]})
         if already_existing != None:
             return server.error_messages.USER_ALREADY_EXISTING, 403
         
         user = collection.User()
-        user["email"] = request.form["email"]
-        user.set_password(request.form["password"])
+        user["email"] = request_data["email"]
+        user.set_password(request_data["password"])
         user.save()
         session["email"] = user["email"]
         return user.to_json()
@@ -46,25 +48,25 @@ def user_api():
 
     # Get the current user
     if request.method == "GET":
-        if not "email" in request.args:
+        if not "email" in request_data:
             return [], 400
-        if session["email"] != request.args["email"]:
+        if session["email"] != request_data["email"]:
             return [], 403
-        user = collection.find_one({"email": request.args["email"]})
+        user = collection.find_one({"email": request_data["email"]})
         if user == None:
             return server.error_messages.UNKNOWN_USER, 404
         user = collection.User(user)
         return user.to_json()
 
     elif request.method == "PUT":
-        if not "email" in request.form:
+        if not "email" in request_data:
             return [], 400
-        if not "user" in request.form:
+        if not "user" in request_data:
             return [], 400
-        if session["email"] != request.form["email"]:
+        if session["email"] != request_data["email"]:
             return [], 403
-        updated_user = json.loads(request.form["user"])
-        user = collection.find_one({"email": request.form["email"]})
+        updated_user = request_data["user"]
+        user = collection.find_one({"email": request_data["email"]})
         if user == None:
             return server.error_messages.UNKNOWN_USER, 404
         user = collection.User(user)
@@ -77,11 +79,11 @@ def user_api():
         return user.to_json()
 
     elif request.method == "DELETE":
-        if not "email" in request.args:
+        if not "email" in request_data:
             return [], 400
-        if session["email"] != request.args["email"]:
+        if session["email"] != request_data["email"]:
             return [], 403
-        user = collection.find_one({"email": request.args["email"]})
+        user = collection.find_one({"email": request_data["email"]})
         if user == None:
             return server.error_messages.UNKNOWN_USER, 404
         user = collection.User(user)
@@ -95,19 +97,21 @@ def user_api():
 def user_login():
     collection = get_db().user
 
+    request_data = utils.load_form_or_json_params(request)
+
     if request.method == "POST":
-        if "email" not in request.form and "password" not in request.form:
+        if "email" not in request_data and "password" not in request_data:
             # Malformed request
             return [], 400
-        user = collection.find_one({"email": request.form["email"]})
+        user = collection.find_one({"email": request_data["email"]})
         if user == None:
             return server.error_messages.UNKNOWN_USER, 403
         user = collection.User(user)
-        if not user.verify_password(request.form["password"]):
+        if not user.verify_password(request_data["password"]):
             return server.error_messages.UNKNOWN_USER, 403
         session['email'] = user["email"]
-        if "next" in request.args:
-            return redirect(request.args["next"])
+        if "next" in request_data:
+            return redirect(request_data["next"])
         else:
             return [], 200
     return [], 405

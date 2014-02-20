@@ -34,3 +34,11 @@ def user_login_required(f):
             return redirect(url_for('user_login', next=request.url))
         return f(*args, **kwargs)
     return decorated_function
+
+def load_form_or_json_params(request):
+    try:
+    	request_data = dict(json.loads(request.data).items()
+				+ request.values.items())
+    except ValueError:
+	request_data = request.values
+    return request_data
