@@ -11,10 +11,9 @@
 
 @interface HAUserService : NSObject
 - (void)getUserWithEmail:(NSString*) email success:(DCRestRequestsSuccess)success failure:(DCRestRequestsFailure)failure;
-<<<<<<< HEAD
 
-- (void)update:(NSString*)  updateEmail :(NSString*)  email  success:(DCRestRequestsSuccess)success failure:(DCRestRequestsFailure)failure;
-=======
+- (void)updateUser:(NSString*)email withUpdatedEmail:(NSString*)updateEmail  success:(DCRestRequestsSuccess)success failure:(DCRestRequestsFailure)failure;
+
 - (void)createUserWithEmailAndPassword:(NSString*) email password:(NSString*) password
                     success:(DCRestRequestsSuccess)success
                     failure:(DCRestRequestsFailure)failure;
@@ -23,5 +22,4 @@
                     failure:(DCRestRequestsFailure)failure;
 - (void)deleteUserWithEmail:(NSString*) email success:(DCRestRequestsSuccess)success
                           failure:(DCRestRequestsFailure)failure;
->>>>>>> 2992776db231109fc2339db5ade5d7619615ccd5
 @end

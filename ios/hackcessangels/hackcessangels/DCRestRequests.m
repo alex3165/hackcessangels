@@ -90,26 +90,24 @@
     }];
 }
 
+-(void)PUTrequest:(NSString *)getstring withParameters:(NSDictionary *)params success:(DCRestRequestsSuccess)success failure:(DCRestRequestsFailure)failure
+{
+    [self.manager PUT:getstring parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        if (success)
+        {
+            success(responseObject);
+        }
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        if (failure)
+        {
+            failure(error);
+        }
+    }];
+}
 
-//-(void) UPDATErequest:(NSString *)getstring withParameters:(NSDictionary *)params success:(DCRestRequestsSuccess)success failure:(DCRestRequestsFailure)failure;
-//
-//{
-//    
-//    [self.manager ){
-//        
-//        if (success)
-//        {
-//            success(responseObject);
-//        }
-//        
-//    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-//        
-//        if (failure)
-//        {
-//            failure(error);
-//        }
-//    }];
-//}
 
 
 @end
