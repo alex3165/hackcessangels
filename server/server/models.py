@@ -69,9 +69,15 @@ class Point(object):
         self.longitude = longitude
         self.latitude = latitude
 
+    def to_json(self):
+        return {
+                "lat": self.latitude,
+                "lng": self.longitude
+                }
 
 class PointType(CustomType):
     mongo_type = dict
+    python_type = Point
 
     def to_bson(self, value):
         return {'type' : 'Point',
@@ -86,7 +92,7 @@ class Request(Document):
         'user': bson.objectid.ObjectId,
         'location': {
             'station': bson.objectid.ObjectId,
-            'user_location': PointType,
+            'user_location': PointType(),
             'last_update': datetime.datetime,
         },
         'date_requested': datetime.datetime,
@@ -94,6 +100,15 @@ class Request(Document):
         'active': bool
     }
 
+    def to_json(self):
+        return {
+            "location": {
+                "user_location": self["location"]["user_location"].to_json(),
+                "last_update": self["location"]["last_update"].isoformat(),
+                },
+            "date_requested": self["date_requested"].isoformat(),
+            "active": self["active"]
+            }
 
 class Polygon(object):
     def __init__(self, points):

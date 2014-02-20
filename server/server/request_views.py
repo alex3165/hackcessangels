@@ -30,21 +30,21 @@ def request_api():
         if "lat" not in request.form and "lng" not in request.form:
             return server.error_messages.MALFORMED_REQUEST, 400
 
-        user = users.find_one({"email": request.form["email"]})
+        user = users.find_one({"email": session["email"]})
         if user == None:
             return server.error_messages.UNKNOWN_USER, 404
         user = users.User(user)
 
-        request = Request()
-        request["user"] = user["_id"]
-        request["location"]["user_location"] = Point(
+        help_request = requests.Request()
+        help_request["user"] = user["_id"]
+        help_request["location"]["user_location"] = Point(
                 request.form["lat"], request.form["lng"])
-        request["location"]["last_update"] = datetime.datetime.today()
-        request["date_requested"] = datetime.datetime.today()
-        request["active"] = True
-        request.save()
+        help_request["location"]["last_update"] = datetime.datetime.today()
+        help_request["date_requested"] = datetime.datetime.today()
+        help_request["active"] = True
+        help_request.save()
 
-        return request.to_json()
+        return help_request.to_json()
 
     # Get the current user
     elif request.method == "GET":
@@ -56,16 +56,16 @@ def request_api():
         return map(users.User, user)
 
     elif request.method == "DELETE":
-        user = collection.find_one({"email": session["email"]})
+        user = users.find_one({"email": session["email"]})
         if user == None:
             return server.error_messages.UNKNOWN_USER, 404
         user = users.User(user)
         user_requests = requests.find({"user": user["_id"], "active": True})
-        for request in user_requests:
-            request = requests.Request(request)
-            request["active"] = False
-            request.save()
-        return "", 200
+        for help_request in user_requests:
+            help_request = requests.Request(help_request)
+            help_request["active"] = False
+            help_request.save()
+        return [], 200
 
-    return "", 405
+    return [], 405
 
