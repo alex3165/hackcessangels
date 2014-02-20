@@ -52,4 +52,24 @@
     XCTAssertEqualObjects(test, @"youpi", @"");
 }
 
+- (void)test_createUserWithEmailAndPassword_Create_Success
+{
+    HAUserService *userService = [[HAUserService alloc] init];
+    
+    [self prepare];
+    
+    [userService createUserWithEmailAndPassword:@"julia@gmail.com" password:@"motdepasse" success:^{
+        
+        [self notify:kXCTUnitWaitStatusSuccess];
+        
+    } failure:^(NSError *error) {
+        
+        [self notify:kXCTUnitWaitStatusFailure];
+        
+    } ];
+    
+    [self waitForStatus:kXCTUnitWaitStatusSuccess timeout:5.0];
+    
+}
+
 @end
