@@ -13,6 +13,7 @@
 
 - (void)getUserWithEmail:(NSString*) email success:(DCRestRequestsSuccess)success failure:(DCRestRequestsFailure)failure;
 
+
 - (void)updateUser:(NSString*)email withUpdatedEmail:(NSString*)updateEmail  success:(DCRestRequestsSuccess)success failure:(DCRestRequestsFailure)failure;
 
 - (void)createUserWithEmailAndPassword:(NSString*) email password:(NSString*) password

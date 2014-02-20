@@ -45,5 +45,29 @@
     XCTAssertEqualObjects(user.password, @"password", @"");
 }
 
+- (void)testInitWithDictionaryUser_name_and_description
+{
+    NSDictionary *dico = @{@"email":@"toto@titi.com",@"password":@"password", @"name":@"toto", @"description":@"toto est gentil"};
+    HAUser *user = [[HAUser alloc] initWithDictionary:dico];
+    
+    XCTAssertEqualObjects(user.email, @"toto@titi.com", @"");
+    XCTAssertEqualObjects(user.password, @"password", @"");
+    XCTAssertEqualObjects(user.name, @"toto", @"");
+    XCTAssertEqualObjects(user.userdescription, @"toto est gentil", @"");
+}
 
+
+- (void)testSendrequest
+{
+//    HAUserService *userService;
+//    self.userService = [[HAUserService alloc] init];
+//    [self.userService POSTrequest:@"user" withParameters:@{@"email":@"julia.dirand@gmail.com",@"password":@"motdepasse"} success:^(NSDictionary *dico){
+//        
+//        NSLog(@"Success");
+//        
+//    } failure:^(NSError *error){
+//        
+//        NSLog(@"Failure");
+//    }];
+}
 @end

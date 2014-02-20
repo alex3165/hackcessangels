@@ -35,6 +35,7 @@
     
 }
 
+
 - (void)createUserWithEmailAndPassword:(NSString *)email password:(NSString *)password success:(DCRestRequestsSuccess)success failure:(DCRestRequestsFailure)failure {
     DCRestRequests* dcRestRequest = [[DCRestRequests alloc] init];
     [dcRestRequest POSTrequest:@"user" withParameters:@{@"email" : email, @"password":password} success:success failure:failure];
