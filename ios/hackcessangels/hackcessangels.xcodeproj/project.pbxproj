@@ -27,8 +27,11 @@
 		22601F3F18871EAC008B0179 /* HATileOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 22601F3C18871EAC008B0179 /* HATileOverlay.m */; };
 		22601F4018871EAC008B0179 /* HATileOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22601F3E18871EAC008B0179 /* HATileOverlayView.m */; };
 		229CF60218AA14D900B35488 /* DCRestRequests.m in Sources */ = {isa = PBXBuildFile; fileRef = 229CF60118AA14D900B35488 /* DCRestRequests.m */; };
+<<<<<<< HEAD
 		22DA835818B288610014CCA5 /* HAAssistanceService.m in Sources */ = {isa = PBXBuildFile; fileRef = 22DA835718B288610014CCA5 /* HAAssistanceService.m */; };
 		22DA835918B288610014CCA5 /* HAAssistanceService.m in Sources */ = {isa = PBXBuildFile; fileRef = 22DA835718B288610014CCA5 /* HAAssistanceService.m */; };
+=======
+>>>>>>> e2f6026a9201290ceb4ffba4c86e4958be0f6d9a
 		8FCE639F18AD5E3E00D4C957 /* HAUserService.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FCE639E18AD5E3E00D4C957 /* HAUserService.m */; };
 		8FCE63A018AD5E3E00D4C957 /* HAUserService.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FCE639E18AD5E3E00D4C957 /* HAUserService.m */; };
 		95527CEF6AB44E8BADA9B3C3 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18DAFC5302E94F25AE48D512 /* libPods.a */; };
@@ -79,8 +82,11 @@
 		22601F3E18871EAC008B0179 /* HATileOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HATileOverlayView.m; sourceTree = "<group>"; };
 		229CF60018AA14D900B35488 /* DCRestRequests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCRestRequests.h; sourceTree = "<group>"; };
 		229CF60118AA14D900B35488 /* DCRestRequests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCRestRequests.m; sourceTree = "<group>"; };
+<<<<<<< HEAD
 		22DA835618B288610014CCA5 /* HAAssistanceService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HAAssistanceService.h; sourceTree = "<group>"; };
 		22DA835718B288610014CCA5 /* HAAssistanceService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HAAssistanceService.m; sourceTree = "<group>"; };
+=======
+>>>>>>> e2f6026a9201290ceb4ffba4c86e4958be0f6d9a
 		75B5CDE6C7954202AF2565B3 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		8FCE639D18AD5E3E00D4C957 /* HAUserService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HAUserService.h; path = hackcessangels/services/HAUserService.h; sourceTree = SOURCE_ROOT; };
 		8FCE639E18AD5E3E00D4C957 /* HAUserService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HAUserService.m; path = hackcessangels/services/HAUserService.m; sourceTree = SOURCE_ROOT; };
@@ -225,8 +231,11 @@
 			children = (
 				8FCE639D18AD5E3E00D4C957 /* HAUserService.h */,
 				8FCE639E18AD5E3E00D4C957 /* HAUserService.m */,
+<<<<<<< HEAD
 				22DA835618B288610014CCA5 /* HAAssistanceService.h */,
 				22DA835718B288610014CCA5 /* HAAssistanceService.m */,
+=======
+>>>>>>> e2f6026a9201290ceb4ffba4c86e4958be0f6d9a
 				229CF60018AA14D900B35488 /* DCRestRequests.h */,
 				229CF60118AA14D900B35488 /* DCRestRequests.m */,
 			);
@@ -284,6 +293,16 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "RIEUX Alexandre";
 				TargetAttributes = {
+<<<<<<< HEAD
+=======
+					22601EFF1886E2DE008B0179 = {
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 0;
+							};
+						};
+					};
+>>>>>>> e2f6026a9201290ceb4ffba4c86e4958be0f6d9a
 					22601F201886E2DE008B0179 = {
 						TestTargetID = 22601EFF1886E2DE008B0179;
 					};
@@ -405,7 +424,10 @@
 				22130C02188966E500191955 /* HALocalisation.m in Sources */,
 				22601F101886E2DE008B0179 /* main.m in Sources */,
 				A1330B0718AD62B5002B1828 /* HAUser.m in Sources */,
+<<<<<<< HEAD
 				22DA835818B288610014CCA5 /* HAAssistanceService.m in Sources */,
+=======
+>>>>>>> e2f6026a9201290ceb4ffba4c86e4958be0f6d9a
 				22601F3F18871EAC008B0179 /* HATileOverlay.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -417,7 +439,10 @@
 				22601F2F1886E2DE008B0179 /* HackcessAngelsTests.m in Sources */,
 				A1330B0818AD62B5002B1828 /* HAUser.m in Sources */,
 				8FCE63A018AD5E3E00D4C957 /* HAUserService.m in Sources */,
+<<<<<<< HEAD
 				22DA835918B288610014CCA5 /* HAAssistanceService.m in Sources */,
+=======
+>>>>>>> e2f6026a9201290ceb4ffba4c86e4958be0f6d9a
 				A1330B0A18AD632E002B1828 /* HAUserTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
