@@ -11,6 +11,7 @@
 #import "HATileOverlayView.h"
 #import "HALocalisation.h"
 #import "HAUserService.h"
+#import "HAUser.h"
 
 //commentaire pour tester le git
 
@@ -43,7 +44,9 @@ NSString * address = @"10 adresse des jonquilles";
     self.restRequests = [[DCRestRequests alloc] init];
     /**********************************/
     
+
     /*[self.userService createUserWithEmailAndPassword:
+
      @"user@domain.tld" password:@"password" success:^(NSDictionary *dico){
          NSLog(@"Create success");
          [self.userService loginWithEmailAndPassword:

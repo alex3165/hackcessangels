@@ -17,11 +17,14 @@ PODS:
   - AFNetworking/Serialization (2.1.0)
   - AFNetworking/UIKit (2.1.0):
     - AFNetworking/NSURLConnection
+  - XCTAsyncTestCase (0.1.0)
 
 DEPENDENCIES:
   - AFNetworking
+  - XCTAsyncTestCase
 
 SPEC CHECKSUMS:
   AFNetworking: c7d7901a83f631414c7eda1737261f696101a5cd
+  XCTAsyncTestCase: 712a789c91b966bcce433fced0b930ffc8b5b10a
 
 COCOAPODS: 0.29.0

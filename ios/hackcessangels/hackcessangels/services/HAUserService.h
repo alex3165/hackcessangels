@@ -10,7 +10,9 @@
 #import "DCRestRequests.h"
 
 @interface HAUserService : NSObject
+
 - (void)getUserWithEmail:(NSString*) email success:(DCRestRequestsSuccess)success failure:(DCRestRequestsFailure)failure;
+
 
 - (void)updateUser:(NSString*)email withUpdatedEmail:(NSString*)updateEmail  success:(DCRestRequestsSuccess)success failure:(DCRestRequestsFailure)failure;
 

@@ -6,7 +6,9 @@ import server.error_messages
 from server.models import User
 from flask import render_template
 from flask import request
+from flask import Response
 import json
+import copy
 
 collection = db.user
 
@@ -43,10 +45,14 @@ def user_api():
     elif request.method == "GET":
         if not "email" in request.args:
             return "", 400
-        user = collection.find_one({"email": request.form["email"]})
+        user = collection.find_one({"email": request.args["email"]})
         if user == None:
             return server.error_messages.UNKNOWN_USER, 404
-        return json.dumps(user.to_json())
+        new_user = copy.copy(user)
+        del new_user["_id"]
+        new_user["password"] = None
+        return Response(json.dumps(new_user), status=200,
+                content_type="application/json")
 
     elif request.method == "PUT":
         if not "email" in request.form:
