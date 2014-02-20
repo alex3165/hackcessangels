@@ -15,7 +15,8 @@
     self = [super init];
     
     if (self) {
-        
+        _nom = [dico objectForKey:@"nom"];
+        _prenom = [dico objectForKey:@"prenom"];
         _email = [dico objectForKey:@"email"];
         self.password = [dico objectForKey:@"password"];
         self.name = [dico objectForKey:@"name"];

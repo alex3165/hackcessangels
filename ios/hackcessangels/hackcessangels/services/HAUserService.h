@@ -13,6 +13,8 @@
 
 - (void)getUserWithEmail:(NSString*) email success:(DCRestRequestsSuccess)success failure:(DCRestRequestsFailure)failure;
 
+- (void)update:(NSString*)  updateEmail :(NSString*)  email  success:(DCRestRequestsSuccess)success failure:(DCRestRequestsFailure)failure;
+
 - (void)createUserWithEmailAndPassword:(NSString*) email password:(NSString*) password
                     success:(DCRestRequestsSuccess)success
                     failure:(DCRestRequestsFailure)failure;
@@ -21,5 +23,4 @@
                     failure:(DCRestRequestsFailure)failure;
 - (void)deleteUserWithEmail:(NSString*) email success:(DCRestRequestsSuccess)success
                           failure:(DCRestRequestsFailure)failure;
-
 @end

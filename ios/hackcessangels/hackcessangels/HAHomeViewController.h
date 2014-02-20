@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "HATileOverlay.h"
+#import "DCRestRequests.h"
 #import "HAUserService.h"
 #import "AFNetworking.h"
 
@@ -16,6 +17,7 @@
 
 /* Objet de la classe DCRestRequest (à voir) */
 @property (nonatomic, strong) HAUserService *userService;
+@property (nonatomic, strong) DCRestRequests *restRequests;
 @property (nonatomic, strong) HATileOverlay *overlay;
 @property (nonatomic, weak) IBOutlet MKMapView *map;
 

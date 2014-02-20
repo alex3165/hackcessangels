@@ -10,6 +10,9 @@
 
 @interface HAUser : NSObject
 
+
+@property (nonatomic, strong) NSString *nom;
+@property (nonatomic, strong) NSString *prenom;
 @property (nonatomic, strong, readonly) NSString *email;
 @property (nonatomic, strong) NSString *password;
 @property (nonatomic, strong) NSString *name;
