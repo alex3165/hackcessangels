@@ -11,6 +11,7 @@
 #import "HATileOverlayView.h"
 #import "HALocalisation.h"
 #import "HAUserService.h"
+#import "HAUser.h"
 
 //commentaire pour tester le git
 
@@ -43,10 +44,18 @@ NSString * address = @"10 adresse des jonquilles";
     
     /**********************************/
     
+    /*
+     
+     - Dans UserService faire DELETE et POST.
+     - Nouveau Service comme UserService mais pour les autres.
+     
+     */
     
     [self.userService getUserWithEmail:
      @"etienne@membrives.fr" success:^(NSDictionary *dico){
          NSLog(@"Success");
+         HAUser *user = [[HAUser alloc] initWithDictionary:dico];
+         NSLog(@"%@",user.email);
     } failure:^(NSError *error){
         NSLog(@"Failure");
     }];

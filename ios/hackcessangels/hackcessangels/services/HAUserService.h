@@ -10,5 +10,5 @@
 #import "DCRestRequests.h"
 
 @interface HAUserService : NSObject
-- (void)getUserWithEmail:(NSString*) email success:(DCRestRequestsSuccess)success failure:(DCRestRequestsFailure)failure;
+    - (void)getUserWithEmail:(NSString*) email success:(DCRestRequestsSuccess)success failure:(DCRestRequestsFailure)failure;
 @end
