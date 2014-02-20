@@ -29,11 +29,12 @@
 		229CF60218AA14D900B35488 /* DCRestRequests.m in Sources */ = {isa = PBXBuildFile; fileRef = 229CF60118AA14D900B35488 /* DCRestRequests.m */; };
 		8FCE639F18AD5E3E00D4C957 /* HAUserService.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FCE639E18AD5E3E00D4C957 /* HAUserService.m */; };
 		8FCE63A018AD5E3E00D4C957 /* HAUserService.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FCE639E18AD5E3E00D4C957 /* HAUserService.m */; };
-		95527CEF6AB44E8BADA9B3C3 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18DAFC5302E94F25AE48D512 /* libPods.a */; };
 		A1330B0718AD62B5002B1828 /* HAUser.m in Sources */ = {isa = PBXBuildFile; fileRef = A1330B0618AD62B5002B1828 /* HAUser.m */; };
 		A1330B0818AD62B5002B1828 /* HAUser.m in Sources */ = {isa = PBXBuildFile; fileRef = A1330B0618AD62B5002B1828 /* HAUser.m */; };
 		A1330B0A18AD632E002B1828 /* HAUserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A1330B0918AD632E002B1828 /* HAUserTests.m */; };
+		A1AC4C5418B69AD2002EE7E6 /* HAUserServicesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A1AC4C5318B69AD2002EE7E6 /* HAUserServicesTests.m */; };
 		CADA4BECEC92479A8F6CB0F0 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18DAFC5302E94F25AE48D512 /* libPods.a */; };
+		DACD378C81EF46D185A2B41E /* libPods-HackcessAngelsTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CA038FFAF016411C961B50E7 /* libPods-HackcessAngelsTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +84,9 @@
 		A1330B0518AD62B5002B1828 /* HAUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HAUser.h; path = hackcessangels/model/HAUser.h; sourceTree = SOURCE_ROOT; };
 		A1330B0618AD62B5002B1828 /* HAUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HAUser.m; path = hackcessangels/model/HAUser.m; sourceTree = SOURCE_ROOT; };
 		A1330B0918AD632E002B1828 /* HAUserTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HAUserTests.m; path = hackcessangelsTests/HAUserTests.m; sourceTree = SOURCE_ROOT; };
+		A1AC4C5318B69AD2002EE7E6 /* HAUserServicesTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HAUserServicesTests.m; path = hackcessangelsTests/HAUserServicesTests.m; sourceTree = SOURCE_ROOT; };
+		B81C1F48A9394E3D818E00EB /* Pods-HackcessAngelsTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HackcessAngelsTests.xcconfig"; path = "Pods/Pods-HackcessAngelsTests.xcconfig"; sourceTree = "<group>"; };
+		CA038FFAF016411C961B50E7 /* libPods-HackcessAngelsTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HackcessAngelsTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,7 +110,7 @@
 				22601F231886E2DE008B0179 /* XCTest.framework in Frameworks */,
 				22601F251886E2DE008B0179 /* UIKit.framework in Frameworks */,
 				22601F241886E2DE008B0179 /* Foundation.framework in Frameworks */,
-				95527CEF6AB44E8BADA9B3C3 /* libPods.a in Frameworks */,
+				DACD378C81EF46D185A2B41E /* libPods-HackcessAngelsTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -136,6 +140,7 @@
 				22601F021886E2DE008B0179 /* Frameworks */,
 				22601F011886E2DE008B0179 /* Products */,
 				75B5CDE6C7954202AF2565B3 /* Pods.xcconfig */,
+				B81C1F48A9394E3D818E00EB /* Pods-HackcessAngelsTests.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -158,6 +163,7 @@
 				22601F071886E2DE008B0179 /* UIKit.framework */,
 				22601F221886E2DE008B0179 /* XCTest.framework */,
 				18DAFC5302E94F25AE48D512 /* libPods.a */,
+				CA038FFAF016411C961B50E7 /* libPods-HackcessAngelsTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -191,6 +197,7 @@
 			children = (
 				22601F2E1886E2DE008B0179 /* HackcessAngelsTests.m */,
 				A1330B0918AD632E002B1828 /* HAUserTests.m */,
+				A1AC4C5318B69AD2002EE7E6 /* HAUserServicesTests.m */,
 				22601F291886E2DE008B0179 /* Supporting Files */,
 			);
 			path = HackcessAngelsTests;
@@ -358,7 +365,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Pods-HackcessAngelsTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		F51AE962C81E4C90A86CF551 /* Check Pods Manifest.lock */ = {
@@ -416,6 +423,7 @@
 			files = (
 				22601F2F1886E2DE008B0179 /* HackcessAngelsTests.m in Sources */,
 				A1330B0818AD62B5002B1828 /* HAUser.m in Sources */,
+				A1AC4C5418B69AD2002EE7E6 /* HAUserServicesTests.m in Sources */,
 				8FCE63A018AD5E3E00D4C957 /* HAUserService.m in Sources */,
 				A1330B0A18AD632E002B1828 /* HAUserTests.m in Sources */,
 			);
@@ -563,7 +571,7 @@
 		};
 		22601F361886E2DE008B0179 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 75B5CDE6C7954202AF2565B3 /* Pods.xcconfig */;
+			baseConfigurationReference = B81C1F48A9394E3D818E00EB /* Pods-HackcessAngelsTests.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/HackcessAngels.app/HackcessAngels";
@@ -588,7 +596,7 @@
 		};
 		22601F371886E2DE008B0179 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 75B5CDE6C7954202AF2565B3 /* Pods.xcconfig */;
+			baseConfigurationReference = B81C1F48A9394E3D818E00EB /* Pods-HackcessAngelsTests.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/HackcessAngels.app/HackcessAngels";
