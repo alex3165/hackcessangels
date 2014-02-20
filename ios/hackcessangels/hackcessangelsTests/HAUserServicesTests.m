@@ -28,30 +28,6 @@
     [super tearDown];
 }
 
-- (void)test_loginWithEmailAndPassword_login_success
-{
-    HAUserService *userService = [[HAUserService alloc] init];
-    
-    [self prepare];
-    
-    __block NSString *test;
-    
-    [userService loginWithEmailAndPassword:@"julia@gmail.com" password:@"motdepasse" success:^{
-        
-        test = @"youpi";
-        [self notify:kXCTUnitWaitStatusSuccess];
-        
-    } failure:^(NSError *error) {
-        
-        [self notify:kXCTUnitWaitStatusFailure];
-        
-    }];
-    
-    [self waitForStatus:kXCTUnitWaitStatusSuccess timeout:5.0];
-    
-    XCTAssertEqualObjects(test, @"youpi", @"");
-}
-
 - (void)test_createUserWithEmailAndPassword_Create_Success
 {
     HAUserService *userService = [[HAUserService alloc] init];
@@ -69,7 +45,25 @@
     } ];
     
     [self waitForStatus:kXCTUnitWaitStatusSuccess timeout:5.0];
+}
+
+- (void)test_deleteUserWithEmail_delete_Success
+{
+    HAUserService *userService = [[HAUserService alloc] init];
     
+    [self prepare];
+    
+    [userService loginWithEmailAndPassword:@"julia@gmail.com" password:@"motdepasse" success:^{
+        [userService deleteUserWithEmail:@"julia@gmail.com" success:^{
+            [self notify:kXCTUnitWaitStatusSuccess];
+        } failure:^(NSError *error) {
+            [self notify:kXCTUnitWaitStatusFailure];
+        }];
+    } failure:^(NSError *error) {
+        [self notify:kXCTUnitWaitStatusFailure];
+    }];
+    
+    [self waitForStatus:kXCTUnitWaitStatusSuccess timeout:5.0];
 }
 
 @end
