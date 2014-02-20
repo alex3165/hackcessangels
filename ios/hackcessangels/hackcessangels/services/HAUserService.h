@@ -10,5 +10,16 @@
 #import "DCRestRequests.h"
 
 @interface HAUserService : NSObject
-    - (void)getUserWithEmail:(NSString*) email success:(DCRestRequestsSuccess)success failure:(DCRestRequestsFailure)failure;
+
+- (void)getUserWithEmail:(NSString*) email success:(DCRestRequestsSuccess)success failure:(DCRestRequestsFailure)failure;
+
+- (void)createUserWithEmailAndPassword:(NSString*) email password:(NSString*) password
+                    success:(DCRestRequestsSuccess)success
+                    failure:(DCRestRequestsFailure)failure;
+- (void)loginWithEmailAndPassword:(NSString*) email password:(NSString*) password
+                    success:(DCRestRequestsSuccess)success
+                    failure:(DCRestRequestsFailure)failure;
+- (void)deleteUserWithEmail:(NSString*) email success:(DCRestRequestsSuccess)success
+                          failure:(DCRestRequestsFailure)failure;
+
 @end
