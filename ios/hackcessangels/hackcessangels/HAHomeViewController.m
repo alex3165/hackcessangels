@@ -43,6 +43,9 @@ NSString * address = @"10 adresse des jonquilles";
     self.restRequests = [[DCRestRequests alloc] init];
     /**********************************/
     
+    
+
+    
     [self.userService createUserWithEmailAndPassword:
      @"user@domain.tld" password:@"password" success:^(NSDictionary *dico){
          NSLog(@"Create success");
@@ -70,20 +73,30 @@ NSString * address = @"10 adresse des jonquilles";
     
     
     
-    [self.restRequests POSTrequest:@"user" withParameters:@{@"email":@"julia.dirand@gmail.com",@"password":@"motdepasse"} success:^(NSDictionary *dico){
+    [self.restRequests POSTrequest:@"user" withParameters:@{@"email":@"julia@gmail.com",@"password":@"mdp"} success:^(NSDictionary *dico){
         
-        NSLog(@"Success");
+        NSLog(@"Success post");
         
     } failure:^(NSError *error){
         
         NSLog(@"Failure");
     }];
     
-    [self.userService update:@"julia.dirand@gmail.com" :@"julia131290@hotmail.com" success:^(NSDictionary *dico){
-        NSLog(@"Success");
-    } failure:^(NSError *error){
-        NSLog(@"Failure");
-    }];
+    [self.userService loginWithEmailAndPassword:
+     @"julia@gmail.com" password:@"mdp" success:^(NSDictionary *dico){
+         [self.userService update:@"julia@gmail.com" :@"julia131290@hotmail.com" success:^(NSDictionary *dico){
+             NSLog(@"Success update");
+         } failure:^(NSError *error){
+             NSLog(@"Failure");
+         }];
+         NSLog(@"Login success");
+     }failure:^(NSError *error){
+         NSLog(@"Failure");
+     }];
+    
+
+    
+
     
 //    [self.restRequests DELETErequest:@"user" withParameters:@{@"email":@"julia.dirand@gmail.com",@"password":@"motdepasse"} success:^(NSDictionary *dico){
 //        
