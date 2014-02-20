@@ -91,5 +91,25 @@
 }
 
 
+//-(void) UPDATErequest:(NSString *)getstring withParameters:(NSDictionary *)params success:(DCRestRequestsSuccess)success failure:(DCRestRequestsFailure)failure;
+//
+//{
+//    
+//    [self.manager ){
+//        
+//        if (success)
+//        {
+//            success(responseObject);
+//        }
+//        
+//    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+//        
+//        if (failure)
+//        {
+//            failure(error);
+//        }
+//    }];
+//}
+
 
 @end

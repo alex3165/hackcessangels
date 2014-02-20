@@ -16,4 +16,21 @@
     [dcRestRequest GETrequest:@"user" withParameters:@{@"email" : email} success:success failure:failure];
 }
 
+
+// on recherche l'email entré, on le supprime, on envoit le nouvel email
+- (void)update:(NSString*)  email :(NSString*)  updateEmail  success:(DCRestRequestsSuccess)success failure:(DCRestRequestsFailure)failure  {
+    DCRestRequests* dcRestRequest = [[DCRestRequests alloc] init];
+
+   [dcRestRequest GETrequest:@"user" withParameters:@{@"email" : email} success:success failure:failure];
+    if (email){
+    [dcRestRequest DELETErequest:@"user" withParameters:@{@"email" : email} success:success failure:failure];
+    [dcRestRequest POSTrequest:@"user" withParameters:@{@"email" : updateEmail} success:success failure:failure];
+    
+    }
+}
+
+
+
+
+
 @end

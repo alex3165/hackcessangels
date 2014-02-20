@@ -15,7 +15,7 @@
 //commentaire pour tester le git
 
 @interface HAHomeViewController ()
-//@property (nonatomic, strong) AFHTTPRequestOperationManager *manager;
+@property (nonatomic, strong) AFHTTPRequestOperationManager *manager;
 @end
 
 
@@ -40,7 +40,7 @@ NSString * address = @"10 adresse des jonquilles";
     /* Initialisation de l'objet request ! */
     
     self.userService = [[HAUserService alloc] init];
-    
+    self.restRequests = [[DCRestRequests alloc] init];
     /**********************************/
     
     
@@ -51,7 +51,9 @@ NSString * address = @"10 adresse des jonquilles";
         NSLog(@"Failure");
     }];
     
-    /*[self.userService POSTrequest:@"user" withParameters:@{@"email":@"julia.dirand@gmail.com",@"password":@"motdepasse"} success:^(NSDictionary *dico){
+    
+    
+    [self.restRequests POSTrequest:@"user" withParameters:@{@"email":@"julia.dirand@gmail.com",@"password":@"motdepasse"} success:^(NSDictionary *dico){
         
         NSLog(@"Success");
         
@@ -60,21 +62,27 @@ NSString * address = @"10 adresse des jonquilles";
         NSLog(@"Failure");
     }];
     
-    [self.userService DELETErequest:@"user" withParameters:@{@"email":@"julia.dirand@gmail.com",@"password":@"motdepasse"} success:^(NSDictionary *dico){
-        
-        NSLog(@"Delete Success");
-        
+    [self.userService update:@"julia.dirand@gmail.com" :@"julia131290@hotmail.com" success:^(NSDictionary *dico){
+        NSLog(@"Success");
     } failure:^(NSError *error){
-        
-        NSLog(@"Delete Failure");
-    }];*/
+        NSLog(@"Failure");
+    }];
+    
+//    [self.restRequests DELETErequest:@"user" withParameters:@{@"email":@"julia.dirand@gmail.com",@"password":@"motdepasse"} success:^(NSDictionary *dico){
+//        
+//        NSLog(@"Delete Success");
+//        
+//    } failure:^(NSError *error){
+//        
+//        NSLog(@"Delete Failure");
+//    }];
     
     
-//    self.manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL: [NSURL URLWithString:@"http://terra.membrives.fr/app/api/"]];
-//    
-//    self.manager.responseSerializer = [AFJSONResponseSerializer serializer];
-//    
-//    self.manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/html",nil];
+    //self.manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL: [NSURL URLWithString:@"http://terra.membrives.fr/app/api/"]];
+    
+  // self.manager.responseSerializer = [AFJSONResponseSerializer serializer];
+   
+  //  self.manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/html",nil];
 //    //self.manager.baseURL = [NSURL URLWithString:@"http://terra.membrives.fr/app/api"];
 //    [self.manager GET:@"user" parameters:@{@"email":@"etienne@membrives.fr"} success:^(AFHTTPRequestOperation *operation, id responseObject) {
 //        if ([responseObject objectForKey:@"description"]== [NSNull null]) {
