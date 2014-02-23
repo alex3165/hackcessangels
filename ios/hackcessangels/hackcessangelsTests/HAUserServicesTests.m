@@ -34,7 +34,7 @@
     
     [self prepare];
     
-    [userService createUserWithEmailAndPassword:@"julia@gmail.com" password:@"motdepasse" success:^{
+    [userService createUserWithEmailAndPassword:@"julia.dirand@gmail.com" password:@"motdepasse" success:^{
         
         [self notify:kXCTUnitWaitStatusSuccess];
         
@@ -44,8 +44,9 @@
         
     } ];
     
-    [self waitForStatus:kXCTUnitWaitStatusSuccess timeout:5.0];
+    //[self waitForStatus:kXCTUnitWaitStatusSuccess timeout:5.0];
 }
+
 
 - (void)test_deleteUserWithEmail_delete_Success
 {
@@ -53,7 +54,7 @@
     
     [self prepare];
     
-    [userService loginWithEmailAndPassword:@"julia@gmail.com" password:@"motdepasse" success:^{
+    [userService loginWithEmailAndPassword:@"julia.dirand@gmail.com" password:@"motdepasse" success:^{
         [userService deleteUserWithEmail:@"julia@gmail.com" success:^{
             [self notify:kXCTUnitWaitStatusSuccess];
         } failure:^(NSError *error) {
@@ -63,11 +64,58 @@
         [self notify:kXCTUnitWaitStatusFailure];
     }];
     
-    [self waitForStatus:kXCTUnitWaitStatusSuccess timeout:5.0];
+    //[self waitForStatus:kXCTUnitWaitStatusSuccess timeout:5.0];
 }
 
 
 
+- (void)test_getUserWithEmail_Success{
+    
+    HAUserService *userService = [[HAUserService alloc] init];
+    
+    [self prepare];
+    
+    [userService getUserWithEmail:@"julia.dirand@gmail.com" success:^{
+        [self notify:kXCTUnitWaitStatusSuccess];
+    
+    }
+        failure:^(NSError *error) {
+    
+        [self notify:kXCTUnitWaitStatusFailure];
+    }];
+     //[self waitForStatus:kXCTUnitWaitStatusSuccess timeout:5.0];
+}
+
+
+
+- (void)test_updateUser_Success {
+    
+    HAUserService *userService = [[HAUserService alloc] init];
+    
+    [self prepare];
+    [userService updateUser:@"julia.dirand@gmail.com" withUpdatedEmail:@"julia@gmail.com"success:^{
+        [self notify:kXCTUnitWaitStatusSuccess];
+    
+    } failure:^(NSError *error) {
+    [self notify:kXCTUnitWaitStatusFailure];
+    }];
+    
+    //[self waitForStatus:kXCTUnitWaitStatusSuccess timeout:5.0];
+}
+
+- (void)test_loginWithEmailAndPassword_Success{
+    
+    HAUserService *userService = [[HAUserService alloc] init];
+    
+    [self prepare];
+    [userService loginWithEmailAndPassword:@"julia.dirand@gmail.com" password:@"motdepasse" success:^{
+        [self notify:kXCTUnitWaitStatusSuccess];
+    
+    } failure:^(NSError *error){
+        [self notify:kXCTUnitWaitStatusFailure];
+    }];
+
+}
 
 
 

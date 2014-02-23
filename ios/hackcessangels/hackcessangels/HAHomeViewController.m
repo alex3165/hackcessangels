@@ -45,9 +45,7 @@ NSString * address = @"10 adresse des jonquilles";
     /**********************************/
 
 
-    
-    [self.userService createUserWithEmailAndPassword:
-=======
+
 
     /*[self.userService createUserWithEmailAndPassword:
 
@@ -78,8 +76,7 @@ NSString * address = @"10 adresse des jonquilles";
     
     
 
-    [self.restRequests POSTrequest:@"user" withParameters:@{@"email":@"julia@gmail.com",@"password":@"mdp"} success:^(NSDictionary *dico){
-=======
+
     /*[self.restRequests POSTrequest:@"user" withParameters:@{@"email":@"julia.dirand@gmail.com",@"password":@"motdepasse"} success:^(NSDictionary *dico){
 
         NSLog(@"Success post");
@@ -89,17 +86,17 @@ NSString * address = @"10 adresse des jonquilles";
         NSLog(@"Failure");
     }];*/
     
-        [self.userService loginWithEmailAndPassword:
-     @"julia@gmail.com" password:@"mdp" success:^(NSDictionary *dico){
-         [self.userService update:@"julia@gmail.com" :@"julia131290@hotmail.com" success:^(NSDictionary *dico){
-             NSLog(@"Success update");
-         } failure:^(NSError *error){
-             NSLog(@"Failure");
-         }];
-         NSLog(@"Login success");
-     }failure:^(NSError *error){
-         NSLog(@"Failure");
-     }];
+//        [self.userService loginWithEmailAndPassword:
+//     @"julia@gmail.com" password:@"mdp" success:^(NSDictionary *dico){
+//         [self.userService update:@"julia@gmail.com" :@"julia131290@hotmail.com" success:^(NSDictionary *dico){
+//             NSLog(@"Success update");
+//         } failure:^(NSError *error){
+//             NSLog(@"Failure");
+//         }];
+//         NSLog(@"Login success");
+//     }failure:^(NSError *error){
+//         NSLog(@"Failure");
+//     }];
     
 
     [self.userService loginWithEmailAndPassword:@"julia.dirand@gmail.com" password:@"motdepasse" success:^{
@@ -114,7 +111,7 @@ NSString * address = @"10 adresse des jonquilles";
         
     }];
 
-    
+
     
 //    [self.restRequests DELETErequest:@"user" withParameters:@{@"email":@"julia.dirand@gmail.com",@"password":@"motdepasse"} success:^(NSDictionary *dico){
 //        

@@ -24,9 +24,7 @@
     DCRestRequests* dcRestRequest = [[DCRestRequests alloc] init];
 
    [dcRestRequest GETrequest:@"user" withParameters:@{@"email" : email} success:success failure:failure];
-    
-    
-    if (email){
+
     [dcRestRequest DELETErequest:@"user" withParameters:@{@"email" : email} success:success failure:failure];
     [dcRestRequest POSTrequest:@"user" withParameters:@{@"email" : updateEmail} success:success failure:failure];
 
@@ -40,7 +38,6 @@
        
    } failure:failure];
     
-
     
 }
 
