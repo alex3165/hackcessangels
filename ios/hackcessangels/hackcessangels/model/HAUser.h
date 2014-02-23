@@ -15,6 +15,9 @@
 @property (nonatomic, strong) NSString *prenom;
 @property (nonatomic, strong, readonly) NSString *email;
 @property (nonatomic, strong) NSString *password;
+@property (nonatomic, strong) NSString *name;
+@property (nonatomic, strong) NSString *userdescription;
+@property (nonatomic, strong) NSString *handicap;
 
 - (id)initWithDictionary:(NSDictionary *)dico;
 

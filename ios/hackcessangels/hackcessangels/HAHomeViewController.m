@@ -11,6 +11,7 @@
 #import "HATileOverlayView.h"
 #import "HALocalisation.h"
 #import "HAUserService.h"
+#import "HAUser.h"
 
 //commentaire pour tester le git
 
@@ -42,11 +43,15 @@ NSString * address = @"10 adresse des jonquilles";
     self.userService = [[HAUserService alloc] init];
     self.restRequests = [[DCRestRequests alloc] init];
     /**********************************/
-    
-    
+
 
     
     [self.userService createUserWithEmailAndPassword:
+=======
+
+    /*[self.userService createUserWithEmailAndPassword:
+
+>>>>>>> 5508f3f600c7c437568ebdca392f4c3d183ef23b
      @"user@domain.tld" password:@"password" success:^(NSDictionary *dico){
          NSLog(@"Create success");
          [self.userService loginWithEmailAndPassword:
@@ -69,20 +74,22 @@ NSString * address = @"10 adresse des jonquilles";
           }];
      } failure:^(NSError *error){
          NSLog(@"Create failure: %@", error);
-     }];
+     }];*/
     
     
-    
+
     [self.restRequests POSTrequest:@"user" withParameters:@{@"email":@"julia@gmail.com",@"password":@"mdp"} success:^(NSDictionary *dico){
-        
+=======
+    /*[self.restRequests POSTrequest:@"user" withParameters:@{@"email":@"julia.dirand@gmail.com",@"password":@"motdepasse"} success:^(NSDictionary *dico){
+
         NSLog(@"Success post");
         
     } failure:^(NSError *error){
         
         NSLog(@"Failure");
-    }];
+    }];*/
     
-    [self.userService loginWithEmailAndPassword:
+        [self.userService loginWithEmailAndPassword:
      @"julia@gmail.com" password:@"mdp" success:^(NSDictionary *dico){
          [self.userService update:@"julia@gmail.com" :@"julia131290@hotmail.com" success:^(NSDictionary *dico){
              NSLog(@"Success update");
@@ -95,8 +102,19 @@ NSString * address = @"10 adresse des jonquilles";
      }];
     
 
-    
+    [self.userService loginWithEmailAndPassword:@"julia.dirand@gmail.com" password:@"motdepasse" success:^{
+        
+        [self.userService updateUser:@"julia.dirand@gmail.com" withUpdatedEmail:@"julia131290@hotmail.com" success:^(NSDictionary *dico){
+            NSLog(@"Success");
+        } failure:^(NSError *error){
+            NSLog(@"Failure");
+        }];
 
+    } failure:^(NSError *error) {
+        
+    }];
+
+    
     
 //    [self.restRequests DELETErequest:@"user" withParameters:@{@"email":@"julia.dirand@gmail.com",@"password":@"motdepasse"} success:^(NSDictionary *dico){
 //        

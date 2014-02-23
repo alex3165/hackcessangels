@@ -19,7 +19,8 @@
 
 
 // on recherche l'email entré, on le supprime, on envoit le nouvel email
-- (void)update:(NSString*)  email :(NSString*)  updateEmail  success:(DCRestRequestsSuccess)success failure:(DCRestRequestsFailure)failure  {
+- (void)updateUser:(NSString*)email withUpdatedEmail:(NSString*)updateEmail  success:(DCRestRequestsSuccess)success failure:(DCRestRequestsFailure)failure
+{
     DCRestRequests* dcRestRequest = [[DCRestRequests alloc] init];
 
    [dcRestRequest GETrequest:@"user" withParameters:@{@"email" : email} success:success failure:failure];
@@ -28,8 +29,19 @@
     if (email){
     [dcRestRequest DELETErequest:@"user" withParameters:@{@"email" : email} success:success failure:failure];
     [dcRestRequest POSTrequest:@"user" withParameters:@{@"email" : updateEmail} success:success failure:failure];
+
+   [dcRestRequest GETrequest:@"user" withParameters:@{@"email" : email} success:^(NSDictionary *user){
+       
+       NSMutableDictionary *hash = [[NSMutableDictionary alloc] initWithDictionary:user];
+       
+       hash[@"email"] = updateEmail;
+       
+       [dcRestRequest PUTrequest:@"user" withParameters:@{@"email" : email,@"user":hash} success:success failure:failure];
+       
+   } failure:failure];
     
-    }
+
+    
 }
 
 
@@ -37,6 +49,7 @@
     DCRestRequests* dcRestRequest = [[DCRestRequests alloc] init];
     [dcRestRequest POSTrequest:@"user" withParameters:@{@"email" : email, @"password":password} success:success failure:failure];
 }
+    
 - (void)loginWithEmailAndPassword:(NSString *)email password:(NSString *)password success:(DCRestRequestsSuccess)success failure:(DCRestRequestsFailure)failure {
     DCRestRequests* dcRestRequest = [[DCRestRequests alloc] init];
     [dcRestRequest POSTrequest:@"user/login" withParameters:@{@"email" : email, @"password":password} success:success failure:failure];
