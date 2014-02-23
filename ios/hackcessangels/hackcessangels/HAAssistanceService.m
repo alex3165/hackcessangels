@@ -10,11 +10,11 @@
 
 @implementation HAAssistanceService
 
-- (void)helpMe:(NSString*)handicap success:(DCRestRequestsSuccess)success failure:(DCRestRequestsFailure)failure {
+- (void)helpMe:(NSString*)longitude latitude:(NSString*)latitude success:(DCRestRequestsSuccess)success failure:(DCRestRequestsFailure)failure {
     
     DCRestRequests* helpRequest = [[DCRestRequests alloc] init];
     
-    [helpRequest POSTrequest:@"user" withParameters:@{@"handicap" : handicap} success:success failure:failure];
+    [helpRequest POSTrequest:@"request" withParameters:@{@"lng" : longitude, @"lat" : latitude} success:success failure:failure];
     
 }
 

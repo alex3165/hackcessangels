@@ -10,6 +10,11 @@
 		22085DDD18883EAE00A4BE75 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22085DDC18883EAE00A4BE75 /* CoreLocation.framework */; };
 		22130BFF188964C200191955 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22130BFE188964C200191955 /* MapKit.framework */; };
 		22130C02188966E500191955 /* HALocalisation.m in Sources */ = {isa = PBXBuildFile; fileRef = 22130C01188966E500191955 /* HALocalisation.m */; };
+		222E375C18BA521C00E3B720 /* HAHelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 222E375B18BA521C00E3B720 /* HAHelpViewController.m */; };
+		222E375D18BA521C00E3B720 /* HAHelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 222E375B18BA521C00E3B720 /* HAHelpViewController.m */; };
+		222E375E18BA52E100E3B720 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22601F151886E2DE008B0179 /* Main.storyboard */; };
+		222E376118BA5B2F00E3B720 /* HALogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 222E376018BA5B2F00E3B720 /* HALogViewController.m */; };
+		222E376218BA5B2F00E3B720 /* HALogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 222E376018BA5B2F00E3B720 /* HALogViewController.m */; };
 		22601F041886E2DE008B0179 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22601F031886E2DE008B0179 /* Foundation.framework */; };
 		22601F061886E2DE008B0179 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22601F051886E2DE008B0179 /* CoreGraphics.framework */; };
 		22601F081886E2DE008B0179 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22601F071886E2DE008B0179 /* UIKit.framework */; };
@@ -55,6 +60,10 @@
 		22130BFE188964C200191955 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		22130C00188966E500191955 /* HALocalisation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HALocalisation.h; sourceTree = "<group>"; };
 		22130C01188966E500191955 /* HALocalisation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HALocalisation.m; sourceTree = "<group>"; };
+		222E375A18BA521C00E3B720 /* HAHelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HAHelpViewController.h; sourceTree = "<group>"; };
+		222E375B18BA521C00E3B720 /* HAHelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HAHelpViewController.m; sourceTree = "<group>"; };
+		222E375F18BA5B2F00E3B720 /* HALogViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HALogViewController.h; sourceTree = "<group>"; };
+		222E376018BA5B2F00E3B720 /* HALogViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HALogViewController.m; sourceTree = "<group>"; };
 		22601F001886E2DE008B0179 /* HackcessAngels.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HackcessAngels.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22601F031886E2DE008B0179 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		22601F051886E2DE008B0179 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -221,6 +230,10 @@
 			children = (
 				22601F121886E2DE008B0179 /* AppDelegate.h */,
 				22601F131886E2DE008B0179 /* AppDelegate.m */,
+				222E375F18BA5B2F00E3B720 /* HALogViewController.h */,
+				222E376018BA5B2F00E3B720 /* HALogViewController.m */,
+				222E375A18BA521C00E3B720 /* HAHelpViewController.h */,
+				222E375B18BA521C00E3B720 /* HAHelpViewController.m */,
 				22601F181886E2DE008B0179 /* HAHomeViewController.h */,
 				22601F191886E2DE008B0179 /* HAHomeViewController.m */,
 			);
@@ -230,8 +243,8 @@
 		8FCE639C18AD5DEF00D4C957 /* services */ = {
 			isa = PBXGroup;
 			children = (
-				8FCE639D18AD5E3E00D4C957 /* HAUserService.h */,
 				8FCE639E18AD5E3E00D4C957 /* HAUserService.m */,
+				8FCE639D18AD5E3E00D4C957 /* HAUserService.h */,
 				22DA835618B288610014CCA5 /* HAAssistanceService.h */,
 				22DA835718B288610014CCA5 /* HAAssistanceService.m */,
 				229CF60018AA14D900B35488 /* DCRestRequests.h */,
@@ -338,6 +351,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				22601F2D1886E2DE008B0179 /* InfoPlist.strings in Resources */,
+				222E375E18BA52E100E3B720 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -413,12 +427,14 @@
 			files = (
 				229CF60218AA14D900B35488 /* DCRestRequests.m in Sources */,
 				22601F1A1886E2DE008B0179 /* HAHomeViewController.m in Sources */,
+				222E376118BA5B2F00E3B720 /* HALogViewController.m in Sources */,
 				22601F4018871EAC008B0179 /* HATileOverlayView.m in Sources */,
 				8FCE639F18AD5E3E00D4C957 /* HAUserService.m in Sources */,
 				22601F141886E2DE008B0179 /* AppDelegate.m in Sources */,
 				22130C02188966E500191955 /* HALocalisation.m in Sources */,
 				22601F101886E2DE008B0179 /* main.m in Sources */,
 				A1330B0718AD62B5002B1828 /* HAUser.m in Sources */,
+				222E375C18BA521C00E3B720 /* HAHelpViewController.m in Sources */,
 				22DA835818B288610014CCA5 /* HAAssistanceService.m in Sources */,
 				22601F3F18871EAC008B0179 /* HATileOverlay.m in Sources */,
 			);
@@ -429,6 +445,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				22601F2F1886E2DE008B0179 /* HackcessAngelsTests.m in Sources */,
+				222E375D18BA521C00E3B720 /* HAHelpViewController.m in Sources */,
+				222E376218BA5B2F00E3B720 /* HALogViewController.m in Sources */,
 				A1330B0818AD62B5002B1828 /* HAUser.m in Sources */,
 				A1AC4C5418B69AD2002EE7E6 /* HAUserServicesTests.m in Sources */,
 				8FCE63A018AD5E3E00D4C957 /* HAUserService.m in Sources */,

@@ -16,7 +16,7 @@
 //commentaire pour tester le git
 
 @interface HAHomeViewController ()
-@property (nonatomic, strong) AFHTTPRequestOperationManager *manager;
+//@property (nonatomic, strong) AFHTTPRequestOperationManager *manager;
 @end
 
 
@@ -42,9 +42,13 @@ NSString * address = @"10 adresse des jonquilles";
     
     self.userService = [[HAUserService alloc] init];
     self.restRequests = [[DCRestRequests alloc] init];
+    
+    
     /**********************************/
     
-
+    
+    
+    
     /*[self.userService createUserWithEmailAndPassword:
 
      @"user@domain.tld" password:@"password" success:^(NSDictionary *dico){
