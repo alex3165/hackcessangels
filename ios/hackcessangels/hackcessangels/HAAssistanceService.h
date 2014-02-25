@@ -10,5 +10,5 @@
 #import "DCRestRequests.h"
 
 @interface HAAssistanceService : NSObject
-    - (void)helpMe:(NSString*)handicap success:(DCRestRequestsSuccess)success failure:(DCRestRequestsFailure)failure;
+- (void)helpMe:(NSString*)longitude latitude:(NSString*)latitude success:(DCRestRequestsSuccess)success failure:(DCRestRequestsFailure)failure;
 @end
