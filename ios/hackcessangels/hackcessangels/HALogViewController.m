@@ -35,8 +35,7 @@ HAHelpViewController *helpController;
     self.userService = [[HAUserService alloc] init];
     helpController = [[HAHelpViewController alloc]init];
     
-    text_email = self.login.text;
-    text_password = self.password.text;
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -57,6 +56,8 @@ HAHelpViewController *helpController;
 }
 
 - (IBAction)validateForm:(id)sender {
+        text_email = self.login.text;
+        text_password = self.password.text;
         NSLog(@"hehehe on est bien dans la boucle");
         [self.userService loginWithEmailAndPassword:text_email password:text_password success:^{
     
