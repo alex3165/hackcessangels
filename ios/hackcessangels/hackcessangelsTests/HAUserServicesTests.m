@@ -9,6 +9,7 @@
 #import <XCTest/XCTest.h>
 #import "HAUserService.h"
 #import "XCTAsyncTestCase.h"
+#import "OHHTTPStubs.h"
 
 @interface HAUserServicesTests : XCTAsyncTestCase
 
@@ -26,6 +27,7 @@
 {
     // Put teardown code here; it will be run once, after the last test case.
     [super tearDown];
+    [OHHTTPStubs removeAllStubs];
 }
 
 - (void)test_createUserWithEmailAndPassword_Create_Success
@@ -34,7 +36,15 @@
     
     [self prepare];
     
-    [userService createUserWithEmailAndPassword:@"julia.dirand@gmail.com" password:@"motdepasse" success:^{
+    [OHHTTPStubs stubRequestsPassingTest:^BOOL(NSURLRequest *request) {
+        return YES; // Stub ALL requests without any condition
+    } withStubResponse:^OHHTTPStubsResponse*(NSURLRequest *request) {
+        
+        return [OHHTTPStubsResponse responseWithData:nil statusCode:200 headers:nil];
+        
+    }];
+    
+    [userService createUserWithEmailAndPassword:@"julia.dirand@gmail.com" password:@"motdepasse" success:^(id obj){
         
         [self notify:kXCTUnitWaitStatusSuccess];
         
@@ -44,7 +54,7 @@
         
     } ];
     
-    //[self waitForStatus:kXCTUnitWaitStatusSuccess timeout:5.0];
+    [self waitForStatus:kXCTUnitWaitStatusSuccess timeout:5.0];
 }
 
 
@@ -54,8 +64,16 @@
     
     [self prepare];
     
-    [userService loginWithEmailAndPassword:@"julia.dirand@gmail.com" password:@"motdepasse" success:^{
-        [userService deleteUserWithEmail:@"julia@gmail.com" success:^{
+    [OHHTTPStubs stubRequestsPassingTest:^BOOL(NSURLRequest *request) {
+        return YES; // Stub ALL requests without any condition
+    } withStubResponse:^OHHTTPStubsResponse*(NSURLRequest *request) {
+        
+        return [OHHTTPStubsResponse responseWithData:nil statusCode:200 headers:nil];
+        
+    }];
+    
+    [userService loginWithEmailAndPassword:@"julia.dirand@gmail.com" password:@"motdepasse" success:^(id obj){
+        [userService deleteUserWithEmail:@"julia@gmail.com" success:^(id obj){
             [self notify:kXCTUnitWaitStatusSuccess];
         } failure:^(NSError *error) {
             [self notify:kXCTUnitWaitStatusFailure];
@@ -64,7 +82,7 @@
         [self notify:kXCTUnitWaitStatusFailure];
     }];
     
-    //[self waitForStatus:kXCTUnitWaitStatusSuccess timeout:5.0];
+    [self waitForStatus:kXCTUnitWaitStatusSuccess timeout:5.0];
 }
 
 
@@ -75,46 +93,74 @@
     
     [self prepare];
     
-    [userService getUserWithEmail:@"julia.dirand@gmail.com" success:^{
-        [self notify:kXCTUnitWaitStatusSuccess];
+    [OHHTTPStubs stubRequestsPassingTest:^BOOL(NSURLRequest *request) {
+        return YES; // Stub ALL requests without any condition
+    } withStubResponse:^OHHTTPStubsResponse*(NSURLRequest *request) {
+        
+        NSURL *url = [[NSBundle bundleForClass:self.class] URLForResource:@"user" withExtension:@"json"];
+        
+        NSData *data = [NSData dataWithContentsOfURL:url];
+        
+        return [OHHTTPStubsResponse responseWithData:data statusCode:200 headers:@{@"Content-Type":@"application/json"}];
+        
+    }];
     
+    [userService getUserWithEmail:@"julia.dirand@gmail.com" success:^(id obj){
+        
+        XCTAssertNotNil(obj, @"");
+        [self notify:kXCTUnitWaitStatusSuccess];
     }
         failure:^(NSError *error) {
     
         [self notify:kXCTUnitWaitStatusFailure];
     }];
-     //[self waitForStatus:kXCTUnitWaitStatusSuccess timeout:5.0];
+    
+    [self waitForStatus:kXCTUnitWaitStatusSuccess timeout:5.0];
 }
-
-
 
 - (void)test_updateUser_Success {
     
     HAUserService *userService = [[HAUserService alloc] init];
     
-    [self prepare];
-    [userService updateUser:@"julia.dirand@gmail.com" withUpdatedEmail:@"julia@gmail.com"success:^{
-        [self notify:kXCTUnitWaitStatusSuccess];
+    [OHHTTPStubs stubRequestsPassingTest:^BOOL(NSURLRequest *request) {
+     return YES; // Stub ALL requests without any condition
+     } withStubResponse:^OHHTTPStubsResponse*(NSURLRequest *request) {
+     
+     return [OHHTTPStubsResponse responseWithData:nil statusCode:200 headers:nil];
+     
+     }];
     
+    [self prepare];
+    [userService updateUser:@"julia.dirand@gmail.com" withUpdatedEmail:@"julia@gmail.com"success:^(id obj){
+        [self notify:kXCTUnitWaitStatusSuccess];
     } failure:^(NSError *error) {
-    [self notify:kXCTUnitWaitStatusFailure];
+        [self notify:kXCTUnitWaitStatusFailure];
     }];
     
-    //[self waitForStatus:kXCTUnitWaitStatusSuccess timeout:5.0];
+    [self waitForStatus:kXCTUnitWaitStatusSuccess timeout:5.0];
 }
 
 - (void)test_loginWithEmailAndPassword_Success{
     
     HAUserService *userService = [[HAUserService alloc] init];
     
+    [OHHTTPStubs stubRequestsPassingTest:^BOOL(NSURLRequest *request) {
+        return YES; // Stub ALL requests without any condition
+    } withStubResponse:^OHHTTPStubsResponse*(NSURLRequest *request) {
+        
+        return [OHHTTPStubsResponse responseWithData:nil statusCode:200 headers:nil];
+        
+    }];
+    
     [self prepare];
-    [userService loginWithEmailAndPassword:@"julia.dirand@gmail.com" password:@"motdepasse" success:^{
+    [userService loginWithEmailAndPassword:@"julia.dirand@gmail.com" password:@"motdepasse" success:^(id obj){
         [self notify:kXCTUnitWaitStatusSuccess];
     
     } failure:^(NSError *error){
         [self notify:kXCTUnitWaitStatusFailure];
     }];
 
+    [self waitForStatus:kXCTUnitWaitStatusSuccess timeout:5.0];
 }
 
 

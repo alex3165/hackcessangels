@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "AFNetworking.h"
 
-typedef void(^DCRestRequestsSuccess)();
+typedef void(^DCRestRequestsSuccess)(id obj);
 typedef void(^DCRestRequestsFailure)(NSError *error);
 
 @interface DCRestRequests : NSObject

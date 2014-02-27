@@ -1,7 +1,9 @@
 platform :ios, '6.0'
 
 pod 'AFNetworking'
+pod 'UICKeyChainStore'
 
 target :HackcessAngelsTests do
   pod 'XCTAsyncTestCase'
+  pod 'OHHTTPStubs'
 end

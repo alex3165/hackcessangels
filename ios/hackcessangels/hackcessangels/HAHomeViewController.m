@@ -45,17 +45,7 @@ NSString * address = @"10 adresse des jonquilles";
     
     
     /**********************************/
-<<<<<<< HEAD
 
-
-
-
-=======
-    
-    
-    
-    
->>>>>>> 93099eab5cdaa746250ebf9567e3adaa314ea9b3
     /*[self.userService createUserWithEmailAndPassword:
 
 >>>>>>> 5508f3f600c7c437568ebdca392f4c3d183ef23b
@@ -108,7 +98,7 @@ NSString * address = @"10 adresse des jonquilles";
 //     }];
     
 
-    [self.userService loginWithEmailAndPassword:@"julia.dirand@gmail.com" password:@"motdepasse" success:^{
+    [self.userService loginWithEmailAndPassword:@"julia.dirand@gmail.com" password:@"motdepasse" success:^(id obj){
         
         [self.userService updateUser:@"julia.dirand@gmail.com" withUpdatedEmail:@"julia131290@hotmail.com" success:^(NSDictionary *dico){
             NSLog(@"Success");

@@ -10,7 +10,6 @@
 
 @interface HAUser : NSObject
 
-
 @property (nonatomic, strong) NSString *nom;
 @property (nonatomic, strong) NSString *prenom;
 @property (nonatomic, strong, readonly) NSString *email;
@@ -20,5 +19,8 @@
 @property (nonatomic, strong) NSString *handicap;
 
 - (id)initWithDictionary:(NSDictionary *)dico;
+
++ (id)savedUser;
++ (void)saveUser;
 
 @end
