@@ -9,6 +9,9 @@
 #import "HAUser.h"
 #import "UICKeyChainStore.h"
 
+NSString *const kPasswordKey = @"password";
+NSString *const kEmailKey = @"email";
+
 @implementation HAUser
 
 - (id)initWithDictionary:(NSDictionary *)dico
@@ -55,15 +58,15 @@
 
 + (HAUser*) userFromKeyChain {
     NSString *email = [UICKeyChainStore stringForKey:@"email" service:@"HAUser"];
-    NSString *password = [UICKeyChainStore stringForKey:@"password" service:@"HAUser"];
-    HAUser *user = [[HAUser alloc] initWithDictionary:@{@"email": email, @"password": password}];
+    NSString *password = [UICKeyChainStore stringForKey:kPasswordKey service:@"HAUser"];
+    HAUser *user = [[HAUser alloc] initWithDictionary:@{@"email": email, kPasswordKey: password}];
     return user;
 }
 
 - (void) saveUserToKeyChain
 {
-    [UICKeyChainStore setString:self.email forKey:@"email" service:@"HAUser"];
-    [UICKeyChainStore setString:self.password forKey:@"password" service:@"HAUser"];
+    [UICKeyChainStore setString:self.email forKey:kEmailKey service:@"HAUser"];
+    [UICKeyChainStore setString:self.password forKey:kPasswordKey service:@"HAUser"];
     return;
 }
 @end

@@ -47,7 +47,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "122"
             endingLineNumber = "122"
-            landmarkName = "-test_updateUser_Success"
+            landmarkName = "-test_getUserWithEmail_Success"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

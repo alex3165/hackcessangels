@@ -62,13 +62,13 @@
     HAUser *user = [[HAUser alloc] initWithDictionary:dico];
     [user saveUserToKeyChain];
     
-    XCTAssertEqualObjects([UICKeyChainStore stringForKey:@"email" service:@"HAUser"], @"toto@titi.com", @"");
-    XCTAssertEqualObjects([UICKeyChainStore stringForKey:@"password" service:@"HAUser"], @"password", @"");
+    XCTAssertEqualObjects([UICKeyChainStore stringForKey:kEmailKey service:@"HAUser"], @"toto@titi.com", @"");
+    XCTAssertEqualObjects([UICKeyChainStore stringForKey:kPasswordKey service:@"HAUser"], @"password", @"");
 }
 
 - (void) test_UserFromKeyChain {
-    [UICKeyChainStore setString:@"email@domain.tld" forKey:@"email" service:@"HAUser"];
-    [UICKeyChainStore setString:@"secret" forKey:@"password" service:@"HAUser"];
+    [UICKeyChainStore setString:@"email@domain.tld" forKey:kEmailKey service:@"HAUser"];
+    [UICKeyChainStore setString:@"secret" forKey:kPasswordKey service:@"HAUser"];
     
     HAUser *user = [HAUser userFromKeyChain];
     XCTAssertEqualObjects(user.email, @"email@domain.tld", @"");

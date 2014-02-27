@@ -35,7 +35,7 @@
     // If it's a relatively recent event, turn off updates to save power.
     CLLocation* location = [locations lastObject];
     // If the event is recent, do something with it.
-    NSLog(@"latitude %+.6f, longitude %+.6f, accuracy %+.6f\n",
+    DLog(@"latitude %+.6f, longitude %+.6f, accuracy %+.6f\n",
           location.coordinate.latitude,
           location.coordinate.longitude,
           location.horizontalAccuracy);
