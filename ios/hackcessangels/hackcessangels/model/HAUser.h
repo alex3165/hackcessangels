@@ -20,7 +20,7 @@
 
 - (id)initWithDictionary:(NSDictionary *)dico;
 
-+ (id)savedUser;
-+ (void)saveUser;
++ (HAUser*) userFromKeyChain;
+- (void) saveUserToKeyChain;
 
 @end

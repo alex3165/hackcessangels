@@ -8,13 +8,14 @@
 
 #import <Foundation/Foundation.h>
 #import "DCRestRequests.h"
+#import "HAUser.h"
 
-typedef void(^HAUserServiceSuccess)();
+typedef void(^HAUserServiceSuccess)(HAUser *user);
 typedef void(^HAUserServiceFailure)(NSError *error);
 
 @interface HAUserService : NSObject
 
-- (void)getUserWithEmail:(NSString*) email success:(DCRestRequestsSuccess)success failure:(DCRestRequestsFailure)failure;
+- (void)getUserWithEmail:(NSString*) email success:(HAUserServiceSuccess)success failure:(HAUserServiceFailure)failure;
 
 
 - (void)updateUser:(NSString*)email withUpdatedEmail:(NSString*)updateEmail  success:(DCRestRequestsSuccess)success failure:(DCRestRequestsFailure)failure;
