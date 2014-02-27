@@ -9,6 +9,9 @@
 #import <Foundation/Foundation.h>
 #import "DCRestRequests.h"
 
+typedef void(^HAUserServiceSuccess)();
+typedef void(^HAUserServiceFailure)(NSError *error);
+
 @interface HAUserService : NSObject
 
 - (void)getUserWithEmail:(NSString*) email success:(DCRestRequestsSuccess)success failure:(DCRestRequestsFailure)failure;
