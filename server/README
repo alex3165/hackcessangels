@@ -52,3 +52,29 @@ Endpoints
             - 30x: Login requis
             - 400: Paramètre manquant
             - 403: Login et email demandé ne correspondent pas
+/api/request
+    Content-type: application/json
+  - POST: Crée une nouvelle demande d'aide
+        Paramètres: lat (latitude); lng (longitude)
+        Authentification par cookie requise
+        Codes retour:
+            - 200: OK, utilisateur créé
+            - 400: Paramètre manquant
+  - GET: Retourne la demande en cours
+        Authentification par cookie requise
+        Codes retour:
+            - 200: OK, demande retournée
+            - 400: Paramètre manquant
+            - 404: Aucune requête en cours
+  - PUT: Modifie une requête
+        Paramètres: lat (latitude); lng (longitude)
+        Authentification par cookie requise
+        Codes retour:
+            - 200: OK, utilisateur créé
+            - 400: Paramètre manquant
+            - 404: Aucune requête en cours
+  - DELETE: Supprime la demande en cours
+        Authentification par cookie requise
+        Codes retour:
+            - 200: OK, utilisateur supprimé
+            - 400: Paramètre manquant

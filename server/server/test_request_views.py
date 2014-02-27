@@ -42,6 +42,31 @@ class RequestViewsTestCase(unittest.TestCase):
             "lng": 2.375278})
         self.assertEqual(200, rv.status_code)
 
+
+    def test_get(self):
+        self.create_user_and_login()
+
+        rv = self.app.post("/api/request", data={
+            "lat": 48.843906,
+            "lng": 2.375278})
+        self.assertEqual(200, rv.status_code)
+
+        rv = self.app.get("/api/request")
+        self.assertEqual(200, rv.status_code)
+
+    def test_put(self):
+        self.create_user_and_login()
+
+        rv = self.app.post("/api/request", data={
+            "lat": 48.843906,
+            "lng": 2.375278})
+        self.assertEqual(200, rv.status_code)
+
+        rv = self.app.put("/api/request", data={
+            "lat": 30.843906,
+            "lng": 3.375278})
+        self.assertEqual(200, rv.status_code)
+
     def test_delete(self):
         self.create_user_and_login()
 
