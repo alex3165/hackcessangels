@@ -49,5 +49,21 @@
     
     //TouchDB - Experimental
     
+    // Actual code
+    return nil;
+}
+
++ (HAUser*) userFromKeyChain {
+    NSString *email = [UICKeyChainStore stringForKey:@"email" service:@"HAUser"];
+    NSString *password = [UICKeyChainStore stringForKey:@"password" service:@"HAUser"];
+    HAUser *user = [[HAUser alloc] initWithDictionary:@{@"email": email, @"password": password}];
+    return user;
+}
+
+- (void) saveUserToKeyChain
+{
+    [UICKeyChainStore setString:self.email forKey:@"email" service:@"HAUser"];
+    [UICKeyChainStore setString:self.password forKey:@"password" service:@"HAUser"];
+    return;
 }
 @end

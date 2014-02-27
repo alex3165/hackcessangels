@@ -10,6 +10,7 @@
 #import "HAUserService.h"
 #import "XCTAsyncTestCase.h"
 #import "OHHTTPStubs.h"
+#import "UICKeyChainStore.h"
 
 @interface HAUserServicesTests : XCTAsyncTestCase
 
@@ -86,7 +87,6 @@
 }
 
 
-
 - (void)test_getUserWithEmail_Success{
     
     HAUserService *userService = [[HAUserService alloc] init];
@@ -106,8 +106,11 @@
     }];
     
     [userService getUserWithEmail:@"julia.dirand@gmail.com" success:^(id obj){
-        
-        XCTAssertNotNil(obj, @"");
+        XCTAssertEqualObjects(NSStringFromClass([obj class]), NSStringFromClass([HAUser class]), @"Wrong class");
+        HAUser *user = obj;
+        XCTAssertEqualObjects(user.name, @"John", @"Wrong name");
+        XCTAssertEqualObjects([UICKeyChainStore stringForKey:@"email" service:@"HAUser"], @"John@example.com", @"");
+        XCTAssertEqualObjects([UICKeyChainStore stringForKey:@"password" service:@"HAUser"], @"secret", @"");
         [self notify:kXCTUnitWaitStatusSuccess];
     }
         failure:^(NSError *error) {

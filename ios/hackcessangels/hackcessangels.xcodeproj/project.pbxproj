@@ -34,6 +34,7 @@
 		229CF60218AA14D900B35488 /* DCRestRequests.m in Sources */ = {isa = PBXBuildFile; fileRef = 229CF60118AA14D900B35488 /* DCRestRequests.m */; };
 		22DA835818B288610014CCA5 /* HAAssistanceService.m in Sources */ = {isa = PBXBuildFile; fileRef = 22DA835718B288610014CCA5 /* HAAssistanceService.m */; };
 		22DA835918B288610014CCA5 /* HAAssistanceService.m in Sources */ = {isa = PBXBuildFile; fileRef = 22DA835718B288610014CCA5 /* HAAssistanceService.m */; };
+		8F88460918BFBBB400595CA2 /* HALocationService.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F88460818BFBBB400595CA2 /* HALocationService.m */; };
 		8FCE639F18AD5E3E00D4C957 /* HAUserService.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FCE639E18AD5E3E00D4C957 /* HAUserService.m */; };
 		8FCE63A018AD5E3E00D4C957 /* HAUserService.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FCE639E18AD5E3E00D4C957 /* HAUserService.m */; };
 		A1330B0718AD62B5002B1828 /* HAUser.m in Sources */ = {isa = PBXBuildFile; fileRef = A1330B0618AD62B5002B1828 /* HAUser.m */; };
@@ -93,6 +94,8 @@
 		22DA835618B288610014CCA5 /* HAAssistanceService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HAAssistanceService.h; sourceTree = "<group>"; };
 		22DA835718B288610014CCA5 /* HAAssistanceService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HAAssistanceService.m; sourceTree = "<group>"; };
 		75B5CDE6C7954202AF2565B3 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		8F88460718BFBBB400595CA2 /* HALocationService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HALocationService.h; path = hackcessangels/HALocationService.h; sourceTree = SOURCE_ROOT; };
+		8F88460818BFBBB400595CA2 /* HALocationService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HALocationService.m; path = hackcessangels/HALocationService.m; sourceTree = SOURCE_ROOT; };
 		8FCE639D18AD5E3E00D4C957 /* HAUserService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HAUserService.h; path = hackcessangels/services/HAUserService.h; sourceTree = SOURCE_ROOT; };
 		8FCE639E18AD5E3E00D4C957 /* HAUserService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HAUserService.m; path = hackcessangels/services/HAUserService.m; sourceTree = SOURCE_ROOT; };
 		A1330B0518AD62B5002B1828 /* HAUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HAUser.h; path = hackcessangels/model/HAUser.h; sourceTree = SOURCE_ROOT; };
@@ -252,6 +255,8 @@
 				22DA835718B288610014CCA5 /* HAAssistanceService.m */,
 				229CF60018AA14D900B35488 /* DCRestRequests.h */,
 				229CF60118AA14D900B35488 /* DCRestRequests.m */,
+				8F88460718BFBBB400595CA2 /* HALocationService.h */,
+				8F88460818BFBBB400595CA2 /* HALocationService.m */,
 			);
 			name = services;
 			sourceTree = "<group>";
@@ -432,6 +437,7 @@
 				229CF60218AA14D900B35488 /* DCRestRequests.m in Sources */,
 				22601F1A1886E2DE008B0179 /* HAHomeViewController.m in Sources */,
 				222E376118BA5B2F00E3B720 /* HALogViewController.m in Sources */,
+				8F88460918BFBBB400595CA2 /* HALocationService.m in Sources */,
 				22601F4018871EAC008B0179 /* HATileOverlayView.m in Sources */,
 				8FCE639F18AD5E3E00D4C957 /* HAUserService.m in Sources */,
 				22601F141886E2DE008B0179 /* AppDelegate.m in Sources */,

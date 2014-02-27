@@ -11,9 +11,15 @@
 
 @implementation HAUserService
 
-- (void)getUserWithEmail:(NSString*) email success:(DCRestRequestsSuccess)success failure:(DCRestRequestsFailure)failure {
+- (void)getUserWithEmail:(NSString*) email success:(HAUserServiceSuccess)success failure:(HAUserServiceFailure)failure {
     DCRestRequests* dcRestRequest = [[DCRestRequests alloc] init];
-    [dcRestRequest GETrequest:@"user" withParameters:@{@"email" : email} success:success failure:failure];
+    [dcRestRequest GETrequest:@"user" withParameters:@{@"email" : email} success:^(id obj){
+        HAUser *user = [[HAUser alloc] initWithDictionary:obj];
+        [user saveUserToKeyChain];
+        if (success) {
+            success(user);
+        }
+    } failure:failure];
 }
 
 
