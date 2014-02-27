@@ -7,6 +7,7 @@
 //
 
 #import "HAUser.h"
+#import "UICKeyChainStore.h"
 
 @implementation HAUser
 
@@ -27,4 +28,26 @@
     return self;
 }
 
++ (id)savedUser
+{
+    //NSUSerdefault - pas du tout secure
+    //[[NSUserDefaults standardUserDefaults] setObject:@"toto" forKey:@"name"];
+    //[[NSUserDefaults standardUserDefaults] synchronize];
+    
+    //CoreData
+    //SQLite - XML - File
+    //NSManagedObjectContext;
+    
+    //SQLite - SQL
+    
+    //Keychain - Sécurisé
+    //[UICKeyChainStore setString:@"password1234" forKey:@"password"];
+    
+    //Ecrire des fichiers (plist)
+    
+    //NSURLCache
+    
+    //TouchDB - Experimental
+    
+}
 @end

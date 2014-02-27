@@ -11,13 +11,13 @@
 
 @interface HALogViewController ()
 
+@property (nonatomic, strong) NSString * textEmail;
+@property (nonatomic, strong) NSString * textPassword;
+@property (nonatomic, strong) HAHelpViewController *helpController;
+
 @end
 
 @implementation HALogViewController
-
-NSString * text_email;
-NSString * text_password;
-HAHelpViewController *helpController;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -33,9 +33,7 @@ HAHelpViewController *helpController;
     [super viewDidLoad];
 	
     self.userService = [[HAUserService alloc] init];
-    helpController = [[HAHelpViewController alloc]init];
-    
-
+    self.helpController = [[HAHelpViewController alloc]init];
 }
 
 - (void)didReceiveMemoryWarning
@@ -55,15 +53,15 @@ HAHelpViewController *helpController;
     [sender resignFirstResponder];
 }
 
-- (IBAction)validateForm:(id)sender {
-        text_email = self.login.text;
-        text_password = self.password.text;
-        NSLog(@"hehehe on est bien dans la boucle");
-        [self.userService loginWithEmailAndPassword:text_email password:text_password success:^{
+- (IBAction)validateForm:(id)sender
+{
+        self.textEmail = self.login.text;
+        self.textPassword = self.password.text;
+
+        [self.userService loginWithEmailAndPassword:self.textEmail password:self.textPassword success:^(id obj){
     
             // On stock les données sur l'utilisateur et on passe à la vue suivante
-    
-            [self.navigationController pushViewController:helpController animated:true];
+            [self.navigationController pushViewController:self.helpController animated:true];
     
         } failure:^(NSError *error) {
             NSLog(@"%@",error);

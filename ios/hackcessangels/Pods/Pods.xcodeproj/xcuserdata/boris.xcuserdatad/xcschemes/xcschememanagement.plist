@@ -14,12 +14,27 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-HackcessAngelsTests-OHHTTPStubs.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-HackcessAngelsTests-UICKeyChainStore.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-HackcessAngelsTests-XCTAsyncTestCase.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
 		<key>Pods-HackcessAngelsTests.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-UICKeyChainStore.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -32,27 +47,42 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>681C05C73A624CB998B23EAC</key>
+		<key>011BB8805DC04B54B26F1DB2</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>857700975FD140DEB4B242BC</key>
+		<key>067AA1D5A1DF4DD294ABA0E0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B4DC1332C2B24D73B2D4499D</key>
+		<key>4788693D02A7460CAA911B52</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C15112B890994768A7CC73C4</key>
+		<key>9F85B0AAB09747898A563532</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D13FAB884190469E87C483AE</key>
+		<key>A2169C52E8A5404EAE84D868</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A4E493E721A24004A09FE439</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DFB0E03F2A1C4F4CB8C33EE7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E417DC6C20C44D9590B436FB</key>
 		<dict>
 			<key>primary</key>
 			<true/>

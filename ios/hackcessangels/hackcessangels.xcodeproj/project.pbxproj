@@ -41,6 +41,7 @@
 		A1330B0818AD62B5002B1828 /* HAUser.m in Sources */ = {isa = PBXBuildFile; fileRef = A1330B0618AD62B5002B1828 /* HAUser.m */; };
 		A1330B0A18AD632E002B1828 /* HAUserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A1330B0918AD632E002B1828 /* HAUserTests.m */; };
 		A1AC4C5418B69AD2002EE7E6 /* HAUserServicesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A1AC4C5318B69AD2002EE7E6 /* HAUserServicesTests.m */; };
+		A1B064A618BFCBE60078EED5 /* user.json in Resources */ = {isa = PBXBuildFile; fileRef = A1B064A518BFCBE60078EED5 /* user.json */; };
 		CADA4BECEC92479A8F6CB0F0 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18DAFC5302E94F25AE48D512 /* libPods.a */; };
 		DACD378C81EF46D185A2B41E /* libPods-HackcessAngelsTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CA038FFAF016411C961B50E7 /* libPods-HackcessAngelsTests.a */; };
 /* End PBXBuildFile section */
@@ -101,6 +102,7 @@
 		A1330B0618AD62B5002B1828 /* HAUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HAUser.m; path = hackcessangels/model/HAUser.m; sourceTree = SOURCE_ROOT; };
 		A1330B0918AD632E002B1828 /* HAUserTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HAUserTests.m; path = hackcessangelsTests/HAUserTests.m; sourceTree = SOURCE_ROOT; };
 		A1AC4C5318B69AD2002EE7E6 /* HAUserServicesTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HAUserServicesTests.m; path = hackcessangelsTests/HAUserServicesTests.m; sourceTree = SOURCE_ROOT; };
+		A1B064A518BFCBE60078EED5 /* user.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = user.json; path = hackcessangelsTests/user.json; sourceTree = SOURCE_ROOT; };
 		B81C1F48A9394E3D818E00EB /* Pods-HackcessAngelsTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HackcessAngelsTests.xcconfig"; path = "Pods/Pods-HackcessAngelsTests.xcconfig"; sourceTree = "<group>"; };
 		CA038FFAF016411C961B50E7 /* libPods-HackcessAngelsTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HackcessAngelsTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -214,6 +216,7 @@
 				22601F2E1886E2DE008B0179 /* HackcessAngelsTests.m */,
 				A1330B0918AD632E002B1828 /* HAUserTests.m */,
 				A1AC4C5318B69AD2002EE7E6 /* HAUserServicesTests.m */,
+				A1B064A518BFCBE60078EED5 /* user.json */,
 				22601F291886E2DE008B0179 /* Supporting Files */,
 			);
 			path = HackcessAngelsTests;
@@ -355,6 +358,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1B064A618BFCBE60078EED5 /* user.json in Resources */,
 				22601F2D1886E2DE008B0179 /* InfoPlist.strings in Resources */,
 				222E375E18BA52E100E3B720 /* Main.storyboard in Resources */,
 			);

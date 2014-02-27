@@ -10,12 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "hackcessangelsTests/HAUserServicesTests.m"
-            timestampString = "414621232.260111"
+            timestampString = "415222270.688849"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "46"
-            endingLineNumber = "46"
-            landmarkName = "-test_loginWithEmailAndPassword_login_success"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
+            landmarkName = "-test_createUserWithEmailAndPassword_Create_Success"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -26,12 +26,122 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "hackcessangelsTests/HAUserServicesTests.m"
-            timestampString = "414621239.458011"
+            timestampString = "415222270.688849"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "42"
-            endingLineNumber = "42"
-            landmarkName = "-test_loginWithEmailAndPassword_login_success"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
+            landmarkName = "-test_createUserWithEmailAndPassword_Create_Success"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "hackcessangelsTests/HAUserServicesTests.m"
+            timestampString = "415223003.504463"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "122"
+            endingLineNumber = "122"
+            landmarkName = "-test_updateUser_Success"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "hackcessangelsTests/HAUserServicesTests.m"
+            timestampString = "415223083.25285"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
+            landmarkName = "-test_getUserWithEmail_Success"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "hackcessangelsTests/HAUserServicesTests.m"
+            timestampString = "415223114.276015"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "110"
+            endingLineNumber = "110"
+            landmarkName = "-test_getUserWithEmail_Success"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__52-[HAUserServicesTests test_getUserWithEmail_Success]_block_invoke86"
+                  moduleName = "HackcessAngelsTests"
+                  urlString = "file:///Users/boris/Documents/Projects/mobile/hackcess/hackcessangels/ios/hackcessangels/hackcessangelsTests/HAUserServicesTests.m"
+                  timestampString = "415223384.184621"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "110"
+                  endingLineNumber = "110"
+                  offsetFromSymbolStart = "61">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__52-[HAUserServicesTests test_getUserWithEmail_Success]_block_invoke86"
+                  moduleName = "HackcessAngelsTests"
+                  urlString = "file:///Users/boris/Documents/Projects/mobile/hackcess/hackcessangels/ios/hackcessangels/hackcessangelsTests/HAUserServicesTests.m"
+                  timestampString = "415223384.184892"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "110"
+                  endingLineNumber = "110"
+                  offsetFromSymbolStart = "449">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "hackcessangelsTests/HAUserServicesTests.m"
+            timestampString = "415223115.396272"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "116"
+            endingLineNumber = "116"
+            landmarkName = "-test_getUserWithEmail_Success"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "hackcessangelsTests/HAUserServicesTests.m"
+            timestampString = "415223249.709116"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
+            landmarkName = "-test_getUserWithEmail_Success"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
