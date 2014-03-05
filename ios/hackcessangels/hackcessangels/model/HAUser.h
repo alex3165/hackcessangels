@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 /*
- - Alex : Login : Ecran, stocker user au login et pas au get, checker si on a un user, si on la ne pas faire d'écran de login.
+ - Alex : Login : Ecran, stocker user au login et pas au get, checker si on a un user, si on l'a, ne pas faire d'écran de login.
  
  - Ecran help + lien vers carte : rajouter des tests sur le service d'aide, créer des objets help, récuperer les eventuels infos.
  
@@ -27,7 +27,7 @@ extern NSString *const kEmailKey;
 
 @property (nonatomic, strong) NSString *nom;
 @property (nonatomic, strong) NSString *prenom;
-@property (nonatomic, strong, readonly) NSString *email;
+@property (nonatomic, strong) NSString *email;
 @property (nonatomic, strong) NSString *password;
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *userdescription;

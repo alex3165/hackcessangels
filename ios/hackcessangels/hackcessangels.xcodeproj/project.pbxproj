@@ -249,8 +249,8 @@
 		8FCE639C18AD5DEF00D4C957 /* services */ = {
 			isa = PBXGroup;
 			children = (
-				8FCE639E18AD5E3E00D4C957 /* HAUserService.m */,
 				8FCE639D18AD5E3E00D4C957 /* HAUserService.h */,
+				8FCE639E18AD5E3E00D4C957 /* HAUserService.m */,
 				22DA835618B288610014CCA5 /* HAAssistanceService.h */,
 				22DA835718B288610014CCA5 /* HAAssistanceService.m */,
 				229CF60018AA14D900B35488 /* DCRestRequests.h */,
