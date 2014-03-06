@@ -34,6 +34,8 @@
 	
     self.userService = [[HAUserService alloc] init];
     self.helpController = [[HAHelpViewController alloc]init];
+    
+    [self checkLoginWithUser]; // on check si on a un user de stocké
 }
 
 - (void)didReceiveMemoryWarning
@@ -53,26 +55,40 @@
     [sender resignFirstResponder];
 }
 
-- (IBAction)validateForm:(id)sender
-{
-        self.textEmail = self.login.text;
-        self.textPassword = self.password.text;
-
-        [self.userService loginWithEmailAndPassword:self.textEmail password:self.textPassword success:^(id obj){
-    
-            // On stock les données sur l'utilisateur et on passe à la vue suivante
-            [self.navigationController pushViewController:self.helpController animated:true];
-    
-        } failure:^(NSError *error) {
-            NSLog(@"%@",error);
-        }];
-}
-
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     [_login resignFirstResponder];
     [_password resignFirstResponder];
     
+}
+
+- (IBAction)validateForm:(id)sender
+{
+    // On fait la requête pour vérifier si le user enregistré sur le serveur est bon.
+    [self.userService loginWithEmailAndPassword:self.login.text password:self.password.text success:^(NSDictionary *dico){
+        
+        NSDictionary *userSetting = [NSDictionary dictionaryWithObjectsAndKeys:@"email",self.login.text,@"password",self.password.text, nil];
+        
+        /* On créer le User et on le sage */
+        self.actualUser = [[HAUser alloc] initWithDictionary:userSetting];
+        [self.actualUser saveUserToKeyChain];
+        
+        [self checkLoginWithUser]; // ----- check du User créé
+        
+    } failure:^(NSError *error) {
+        NSLog(@"%@",error);
+    }];
+}
+
+- (void)checkLoginWithUser{
+    
+    // on récupère le user stocké dans keychainStore
+    HAUser *UserFromKeychain = [HAUser userFromKeyChain];
+    
+    if (UserFromKeychain != Nil) { // si on a un user on push vers l'autre view
+        [self.navigationController pushViewController:self.helpController animated:true];
+    }
+
 }
 
 @end
