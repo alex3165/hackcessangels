@@ -30,6 +30,7 @@ extern NSString *const kEmailKey;
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *userdescription;
 @property (nonatomic, strong) NSString *handicap;
+@property (nonatomic, strong) NSHTTPCookie *cookie;
 
 - (id)initWithDictionary:(NSDictionary *)dico;
 

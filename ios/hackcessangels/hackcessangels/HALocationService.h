@@ -11,5 +11,6 @@
 
 @interface HALocationService : NSObject
 - (void) startLocation;
+- (void) stopLocation;
 - (void) locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations;
 @end

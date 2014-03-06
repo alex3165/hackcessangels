@@ -7,13 +7,20 @@
 //
 
 #import "HAUserService.h"
+#import "HAUser.h"
 #import "DCRestRequests.h"
+
+@interface HAUserService ()
+
+@property (nonatomic, strong) HAUser* actualUser;
+
+@end
 
 @implementation HAUserService
 
 - (void)getUserWithEmail:(NSString*) email success:(HAUserServiceSuccess)success failure:(HAUserServiceFailure)failure {
     DCRestRequests* dcRestRequest = [[DCRestRequests alloc] init];
-    [dcRestRequest GETrequest:@"user" withParameters:@{@"email" : email} success:^(id obj){
+    [dcRestRequest GETrequest:@"user" withParameters:@{@"email" : email} success:^(id obj, NSHTTPURLResponse* response){
         HAUser *user = [[HAUser alloc] initWithDictionary:obj];
         [user saveUserToKeyChain];
         if (success) {
@@ -34,7 +41,7 @@
     [dcRestRequest DELETErequest:@"user" withParameters:@{@"email" : email , @"password" : password} success:success failure:failure];
     [dcRestRequest POSTrequest:@"user" withParameters:@{@"email" : updateEmail , @"password" : updatePassword} success:success failure:failure];
 
-   [dcRestRequest GETrequest:@"user" withParameters:@{@"email" : email, @"password" : password } success:^(NSDictionary *user){
+   [dcRestRequest GETrequest:@"user" withParameters:@{@"email" : email, @"password" : password } success:^(NSDictionary *user, NSHTTPURLResponse* response){
        
        NSMutableDictionary *hash = [[NSMutableDictionary alloc] initWithDictionary:user];
        
@@ -56,7 +63,17 @@
     
 - (void)loginWithEmailAndPassword:(NSString *)email password:(NSString *)password success:(DCRestRequestsSuccess)success failure:(DCRestRequestsFailure)failure {
     DCRestRequests* dcRestRequest = [[DCRestRequests alloc] init];
-    [dcRestRequest POSTrequest:@"user/login" withParameters:@{@"email" : email, @"password":password} success:success failure:failure];
+    [dcRestRequest POSTrequest:@"user/login" withParameters:@{@"email" : email, @"password":password} success:^(id object, NSHTTPURLResponse* response){
+        
+        NSDictionary *userSetting = [NSDictionary dictionaryWithObjectsAndKeys:email,@"email",password,@"password", nil];
+        
+        /* On créer le User et on le sage */
+        self.actualUser = [[HAUser alloc] initWithDictionary:userSetting];
+        [self.actualUser saveUserToKeyChain];
+        
+        NSArray* cookies = [NSHTTPCookie cookiesWithResponseHeaderFields:[response allHeaderFields] forURL:response.URL];
+        NSHTTPCookie* cookie = cookies[0];
+    } failure:failure];
 }
 
 

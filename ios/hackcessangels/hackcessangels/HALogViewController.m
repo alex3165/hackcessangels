@@ -65,14 +65,7 @@
 - (IBAction)validateForm:(id)sender
 {
     // On fait la requête pour vérifier si le user enregistré sur le serveur est bon.
-    [self.userService loginWithEmailAndPassword:self.email.text password:self.password.text success:^(NSDictionary *dico){
-        
-        NSDictionary *userSetting = [NSDictionary dictionaryWithObjectsAndKeys:self.email.text,@"email",self.password.text,@"password", nil];
-        
-        /* On créer le User et on le sage */
-        self.actualUser = [[HAUser alloc] initWithDictionary:userSetting];
-        [self.actualUser saveUserToKeyChain];
-        
+    [self.userService loginWithEmailAndPassword:self.email.text password:self.password.text success:^(NSDictionary *dico, id obj){
         [self checkLoginWithUser]; // ----- check du User créé
         
     } failure:^(NSError *error) {

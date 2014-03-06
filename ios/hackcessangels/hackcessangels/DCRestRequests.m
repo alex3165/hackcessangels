@@ -18,7 +18,6 @@
     
 
     if (self) {
-        
 
         NSURL *urlrequests = [NSURL URLWithString:@"http://polaris.membrives.fr/app/api/"];
         
@@ -39,7 +38,7 @@
         
         if (success)
         {
-           success(responseObject);
+           success(responseObject, nil);
         }
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -61,7 +60,7 @@
         
         if (success)
         {
-            success(responseObject);
+            success(responseObject, operation.response);
         }
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -81,7 +80,7 @@
         
         if (success)
         {
-            success(responseObject);
+            success(responseObject, nil);
         }
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -101,7 +100,7 @@
         
         if (success)
         {
-            success(responseObject);
+            success(responseObject, nil);
         }
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {

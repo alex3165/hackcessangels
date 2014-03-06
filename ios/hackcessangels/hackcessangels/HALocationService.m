@@ -16,19 +16,28 @@
 
 @implementation HALocationService
 
-- (void) startLocation {
+- (bool) startLocation {
     // Create the location manager if this object does not
     // already have one.
     if (nil == self.locationManager)
         self.locationManager = [[CLLocationManager alloc] init];
     
+    if (![self.locationManager locationServicesEnabled]) {
+        return FALSE;
+    }
+    
     self.locationManager.delegate = self;
     self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     
     // Set a movement threshold for new events.
-    self.locationManager.distanceFilter = 10; // meters
+    self.locationManager.distanceFilter = 1; // meters
     
     [self.locationManager startUpdatingLocation];
+    return TRUE;
+}
+
+- (void) stopLocation {
+    [self.locationManager stopUpdatingLocation];
 }
 
 - (void) locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
