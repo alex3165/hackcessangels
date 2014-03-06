@@ -25,8 +25,6 @@ extern NSString *const kEmailKey;
 
 @interface HAUser : NSObject
 
-@property (nonatomic, strong) NSString *nom;
-@property (nonatomic, strong) NSString *prenom;
 @property (nonatomic, strong) NSString *email;
 @property (nonatomic, strong) NSString *password;
 @property (nonatomic, strong) NSString *name;

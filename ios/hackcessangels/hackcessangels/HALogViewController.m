@@ -57,7 +57,7 @@
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    [_login resignFirstResponder];
+    [_email resignFirstResponder];
     [_password resignFirstResponder];
     
 }
@@ -65,9 +65,9 @@
 - (IBAction)validateForm:(id)sender
 {
     // On fait la requête pour vérifier si le user enregistré sur le serveur est bon.
-    [self.userService loginWithEmailAndPassword:self.login.text password:self.password.text success:^(NSDictionary *dico){
+    [self.userService loginWithEmailAndPassword:self.email.text password:self.password.text success:^(NSDictionary *dico){
         
-        NSDictionary *userSetting = [NSDictionary dictionaryWithObjectsAndKeys:@"email",self.login.text,@"password",self.password.text, nil];
+        NSDictionary *userSetting = [NSDictionary dictionaryWithObjectsAndKeys:self.email.text,@"email",self.password.text,@"password", nil];
         
         /* On créer le User et on le sage */
         self.actualUser = [[HAUser alloc] initWithDictionary:userSetting];
@@ -83,9 +83,12 @@
 - (void)checkLoginWithUser{
     
     // on récupère le user stocké dans keychainStore
-    HAUser *UserFromKeychain = [HAUser userFromKeyChain];
+    HAUser *userFromKeychain = [HAUser userFromKeyChain];
     
-    if (UserFromKeychain != Nil) { // si on a un user on push vers l'autre view
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    self.helpController = [storyboard instantiateViewControllerWithIdentifier:@"helpView"];
+    
+    if (userFromKeychain) { // si on a un user on push vers l'autre view
         [self.navigationController pushViewController:self.helpController animated:true];
     }
 

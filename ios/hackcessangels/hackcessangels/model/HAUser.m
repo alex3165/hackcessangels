@@ -19,9 +19,7 @@ NSString *const kEmailKey = @"email";
     self = [super init];
     
     if (self) {
-        _nom = [dico objectForKey:@"nom"];
-        _prenom = [dico objectForKey:@"prenom"];
-        _email = [dico objectForKey:@"email"];
+        self.email = [dico objectForKey:@"email"];
         self.password = [dico objectForKey:@"password"];
         self.name = [dico objectForKey:@"name"];
         self.userdescription = [dico objectForKey:@"description"];
@@ -59,6 +57,11 @@ NSString *const kEmailKey = @"email";
 + (HAUser*) userFromKeyChain {
     NSString *email = [UICKeyChainStore stringForKey:@"email" service:@"HAUser"];
     NSString *password = [UICKeyChainStore stringForKey:kPasswordKey service:@"HAUser"];
+    if (!email || !password) {
+        
+        return nil;
+        
+    }
     HAUser *user = [[HAUser alloc] initWithDictionary:@{@"email": email, kPasswordKey: password}];
     return user;
 }

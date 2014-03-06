@@ -16,7 +16,7 @@
 @property (nonatomic, strong) HAUserService *userService;
 @property (nonatomic, strong) HAUser *actualUser;
 
-@property (weak, nonatomic) IBOutlet UITextField *login;
+@property (weak, nonatomic) IBOutlet UITextField *email;
 @property (weak, nonatomic) IBOutlet UITextField *password;
 
 - (IBAction)saisieReturn:(id)sender;
