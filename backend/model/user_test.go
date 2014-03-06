@@ -4,10 +4,6 @@ import (
 	"testing"
 )
 
-func getTestModel() (*Model, error) {
-	return NewModel("localhost", "hackcessangels_model_test")
-}
-
 func deleteTestDatabase(m *Model) {
 	err := m.db.DropDatabase()
 	if err != nil {
