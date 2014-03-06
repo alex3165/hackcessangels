@@ -17,7 +17,7 @@ typedef void(^HAUserServiceFailure)(NSError *error);
 
 - (void)getUserWithEmail:(NSString*) email success:(HAUserServiceSuccess)success failure:(HAUserServiceFailure)failure;
 
--(void)updateUser:(NSString*) email withUpdatedEmail:(NSString*)updateEmail login:(NSString*)login withUpdatedLogin:(NSString*)updateLogin password:(NSString*)password withUpdatedPassword:(NSString*)updatePassword success:(DCRestRequestsSuccess)success failure:(DCRestRequestsFailure)failure;
+-(void)updateUser:(NSString*) email withUpdatedEmail:(NSString*)updateEmail password:(NSString*)password withUpdatedPassword:(NSString*)updatePassword success:(DCRestRequestsSuccess)success failure:(DCRestRequestsFailure)failure;
 
 
 - (void)createUserWithEmailAndPassword:(NSString*) email password:(NSString*) password

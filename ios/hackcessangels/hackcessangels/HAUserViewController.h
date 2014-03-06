@@ -26,7 +26,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *edit;
 
 @property (nonatomic, strong) HAUserService *editUser;
-
+- (IBAction)saisieReturn:(id)sender;
+- (IBAction)touchOutside:(id)sender;
 
 
 

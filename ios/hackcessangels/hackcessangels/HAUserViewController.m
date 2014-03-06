@@ -32,7 +32,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+     HAUser *userActual = [HAUser userFromKeyChain];
+    //self.showLogin.text= userActual.login;
+    self.showEmail.text= userActual.email;
+    self.showPassword.text= userActual.password;
 }
 
 
@@ -40,10 +43,28 @@
 - (IBAction)editUser:(id)sender {
     
     self.editUser = [[HAUserService alloc]init];
-    [self.editUser updateUser:nil withUpdatedEmail:nil login:nil withUpdatedLogin:nil password:nil withUpdatedPassword:nil success:nil failure:nil];
+    
+    HAUser *userActual = [HAUser userFromKeyChain];
+    
+    [self.editUser updateUser:userActual.email withUpdatedEmail:self.showEmail.text password:userActual.password withUpdatedPassword:self.showPassword.text success:^(id obj) {
+        UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Bravo" message:@"Profil édité" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
+        [alert show];
+    } failure:^(NSError *error) {
+        UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Erreur" message:@"Profil  non édité" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
+        [alert show];
+    }];
+}
+     
+
+- (IBAction)saisieReturn:(id)sender {
+    
+    [sender resignFirstResponder];
 }
 
-
+- (IBAction)touchOutside:(id)sender {
+    
+    [sender resignFirstResponder];
+}
 
 
 
