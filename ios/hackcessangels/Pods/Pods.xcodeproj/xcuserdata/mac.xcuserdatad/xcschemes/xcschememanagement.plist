@@ -14,6 +14,16 @@
 			<key>orderHint</key>
 			<integer>4</integer>
 		</dict>
+		<key>Pods-HackcessAngelsTests-OHHTTPStubs.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>6</integer>
+		</dict>
+		<key>Pods-HackcessAngelsTests-UICKeyChainStore.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>7</integer>
+		</dict>
 		<key>Pods-HackcessAngelsTests-XCTAsyncTestCase.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -23,6 +33,11 @@
 		<dict>
 			<key>orderHint</key>
 			<integer>3</integer>
+		</dict>
+		<key>Pods-UICKeyChainStore.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>8</integer>
 		</dict>
 		<key>Pods.xcscheme</key>
 		<dict>
@@ -42,12 +57,32 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>724F628918034BBEB1039AB3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>857700975FD140DEB4B242BC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>983C65E6E24941F7A2ACDE4D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>99CAD9CDCD52458F81ED230B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9ECAC4AF94654A5B97624CF7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A5C79F8F72534ED0A90E578F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -62,12 +97,32 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>BF3266BF4A0640D9B90A21C5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C085C7AD6763423C9207265C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>C15112B890994768A7CC73C4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>D13FAB884190469E87C483AE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F26CB37A25FC47CC84C1F01B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F8D6A74DCCDD498AA7EAA0F0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
