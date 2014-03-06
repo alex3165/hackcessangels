@@ -34,7 +34,7 @@ func (s *Server) handleHelp(w http.ResponseWriter, r *http.Request) {
 
 	switch r.Method {
 	case "POST":
-		helpRequest, err := s.model.GetActiveRequestByRequester(user)
+		helpRequest, err := s.model.CreateActiveRequestByRequester(user)
 		if err != nil {
 			log.Printf("Error while getting active request: %+v", err)
 			returnError(500, "Couldn't create request", w)
@@ -59,7 +59,35 @@ func (s *Server) handleHelp(w http.ResponseWriter, r *http.Request) {
 			returnError(500, "Couldn't save request", w)
 			return
 		}
-		json.NewEncoder(w).Encode(user)
+		json.NewEncoder(w).Encode(helpRequest)
+		return
+	case "PUT":
+		helpRequest, err := s.model.GetActiveRequestByRequester(user)
+		if err != nil {
+			log.Printf("Error while getting active request: %+v", err)
+			returnError(404, "Couldn't get request", w)
+		}
+		longitude, ok := data["longitude"].(float64)
+		if !ok {
+			returnError(400, "Invalid request: longitude missing", w)
+			return
+		}
+		latitude, ok := data["latitude"].(float64)
+		if !ok {
+			returnError(400, "Invalid request: latitude missing", w)
+			return
+		}
+		helpRequest.SetRequesterPosition(longitude, latitude)
+		if precision, ok := data["precision"].(float64); ok {
+			helpRequest.RequesterPosPrecision = precision
+		}
+		err = helpRequest.Save()
+		if err != nil {
+			log.Printf("Error while saving help request: %+v", err)
+			returnError(500, "Couldn't save request", w)
+			return
+		}
+		json.NewEncoder(w).Encode(helpRequest)
 		return
 	default:
 		returnError(405, "Not implemented", w)

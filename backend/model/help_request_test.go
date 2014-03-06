@@ -17,7 +17,7 @@ func TestRequestLifcycle(t *testing.T) {
 		t.Error(err)
 	}
 
-    req, err := m.GetActiveRequestByRequester(u)
+    req, err := m.CreateActiveRequestByRequester(u)
     if err != nil {
         t.Error(err)
     }
@@ -26,7 +26,7 @@ func TestRequestLifcycle(t *testing.T) {
         t.Errorf("Request not filled: %+v", req)
     }
 
-    req.SetRequesterPosition(2.0, 48.0)
+    req.SetRequesterPosition(2.10, 48.90)
     err = req.Save()
     if err != nil {
         t.Error(err)
@@ -37,7 +37,7 @@ func TestRequestLifcycle(t *testing.T) {
         t.Error(err)
     }
 
-    if req.RequesterPosition.Coordinates[0] != 2.0 {
+    if req.RequesterPosition.Coordinates[0] != 2.10 {
         t.Errorf("Request not saved: %+v", req)
     }
 

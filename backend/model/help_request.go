@@ -1,8 +1,10 @@
 package model
 
 import (
-	"labix.org/v2/mgo/bson"
 	"time"
+    "errors"
+
+	"labix.org/v2/mgo/bson"
 )
 
 type PointGeometry struct {
@@ -58,9 +60,14 @@ func (m *Model) GetActiveRequestByRequester(user *User) (*HelpRequest, error) {
 	hr := new(HelpRequest)
 	err := m.helpRequests.Find(bson.M{"requesteremail": user.Email,
 		"isactive": true}).One(&hr)
+    hr.m = m
+    return hr, err
+}
+
+func (m *Model) CreateActiveRequestByRequester(user *User) (*HelpRequest, error) {
+	hr, err := m.GetActiveRequestByRequester(user)
 	if err == nil {
-		hr.m = m
-		return hr, nil
+		return nil, errors.New("Active request already present")
 	}
 	hr = &HelpRequest{
         Id: bson.NewObjectId(),

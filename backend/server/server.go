@@ -26,7 +26,7 @@ func NewServer() *Server {
 		DatabaseServer: "localhost",
 		Database:       "hackcessangels",
 		HTTPServer: &http.Server{
-			Addr:           ":8080",
+			Addr:           ":5000",
 			Handler:        r,
 			ReadTimeout:    30 * time.Second,
 			WriteTimeout:   30 * time.Second,
