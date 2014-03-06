@@ -24,11 +24,13 @@ type HelpRequest struct {
 
 	RequesterEmail      string
 	RequesterPosition   *PointGeometry
+    RequesterPosPrecision float64
 	RequesterLastUpdate time.Time
 	IsActive            bool
 
 	ResponderEmail      string
 	ResponderPosition   *PointGeometry
+    ResponderPosPrecision float64
 	ResponderLastUpdate time.Time
 	m                   *Model `bson:"-"`
 }

@@ -9,7 +9,9 @@ import (
 )
 
 func (s *Server) handleUserLogin(w http.ResponseWriter, r *http.Request) {
+    w.Header().Add("Content-Type", "application/json")
 	data, err := getJSONRequest(r)
+    log.Printf("New request: %+v\nData: %+v\nErr: %+v", r, data, err)
 	if err != nil {
 		log.Print(err)
 		returnError(400, "Invalid request", w)
@@ -47,7 +49,9 @@ func (s *Server) handleUserLogin(w http.ResponseWriter, r *http.Request) {
 }
 
 func (s *Server) handleUser(w http.ResponseWriter, r *http.Request) {
+    w.Header().Add("Content-Type", "application/json")
 	data, err := getJSONRequest(r)
+    log.Printf("New request: %+v\nData: %+v\nErr: %+v", r, data, err)
 	if err != nil {
 		returnError(400, "Invalid request", w)
 		return
