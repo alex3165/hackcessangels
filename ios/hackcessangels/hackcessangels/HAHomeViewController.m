@@ -97,17 +97,6 @@ NSString * address = @"10 adresse des jonquilles";
 //     }];
     
 
-    [self.userService loginWithEmailAndPassword:@"julia.dirand@gmail.com" password:@"motdepasse" success:^(id obj){
-        
-        [self.userService updateUser:@"julia.dirand@gmail.com" withUpdatedEmail:@"julia131290@hotmail.com" success:^(NSDictionary *dico){
-            NSLog(@"Success");
-        } failure:^(NSError *error){
-            NSLog(@"Failure");
-        }];
-
-    } failure:^(NSError *error) {
-        
-    }];
 
 
     
