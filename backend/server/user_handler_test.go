@@ -3,11 +3,11 @@ package server
 import (
 	"bytes"
 	"encoding/json"
+	"log"
 	"net/http"
 	"net/http/httptest"
 	"strings"
 	"testing"
-    "log"
 )
 
 func deleteTestDatabase(s *Server) {
@@ -133,7 +133,7 @@ func TestUserCreatePutGetDelete(t *testing.T) {
 		t.Errorf("Wrong status: %+v", response)
 	}
 	user := new(ApiUser)
-    log.Printf("Response: %s", response.Body)
+	log.Printf("Response: %s", response.Body)
 	err := json.NewDecoder(response.Body).Decode(&user)
 	if err != nil {
 		t.Errorf("User not returned: %s", err)
@@ -206,7 +206,7 @@ func TestUserChangePassword(t *testing.T) {
 		t.Errorf("Wrong status: %+v", response)
 	}
 	user := new(ApiUser)
-    log.Printf("Response: %s", response.Body)
+	log.Printf("Response: %s", response.Body)
 	err := json.NewDecoder(response.Body).Decode(&user)
 	if err != nil {
 		t.Errorf("User not returned: %s", err)
@@ -217,7 +217,7 @@ func TestUserChangePassword(t *testing.T) {
 	cookie := strings.Split(response.Header().Get("Set-Cookie"), ";")[0]
 
 	// PUT request
-    user.Password = ptrTo("newPassword!")
+	user.Password = ptrTo("newPassword!")
 	data = new(bytes.Buffer)
 	json.NewEncoder(data).Encode(map[string]interface{}{"data": user})
 	request, _ = http.NewRequest("PUT", "http://server/api/user", data)
@@ -242,4 +242,3 @@ func TestUserChangePassword(t *testing.T) {
 		t.Errorf("Wrong status: %+v", response)
 	}
 }
-

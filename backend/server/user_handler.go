@@ -11,58 +11,58 @@ import (
 // ApiUser represents a user as exposed in the public API. This is done so we can
 // decouple the internal representation from the external one.
 type ApiUser struct {
-    Email *string `json:"email,omitempty"`
-    Password *string `json:"password,omitempty"`
-    Name *string `json:"name,omitempty"`
-    Description *string `json:"description,omitempty"`
-    Disability *string `json:"disability,omitempty"`
-    DisabilityType *model.DisabilityType `json:"disabilityType,omitempty"`
+	Email          *string               `json:"email,omitempty"`
+	Password       *string               `json:"password,omitempty"`
+	Name           *string               `json:"name,omitempty"`
+	Description    *string               `json:"description,omitempty"`
+	Disability     *string               `json:"disability,omitempty"`
+	DisabilityType *model.DisabilityType `json:"disabilityType,omitempty"`
 }
 
 // Returns a new ApiUser suitable for external transmission from the internal
 // user representation.
 func NewApiUser(u *model.User) *ApiUser {
-    au := new(ApiUser)
-    au.Email = &u.Email
-    au.Name = &u.Name
-    au.Description = &u.Description
-    au.Disability = &u.Disability
-    au.DisabilityType = &u.DisabilityType
-    return au
+	au := new(ApiUser)
+	au.Email = &u.Email
+	au.Name = &u.Name
+	au.Description = &u.Description
+	au.Disability = &u.Disability
+	au.DisabilityType = &u.DisabilityType
+	return au
 }
 
 // Fills the content of an internal (storage) User from the external representation.
 // All security and authorization checks must have been done before calling this
 // method.
 func (au *ApiUser) fillStorageUser(u *model.User) (err error) {
-    if au.Email != nil {
-        u.Email = *au.Email
-    }
-    if au.Password != nil {
-        err =u.SetPassword(*au.Password)
-    }
-    if au.Name != nil {
-        u.Name = *au.Name
-    }
-    if au.Description != nil {
-        u.Description = *au.Description
-    }
-    if au.Disability != nil {
-        u.Disability = *au.Disability
-    }
-    if au.DisabilityType != nil {
-        u.DisabilityType = *au.DisabilityType
-    }
-    return err
+	if au.Email != nil {
+		u.Email = *au.Email
+	}
+	if au.Password != nil {
+		err = u.SetPassword(*au.Password)
+	}
+	if au.Name != nil {
+		u.Name = *au.Name
+	}
+	if au.Description != nil {
+		u.Description = *au.Description
+	}
+	if au.Disability != nil {
+		u.Disability = *au.Disability
+	}
+	if au.DisabilityType != nil {
+		u.DisabilityType = *au.DisabilityType
+	}
+	return err
 }
 
 func (s *Server) handleUserLogin(w http.ResponseWriter, r *http.Request) {
-    // Data holds the input JSON structure; modify it to add new parameters
-    var data struct {
-        Email *string `json:"email,omitempty"`
-        Password *string `json:"password,omitempty"`
-    }
-    w.Header().Add("Content-Type", "application/json")
+	// Data holds the input JSON structure; modify it to add new parameters
+	var data struct {
+		Email    *string `json:"email,omitempty"`
+		Password *string `json:"password,omitempty"`
+	}
+	w.Header().Add("Content-Type", "application/json")
 	err := getJSONRequest(r, &data)
 	if err != nil {
 		log.Print(err)
@@ -92,21 +92,21 @@ func (s *Server) handleUserLogin(w http.ResponseWriter, r *http.Request) {
 		session, _ := s.store.Get(r, "user")
 		session.Values["email"] = user.Email
 		session.Save(r, w)
-        json.NewEncoder(w).Encode(NewApiUser(user))
+		json.NewEncoder(w).Encode(NewApiUser(user))
 	default:
 		returnError(405, "Not implemented", w)
 	}
 }
 
 func (s *Server) handleUser(w http.ResponseWriter, r *http.Request) {
-    // Data holds the input JSON structure; modify it to add new parameters
-    var data struct {
-        Email *string `json:"email,omitempty"`
-        Password *string `json:"password,omitempty"`
-        Data *ApiUser `json:"data,omitempty"`
-    }
-    // We always return JSON
-    w.Header().Add("Content-Type", "application/json")
+	// Data holds the input JSON structure; modify it to add new parameters
+	var data struct {
+		Email    *string  `json:"email,omitempty"`
+		Password *string  `json:"password,omitempty"`
+		Data     *ApiUser `json:"data,omitempty"`
+	}
+	// We always return JSON
+	w.Header().Add("Content-Type", "application/json")
 	err := getJSONRequest(r, &data)
 	if err != nil {
 		returnError(400, "Invalid request", w)
@@ -115,7 +115,7 @@ func (s *Server) handleUser(w http.ResponseWriter, r *http.Request) {
 
 	switch r.Method {
 	case "GET":
-        // GET returns the current logged in user
+		// GET returns the current logged in user
 		session, err := s.store.Get(r, "user")
 		if err != nil {
 			returnError(401, "Please log in", w)
@@ -140,11 +140,11 @@ func (s *Server) handleUser(w http.ResponseWriter, r *http.Request) {
 			returnError(404, "Error while getting user data", w)
 			return
 		}
-        au := NewApiUser(user)
+		au := NewApiUser(user)
 		json.NewEncoder(w).Encode(au)
 		return
 	case "POST":
-        // POST creates a new user
+		// POST creates a new user
 		if data.Email == nil {
 			returnError(400, "Invalid request: email missing", w)
 			return
@@ -168,10 +168,10 @@ func (s *Server) handleUser(w http.ResponseWriter, r *http.Request) {
 		session, _ := s.store.Get(r, "user")
 		session.Values["email"] = user.Email
 		session.Save(r, w)
-        json.NewEncoder(w).Encode(NewApiUser(user))
+		json.NewEncoder(w).Encode(NewApiUser(user))
 		return
 	case "PUT":
-        // PUT modifies the current logged in user
+		// PUT modifies the current logged in user
 		session, err := s.store.Get(r, "user")
 		if err != nil {
 			returnError(401, "Please log in", w)
@@ -199,7 +199,7 @@ func (s *Server) handleUser(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 
-        data.Data.fillStorageUser(user)
+		data.Data.fillStorageUser(user)
 
 		err = user.Save()
 		if err != nil {
@@ -209,7 +209,7 @@ func (s *Server) handleUser(w http.ResponseWriter, r *http.Request) {
 		json.NewEncoder(w).Encode(NewApiUser(user))
 		return
 	case "DELETE":
-        // DELETE deletes the current user
+		// DELETE deletes the current user
 		session, err := s.store.Get(r, "user")
 		if err != nil {
 			returnError(401, "Please log in", w)

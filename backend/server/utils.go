@@ -27,5 +27,5 @@ func returnError(errorCode int, errorString string, w http.ResponseWriter) {
 
 // Return a pointer to the provided string
 func ptrTo(s string) *string {
-    return &s
+	return &s
 }

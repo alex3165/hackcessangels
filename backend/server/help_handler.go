@@ -7,12 +7,12 @@ import (
 )
 
 func (s *Server) handleHelp(w http.ResponseWriter, r *http.Request) {
-    var data struct {
-        Latitude *float64 `json:"latitude,omitempty"`
-        Longitude *float64 `json:"longitude,omitempty"`
-        Precision *float64 `json:"precision,omitempty"`
-    }
-    w.Header().Add("Content-Type", "application/json")
+	var data struct {
+		Latitude  *float64 `json:"latitude,omitempty"`
+		Longitude *float64 `json:"longitude,omitempty"`
+		Precision *float64 `json:"precision,omitempty"`
+	}
+	w.Header().Add("Content-Type", "application/json")
 	err := getJSONRequest(r, &data)
 	if err != nil {
 		returnError(400, "Invalid request", w)

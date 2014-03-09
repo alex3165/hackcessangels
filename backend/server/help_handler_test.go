@@ -42,7 +42,7 @@ func TestCreateHelpRequest(t *testing.T) {
 
 	// Call for help
 	data = new(bytes.Buffer)
-    json.NewEncoder(data).Encode(map[string]interface{}{"latitude": 48.90, "longitude": 2.10})
+	json.NewEncoder(data).Encode(map[string]interface{}{"latitude": 48.90, "longitude": 2.10})
 	request, _ = http.NewRequest("POST", "http://server/api/request", data)
 	request.Header.Add("Cookie", cookie)
 	response = httptest.NewRecorder()
@@ -51,7 +51,7 @@ func TestCreateHelpRequest(t *testing.T) {
 		t.Errorf("Error while processing: %+v, %s", response, response.Body)
 	}
 
-    hr := new(model.HelpRequest)
+	hr := new(model.HelpRequest)
 	err = json.NewDecoder(response.Body).Decode(&hr)
 	if err != nil {
 		t.Errorf("Request not returned: %s", err)
