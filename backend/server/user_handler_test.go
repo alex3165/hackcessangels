@@ -185,3 +185,61 @@ func TestUserCreatePutGetDelete(t *testing.T) {
 	}
 }
 
+// Test a password change.
+func TestUserChangePassword(t *testing.T) {
+	server := NewServer()
+	server.Database = "hackcessangels_server_test"
+	server.init()
+	defer deleteTestDatabase(server)
+
+	// POST request
+	data := new(bytes.Buffer)
+	json.NewEncoder(data).Encode(map[string]string{
+		"email":    "user@domain.tld",
+		"password": "motdepasse"})
+
+	request, _ := http.NewRequest("POST", "http://server/api/user", data)
+	response := httptest.NewRecorder()
+	server.handleUser(response, request)
+
+	if response.Code != 200 {
+		t.Errorf("Wrong status: %+v", response)
+	}
+	user := new(ApiUser)
+    log.Printf("Response: %s", response.Body)
+	err := json.NewDecoder(response.Body).Decode(&user)
+	if err != nil {
+		t.Errorf("User not returned: %s", err)
+	}
+	if user.Email == nil || *user.Email != "user@domain.tld" {
+		t.Errorf("Created user not filled: %+v", user)
+	}
+	cookie := strings.Split(response.Header().Get("Set-Cookie"), ";")[0]
+
+	// PUT request
+    user.Password = ptrTo("newPassword!")
+	data = new(bytes.Buffer)
+	json.NewEncoder(data).Encode(map[string]interface{}{"data": user})
+	request, _ = http.NewRequest("PUT", "http://server/api/user", data)
+	request.Header.Add("Cookie", cookie)
+	response = httptest.NewRecorder()
+	server.handleUser(response, request)
+	if response.Code != 200 {
+		t.Errorf("Error while processing: %+v, %s", response, response.Body)
+	}
+
+	loginData := new(bytes.Buffer)
+	if err := json.NewEncoder(loginData).Encode(map[string]string{
+		"email":    "user@domain.tld",
+		"password": "newPassword!"}); err != nil {
+		t.Error(err)
+	}
+	request, _ = http.NewRequest("POST", "http://server/api/user/login", loginData)
+	response = httptest.NewRecorder()
+	server.handleUserLogin(response, request)
+
+	if response.Code != 200 {
+		t.Errorf("Wrong status: %+v", response)
+	}
+}
+
