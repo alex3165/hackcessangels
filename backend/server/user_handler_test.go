@@ -7,8 +7,7 @@ import (
 	"net/http/httptest"
 	"strings"
 	"testing"
-
-	"hackcessangels/backend/model"
+    "log"
 )
 
 func deleteTestDatabase(s *Server) {
@@ -133,18 +132,19 @@ func TestUserCreatePutGetDelete(t *testing.T) {
 	if response.Code != 200 {
 		t.Errorf("Wrong status: %+v", response)
 	}
-	user := new(model.User)
+	user := new(ApiUser)
+    log.Printf("Response: %s", response.Body)
 	err := json.NewDecoder(response.Body).Decode(&user)
 	if err != nil {
 		t.Errorf("User not returned: %s", err)
 	}
-	if user.Email != "user@domain.tld" {
-		t.Errorf("User not filled: %+v", user)
+	if user.Email == nil || *user.Email != "user@domain.tld" {
+		t.Errorf("Created user not filled: %+v", user)
 	}
 	cookie := strings.Split(response.Header().Get("Set-Cookie"), ";")[0]
 
 	// PUT request
-	user.Name = "Joe Doe"
+	user.Name = ptrTo("Joe Doe")
 	data = new(bytes.Buffer)
 	json.NewEncoder(data).Encode(map[string]interface{}{"data": user})
 	request, _ = http.NewRequest("PUT", "http://server/api/user", data)
@@ -155,12 +155,12 @@ func TestUserCreatePutGetDelete(t *testing.T) {
 		t.Errorf("Error while processing: %+v, %s", response, response.Body)
 	}
 
-	user = new(model.User)
+	user = new(ApiUser)
 	err = json.NewDecoder(response.Body).Decode(&user)
 	if err != nil {
 		t.Errorf("User not returned: %s", err)
 	}
-	if user.Name != "Joe Doe" {
+	if *user.Name != "Joe Doe" {
 		t.Errorf("User not filled after PUT: %+v", response)
 	}
 
@@ -175,12 +175,13 @@ func TestUserCreatePutGetDelete(t *testing.T) {
 		t.Errorf("Error while processing: %+v, %s", response, response.Body)
 	}
 
-	user = new(model.User)
+	user = new(ApiUser)
 	err = json.NewDecoder(response.Body).Decode(&user)
 	if err != nil {
 		t.Errorf("User not returned: %s", err)
 	}
-	if user.Name != "Joe Doe" || user.Email != "user@domain.tld" {
+	if *user.Name != "Joe Doe" || *user.Email != "user@domain.tld" {
 		t.Errorf("User not filled after GET: %+v", user)
 	}
 }
+

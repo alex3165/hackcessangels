@@ -6,13 +6,14 @@ import (
 	"net/http"
 )
 
-func getJSONRequest(r *http.Request) (map[string]interface{}, error) {
-	data := make(map[string]interface{})
+func getJSONRequest(r *http.Request, data interface{}) error {
 	decoder := json.NewDecoder(r.Body)
 	err := decoder.Decode(&data)
-	return data, err
+	return err
 }
 
+// Set errorCode as the status code of the provided HTTP Response, with errorString
+// as a JSON error status string.
 func returnError(errorCode int, errorString string, w http.ResponseWriter) {
 	w.WriteHeader(errorCode)
 	jsonError := map[string]string{"error": errorString}
@@ -22,4 +23,9 @@ func returnError(errorCode int, errorString string, w http.ResponseWriter) {
 	if err != nil {
 		log.Printf("Error while processing error %d: %s: %s", errorCode, errorString, err)
 	}
+}
+
+// Return a pointer to the provided string
+func ptrTo(s string) *string {
+    return &s
 }

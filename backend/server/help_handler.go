@@ -7,9 +7,13 @@ import (
 )
 
 func (s *Server) handleHelp(w http.ResponseWriter, r *http.Request) {
+    var data struct {
+        Latitude *float64 `json:"latitude,omitempty"`
+        Longitude *float64 `json:"longitude,omitempty"`
+        Precision *float64 `json:"precision,omitempty"`
+    }
     w.Header().Add("Content-Type", "application/json")
-	data, err := getJSONRequest(r)
-    log.Printf("New request: %+v\nData: %+v\nErr: %+v", r, data, err)
+	err := getJSONRequest(r, &data)
 	if err != nil {
 		returnError(400, "Invalid request", w)
 		return
@@ -39,19 +43,17 @@ func (s *Server) handleHelp(w http.ResponseWriter, r *http.Request) {
 			log.Printf("Error while getting active request: %+v", err)
 			returnError(500, "Couldn't create request", w)
 		}
-		longitude, ok := data["longitude"].(float64)
-		if !ok {
+		if data.Longitude == nil {
 			returnError(400, "Invalid request: longitude missing", w)
 			return
 		}
-		latitude, ok := data["latitude"].(float64)
-		if !ok {
+		if data.Latitude == nil {
 			returnError(400, "Invalid request: latitude missing", w)
 			return
 		}
-		helpRequest.SetRequesterPosition(longitude, latitude)
-		if precision, ok := data["precision"].(float64); ok {
-			helpRequest.RequesterPosPrecision = precision
+		helpRequest.SetRequesterPosition(*data.Longitude, *data.Latitude)
+		if data.Precision != nil {
+			helpRequest.RequesterPosPrecision = *data.Precision
 		}
 		err = helpRequest.Save()
 		if err != nil {
@@ -67,19 +69,17 @@ func (s *Server) handleHelp(w http.ResponseWriter, r *http.Request) {
 			log.Printf("Error while getting active request: %+v", err)
 			returnError(404, "Couldn't get request", w)
 		}
-		longitude, ok := data["longitude"].(float64)
-		if !ok {
+		if data.Longitude == nil {
 			returnError(400, "Invalid request: longitude missing", w)
 			return
 		}
-		latitude, ok := data["latitude"].(float64)
-		if !ok {
+		if data.Latitude == nil {
 			returnError(400, "Invalid request: latitude missing", w)
 			return
 		}
-		helpRequest.SetRequesterPosition(longitude, latitude)
-		if precision, ok := data["precision"].(float64); ok {
-			helpRequest.RequesterPosPrecision = precision
+		helpRequest.SetRequesterPosition(*data.Longitude, *data.Latitude)
+		if data.Precision != nil {
+			helpRequest.RequesterPosPrecision = *data.Precision
 		}
 		err = helpRequest.Save()
 		if err != nil {
