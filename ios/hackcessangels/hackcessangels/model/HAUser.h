@@ -19,9 +19,10 @@
  
  */
 
-
+extern NSString *const kServiceId;
 extern NSString *const kPasswordKey;
 extern NSString *const kEmailKey;
+extern NSString *const kCookieKey;
 
 @interface HAUser : NSObject
 

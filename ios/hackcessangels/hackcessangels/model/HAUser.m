@@ -9,8 +9,10 @@
 #import "HAUser.h"
 #import "UICKeyChainStore.h"
 
+NSString *const kServiceId = @"HAUser";
 NSString *const kPasswordKey = @"password";
 NSString *const kEmailKey = @"email";
+NSString *const kCookieKey = @"cookie";
 
 @implementation HAUser
 
@@ -55,21 +57,34 @@ NSString *const kEmailKey = @"email";
 }
 
 + (HAUser*) userFromKeyChain {
-    NSString *email = [UICKeyChainStore stringForKey:@"email" service:@"HAUser"];
-    NSString *password = [UICKeyChainStore stringForKey:kPasswordKey service:@"HAUser"];
-    if (!email || !password) {
-        
+    NSString *email = [UICKeyChainStore stringForKey:kEmailKey service:kServiceId];
+    NSString *password = [UICKeyChainStore stringForKey:kPasswordKey service:kServiceId];
+    NSData *cookieData = [UICKeyChainStore dataForKey:kCookieKey service:kServiceId];
+    if (!email || !password || !cookieData) {
         return nil;
-        
     }
     HAUser *user = [[HAUser alloc] initWithDictionary:@{@"email": email, kPasswordKey: password}];
+    NSError *error;
+    user.cookie = [[NSHTTPCookie alloc] initWithProperties: [NSPropertyListSerialization propertyListWithData:cookieData options:NSPropertyListImmutable format:NULL error:&error]];
+    if (error) {
+        NSLog(@"%@", error);
+        return nil;
+    }
     return user;
 }
 
 - (void) saveUserToKeyChain
 {
-    [UICKeyChainStore setString:self.email forKey:kEmailKey service:@"HAUser"];
-    [UICKeyChainStore setString:self.password forKey:kPasswordKey service:@"HAUser"];
+    [UICKeyChainStore setString:self.email forKey:kEmailKey service:kServiceId];
+    [UICKeyChainStore setString:self.password forKey:kPasswordKey service:kServiceId];
+    if (self.cookie) {
+        NSError *error;
+        NSData *cookieData = [NSPropertyListSerialization dataWithPropertyList:[self.cookie properties] format:NSPropertyListXMLFormat_v1_0 options:(NSPropertyListWriteOptions)nil error:&error];
+        if (error) {
+            NSLog(@"%@", error);
+        }
+        [UICKeyChainStore setData:cookieData forKey:kCookieKey service:kServiceId];
+    }
     return;
 }
 @end

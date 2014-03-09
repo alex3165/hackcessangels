@@ -45,7 +45,7 @@
         
     }];
     
-    [userService createUserWithEmailAndPassword:@"julia.dirand@gmail.com" password:@"motdepasse" success:^(id obj){
+    [userService createUserWithEmailAndPassword:@"julia.dirand@gmail.com" password:@"motdepasse" success:^(id obj, id obj2){
         
         [self notify:kXCTUnitWaitStatusSuccess];
         
@@ -68,13 +68,11 @@
     [OHHTTPStubs stubRequestsPassingTest:^BOOL(NSURLRequest *request) {
         return YES; // Stub ALL requests without any condition
     } withStubResponse:^OHHTTPStubsResponse*(NSURLRequest *request) {
-        
         return [OHHTTPStubsResponse responseWithData:nil statusCode:200 headers:nil];
-        
     }];
     
-    [userService loginWithEmailAndPassword:@"julia.dirand@gmail.com" password:@"motdepasse" success:^(id obj){
-        [userService deleteUserWithEmail:@"julia@gmail.com" success:^(id obj){
+    [userService loginWithEmailAndPassword:@"julia.dirand@gmail.com" password:@"motdepasse" success:^(id obj, id obj2){
+        [userService deleteUserWithEmail:@"julia@gmail.com" success:^(id obj, id obj2){
             [self notify:kXCTUnitWaitStatusSuccess];
         } failure:^(NSError *error) {
             [self notify:kXCTUnitWaitStatusFailure];
@@ -134,7 +132,7 @@
      }];
     
     [self prepare];
-    [userService updateUser:@"julia.dirand@gmail.com" withUpdatedEmail:@"julia@gmail.com"success:^(id obj){
+    [userService updateUser:@"julia.dirand@gmail.com" withUpdatedEmail:@"julia@gmail.com" password:@"motdepasse" withUpdatedPassword:@"nouveau_motdepasse" success:^(id obj, id obj2){
         [self notify:kXCTUnitWaitStatusSuccess];
     } failure:^(NSError *error) {
         [self notify:kXCTUnitWaitStatusFailure];
@@ -156,7 +154,7 @@
     }];
     
     [self prepare];
-    [userService loginWithEmailAndPassword:@"julia.dirand@gmail.com" password:@"motdepasse" success:^(id obj){
+    [userService loginWithEmailAndPassword:@"julia.dirand@gmail.com" password:@"motdepasse" success:^(id obj, id obj2){
         [self notify:kXCTUnitWaitStatusSuccess];
     
     } failure:^(NSError *error){

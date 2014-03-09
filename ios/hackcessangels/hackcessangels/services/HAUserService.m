@@ -67,12 +67,14 @@
         
         NSDictionary *userSetting = [NSDictionary dictionaryWithObjectsAndKeys:email,@"email",password,@"password", nil];
         
-        /* On créer le User et on le sage */
+        /* On crée le User et on le sauve */
         self.actualUser = [[HAUser alloc] initWithDictionary:userSetting];
-        [self.actualUser saveUserToKeyChain];
-        
         NSArray* cookies = [NSHTTPCookie cookiesWithResponseHeaderFields:[response allHeaderFields] forURL:response.URL];
-        NSHTTPCookie* cookie = cookies[0];
+        if ([cookies count] != 0) {
+            self.actualUser.cookie = cookies[0];
+        }
+        [self.actualUser saveUserToKeyChain];
+        success(self.actualUser, response);
     } failure:failure];
 }
 
