@@ -7,6 +7,8 @@
 //
 
 #import "HAHelpViewController.h"
+#import "HALogViewController.h"
+#import "HAUserService.h"
 
 @interface HAHelpViewController ()
 
@@ -26,8 +28,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	
-
+    [self checkUser];
 }
 
 - (IBAction)helpme:(id)sender {
@@ -42,5 +43,61 @@
 }
 
 
+/******************************************************************************************************************************
+ *
+ *
+ * Service
+ *
+ *
+ *****************************************************************************************************************************/
+
+
+#pragma mark - Service
+
+- (void)checkUser
+{
+    HAUser *user = [HAUser userFromKeyChain];
+    
+    if (!user) {
+        [self showModalLoginWithAnimation:NO];
+    }
+    
+    self.userService = [[HAUserService alloc] init];
+	
+    [self.userService getUserWithEmail:user.email success:^(HAUser *user) {
+        
+        //Nothing to do, user is updated in service method
+        DLog(@"Success");
+        
+    } failure:^(NSError *error) {
+        
+        NSInteger statusCode = [[error.userInfo objectForKey:AFNetworkingOperationFailingURLResponseErrorKey] statusCode];
+        
+        if (statusCode == 403) {
+            [self showModalLoginWithAnimation:YES];
+        }
+        
+        DLog(@"error");
+        
+    }];
+}
+
+
+/******************************************************************************************************************************
+ *
+ *
+ * Utils
+ *
+ *
+ *****************************************************************************************************************************/
+
+
+#pragma mark - Utils
+
+- (void)showModalLoginWithAnimation:(BOOL)animated
+{
+    HALogViewController *logViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"loginViewController"];
+    [self presentViewController:logViewController animated:animated completion:nil];
+}
 
 @end

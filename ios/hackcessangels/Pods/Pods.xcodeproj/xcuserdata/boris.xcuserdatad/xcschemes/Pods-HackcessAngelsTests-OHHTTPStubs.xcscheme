@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "4788693D02A7460CAA911B52"
+               BlueprintIdentifier = "D8B7988D2A1F4C70A3287323"
                BuildableName = "libPods-HackcessAngelsTests-OHHTTPStubs.a"
                BlueprintName = "Pods-HackcessAngelsTests-OHHTTPStubs"
                ReferencedContainer = "container:Pods.xcodeproj">

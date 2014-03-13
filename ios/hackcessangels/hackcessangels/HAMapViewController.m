@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 RIEUX Alexandre. All rights reserved.
 //
 
-#import "HAHomeViewController.h"
+#import "HAMapViewController.h"
 #import "HATileOverlay.h"
 #import "HATileOverlayView.h"
 #import "HALocalisation.h"
@@ -15,12 +15,12 @@
 
 //commentaire pour tester le git
 
-@interface HAHomeViewController ()
+@interface HAMapViewController ()
 //@property (nonatomic, strong) AFHTTPRequestOperationManager *manager;
 @end
 
 
-@implementation HAHomeViewController
+@implementation HAMapViewController
 
 //@synthesize map;
 //@synthesize overlay;

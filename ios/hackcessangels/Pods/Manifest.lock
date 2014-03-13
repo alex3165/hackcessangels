@@ -18,18 +18,21 @@ PODS:
   - AFNetworking/UIKit (2.1.0):
     - AFNetworking/NSURLConnection
   - OHHTTPStubs (3.1.0)
+  - TPKeyboardAvoiding (1.2.3)
   - UICKeyChainStore (1.0.4)
   - XCTAsyncTestCase (0.1.0)
 
 DEPENDENCIES:
   - AFNetworking
   - OHHTTPStubs
+  - TPKeyboardAvoiding
   - UICKeyChainStore
   - XCTAsyncTestCase
 
 SPEC CHECKSUMS:
   AFNetworking: c7d7901a83f631414c7eda1737261f696101a5cd
   OHHTTPStubs: d67c42c0212f0883ddb8592375aa0dc00dc50a36
+  TPKeyboardAvoiding: 17995aaa6db26ac2a9fa8714a86509c5888f0392
   UICKeyChainStore: b42c6252b8bfd7fbf6326668467572b6b231e11a
   XCTAsyncTestCase: 712a789c91b966bcce433fced0b930ffc8b5b10a
 

@@ -8,6 +8,7 @@
 
 #import "HALogViewController.h"
 #import "HAHelpViewController.h"
+#import "UIColor+HackcessAngels.h"
 
 @interface HALogViewController ()
 
@@ -36,6 +37,13 @@
     self.helpController = [[HAHelpViewController alloc]init];
     
     [self checkLoginWithUser]; // on check si on a un user de stocké
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    self.navigationController.navigationBar.backgroundColor = [UIColor blackColor];
+    self.view.backgroundColor = [UIColor HA_angelGray];
 }
 
 - (void)didReceiveMemoryWarning

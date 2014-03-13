@@ -19,7 +19,7 @@
 // Libs
 #import "AFNetworking.h"
 
-@interface HAHomeViewController : UIViewController <MKMapViewDelegate> 
+@interface HAMapViewController : UIViewController <MKMapViewDelegate>
 
 
 /* Objet de la classe DCRestRequest (à voir) */

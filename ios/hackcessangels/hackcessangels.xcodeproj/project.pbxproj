@@ -24,7 +24,7 @@
 		22601F101886E2DE008B0179 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 22601F0F1886E2DE008B0179 /* main.m */; };
 		22601F141886E2DE008B0179 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 22601F131886E2DE008B0179 /* AppDelegate.m */; };
 		22601F171886E2DE008B0179 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22601F151886E2DE008B0179 /* Main.storyboard */; };
-		22601F1A1886E2DE008B0179 /* HAHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22601F191886E2DE008B0179 /* HAHomeViewController.m */; };
+		22601F1A1886E2DE008B0179 /* HAMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22601F191886E2DE008B0179 /* HAMapViewController.m */; };
 		22601F1C1886E2DE008B0179 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22601F1B1886E2DE008B0179 /* Images.xcassets */; };
 		22601F231886E2DE008B0179 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22601F221886E2DE008B0179 /* XCTest.framework */; };
 		22601F241886E2DE008B0179 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22601F031886E2DE008B0179 /* Foundation.framework */; };
@@ -44,6 +44,9 @@
 		A1330B0A18AD632E002B1828 /* HAUserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A1330B0918AD632E002B1828 /* HAUserTests.m */; };
 		A1AC4C5418B69AD2002EE7E6 /* HAUserServicesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A1AC4C5318B69AD2002EE7E6 /* HAUserServicesTests.m */; };
 		A1B064A618BFCBE60078EED5 /* user.json in Resources */ = {isa = PBXBuildFile; fileRef = A1B064A518BFCBE60078EED5 /* user.json */; };
+		A1B80AA418D23DBF004EE4EA /* TODO.md in Resources */ = {isa = PBXBuildFile; fileRef = A1B80AA318D23DBF004EE4EA /* TODO.md */; };
+		A1B80AA818D243A3004EE4EA /* UIColor+HackcessAngels.m in Sources */ = {isa = PBXBuildFile; fileRef = A1B80AA718D243A3004EE4EA /* UIColor+HackcessAngels.m */; };
+		A1B80AA918D243A3004EE4EA /* UIColor+HackcessAngels.m in Sources */ = {isa = PBXBuildFile; fileRef = A1B80AA718D243A3004EE4EA /* UIColor+HackcessAngels.m */; };
 		CADA4BECEC92479A8F6CB0F0 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18DAFC5302E94F25AE48D512 /* libPods.a */; };
 		DACD378C81EF46D185A2B41E /* libPods-HackcessAngelsTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CA038FFAF016411C961B50E7 /* libPods-HackcessAngelsTests.a */; };
 /* End PBXBuildFile section */
@@ -83,8 +86,8 @@
 		22601F121886E2DE008B0179 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		22601F131886E2DE008B0179 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		22601F161886E2DE008B0179 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		22601F181886E2DE008B0179 /* HAHomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HAHomeViewController.h; sourceTree = "<group>"; };
-		22601F191886E2DE008B0179 /* HAHomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HAHomeViewController.m; sourceTree = "<group>"; };
+		22601F181886E2DE008B0179 /* HAMapViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HAMapViewController.h; sourceTree = "<group>"; };
+		22601F191886E2DE008B0179 /* HAMapViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HAMapViewController.m; sourceTree = "<group>"; };
 		22601F1B1886E2DE008B0179 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		22601F211886E2DE008B0179 /* HackcessAngelsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HackcessAngelsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		22601F221886E2DE008B0179 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -109,6 +112,9 @@
 		A1330B0918AD632E002B1828 /* HAUserTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HAUserTests.m; path = hackcessangelsTests/HAUserTests.m; sourceTree = SOURCE_ROOT; };
 		A1AC4C5318B69AD2002EE7E6 /* HAUserServicesTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HAUserServicesTests.m; path = hackcessangelsTests/HAUserServicesTests.m; sourceTree = SOURCE_ROOT; };
 		A1B064A518BFCBE60078EED5 /* user.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = user.json; path = hackcessangelsTests/user.json; sourceTree = SOURCE_ROOT; };
+		A1B80AA318D23DBF004EE4EA /* TODO.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = TODO.md; path = hackcessangels/TODO.md; sourceTree = SOURCE_ROOT; };
+		A1B80AA618D243A3004EE4EA /* UIColor+HackcessAngels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIColor+HackcessAngels.h"; path = "hackcessangels/View/UIColor+HackcessAngels.h"; sourceTree = SOURCE_ROOT; };
+		A1B80AA718D243A3004EE4EA /* UIColor+HackcessAngels.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIColor+HackcessAngels.m"; path = "hackcessangels/View/UIColor+HackcessAngels.m"; sourceTree = SOURCE_ROOT; };
 		B81C1F48A9394E3D818E00EB /* Pods-HackcessAngelsTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HackcessAngelsTests.xcconfig"; path = "Pods/Pods-HackcessAngelsTests.xcconfig"; sourceTree = "<group>"; };
 		CA038FFAF016411C961B50E7 /* libPods-HackcessAngelsTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HackcessAngelsTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -195,12 +201,14 @@
 		22601F091886E2DE008B0179 /* HackcessAngels */ = {
 			isa = PBXGroup;
 			children = (
+				A1B80AA518D24384004EE4EA /* View */,
 				8FCE639C18AD5DEF00D4C957 /* services */,
 				22130C03188966F400191955 /* model */,
 				22601F4118871EBC008B0179 /* controler */,
 				22601F151886E2DE008B0179 /* Main.storyboard */,
 				22601F1B1886E2DE008B0179 /* Images.xcassets */,
 				22601F0A1886E2DE008B0179 /* Supporting Files */,
+				A1B80AA318D23DBF004EE4EA /* TODO.md */,
 			);
 			path = HackcessAngels;
 			sourceTree = "<group>";
@@ -246,8 +254,8 @@
 				222E376018BA5B2F00E3B720 /* HALogViewController.m */,
 				222E375A18BA521C00E3B720 /* HAHelpViewController.h */,
 				222E375B18BA521C00E3B720 /* HAHelpViewController.m */,
-				22601F181886E2DE008B0179 /* HAHomeViewController.h */,
-				22601F191886E2DE008B0179 /* HAHomeViewController.m */,
+				22601F181886E2DE008B0179 /* HAMapViewController.h */,
+				22601F191886E2DE008B0179 /* HAMapViewController.m */,
 				04F5A81418C8AC5E00ED0CC6 /* HAUserViewController.h */,
 				04F5A81518C8AC5E00ED0CC6 /* HAUserViewController.m */,
 			);
@@ -269,6 +277,15 @@
 				04F5A81A18C8AD3A00ED0CC6 /* HAEditUserService.m */,
 			);
 			name = services;
+			sourceTree = "<group>";
+		};
+		A1B80AA518D24384004EE4EA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A1B80AA618D243A3004EE4EA /* UIColor+HackcessAngels.h */,
+				A1B80AA718D243A3004EE4EA /* UIColor+HackcessAngels.m */,
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -358,6 +375,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1B80AA418D23DBF004EE4EA /* TODO.md in Resources */,
 				22601F1C1886E2DE008B0179 /* Images.xcassets in Resources */,
 				22601F0E1886E2DE008B0179 /* InfoPlist.strings in Resources */,
 				22601F171886E2DE008B0179 /* Main.storyboard in Resources */,
@@ -446,7 +464,7 @@
 			files = (
 				04F5A81718C8AC5E00ED0CC6 /* HAUserViewController.m in Sources */,
 				229CF60218AA14D900B35488 /* DCRestRequests.m in Sources */,
-				22601F1A1886E2DE008B0179 /* HAHomeViewController.m in Sources */,
+				22601F1A1886E2DE008B0179 /* HAMapViewController.m in Sources */,
 				222E376118BA5B2F00E3B720 /* HALogViewController.m in Sources */,
 				8F88460918BFBBB400595CA2 /* HALocationService.m in Sources */,
 				22601F4018871EAC008B0179 /* HATileOverlayView.m in Sources */,
@@ -454,6 +472,7 @@
 				04F5A81C18C8AD3A00ED0CC6 /* HAEditUserService.m in Sources */,
 				22601F141886E2DE008B0179 /* AppDelegate.m in Sources */,
 				22130C02188966E500191955 /* HALocalisation.m in Sources */,
+				A1B80AA818D243A3004EE4EA /* UIColor+HackcessAngels.m in Sources */,
 				22601F101886E2DE008B0179 /* main.m in Sources */,
 				A1330B0718AD62B5002B1828 /* HAUser.m in Sources */,
 				222E375C18BA521C00E3B720 /* HAHelpViewController.m in Sources */,
@@ -472,6 +491,7 @@
 				A1330B0818AD62B5002B1828 /* HAUser.m in Sources */,
 				A1AC4C5418B69AD2002EE7E6 /* HAUserServicesTests.m in Sources */,
 				8FCE63A018AD5E3E00D4C957 /* HAUserService.m in Sources */,
+				A1B80AA918D243A3004EE4EA /* UIColor+HackcessAngels.m in Sources */,
 				22DA835918B288610014CCA5 /* HAAssistanceService.m in Sources */,
 				A1330B0A18AD632E002B1828 /* HAUserTests.m in Sources */,
 			);

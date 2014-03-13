@@ -17,5 +17,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *helpme;
 
 @property (nonatomic, strong) HAAssistanceService *assistanceService;
+@property (nonatomic, strong) HAUserService *userService;
 
 @end

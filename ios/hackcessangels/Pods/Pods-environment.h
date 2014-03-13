@@ -48,6 +48,12 @@
 #define COCOAPODS_VERSION_MINOR_AFNetworking_UIKit 1
 #define COCOAPODS_VERSION_PATCH_AFNetworking_UIKit 0
 
+// TPKeyboardAvoiding
+#define COCOAPODS_POD_AVAILABLE_TPKeyboardAvoiding
+#define COCOAPODS_VERSION_MAJOR_TPKeyboardAvoiding 1
+#define COCOAPODS_VERSION_MINOR_TPKeyboardAvoiding 2
+#define COCOAPODS_VERSION_PATCH_TPKeyboardAvoiding 3
+
 // UICKeyChainStore
 #define COCOAPODS_POD_AVAILABLE_UICKeyChainStore
 #define COCOAPODS_VERSION_MAJOR_UICKeyChainStore 1
