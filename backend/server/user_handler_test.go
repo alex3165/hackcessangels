@@ -165,9 +165,7 @@ func TestUserCreatePutGetDelete(t *testing.T) {
 	}
 
 	// GET request
-	data = new(bytes.Buffer)
-	json.NewEncoder(data).Encode(map[string]string{"email": "user@domain.tld"})
-	request, _ = http.NewRequest("GET", "http://server/api/user", data)
+	request, _ = http.NewRequest("GET", "http://server/api/user?email=user@domain.tld", nil)
 	request.Header.Add("Cookie", cookie)
 	response = httptest.NewRecorder()
 	server.handleUser(response, request)
@@ -182,6 +180,15 @@ func TestUserCreatePutGetDelete(t *testing.T) {
 	}
 	if *user.Name != "Joe Doe" || *user.Email != "user@domain.tld" {
 		t.Errorf("User not filled after GET: %+v", user)
+	}
+
+	// DELETE request
+	request, _ = http.NewRequest("DELETE", "http://server/api/user?email=user@domain.tld", nil)
+	request.Header.Add("Cookie", cookie)
+	response = httptest.NewRecorder()
+	server.handleUser(response, request)
+	if response.Code != 200 {
+		t.Errorf("Error while processing: %+v, %s", response, response.Body)
 	}
 }
 

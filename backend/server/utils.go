@@ -4,11 +4,20 @@ import (
 	"encoding/json"
 	"log"
 	"net/http"
+
+	"github.com/gorilla/schema"
 )
 
 func getJSONRequest(r *http.Request, data interface{}) error {
-	decoder := json.NewDecoder(r.Body)
-	err := decoder.Decode(&data)
+	var err error
+	if r.Method == "GET" || r.Method == "DELETE" {
+		decoder := schema.NewDecoder()
+		log.Printf("URL Query: %+v", r.URL.Query())
+		err = decoder.Decode(data, r.URL.Query())
+	} else {
+		decoder := json.NewDecoder(r.Body)
+		err = decoder.Decode(&data)
+	}
 	return err
 }
 

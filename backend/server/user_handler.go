@@ -59,8 +59,8 @@ func (au *ApiUser) fillStorageUser(u *model.User) (err error) {
 func (s *Server) handleUserLogin(w http.ResponseWriter, r *http.Request) {
 	// Data holds the input JSON structure; modify it to add new parameters
 	var data struct {
-		Email    *string `json:"email,omitempty"`
-		Password *string `json:"password,omitempty"`
+		Email    *string `json:"email,omitempty" schema:"email"`
+		Password *string `json:"password,omitempty" schema:"password"`
 	}
 	w.Header().Add("Content-Type", "application/json")
 	err := getJSONRequest(r, &data)
@@ -101,14 +101,15 @@ func (s *Server) handleUserLogin(w http.ResponseWriter, r *http.Request) {
 func (s *Server) handleUser(w http.ResponseWriter, r *http.Request) {
 	// Data holds the input JSON structure; modify it to add new parameters
 	var data struct {
-		Email    *string  `json:"email,omitempty"`
-		Password *string  `json:"password,omitempty"`
+		Email    *string  `json:"email,omitempty" schema:"email"`
+		Password *string  `json:"password,omitempty" schema:"password"`
 		Data     *ApiUser `json:"data,omitempty"`
 	}
 	// We always return JSON
 	w.Header().Add("Content-Type", "application/json")
 	err := getJSONRequest(r, &data)
 	if err != nil {
+		log.Print(err)
 		returnError(400, "Invalid request", w)
 		return
 	}

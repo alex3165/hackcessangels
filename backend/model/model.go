@@ -10,6 +10,7 @@ type Model struct {
 
 	users        *mgo.Collection
 	helpRequests *mgo.Collection
+	stations     *mgo.Collection
 }
 
 func (m *Model) Delete() {
@@ -36,5 +37,6 @@ func NewModel(server string, databaseName string) (*Model, error) {
 	m.db = m.session.DB(databaseName)
 	m.users = m.db.C("users")
 	m.helpRequests = m.db.C("helpRequests")
+	m.stations = m.db.C("stations")
 	return m, nil
 }
