@@ -11,7 +11,7 @@ import (
 )
 
 var (
-	stationCoordinates *string = flag.String(
+	StationCoordinates *string = flag.String(
 		"station-csv-path",
 		"../data/sncf-gares-et-arrets-transilien-ile-de-france.csv",
 		"Path to the SNCF station CSV file from SNCF Open Data site.")
@@ -43,7 +43,7 @@ type Station struct {
 func (m *Model) ResetAndLoadStationsFromFile() error {
 	m.stations.RemoveAll(bson.M{})
 
-	reader, err := os.Open(*stationCoordinates)
+	reader, err := os.Open(*StationCoordinates)
 	if err != nil {
 		return err
 	}

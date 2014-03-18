@@ -24,6 +24,8 @@ type User struct {
 	Disability     string         `json:"disability"`
 	DisabilityType DisabilityType `json:"disabilityType"`
 
+    IsAgent        bool
+
 	m *Model `bson:"-"`
 }
 
@@ -40,6 +42,7 @@ func (u *User) Delete() error {
 func (m *Model) CreateUser(email, password string) (*User, error) {
 	u := &User{
 		Email: email,
+        IsAgent: false,
 		m:     m,
 	}
 	err := u.SetPassword(password)

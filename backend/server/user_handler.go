@@ -17,6 +17,7 @@ type ApiUser struct {
 	Description    *string               `json:"description,omitempty"`
 	Disability     *string               `json:"disability,omitempty"`
 	DisabilityType *model.DisabilityType `json:"disabilityType,omitempty"`
+	IsAgent        *bool                 `json:"is_agent,omitempty"`
 }
 
 // Returns a new ApiUser suitable for external transmission from the internal
@@ -28,6 +29,7 @@ func NewApiUser(u *model.User) *ApiUser {
 	au.Description = &u.Description
 	au.Disability = &u.Disability
 	au.DisabilityType = &u.DisabilityType
+	au.IsAgent = &u.IsAgent
 	return au
 }
 
@@ -52,6 +54,9 @@ func (au *ApiUser) fillStorageUser(u *model.User) (err error) {
 	}
 	if au.DisabilityType != nil {
 		u.DisabilityType = *au.DisabilityType
+	}
+	if au.IsAgent != nil {
+		u.IsAgent = *au.IsAgent
 	}
 	return err
 }
