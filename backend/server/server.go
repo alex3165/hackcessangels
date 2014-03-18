@@ -50,7 +50,7 @@ func (s *Server) init() error {
 	if err != nil {
 		return err
 	}
-    err = s.model.ResetAndLoadStationsFromFile()
+	err = s.model.ResetAndLoadStationsFromFile()
 	if err != nil {
 		return err
 	}

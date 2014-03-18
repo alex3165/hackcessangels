@@ -1,20 +1,20 @@
 package model
 
 import (
-    "os"
-    "encoding/csv"
-    "strings"
-    "strconv"
-    "flag"
+	"encoding/csv"
+	"flag"
+	"os"
+	"strconv"
+	"strings"
 
 	"labix.org/v2/mgo/bson"
 )
 
 var (
-    stationCoordinates *string = flag.String(
-        "station-csv-path",
-        "../data/sncf-gares-et-arrets-transilien-ile-de-france.csv",
-        "Path to the SNCF station CSV file from SNCF Open Data site.")
+	stationCoordinates *string = flag.String(
+		"station-csv-path",
+		"../data/sncf-gares-et-arrets-transilien-ile-de-france.csv",
+		"Path to the SNCF station CSV file from SNCF Open Data site.")
 )
 
 type PolygonGeometry struct {
@@ -41,46 +41,46 @@ type Station struct {
 }
 
 func (m *Model) ResetAndLoadStationsFromFile() error {
-    m.stations.RemoveAll(bson.M{})
-    
-    reader, err := os.Open(*stationCoordinates)
-    if err != nil {
-        return err
-    }
-    r := csv.NewReader(reader)
-    r.Comma = ';'
-    r.LazyQuotes = true
-    r.TrimLeadingSpace = true
+	m.stations.RemoveAll(bson.M{})
 
-    header, err := r.Read()
-    if err != nil {
-        return err
-    }
-    headerIndex := make(map[string]int)
-    for i, k := range header {
-        headerIndex[k] = i
-    }
+	reader, err := os.Open(*stationCoordinates)
+	if err != nil {
+		return err
+	}
+	r := csv.NewReader(reader)
+	r.Comma = ';'
+	r.LazyQuotes = true
+	r.TrimLeadingSpace = true
 
-    for line, err := r.Read(); err == nil; line, err = r.Read() {
-        station := &Station{
-            Id: bson.NewObjectId(),
-            Name: line[headerIndex["nom_gare"]],
-            m: m,
-        }
-        coordinates := strings.Split(line[headerIndex["coord_gps_wgs84"]], ", ")
-        lat, err := strconv.ParseFloat(coordinates[0], 64)
-        if err != nil {
-            return err
-        }
-        lng, err := strconv.ParseFloat(coordinates[1], 64)
-        if err != nil {
-            return err
-        }
-        station.Center = NewPoint(lng, lat)
-        err = m.stations.Insert(station)
-        if err != nil {
-            return err
-        }
-    }
-    return err
+	header, err := r.Read()
+	if err != nil {
+		return err
+	}
+	headerIndex := make(map[string]int)
+	for i, k := range header {
+		headerIndex[k] = i
+	}
+
+	for line, err := r.Read(); err == nil; line, err = r.Read() {
+		station := &Station{
+			Id:   bson.NewObjectId(),
+			Name: line[headerIndex["nom_gare"]],
+			m:    m,
+		}
+		coordinates := strings.Split(line[headerIndex["coord_gps_wgs84"]], ", ")
+		lat, err := strconv.ParseFloat(coordinates[0], 64)
+		if err != nil {
+			return err
+		}
+		lng, err := strconv.ParseFloat(coordinates[1], 64)
+		if err != nil {
+			return err
+		}
+		station.Center = NewPoint(lng, lat)
+		err = m.stations.Insert(station)
+		if err != nil {
+			return err
+		}
+	}
+	return err
 }
