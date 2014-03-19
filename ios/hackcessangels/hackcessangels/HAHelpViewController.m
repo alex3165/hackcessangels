@@ -60,6 +60,7 @@
     
     if (!user) {
         [self showModalLoginWithAnimation:NO];
+        return;
     }
     
     self.userService = [[HAUserService alloc] init];
