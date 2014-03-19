@@ -22,7 +22,7 @@
 		<key>Pods-HackcessAngelsTests-TPKeyboardAvoiding.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>9</integer>
+			<integer>0</integer>
 		</dict>
 		<key>Pods-HackcessAngelsTests-UICKeyChainStore.xcscheme</key>
 		<dict>
@@ -42,7 +42,7 @@
 		<key>Pods-TPKeyboardAvoiding.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>10</integer>
+			<integer>1</integer>
 		</dict>
 		<key>Pods-UICKeyChainStore.xcscheme</key>
 		<dict>

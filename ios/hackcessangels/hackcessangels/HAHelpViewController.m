@@ -73,7 +73,7 @@
         
         NSInteger statusCode = [[error.userInfo objectForKey:AFNetworkingOperationFailingURLResponseErrorKey] statusCode];
         
-        if (statusCode == 403) {
+        if (statusCode == 401) {
             [self showModalLoginWithAnimation:YES];
         }
         
