@@ -56,6 +56,23 @@ func (hr *HelpRequest) Deactivate() error {
 	return hr.Save()
 }
 
+func (m *Model) GetActiveRequestsByStation(s *Station) ([]*HelpRequest, error) {
+	helpRequests := make([]*HelpRequest, 0)
+	err := m.helpRequests.Find(bson.M{
+		"isactive": true,
+		"requesterposition": bson.M{
+			"$near": bson.M{
+				"$geometry": bson.M{
+					"type":        "Point",
+					"coordinates": []float64{s.Center.Coordinates[0], s.Center.Coordinates[1]},
+				},
+				"$maxDistance": 500,
+			},
+		},
+	}).All(&helpRequests)
+	return helpRequests, err
+}
+
 func (m *Model) GetActiveRequestByRequester(user *User) (*HelpRequest, error) {
 	hr := new(HelpRequest)
 	err := m.helpRequests.Find(bson.M{"requesteremail": user.Email,
