@@ -86,11 +86,8 @@
     // on récupère le user stocké dans keychainStore
     HAUser *userFromKeychain = [HAUser userFromKeyChain];
     
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    self.helpController = [storyboard instantiateViewControllerWithIdentifier:@"helpView"];
-    
     if (userFromKeychain) { // si on a un user on push vers l'autre view
-        [self.navigationController pushViewController:self.helpController animated:true];
+        [self dismissViewControllerAnimated:YES completion:nil];
     }
 
 }
