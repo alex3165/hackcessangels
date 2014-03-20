@@ -9,8 +9,14 @@
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
 
-@interface HALocationService : NSObject
-- (void) startLocation;
+@interface HALocationService : NSObject <CLLocationManagerDelegate>
+@property(nonatomic, strong) CLLocation* location;
+
+- (bool) startLocation;
 - (void) stopLocation;
 - (void) locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations;
+
+- (NSString *) currentLongitude;
+- (NSString *) currentLatitude;
+
 @end

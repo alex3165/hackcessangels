@@ -35,11 +35,7 @@
     
     self.assistanceService = [[HAAssistanceService alloc]init];
     
-    [self.assistanceService helpMe:@"43" latitude:@"-1.48" success:^(id obj, id obj2){
-        
-    } failure:^(NSError *error) {
-        
-    }];
+    [self.assistanceService startHelpRequest];
 }
 
 

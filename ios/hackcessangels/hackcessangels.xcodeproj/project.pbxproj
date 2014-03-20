@@ -36,6 +36,10 @@
 		229CF60218AA14D900B35488 /* DCRestRequests.m in Sources */ = {isa = PBXBuildFile; fileRef = 229CF60118AA14D900B35488 /* DCRestRequests.m */; };
 		22DA835818B288610014CCA5 /* HAAssistanceService.m in Sources */ = {isa = PBXBuildFile; fileRef = 22DA835718B288610014CCA5 /* HAAssistanceService.m */; };
 		22DA835918B288610014CCA5 /* HAAssistanceService.m in Sources */ = {isa = PBXBuildFile; fileRef = 22DA835718B288610014CCA5 /* HAAssistanceService.m */; };
+		8F57723718DB7D0A00D42D4F /* HALogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 222E376018BA5B2F00E3B720 /* HALogViewController.m */; };
+		8F57723918DB7D5600D42D4F /* Agent.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8F57723818DB7D5600D42D4F /* Agent.storyboard */; };
+		8F57723A18DB7D5600D42D4F /* Agent.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8F57723818DB7D5600D42D4F /* Agent.storyboard */; };
+		8F57723B18DB7DE600D42D4F /* HAHelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 222E375B18BA521C00E3B720 /* HAHelpViewController.m */; };
 		8F88460918BFBBB400595CA2 /* HALocationService.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F88460818BFBBB400595CA2 /* HALocationService.m */; };
 		8FCE639F18AD5E3E00D4C957 /* HAUserService.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FCE639E18AD5E3E00D4C957 /* HAUserService.m */; };
 		8FCE63A018AD5E3E00D4C957 /* HAUserService.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FCE639E18AD5E3E00D4C957 /* HAUserService.m */; };
@@ -45,7 +49,6 @@
 		A150294B18DB7A81008FC4F1 /* HAUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F5A81518C8AC5E00ED0CC6 /* HAUserViewController.m */; };
 		A150294C18DB7A81008FC4F1 /* DCRestRequests.m in Sources */ = {isa = PBXBuildFile; fileRef = 229CF60118AA14D900B35488 /* DCRestRequests.m */; };
 		A150294D18DB7A81008FC4F1 /* HAMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22601F191886E2DE008B0179 /* HAMapViewController.m */; };
-		A150294E18DB7A81008FC4F1 /* HALogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 222E376018BA5B2F00E3B720 /* HALogViewController.m */; };
 		A150294F18DB7A81008FC4F1 /* HALocationService.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F88460818BFBBB400595CA2 /* HALocationService.m */; };
 		A150295018DB7A81008FC4F1 /* HATileOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22601F3E18871EAC008B0179 /* HATileOverlayView.m */; };
 		A150295118DB7A81008FC4F1 /* HAUserService.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FCE639E18AD5E3E00D4C957 /* HAUserService.m */; };
@@ -55,7 +58,6 @@
 		A150295518DB7A81008FC4F1 /* UIColor+HackcessAngels.m in Sources */ = {isa = PBXBuildFile; fileRef = A1B80AA718D243A3004EE4EA /* UIColor+HackcessAngels.m */; };
 		A150295618DB7A81008FC4F1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 22601F0F1886E2DE008B0179 /* main.m */; };
 		A150295718DB7A81008FC4F1 /* HAUser.m in Sources */ = {isa = PBXBuildFile; fileRef = A1330B0618AD62B5002B1828 /* HAUser.m */; };
-		A150295818DB7A81008FC4F1 /* HAHelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 222E375B18BA521C00E3B720 /* HAHelpViewController.m */; };
 		A150295918DB7A81008FC4F1 /* HAAssistanceService.m in Sources */ = {isa = PBXBuildFile; fileRef = 22DA835718B288610014CCA5 /* HAAssistanceService.m */; };
 		A150295A18DB7A81008FC4F1 /* HATileOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 22601F3C18871EAC008B0179 /* HATileOverlay.m */; };
 		A150295C18DB7A81008FC4F1 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22130BFE188964C200191955 /* MapKit.framework */; };
@@ -67,7 +69,6 @@
 		A150296318DB7A81008FC4F1 /* TODO.md in Resources */ = {isa = PBXBuildFile; fileRef = A1B80AA318D23DBF004EE4EA /* TODO.md */; };
 		A150296418DB7A81008FC4F1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22601F1B1886E2DE008B0179 /* Images.xcassets */; };
 		A150296518DB7A81008FC4F1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 22601F0C1886E2DE008B0179 /* InfoPlist.strings */; };
-		A150296618DB7A81008FC4F1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22601F151886E2DE008B0179 /* Main.storyboard */; };
 		A1AC4C5418B69AD2002EE7E6 /* HAUserServicesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A1AC4C5318B69AD2002EE7E6 /* HAUserServicesTests.m */; };
 		A1B064A618BFCBE60078EED5 /* user.json in Resources */ = {isa = PBXBuildFile; fileRef = A1B064A518BFCBE60078EED5 /* user.json */; };
 		A1B80AA418D23DBF004EE4EA /* TODO.md in Resources */ = {isa = PBXBuildFile; fileRef = A1B80AA318D23DBF004EE4EA /* TODO.md */; };
@@ -129,6 +130,7 @@
 		22DA835618B288610014CCA5 /* HAAssistanceService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HAAssistanceService.h; sourceTree = "<group>"; };
 		22DA835718B288610014CCA5 /* HAAssistanceService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HAAssistanceService.m; sourceTree = "<group>"; };
 		75B5CDE6C7954202AF2565B3 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		8F57723818DB7D5600D42D4F /* Agent.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Agent.storyboard; path = hackcessangels/Agent.storyboard; sourceTree = SOURCE_ROOT; };
 		8F88460718BFBBB400595CA2 /* HALocationService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HALocationService.h; path = hackcessangels/HALocationService.h; sourceTree = SOURCE_ROOT; };
 		8F88460818BFBBB400595CA2 /* HALocationService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HALocationService.m; path = hackcessangels/HALocationService.m; sourceTree = SOURCE_ROOT; };
 		8FCE639D18AD5E3E00D4C957 /* HAUserService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HAUserService.h; path = hackcessangels/services/HAUserService.h; sourceTree = SOURCE_ROOT; };
@@ -137,7 +139,7 @@
 		A1330B0618AD62B5002B1828 /* HAUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HAUser.m; path = hackcessangels/model/HAUser.m; sourceTree = SOURCE_ROOT; };
 		A1330B0918AD632E002B1828 /* HAUserTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HAUserTests.m; path = hackcessangelsTests/HAUserTests.m; sourceTree = SOURCE_ROOT; };
 		A150296B18DB7A81008FC4F1 /* HackcessAngels copy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HackcessAngels copy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		A150296C18DB7A81008FC4F1 /* HackcessAngels copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "HackcessAngels copy-Info.plist"; path = "/Users/boris/Documents/Projects/mobile/hackcess/hackcessangels/ios/hackcessangels/HackcessAngels copy-Info.plist"; sourceTree = "<absolute>"; };
+		A150296C18DB7A81008FC4F1 /* HackcessAngels copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "HackcessAngels copy-Info.plist"; path = "/Users/etienne/Documents/hackcessangels/ios/hackcessangels/HackcessAngels copy-Info.plist"; sourceTree = "<absolute>"; };
 		A1AC4C5318B69AD2002EE7E6 /* HAUserServicesTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HAUserServicesTests.m; path = hackcessangelsTests/HAUserServicesTests.m; sourceTree = SOURCE_ROOT; };
 		A1B064A518BFCBE60078EED5 /* user.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = user.json; path = hackcessangelsTests/user.json; sourceTree = SOURCE_ROOT; };
 		A1B80AA318D23DBF004EE4EA /* TODO.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = TODO.md; path = hackcessangels/TODO.md; sourceTree = SOURCE_ROOT; };
@@ -212,7 +214,6 @@
 				22601F011886E2DE008B0179 /* Products */,
 				75B5CDE6C7954202AF2565B3 /* Pods.xcconfig */,
 				B81C1F48A9394E3D818E00EB /* Pods-HackcessAngelsTests.xcconfig */,
-				A150296C18DB7A81008FC4F1 /* HackcessAngels copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -244,11 +245,9 @@
 		22601F091886E2DE008B0179 /* HackcessAngels */ = {
 			isa = PBXGroup;
 			children = (
-				A1B80AA518D24384004EE4EA /* View */,
-				8FCE639C18AD5DEF00D4C957 /* services */,
-				22130C03188966F400191955 /* model */,
-				22601F4118871EBC008B0179 /* controler */,
-				22601F151886E2DE008B0179 /* Main.storyboard */,
+				8F57723E18DB7E9800D42D4F /* Shared */,
+				8F57723D18DB7E6400D42D4F /* User */,
+				8F57723C18DB7E5800D42D4F /* Agent */,
 				22601F1B1886E2DE008B0179 /* Images.xcassets */,
 				22601F0A1886E2DE008B0179 /* Supporting Files */,
 				A1B80AA318D23DBF004EE4EA /* TODO.md */,
@@ -259,6 +258,7 @@
 		22601F0A1886E2DE008B0179 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				A150296C18DB7A81008FC4F1 /* HackcessAngels copy-Info.plist */,
 				22601F0B1886E2DE008B0179 /* HackcessAngels-Info.plist */,
 				22601F0C1886E2DE008B0179 /* InfoPlist.strings */,
 				22601F0F1886E2DE008B0179 /* main.m */,
@@ -288,21 +288,40 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		22601F4118871EBC008B0179 /* controler */ = {
+		8F57723C18DB7E5800D42D4F /* Agent */ = {
 			isa = PBXGroup;
 			children = (
-				22601F121886E2DE008B0179 /* AppDelegate.h */,
-				22601F131886E2DE008B0179 /* AppDelegate.m */,
-				222E375F18BA5B2F00E3B720 /* HALogViewController.h */,
-				222E376018BA5B2F00E3B720 /* HALogViewController.m */,
-				222E375A18BA521C00E3B720 /* HAHelpViewController.h */,
-				222E375B18BA521C00E3B720 /* HAHelpViewController.m */,
 				22601F181886E2DE008B0179 /* HAMapViewController.h */,
 				22601F191886E2DE008B0179 /* HAMapViewController.m */,
+				8F57723818DB7D5600D42D4F /* Agent.storyboard */,
+			);
+			name = Agent;
+			sourceTree = "<group>";
+		};
+		8F57723D18DB7E6400D42D4F /* User */ = {
+			isa = PBXGroup;
+			children = (
+				222E375A18BA521C00E3B720 /* HAHelpViewController.h */,
+				222E375B18BA521C00E3B720 /* HAHelpViewController.m */,
 				04F5A81418C8AC5E00ED0CC6 /* HAUserViewController.h */,
 				04F5A81518C8AC5E00ED0CC6 /* HAUserViewController.m */,
+				22601F151886E2DE008B0179 /* Main.storyboard */,
 			);
-			name = controler;
+			name = User;
+			sourceTree = "<group>";
+		};
+		8F57723E18DB7E9800D42D4F /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				A1B80AA518D24384004EE4EA /* View */,
+				8FCE639C18AD5DEF00D4C957 /* services */,
+				22130C03188966F400191955 /* model */,
+				222E375F18BA5B2F00E3B720 /* HALogViewController.h */,
+				222E376018BA5B2F00E3B720 /* HALogViewController.m */,
+				22601F121886E2DE008B0179 /* AppDelegate.h */,
+				22601F131886E2DE008B0179 /* AppDelegate.m */,
+			);
+			name = Shared;
 			sourceTree = "<group>";
 		};
 		8FCE639C18AD5DEF00D4C957 /* services */ = {
@@ -451,6 +470,7 @@
 			files = (
 				A1B064A618BFCBE60078EED5 /* user.json in Resources */,
 				22601F2D1886E2DE008B0179 /* InfoPlist.strings in Resources */,
+				8F57723A18DB7D5600D42D4F /* Agent.storyboard in Resources */,
 				222E375E18BA52E100E3B720 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -461,8 +481,8 @@
 			files = (
 				A150296318DB7A81008FC4F1 /* TODO.md in Resources */,
 				A150296418DB7A81008FC4F1 /* Images.xcassets in Resources */,
+				8F57723918DB7D5600D42D4F /* Agent.storyboard in Resources */,
 				A150296518DB7A81008FC4F1 /* InfoPlist.strings in Resources */,
-				A150296618DB7A81008FC4F1 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -607,8 +627,8 @@
 			files = (
 				A150294B18DB7A81008FC4F1 /* HAUserViewController.m in Sources */,
 				A150294C18DB7A81008FC4F1 /* DCRestRequests.m in Sources */,
+				8F57723B18DB7DE600D42D4F /* HAHelpViewController.m in Sources */,
 				A150294D18DB7A81008FC4F1 /* HAMapViewController.m in Sources */,
-				A150294E18DB7A81008FC4F1 /* HALogViewController.m in Sources */,
 				A150294F18DB7A81008FC4F1 /* HALocationService.m in Sources */,
 				A150295018DB7A81008FC4F1 /* HATileOverlayView.m in Sources */,
 				A150295118DB7A81008FC4F1 /* HAUserService.m in Sources */,
@@ -616,9 +636,9 @@
 				A150295318DB7A81008FC4F1 /* AppDelegate.m in Sources */,
 				A150295418DB7A81008FC4F1 /* HALocalisation.m in Sources */,
 				A150295518DB7A81008FC4F1 /* UIColor+HackcessAngels.m in Sources */,
+				8F57723718DB7D0A00D42D4F /* HALogViewController.m in Sources */,
 				A150295618DB7A81008FC4F1 /* main.m in Sources */,
 				A150295718DB7A81008FC4F1 /* HAUser.m in Sources */,
-				A150295818DB7A81008FC4F1 /* HAHelpViewController.m in Sources */,
 				A150295918DB7A81008FC4F1 /* HAAssistanceService.m in Sources */,
 				A150295A18DB7A81008FC4F1 /* HATileOverlay.m in Sources */,
 			);
