@@ -92,5 +92,5 @@ func (m *Model) CreateActiveRequestByRequester(user *User) (*HelpRequest, error)
 		RequesterEmail:      user.Email,
 		IsActive:            true,
 		m:                   m}
-	return hr, hr.Save()
+	return hr, nil
 }
