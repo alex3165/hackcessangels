@@ -42,6 +42,32 @@
 		A1330B0718AD62B5002B1828 /* HAUser.m in Sources */ = {isa = PBXBuildFile; fileRef = A1330B0618AD62B5002B1828 /* HAUser.m */; };
 		A1330B0818AD62B5002B1828 /* HAUser.m in Sources */ = {isa = PBXBuildFile; fileRef = A1330B0618AD62B5002B1828 /* HAUser.m */; };
 		A1330B0A18AD632E002B1828 /* HAUserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A1330B0918AD632E002B1828 /* HAUserTests.m */; };
+		A150294B18DB7A81008FC4F1 /* HAUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F5A81518C8AC5E00ED0CC6 /* HAUserViewController.m */; };
+		A150294C18DB7A81008FC4F1 /* DCRestRequests.m in Sources */ = {isa = PBXBuildFile; fileRef = 229CF60118AA14D900B35488 /* DCRestRequests.m */; };
+		A150294D18DB7A81008FC4F1 /* HAMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22601F191886E2DE008B0179 /* HAMapViewController.m */; };
+		A150294E18DB7A81008FC4F1 /* HALogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 222E376018BA5B2F00E3B720 /* HALogViewController.m */; };
+		A150294F18DB7A81008FC4F1 /* HALocationService.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F88460818BFBBB400595CA2 /* HALocationService.m */; };
+		A150295018DB7A81008FC4F1 /* HATileOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22601F3E18871EAC008B0179 /* HATileOverlayView.m */; };
+		A150295118DB7A81008FC4F1 /* HAUserService.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FCE639E18AD5E3E00D4C957 /* HAUserService.m */; };
+		A150295218DB7A81008FC4F1 /* HAEditUserService.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F5A81A18C8AD3A00ED0CC6 /* HAEditUserService.m */; };
+		A150295318DB7A81008FC4F1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 22601F131886E2DE008B0179 /* AppDelegate.m */; };
+		A150295418DB7A81008FC4F1 /* HALocalisation.m in Sources */ = {isa = PBXBuildFile; fileRef = 22130C01188966E500191955 /* HALocalisation.m */; };
+		A150295518DB7A81008FC4F1 /* UIColor+HackcessAngels.m in Sources */ = {isa = PBXBuildFile; fileRef = A1B80AA718D243A3004EE4EA /* UIColor+HackcessAngels.m */; };
+		A150295618DB7A81008FC4F1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 22601F0F1886E2DE008B0179 /* main.m */; };
+		A150295718DB7A81008FC4F1 /* HAUser.m in Sources */ = {isa = PBXBuildFile; fileRef = A1330B0618AD62B5002B1828 /* HAUser.m */; };
+		A150295818DB7A81008FC4F1 /* HAHelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 222E375B18BA521C00E3B720 /* HAHelpViewController.m */; };
+		A150295918DB7A81008FC4F1 /* HAAssistanceService.m in Sources */ = {isa = PBXBuildFile; fileRef = 22DA835718B288610014CCA5 /* HAAssistanceService.m */; };
+		A150295A18DB7A81008FC4F1 /* HATileOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 22601F3C18871EAC008B0179 /* HATileOverlay.m */; };
+		A150295C18DB7A81008FC4F1 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22130BFE188964C200191955 /* MapKit.framework */; };
+		A150295D18DB7A81008FC4F1 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22085DDC18883EAE00A4BE75 /* CoreLocation.framework */; };
+		A150295E18DB7A81008FC4F1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22601F051886E2DE008B0179 /* CoreGraphics.framework */; };
+		A150295F18DB7A81008FC4F1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22601F071886E2DE008B0179 /* UIKit.framework */; };
+		A150296018DB7A81008FC4F1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22601F031886E2DE008B0179 /* Foundation.framework */; };
+		A150296118DB7A81008FC4F1 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18DAFC5302E94F25AE48D512 /* libPods.a */; };
+		A150296318DB7A81008FC4F1 /* TODO.md in Resources */ = {isa = PBXBuildFile; fileRef = A1B80AA318D23DBF004EE4EA /* TODO.md */; };
+		A150296418DB7A81008FC4F1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22601F1B1886E2DE008B0179 /* Images.xcassets */; };
+		A150296518DB7A81008FC4F1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 22601F0C1886E2DE008B0179 /* InfoPlist.strings */; };
+		A150296618DB7A81008FC4F1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22601F151886E2DE008B0179 /* Main.storyboard */; };
 		A1AC4C5418B69AD2002EE7E6 /* HAUserServicesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A1AC4C5318B69AD2002EE7E6 /* HAUserServicesTests.m */; };
 		A1B064A618BFCBE60078EED5 /* user.json in Resources */ = {isa = PBXBuildFile; fileRef = A1B064A518BFCBE60078EED5 /* user.json */; };
 		A1B80AA418D23DBF004EE4EA /* TODO.md in Resources */ = {isa = PBXBuildFile; fileRef = A1B80AA318D23DBF004EE4EA /* TODO.md */; };
@@ -110,6 +136,8 @@
 		A1330B0518AD62B5002B1828 /* HAUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HAUser.h; path = hackcessangels/model/HAUser.h; sourceTree = SOURCE_ROOT; };
 		A1330B0618AD62B5002B1828 /* HAUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HAUser.m; path = hackcessangels/model/HAUser.m; sourceTree = SOURCE_ROOT; };
 		A1330B0918AD632E002B1828 /* HAUserTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HAUserTests.m; path = hackcessangelsTests/HAUserTests.m; sourceTree = SOURCE_ROOT; };
+		A150296B18DB7A81008FC4F1 /* HackcessAngels copy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HackcessAngels copy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A150296C18DB7A81008FC4F1 /* HackcessAngels copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "HackcessAngels copy-Info.plist"; path = "/Users/boris/Documents/Projects/mobile/hackcess/hackcessangels/ios/hackcessangels/HackcessAngels copy-Info.plist"; sourceTree = "<absolute>"; };
 		A1AC4C5318B69AD2002EE7E6 /* HAUserServicesTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HAUserServicesTests.m; path = hackcessangelsTests/HAUserServicesTests.m; sourceTree = SOURCE_ROOT; };
 		A1B064A518BFCBE60078EED5 /* user.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = user.json; path = hackcessangelsTests/user.json; sourceTree = SOURCE_ROOT; };
 		A1B80AA318D23DBF004EE4EA /* TODO.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = TODO.md; path = hackcessangels/TODO.md; sourceTree = SOURCE_ROOT; };
@@ -144,6 +172,19 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A150295B18DB7A81008FC4F1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A150295C18DB7A81008FC4F1 /* MapKit.framework in Frameworks */,
+				A150295D18DB7A81008FC4F1 /* CoreLocation.framework in Frameworks */,
+				A150295E18DB7A81008FC4F1 /* CoreGraphics.framework in Frameworks */,
+				A150295F18DB7A81008FC4F1 /* UIKit.framework in Frameworks */,
+				A150296018DB7A81008FC4F1 /* Foundation.framework in Frameworks */,
+				A150296118DB7A81008FC4F1 /* libPods.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -171,6 +212,7 @@
 				22601F011886E2DE008B0179 /* Products */,
 				75B5CDE6C7954202AF2565B3 /* Pods.xcconfig */,
 				B81C1F48A9394E3D818E00EB /* Pods-HackcessAngelsTests.xcconfig */,
+				A150296C18DB7A81008FC4F1 /* HackcessAngels copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -179,6 +221,7 @@
 			children = (
 				22601F001886E2DE008B0179 /* HackcessAngels.app */,
 				22601F211886E2DE008B0179 /* HackcessAngelsTests.xctest */,
+				A150296B18DB7A81008FC4F1 /* HackcessAngels copy.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -330,6 +373,25 @@
 			productReference = 22601F211886E2DE008B0179 /* HackcessAngelsTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		A150294818DB7A81008FC4F1 /* HackcessAngelsAgents */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A150296818DB7A81008FC4F1 /* Build configuration list for PBXNativeTarget "HackcessAngelsAgents" */;
+			buildPhases = (
+				A150294918DB7A81008FC4F1 /* Check Pods Manifest.lock */,
+				A150294A18DB7A81008FC4F1 /* Sources */,
+				A150295B18DB7A81008FC4F1 /* Frameworks */,
+				A150296218DB7A81008FC4F1 /* Resources */,
+				A150296718DB7A81008FC4F1 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HackcessAngelsAgents;
+			productName = HackcessAngels;
+			productReference = A150296B18DB7A81008FC4F1 /* HackcessAngels copy.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -365,6 +427,7 @@
 			projectRoot = "";
 			targets = (
 				22601EFF1886E2DE008B0179 /* HackcessAngels */,
+				A150294818DB7A81008FC4F1 /* HackcessAngelsAgents */,
 				22601F201886E2DE008B0179 /* HackcessAngelsTests */,
 			);
 		};
@@ -392,10 +455,51 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A150296218DB7A81008FC4F1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A150296318DB7A81008FC4F1 /* TODO.md in Resources */,
+				A150296418DB7A81008FC4F1 /* Images.xcassets in Resources */,
+				A150296518DB7A81008FC4F1 /* InfoPlist.strings in Resources */,
+				A150296618DB7A81008FC4F1 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
 		1251CCBC9B5C49069D766B0B /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A150294918DB7A81008FC4F1 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		A150296718DB7A81008FC4F1 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -494,6 +598,29 @@
 				A1B80AA918D243A3004EE4EA /* UIColor+HackcessAngels.m in Sources */,
 				22DA835918B288610014CCA5 /* HAAssistanceService.m in Sources */,
 				A1330B0A18AD632E002B1828 /* HAUserTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A150294A18DB7A81008FC4F1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A150294B18DB7A81008FC4F1 /* HAUserViewController.m in Sources */,
+				A150294C18DB7A81008FC4F1 /* DCRestRequests.m in Sources */,
+				A150294D18DB7A81008FC4F1 /* HAMapViewController.m in Sources */,
+				A150294E18DB7A81008FC4F1 /* HALogViewController.m in Sources */,
+				A150294F18DB7A81008FC4F1 /* HALocationService.m in Sources */,
+				A150295018DB7A81008FC4F1 /* HATileOverlayView.m in Sources */,
+				A150295118DB7A81008FC4F1 /* HAUserService.m in Sources */,
+				A150295218DB7A81008FC4F1 /* HAEditUserService.m in Sources */,
+				A150295318DB7A81008FC4F1 /* AppDelegate.m in Sources */,
+				A150295418DB7A81008FC4F1 /* HALocalisation.m in Sources */,
+				A150295518DB7A81008FC4F1 /* UIColor+HackcessAngels.m in Sources */,
+				A150295618DB7A81008FC4F1 /* main.m in Sources */,
+				A150295718DB7A81008FC4F1 /* HAUser.m in Sources */,
+				A150295818DB7A81008FC4F1 /* HAHelpViewController.m in Sources */,
+				A150295918DB7A81008FC4F1 /* HAAssistanceService.m in Sources */,
+				A150295A18DB7A81008FC4F1 /* HATileOverlay.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -683,6 +810,36 @@
 			};
 			name = Release;
 		};
+		A150296918DB7A81008FC4F1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 75B5CDE6C7954202AF2565B3 /* Pods.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "HackcessAngels/HackcessAngels-Prefix.pch";
+				INFOPLIST_FILE = "HackcessAngels copy-Info.plist";
+				PRODUCT_NAME = "HackcessAngels copy";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		A150296A18DB7A81008FC4F1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 75B5CDE6C7954202AF2565B3 /* Pods.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "HackcessAngels/HackcessAngels-Prefix.pch";
+				INFOPLIST_FILE = "HackcessAngels copy-Info.plist";
+				PRODUCT_NAME = "HackcessAngels copy";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -709,6 +866,15 @@
 			buildConfigurations = (
 				22601F361886E2DE008B0179 /* Debug */,
 				22601F371886E2DE008B0179 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A150296818DB7A81008FC4F1 /* Build configuration list for PBXNativeTarget "HackcessAngelsAgents" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A150296918DB7A81008FC4F1 /* Debug */,
+				A150296A18DB7A81008FC4F1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
