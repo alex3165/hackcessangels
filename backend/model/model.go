@@ -40,7 +40,6 @@ func NewModel(server string, databaseName string) (*Model, error) {
 	m.helpRequests.EnsureIndex(mgo.Index{
 		Key:  []string{"$2dsphere:requesterposition"},
 		Bits: 26,
-        Sparse: true,
 	})
 	m.stations = m.db.C("stations")
 	return m, nil
