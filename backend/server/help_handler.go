@@ -89,6 +89,14 @@ func (s *Server) handleHelp(w http.ResponseWriter, r *http.Request) {
 		}
 		json.NewEncoder(w).Encode(helpRequest)
 		return
+    case "DELETE":
+		helpRequest, err := s.model.GetActiveRequestByRequester(user)
+		if err != nil {
+			log.Printf("Error while getting active request: %+v", err)
+			returnError(404, "Couldn't get request", w)
+		}
+        helpRequest.Deactivate()
+        return
 	default:
 		returnError(405, "Not implemented", w)
 		return
