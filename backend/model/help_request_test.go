@@ -19,7 +19,7 @@ func TestRequestLifcycle(t *testing.T) {
 		t.Error(err)
 	}
 
-	req, err := m.GetOrCreateActiveRequestByRequester(u)
+	req, err := m.CreateActiveRequestByRequester(u)
 	if err != nil {
 		t.Error(err)
 	}
@@ -67,7 +67,7 @@ func TestFindActiveRequests(t *testing.T) {
 		t.Error(err)
 	}
 
-	req, err := m.GetOrCreateActiveRequestByRequester(u)
+	req, err := m.CreateActiveRequestByRequester(u)
 	if err != nil {
 		t.Error(err)
 	}

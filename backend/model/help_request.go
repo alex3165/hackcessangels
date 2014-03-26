@@ -1,6 +1,7 @@
 package model
 
 import (
+	"errors"
 	"time"
 
 	"labix.org/v2/mgo/bson"
@@ -80,17 +81,16 @@ func (m *Model) GetActiveRequestByRequester(user *User) (*HelpRequest, error) {
 	return hr, err
 }
 
-func (m *Model) GetOrCreateActiveRequestByRequester(user *User) (*HelpRequest, error) {
+func (m *Model) CreateActiveRequestByRequester(user *User) (*HelpRequest, error) {
 	hr, err := m.GetActiveRequestByRequester(user)
 	if err == nil {
-		return hr, nil
+		return nil, errors.New("Active request already present")
 	}
 	hr = &HelpRequest{
 		Id:                  bson.NewObjectId(),
 		RequestCreationTime: time.Now(),
 		RequesterEmail:      user.Email,
 		IsActive:            true,
-		m:                   m,
-    }
+		m:                   m}
 	return hr, nil
 }
