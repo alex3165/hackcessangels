@@ -7,17 +7,22 @@
 		<key>Pods-AFNetworking.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>1</integer>
+			<integer>5</integer>
 		</dict>
 		<key>Pods-HackcessAngelsTests-AFNetworking.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>4</integer>
+			<integer>7</integer>
 		</dict>
 		<key>Pods-HackcessAngelsTests-OHHTTPStubs.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>6</integer>
+			<integer>8</integer>
+		</dict>
+		<key>Pods-HackcessAngelsTests-Reachability.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>9</integer>
 		</dict>
 		<key>Pods-HackcessAngelsTests-TPKeyboardAvoiding.xcscheme</key>
 		<dict>
@@ -27,17 +32,22 @@
 		<key>Pods-HackcessAngelsTests-UICKeyChainStore.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>7</integer>
+			<integer>10</integer>
 		</dict>
 		<key>Pods-HackcessAngelsTests-XCTAsyncTestCase.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>5</integer>
+			<integer>11</integer>
 		</dict>
 		<key>Pods-HackcessAngelsTests.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>3</integer>
+			<integer>6</integer>
+		</dict>
+		<key>Pods-Reachability.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>12</integer>
 		</dict>
 		<key>Pods-TPKeyboardAvoiding.xcscheme</key>
 		<dict>
@@ -47,12 +57,12 @@
 		<key>Pods-UICKeyChainStore.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>8</integer>
+			<integer>13</integer>
 		</dict>
 		<key>Pods.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>0</integer>
+			<integer>4</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
@@ -77,12 +87,32 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>12FEBE37199745E0953B779E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>196C9C40837B42758DDD75F3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>2829882F13B244D0B59AA016</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>31A2A707568346B39550D151</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>37096BC90E704415B6386534</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>3AEFFD3BC15E442CB3588387</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -102,6 +132,11 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>4A1602698C5446718CB91A61</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>65C2DD08A9BF4E8A8095C99F</key>
 		<dict>
 			<key>primary</key>
@@ -112,7 +147,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>6E65A3D3E36E4C4F8BE964CA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>724F628918034BBEB1039AB3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>775EE944562F416780A9F34F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -172,6 +217,16 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>BDA17CA4C8BD488480C2F9E4</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BE20B9DDBD654317A06037A5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>BEF62E55276B43F381079060</key>
 		<dict>
 			<key>primary</key>
@@ -192,7 +247,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>CBDED68C6A294D6FBB29A63C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>D13FAB884190469E87C483AE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D506BA849A8840E6BE9975A0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -203,6 +268,11 @@
 			<true/>
 		</dict>
 		<key>DD8595117C954B1DB693D7E0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DF9B3994897148F29F45D1A4</key>
 		<dict>
 			<key>primary</key>
 			<true/>

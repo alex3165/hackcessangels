@@ -34,6 +34,12 @@
 		22601F3F18871EAC008B0179 /* HATileOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 22601F3C18871EAC008B0179 /* HATileOverlay.m */; };
 		22601F4018871EAC008B0179 /* HATileOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22601F3E18871EAC008B0179 /* HATileOverlayView.m */; };
 		229CF60218AA14D900B35488 /* DCRestRequests.m in Sources */ = {isa = PBXBuildFile; fileRef = 229CF60118AA14D900B35488 /* DCRestRequests.m */; };
+		22C9AB3618E20FDC008ED8D7 /* HACentralManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C9AB3518E20FDC008ED8D7 /* HACentralManager.m */; };
+		22C9AB3718E20FDC008ED8D7 /* HACentralManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C9AB3518E20FDC008ED8D7 /* HACentralManager.m */; };
+		22C9AB3818E20FDC008ED8D7 /* HACentralManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C9AB3518E20FDC008ED8D7 /* HACentralManager.m */; };
+		22C9AB3C18E229D4008ED8D7 /* HAPeripheral.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C9AB3B18E229D4008ED8D7 /* HAPeripheral.m */; };
+		22C9AB3D18E229D4008ED8D7 /* HAPeripheral.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C9AB3B18E229D4008ED8D7 /* HAPeripheral.m */; };
+		22C9AB3E18E229D4008ED8D7 /* HAPeripheral.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C9AB3B18E229D4008ED8D7 /* HAPeripheral.m */; };
 		22DA835818B288610014CCA5 /* HAAssistanceService.m in Sources */ = {isa = PBXBuildFile; fileRef = 22DA835718B288610014CCA5 /* HAAssistanceService.m */; };
 		22DA835918B288610014CCA5 /* HAAssistanceService.m in Sources */ = {isa = PBXBuildFile; fileRef = 22DA835718B288610014CCA5 /* HAAssistanceService.m */; };
 		8F57723718DB7D0A00D42D4F /* HALogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 222E376018BA5B2F00E3B720 /* HALogViewController.m */; };
@@ -127,6 +133,11 @@
 		22601F3E18871EAC008B0179 /* HATileOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HATileOverlayView.m; sourceTree = "<group>"; };
 		229CF60018AA14D900B35488 /* DCRestRequests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCRestRequests.h; sourceTree = "<group>"; };
 		229CF60118AA14D900B35488 /* DCRestRequests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCRestRequests.m; sourceTree = "<group>"; };
+		22C9AB3418E20FDC008ED8D7 /* HACentralManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HACentralManager.h; sourceTree = "<group>"; };
+		22C9AB3518E20FDC008ED8D7 /* HACentralManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HACentralManager.m; sourceTree = "<group>"; };
+		22C9AB3918E21083008ED8D7 /* HASERVICES.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HASERVICES.h; sourceTree = "<group>"; };
+		22C9AB3A18E229D4008ED8D7 /* HAPeripheral.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HAPeripheral.h; sourceTree = "<group>"; };
+		22C9AB3B18E229D4008ED8D7 /* HAPeripheral.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HAPeripheral.m; sourceTree = "<group>"; };
 		22DA835618B288610014CCA5 /* HAAssistanceService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HAAssistanceService.h; sourceTree = "<group>"; };
 		22DA835718B288610014CCA5 /* HAAssistanceService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HAAssistanceService.m; sourceTree = "<group>"; };
 		75B5CDE6C7954202AF2565B3 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
@@ -201,6 +212,11 @@
 				22130C01188966E500191955 /* HALocalisation.m */,
 				A1330B0518AD62B5002B1828 /* HAUser.h */,
 				A1330B0618AD62B5002B1828 /* HAUser.m */,
+				22C9AB3A18E229D4008ED8D7 /* HAPeripheral.h */,
+				22C9AB3B18E229D4008ED8D7 /* HAPeripheral.m */,
+				22C9AB3418E20FDC008ED8D7 /* HACentralManager.h */,
+				22C9AB3518E20FDC008ED8D7 /* HACentralManager.m */,
+				22C9AB3918E21083008ED8D7 /* HASERVICES.h */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -592,9 +608,11 @@
 				222E376118BA5B2F00E3B720 /* HALogViewController.m in Sources */,
 				8F88460918BFBBB400595CA2 /* HALocationService.m in Sources */,
 				22601F4018871EAC008B0179 /* HATileOverlayView.m in Sources */,
+				22C9AB3618E20FDC008ED8D7 /* HACentralManager.m in Sources */,
 				8FCE639F18AD5E3E00D4C957 /* HAUserService.m in Sources */,
 				04F5A81C18C8AD3A00ED0CC6 /* HAEditUserService.m in Sources */,
 				22601F141886E2DE008B0179 /* AppDelegate.m in Sources */,
+				22C9AB3C18E229D4008ED8D7 /* HAPeripheral.m in Sources */,
 				22130C02188966E500191955 /* HALocalisation.m in Sources */,
 				A1B80AA818D243A3004EE4EA /* UIColor+HackcessAngels.m in Sources */,
 				22601F101886E2DE008B0179 /* main.m in Sources */,
@@ -615,6 +633,8 @@
 				A1330B0818AD62B5002B1828 /* HAUser.m in Sources */,
 				A1AC4C5418B69AD2002EE7E6 /* HAUserServicesTests.m in Sources */,
 				8FCE63A018AD5E3E00D4C957 /* HAUserService.m in Sources */,
+				22C9AB3818E20FDC008ED8D7 /* HACentralManager.m in Sources */,
+				22C9AB3E18E229D4008ED8D7 /* HAPeripheral.m in Sources */,
 				A1B80AA918D243A3004EE4EA /* UIColor+HackcessAngels.m in Sources */,
 				22DA835918B288610014CCA5 /* HAAssistanceService.m in Sources */,
 				A1330B0A18AD632E002B1828 /* HAUserTests.m in Sources */,
@@ -631,9 +651,11 @@
 				A150294D18DB7A81008FC4F1 /* HAMapViewController.m in Sources */,
 				A150294F18DB7A81008FC4F1 /* HALocationService.m in Sources */,
 				A150295018DB7A81008FC4F1 /* HATileOverlayView.m in Sources */,
+				22C9AB3718E20FDC008ED8D7 /* HACentralManager.m in Sources */,
 				A150295118DB7A81008FC4F1 /* HAUserService.m in Sources */,
 				A150295218DB7A81008FC4F1 /* HAEditUserService.m in Sources */,
 				A150295318DB7A81008FC4F1 /* AppDelegate.m in Sources */,
+				22C9AB3D18E229D4008ED8D7 /* HAPeripheral.m in Sources */,
 				A150295418DB7A81008FC4F1 /* HALocalisation.m in Sources */,
 				A150295518DB7A81008FC4F1 /* UIColor+HackcessAngels.m in Sources */,
 				8F57723718DB7D0A00D42D4F /* HALogViewController.m in Sources */,

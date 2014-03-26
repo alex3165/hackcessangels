@@ -15,6 +15,7 @@ extern NSString *const kCookieKey;
 
 @interface HAUser : NSObject
 
+@property (nonatomic, assign) BOOL userstate; // 0 for User and 1 for agent
 @property (nonatomic, strong) NSString *email;
 @property (nonatomic, strong) NSString *password;
 @property (nonatomic, strong) NSString *name;
