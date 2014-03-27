@@ -1,30 +1,26 @@
 //
-//  CBCentralManagerViewController.m
-//  CBTutorial
+//  HACentralManager.m
+//  hackcessangels
 //
-//  Created by Orlando Pereira on 10/8/13.
-//  Copyright (c) 2013 Mobiletuts. All rights reserved.
+//  Created by RIEUX Alexandre on 25/03/2014.
+//  Copyright (c) 2014 RIEUX Alexandre. All rights reserved.
 //
 
-#import "CBCentralManagerViewController.h"
+#import "HACentralManager.h"
 
-@implementation CBCentralManagerViewController
+@implementation HACentralManager
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    self.centralManager = [[CBCentralManager alloc]initWithDelegate:self queue:nil];
-    self.data = [[NSMutableData alloc]init];
-}
-
-// Stop Scan process on view disappear
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    [self.centralManager stopScan];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (id)init
+{
+    self = [super init];
+    
+    
+    if (self) {
+        self.centralManager = [[CBCentralManager alloc]initWithDelegate:self queue:nil];
+        self.data = [[NSMutableData alloc]init];
+    }
+    
+    return self;
 }
 
 - (void)centralManagerDidUpdateState:(CBCentralManager *)central{
@@ -116,7 +112,9 @@
     // Have we got everything we need?
     if ([stringFromData isEqualToString:@"EOM"]) {
         
-        [self.textview setText:[[NSString alloc] initWithData:self.data encoding:NSUTF8StringEncoding]];
+        //[self.textview setText:[[NSString alloc] initWithData:self.data encoding:NSUTF8StringEncoding]];
+        
+        /* Récupération des datas ici */
         
         [peripheral setNotifyValue:NO forCharacteristic:characteristic];
         
@@ -125,7 +123,6 @@
     
     [self.data appendData:characteristic.value];
 }
-
 
 - (void)peripheral:(CBPeripheral *)peripheral didUpdateNotificationStateForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error {
     
@@ -149,7 +146,6 @@
     [self.centralManager scanForPeripheralsWithServices:@[[CBUUID UUIDWithString:TRANSFER_SERVICE_UUID]] options:@{ CBCentralManagerScanOptionAllowDuplicatesKey : @YES }];
 }
 
-
 - (void)cleanup {
     
     // See if we are subscribed to a characteristic on the peripheral
@@ -170,5 +166,6 @@
     
     [self.centralManager cancelPeripheralConnection:self.discoveredPeripheral];
 }
+
 
 @end

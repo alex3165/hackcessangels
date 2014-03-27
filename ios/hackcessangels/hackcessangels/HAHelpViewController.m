@@ -63,7 +63,6 @@
 	
     [self.userService getUserWithEmail:user.email success:^(HAUser *user) {
         
-        //Nothing to do, user is updated in service method
         DLog(@"Success");
         
     } failure:^(NSError *error) {
