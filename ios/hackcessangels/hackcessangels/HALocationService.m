@@ -22,7 +22,7 @@
     if (nil == self.locationManager)
         self.locationManager = [[CLLocationManager alloc] init];
     
-    if (![self.locationManager locationServicesEnabled]) {
+    if (![CLLocationManager locationServicesEnabled]) {
         return FALSE;
     }
     
@@ -42,11 +42,19 @@
 
 - (void) locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
     // If it's a relatively recent event, turn off updates to save power.
-    CLLocation* location = [locations lastObject];
+    self.location = [locations lastObject];
     // If the event is recent, do something with it.
     DLog(@"latitude %+.6f, longitude %+.6f, accuracy %+.6f\n",
-          location.coordinate.latitude,
-          location.coordinate.longitude,
-          location.horizontalAccuracy);
+          self.location.coordinate.latitude,
+          self.location.coordinate.longitude,
+          self.location.horizontalAccuracy);
+}
+
+- (NSString *) currentLongitude {
+    return [NSString stringWithFormat:@"%f",self.location.coordinate.longitude];
+}
+
+- (NSString *) currentLatitude {
+    return [NSString stringWithFormat:@"%f",self.location.coordinate.latitude];
 }
 @end

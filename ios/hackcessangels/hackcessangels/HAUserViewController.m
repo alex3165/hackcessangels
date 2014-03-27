@@ -25,6 +25,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        [[self navigationController] setNavigationBarHidden:NO];
     }
     return self;
 }

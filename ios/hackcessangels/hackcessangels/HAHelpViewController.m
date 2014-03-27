@@ -35,11 +35,7 @@
     
     self.assistanceService = [[HAAssistanceService alloc]init];
     
-    [self.assistanceService helpMe:@"43" latitude:@"-1.48" success:^(id obj, id obj2){
-        
-    } failure:^(NSError *error) {
-        
-    }];
+    [self.assistanceService startHelpRequest];
 }
 
 
@@ -67,7 +63,6 @@
 	
     [self.userService getUserWithEmail:user.email success:^(HAUser *user) {
         
-        //Nothing to do, user is updated in service method
         DLog(@"Success");
         
     } failure:^(NSError *error) {

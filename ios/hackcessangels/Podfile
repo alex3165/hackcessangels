@@ -3,6 +3,7 @@ platform :ios, '6.0'
 pod 'AFNetworking'
 pod 'UICKeyChainStore'
 pod 'TPKeyboardAvoiding'
+pod 'Reachability'
 
 target :HackcessAngelsTests do
   pod 'XCTAsyncTestCase'
