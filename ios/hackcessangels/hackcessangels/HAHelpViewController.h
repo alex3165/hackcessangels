@@ -11,6 +11,7 @@
 #import "HAAssistanceService.h"
 #import "DCRestRequests.h"
 #import "HAUserService.h"
+#import "HAMapViewController.h"
 
 @interface HAHelpViewController : UIViewController
 
@@ -18,5 +19,6 @@
 
 @property (nonatomic, strong) HAAssistanceService *assistanceService;
 @property (nonatomic, strong) HAUserService *userService;
+@property (nonatomic,strong) HAMapViewController *mapController;
 
 @end

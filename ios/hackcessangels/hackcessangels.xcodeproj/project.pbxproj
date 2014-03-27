@@ -33,6 +33,7 @@
 		22601F2F1886E2DE008B0179 /* HackcessAngelsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 22601F2E1886E2DE008B0179 /* HackcessAngelsTests.m */; };
 		22601F3F18871EAC008B0179 /* HATileOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 22601F3C18871EAC008B0179 /* HATileOverlay.m */; };
 		22601F4018871EAC008B0179 /* HATileOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22601F3E18871EAC008B0179 /* HATileOverlayView.m */; };
+		2297633818E4A58400CDE26A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22601F151886E2DE008B0179 /* Main.storyboard */; };
 		229CF60218AA14D900B35488 /* DCRestRequests.m in Sources */ = {isa = PBXBuildFile; fileRef = 229CF60118AA14D900B35488 /* DCRestRequests.m */; };
 		22C9AB3618E20FDC008ED8D7 /* HACentralManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C9AB3518E20FDC008ED8D7 /* HACentralManager.m */; };
 		22C9AB3718E20FDC008ED8D7 /* HACentralManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C9AB3518E20FDC008ED8D7 /* HACentralManager.m */; };
@@ -496,6 +497,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A150296318DB7A81008FC4F1 /* TODO.md in Resources */,
+				2297633818E4A58400CDE26A /* Main.storyboard in Resources */,
 				A150296418DB7A81008FC4F1 /* Images.xcassets in Resources */,
 				8F57723918DB7D5600D42D4F /* Agent.storyboard in Resources */,
 				A150296518DB7A81008FC4F1 /* InfoPlist.strings in Resources */,
