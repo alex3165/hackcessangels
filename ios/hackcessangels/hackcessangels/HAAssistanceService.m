@@ -21,6 +21,7 @@
 @property(nonatomic, strong) NSTimer* timer;
 @property(nonatomic, strong) HALocationService* locationService;
 
+@property(nonatomic, assign) BOOL requestInFlight;
 @end
 
 @implementation HAAssistanceService
@@ -35,6 +36,7 @@
         [self.reach startNotifier];
         
         self.locationService = [[HALocationService alloc] init];
+        self.requestInFlight = false;
     }
     return self;
 }
@@ -63,14 +65,23 @@
 - (void) stopHelpRequest {
     [self.timer invalidate];
     [self.locationService stopLocation];
+    
+    DCRestRequests* restRequest = [[DCRestRequests alloc] init];
+    [restRequest DELETErequest:@"request" withParameters:@{} success:nil failure:nil];
+    
+    self.requestInFlight = false;
 }
 
 - (void)helpMe:(NSString*)longitude latitude:(NSString*)latitude success:(DCRestRequestsSuccess)success failure:(DCRestRequestsFailure)failure {
     
     if (self.reach.isReachable) {
-        DCRestRequests* helpRequest = [[DCRestRequests alloc] init];
+        DCRestRequests* restRequest = [[DCRestRequests alloc] init];
     
-        [helpRequest POSTrequest:@"request" withParameters:@{@"lng" : longitude, @"lat" : latitude} success:success failure:failure];
+        if (!self.requestInFlight) {
+            [restRequest POSTrequest:@"request" withParameters:@{@"lng" : longitude, @"lat" : latitude} success:nil failure:nil];
+        } else {
+            [restRequest PUTrequest:@"request" withParameters:@{@"lng" : longitude, @"lat" : latitude} success:nil failure:nil];
+        }
     } else {
         // TODO: Bluetooth
     }
