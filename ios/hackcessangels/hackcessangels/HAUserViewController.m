@@ -29,6 +29,10 @@
     }
     return self;
 }
+- (IBAction)onBackButtonUp:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
+}
 
 - (void)viewDidLoad
 {
