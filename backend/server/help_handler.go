@@ -6,6 +6,13 @@ import (
 	"net/http"
 )
 
+type APIRequest struct {
+    IsActive bool
+}
+
+func NewAPIRequestFromHelpRequest() {
+}
+
 func (s *Server) handleHelp(w http.ResponseWriter, r *http.Request) {
 	var data struct {
         HelpRequestId *string `json:"id,omitempty"`
@@ -65,7 +72,7 @@ func (s *Server) handleHelp(w http.ResponseWriter, r *http.Request) {
 		json.NewEncoder(w).Encode(helpRequest)
 		return
 	case "PUT":
-		helpRequest, err := s.model.GetRequestById(*data.HelpRequestId)
+		helpRequest, err := s.model.GetActiveRequestByRequester(user)
 		if err != nil {
 			log.Printf("Error while getting active request: %+v", err)
 			returnError(404, "Couldn't get request", w)
