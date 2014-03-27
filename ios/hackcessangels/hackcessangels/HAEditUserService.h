@@ -14,7 +14,7 @@
 
 @interface HAEditUserService : NSObject
 
-- (void)editUser:(NSString*)login password:(NSString*)password email:(NSString*)email success:(DCRestRequestsSuccess)success failure:(DCRestRequestsFailure)failure;
+- (void)editUser:(NSString*)login password:(NSString*)password email:(NSString*)email description:(NSString*)description handicap:(NSString*)handicap  success:(DCRestRequestsSuccess)success failure:(DCRestRequestsFailure)failure;
 @end
 
 

@@ -21,7 +21,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *showLogin;
 @property (weak, nonatomic) IBOutlet UITextField *showPassword;
 @property (weak, nonatomic) IBOutlet UITextField *showEmail;
-
+@property (weak, nonatomic) IBOutlet UITextField *showDescription;
+@property (weak, nonatomic) IBOutlet UITextField *showHandicap;
 
 @property (weak, nonatomic) IBOutlet UIButton *edit;
 

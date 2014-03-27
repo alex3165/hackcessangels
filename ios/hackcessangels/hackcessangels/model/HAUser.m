@@ -12,6 +12,8 @@
 NSString *const kServiceId = @"HAUser";
 NSString *const kPasswordKey = @"password";
 NSString *const kEmailKey = @"email";
+//NSString *const kLoginKey = @"login";
+//NSString *const kDescriptionKey = @"userdescription";
 NSString *const kCookieKey = @"cookie";
 
 @implementation HAUser
@@ -23,7 +25,7 @@ NSString *const kCookieKey = @"cookie";
     if (self) {
         self.email = [dico objectForKey:@"email"];
         self.password = [dico objectForKey:@"password"];
-        self.name = [dico objectForKey:@"name"];
+        self.login = [dico objectForKey:@"name"];
         self.userdescription = [dico objectForKey:@"description"];
         self.handicap = [dico objectForKey:@"handicap"];
     }
@@ -57,6 +59,8 @@ NSString *const kCookieKey = @"cookie";
 }
 
 + (HAUser*) userFromKeyChain {
+    /* NSString *login = [UICKeyChainStore stringForKey:kLoginKey service:kServiceId];
+    NSString *userdescription = [UICKeyChainStore stringForKey:kDescriptionKey service:kServiceId];*/
     NSString *email = [UICKeyChainStore stringForKey:kEmailKey service:kServiceId];
     NSString *password = [UICKeyChainStore stringForKey:kPasswordKey service:kServiceId];
     NSData *cookieData = [UICKeyChainStore dataForKey:kCookieKey service:kServiceId];

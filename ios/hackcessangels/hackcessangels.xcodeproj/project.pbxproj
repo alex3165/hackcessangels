@@ -67,7 +67,6 @@
 		A150296318DB7A81008FC4F1 /* TODO.md in Resources */ = {isa = PBXBuildFile; fileRef = A1B80AA318D23DBF004EE4EA /* TODO.md */; };
 		A150296418DB7A81008FC4F1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22601F1B1886E2DE008B0179 /* Images.xcassets */; };
 		A150296518DB7A81008FC4F1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 22601F0C1886E2DE008B0179 /* InfoPlist.strings */; };
-		A150296618DB7A81008FC4F1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22601F151886E2DE008B0179 /* Main.storyboard */; };
 		A1AC4C5418B69AD2002EE7E6 /* HAUserServicesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A1AC4C5318B69AD2002EE7E6 /* HAUserServicesTests.m */; };
 		A1B064A618BFCBE60078EED5 /* user.json in Resources */ = {isa = PBXBuildFile; fileRef = A1B064A518BFCBE60078EED5 /* user.json */; };
 		A1B80AA418D23DBF004EE4EA /* TODO.md in Resources */ = {isa = PBXBuildFile; fileRef = A1B80AA318D23DBF004EE4EA /* TODO.md */; };
@@ -462,7 +461,6 @@
 				A150296318DB7A81008FC4F1 /* TODO.md in Resources */,
 				A150296418DB7A81008FC4F1 /* Images.xcassets in Resources */,
 				A150296518DB7A81008FC4F1 /* InfoPlist.strings in Resources */,
-				A150296618DB7A81008FC4F1 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
