@@ -17,7 +17,7 @@ extern NSString *const kCookieKey;
 
 @property (nonatomic, strong) NSString *email;
 @property (nonatomic, strong) NSString *password;
-@property (nonatomic, strong) NSString *name;
+@property (nonatomic, strong) NSString *login;
 @property (nonatomic, strong) NSString *userdescription;
 @property (nonatomic, strong) NSString *handicap;
 @property (nonatomic, strong) NSHTTPCookie *cookie;

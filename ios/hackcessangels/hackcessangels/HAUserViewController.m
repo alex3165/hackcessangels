@@ -36,10 +36,11 @@
     [[UITextField appearance] setFont:[UIFont fontWithName:@"Times" size:16]];
     
      HAUser *userActual = [HAUser userFromKeyChain];
-    //self.showLogin.text= userActual.login;
+    self.showLogin.text= userActual.login;
+    self.showDescription.text= userActual.userdescription;
     self.showEmail.text= userActual.email;
     self.showPassword.text= userActual.password;
-    //[self.showLogin setFont:[UIFont fontWithName:@"Helvetica" size:16]];
+   
 }
 
 -(void)viewDidAppear:(BOOL)animated
