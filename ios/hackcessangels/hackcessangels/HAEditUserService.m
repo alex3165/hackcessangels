@@ -16,10 +16,9 @@
     DCRestRequests* editUserRequest = [[DCRestRequests alloc] init];
     if (login && password && email && email.length !=0 && password.length !=0 && login.length !=0) {
         
-        [editUserRequest POSTrequest:@"request" withParameters:@{@"login" : login, @"password" : password, @"email" : email, @"description" : description, @"handicap" : handicap} success:success failure:failure];
-    
+        [editUserRequest POSTrequest:@"request" withParameters:@{@"login" : login, @"password" : password, @"email" : email, @"description" : description, @"disability" : handicap} success:success failure:failure];
     }
-
+    
     else {
         [[[UIAlertView alloc] initWithTitle:@"Champs incomplets" message:@"Veuillez compléter tous les champs" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil] show];
     }

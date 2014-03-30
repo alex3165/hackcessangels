@@ -78,9 +78,10 @@
         DCRestRequests* restRequest = [[DCRestRequests alloc] init];
     
         if (!self.requestInFlight) {
-            [restRequest POSTrequest:@"request" withParameters:@{@"lng" : longitude, @"lat" : latitude} success:nil failure:nil];
+            [restRequest POSTrequest:@"request" withParameters:@{@"lng" : longitude, @"lat" : latitude} success:success failure:failure];
+            self.requestInFlight = true;
         } else {
-            [restRequest PUTrequest:@"request" withParameters:@{@"lng" : longitude, @"lat" : latitude} success:nil failure:nil];
+            [restRequest PUTrequest:@"request" withParameters:@{@"lng" : longitude, @"lat" : latitude} success:success failure:failure];
         }
     } else {
         // TODO: Bluetooth
