@@ -45,7 +45,7 @@
         
         if (failure)
         {
-           failure(error);
+           failure(operation.responseObject, error);
         }
     }];
 }
@@ -67,7 +67,7 @@
         
         if (failure)
         {
-            failure(error);
+            failure(operation.responseObject, error);
         }
     }];
 }
@@ -87,7 +87,7 @@
         
         if (failure)
         {
-            failure(error);
+            failure(operation.responseObject, error);
         }
     }];
 }
@@ -107,7 +107,7 @@
         
         if (failure)
         {
-            failure(error);
+            failure(operation.responseObject, error);
         }
     }];
 }

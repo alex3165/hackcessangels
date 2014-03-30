@@ -25,9 +25,9 @@ NSString *const kCookieKey = @"cookie";
     if (self) {
         self.email = [dico objectForKey:@"email"];
         self.password = [dico objectForKey:@"password"];
-        self.login = [dico objectForKey:@"name"];
+        self.name = [dico objectForKey:@"name"];
         self.userdescription = [dico objectForKey:@"description"];
-        self.handicap = [dico objectForKey:@"handicap"];
+        self.disability = [dico objectForKey:@"disability"];
     }
     
     return self;

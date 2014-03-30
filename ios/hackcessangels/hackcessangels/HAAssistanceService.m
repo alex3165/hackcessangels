@@ -22,6 +22,10 @@
 @property(nonatomic, strong) HALocationService* locationService;
 
 @property(nonatomic, assign) BOOL requestInFlight;
+
+@property(nonatomic, strong) HAAssistanceRequestAbort abortCallback;
+@property(nonatomic, strong) HAAssistanceRequestAgentContacted agentContactedCallback;
+@property(nonatomic, strong) HAAssistanceRequestSuccess successCallback;
 @end
 
 @implementation HAAssistanceService
@@ -41,7 +45,7 @@
     return self;
 }
 
-- (void) startHelpRequest {
+- (void) startHelpRequest:(HAAssistanceRequestAbort)abort agentContacted:(HAAssistanceRequestAgentContacted)agentContacted success:(HAAssistanceRequestSuccess)success {
     self.timer = [[NSTimer alloc]
                   initWithFireDate:[NSDate date]
                   interval:30
@@ -57,7 +61,7 @@
 - (void) timerFired {
     [self helpMe:[self.locationService currentLongitude] latitude:[self.locationService currentLatitude] success:^(id obj, NSHTTPURLResponse *response) {
         DLog(@"success");
-    } failure:^(NSError *error) {
+    } failure:^(id obj, NSError *error) {
         DLog(@"failure");
     }];
 }

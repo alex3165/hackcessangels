@@ -26,9 +26,10 @@
         if (success) {
             success(user);
         }
-    } failure:failure];
+    } failure:^(id obj, NSError *error) {
+        failure(error);
+    }];
 }
-
 
 
 // on recherche l'email entré, on le supprime, on envoit le nouvel email

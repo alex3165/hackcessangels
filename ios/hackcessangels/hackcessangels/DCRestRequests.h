@@ -10,7 +10,7 @@
 #import "AFNetworking.h"
 
 typedef void(^DCRestRequestsSuccess)(id obj, NSHTTPURLResponse* response);
-typedef void(^DCRestRequestsFailure)(NSError *error);
+typedef void(^DCRestRequestsFailure)(id obj, NSError *error);
 
 @interface DCRestRequests : NSObject
 

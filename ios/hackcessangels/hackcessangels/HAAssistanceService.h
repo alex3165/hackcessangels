@@ -9,8 +9,17 @@
 #import <Foundation/Foundation.h>
 #import "DCRestRequests.h"
 
+// Block called when the request is aborted (typically, no response from any agent within X minutes).
+typedef void(^HAAssistanceRequestAbort)();
+
+// Block called when an agent answered the request, but it is still not completed.
+typedef void(^HAAssistanceRequestAgentContacted)(NSString* agentName);
+
+// Block called when the assistance request finished successfully (end of request after agent contacted).
+typedef void(^HAAssistanceRequestSuccess)();
+
 @interface HAAssistanceService : NSObject
-- (void)startHelpRequest;
+- (void)startHelpRequest:(HAAssistanceRequestAbort) abort agentContacted:(HAAssistanceRequestAgentContacted) agentContacted success:(HAAssistanceRequestSuccess) success;
 - (void)stopHelpRequest;
 
 - (void)helpMe:(NSString*)longitude latitude:(NSString*)latitude success:(DCRestRequestsSuccess)success failure:(DCRestRequestsFailure)failure;

@@ -35,7 +35,7 @@
     
     self.assistanceService = [[HAAssistanceService alloc]init];
     
-    [self.assistanceService startHelpRequest];
+    [self.assistanceService startHelpRequest:nil agentContacted:nil success:nil];
 }
 
 

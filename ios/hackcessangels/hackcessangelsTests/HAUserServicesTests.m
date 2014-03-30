@@ -49,7 +49,7 @@
         
         [self notify:kXCTUnitWaitStatusSuccess];
         
-    } failure:^(NSError *error) {
+    } failure:^(id obj, NSError *error) {
         
         [self notify:kXCTUnitWaitStatusFailure];
         
@@ -74,10 +74,10 @@
     [userService loginWithEmailAndPassword:@"julia.dirand@gmail.com" password:@"motdepasse" success:^(id obj, id obj2){
         [userService deleteUserWithEmail:@"julia@gmail.com" success:^(id obj, id obj2){
             [self notify:kXCTUnitWaitStatusSuccess];
-        } failure:^(NSError *error) {
+        } failure:^(id obj, NSError *error) {
             [self notify:kXCTUnitWaitStatusFailure];
         }];
-    } failure:^(NSError *error) {
+    } failure:^(id obj, NSError *error) {
         [self notify:kXCTUnitWaitStatusFailure];
     }];
     
@@ -134,7 +134,7 @@
     [self prepare];
     [userService updateUser:@"julia.dirand@gmail.com" withUpdatedEmail:@"julia@gmail.com" password:@"motdepasse" withUpdatedPassword:@"nouveau_motdepasse" success:^(id obj, id obj2){
         [self notify:kXCTUnitWaitStatusSuccess];
-    } failure:^(NSError *error) {
+    } failure:^(id obj, NSError *error) {
         [self notify:kXCTUnitWaitStatusFailure];
     }];
     
@@ -157,7 +157,7 @@
     [userService loginWithEmailAndPassword:@"julia.dirand@gmail.com" password:@"motdepasse" success:^(id obj, id obj2){
         [self notify:kXCTUnitWaitStatusSuccess];
     
-    } failure:^(NSError *error){
+    } failure:^(id obj, NSError *error){
         [self notify:kXCTUnitWaitStatusFailure];
     }];
 

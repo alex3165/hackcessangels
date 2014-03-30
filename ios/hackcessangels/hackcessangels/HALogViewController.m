@@ -76,7 +76,7 @@
     [self.userService loginWithEmailAndPassword:self.email.text password:self.password.text success:^(NSDictionary *dico, id obj){
         [self checkLoginWithUser]; // ----- check du User créé
         
-    } failure:^(NSError *error) {
+    } failure:^(id obj, NSError *error) {
         NSLog(@"%@",error);
     }];
 }

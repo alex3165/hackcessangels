@@ -61,7 +61,7 @@
     [self.editUser updateUser:userActual.email withUpdatedEmail:self.showEmail.text password:userActual.password withUpdatedPassword:self.showPassword.text success:^(id obj, id obj2) {
         UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Bravo" message:@"Profil édité" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
         [alert show];
-    } failure:^(NSError *error) {
+    } failure:^(id obj, NSError *error) {
         UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Erreur" message:@"Profil  non édité" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
         [alert show];
     }];
