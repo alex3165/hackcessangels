@@ -51,7 +51,7 @@ func TestCreateHelpRequest(t *testing.T) {
 		t.Errorf("Error while processing: %+v, %s", response, response.Body)
 	}
 
-	hr := new(model.HelpRequest)
+	hr := new(APIRequest)
 	err = json.NewDecoder(response.Body).Decode(&hr)
 	if err != nil {
 		t.Errorf("Request not returned: %s", err)

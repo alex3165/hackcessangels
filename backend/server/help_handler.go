@@ -4,21 +4,41 @@ import (
 	"encoding/json"
 	"log"
 	"net/http"
+
+	"hackcessangels/backend/model"
 )
 
 type APIRequest struct {
-    IsActive bool
+    Id        string
+
+	IsActive  bool
+
+	AgentName string
+
+    Longitude float64
+    Latitude float64
+    Precision float64
 }
 
-func NewAPIRequestFromHelpRequest() {
+func NewAPIRequestFromHelpRequest(hr *model.HelpRequest) *APIRequest {
+	apiRequest := new(APIRequest)
+	apiRequest.IsActive = hr.IsActive
+    agent, err := hr.GetAgent()
+    if (err == nil) {
+        apiRequest.AgentName = agent.Name
+    }
+    apiRequest.Longitude = hr.RequesterPosition.Coordinates[0]
+    apiRequest.Latitude = hr.RequesterPosition.Coordinates[1]
+    apiRequest.Precision = hr.RequesterPosPrecision
+    return apiRequest
 }
 
 func (s *Server) handleHelp(w http.ResponseWriter, r *http.Request) {
 	var data struct {
-        HelpRequestId *string `json:"id,omitempty"`
-		Latitude  *float64 `json:"latitude,omitempty"`
-		Longitude *float64 `json:"longitude,omitempty"`
-		Precision *float64 `json:"precision,omitempty"`
+		HelpRequestId *string  `json:"id,omitempty"`
+		Latitude      *float64 `json:"latitude,omitempty"`
+		Longitude     *float64 `json:"longitude,omitempty"`
+		Precision     *float64 `json:"precision,omitempty"`
 	}
 	w.Header().Add("Content-Type", "application/json")
 	err := getJSONRequest(r, &data)
@@ -69,7 +89,7 @@ func (s *Server) handleHelp(w http.ResponseWriter, r *http.Request) {
 			returnError(500, "Couldn't save request", w)
 			return
 		}
-		json.NewEncoder(w).Encode(helpRequest)
+		json.NewEncoder(w).Encode(NewAPIRequestFromHelpRequest(helpRequest))
 		return
 	case "PUT":
 		helpRequest, err := s.model.GetActiveRequestByRequester(user)
@@ -95,16 +115,16 @@ func (s *Server) handleHelp(w http.ResponseWriter, r *http.Request) {
 			returnError(500, "Couldn't save request", w)
 			return
 		}
-		json.NewEncoder(w).Encode(helpRequest)
+		json.NewEncoder(w).Encode(NewAPIRequestFromHelpRequest(helpRequest))
 		return
-    case "DELETE":
+	case "DELETE":
 		helpRequest, err := s.model.GetActiveRequestByRequester(user)
 		if err != nil {
 			log.Printf("Error while getting active request: %+v", err)
 			returnError(404, "Couldn't get request", w)
 		}
-        helpRequest.Deactivate()
-        return
+		helpRequest.Deactivate()
+		return
 	default:
 		returnError(405, "Not implemented", w)
 		return

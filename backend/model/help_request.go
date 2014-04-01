@@ -2,6 +2,7 @@ package model
 
 import (
 	"time"
+    "errors"
 
 	"labix.org/v2/mgo/bson"
 )
@@ -53,6 +54,22 @@ func (hr *HelpRequest) Save() error {
 func (hr *HelpRequest) Deactivate() error {
 	hr.IsActive = false
 	return hr.Save()
+}
+
+// Return the agent responding to the request, or nil of no-one answered.
+func (hr *HelpRequest) GetAgent() (*User, error) {
+    if (len(hr.ResponderEmail) == 0) {
+        return nil, errors.New("No agent answered.")
+    }
+
+    agent, err := hr.m.GetUserByEmail(hr.ResponderEmail)
+    if err != nil {
+        return nil, errors.New("Invalid agent email")
+    } else if !agent.IsAgent {
+        return nil, errors.New("Responder is not an agent")
+    } else {
+        return agent, nil
+    }
 }
 
 func (m *Model) GetActiveRequestsByStation(s *Station) ([]*HelpRequest, error) {

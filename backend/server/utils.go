@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"log"
 	"net/http"
+	"strconv"
 
 	"github.com/gorilla/schema"
 )
@@ -25,7 +26,8 @@ func getJSONRequest(r *http.Request, data interface{}) error {
 // as a JSON error status string.
 func returnError(errorCode int, errorString string, w http.ResponseWriter) {
 	w.WriteHeader(errorCode)
-	jsonError := map[string]string{"error": errorString}
+	jsonError := map[string]string{"message": errorString,
+		"status": strconv.Itoa(errorCode)}
 	encoder := json.NewEncoder(w)
 	err := encoder.Encode(jsonError)
 	// Error while processing the error: we can only ignore and log.
