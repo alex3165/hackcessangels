@@ -14,4 +14,7 @@
 @end
 
 @interface HAHelpProfileView : UIView
+
+- (IBAction) hideProfile:(id)sender;
+
 @end

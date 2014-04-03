@@ -27,7 +27,5 @@
 
 @property (nonatomic, weak) IBOutlet MKMapView *map;
 
-- (void) showHelpView;
-
 
 @end

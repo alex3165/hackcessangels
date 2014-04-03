@@ -36,7 +36,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void) hideProfile {
+- (IBAction) hideProfile:(id)sender {
     [self view].frame.origin.y = showHideButton.frame.height - filterView.frame.size.height;
 }
 

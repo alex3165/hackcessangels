@@ -31,11 +31,14 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="219"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ajx-jg-3xP">
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ajx-jg-3xP" customClass="HAHelp">
                                         <rect key="frame" x="143" y="186" width="35" height="22"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                         <state key="normal" title="..."/>
+                                        <connections>
+                                            <action selector="hideProfile:" destination="RAb-Il-wZv" eventType="touchUpInside" id="vli-iL-yG1"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="0.24973650380000001" blue="0.28540001580000002" alpha="1" colorSpace="calibratedRGB"/>
