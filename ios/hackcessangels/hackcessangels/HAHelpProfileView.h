@@ -1,5 +1,5 @@
 //
-//  HAHelpProfileViewController.h
+//  HAHelpProfileView.h
 //  hackcessangels
 //
 //  Created by Etienne Membrives on 03/04/2014.
@@ -8,10 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol HAHelpProfileProtocol <NSObject>
-- (void) hideProfile;
-- (void) showProfile;
-@end
-
 @interface HAHelpProfileView : UIView
+
 @end
