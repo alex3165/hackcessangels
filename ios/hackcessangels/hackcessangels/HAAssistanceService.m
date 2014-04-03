@@ -10,6 +10,7 @@
 #import "HALocationService.h"
 
 #import "Reachability.h"
+#import "HASERVICES.h"
 
 // TODO:
 //  - Remonter regulierement la position
@@ -20,6 +21,7 @@
 @property(nonatomic, strong) Reachability* reach;
 @property(nonatomic, strong) NSTimer* timer;
 @property(nonatomic, strong) HALocationService* locationService;
+@property(nonatomic,strong) HAPeripheral* peripheralService;
 
 @property(nonatomic, assign) BOOL requestInFlight;
 
@@ -88,7 +90,8 @@
             [restRequest PUTrequest:@"request" withParameters:@{@"lng" : longitude, @"lat" : latitude} success:success failure:failure];
         }
     } else {
-        // TODO: Bluetooth
+        // Set an advertising
+        [self.peripheralService.peripheralManager startAdvertising:@{ CBAdvertisementDataServiceUUIDsKey : @[[CBUUID UUIDWithString:HELP_SERVICE_UUID]] }];
     }
 }
 

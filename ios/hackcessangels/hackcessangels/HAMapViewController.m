@@ -9,23 +9,15 @@
 #import "HAMapViewController.h"
 #import "HATileOverlay.h"
 #import "HATileOverlayView.h"
-#import "HALocalisation.h"
-#import "HAUserService.h"
 #import "HAUser.h"
 
-//commentaire pour tester le git
 
 @interface HAMapViewController ()
-//@property (nonatomic, strong) AFHTTPRequestOperationManager *manager;
 @end
 
 
 @implementation HAMapViewController
 
-//@synthesize map;
-//@synthesize overlay;
-//localisation *userLoc;
-//NSString * userPosition;
 CLLocationCoordinate2D coordinate;
 
 // Localisation de test
@@ -34,31 +26,36 @@ NSString * longitude = @"2.3522219";
 NSString * crimeDescription = @"Marc Fogel";
 NSString * address = @"10 adresse des jonquilles";
 
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        self.overlay = [[HATileOverlay alloc] initOverlay];
+        [self.map addOverlay:self.overlay];
+        MKMapRect visibleRect = [self.map mapRectThatFits:self.overlay.boundingMapRect];
+        visibleRect.size.width /= 2;
+        visibleRect.size.height /= 2;
+        visibleRect.origin.x += visibleRect.size.width / 2;
+        visibleRect.origin.y += visibleRect.size.height / 2;
+        self.map.visibleMapRect = visibleRect;
+        [self.map setUserTrackingMode:true];
+    }
+    return self;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    /* Initialisation de l'objet request ! */
     
-    self.userService = [[HAUserService alloc] init];
-    self.restRequests = [[DCRestRequests alloc] init];
     
-    self.overlay = [[HATileOverlay alloc] initOverlay];
-    [self.map addOverlay:self.overlay];
-    MKMapRect visibleRect = [self.map mapRectThatFits:self.overlay.boundingMapRect];
-    visibleRect.size.width /= 2;
-    visibleRect.size.height /= 2;
-    visibleRect.origin.x += visibleRect.size.width / 2;
-    visibleRect.origin.y += visibleRect.size.height / 2;
-    self.map.visibleMapRect = visibleRect;
-    [self.map setUserTrackingMode:true];
+    /* Ajoute d'un marqueur de test */
     
-    // Ajoute d'un marqueur de test
-    
-    coordinate.latitude = latitude.doubleValue;;
-    coordinate.longitude = longitude.doubleValue;
-    localisation *annotation = [[localisation alloc] initWithName:crimeDescription address:address coordinate:coordinate];
-    [self.map addAnnotation:annotation];
+//    coordinate.latitude = latitude.doubleValue;;
+//    coordinate.longitude = longitude.doubleValue;
+//    localisation *annotation = [[localisation alloc] initWithName:crimeDescription address:address coordinate:coordinate];
+//    [self.map addAnnotation:annotation];
 
 }
 

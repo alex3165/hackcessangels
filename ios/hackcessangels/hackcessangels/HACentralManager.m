@@ -32,7 +32,7 @@
     if (central.state == CBCentralManagerStatePoweredOn) {
         
         // Scan for devices
-        [self.centralManager scanForPeripheralsWithServices:@[[CBUUID UUIDWithString:TRANSFER_SERVICE_UUID]] options:@{ CBCentralManagerScanOptionAllowDuplicatesKey : @YES }];
+        [self.centralManager scanForPeripheralsWithServices:@[[CBUUID UUIDWithString:HELP_SERVICE_UUID]] options:@{ CBCentralManagerScanOptionAllowDuplicatesKey : @YES }];
         NSLog(@"Scanning started");
     }
 }
@@ -70,7 +70,7 @@
     
     peripheral.delegate = self;
     
-    [peripheral discoverServices:@[[CBUUID UUIDWithString:TRANSFER_SERVICE_UUID]]];
+    [peripheral discoverServices:@[[CBUUID UUIDWithString:HELP_SERVICE_UUID]]];
 }
 
 // Check for services
@@ -82,7 +82,7 @@
     }
     
     for (CBService *service in peripheral.services) {
-        [peripheral discoverCharacteristics:@[[CBUUID UUIDWithString:TRANSFER_CHARACTERISTIC_UUID]] forService:service];
+        [peripheral discoverCharacteristics:@[[CBUUID UUIDWithString:HELP_CHARACTERISTIC_UUID]] forService:service];
     }
     // Discover other characteristics
 }
@@ -95,7 +95,7 @@
     }
     
     for (CBCharacteristic *characteristic in service.characteristics) {
-        if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:TRANSFER_CHARACTERISTIC_UUID]]) {
+        if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:HELP_CHARACTERISTIC_UUID]]) {
             [peripheral setNotifyValue:YES forCharacteristic:characteristic];
         }
     }
@@ -116,6 +116,10 @@
         
         /* Récupération des datas ici */
         
+        
+        // Response of central if ok
+        // [peripheral writeValue:@"hehe" forCharacteristic:interestingCharacteristic type:CBCharacteristicWriteWithResponse];
+        
         [peripheral setNotifyValue:NO forCharacteristic:characteristic];
         
         [self.centralManager cancelPeripheralConnection:peripheral];
@@ -126,7 +130,7 @@
 
 - (void)peripheral:(CBPeripheral *)peripheral didUpdateNotificationStateForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error {
     
-    if (![characteristic.UUID isEqual:[CBUUID UUIDWithString:TRANSFER_CHARACTERISTIC_UUID]]) {
+    if (![characteristic.UUID isEqual:[CBUUID UUIDWithString:HELP_CHARACTERISTIC_UUID]]) {
         return;
     }
     
@@ -143,7 +147,7 @@
     self.discoveredPeripheral = nil;
     
     // scan again for any new service
-    [self.centralManager scanForPeripheralsWithServices:@[[CBUUID UUIDWithString:TRANSFER_SERVICE_UUID]] options:@{ CBCentralManagerScanOptionAllowDuplicatesKey : @YES }];
+    [self.centralManager scanForPeripheralsWithServices:@[[CBUUID UUIDWithString:HELP_SERVICE_UUID]] options:@{ CBCentralManagerScanOptionAllowDuplicatesKey : @YES }];
 }
 
 - (void)cleanup {
@@ -153,7 +157,7 @@
         for (CBService *service in self.discoveredPeripheral.services) {
             if (service.characteristics != nil) {
                 for (CBCharacteristic *characteristic in service.characteristics) {
-                    if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:TRANSFER_CHARACTERISTIC_UUID]]) {
+                    if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:HELP_CHARACTERISTIC_UUID]]) {
                         if (characteristic.isNotifying) {
                             [self.discoveredPeripheral setNotifyValue:NO forCharacteristic:characteristic];
                             return;

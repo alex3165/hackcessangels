@@ -18,7 +18,7 @@
     if (self) {
         self.peripheralManager = [[CBPeripheralManager alloc] initWithDelegate:self queue:nil];
         
-        [self.peripheralManager startAdvertising:@{ CBAdvertisementDataServiceUUIDsKey : @[[CBUUID UUIDWithString:TRANSFER_SERVICE_UUID]] }];
+        //[self.peripheralManager startAdvertising:@{ CBAdvertisementDataServiceUUIDsKey : @[[CBUUID UUIDWithString:HELP_SERVICE_UUID]] }];
     }
     
     return self;
@@ -30,9 +30,9 @@
     }
     
     if (peripheral.state == CBPeripheralManagerStatePoweredOn) {
-        self.transferCharacteristic = [[CBMutableCharacteristic alloc] initWithType:[CBUUID UUIDWithString:TRANSFER_CHARACTERISTIC_UUID] properties:CBCharacteristicPropertyNotify value:nil permissions:CBAttributePermissionsReadable];
+        self.transferCharacteristic = [[CBMutableCharacteristic alloc] initWithType:[CBUUID UUIDWithString:HELP_CHARACTERISTIC_UUID] properties:CBCharacteristicPropertyNotify value:nil permissions:CBAttributePermissionsReadable|CBAttributePermissionsWriteable];
         
-        CBMutableService *transferService = [[CBMutableService alloc] initWithType:[CBUUID UUIDWithString:TRANSFER_SERVICE_UUID] primary:YES];
+        CBMutableService *transferService = [[CBMutableService alloc] initWithType:[CBUUID UUIDWithString:HELP_SERVICE_UUID] primary:YES];
         
         transferService.characteristics = @[self.transferCharacteristic];
         

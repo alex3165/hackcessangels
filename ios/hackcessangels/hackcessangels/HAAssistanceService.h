@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "DCRestRequests.h"
+#import "HAPeripheral.h"
 
 // Block called when the request is aborted (typically, no response from any agent within X minutes).
 typedef void(^HAAssistanceRequestAbort)();

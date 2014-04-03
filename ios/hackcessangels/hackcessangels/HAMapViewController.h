@@ -16,8 +16,6 @@
 #import "DCRestRequests.h"
 #import "HAUserService.h"
 
-// Libs
-#import "AFNetworking.h"
 
 @interface HAMapViewController : UIViewController <MKMapViewDelegate>
 
