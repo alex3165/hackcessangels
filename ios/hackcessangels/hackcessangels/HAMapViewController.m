@@ -59,6 +59,11 @@ NSString * address = @"10 adresse des jonquilles";
 
 }
 
+- (void) showHelpView{
+    
+}
+
+
 - (MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id <MKOverlay>)ovl
 {
     HATileOverlayView *view = [[HATileOverlayView alloc] initWithOverlay:ovl];
