@@ -40,16 +40,28 @@
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="0.24973650380000001" blue="0.28540001580000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="tintColor" red="1" green="0.24973650380000001" blue="0.28540001580000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outlet property="showHideButton" destination="Ajx-jg-3xP" id="ieq-8T-yb4"/>
+                                    <outletCollection property="gestureRecognizers" destination="V6V-Sk-Kgd" appends="YES" id="g0O-we-1BT"/>
+                                </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="7fH-Zs-0CL"/>
                     <connections>
+                        <outlet property="gestureRecognizer" destination="V6V-Sk-Kgd" id="QjQ-dF-lWH"/>
+                        <outlet property="helpProfileView" destination="XZ2-YW-VdY" id="N2s-wS-oaT"/>
                         <outlet property="map" destination="wEP-7S-t28" id="bni-a9-MCG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RAb-Il-wZv" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="V6V-Sk-Kgd">
+                    <connections>
+                        <action selector="_panRecogPanned:" destination="5uE-2O-GZe" id="ntY-Xl-IHa"/>
+                    </connections>
+                </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="564" y="-262"/>
         </scene>

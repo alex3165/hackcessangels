@@ -25,7 +25,7 @@
 
 - (void) hideProfile {
     CGRect frame = self.frame;
-    frame.origin.y = self.showHideButton.frame.size.height - self.frame.size.height;
+    frame.origin.y = 3 * self.showHideButton.frame.size.height - self.frame.size.height;
     [self setFrame:frame];
 }
 

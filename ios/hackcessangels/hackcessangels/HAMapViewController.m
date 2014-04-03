@@ -10,9 +10,13 @@
 #import "HATileOverlay.h"
 #import "HATileOverlayView.h"
 #import "HAUser.h"
+#import "HAHelpProfileView.h"
 
 
 @interface HAMapViewController ()
+@property (nonatomic, weak) IBOutlet HAHelpProfileView *helpProfileView;
+
+@property (nonatomic, weak) IBOutlet UIPanGestureRecognizer *gestureRecognizer;
 @end
 
 
@@ -48,6 +52,7 @@ NSString * address = @"10 adresse des jonquilles";
 {
     [super viewDidLoad];
     
+    [self.gestureRecognizer setDelegate:self];
     
     
     /* Ajoute d'un marqueur de test */
@@ -59,8 +64,65 @@ NSString * address = @"10 adresse des jonquilles";
 
 }
 
-- (void) showHelpView{
-    
+- (IBAction)_panRecogPanned:(id)sender {
+    switch ([(UIPanGestureRecognizer*)sender state]) {
+        case UIGestureRecognizerStateBegan: { } break;
+        case UIGestureRecognizerStateChanged: {
+            
+            /*if ( [((UIPanGestureRecognizer *)sender) locationInView:self.helpProfileView].y > dropDownButton.frame.height )
+                return; // Only drag if the user's finger is on the button*/
+            
+            CGPoint translation = [self.gestureRecognizer translationInView:self.helpProfileView];
+            
+            //Note that we are omitting translation.x, otherwise the filterView will be able to move horizontally as well. Also note that that MIN and MAX were written for a subview which slides down from the top, they wont work on your subview.
+            CGRect newFrame = self.gestureRecognizer.view.frame;
+            //newFrame.origin.y = MIN (_panRecog.view.frame.origin.y + translation.y, FILTER_OPEN_ORIGIN_Y);
+            //newFrame.origin.y = MAX (newFrame.origin.y, FILTER_INITIAL_ORIGIN_Y);
+            newFrame.origin.y = self.gestureRecognizer.view.frame.origin.y + translation.y;
+            self.gestureRecognizer.view.frame = newFrame;
+            
+            [self.gestureRecognizer setTranslation:CGPointMake(0, 0) inView:self.view];
+            
+        } break;
+            
+            //Remember the optional step number 2? We will use hide/ show methods now:
+        case UIGestureRecognizerStateEnded:
+        case UIGestureRecognizerStateCancelled: {
+            
+            //CGPoint velocity = [_panRecog velocityInView:_panRecog.view];
+            //Bonus points for using velocity when deciding what to do when if the user lifts his finger
+            
+            BOOL open;
+            
+            /*
+             if (velocity.y < -600.0) {
+             open = NO;
+             }
+             
+             else if (velocity.y >= 600.0) {
+             open = YES;
+             } else
+             */
+            
+            if (self.gestureRecognizer.view.frame.origin.y > (150 + 0) / 2 ) {
+                open = YES;
+            }
+            
+            else {
+                open = NO;
+            }
+            
+            if (open == YES) {
+                [self.helpProfileView showProfile];
+            }
+            else {
+                [self.helpProfileView hideProfile];
+            }
+        } break;
+            
+        default:
+            break;
+    }
 }
 
 
