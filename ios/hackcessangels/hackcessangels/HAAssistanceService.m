@@ -79,7 +79,7 @@
 }
 
 - (void)helpMe:(NSString*)longitude latitude:(NSString*)latitude success:(DCRestRequestsSuccess)success failure:(DCRestRequestsFailure)failure {
-    
+    //NSLog(@"%hhd",self.reach.isReachable);
     if (self.reach.isReachable) {
         DCRestRequests* restRequest = [[DCRestRequests alloc] init];
     
@@ -91,6 +91,7 @@
         }
     } else {
         // Set an advertising
+        NSLog(@"Bluetooth activate");
         [self.peripheralService.peripheralManager startAdvertising:@{ CBAdvertisementDataServiceUUIDsKey : @[[CBUUID UUIDWithString:HELP_SERVICE_UUID]] }];
     }
 }

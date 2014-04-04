@@ -113,9 +113,8 @@
     if ([stringFromData isEqualToString:@"EOM"]) {
         
         //[self.textview setText:[[NSString alloc] initWithData:self.data encoding:NSUTF8StringEncoding]];
-        
-        /* Récupération des datas ici */
-        
+        NSLog(@"%@", [[NSString alloc] initWithData:self.data encoding:NSUTF8StringEncoding]);
+        /* Récupération des datas ici */        
         
         // Response of central if ok
          [peripheral writeValue:@"hehe" forCharacteristic:characteristic type:CBCharacteristicWriteWithResponse];
