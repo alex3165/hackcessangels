@@ -118,7 +118,7 @@
         
         
         // Response of central if ok
-        // [peripheral writeValue:@"hehe" forCharacteristic:interestingCharacteristic type:CBCharacteristicWriteWithResponse];
+         [peripheral writeValue:@"hehe" forCharacteristic:characteristic type:CBCharacteristicWriteWithResponse];
         
         [peripheral setNotifyValue:NO forCharacteristic:characteristic];
         

@@ -1,5 +1,5 @@
 //
-//  HAHelpProfileViewController.m
+//  HAHelpProfileView.m
 //  hackcessangels
 //
 //  Created by Etienne Membrives on 03/04/2014.
@@ -8,50 +8,40 @@
 
 #import "HAHelpProfileView.h"
 
-@interface HAHelpProfileView ()
-
-@property (nonatomic, weak) IBAction UIButton showHideButton;
+@interface HAHelpProfileView()
+@property (nonatomic, weak) IBOutlet UIButton *showHideButton;
 @end
 
-@implementation HAHelpProfileViewController
+@implementation HAHelpProfileView
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (id)initWithFrame:(CGRect)frame
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    self = [super initWithFrame:frame];
     if (self) {
-        // Custom initialization
+        // Initialization code
     }
     return self;
 }
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
-}
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-- (IBAction) hideProfile:(id)sender {
-    [self view].frame.origin.y = showHideButton.frame.height - filterView.frame.size.height;
+- (void) hideProfile {
+    CGRect frame = self.frame;
+    frame.origin.y = 3 * self.showHideButton.frame.size.height - self.frame.size.height;
+    [self setFrame:frame];
 }
 
 - (void) showProfile {
-    [self view].frame.origin.y = 0;
+    CGRect frame = self.frame;
+    frame.origin.y = 0.0;
+    [self setFrame:frame];
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+// Only override drawRect: if you perform custom drawing.
+// An empty implementation adversely affects performance during animation.
+- (void)drawRect:(CGRect)rect
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    // Drawing code
 }
 */
 
