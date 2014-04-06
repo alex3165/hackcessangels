@@ -13,7 +13,9 @@ NSString *const kServiceId = @"HAUser";
 NSString *const kPasswordKey = @"password";
 NSString *const kEmailKey = @"email";
 //NSString *const kLoginKey = @"login";
-//NSString *const kDescriptionKey = @"userdescription";
+NSString *const kDescriptionKey = @"description";
+NSString *const kImageKey = @"image";
+NSString *const kNameKey = @"name";
 NSString *const kCookieKey = @"cookie";
 
 @implementation HAUser
@@ -26,7 +28,7 @@ NSString *const kCookieKey = @"cookie";
         self.email = [dico objectForKey:@"email"];
         self.password = [dico objectForKey:@"password"];
         self.name = [dico objectForKey:@"name"];
-        self.userdescription = [dico objectForKey:@"description"];
+        self.description = [dico objectForKey:@"description"];
         self.disability = [dico objectForKey:@"disability"];
         self.image = [dico objectForKey:@"image"];
     }

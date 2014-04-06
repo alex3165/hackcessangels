@@ -57,7 +57,7 @@
     [self.userService getCurrentUser:^(HAUser *user) {
         DLog(@"Success");
     } failure:^(NSError *error) {
-        if (error.code == 401) {
+        if (error.code == 401 || error.code == 404) {
             [self showModalLoginWithAnimation:NO];
         }
     }];

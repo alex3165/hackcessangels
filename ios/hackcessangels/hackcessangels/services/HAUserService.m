@@ -48,6 +48,7 @@
         NSMutableDictionary* details = [NSMutableDictionary dictionary];
         [details setValue:@"No known user; login required" forKey:NSLocalizedDescriptionKey];
         failure([[NSError alloc] initWithDomain:@"user" code:401 userInfo:details]);
+        return;
     }
     
     [self getUserWithEmail:user.email success:^(HAUser *user) {
@@ -58,10 +59,14 @@
 }
 
 - (void)getUserWithEmail:(NSString*) email success:(HAUserServiceSuccess)success failure:(HAUserServiceFailure)failure {
-    HARestRequests* dcRestRequest = [[HARestRequests alloc] init];
-    [dcRestRequest GETrequest:@"user" withParameters:@{@"email" : email} success:^(id obj, NSHTTPURLResponse* response){
+    HARestRequests* haRestRequest = [[HARestRequests alloc] init];
+    [haRestRequest GETrequest:@"user" withParameters:@{@"email" : email} success:^(id obj, NSHTTPURLResponse* response){
+        // TODO: Do a proper merge of the two objects
         HAUser *user = [[HAUser alloc] initWithDictionary:obj];
-        [user saveUserToKeyChain];
+        HAUser *original = [HAUser userFromKeyChain];
+        if (original) {
+            user.cookie = original.cookie;
+        }
         if (success) {
             success(user);
         }
@@ -70,9 +75,38 @@
     }];
 }
 
-// on recherche l'email entré, on le supprime, on envoit le nouvel email
+// Verify that user is a valid user (locally), then send the update to the server.
 - (void)updateUser:(HAUser *)user success:(HAUserServiceSuccess)success failure:(HAUserServiceFailure)failure {
-    HARestRequests* dcRestRequest = [[HARestRequests alloc] init];
+    HARestRequests* requestService = [[HARestRequests alloc] init];
+    
+    NSMutableDictionary* parameters = [[NSMutableDictionary alloc] init];
+    [parameters setObject:user.email forKey:kEmailKey];
+    
+    // Set a new password only if it changed by the user
+    if (user.password != nil && user.password.length != 0) {
+        [parameters setObject:user.password forKey:kPasswordKey];
+    }
+    
+    // Name is a required property
+    if (user.name == nil || user.name.length == 0) {
+        // No user logged in. How is this possible?
+        NSMutableDictionary* details = [NSMutableDictionary dictionary];
+        [details setValue:@"Name must be set" forKey:NSLocalizedDescriptionKey];
+        failure([[NSError alloc] initWithDomain:@"update" code:400 userInfo:details]);
+    }
+    
+    [parameters setObject:user.name forKey:kNameKey];
+    [parameters setObject:user.description forKey:kDescriptionKey];
+    if (user.image != nil) {
+        [parameters setObject:user.image forKey:kImageKey];
+    }
+    
+    [requestService PUTrequest:@"user" withParameters: [[NSDictionary alloc] initWithObjectsAndKeys:parameters, @"data", nil] success:^(id obj, NSHTTPURLResponse *response) {
+        self.currentUser = [[HAUser alloc] initWithDictionary:obj];
+        success(self.currentUser);
+    } failure:^(id obj, NSError *error) {
+        failure(error);
+    }];
 }
 
 - (void)createUserWithEmailAndPassword:(NSString *)email password:(NSString *)password success:(HARestRequestsSuccess)success failure:(HARestRequestsFailure)failure {

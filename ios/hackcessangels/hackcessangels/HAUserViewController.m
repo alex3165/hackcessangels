@@ -47,10 +47,14 @@
     [super viewDidLoad];
     [[UITextField appearance] setFont:[UIFont fontWithName:@"Times" size:16]];
     
-    HAUser *userActual = [HAUser userFromKeyChain];
-    self.emailLabel.text = userActual.email;
-    self.nameTextInput.text = userActual.name;
-    self.descriptionTextInput.text= userActual.userdescription;
+    [[HAUserService sharedInstance] getCurrentUser:^(HAUser *user) {
+        self.emailLabel.text = user.email;
+        self.nameTextInput.text = user.name;
+        self.descriptionTextInput.text= user.description;
+    } failure:^(NSError *error) {
+        UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Erreur" message:@"Serveur injoignable" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
+        [alert show];
+    }];
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -59,16 +63,21 @@
 }
 
 - (IBAction)saveAndDismiss:(id)sender {
-    self.editUser = [[HAUserService alloc]init];
-    
-    HAUser *userActual = [HAUser userFromKeyChain];
-    
-    [self.editUser updateUser:userActual success:^(HAUser* user) {
-        UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Bravo" message:@"Profil édité" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
-        [alert show];
-        [[self navigationController] popViewControllerAnimated:YES];
+    [[HAUserService sharedInstance] getCurrentUser:^(HAUser *user) {
+        user.name = self.nameTextInput.text;
+        user.description = self.descriptionTextInput.text;
+        user.password = self.passwordTextInput.text;
+        
+        [[HAUserService sharedInstance] updateUser:user success:^(HAUser* user) {
+            UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Bravo" message:@"Profil édité" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
+            [alert show];
+            [[self navigationController] popViewControllerAnimated:YES];
+        } failure:^(NSError *error) {
+            UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Erreur" message:@"Profil non édité" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
+            [alert show];
+        }];
     } failure:^(NSError *error) {
-        UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Erreur" message:@"Profil non édité" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
+        UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Erreur" message:@"Serveur injoignable" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
         [alert show];
     }];
 }

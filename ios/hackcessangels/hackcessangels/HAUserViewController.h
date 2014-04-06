@@ -23,7 +23,6 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *save;
 
-@property (nonatomic, strong) HAUserService *editUser;
 - (IBAction) saisieReturn:(id)sender;
 - (IBAction) touchOutside:(id)sender;
 - (IBAction) saveAndDismiss:(id)sender;
