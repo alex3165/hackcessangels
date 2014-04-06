@@ -1,16 +1,16 @@
 //
-//  DCRestRequests.m
+//  HARestRequests.m
 //  hackcessangels
 //
 //  Created by RIEUX Alexandre on 11/02/2014.
 //  Copyright (c) 2014 RIEUX Alexandre. All rights reserved.
 //
 
-#import "DCRestRequests.h"
+#import "HARestRequests.h"
 
 
 
-@implementation DCRestRequests
+@implementation HARestRequests
 
 - (id)init
 {
@@ -31,7 +31,7 @@
 }
 
 
--(void)GETrequest:(NSString *)getstring withParameters:(NSDictionary *)params success:(DCRestRequestsSuccess)success failure:(DCRestRequestsFailure)failure;
+-(void)GETrequest:(NSString *)getstring withParameters:(NSDictionary *)params success:(HARestRequestsSuccess)success failure:(HARestRequestsFailure)failure;
 {
     
     [self.manager GET:getstring parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -52,7 +52,7 @@
 
 
 
--(void) POSTrequest:(NSString *)getstring withParameters:(NSDictionary *)params success:(DCRestRequestsSuccess)success failure:(DCRestRequestsFailure)failure;
+-(void) POSTrequest:(NSString *)getstring withParameters:(NSDictionary *)params success:(HARestRequestsSuccess)success failure:(HARestRequestsFailure)failure;
 
 {
     
@@ -72,7 +72,7 @@
     }];
 }
 
--(void) DELETErequest:(NSString *)getstring withParameters:(NSDictionary *)params success:(DCRestRequestsSuccess)success failure:(DCRestRequestsFailure)failure;
+-(void) DELETErequest:(NSString *)getstring withParameters:(NSDictionary *)params success:(HARestRequestsSuccess)success failure:(HARestRequestsFailure)failure;
 
 {
     
@@ -93,7 +93,7 @@
 }
 
 
--(void)PUTrequest:(NSString *)getstring withParameters:(NSDictionary *)params success:(DCRestRequestsSuccess)success failure:(DCRestRequestsFailure)failure
+-(void)PUTrequest:(NSString *)getstring withParameters:(NSDictionary *)params success:(HARestRequestsSuccess)success failure:(HARestRequestsFailure)failure
 {
 
     [self.manager PUT:getstring parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {

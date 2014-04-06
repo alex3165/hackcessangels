@@ -52,29 +52,14 @@
 
 - (void)checkUser
 {
-    HAUser *user = [HAUser userFromKeyChain];
-    
-    if (!user) {
-        [self showModalLoginWithAnimation:NO];
-        return;
-    }
-    
     self.userService = [HAUserService sharedInstance];
-	
-    [self.userService getUserWithEmail:user.email success:^(HAUser *user) {
-        
+    
+    [self.userService getCurrentUser:^(HAUser *user) {
         DLog(@"Success");
-        
     } failure:^(NSError *error) {
-        
-        NSInteger statusCode = [[error.userInfo objectForKey:AFNetworkingOperationFailingURLResponseErrorKey] statusCode];
-        
-        if (statusCode == 401) {
-            [self showModalLoginWithAnimation:YES];
+        if (error.code == 401) {
+            [self showModalLoginWithAnimation:NO];
         }
-        
-        DLog(@"error");
-        
     }];
 }
 

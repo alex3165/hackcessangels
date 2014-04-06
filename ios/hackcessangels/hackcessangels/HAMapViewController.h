@@ -13,16 +13,15 @@
 #import "HATileOverlay.h"
 
 // services
-#import "DCRestRequests.h"
+#import "HARestRequests.h"
 #import "HAUserService.h"
-
 
 @interface HAMapViewController : UIViewController <MKMapViewDelegate>
 
 
-/* Objet de la classe DCRestRequest (à voir) */
+/* Objet de la classe HARestRequest (à voir) */
 @property (nonatomic, strong) HAUserService *userService;
-@property (nonatomic, strong) DCRestRequests *restRequests;
+@property (nonatomic, strong) HARestRequests *restRequests;
 @property (nonatomic, strong) HATileOverlay *overlay;
 
 @property (nonatomic, weak) IBOutlet MKMapView *map;

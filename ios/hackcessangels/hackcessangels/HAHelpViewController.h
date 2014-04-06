@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 
 #import "HAAssistanceService.h"
-#import "DCRestRequests.h"
 #import "HAUserService.h"
 #import "HAMapViewController.h"
 

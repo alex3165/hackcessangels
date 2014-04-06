@@ -8,7 +8,7 @@
 
 #import "HAUserService.h"
 #import "HAUser.h"
-#import "DCRestRequests.h"
+#import "HARestRequests.h"
 
 @interface HAUserService ()
 
@@ -46,8 +46,8 @@
     if (!user) {
         // No user logged in. How is this possible?
         NSMutableDictionary* details = [NSMutableDictionary dictionary];
-        [details setValue:@"No known user" forKey:NSLocalizedDescriptionKey];
-        failure([[NSError alloc] initWithDomain:@"user" code:404 userInfo:details]);
+        [details setValue:@"No known user; login required" forKey:NSLocalizedDescriptionKey];
+        failure([[NSError alloc] initWithDomain:@"user" code:401 userInfo:details]);
     }
     
     [self getUserWithEmail:user.email success:^(HAUser *user) {
@@ -58,7 +58,7 @@
 }
 
 - (void)getUserWithEmail:(NSString*) email success:(HAUserServiceSuccess)success failure:(HAUserServiceFailure)failure {
-    DCRestRequests* dcRestRequest = [[DCRestRequests alloc] init];
+    HARestRequests* dcRestRequest = [[HARestRequests alloc] init];
     [dcRestRequest GETrequest:@"user" withParameters:@{@"email" : email} success:^(id obj, NSHTTPURLResponse* response){
         HAUser *user = [[HAUser alloc] initWithDictionary:obj];
         [user saveUserToKeyChain];
@@ -72,16 +72,16 @@
 
 // on recherche l'email entré, on le supprime, on envoit le nouvel email
 - (void)updateUser:(HAUser *)user success:(HAUserServiceSuccess)success failure:(HAUserServiceFailure)failure {
-    
+    HARestRequests* dcRestRequest = [[HARestRequests alloc] init];
 }
 
-- (void)createUserWithEmailAndPassword:(NSString *)email password:(NSString *)password success:(DCRestRequestsSuccess)success failure:(DCRestRequestsFailure)failure {
-    DCRestRequests* dcRestRequest = [[DCRestRequests alloc] init];
+- (void)createUserWithEmailAndPassword:(NSString *)email password:(NSString *)password success:(HARestRequestsSuccess)success failure:(HARestRequestsFailure)failure {
+    HARestRequests* dcRestRequest = [[HARestRequests alloc] init];
     [dcRestRequest POSTrequest:@"user" withParameters:@{@"email" : email, @"password":password} success:success failure:failure];
 }
     
-- (void)loginWithEmailAndPassword:(NSString *)email password:(NSString *)password success:(DCRestRequestsSuccess)success failure:(DCRestRequestsFailure)failure {
-    DCRestRequests* dcRestRequest = [[DCRestRequests alloc] init];
+- (void)loginWithEmailAndPassword:(NSString *)email password:(NSString *)password success:(HARestRequestsSuccess)success failure:(HARestRequestsFailure)failure {
+    HARestRequests* dcRestRequest = [[HARestRequests alloc] init];
     [dcRestRequest POSTrequest:@"user/login" withParameters:@{@"email" : email, @"password":password} success:^(id object, NSHTTPURLResponse* response){
         
         NSDictionary *userSetting = [NSDictionary dictionaryWithObjectsAndKeys:email,@"email", nil];
@@ -97,8 +97,8 @@
     } failure:failure];
 }
 
-- (void)deleteUserWithEmail:(NSString *)email success:(DCRestRequestsSuccess)success failure:(DCRestRequestsFailure)failure {
-    DCRestRequests* dcRestRequest = [[DCRestRequests alloc] init];
+- (void)deleteUserWithEmail:(NSString *)email success:(HARestRequestsSuccess)success failure:(HARestRequestsFailure)failure {
+    HARestRequests* dcRestRequest = [[HARestRequests alloc] init];
     [dcRestRequest DELETErequest:@"user" withParameters:@{@"email" : email} success:success failure:failure];
 }
 

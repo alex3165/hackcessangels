@@ -7,10 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "DCRestRequests.h"
+#import "HARestRequests.h"
 #import "HAUserService.h"
-#import "DCRestRequests.h"
-#import "HAEditUserService.h"
 
 // Libs
 #import "AFNetworking.h"

@@ -72,16 +72,16 @@
     [self.timer invalidate];
     [self.locationService stopLocation];
     
-    DCRestRequests* restRequest = [[DCRestRequests alloc] init];
+    HARestRequests* restRequest = [[HARestRequests alloc] init];
     [restRequest DELETErequest:@"request" withParameters:@{} success:nil failure:nil];
     
     self.requestInFlight = false;
 }
 
-- (void)helpMe:(NSString*)longitude latitude:(NSString*)latitude success:(DCRestRequestsSuccess)success failure:(DCRestRequestsFailure)failure {
+- (void)helpMe:(NSString*)longitude latitude:(NSString*)latitude success:(HARestRequestsSuccess)success failure:(HARestRequestsFailure)failure {
     //NSLog(@"%hhd",self.reach.isReachable);
     if (self.reach.isReachable) {
-        DCRestRequests* restRequest = [[DCRestRequests alloc] init];
+        HARestRequests* restRequest = [[HARestRequests alloc] init];
     
         if (!self.requestInFlight) {
             [restRequest POSTrequest:@"request" withParameters:@{@"lng" : longitude, @"lat" : latitude} success:success failure:failure];

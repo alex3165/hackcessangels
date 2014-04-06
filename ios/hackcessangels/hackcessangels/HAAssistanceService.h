@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "DCRestRequests.h"
+#import "HARestRequests.h"
 #import "HAPeripheral.h"
 
 // Block called when the request is aborted (typically, no response from any agent within X minutes).
@@ -23,5 +23,5 @@ typedef void(^HAAssistanceRequestSuccess)();
 - (void)startHelpRequest:(HAAssistanceRequestAbort) abort agentContacted:(HAAssistanceRequestAgentContacted) agentContacted success:(HAAssistanceRequestSuccess) success;
 - (void)stopHelpRequest;
 
-- (void)helpMe:(NSString*)longitude latitude:(NSString*)latitude success:(DCRestRequestsSuccess)success failure:(DCRestRequestsFailure)failure;
+- (void)helpMe:(NSString*)longitude latitude:(NSString*)latitude success:(HARestRequestsSuccess)success failure:(HARestRequestsFailure)failure;
 @end

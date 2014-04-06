@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "DCRestRequests.h"
+#import "HARestRequests.h"
 #import "HAUser.h"
 
 typedef void(^HAUserServiceSuccess)(HAUser *user);
@@ -22,16 +22,16 @@ typedef void(^HAUserServiceFailure)(NSError *error);
 - (void)updateUser:(HAUser*) user success:(HAUserServiceSuccess)success failure:(HAUserServiceFailure)failure;
 
 - (void)createUserWithEmailAndPassword:(NSString*) email password:(NSString*) password
-                    success:(DCRestRequestsSuccess)success
-                    failure:(DCRestRequestsFailure)failure;
+                    success:(HARestRequestsSuccess)success
+                    failure:(HARestRequestsFailure)failure;
 
 
 - (void)loginWithEmailAndPassword:(NSString*) email password:(NSString*) password
-                    success:(DCRestRequestsSuccess)success
-                    failure:(DCRestRequestsFailure)failure;
+                    success:(HARestRequestsSuccess)success
+                    failure:(HARestRequestsFailure)failure;
 
 
-- (void)deleteUserWithEmail:(NSString*) email success:(DCRestRequestsSuccess)success
-                          failure:(DCRestRequestsFailure)failure;
+- (void)deleteUserWithEmail:(NSString*) email success:(HARestRequestsSuccess)success
+                          failure:(HARestRequestsFailure)failure;
 
 @end
