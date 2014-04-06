@@ -33,7 +33,7 @@
 {
     [super viewDidLoad];
 	
-    self.userService = [[HAUserService alloc] init];
+    self.userService = [HAUserService sharedInstance];
     self.helpController = [[HAHelpViewController alloc]init];
     
     [self checkLoginWithUser]; // on check si on a un user de stocké

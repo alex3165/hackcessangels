@@ -12,9 +12,9 @@
 
 @interface HAUserViewController ()
 
-@property (nonatomic, strong) NSString * textLogin;
 @property (nonatomic, strong) NSString * textEmail;
-@property (nonatomic, strong) NSString * textPassword;
+@property (nonatomic, strong) NSString * textName;
+@property (nonatomic, strong) NSString * textDescription;
 
 @end
 
@@ -30,43 +30,7 @@
     return self;
 }
 - (IBAction)onBackButtonUp:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
-    
 }
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    [[UITextField appearance] setFont:[UIFont fontWithName:@"Times" size:16]];
-    
-     HAUser *userActual = [HAUser userFromKeyChain];
-    self.showLogin.text= userActual.login;
-    self.showDescription.text= userActual.userdescription;
-    self.showEmail.text= userActual.email;
-    self.showPassword.text= userActual.password;
-   
-}
-
--(void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-}
-
-- (IBAction)editUser:(id)sender {
-    
-    self.editUser = [[HAUserService alloc]init];
-    
-    HAUser *userActual = [HAUser userFromKeyChain];
-    
-    [self.editUser updateUser:userActual.email withUpdatedEmail:self.showEmail.text password:userActual.password withUpdatedPassword:self.showPassword.text success:^(id obj, id obj2) {
-        UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Bravo" message:@"Profil édité" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
-        [alert show];
-    } failure:^(id obj, NSError *error) {
-        UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Erreur" message:@"Profil  non édité" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
-        [alert show];
-    }];
-}
-     
 
 - (IBAction)saisieReturn:(id)sender {
     
@@ -78,7 +42,36 @@
     [sender resignFirstResponder];
 }
 
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    [[UITextField appearance] setFont:[UIFont fontWithName:@"Times" size:16]];
+    
+    HAUser *userActual = [HAUser userFromKeyChain];
+    self.emailLabel.text = userActual.email;
+    self.nameTextInput.text = userActual.name;
+    self.descriptionTextInput.text= userActual.userdescription;
+}
 
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+}
+
+- (IBAction)saveAndDismiss:(id)sender {
+    self.editUser = [[HAUserService alloc]init];
+    
+    HAUser *userActual = [HAUser userFromKeyChain];
+    
+    [self.editUser updateUser:userActual.email withUpdatedEmail:self.emailLabel.text password:userActual.password withUpdatedPassword:self.passwordTextInput.text success:^(id obj, id obj2) {
+        UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Bravo" message:@"Profil édité" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
+        [alert show];
+        [[self navigationController] popViewControllerAnimated:YES];
+    } failure:^(id obj, NSError *error) {
+        UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Erreur" message:@"Profil non édité" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
+        [alert show];
+    }];
+}
 
 
 @end

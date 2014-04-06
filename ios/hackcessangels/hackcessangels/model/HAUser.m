@@ -28,46 +28,20 @@ NSString *const kCookieKey = @"cookie";
         self.name = [dico objectForKey:@"name"];
         self.userdescription = [dico objectForKey:@"description"];
         self.disability = [dico objectForKey:@"disability"];
+        self.image = [dico objectForKey:@"image"];
     }
     
     return self;
 }
 
-+ (id)savedUser
-{
-    //NSUSerdefault - pas du tout secure
-    //[[NSUserDefaults standardUserDefaults] setObject:@"toto" forKey:@"name"];
-    //[[NSUserDefaults standardUserDefaults] synchronize];
-    
-    //CoreData
-    //SQLite - XML - File
-    //NSManagedObjectContext;
-    
-    //SQLite - SQL
-    
-    //Keychain - Sécurisé
-    //[UICKeyChainStore setString:@"password1234" forKey:@"password"];
-    
-    //Ecrire des fichiers (plist)
-    
-    //NSURLCache
-    
-    //TouchDB - Experimental
-    
-    // Actual code
-    return nil;
-}
-
 + (HAUser*) userFromKeyChain {
-    /* NSString *login = [UICKeyChainStore stringForKey:kLoginKey service:kServiceId];
-    NSString *userdescription = [UICKeyChainStore stringForKey:kDescriptionKey service:kServiceId];*/
     NSString *email = [UICKeyChainStore stringForKey:kEmailKey service:kServiceId];
-    NSString *password = [UICKeyChainStore stringForKey:kPasswordKey service:kServiceId];
     NSData *cookieData = [UICKeyChainStore dataForKey:kCookieKey service:kServiceId];
-    if (!email || !password || !cookieData) {
+    if (!email || !cookieData) {
         return nil;
     }
-    HAUser *user = [[HAUser alloc] initWithDictionary:@{@"email": email, kPasswordKey: password}];
+    
+    HAUser *user = [[HAUser alloc] initWithDictionary:@{@"email": email}];
     NSError *error;
     user.cookie = [[NSHTTPCookie alloc] initWithProperties: [NSPropertyListSerialization propertyListWithData:cookieData options:NSPropertyListImmutable format:NULL error:&error]];
     if (error) {
@@ -80,15 +54,13 @@ NSString *const kCookieKey = @"cookie";
 - (void) saveUserToKeyChain
 {
     [UICKeyChainStore setString:self.email forKey:kEmailKey service:kServiceId];
-    [UICKeyChainStore setString:self.password forKey:kPasswordKey service:kServiceId];
-    if (self.cookie) {
-        NSError *error;
-        NSData *cookieData = [NSPropertyListSerialization dataWithPropertyList:[self.cookie properties] format:NSPropertyListXMLFormat_v1_0 options:(NSPropertyListWriteOptions)nil error:&error];
-        if (error) {
-            NSLog(@"%@", error);
-        }
-        [UICKeyChainStore setData:cookieData forKey:kCookieKey service:kServiceId];
+
+    NSError *error;
+    NSData *cookieData = [NSPropertyListSerialization dataWithPropertyList:[self.cookie properties] format:NSPropertyListXMLFormat_v1_0 options:(NSPropertyListWriteOptions)nil error:&error];
+    if (error) {
+        NSLog(@"%@", error);
     }
+    [UICKeyChainStore setData:cookieData forKey:kCookieKey service:kServiceId];
     return;
 }
 @end

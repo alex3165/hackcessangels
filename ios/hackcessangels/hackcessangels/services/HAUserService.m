@@ -12,11 +12,50 @@
 
 @interface HAUserService ()
 
-@property (nonatomic, strong) HAUser* actualUser;
+@property (nonatomic, strong) HAUser* currentUser;
+
+- (void)getUserWithEmail:(NSString*) email success:(HAUserServiceSuccess)success failure:(HAUserServiceFailure)failure;
 
 @end
 
 @implementation HAUserService
+
++ (id)sharedInstance {
+    static HAUserService *sharedUserService = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedUserService = [[self alloc] init];
+        sharedUserService.currentUser = nil;
+    });
+    return sharedUserService;
+}
+
+// Return the current user of this app asynchronously.
+//  - If a user is already known and loaded, return it immediately
+//  - If a user is known but its data not updated (e.g.: login successful but no contact with server),
+//    make a call to the server to get the full user object. If the server contact fails, fails.
+//  - Otherwise, fails.
+- (void)getCurrentUser:(HAUserServiceSuccess)success failure:(HAUserServiceFailure)failure {
+    if (self.currentUser != nil) {
+        // We already have a user, just return it.
+        success(self.currentUser);
+        return;
+    }
+    
+    HAUser* user = [HAUser userFromKeyChain];
+    if (!user) {
+        // No user logged in. How is this possible?
+        NSMutableDictionary* details = [NSMutableDictionary dictionary];
+        [details setValue:@"No known user" forKey:NSLocalizedDescriptionKey];
+        failure([[NSError alloc] initWithDomain:@"user" code:404 userInfo:details]);
+    }
+    
+    [self getUserWithEmail:user.email success:^(HAUser *user) {
+        self.currentUser = user;
+        success(user);
+    } failure:failure];
+    return;
+}
 
 - (void)getUserWithEmail:(NSString*) email success:(HAUserServiceSuccess)success failure:(HAUserServiceFailure)failure {
     DCRestRequests* dcRestRequest = [[DCRestRequests alloc] init];
@@ -31,31 +70,10 @@
     }];
 }
 
-
 // on recherche l'email entré, on le supprime, on envoit le nouvel email
-- (void)updateUser:(NSString*) email withUpdatedEmail:(NSString*)updateEmail password:(NSString*)password withUpdatedPassword:(NSString*)updatePassword success:(DCRestRequestsSuccess)success failure:(DCRestRequestsFailure)failure
-{
-    DCRestRequests* dcRestRequest = [[DCRestRequests alloc] init];
-
-    [dcRestRequest GETrequest:@"user" withParameters:@{@"email" : email, @"password" : password} success:success failure:failure];
-
-    [dcRestRequest DELETErequest:@"user" withParameters:@{@"email" : email , @"password" : password} success:success failure:failure];
-    [dcRestRequest POSTrequest:@"user" withParameters:@{@"email" : updateEmail , @"password" : updatePassword} success:success failure:failure];
-
-   [dcRestRequest GETrequest:@"user" withParameters:@{@"email" : email, @"password" : password } success:^(NSDictionary *user, NSHTTPURLResponse* response){
-       
-       NSMutableDictionary *hash = [[NSMutableDictionary alloc] initWithDictionary:user];
-       
-       hash[@"email"] = updateEmail;
-       hash[@"password"] = updatePassword;
-       
-       [dcRestRequest PUTrequest:@"user" withParameters:@{@"email" : email, @"password" : password, @"user":hash} success:success failure:failure];
-       
-   } failure:failure];
-    
+- (void)updateUser:(HAUser *)user success:(HAUserServiceSuccess)success failure:(HAUserServiceFailure)failure {
     
 }
-
 
 - (void)createUserWithEmailAndPassword:(NSString *)email password:(NSString *)password success:(DCRestRequestsSuccess)success failure:(DCRestRequestsFailure)failure {
     DCRestRequests* dcRestRequest = [[DCRestRequests alloc] init];
@@ -66,21 +84,18 @@
     DCRestRequests* dcRestRequest = [[DCRestRequests alloc] init];
     [dcRestRequest POSTrequest:@"user/login" withParameters:@{@"email" : email, @"password":password} success:^(id object, NSHTTPURLResponse* response){
         
-        NSDictionary *userSetting = [NSDictionary dictionaryWithObjectsAndKeys:email,@"email",password,@"password", nil];
+        NSDictionary *userSetting = [NSDictionary dictionaryWithObjectsAndKeys:email,@"email", nil];
         
         /* On crée le User et on le sauve */
-        self.actualUser = [[HAUser alloc] initWithDictionary:userSetting];
+        HAUser* user = [[HAUser alloc] initWithDictionary:userSetting];
         NSArray* cookies = [NSHTTPCookie cookiesWithResponseHeaderFields:[response allHeaderFields] forURL:response.URL];
         if ([cookies count] != 0) {
-            self.actualUser.cookie = cookies[0];
+            user.cookie = cookies[0];
         }
-        [self.actualUser saveUserToKeyChain];
-        success(self.actualUser, response);
+        [user saveUserToKeyChain];
+        success(user, response);
     } failure:failure];
 }
-
-
-
 
 - (void)deleteUserWithEmail:(NSString *)email success:(DCRestRequestsSuccess)success failure:(DCRestRequestsFailure)failure {
     DCRestRequests* dcRestRequest = [[DCRestRequests alloc] init];

@@ -59,7 +59,7 @@
         return;
     }
     
-    self.userService = [[HAUserService alloc] init];
+    self.userService = [HAUserService sharedInstance];
 	
     [self.userService getUserWithEmail:user.email success:^(HAUser *user) {
         

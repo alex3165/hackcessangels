@@ -15,9 +15,11 @@ typedef void(^HAUserServiceFailure)(NSError *error);
 
 @interface HAUserService : NSObject
 
-- (void)getUserWithEmail:(NSString*) email success:(HAUserServiceSuccess)success failure:(HAUserServiceFailure)failure;
++ (id)sharedInstance;
 
-- (void)updateUser:(NSString*) email withUpdatedEmail:(NSString*)updateEmail password:(NSString*)password withUpdatedPassword:(NSString*)updatePassword success:(DCRestRequestsSuccess)success failure:(DCRestRequestsFailure)failure;
+- (void)getCurrentUser:(HAUserServiceSuccess) success failure:(HAUserServiceFailure) failure;
+
+- (void)updateUser:(HAUser*) user success:(HAUserServiceSuccess)success failure:(HAUserServiceFailure)failure;
 
 - (void)createUserWithEmailAndPassword:(NSString*) email password:(NSString*) password
                     success:(DCRestRequestsSuccess)success

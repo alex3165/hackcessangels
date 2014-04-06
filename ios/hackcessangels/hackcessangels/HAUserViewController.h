@@ -18,20 +18,17 @@
 @interface HAUserViewController : UIViewController
 
 
-@property (weak, nonatomic) IBOutlet UITextField *showLogin;
-@property (weak, nonatomic) IBOutlet UITextField *showPassword;
-@property (weak, nonatomic) IBOutlet UITextField *showEmail;
-@property (weak, nonatomic) IBOutlet UITextField *showDescription;
-@property (weak, nonatomic) IBOutlet UITextField *showHandicap;
+@property (weak, nonatomic) IBOutlet UILabel *emailLabel;
+@property (weak, nonatomic) IBOutlet UITextField *passwordTextInput;
+@property (weak, nonatomic) IBOutlet UITextField *nameTextInput;
+@property (weak, nonatomic) IBOutlet UITextView *descriptionTextInput;
 
-@property (weak, nonatomic) IBOutlet UIButton *edit;
+@property (weak, nonatomic) IBOutlet UIButton *save;
 
 @property (nonatomic, strong) HAUserService *editUser;
-- (IBAction)saisieReturn:(id)sender;
-- (IBAction)touchOutside:(id)sender;
-
-
-
+- (IBAction) saisieReturn:(id)sender;
+- (IBAction) touchOutside:(id)sender;
+- (IBAction) saveAndDismiss:(id)sender;
 @end
 
 
