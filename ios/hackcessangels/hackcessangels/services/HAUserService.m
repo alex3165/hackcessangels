@@ -71,8 +71,7 @@
             success(user);
         }
     } failure:^(id obj, NSError *error) {
-        NSError* newError = [[NSError alloc] initWithDomain:@"server" code:[[(NSDictionary*) obj objectForKey:@"status"] intValue] userInfo:error.userInfo];
-        failure(newError);
+        failure(error);
     }];
 }
 
