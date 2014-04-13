@@ -16,6 +16,7 @@
 @property (nonatomic, strong) NSString * textName;
 @property (nonatomic, strong) NSString * textDescription;
 
+
 @end
 
 @implementation HAUserViewController
@@ -46,7 +47,7 @@
 {
     [super viewDidLoad];
     [[UITextField appearance] setFont:[UIFont fontWithName:@"Times" size:16]];
-    
+    self.automaticallyAdjustsScrollViewInsets = NO;
     [[HAUserService sharedInstance] getCurrentUser:^(HAUser *user) {
         self.emailLabel.text = user.email;
         self.nameTextInput.text = user.name;
@@ -55,6 +56,15 @@
         UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Erreur" message:@"Serveur injoignable" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
         [alert show];
     }];
+    
+    self.scroll.contentSize=CGSizeMake(320,568);
+    
+    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc]
+                                             initWithTarget:self action:@selector(takePicture:)];
+    [tapRecognizer setNumberOfTouchesRequired:1];
+    [tapRecognizer setDelegate:self];
+    
+    self.image.userInteractionEnabled = YES;    [self.image addGestureRecognizer:tapRecognizer];
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -62,11 +72,35 @@
     [super viewDidAppear:animated];
 }
 
+-(void) takePicture:(id) sender
+{
+    UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
+    
+        [imagePicker setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
+    
+    [imagePicker setDelegate:self];
+    
+    [self presentModalViewController:imagePicker animated:YES];
+}
+
+-(void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
+    
+    [self.image setImage:image];
+    [self dismissModalViewControllerAnimated:YES];
+}
+
+
 - (IBAction)saveAndDismiss:(id)sender {
     [[HAUserService sharedInstance] getCurrentUser:^(HAUser *user) {
         user.name = self.nameTextInput.text;
         user.description = self.descriptionTextInput.text;
         user.password = self.passwordTextInput.text;
+        
+        user.image = UIImageJPEGRepresentation(self.image.image, 0.90);
+        
+        //user.image = self.image.image.CIImage;
         
         [[HAUserService sharedInstance] updateUser:user success:^(HAUser* user) {
             UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Bravo" message:@"Profil édité" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];

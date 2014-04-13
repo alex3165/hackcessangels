@@ -13,13 +13,16 @@
 // Libs
 #import "AFNetworking.h"
 
-@interface HAUserViewController : UIViewController
+@interface HAUserViewController : UIViewController <UINavigationControllerDelegate,UIImagePickerControllerDelegate
+>
 
 
 @property (weak, nonatomic) IBOutlet UILabel *emailLabel;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextInput;
+@property (weak, nonatomic) IBOutlet UIImageView *image;
 @property (weak, nonatomic) IBOutlet UITextField *nameTextInput;
 @property (weak, nonatomic) IBOutlet UITextView *descriptionTextInput;
+@property (nonatomic,weak) IBOutlet UIScrollView *scroll;
 
 @property (weak, nonatomic) IBOutlet UIButton *save;
 

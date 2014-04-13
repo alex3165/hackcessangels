@@ -98,7 +98,7 @@
     [parameters setObject:user.name forKey:kNameKey];
     [parameters setObject:user.description forKey:kDescriptionKey];
     if (user.image != nil) {
-        [parameters setObject:user.image forKey:kImageKey];
+        [parameters setObject:[NSString stringWithFormat:@"%@" ,user.image] forKey:kImageKey];
     }
     
     [requestService PUTrequest:@"user" withParameters: [[NSDictionary alloc] initWithObjectsAndKeys:parameters, @"data", nil] success:^(id obj, NSHTTPURLResponse *response) {

@@ -16,6 +16,9 @@
 		222E375E18BA52E100E3B720 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22601F151886E2DE008B0179 /* Main.storyboard */; };
 		222E376118BA5B2F00E3B720 /* HALogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 222E376018BA5B2F00E3B720 /* HALogViewController.m */; };
 		222E376218BA5B2F00E3B720 /* HALogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 222E376018BA5B2F00E3B720 /* HALogViewController.m */; };
+		2244C95618FA8B55000B3C33 /* profil.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2244C95518FA8B55000B3C33 /* profil.jpg */; };
+		2244C95718FA8B55000B3C33 /* profil.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2244C95518FA8B55000B3C33 /* profil.jpg */; };
+		2244C95818FA8B55000B3C33 /* profil.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2244C95518FA8B55000B3C33 /* profil.jpg */; };
 		22601F041886E2DE008B0179 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22601F031886E2DE008B0179 /* Foundation.framework */; };
 		22601F061886E2DE008B0179 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22601F051886E2DE008B0179 /* CoreGraphics.framework */; };
 		22601F081886E2DE008B0179 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22601F071886E2DE008B0179 /* UIKit.framework */; };
@@ -106,6 +109,7 @@
 		222E375B18BA521C00E3B720 /* HAHelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HAHelpViewController.m; sourceTree = "<group>"; };
 		222E375F18BA5B2F00E3B720 /* HALogViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HALogViewController.h; sourceTree = "<group>"; };
 		222E376018BA5B2F00E3B720 /* HALogViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HALogViewController.m; sourceTree = "<group>"; };
+		2244C95518FA8B55000B3C33 /* profil.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = profil.jpg; sourceTree = "<group>"; };
 		22601F001886E2DE008B0179 /* HackcessAngels.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HackcessAngels.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22601F031886E2DE008B0179 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		22601F051886E2DE008B0179 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -276,6 +280,7 @@
 		22601F0A1886E2DE008B0179 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				2244C95518FA8B55000B3C33 /* profil.jpg */,
 				A150296C18DB7A81008FC4F1 /* HackcessAngels copy-Info.plist */,
 				22601F0B1886E2DE008B0179 /* HackcessAngels-Info.plist */,
 				22601F0C1886E2DE008B0179 /* InfoPlist.strings */,
@@ -475,6 +480,7 @@
 			files = (
 				A1B80AA418D23DBF004EE4EA /* TODO.md in Resources */,
 				22601F1C1886E2DE008B0179 /* Images.xcassets in Resources */,
+				2244C95618FA8B55000B3C33 /* profil.jpg in Resources */,
 				22601F0E1886E2DE008B0179 /* InfoPlist.strings in Resources */,
 				22601F171886E2DE008B0179 /* Main.storyboard in Resources */,
 			);
@@ -486,6 +492,7 @@
 			files = (
 				A1B064A618BFCBE60078EED5 /* user.json in Resources */,
 				22601F2D1886E2DE008B0179 /* InfoPlist.strings in Resources */,
+				2244C95818FA8B55000B3C33 /* profil.jpg in Resources */,
 				8F57723A18DB7D5600D42D4F /* Agent.storyboard in Resources */,
 				222E375E18BA52E100E3B720 /* Main.storyboard in Resources */,
 			);
@@ -500,6 +507,7 @@
 				A150296418DB7A81008FC4F1 /* Images.xcassets in Resources */,
 				8F57723918DB7D5600D42D4F /* Agent.storyboard in Resources */,
 				A150296518DB7A81008FC4F1 /* InfoPlist.strings in Resources */,
+				2244C95718FA8B55000B3C33 /* profil.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
