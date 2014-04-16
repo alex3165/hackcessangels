@@ -40,6 +40,7 @@ func NewServer() *Server {
 	r.HandleFunc("/api/user/login", s.handleUserLogin)
 	r.HandleFunc("/api/user", s.handleUser)
 	r.HandleFunc("/api/help", s.handleHelp)
+	r.HandleFunc("/debug", s.handleDebug)
 
 	return s
 }

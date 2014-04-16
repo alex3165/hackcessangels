@@ -15,6 +15,8 @@ type ApiUser struct {
 	Password       *string               `json:"password,omitempty"`
 	Name           *string               `json:"name,omitempty"`
 	Description    *string               `json:"description,omitempty"`
+    Image          *[]byte               `json:"image,omitempty"`
+    Phone          *string               `json:"phone,omitempty"`
 	Disability     *string               `json:"disability,omitempty"`
 	DisabilityType *model.DisabilityType `json:"disabilityType,omitempty"`
 	IsAgent        *bool                 `json:"is_agent,omitempty"`
@@ -29,6 +31,8 @@ func NewApiUser(u *model.User) *ApiUser {
 	au.Description = &u.Description
 	au.Disability = &u.Disability
 	au.DisabilityType = &u.DisabilityType
+	au.Phone = &u.Phone
+	au.Image = &u.Image
 	au.IsAgent = &u.IsAgent
 	return au
 }
@@ -54,6 +58,12 @@ func (au *ApiUser) fillStorageUser(u *model.User) (err error) {
 	}
 	if au.DisabilityType != nil {
 		u.DisabilityType = *au.DisabilityType
+	}
+	if au.Phone != nil {
+		u.Phone = *au.Phone
+	}
+	if au.Image != nil {
+		u.Image = *au.Image
 	}
 	if au.IsAgent != nil {
 		u.IsAgent = *au.IsAgent

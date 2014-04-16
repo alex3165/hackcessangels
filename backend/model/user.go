@@ -21,6 +21,9 @@ type User struct {
 
 	Name           string
 	Description    string
+    Image          []byte
+    Phone          string
+
 	Disability     string
 	DisabilityType DisabilityType
 
