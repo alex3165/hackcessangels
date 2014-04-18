@@ -87,6 +87,10 @@
     if (user.password != nil && user.password.length != 0) {
         [parameters setObject:user.password forKey:kPasswordKey];
     }
+    // Set a new numero only if it changed by the user
+    if (user.phone != nil && user.phone.length != 0) {
+        [parameters setObject:user.phone forKey:kNumeroKey];
+    }
     
     // Name is a required property
     if (user.name == nil || user.name.length == 0) {

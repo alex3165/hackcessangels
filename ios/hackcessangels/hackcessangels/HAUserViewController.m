@@ -15,7 +15,7 @@
 @property (nonatomic, strong) NSString * textEmail;
 @property (nonatomic, strong) NSString * textName;
 @property (nonatomic, strong) NSString * textDescription;
-
+@property (nonatomic, strong) NSString * textNumero;
 
 @end
 
@@ -52,6 +52,7 @@
         self.emailLabel.text = user.email;
         self.nameTextInput.text = user.name;
         self.descriptionTextInput.text= user.description;
+        self.numeroTextInput.text=user.phone;
     } failure:^(NSError *error) {
         UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Erreur" message:@"Serveur injoignable" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
         [alert show];
@@ -97,7 +98,7 @@
         user.name = self.nameTextInput.text;
         user.description = self.descriptionTextInput.text;
         user.password = self.passwordTextInput.text;
-        
+        user.phone = self.numeroTextInput.text;
         user.image = UIImageJPEGRepresentation(self.image.image, 0.90);
         
         //user.image = self.image.image.CIImage;

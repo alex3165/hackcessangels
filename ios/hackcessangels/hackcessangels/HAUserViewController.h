@@ -22,6 +22,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *image;
 @property (weak, nonatomic) IBOutlet UITextField *nameTextInput;
 @property (weak, nonatomic) IBOutlet UITextView *descriptionTextInput;
+@property (weak, nonatomic) IBOutlet UITextField *numeroTextInput;
 @property (nonatomic,weak) IBOutlet UIScrollView *scroll;
 
 @property (weak, nonatomic) IBOutlet UIButton *save;

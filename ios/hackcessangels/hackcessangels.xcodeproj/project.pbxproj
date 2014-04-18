@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		043F17AA18FC30BB00D23C3F /* HACallUserView.m in Sources */ = {isa = PBXBuildFile; fileRef = 043F17A918FC30BB00D23C3F /* HACallUserView.m */; };
 		04F5A81718C8AC5E00ED0CC6 /* HAUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F5A81518C8AC5E00ED0CC6 /* HAUserViewController.m */; };
 		22085DDD18883EAE00A4BE75 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22085DDC18883EAE00A4BE75 /* CoreLocation.framework */; };
 		22130BFF188964C200191955 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22130BFE188964C200191955 /* MapKit.framework */; };
@@ -98,6 +99,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		043F17A818FC30BB00D23C3F /* HACallUserView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HACallUserView.h; path = hackcessangels/HACallUserView.h; sourceTree = SOURCE_ROOT; };
+		043F17A918FC30BB00D23C3F /* HACallUserView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HACallUserView.m; path = hackcessangels/HACallUserView.m; sourceTree = SOURCE_ROOT; };
 		04F5A81418C8AC5E00ED0CC6 /* HAUserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HAUserViewController.h; path = hackcessangels/HAUserViewController.h; sourceTree = SOURCE_ROOT; };
 		04F5A81518C8AC5E00ED0CC6 /* HAUserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HAUserViewController.m; path = hackcessangels/HAUserViewController.m; sourceTree = SOURCE_ROOT; };
 		18DAFC5302E94F25AE48D512 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -314,6 +317,8 @@
 		8F57723C18DB7E5800D42D4F /* Agent */ = {
 			isa = PBXGroup;
 			children = (
+				043F17A818FC30BB00D23C3F /* HACallUserView.h */,
+				043F17A918FC30BB00D23C3F /* HACallUserView.m */,
 				8F400A2218EDE323006B8342 /* HAHelpProfileView.h */,
 				8F400A2318EDE323006B8342 /* HAHelpProfileView.m */,
 				22601F181886E2DE008B0179 /* HAMapViewController.h */,
@@ -627,6 +632,7 @@
 				A1330B0718AD62B5002B1828 /* HAUser.m in Sources */,
 				222E375C18BA521C00E3B720 /* HAHelpViewController.m in Sources */,
 				22DA835818B288610014CCA5 /* HAAssistanceService.m in Sources */,
+				043F17AA18FC30BB00D23C3F /* HACallUserView.m in Sources */,
 				22601F3F18871EAC008B0179 /* HATileOverlay.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
