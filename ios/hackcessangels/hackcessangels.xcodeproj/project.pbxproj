@@ -101,6 +101,7 @@
 /* Begin PBXFileReference section */
 		043F17A818FC30BB00D23C3F /* HACallUserView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HACallUserView.h; path = hackcessangels/HACallUserView.h; sourceTree = SOURCE_ROOT; };
 		043F17A918FC30BB00D23C3F /* HACallUserView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HACallUserView.m; path = hackcessangels/HACallUserView.m; sourceTree = SOURCE_ROOT; };
+		043F17AB1901A22F00D23C3F /* HackcessAngels copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "HackcessAngels copy-Info.plist"; sourceTree = SOURCE_ROOT; };
 		04F5A81418C8AC5E00ED0CC6 /* HAUserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HAUserViewController.h; path = hackcessangels/HAUserViewController.h; sourceTree = SOURCE_ROOT; };
 		04F5A81518C8AC5E00ED0CC6 /* HAUserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HAUserViewController.m; path = hackcessangels/HAUserViewController.m; sourceTree = SOURCE_ROOT; };
 		18DAFC5302E94F25AE48D512 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -157,7 +158,6 @@
 		A1330B0618AD62B5002B1828 /* HAUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HAUser.m; path = hackcessangels/model/HAUser.m; sourceTree = SOURCE_ROOT; };
 		A1330B0918AD632E002B1828 /* HAUserTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HAUserTests.m; path = hackcessangelsTests/HAUserTests.m; sourceTree = SOURCE_ROOT; };
 		A150296B18DB7A81008FC4F1 /* HackcessAngels copy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HackcessAngels copy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		A150296C18DB7A81008FC4F1 /* HackcessAngels copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "HackcessAngels copy-Info.plist"; path = "/Users/etienne/Documents/hackcessangels/ios/hackcessangels/HackcessAngels copy-Info.plist"; sourceTree = "<absolute>"; };
 		A1AC4C5318B69AD2002EE7E6 /* HAUserServicesTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HAUserServicesTests.m; path = hackcessangelsTests/HAUserServicesTests.m; sourceTree = SOURCE_ROOT; };
 		A1B064A518BFCBE60078EED5 /* user.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = user.json; path = hackcessangelsTests/user.json; sourceTree = SOURCE_ROOT; };
 		A1B80AA318D23DBF004EE4EA /* TODO.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = TODO.md; path = hackcessangels/TODO.md; sourceTree = SOURCE_ROOT; };
@@ -284,7 +284,7 @@
 			isa = PBXGroup;
 			children = (
 				2244C95518FA8B55000B3C33 /* profil.jpg */,
-				A150296C18DB7A81008FC4F1 /* HackcessAngels copy-Info.plist */,
+				043F17AB1901A22F00D23C3F /* HackcessAngels copy-Info.plist */,
 				22601F0B1886E2DE008B0179 /* HackcessAngels-Info.plist */,
 				22601F0C1886E2DE008B0179 /* InfoPlist.strings */,
 				22601F0F1886E2DE008B0179 /* main.m */,
