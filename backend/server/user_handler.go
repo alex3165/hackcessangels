@@ -120,6 +120,7 @@ func (s *Server) handleUser(w http.ResponseWriter, r *http.Request) {
 		Password *string  `json:"password,omitempty" schema:"password"`
 		Data     *ApiUser `json:"data,omitempty"`
 	}
+
 	// We always return JSON
 	w.Header().Add("Content-Type", "application/json")
 	err := getJSONRequest(r, &data)
