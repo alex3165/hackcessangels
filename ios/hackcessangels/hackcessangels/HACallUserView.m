@@ -27,7 +27,11 @@
 
 
 -(IBAction)callUser:(id)sender {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"0668004086"]];
+    
+    
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"tel:0668004086"]];
+    
+    
 };
 
 

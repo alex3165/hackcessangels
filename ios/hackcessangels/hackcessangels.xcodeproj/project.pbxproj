@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		043F17AA18FC30BB00D23C3F /* HACallUserView.m in Sources */ = {isa = PBXBuildFile; fileRef = 043F17A918FC30BB00D23C3F /* HACallUserView.m */; };
+		043F17AC1901A37900D23C3F /* HACallUserView.m in Sources */ = {isa = PBXBuildFile; fileRef = 043F17A918FC30BB00D23C3F /* HACallUserView.m */; };
 		04F5A81718C8AC5E00ED0CC6 /* HAUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F5A81518C8AC5E00ED0CC6 /* HAUserViewController.m */; };
 		22085DDD18883EAE00A4BE75 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22085DDC18883EAE00A4BE75 /* CoreLocation.framework */; };
 		22130BFF188964C200191955 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22130BFE188964C200191955 /* MapKit.framework */; };
@@ -633,7 +633,6 @@
 				A1330B0718AD62B5002B1828 /* HAUser.m in Sources */,
 				222E375C18BA521C00E3B720 /* HAHelpViewController.m in Sources */,
 				22DA835818B288610014CCA5 /* HAAssistanceService.m in Sources */,
-				043F17AA18FC30BB00D23C3F /* HACallUserView.m in Sources */,
 				22601F3F18871EAC008B0179 /* HATileOverlay.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -679,6 +678,7 @@
 				A150295918DB7A81008FC4F1 /* HAAssistanceService.m in Sources */,
 				8F400A2418EDE323006B8342 /* HAHelpProfileView.m in Sources */,
 				A150295A18DB7A81008FC4F1 /* HATileOverlay.m in Sources */,
+				043F17AC1901A37900D23C3F /* HACallUserView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
