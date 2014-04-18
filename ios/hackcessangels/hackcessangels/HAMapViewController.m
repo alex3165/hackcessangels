@@ -11,11 +11,12 @@
 #import "HATileOverlayView.h"
 #import "HAUser.h"
 #import "HAHelpProfileView.h"
+#import "HACallUserView.h"
 
 
 @interface HAMapViewController ()
 @property (nonatomic, weak) IBOutlet HAHelpProfileView *helpProfileView;
-
+@property (nonatomic, weak) IBOutlet HACallUserView *callUserView;
 @property (nonatomic, weak) IBOutlet UIPanGestureRecognizer *gestureRecognizer;
 @end
 

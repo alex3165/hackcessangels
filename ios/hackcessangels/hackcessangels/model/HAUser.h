@@ -15,13 +15,14 @@ extern NSString *const kCookieKey;
 extern NSString *const kDescriptionKey;
 extern NSString *const kImageKey;
 extern NSString *const kNameKey;
-
+extern NSString *const kNumeroKey;
 @interface HAUser : NSObject
 
 @property (nonatomic, strong) NSString *email;
 @property (nonatomic, strong) NSString *password;
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *description;
+@property (nonatomic, strong) NSString *phone;
 @property (nonatomic, strong) NSString *disability;
 @property (nonatomic, strong) NSData *image;
 @property (nonatomic, strong) NSHTTPCookie *cookie;

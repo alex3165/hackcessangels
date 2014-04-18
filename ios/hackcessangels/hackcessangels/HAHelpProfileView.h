@@ -8,7 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+
 @interface HAHelpProfileView : UIView
 - (void) hideProfile;
 - (void) showProfile;
+
 @end
+

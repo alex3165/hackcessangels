@@ -87,6 +87,10 @@
     if (user.password != nil && user.password.length != 0) {
         [parameters setObject:user.password forKey:kPasswordKey];
     }
+    // Set a new numero only if it changed by the user
+    if (user.phone != nil && user.phone.length != 0) {
+        [parameters setObject:user.phone forKey:kNumeroKey];
+    }
     
     // Name is a required property
     if (user.name == nil || user.name.length == 0) {
@@ -99,7 +103,7 @@
     [parameters setObject:user.name forKey:kNameKey];
     [parameters setObject:user.description forKey:kDescriptionKey];
     if (user.image != nil) {
-        [parameters setObject:user.image forKey:kImageKey];
+        [parameters setObject:[NSString stringWithFormat:@"%@" ,user.image] forKey:kImageKey];
     }
     
     [requestService PUTrequest:@"user" withParameters: [[NSDictionary alloc] initWithObjectsAndKeys:parameters, @"data", nil] success:^(id obj, NSHTTPURLResponse *response) {

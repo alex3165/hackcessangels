@@ -20,4 +20,5 @@
 @property (nonatomic, strong) HAUserService *userService;
 @property (nonatomic,strong) HAMapViewController *mapController;
 
+
 @end

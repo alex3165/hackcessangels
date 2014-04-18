@@ -159,12 +159,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KZR-gj-bbd" customClass="TPKeyboardAvoidingScrollView">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KZR-gj-bbd" customClass="TPKeyboardAvoidingScrollView">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Changer de code" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gJQ-yz-4Mu">
-                                        <rect key="frame" x="136" y="114" width="164" height="30"/>
+                                        <rect key="frame" x="136" y="120" width="164" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <accessibility key="accessibilityConfiguration" hint="password" label="password">
                                             <accessibilityTraits key="traits" none="YES" playsSound="YES"/>
@@ -177,7 +177,7 @@
                                         </connections>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="On m'appelle ..." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4RV-II-Hph">
-                                        <rect key="frame" x="136" y="152" width="164" height="30"/>
+                                        <rect key="frame" x="136" y="161" width="164" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <accessibility key="accessibilityConfiguration" hint="description" label="description">
                                             <accessibilityTraits key="traits" none="YES" playsSound="YES"/>
@@ -189,44 +189,63 @@
                                             <action selector="saisieReturn:" destination="4Kq-j2-Pec" eventType="touchUpOutside" id="jzb-Cc-9gR"/>
                                         </connections>
                                     </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Pour me joindre..." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Cf9-Qq-QPI">
+                                        <rect key="frame" x="136" y="203" width="164" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <accessibility key="accessibilityConfiguration" hint="description" label="description">
+                                            <accessibilityTraits key="traits" none="YES" playsSound="YES"/>
+                                        </accessibility>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="saisieReturn:" destination="4Kq-j2-Pec" eventType="touchUpOutside" id="Afc-Ue-dyk"/>
+                                            <action selector="saisieReturn:" destination="4Kq-j2-Pec" eventType="editingDidEndOnExit" id="odG-vQ-QeJ"/>
+                                        </connections>
+                                    </textField>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="email@domain.tld" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aOi-2B-99v">
-                                        <rect key="frame" x="20" y="77" width="280" height="21"/>
+                                        <rect key="frame" x="20" y="84" width="280" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Mot de passe" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ciz-vO-prN">
-                                        <rect key="frame" x="20" y="118" width="108" height="21"/>
+                                        <rect key="frame" x="20" y="123" width="108" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Nom" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I18-sJ-o61">
-                                        <rect key="frame" x="20" y="156" width="108" height="21"/>
+                                        <rect key="frame" x="20" y="164" width="108" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Téléphone" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TTE-MY-L0F">
+                                        <rect key="frame" x="20" y="207" width="108" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Cq-R0-dMl">
-                                        <rect key="frame" x="136" y="226" width="164" height="186"/>
+                                        <rect key="frame" x="136" y="253" width="164" height="98"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Parlez nous de vous" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="108" translatesAutoresizingMaskIntoConstraints="NO" id="KHh-3s-jRw">
-                                        <rect key="frame" x="20" y="226" width="108" height="186"/>
+                                        <rect key="frame" x="20" y="253" width="108" height="98"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rwS-Pm-HWo">
-                                        <rect key="frame" x="136" y="433" width="164" height="128"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="profil.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="rwS-Pm-HWo">
+                                        <rect key="frame" x="136" y="406" width="164" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Votre photo" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gta-mh-mQh">
-                                        <rect key="frame" x="20" y="486" width="108" height="21"/>
+                                        <rect key="frame" x="20" y="459" width="108" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="highlightedColor"/>
@@ -254,16 +273,22 @@
                     <connections>
                         <outlet property="descriptionTextInput" destination="8Cq-R0-dMl" id="Zgf-4n-L3I"/>
                         <outlet property="emailLabel" destination="aOi-2B-99v" id="rz6-pV-m5q"/>
+                        <outlet property="image" destination="rwS-Pm-HWo" id="e7X-Id-uwL"/>
                         <outlet property="nameTextInput" destination="4RV-II-Hph" id="aNA-s9-Axm"/>
+                        <outlet property="numeroTextInput" destination="Cf9-Qq-QPI" id="uhR-gT-CkP"/>
                         <outlet property="passwordTextInput" destination="gJQ-yz-4Mu" id="y7c-4C-WPp"/>
                         <outlet property="save" destination="MXV-Mj-czf" id="LMT-lP-gPB"/>
+                        <outlet property="scroll" destination="KZR-gj-bbd" id="rsn-9w-yAQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Ue-IO-PbU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="784" y="-828"/>
+            <point key="canvasLocation" x="787" y="-838"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="profil.jpg" width="210" height="210"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
