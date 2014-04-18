@@ -16,7 +16,7 @@
 - (void) stopLocation;
 - (void) locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations;
 
-- (NSString *) currentLongitude;
-- (NSString *) currentLatitude;
+- (double) currentLongitude;
+- (double) currentLatitude;
 
 @end

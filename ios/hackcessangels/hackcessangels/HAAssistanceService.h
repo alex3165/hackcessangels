@@ -23,5 +23,5 @@ typedef void(^HAAssistanceRequestSuccess)();
 - (void)startHelpRequest:(HAAssistanceRequestAbort) abort agentContacted:(HAAssistanceRequestAgentContacted) agentContacted success:(HAAssistanceRequestSuccess) success;
 - (void)stopHelpRequest;
 
-- (void)helpMe:(NSString*)longitude latitude:(NSString*)latitude success:(HARestRequestsSuccess)success failure:(HARestRequestsFailure)failure;
+- (void)helpMe:(double)longitude latitude:(double)latitude success:(HARestRequestsSuccess)success failure:(HARestRequestsFailure)failure;
 @end

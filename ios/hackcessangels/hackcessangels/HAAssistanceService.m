@@ -78,16 +78,16 @@
     self.requestInFlight = false;
 }
 
-- (void)helpMe:(NSString*)longitude latitude:(NSString*)latitude success:(HARestRequestsSuccess)success failure:(HARestRequestsFailure)failure {
+- (void)helpMe:(double)longitude latitude:(double)latitude success:(HARestRequestsSuccess)success failure:(HARestRequestsFailure)failure {
     //NSLog(@"%hhd",self.reach.isReachable);
     if (self.reach.isReachable) {
         HARestRequests* restRequest = [[HARestRequests alloc] init];
     
         if (!self.requestInFlight) {
-            [restRequest POSTrequest:@"request" withParameters:@{@"lng" : longitude, @"lat" : latitude} success:success failure:failure];
+            [restRequest POSTrequest:@"help" withParameters:@{@"longitude" : [NSNumber numberWithDouble: longitude], @"latitude" : [NSNumber numberWithDouble:latitude]} success:success failure:failure];
             self.requestInFlight = true;
         } else {
-            [restRequest PUTrequest:@"request" withParameters:@{@"lng" : longitude, @"lat" : latitude} success:success failure:failure];
+            [restRequest PUTrequest:@"help" withParameters:@{@"longitude" : [NSNumber numberWithDouble: longitude], @"latitude" : [NSNumber numberWithDouble:latitude]} success:success failure:failure];
         }
     } else {
         // Set an advertising

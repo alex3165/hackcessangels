@@ -50,11 +50,11 @@
           self.location.horizontalAccuracy);
 }
 
-- (NSString *) currentLongitude {
-    return [NSString stringWithFormat:@"%f",self.location.coordinate.longitude];
+- (double) currentLongitude {
+    return self.location.coordinate.longitude;
 }
 
-- (NSString *) currentLatitude {
-    return [NSString stringWithFormat:@"%f",self.location.coordinate.latitude];
+- (double) currentLatitude {
+    return self.location.coordinate.latitude;
 }
 @end
