@@ -72,6 +72,22 @@ func (hr *HelpRequest) GetAgent() (*User, error) {
     }
 }
 
+// Return the user asking for help, or nil of no-one answered.
+func (hr *HelpRequest) GetUser() (*User, error) {
+    if (len(hr.RequesterEmail) == 0) {
+        return nil, errors.New("No-one asked for help!")
+    }
+
+    user, err := hr.m.GetUserByEmail(hr.RequesterEmail)
+    if err != nil {
+        return nil, errors.New("Invalid agent email")
+    } else if user.IsAgent {
+        return nil, errors.New("Requester is an agent")
+    } else {
+        return user, nil
+    }
+}
+
 func (m *Model) GetActiveRequestsByStation(s *Station) ([]*HelpRequest, error) {
 	helpRequests := make([]*HelpRequest, 0)
 	err := m.helpRequests.Find(bson.M{
