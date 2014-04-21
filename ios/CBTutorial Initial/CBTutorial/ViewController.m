@@ -10,20 +10,32 @@
 
 @interface ViewController ()
 
+//- (void)centerScrollViewContents;
+//- (void)scrollViewDoubleTapped:(UITapGestureRecognizer*)recognizer;
+//- (void)scrollViewTwoFingerTapped:(UITapGestureRecognizer*)recognizer;
+
+
 @end
 
 @implementation ViewController
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    self.scrollView.delegate = self;
+     self.scrollView.contentSize =CGSizeMake(320, 900);
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    
+    NSLog(@"%f", scrollView.contentOffset.x);
+    
 }
 
 @end

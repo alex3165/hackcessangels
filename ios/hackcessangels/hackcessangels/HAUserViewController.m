@@ -47,7 +47,7 @@
 {
     [super viewDidLoad];
     [[UITextField appearance] setFont:[UIFont fontWithName:@"Times" size:16]];
-    self.automaticallyAdjustsScrollViewInsets = NO;
+    //self.automaticallyAdjustsScrollViewInsets = NO;
     [[HAUserService sharedInstance] getCurrentUser:^(HAUser *user) {
         self.emailLabel.text = user.email;
         self.nameTextInput.text = user.name;
@@ -59,7 +59,7 @@
         [alert show];
     }];
     
-    self.scroll.contentSize=CGSizeMake(320,568);
+    
     
     UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc]
                                              initWithTarget:self action:@selector(takePicture:)];
@@ -71,6 +71,8 @@
 
 -(void)viewDidAppear:(BOOL)animated
 {
+    [self.scroll setScrollEnabled:YES];
+    self.scroll.contentSize =CGSizeMake(320, 800);
     [super viewDidAppear:animated];
 }
 

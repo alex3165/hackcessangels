@@ -13,7 +13,7 @@
 // Libs
 #import "AFNetworking.h"
 
-@interface HAUserViewController : UIViewController <UINavigationControllerDelegate,UIImagePickerControllerDelegate
+@interface HAUserViewController : UIViewController <UINavigationControllerDelegate,UIImagePickerControllerDelegate,UIScrollViewDelegate
 >
 
 

@@ -41,22 +41,6 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "hackcessangels/HAUserViewController.m"
-            timestampString = "419074944.126594"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "77"
-            endingLineNumber = "77"
-            landmarkName = "-takePicture:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "HackcessAngels/HAHelpViewController.m"
             timestampString = "419076782.420129"
             startingColumnNumber = "9223372036854775807"
@@ -122,57 +106,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "hackcessangels/HAUserViewController.m"
-            timestampString = "419078078.356258"
+            timestampString = "419796417.907397"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "110"
-            endingLineNumber = "110"
+            startingLineNumber = "112"
+            endingLineNumber = "112"
             landmarkName = "-saveAndDismiss:"
             landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__39-[HAUserViewController saveAndDismiss:]_block_invoke_2"
-                  moduleName = "HackcessAngels copy"
-                  urlString = "file:///Users/rieuxalexandre/Documents/developpement/hackcessangels/ios/HackcessAngels/hackcessangels/HAUserViewController.m"
-                  timestampString = "419537618.572259"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "110"
-                  endingLineNumber = "110"
-                  offsetFromSymbolStart = "332">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__39-[HAUserViewController saveAndDismiss:]_block_invoke_2"
-                  moduleName = "HackcessAngels copy"
-                  urlString = "file:///Users/rieuxalexandre/Documents/developpement/hackcessangels/ios/HackcessAngels/hackcessangels/HAUserViewController.m"
-                  timestampString = "419537618.573532"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "110"
-                  endingLineNumber = "110"
-                  offsetFromSymbolStart = "344">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__39-[HAUserViewController saveAndDismiss:]_block_invoke113"
-                  moduleName = "HackcessAngels copy"
-                  urlString = "file:///Users/rieuxalexandre/Documents/developpement/hackcessangels/ios/HackcessAngels/hackcessangels/HAUserViewController.m"
-                  timestampString = "419537618.573739"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "110"
-                  endingLineNumber = "110"
-                  offsetFromSymbolStart = "124">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
