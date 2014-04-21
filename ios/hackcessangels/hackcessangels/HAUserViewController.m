@@ -53,6 +53,7 @@
         self.nameTextInput.text = user.name;
         self.descriptionTextInput.text= user.description;
         self.numeroTextInput.text=user.phone;
+        self.image.image = [[UIImage alloc] initWithData:user.image];
     } failure:^(NSError *error) {
         UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Erreur" message:@"Serveur injoignable" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
         [alert show];
