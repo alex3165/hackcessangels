@@ -55,6 +55,8 @@ NSString * address = @"10 adresse des jonquilles";
     
     [self.gestureRecognizer setDelegate:self];
     
+    self.bluetoothmanager = [[HACentralManager alloc] init];
+    //self.bluetoothmanager.centralManager = [[CBCentralManager alloc]initWithDelegate:self queue:nil];
     
     /* Ajoute d'un marqueur de test */
     

@@ -15,6 +15,7 @@
 // services
 #import "HARestRequests.h"
 #import "HAUserService.h"
+#import "HACentralManager.h"
 
 @interface HAMapViewController : UIViewController <MKMapViewDelegate>
 
@@ -23,6 +24,7 @@
 @property (nonatomic, strong) HAUserService *userService;
 @property (nonatomic, strong) HARestRequests *restRequests;
 @property (nonatomic, strong) HATileOverlay *overlay;
+@property (nonatomic, strong) HACentralManager *bluetoothmanager;
 
 @property (nonatomic, weak) IBOutlet MKMapView *map;
 

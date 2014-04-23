@@ -79,7 +79,7 @@
 }
 
 - (void)helpMe:(double)longitude latitude:(double)latitude success:(HARestRequestsSuccess)success failure:(HARestRequestsFailure)failure {
-    NSLog(@"%hhd attention le test de connection est faussé pour test bluetooth",self.reach.isReachable);
+    //NSLog(@"%hhd attention le test de connection est faussé pour test bluetooth",self.reach.isReachable);
     if (!self.reach.isReachable) {
         HARestRequests* restRequest = [[HARestRequests alloc] init];
     
@@ -91,8 +91,9 @@
         }
     } else {
         // Set an advertising
-        NSLog(@"Bluetooth activate");
-        [self.peripheralService.peripheralManager startAdvertising:@{ CBAdvertisementDataServiceUUIDsKey : @[[CBUUID UUIDWithString:HELP_SERVICE_UUID]] }];
+        //NSLog(@"Bluetooth activate");
+        self.peripheralService = [[HAPeripheral alloc]init];
+        //[self.peripheralService.peripheralManager startAdvertising:@{ CBAdvertisementDataServiceUUIDsKey : @[[CBUUID UUIDWithString:HELP_SERVICE_UUID]] }];
     }
 }
 

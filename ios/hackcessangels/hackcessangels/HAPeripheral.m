@@ -18,13 +18,14 @@
     if (self) {
         self.peripheralManager = [[CBPeripheralManager alloc] initWithDelegate:self queue:nil];
         
-        //[self.peripheralManager startAdvertising:@{ CBAdvertisementDataServiceUUIDsKey : @[[CBUUID UUIDWithString:HELP_SERVICE_UUID]] }];
+        [self.peripheralManager startAdvertising:@{ CBAdvertisementDataServiceUUIDsKey : @[[CBUUID UUIDWithString:HELP_SERVICE_UUID]] }];
     }
     
     return self;
 }
 
 - (void)peripheralManagerDidUpdateState:(CBPeripheralManager *)peripheral{
+    
     if (peripheral.state != CBPeripheralManagerStatePoweredOn) {
         return;
     }
@@ -43,7 +44,7 @@
 - (void)peripheralManager:(CBPeripheralManager *)peripheral central:(CBCentral *)central didSubscribeToCharacteristic:(CBCharacteristic *)characteristic {
     
     self.dataToSend = [@"Help me pleas" dataUsingEncoding:NSUTF8StringEncoding];
-    
+
     /* Data to send here */
     
     self.sendDataIndex = 0;
@@ -53,6 +54,10 @@
 
 - (void)peripheralManagerIsReadyToUpdateSubscribers:(CBPeripheralManager *)peripheral {
     [self sendData];
+}
+
+- (void)peripheralManager:(CBPeripheralManager *)peripheral didReceiveReadRequest:(CBATTRequest *)request{
+    
 }
 
 - (void)sendData {

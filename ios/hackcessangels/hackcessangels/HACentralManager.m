@@ -17,6 +17,7 @@
     
     if (self) {
         self.centralManager = [[CBCentralManager alloc]initWithDelegate:self queue:nil];
+        //NSLog(@"ok on passe ici 1");
         self.data = [[NSMutableData alloc]init];
     }
     
@@ -25,6 +26,7 @@
 
 - (void)centralManagerDidUpdateState:(CBCentralManager *)central{
     
+    //NSLog(@"ok on passe ici 2");
     if (central.state != CBCentralManagerStatePoweredOn) { // Check if bluetooth is active
         NSLog(@"Bluetooth is not active");
     }
@@ -32,7 +34,7 @@
     if (central.state == CBCentralManagerStatePoweredOn) {
         
         // Scan for devices
-        [self.centralManager scanForPeripheralsWithServices:@[[CBUUID UUIDWithString:HELP_SERVICE_UUID]] options:@{ CBCentralManagerScanOptionAllowDuplicatesKey : @YES }];
+        [self.centralManager scanForPeripheralsWithServices:@[[CBUUID UUIDWithString:HELP_SERVICE_UUID]] options:@{ CBCentralManagerScanOptionAllowDuplicatesKey : @NO }];
         NSLog(@"Scanning started");
     }
 }
@@ -117,7 +119,7 @@
         /* Récupération des datas ici */        
         
         // Response of central if ok
-         [peripheral writeValue:@"hehe" forCharacteristic:characteristic type:CBCharacteristicWriteWithResponse];
+         [peripheral writeValue:[@"YES" dataUsingEncoding:NSUTF8StringEncoding] forCharacteristic:characteristic type:CBCharacteristicWriteWithResponse];
         
         [peripheral setNotifyValue:NO forCharacteristic:characteristic];
         
@@ -146,7 +148,7 @@
     self.discoveredPeripheral = nil;
     
     // scan again for any new service
-    [self.centralManager scanForPeripheralsWithServices:@[[CBUUID UUIDWithString:HELP_SERVICE_UUID]] options:@{ CBCentralManagerScanOptionAllowDuplicatesKey : @YES }];
+    [self.centralManager scanForPeripheralsWithServices:@[[CBUUID UUIDWithString:HELP_SERVICE_UUID]] options:@{ CBCentralManagerScanOptionAllowDuplicatesKey : @NO }];
 }
 
 - (void)cleanup {
