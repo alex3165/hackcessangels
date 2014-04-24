@@ -9,14 +9,19 @@
 #import <Foundation/Foundation.h>
 #import <CoreBluetooth/CoreBluetooth.h>
 #import "HASERVICES.h"
-#import "HAMapViewController.h"
+
+@protocol HACentralManagerDelegate <NSObject>
+
+- (void)helpValueChanged:(BOOL)newValue;
+
+@end
 
 @interface HACentralManager : NSObject <CBCentralManagerDelegate, CBPeripheralDelegate>
 
 @property (strong, nonatomic) CBCentralManager *centralManager;
 @property (strong, nonatomic) CBPeripheral *discoveredPeripheral;
+@property (weak, nonatomic) id<HACentralManagerDelegate> delegate;
 @property (strong, nonatomic) NSMutableData *data;
 @property (nonatomic, assign) BOOL needHelp;
-//@property (nonatomic, copy) HAMapViewController *agentController;
 
 @end

@@ -116,10 +116,13 @@
     if ([stringFromData isEqualToString:@"EOM"]) {
         NSString *helpString = [[NSString alloc] initWithData:self.data encoding:NSUTF8StringEncoding];
         
-        if ([helpString isEqualToString:@"Help me pleas"]) {
-            //self.agentController.notification = TRUE;
-            self.needHelp = true;
+        self.needHelp = ([helpString isEqualToString:kHELP_MESSAGE]);
+        
+        if ([self.delegate respondsToSelector:@selector(helpValueChanged:)])
+        {
+            [self.delegate helpValueChanged:self.needHelp];
         }
+
         //NSLog(@"%@", [[NSString alloc] initWithData:self.data encoding:NSUTF8StringEncoding]);
         /* Récupération des datas ici */        
         

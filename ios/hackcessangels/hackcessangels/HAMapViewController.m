@@ -14,7 +14,7 @@
 #import "HACallUserView.h"
 
 
-@interface HAMapViewController ()
+@interface HAMapViewController () <HACentralManagerDelegate>
 @property (nonatomic, weak) IBOutlet HAHelpProfileView *helpProfileView;
 @property (nonatomic, weak) IBOutlet HACallUserView *callUserView;
 @property (nonatomic, weak) IBOutlet UIPanGestureRecognizer *gestureRecognizer;
@@ -57,8 +57,9 @@ NSString * address = @"10 adresse des jonquilles";
     
     self.bluetoothmanager = [[HACentralManager alloc] init];
     
-    self.helpok.hidden = (self.bluetoothmanager.needHelp) ? NO : YES;
-
+    self.helpok.hidden = !self.bluetoothmanager.needHelp;
+    
+    self.bluetoothmanager.delegate = self;
 }
 
 - (IBAction)_panRecogPanned:(id)sender {
@@ -69,13 +70,17 @@ NSString * address = @"10 adresse des jonquilles";
             /*if ( [((UIPanGestureRecognizer *)sender) locationInView:self.helpProfileView].y > dropDownButton.frame.height )
                 return; // Only drag if the user's finger is on the button*/
             
-            CGPoint translation = [self.gestureRecognizer translationInView:self.helpProfileView];
+            CGPoint translation = [self.gestureRecognizer translationInView:self.callUserView];
             
             //Note that we are omitting translation.x, otherwise the filterView will be able to move horizontally as well. Also note that that MIN and MAX were written for a subview which slides down from the top, they wont work on your subview.
             CGRect newFrame = self.gestureRecognizer.view.frame;
             //newFrame.origin.y = MIN (_panRecog.view.frame.origin.y + translation.y, FILTER_OPEN_ORIGIN_Y);
             //newFrame.origin.y = MAX (newFrame.origin.y, FILTER_INITIAL_ORIGIN_Y);
             newFrame.origin.y = self.gestureRecognizer.view.frame.origin.y + translation.y;
+            if (newFrame.origin.y > 0) {
+                return;
+            }
+            
             self.gestureRecognizer.view.frame = newFrame;
             
             [self.gestureRecognizer setTranslation:CGPointMake(0, 0) inView:self.view];
@@ -101,7 +106,7 @@ NSString * address = @"10 adresse des jonquilles";
              } else
              */
             
-            if (self.gestureRecognizer.view.frame.origin.y > (150 + 0) / 2 ) {
+            if (self.gestureRecognizer.view.frame.origin.y > -75 ) {
                 open = YES;
             }
             
@@ -110,10 +115,10 @@ NSString * address = @"10 adresse des jonquilles";
             }
             
             if (open == YES) {
-                [self.helpProfileView showProfile];
+                [self.callUserView showProfile];
             }
             else {
-                [self.helpProfileView hideProfile];
+                [self.callUserView hideProfile];
             }
         } break;
             
@@ -128,6 +133,23 @@ NSString * address = @"10 adresse des jonquilles";
     HATileOverlayView *view = [[HATileOverlayView alloc] initWithOverlay:ovl];
     view.tileAlpha = 1.0;
     return view ;
+}
+
+
+/******************************************************************************************************************************
+ *
+ *
+ * Delegate
+ *
+ *
+ *****************************************************************************************************************************/
+
+
+#pragma mark - Delegate
+
+-(void)helpValueChanged:(BOOL)newValue
+{
+    self.helpok.hidden = !newValue;
 }
 
 - (void)didReceiveMemoryWarning

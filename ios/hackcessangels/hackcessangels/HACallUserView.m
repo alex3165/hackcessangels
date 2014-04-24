@@ -34,5 +34,21 @@
     
 };
 
+- (void) hideProfile {
+    CGRect frame = self.frame;
+    frame.origin.y = -270;
+    [UIView animateWithDuration:1.0 animations:^{
+        [self setFrame:frame];
+    }];
+}
+
+- (void) showProfile {
+    CGRect frame = self.frame;
+    frame.origin.y = 0.0;
+    
+    [UIView animateWithDuration:1.0 animations:^{
+        [self setFrame:frame];
+    }];
+}
 
 @end

@@ -14,4 +14,6 @@
 
 #define NOTIFY_MTU 20
 
+#define kHELP_MESSAGE @"Help me please"
+
 #endif
