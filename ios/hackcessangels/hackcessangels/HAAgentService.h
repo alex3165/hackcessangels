@@ -10,7 +10,7 @@
 
 #import <Foundation/Foundation.h>
 #import "HARestRequests.h"
-#import "HAUser.h"
+#import "HAAgent.h"
 
 typedef void(^HAAgentServiceSuccess)(HAAgent *agent);
 typedef void(^HAAgentServiceFailure)(NSError *error);
@@ -19,9 +19,9 @@ typedef void(^HAAgentServiceFailure)(NSError *error);
 
 + (id)sharedInstance;
 
-- (void)getCurrentAgent:(HAAgentServiceSuccess) success failure:(HAUserServiceFailure) failure;
+- (void)getCurrentAgent:(HAAgentServiceSuccess) success failure:(HAAgentServiceFailure) failure;
 
-- (void)updateAgent:(HAAgent*) user success:(HAAgentServiceSuccess)success failure:(HAAgentServiceFailure)failure;
+- (void)updateAgent:(HAAgent*) agent success:(HAAgentServiceSuccess)success failure:(HAAgentServiceFailure)failure;
 
 - (void)createAgentWithNameAndPassword:(NSString*) name password:(NSString*) password
                                success:(HARestRequestsSuccess)success

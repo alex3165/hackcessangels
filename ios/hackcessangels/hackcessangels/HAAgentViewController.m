@@ -3,10 +3,12 @@
 //  hackcessangels
 //
 //  Created by Mac on 24/04/2014.
-//  Copyright (c) 2014 RIEUX Alexandre. All rights reserved.
+//  Copyright (c) 2014 hackcessangels. All rights reserved.
 //
 
 #import "HAAgentViewController.h"
+#import "HAAgentService.h"
+#import "HAAgent.h"
 
 @interface HAAgentViewController ()
 
@@ -39,6 +41,7 @@
         [[HAAgentService sharedInstance] getCurrentAgent:^(HAAgent *agent) {
             
             self.nameTextInput.text = agent.name;
+            self.gareTextInput.text = agent.gare;
             self.numeroTextInput.text=agent.phone;
             self.image.image = [[UIImage alloc] initWithData:agent.image];
         } failure:^(NSError *error) {
@@ -53,7 +56,7 @@
         [tapRecognizer setNumberOfTouchesRequired:1];
         [tapRecognizer setDelegate:self];
         
-        self.image.userInteractionEnabled = YES;    [self.image addGestureRecognizer:tapRecognizer];
+        self.image.agentInteractionEnabled = YES;    [self.image addGestureRecognizer:tapRecognizer];
     }
     
 -(void)viewDidAppear:(BOOL)animated
@@ -88,10 +91,10 @@
             agent.name = self.nameTextInput.text;
             agent.password = self.passwordTextInput.text;
             agent.phone = self.numeroTextInput.text;
+            agent.gare = self.gareTextInput.text;
             agent.image = UIImageJPEGRepresentation(self.image.image, 0.90);
             
-            //user.image = self.image.image.CIImage;
-            
+                       
             [[HAAgentService sharedInstance] updateAgent:agent success:^(HAAgent* agent) {
                 UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Bravo" message:@"Profil édité" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
                 [alert show];

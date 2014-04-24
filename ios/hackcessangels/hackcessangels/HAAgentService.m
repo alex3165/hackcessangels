@@ -68,26 +68,26 @@
             agent.cookie = original.cookie;
         }
         if (success) {
-            success(user);
+            success(agent);
         }
     } failure:^(id obj, NSError *error) {
-        NSError* newError = [[NSError alloc] initWithDomain:@"server" code:[[(NSDictionary*) obj objectForKey:@"status"] intValue] agentInfo:error.userInfo];
+        NSError* newError = [[NSError alloc] initWithDomain:@"server" code:[[(NSDictionary*) obj objectForKey:@"status"] intValue] agentInfo:error.agentInfo];
         failure(newError);
     }];
 }
 
-// Verify that user is a valid user (locally), then send the update to the server.
+// Verify that agent is a valid agent (locally), then send the update to the server.
 - (void)updateAgent:(HAAgent *)agent success:(HAAgentServiceSuccess)success failure:(HAAgentServiceFailure)failure {
     HARestRequests* requestService = [[HARestRequests alloc] init];
     
     NSMutableDictionary* parameters = [[NSMutableDictionary alloc] init];
     [parameters setObject:agent.name forKey:kNameKey];
     
-    // Set a new password only if it changed by the user
+    // Set a new password only if it changed by the agent
     if (agent.password != nil && agent.password.length != 0) {
         [parameters setObject:agent.password forKey:kPasswordKey];
     }
-    // Set a new numero only if it changed by the user
+    // Set a new numero only if it changed by the agent
     if (agent.phone != nil && agent.phone.length != 0) {
         [parameters setObject:agent.phone forKey:kNumeroKey];
     }
@@ -97,12 +97,12 @@
         // No user logged in. How is this possible?
         NSMutableDictionary* details = [NSMutableDictionary dictionary];
         [details setValue:@"Name must be set" forKey:NSLocalizedDescriptionKey];
-        failure([[NSError alloc] initWithDomain:@"update" code:400 userInfo:details]);
+        failure([[NSError alloc] initWithDomain:@"update" code:400 agentInfo:details]);
     }
     
     [parameters setObject:agent.name forKey:kNameKey];
     [parameters setObject:agent.gare forKey:kGareKey];
-    if (user.image != nil) {
+    if (agent.image != nil) {
         [parameters setObject:[agent.image base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength] forKey:kImageKey];
     }
     
@@ -123,9 +123,9 @@
     HARestRequests* dcRestRequest = [[HARestRequests alloc] init];
     [dcRestRequest POSTrequest:@"agent/login" withParameters:@{@"name" : name, @"password":password} success:^(id object, NSHTTPURLResponse* response){
         
-        NSDictionary *userSetting = [NSDictionary dictionaryWithObjectsAndKeys:email,@"email", nil];
+        NSDictionary *agentSetting = [NSDictionary dictionaryWithObjectsAndKeys:email,@"email", nil];
         
-        /* On crée le User et on le sauve */
+        /* On crée l'agent et on le sauve */
         HAAgent* agent = [[HAAgent alloc] initWithDictionary:agentSetting];
         NSArray* cookies = [NSHTTPCookie cookiesWithResponseHeaderFields:[response allHeaderFields] forURL:response.URL];
         if ([cookies count] != 0) {

@@ -353,9 +353,9 @@
 				8F400A2318EDE323006B8342 /* HAHelpProfileView.m */,
 				22601F181886E2DE008B0179 /* HAMapViewController.h */,
 				22601F191886E2DE008B0179 /* HAMapViewController.m */,
-				8F57723818DB7D5600D42D4F /* Agent.storyboard */,
 				0414A3531909890F00D23472 /* HAAgentViewController.h */,
 				0414A3541909890F00D23472 /* HAAgentViewController.m */,
+				8F57723818DB7D5600D42D4F /* Agent.storyboard */,
 			);
 			name = Agent;
 			sourceTree = "<group>";

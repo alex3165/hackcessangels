@@ -16,7 +16,7 @@ extern NSString *const kNumeroKey;
 extern NSString *const kPasswordKey;
 extern NSString *const kGareKey;
 
-@interface HAUser : NSObject
+@interface HAAgent : NSObject
 
 
 @property (nonatomic, strong) NSString *password;

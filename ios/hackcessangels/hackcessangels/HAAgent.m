@@ -3,7 +3,7 @@
 //  hackcessangels
 //
 //  Created by Mac on 24/04/2014.
-//  Copyright (c) 2014 RIEUX Alexandre. All rights reserved.
+//  Copyright (c) 2014 hackcessangels. All rights reserved.
 //
 
 #import "HAAgent.h"
@@ -37,13 +37,13 @@ NSString *const kGareKey = @"gare";
 }
 
 + (HAAgent*) agentFromKeyChain {
-    NSString *email = [UICKeyChainStore stringForKey:kNameKey service:kServiceId];
+    NSString *name = [UICKeyChainStore stringForKey:kNameKey service:kServiceId];
     NSData *cookieData = [UICKeyChainStore dataForKey:kCookieKey service:kServiceId];
     if (!name || !cookieData) {
         return nil;
     }
     
-    HAAgent * = [[HAAgent alloc] initWithDictionary:@{@"email": email}];
+    HAAgent * = [[HAAgent alloc] initWithDictionary:@{@"name": name}];
     NSError *error;
     agent.cookie = [[NSHTTPCookie alloc] initWithProperties: [NSPropertyListSerialization propertyListWithData:cookieData options:NSPropertyListImmutable format:NULL error:&error]];
     if (error) {
