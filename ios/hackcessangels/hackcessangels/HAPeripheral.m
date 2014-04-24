@@ -60,6 +60,20 @@
     
 }
 
+- (void)peripheral:(CBPeripheral *)peripheral
+didWriteValueForCharacteristic:(CBCharacteristic *)characteristic
+             error:(NSError *)error {
+    
+    if (error) {
+        NSLog(@"Error writing characteristic value: %@",
+              [error localizedDescription]);
+    }
+    
+    NSData *data = characteristic.value;
+    NSLog(@"%@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+}
+
+
 - (void)sendData {
     
     static BOOL sendingEOM = NO;

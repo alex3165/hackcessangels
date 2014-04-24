@@ -56,14 +56,8 @@ NSString * address = @"10 adresse des jonquilles";
     [self.gestureRecognizer setDelegate:self];
     
     self.bluetoothmanager = [[HACentralManager alloc] init];
-    //self.bluetoothmanager.centralManager = [[CBCentralManager alloc]initWithDelegate:self queue:nil];
     
-    /* Ajoute d'un marqueur de test */
-    
-//    coordinate.latitude = latitude.doubleValue;;
-//    coordinate.longitude = longitude.doubleValue;
-//    localisation *annotation = [[localisation alloc] initWithName:crimeDescription address:address coordinate:coordinate];
-//    [self.map addAnnotation:annotation];
+    self.helpok.hidden = (self.bluetoothmanager.needHelp) ? NO : YES;
 
 }
 

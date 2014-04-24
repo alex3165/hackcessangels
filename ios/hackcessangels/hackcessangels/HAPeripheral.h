@@ -11,7 +11,7 @@
 #import "HASERVICES.h"
 #import "HAUser.h"
 
-@interface HAPeripheral : NSObject <CBCentralManagerDelegate, CBPeripheralDelegate>
+@interface HAPeripheral : NSObject < CBPeripheralDelegate>
 
 @property (strong, nonatomic) CBPeripheralManager *peripheralManager;
 @property (strong, nonatomic) CBMutableCharacteristic *transferCharacteristic;

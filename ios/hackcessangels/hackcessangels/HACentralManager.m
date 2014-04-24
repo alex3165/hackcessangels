@@ -19,6 +19,7 @@
         self.centralManager = [[CBCentralManager alloc]initWithDelegate:self queue:nil];
         //NSLog(@"ok on passe ici 1");
         self.data = [[NSMutableData alloc]init];
+        self.needHelp = false;
     }
     
     return self;
@@ -113,9 +114,13 @@
     
     // Have we got everything we need?
     if ([stringFromData isEqualToString:@"EOM"]) {
+        NSString *helpString = [[NSString alloc] initWithData:self.data encoding:NSUTF8StringEncoding];
         
-        //[self.textview setText:[[NSString alloc] initWithData:self.data encoding:NSUTF8StringEncoding]];
-        NSLog(@"%@", [[NSString alloc] initWithData:self.data encoding:NSUTF8StringEncoding]);
+        if ([helpString isEqualToString:@"Help me pleas"]) {
+            //self.agentController.notification = TRUE;
+            self.needHelp = true;
+        }
+        //NSLog(@"%@", [[NSString alloc] initWithData:self.data encoding:NSUTF8StringEncoding]);
         /* Récupération des datas ici */        
         
         // Response of central if ok

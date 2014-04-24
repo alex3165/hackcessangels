@@ -20,6 +20,27 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="114"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="A06-rY-h2n" customClass="HACallUserView">
+                                        <rect key="frame" x="0.0" y="0.0" width="325" height="114"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Rh-XA-dUr">
+                                                <rect key="frame" x="143" y="42" width="38" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="CALL">
+                                                    <color key="titleColor" red="1" green="0.85159085348636521" blue="0.96977131151910823" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="callUser:" destination="A06-rY-h2n" eventType="touchUpInside" id="dpk-BX-s1S"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="callUser" destination="2Rh-XA-dUr" id="5h1-Jg-kik"/>
+                                        </connections>
+                                    </view>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ajx-jg-3xP">
                                         <rect key="frame" x="143" y="186" width="35" height="22"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -38,31 +59,19 @@
                                     <outletCollection property="gestureRecognizers" destination="V6V-Sk-Kgd" appends="YES" id="g0O-we-1BT"/>
                                 </connections>
                             </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="A06-rY-h2n" customClass="HACallUserView">
-                                <rect key="frame" x="-2" y="362" width="325" height="104"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Rh-XA-dUr">
-                                        <rect key="frame" x="152" y="5" width="38" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="CALL">
-                                            <color key="titleColor" red="1" green="0.85159085348636521" blue="0.96977131151910823" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="callUser:" destination="A06-rY-h2n" eventType="touchUpInside" id="dpk-BX-s1S"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                <connections>
-                                    <outlet property="callUser" destination="2Rh-XA-dUr" id="5h1-Jg-kik"/>
-                                </connections>
-                            </view>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wEP-7S-t28">
-                                <rect key="frame" x="40" y="122" width="240" height="240"/>
+                                <rect key="frame" x="-2" y="122" width="322" height="240"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cMJ-8o-mmK">
+                                <rect key="frame" x="45" y="508" width="230" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="0.24973650380000001" blue="0.28540001580000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="J'aide">
+                                    <color key="titleColor" red="1" green="0.9590454075" blue="0.98450017960000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -71,6 +80,7 @@
                         <outlet property="callUserView" destination="A06-rY-h2n" id="YTC-rh-oCr"/>
                         <outlet property="gestureRecognizer" destination="V6V-Sk-Kgd" id="QjQ-dF-lWH"/>
                         <outlet property="helpProfileView" destination="XZ2-YW-VdY" id="N2s-wS-oaT"/>
+                        <outlet property="helpok" destination="cMJ-8o-mmK" id="Pmp-oC-6KM"/>
                         <outlet property="map" destination="wEP-7S-t28" id="bni-a9-MCG"/>
                     </connections>
                 </viewController>

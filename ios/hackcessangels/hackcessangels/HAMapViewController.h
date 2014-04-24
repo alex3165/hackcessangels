@@ -13,20 +13,21 @@
 #import "HATileOverlay.h"
 
 // services
-#import "HARestRequests.h"
-#import "HAUserService.h"
+//#import "HARestRequests.h"
+//#import "HAUserService.h"
 #import "HACentralManager.h"
 
 @interface HAMapViewController : UIViewController <MKMapViewDelegate>
 
 
 /* Objet de la classe HARestRequest (à voir) */
-@property (nonatomic, strong) HAUserService *userService;
-@property (nonatomic, strong) HARestRequests *restRequests;
+//@property (nonatomic, strong) HAUserService *userService;
+//@property (nonatomic, strong) HARestRequests *restRequests;
 @property (nonatomic, strong) HATileOverlay *overlay;
 @property (nonatomic, strong) HACentralManager *bluetoothmanager;
 
 @property (nonatomic, weak) IBOutlet MKMapView *map;
-
+@property (nonatomic, weak) IBOutlet UIButton *helpok;
+//@property (nonatomic, assign) BOOL notification;
 
 @end
