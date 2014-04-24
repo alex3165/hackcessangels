@@ -11,6 +11,7 @@
 @interface HALocationService ()
 
 @property(nonatomic, strong) CLLocationManager *locationManager;
+@property(nonatomic, strong) HALocationServiceLocationUpdate update;
 
 @end
 
@@ -27,7 +28,7 @@
     }
     
     self.locationManager.delegate = self;
-    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
     
     // Set a movement threshold for new events.
     self.locationManager.distanceFilter = 1; // meters
@@ -40,6 +41,30 @@
     [self.locationManager stopUpdatingLocation];
 }
 
+- (bool) startAreaTracking {
+    if (nil == self.locationManager)
+        self.locationManager = [[CLLocationManager alloc] init];
+    
+    if (![CLLocationManager significantLocationChangeMonitoringAvailable]) {
+        return false;
+    }
+    
+    self.locationManager.delegate = self;
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
+    
+    
+    [self.locationManager startMonitoringSignificantLocationChanges];
+    return TRUE;
+}
+
+- (void) stopAreaTracking {
+    [self.locationManager stopMonitoringSignificantLocationChanges];
+}
+
+- (void) setUpdateCallback:(HALocationServiceLocationUpdate)updated {
+    self.update = updated;
+}
+
 - (void) locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
     // If it's a relatively recent event, turn off updates to save power.
     self.location = [locations lastObject];
@@ -48,6 +73,9 @@
           self.location.coordinate.latitude,
           self.location.coordinate.longitude,
           self.location.horizontalAccuracy);
+    if (self.update != nil) {
+        self.update(self.location);
+    }
 }
 
 - (double) currentLongitude {
@@ -57,4 +85,5 @@
 - (double) currentLatitude {
     return self.location.coordinate.latitude;
 }
+
 @end

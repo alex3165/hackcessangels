@@ -9,7 +9,6 @@
 #import <Foundation/Foundation.h>
 #import <CoreBluetooth/CoreBluetooth.h>
 #import "HASERVICES.h"
-#import "HAMapViewController.h"
 
 @interface HACentralManager : NSObject <CBCentralManagerDelegate, CBPeripheralDelegate>
 

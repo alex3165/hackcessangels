@@ -9,11 +9,21 @@
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
 
+typedef void(^HALocationServiceLocationUpdate)(CLLocation* newLocation);
+
 @interface HALocationService : NSObject <CLLocationManagerDelegate>
 @property(nonatomic, strong) CLLocation* location;
 
+// Subscribe to the most precise location updates.
 - (bool) startLocation;
 - (void) stopLocation;
+
+// Subscribe to low-precision location updates.
+- (bool) startAreaTracking;
+- (void) stopAreaTracking;
+
+- (void) setUpdateCallback:(HALocationServiceLocationUpdate) updated;
+
 - (void) locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations;
 
 - (double) currentLongitude;

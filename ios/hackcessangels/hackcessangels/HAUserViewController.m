@@ -9,6 +9,7 @@
 #import "HAUserViewController.h"
 #import "HAUserService.h"
 #import "HAUser.h"
+#import "HALogViewController.h"
 
 @interface HAUserViewController ()
 
