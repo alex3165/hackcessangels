@@ -24,22 +24,6 @@
 }
 
 
-- (void) hideProfile {
-    CGRect frame = self.frame;
-    frame.origin.y = 3 * self.showHideButton.frame.size.height - self.frame.size.height;
-    [self setFrame:frame];
-}
-
-- (void) showProfile {
-    CGRect frame = self.frame;
-    frame.origin.y = 0.0;
-    [self setFrame:frame];
-}
-
-
-
-
-
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
