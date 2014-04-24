@@ -19,7 +19,6 @@
 
 @interface HAMapViewController : UIViewController <MKMapViewDelegate>
 
-
 /* Objet de la classe HARestRequest (à voir) */
 //@property (nonatomic, strong) HAUserService *userService;
 //@property (nonatomic, strong) HARestRequests *restRequests;

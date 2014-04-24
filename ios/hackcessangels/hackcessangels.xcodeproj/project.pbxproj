@@ -27,7 +27,6 @@
 		22601F101886E2DE008B0179 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 22601F0F1886E2DE008B0179 /* main.m */; };
 		22601F141886E2DE008B0179 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 22601F131886E2DE008B0179 /* AppDelegate.m */; };
 		22601F171886E2DE008B0179 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22601F151886E2DE008B0179 /* Main.storyboard */; };
-		22601F1A1886E2DE008B0179 /* HAMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22601F191886E2DE008B0179 /* HAMapViewController.m */; };
 		22601F1C1886E2DE008B0179 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22601F1B1886E2DE008B0179 /* Images.xcassets */; };
 		22601F231886E2DE008B0179 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22601F221886E2DE008B0179 /* XCTest.framework */; };
 		22601F241886E2DE008B0179 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22601F031886E2DE008B0179 /* Foundation.framework */; };
@@ -53,6 +52,7 @@
 		8F57723A18DB7D5600D42D4F /* Agent.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8F57723818DB7D5600D42D4F /* Agent.storyboard */; };
 		8F57723B18DB7DE600D42D4F /* HAHelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 222E375B18BA521C00E3B720 /* HAHelpViewController.m */; };
 		8F88460918BFBBB400595CA2 /* HALocationService.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F88460818BFBBB400595CA2 /* HALocationService.m */; };
+		8F8A61EB1909877E005E0F9A /* HAMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22601F191886E2DE008B0179 /* HAMapViewController.m */; };
 		8F9AFFA01901A3660027DE84 /* HARestRequests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F400A2718F1AE6C006B8342 /* HARestRequests.m */; };
 		8FCE639F18AD5E3E00D4C957 /* HAUserService.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FCE639E18AD5E3E00D4C957 /* HAUserService.m */; };
 		8FCE63A018AD5E3E00D4C957 /* HAUserService.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FCE639E18AD5E3E00D4C957 /* HAUserService.m */; };
@@ -617,8 +617,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8F8A61EB1909877E005E0F9A /* HAMapViewController.m in Sources */,
 				04F5A81718C8AC5E00ED0CC6 /* HAUserViewController.m in Sources */,
-				22601F1A1886E2DE008B0179 /* HAMapViewController.m in Sources */,
 				222E376118BA5B2F00E3B720 /* HALogViewController.m in Sources */,
 				8F88460918BFBBB400595CA2 /* HALocationService.m in Sources */,
 				8F400A2818F1AE6C006B8342 /* HARestRequests.m in Sources */,
