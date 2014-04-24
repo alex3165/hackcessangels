@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0414A3551909890F00D23472 /* HAAgentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0414A3541909890F00D23472 /* HAAgentViewController.m */; };
+		0414A35919098BFB00D23472 /* HAAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = 0414A35819098BFB00D23472 /* HAAgent.m */; };
+		0414A35D19098FBB00D23472 /* HAAgentService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0414A35C19098FBB00D23472 /* HAAgentService.m */; };
 		043F17AC1901A37900D23C3F /* HACallUserView.m in Sources */ = {isa = PBXBuildFile; fileRef = 043F17A918FC30BB00D23C3F /* HACallUserView.m */; };
 		04F5A81718C8AC5E00ED0CC6 /* HAUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F5A81518C8AC5E00ED0CC6 /* HAUserViewController.m */; };
 		22085DDD18883EAE00A4BE75 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22085DDC18883EAE00A4BE75 /* CoreLocation.framework */; };
@@ -100,6 +103,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0414A3531909890F00D23472 /* HAAgentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HAAgentViewController.h; path = hackcessangels/HAAgentViewController.h; sourceTree = SOURCE_ROOT; };
+		0414A3541909890F00D23472 /* HAAgentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HAAgentViewController.m; path = hackcessangels/HAAgentViewController.m; sourceTree = SOURCE_ROOT; };
+		0414A35719098BFB00D23472 /* HAAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HAAgent.h; path = hackcessangels/HAAgent.h; sourceTree = SOURCE_ROOT; };
+		0414A35819098BFB00D23472 /* HAAgent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HAAgent.m; path = hackcessangels/HAAgent.m; sourceTree = SOURCE_ROOT; };
+		0414A35B19098FBB00D23472 /* HAAgentService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HAAgentService.h; path = hackcessangels/HAAgentService.h; sourceTree = SOURCE_ROOT; };
+		0414A35C19098FBB00D23472 /* HAAgentService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HAAgentService.m; path = hackcessangels/HAAgentService.m; sourceTree = SOURCE_ROOT; };
 		043F17A818FC30BB00D23C3F /* HACallUserView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HACallUserView.h; path = hackcessangels/HACallUserView.h; sourceTree = SOURCE_ROOT; };
 		043F17A918FC30BB00D23C3F /* HACallUserView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HACallUserView.m; path = hackcessangels/HACallUserView.m; sourceTree = SOURCE_ROOT; };
 		043F17AB1901A22F00D23C3F /* HackcessAngels copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "HackcessAngels copy-Info.plist"; sourceTree = SOURCE_ROOT; };
@@ -209,6 +218,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0414A35619098B9200D23472 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				0414A35B19098FBB00D23472 /* HAAgentService.h */,
+				0414A35C19098FBB00D23472 /* HAAgentService.m */,
+			);
+			name = Services;
+			sourceTree = "<group>";
+		};
+		0414A35A19098F8400D23472 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				0414A35719098BFB00D23472 /* HAAgent.h */,
+				0414A35819098BFB00D23472 /* HAAgent.m */,
+			);
+			name = model;
+			sourceTree = "<group>";
+		};
 		22130C03188966F400191955 /* model */ = {
 			isa = PBXGroup;
 			children = (
@@ -318,6 +345,8 @@
 		8F57723C18DB7E5800D42D4F /* Agent */ = {
 			isa = PBXGroup;
 			children = (
+				0414A35A19098F8400D23472 /* model */,
+				0414A35619098B9200D23472 /* Services */,
 				043F17A818FC30BB00D23C3F /* HACallUserView.h */,
 				043F17A918FC30BB00D23C3F /* HACallUserView.m */,
 				8F400A2218EDE323006B8342 /* HAHelpProfileView.h */,
@@ -325,6 +354,8 @@
 				22601F181886E2DE008B0179 /* HAMapViewController.h */,
 				22601F191886E2DE008B0179 /* HAMapViewController.m */,
 				8F57723818DB7D5600D42D4F /* Agent.storyboard */,
+				0414A3531909890F00D23472 /* HAAgentViewController.h */,
+				0414A3541909890F00D23472 /* HAAgentViewController.m */,
 			);
 			name = Agent;
 			sourceTree = "<group>";
@@ -664,6 +695,8 @@
 				8F57723B18DB7DE600D42D4F /* HAHelpViewController.m in Sources */,
 				A150294D18DB7A81008FC4F1 /* HAMapViewController.m in Sources */,
 				A150294F18DB7A81008FC4F1 /* HALocationService.m in Sources */,
+				0414A35D19098FBB00D23472 /* HAAgentService.m in Sources */,
+				0414A35919098BFB00D23472 /* HAAgent.m in Sources */,
 				8F9AFFA01901A3660027DE84 /* HARestRequests.m in Sources */,
 				A150295018DB7A81008FC4F1 /* HATileOverlayView.m in Sources */,
 				22C9AB3718E20FDC008ED8D7 /* HACentralManager.m in Sources */,
@@ -677,6 +710,7 @@
 				A150295718DB7A81008FC4F1 /* HAUser.m in Sources */,
 				A150295918DB7A81008FC4F1 /* HAAssistanceService.m in Sources */,
 				8F400A2418EDE323006B8342 /* HAHelpProfileView.m in Sources */,
+				0414A3551909890F00D23472 /* HAAgentViewController.m in Sources */,
 				A150295A18DB7A81008FC4F1 /* HATileOverlay.m in Sources */,
 				043F17AC1901A37900D23C3F /* HACallUserView.m in Sources */,
 			);
