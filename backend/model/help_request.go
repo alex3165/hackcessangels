@@ -1,8 +1,8 @@
 package model
 
 import (
+	"errors"
 	"time"
-    "errors"
 
 	"labix.org/v2/mgo/bson"
 )
@@ -58,34 +58,34 @@ func (hr *HelpRequest) Deactivate() error {
 
 // Return the agent responding to the request, or nil of no-one answered.
 func (hr *HelpRequest) GetAgent() (*User, error) {
-    if (len(hr.ResponderEmail) == 0) {
-        return nil, errors.New("No agent answered.")
-    }
+	if len(hr.ResponderEmail) == 0 {
+		return nil, errors.New("No agent answered.")
+	}
 
-    agent, err := hr.m.GetUserByEmail(hr.ResponderEmail)
-    if err != nil {
-        return nil, errors.New("Invalid agent email")
-    } else if !agent.IsAgent {
-        return nil, errors.New("Responder is not an agent")
-    } else {
-        return agent, nil
-    }
+	agent, err := hr.m.GetUserByEmail(hr.ResponderEmail)
+	if err != nil {
+		return nil, errors.New("Invalid agent email")
+	} else if !agent.IsAgent {
+		return nil, errors.New("Responder is not an agent")
+	} else {
+		return agent, nil
+	}
 }
 
 // Return the user asking for help, or nil of no-one answered.
 func (hr *HelpRequest) GetUser() (*User, error) {
-    if (len(hr.RequesterEmail) == 0) {
-        return nil, errors.New("No-one asked for help!")
-    }
+	if len(hr.RequesterEmail) == 0 {
+		return nil, errors.New("No-one asked for help!")
+	}
 
-    user, err := hr.m.GetUserByEmail(hr.RequesterEmail)
-    if err != nil {
-        return nil, errors.New("Invalid agent email")
-    } else if user.IsAgent {
-        return nil, errors.New("Requester is an agent")
-    } else {
-        return user, nil
-    }
+	user, err := hr.m.GetUserByEmail(hr.RequesterEmail)
+	if err != nil {
+		return nil, errors.New("Invalid agent email")
+	} else if user.IsAgent {
+		return nil, errors.New("Requester is an agent")
+	} else {
+		return user, nil
+	}
 }
 
 func (m *Model) GetActiveRequestsByStation(s *Station) ([]*HelpRequest, error) {
@@ -106,10 +106,10 @@ func (m *Model) GetActiveRequestsByStation(s *Station) ([]*HelpRequest, error) {
 }
 
 func (m *Model) GetRequestById(id string) (*HelpRequest, error) {
-    hr := new(HelpRequest)
-    err := m.helpRequests.FindId(id).One(&hr)
-    hr.m = m
-    return hr, err
+	hr := new(HelpRequest)
+	err := m.helpRequests.FindId(id).One(&hr)
+	hr.m = m
+	return hr, err
 }
 
 func (m *Model) GetActiveRequestByRequester(user *User) (*HelpRequest, error) {

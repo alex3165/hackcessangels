@@ -15,8 +15,8 @@ type ApiUser struct {
 	Password       *string               `json:"password,omitempty"`
 	Name           *string               `json:"name,omitempty"`
 	Description    *string               `json:"description,omitempty"`
-    Image          *[]byte               `json:"image,omitempty"`
-    Phone          *string               `json:"phone,omitempty"`
+	Image          *[]byte               `json:"image,omitempty"`
+	Phone          *string               `json:"phone,omitempty"`
 	Disability     *string               `json:"disability,omitempty"`
 	DisabilityType *model.DisabilityType `json:"disabilityType,omitempty"`
 	IsAgent        *bool                 `json:"is_agent,omitempty"`

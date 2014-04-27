@@ -19,10 +19,10 @@ type User struct {
 	Email string
 	LoggedAccount
 
-	Name           string
-	Description    string
-    Image          []byte
-    Phone          string
+	Name        string
+	Description string
+	Image       []byte
+	Phone       string
 
 	Disability     string
 	DisabilityType DisabilityType

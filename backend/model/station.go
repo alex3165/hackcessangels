@@ -40,6 +40,30 @@ type Station struct {
 	m *Model `bson:"-"`
 }
 
+func (m *Model) FindStationByLocation(longitude, latitude, precision float64) (*Station, error) {
+	stations := make([]*Station, 0)
+	err := m.stations.Find(bson.M{
+		"center": bson.M{
+			"$near": bson.M{
+				"$geometry": bson.M{
+					"type":        "Point",
+					"coordinates": []float64{longitude, latitude},
+				},
+				"$maxDistance": 300 + precision,
+			},
+		},
+	}).All(&stations)
+	if err != nil {
+		return nil, err
+	}
+
+	if len(stations) == 0 {
+		return nil, nil
+	}
+
+	return stations[0], nil
+}
+
 func (m *Model) ResetAndLoadStationsFromFile() error {
 	m.stations.RemoveAll(bson.M{})
 

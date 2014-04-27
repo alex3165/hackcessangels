@@ -9,34 +9,34 @@ import (
 )
 
 type APIRequest struct {
-    Id        string
+	Id string
 
-	IsActive  bool
+	IsActive bool
 
-    User      *ApiUser
-	Agent     *ApiUser
+	User  *ApiUser
+	Agent *ApiUser
 
-    Longitude float64
-    Latitude float64
-    Precision float64
+	Longitude float64
+	Latitude  float64
+	Precision float64
 }
 
 func NewAPIRequestFromHelpRequest(hr *model.HelpRequest) *APIRequest {
 	apiRequest := new(APIRequest)
 	apiRequest.IsActive = hr.IsActive
-    agent, err := hr.GetAgent()
-    if (err == nil) {
-        apiRequest.Agent = NewApiUser(agent)
-    }
+	agent, err := hr.GetAgent()
+	if err == nil {
+		apiRequest.Agent = NewApiUser(agent)
+	}
 
-    user, err := hr.GetUser()
-    if (err == nil) {
-        apiRequest.User = NewApiUser(user)
-    }
-    apiRequest.Longitude = hr.RequesterPosition.Coordinates[0]
-    apiRequest.Latitude = hr.RequesterPosition.Coordinates[1]
-    apiRequest.Precision = hr.RequesterPosPrecision
-    return apiRequest
+	user, err := hr.GetUser()
+	if err == nil {
+		apiRequest.User = NewApiUser(user)
+	}
+	apiRequest.Longitude = hr.RequesterPosition.Coordinates[0]
+	apiRequest.Latitude = hr.RequesterPosition.Coordinates[1]
+	apiRequest.Precision = hr.RequesterPosPrecision
+	return apiRequest
 }
 
 func (s *Server) handleHelp(w http.ResponseWriter, r *http.Request) {
@@ -49,7 +49,7 @@ func (s *Server) handleHelp(w http.ResponseWriter, r *http.Request) {
 	w.Header().Add("Content-Type", "application/json")
 	err := getJSONRequest(r, &data)
 	if err != nil {
-        log.Print(err)
+		log.Print(err)
 		returnError(400, "Invalid request", w)
 		return
 	}
@@ -65,7 +65,7 @@ func (s *Server) handleHelp(w http.ResponseWriter, r *http.Request) {
 		returnError(401, "Please log in", w)
 		return
 	}
-    log.Print(loggedEmail)
+	log.Print(loggedEmail)
 	user, err := s.model.GetUserByEmail(loggedEmail)
 	if err != nil {
 		returnError(404, "Error while getting user data", w)
