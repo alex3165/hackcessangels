@@ -27,6 +27,8 @@ type User struct {
 	Disability     string
 	DisabilityType DisabilityType
 
+	PushToken string
+
 	IsAgent        bool
 	CurrentStation *bson.ObjectId
 

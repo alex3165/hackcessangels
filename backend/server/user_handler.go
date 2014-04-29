@@ -19,12 +19,13 @@ type ApiUser struct {
 	Phone          *string               `json:"phone,omitempty"`
 	Disability     *string               `json:"disability,omitempty"`
 	DisabilityType *model.DisabilityType `json:"disabilityType,omitempty"`
+	PushToken      *string               `json:"pushToken,omitempty"`
 	IsAgent        *bool                 `json:"is_agent,omitempty"`
 }
 
 // Returns a new ApiUser suitable for external transmission from the internal
 // user representation.
-func NewApiUser(u *model.User) *ApiUser {
+func NewApiUser(u *model.User, private bool) *ApiUser {
 	au := new(ApiUser)
 	au.Email = &u.Email
 	au.Name = &u.Name
@@ -34,6 +35,9 @@ func NewApiUser(u *model.User) *ApiUser {
 	au.Phone = &u.Phone
 	au.Image = &u.Image
 	au.IsAgent = &u.IsAgent
+	if private {
+		au.PushToken = &u.PushToken
+	}
 	return au
 }
 
@@ -64,6 +68,9 @@ func (au *ApiUser) fillStorageUser(u *model.User) (err error) {
 	}
 	if au.Image != nil {
 		u.Image = *au.Image
+	}
+	if au.PushToken != nil {
+		u.PushToken = *au.PushToken
 	}
 	if au.IsAgent != nil {
 		u.IsAgent = *au.IsAgent
@@ -107,7 +114,7 @@ func (s *Server) handleUserLogin(w http.ResponseWriter, r *http.Request) {
 		session, _ := s.store.Get(r, "user")
 		session.Values["email"] = user.Email
 		session.Save(r, w)
-		json.NewEncoder(w).Encode(NewApiUser(user))
+		json.NewEncoder(w).Encode(NewApiUser(user, true))
 	default:
 		returnError(405, "Not implemented", w)
 	}
@@ -157,7 +164,7 @@ func (s *Server) handleUser(w http.ResponseWriter, r *http.Request) {
 			returnError(404, "Error while getting user data", w)
 			return
 		}
-		au := NewApiUser(user)
+		au := NewApiUser(user, true)
 		json.NewEncoder(w).Encode(au)
 		return
 	case "POST":
@@ -185,7 +192,7 @@ func (s *Server) handleUser(w http.ResponseWriter, r *http.Request) {
 		session, _ := s.store.Get(r, "user")
 		session.Values["email"] = user.Email
 		session.Save(r, w)
-		json.NewEncoder(w).Encode(NewApiUser(user))
+		json.NewEncoder(w).Encode(NewApiUser(user, true))
 		return
 	case "PUT":
 		// PUT modifies the current logged in user
@@ -223,7 +230,7 @@ func (s *Server) handleUser(w http.ResponseWriter, r *http.Request) {
 			returnError(500, "Unable to save modifications", w)
 			return
 		}
-		json.NewEncoder(w).Encode(NewApiUser(user))
+		json.NewEncoder(w).Encode(NewApiUser(user, true))
 		return
 	case "DELETE":
 		// DELETE deletes the current user

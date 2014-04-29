@@ -26,12 +26,12 @@ func NewAPIRequestFromHelpRequest(hr *model.HelpRequest) *APIRequest {
 	apiRequest.IsActive = hr.IsActive
 	agent, err := hr.GetAgent()
 	if err == nil {
-		apiRequest.Agent = NewApiUser(agent)
+		apiRequest.Agent = NewApiUser(agent, false)
 	}
 
 	user, err := hr.GetUser()
 	if err == nil {
-		apiRequest.User = NewApiUser(user)
+		apiRequest.User = NewApiUser(user, false)
 	}
 	apiRequest.Longitude = hr.RequesterPosition.Coordinates[0]
 	apiRequest.Latitude = hr.RequesterPosition.Coordinates[1]
