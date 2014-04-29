@@ -23,17 +23,17 @@ typedef void(^HAAgentServiceFailure)(NSError *error);
 
 - (void)updateAgent:(HAAgent*) agent success:(HAAgentServiceSuccess)success failure:(HAAgentServiceFailure)failure;
 
-- (void)createAgentWithNameAndPassword:(NSString*) name password:(NSString*) password
+- (void)createAgentWithEmailAndPassword:(NSString*) email password:(NSString*) password
                                success:(HARestRequestsSuccess)success
                                failure:(HARestRequestsFailure)failure;
 
 
-- (void)loginWithNameAndPassword:(NSString*) name password:(NSString*) password
+- (void)loginWithEmailAndPassword:(NSString*) email password:(NSString*) password
                           success:(HARestRequestsSuccess)success
                           failure:(HARestRequestsFailure)failure;
 
 
-- (void)deleteAgentWithName:(NSString*) name success:(HARestRequestsSuccess)success
+- (void)deleteAgentWithEmail:(NSString*) email success:(HARestRequestsSuccess)success
                     failure:(HARestRequestsFailure)failure;
 
 @end

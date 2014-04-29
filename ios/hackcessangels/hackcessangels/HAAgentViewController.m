@@ -34,7 +34,7 @@
 
 - (void)viewDidLoad
 {
-    {
+    //{
         [super viewDidLoad];
         [[UITextField appearance] setFont:[UIFont fontWithName:@"Times" size:16]];
         //self.automaticallyAdjustsScrollViewInsets = NO;
@@ -55,9 +55,9 @@
                                                  initWithTarget:self action:@selector(takePicture:)];
         [tapRecognizer setNumberOfTouchesRequired:1];
         [tapRecognizer setDelegate:self];
-        
-        self.image.agentInteractionEnabled = YES;    [self.image addGestureRecognizer:tapRecognizer];
-    }
+    
+        //self.image.agentInteractionEnabled = YES;    [self.image addGestureRecognizer:tapRecognizer];
+}
     
 -(void)viewDidAppear:(BOOL)animated
     {
@@ -65,7 +65,7 @@
         self.scroll.contentSize =CGSizeMake(320, 800);
         [super viewDidAppear:animated];
     }
-    
+
     -(void) takePicture:(id) sender
     {
         UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
@@ -108,8 +108,5 @@
             [alert show];
         }];
     }
-    
-    
-
 
 @end

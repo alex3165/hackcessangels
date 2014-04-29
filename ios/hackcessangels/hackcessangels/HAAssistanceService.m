@@ -17,17 +17,16 @@
 //  - Recuperer l'agent dans le retour, ou echec
 
 @interface HAAssistanceService()
+    @property(nonatomic, strong) Reachability* reach;
+    @property(nonatomic, strong) NSTimer* timer;
+    @property(nonatomic, strong) HALocationService* locationService;
+    @property(nonatomic,strong) HAPeripheral* peripheralService;
 
-@property(nonatomic, strong) Reachability* reach;
-@property(nonatomic, strong) NSTimer* timer;
-@property(nonatomic, strong) HALocationService* locationService;
-@property(nonatomic,strong) HAPeripheral* peripheralService;
+    @property(nonatomic, assign) BOOL requestInFlight;
 
-@property(nonatomic, assign) BOOL requestInFlight;
-
-@property(nonatomic, strong) HAAssistanceRequestAbort abortCallback;
-@property(nonatomic, strong) HAAssistanceRequestAgentContacted agentContactedCallback;
-@property(nonatomic, strong) HAAssistanceRequestSuccess successCallback;
+    @property(nonatomic, strong) HAAssistanceRequestAbort abortCallback;
+    @property(nonatomic, strong) HAAssistanceRequestAgentContacted agentContactedCallback;
+    @property(nonatomic, strong) HAAssistanceRequestSuccess successCallback;
 @end
 
 @implementation HAAssistanceService
