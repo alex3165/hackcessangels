@@ -43,7 +43,7 @@
 
 - (void)peripheralManager:(CBPeripheralManager *)peripheral central:(CBCentral *)central didSubscribeToCharacteristic:(CBCharacteristic *)characteristic {
     
-    self.dataToSend = [@"Help me pleas" dataUsingEncoding:NSUTF8StringEncoding];
+    self.dataToSend = [kHELP_MESSAGE dataUsingEncoding:NSUTF8StringEncoding];
 
     /* Data to send here */
     
