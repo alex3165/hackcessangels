@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"log"
 	"net/http"
+    "time"
 
 	"hackcessangels/backend/model"
 )
@@ -131,7 +132,7 @@ func (s *Server) handleHelp(w http.ResponseWriter, r *http.Request) {
 			log.Printf("Error while getting active request: %+v", err)
 			returnError(404, "Couldn't get request", w)
 		}
-		helpRequest.Deactivate()
+		helpRequest.ChangeStatus(model.CANCELLED, time.Now())
 		return
 	default:
 		returnError(405, "Not implemented", w)

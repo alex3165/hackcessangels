@@ -7,17 +7,46 @@ import (
 	"labix.org/v2/mgo/bson"
 )
 
+// PointGeometry is a point on a 2D sphere (Earth) in GeoJSON.
 type PointGeometry struct {
 	Type        string    `bson:"type"`
 	Coordinates []float64 `bson:"coordinates"`
 }
 
+// NewPoint creates a new GeoJSON point.
 func NewPoint(longitude, latitude float64) *PointGeometry {
 	p := &PointGeometry{
 		Type:        "Point",
 		Coordinates: []float64{longitude, latitude},
 	}
 	return p
+}
+
+// HelpRequestState represent the state of a request
+type HelpRequestState int
+
+const (
+    // This is a new, unprocessed request
+    NEW HelpRequestState = iota
+    // Agents has been contacted
+    AGENTS_CONTACTED
+    // No agents are available at this location
+    NO_AGENTS
+    // Request has been retried by the user
+    RETRY_1
+    // Request has been cancelled by the user (before any agent answered)
+    CANCELLED
+    // An agent has answered this request
+    AGENT_ANSWERED
+    // This request has been completed
+    COMPLETED
+)
+
+type HelpRequestStatus struct {
+    // State of the request
+    State HelpRequestState
+    // Time this request entered the above state
+    Time time.Time
 }
 
 type HelpRequest struct {
@@ -30,10 +59,13 @@ type HelpRequest struct {
 	RequesterLastUpdate   time.Time
 	IsActive              bool
 
+    // Status of the request, in chronological order. The last object is the
+    // current state. The rest is kept for auditing.
+    Status                []HelpRequestStatus
+
 	ResponderEmail        string
-	ResponderPosition     *PointGeometry
-	ResponderPosPrecision float64
 	ResponderLastUpdate   time.Time
+
 	m                     *Model `bson:"-"`
 }
 
@@ -51,8 +83,15 @@ func (hr *HelpRequest) Save() error {
 	return err
 }
 
-func (hr *HelpRequest) Deactivate() error {
-	hr.IsActive = false
+func (hr *HelpRequest) ChangeStatus(newState HelpRequestState, time time.Time) error {
+    if (newState == NO_AGENTS || newState == CANCELLED || newState == COMPLETED) {
+	    hr.IsActive = false
+    }
+    status := HelpRequestStatus{
+        State: newState,
+        Time: time,
+    }
+    hr.Status = append(hr.Status, status)
 	return hr.Save()
 }
 
