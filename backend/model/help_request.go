@@ -26,27 +26,27 @@ func NewPoint(longitude, latitude float64) *PointGeometry {
 type HelpRequestState int
 
 const (
-    // This is a new, unprocessed request
-    NEW HelpRequestState = iota
-    // Agents has been contacted
-    AGENTS_CONTACTED
-    // No agents are available at this location
-    NO_AGENTS
-    // Request has been retried by the user
-    RETRY_1
-    // Request has been cancelled by the user (before any agent answered)
-    CANCELLED
-    // An agent has answered this request
-    AGENT_ANSWERED
-    // This request has been completed
-    COMPLETED
+	// This is a new, unprocessed request
+	NEW HelpRequestState = iota
+	// Agents has been contacted
+	AGENTS_CONTACTED
+	// No agents are available at this location
+	NO_AGENTS
+	// Request has been retried by the user
+	RETRY_1
+	// Request has been cancelled by the user (before any agent answered)
+	CANCELLED
+	// An agent has answered this request
+	AGENT_ANSWERED
+	// This request has been completed
+	COMPLETED
 )
 
 type HelpRequestStatus struct {
-    // State of the request
-    State HelpRequestState
-    // Time this request entered the above state
-    Time time.Time
+	// State of the request
+	State HelpRequestState
+	// Time this request entered the above state
+	Time time.Time
 }
 
 type HelpRequest struct {
@@ -59,14 +59,14 @@ type HelpRequest struct {
 	RequesterLastUpdate   time.Time
 	IsActive              bool
 
-    // Status of the request, in chronological order. The last object is the
-    // current state. The rest is kept for auditing.
-    Status                []HelpRequestStatus
+	// Status of the request, in chronological order. The last object is the
+	// current state. The rest is kept for auditing.
+	Status []HelpRequestStatus
 
-	ResponderEmail        string
-	ResponderLastUpdate   time.Time
+	ResponderEmail      string
+	ResponderLastUpdate time.Time
 
-	m                     *Model `bson:"-"`
+	m *Model `bson:"-"`
 }
 
 func (hr *HelpRequest) BroadcastStatus() {
@@ -84,14 +84,14 @@ func (hr *HelpRequest) Save() error {
 }
 
 func (hr *HelpRequest) ChangeStatus(newState HelpRequestState, time time.Time) error {
-    if (newState == NO_AGENTS || newState == CANCELLED || newState == COMPLETED) {
-	    hr.IsActive = false
-    }
-    status := HelpRequestStatus{
-        State: newState,
-        Time: time,
-    }
-    hr.Status = append(hr.Status, status)
+	if newState == NO_AGENTS || newState == CANCELLED || newState == COMPLETED {
+		hr.IsActive = false
+	}
+	status := HelpRequestStatus{
+		State: newState,
+		Time:  time,
+	}
+	hr.Status = append(hr.Status, status)
 	return hr.Save()
 }
 

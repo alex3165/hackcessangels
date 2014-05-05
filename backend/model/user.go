@@ -45,6 +45,15 @@ func (u *User) Delete() error {
 	return err
 }
 
+func (u *User) GetStation() (*Station, error) {
+	if !u.IsAgent || u.CurrentStation == nil {
+		return nil, nil
+	}
+	var station *Station
+	err := u.m.stations.FindId(*u.CurrentStation).One(station)
+	return station, err
+}
+
 func (m *Model) CreateUser(email, password string) (*User, error) {
 	u := &User{
 		Email:   email,
