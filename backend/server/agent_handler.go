@@ -114,29 +114,40 @@ func (s *Server) handleAgentRequests(w http.ResponseWriter, r *http.Request) {
 	switch r.Method {
 	case "GET":
 		// Returns all active requests that may be answered by this agent, or a precise request if RequestId is provided.
-		station, err := user.GetStation()
-		if err != nil {
-			log.Print(err)
-			returnError(500, "Unable to get station", w)
-			return
-		}
-		if station == nil {
-			returnError(404, "Agent not in station", w)
-			return
-		}
-		requests, err := s.model.GetActiveRequestsByStation(station)
-		if err != nil {
-			log.Print(err)
-			returnError(500, "Unable to get active requests", w)
-			return
-		}
+		if len(data.RequestId) == 0 {
+			station, err := user.GetStation()
+			if err != nil {
+				log.Print(err)
+				returnError(500, "Unable to get station", w)
+				return
+			}
+			if station == nil {
+				returnError(404, "Agent not in station", w)
+				return
+			}
+			requests, err := s.model.GetActiveRequestsByStation(station)
+			if err != nil {
+				log.Print(err)
+				returnError(500, "Unable to get active requests", w)
+				return
+			}
 
-		apiRequests := make([]*APIRequest, 0)
-		for _, helpRequest := range requests {
-			apiRequests = append(apiRequests, NewAPIRequestFromHelpRequest(helpRequest))
+			apiRequests := make([]*APIRequest, 0)
+			for _, helpRequest := range requests {
+				apiRequests = append(apiRequests, NewAPIRequestFromHelpRequest(helpRequest))
+			}
+			json.NewEncoder(w).Encode(apiRequests)
+			return
+		} else {
+			helpRequest, err := s.model.GetRequestById(data.RequestId)
+			if err != nil {
+				log.Print(err)
+				returnError(500, "Unable to get request", w)
+				return
+			}
+			json.NewEncoder(w).Encode(NewAPIRequestFromHelpRequest(helpRequest))
+			return
 		}
-		json.NewEncoder(w).Encode(apiRequests)
-		return
 	case "POST":
 		// Sets the response to the help request
 		return
