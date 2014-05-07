@@ -36,8 +36,8 @@
 }
 
 /* PUT : Envoi de la position agent */
-- (void)savePosition:(double)longitude latitude:(double)latitude success:(HARestRequestsSuccess)success failure:(HARestRequestsFailure)failure{
-    [self.restRequest PUTrequest:@"agent/position" withParameters:@{@"longitude": [NSNumber numberWithDouble: longitude],@"latitude": [NSNumber numberWithDouble: latitude]} success:success failure:failure];
+- (void)savePosition:(double)longitude latitude:(double)latitude precision:(double)precision success:(HARestRequestsSuccess)success failure:(HARestRequestsFailure)failure{
+    [self.restRequest PUTrequest:@"agent/position" withParameters:@{@"longitude": [NSNumber numberWithDouble: longitude],@"latitude": [NSNumber numberWithDouble: latitude], @"precision" : [NSNumber numberWithDouble:precision]} success:success failure:failure];
 }
 /* GET : récupérer les requêtes en cours */
 - (void)getRequests:(HARestRequestsSuccess)success failure:(HARestRequestsFailure)failure{
@@ -45,12 +45,17 @@
         
         self.idRequest = obj; // obj considéré comme un string
         
+        // dictionnary : "id", "lat", "long", "precision", "isActive", {HAUser}, {HAAgent}
+        
     } failure:failure];
 }
+
+// get, params: request ID
+
 /* POST : prendre une requête en cours avec l'id de la requête et le nom de l'agent */
 - (void)takeRequest:(HARestRequestsSuccess)success failure:(HARestRequestsFailure)failure{
     HAAgent *agent = [HAAgent agentFromKeyChain];
-    [self.restRequest POSTrequest:@"agent/requests" withParameters:@{@"idReq":self.idRequest,@"nameAgent":agent.name} success:success failure:failure];
+    [self.restRequest POSTrequest:@"agent/requests" withParameters:@{@"idReq":self.idRequest} success:success failure:failure];
 }
 
 @end
