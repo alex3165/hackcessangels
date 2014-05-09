@@ -43,6 +43,9 @@
 		228D8F03190FE5D2002AE6E2 /* HAUser.m in Sources */ = {isa = PBXBuildFile; fileRef = A1330B0618AD62B5002B1828 /* HAUser.m */; };
 		228D8F06190FE830002AE6E2 /* HARequestsService.m in Sources */ = {isa = PBXBuildFile; fileRef = 228D8F05190FE830002AE6E2 /* HARequestsService.m */; };
 		2297633818E4A58400CDE26A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22601F151886E2DE008B0179 /* Main.storyboard */; };
+		22A440E6191CE3B5003FC0BA /* HAHelpInProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A440E5191CE3B5003FC0BA /* HAHelpInProcess.m */; };
+		22A440E7191CE3B5003FC0BA /* HAHelpInProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A440E5191CE3B5003FC0BA /* HAHelpInProcess.m */; };
+		22A440E8191CEA1C003FC0BA /* HAHelpInProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A440E5191CE3B5003FC0BA /* HAHelpInProcess.m */; };
 		22C9AB3618E20FDC008ED8D7 /* HACentralManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C9AB3518E20FDC008ED8D7 /* HACentralManager.m */; };
 		22C9AB3718E20FDC008ED8D7 /* HACentralManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C9AB3518E20FDC008ED8D7 /* HACentralManager.m */; };
 		22C9AB3818E20FDC008ED8D7 /* HACentralManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C9AB3518E20FDC008ED8D7 /* HACentralManager.m */; };
@@ -150,6 +153,8 @@
 		22601F3E18871EAC008B0179 /* HATileOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HATileOverlayView.m; sourceTree = "<group>"; };
 		228D8F04190FE830002AE6E2 /* HARequestsService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HARequestsService.h; sourceTree = "<group>"; };
 		228D8F05190FE830002AE6E2 /* HARequestsService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HARequestsService.m; sourceTree = "<group>"; };
+		22A440E4191CE3B5003FC0BA /* HAHelpInProcess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HAHelpInProcess.h; sourceTree = "<group>"; };
+		22A440E5191CE3B5003FC0BA /* HAHelpInProcess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HAHelpInProcess.m; sourceTree = "<group>"; };
 		22C9AB3418E20FDC008ED8D7 /* HACentralManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HACentralManager.h; sourceTree = "<group>"; };
 		22C9AB3518E20FDC008ED8D7 /* HACentralManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HACentralManager.m; sourceTree = "<group>"; };
 		22C9AB3918E21083008ED8D7 /* HASERVICES.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HASERVICES.h; sourceTree = "<group>"; };
@@ -373,6 +378,8 @@
 				04F5A81418C8AC5E00ED0CC6 /* HAUserViewController.h */,
 				04F5A81518C8AC5E00ED0CC6 /* HAUserViewController.m */,
 				22601F151886E2DE008B0179 /* Main.storyboard */,
+				22A440E4191CE3B5003FC0BA /* HAHelpInProcess.h */,
+				22A440E5191CE3B5003FC0BA /* HAHelpInProcess.m */,
 			);
 			name = User;
 			sourceTree = "<group>";
@@ -661,6 +668,7 @@
 				22601F4018871EAC008B0179 /* HATileOverlayView.m in Sources */,
 				22C9AB3618E20FDC008ED8D7 /* HACentralManager.m in Sources */,
 				8FCE639F18AD5E3E00D4C957 /* HAUserService.m in Sources */,
+				22A440E6191CE3B5003FC0BA /* HAHelpInProcess.m in Sources */,
 				22601F141886E2DE008B0179 /* AppDelegate.m in Sources */,
 				22C9AB3C18E229D4008ED8D7 /* HAPeripheral.m in Sources */,
 				22130C02188966E500191955 /* HALocalisation.m in Sources */,
@@ -681,6 +689,7 @@
 				222E375D18BA521C00E3B720 /* HAHelpViewController.m in Sources */,
 				222E376218BA5B2F00E3B720 /* HALogViewController.m in Sources */,
 				8F400A2518EDE323006B8342 /* HAHelpProfileView.m in Sources */,
+				22A440E7191CE3B5003FC0BA /* HAHelpInProcess.m in Sources */,
 				A1AC4C5418B69AD2002EE7E6 /* HAUserServicesTests.m in Sources */,
 				8FCE63A018AD5E3E00D4C957 /* HAUserService.m in Sources */,
 				22C9AB3818E20FDC008ED8D7 /* HACentralManager.m in Sources */,
@@ -716,6 +725,7 @@
 				228D8F03190FE5D2002AE6E2 /* HAUser.m in Sources */,
 				8F400A2418EDE323006B8342 /* HAHelpProfileView.m in Sources */,
 				228D8F06190FE830002AE6E2 /* HARequestsService.m in Sources */,
+				22A440E8191CEA1C003FC0BA /* HAHelpInProcess.m in Sources */,
 				0414A3551909890F00D23472 /* HAAgentViewController.m in Sources */,
 				A150295A18DB7A81008FC4F1 /* HATileOverlay.m in Sources */,
 				043F17AC1901A37900D23C3F /* HACallUserView.m in Sources */,

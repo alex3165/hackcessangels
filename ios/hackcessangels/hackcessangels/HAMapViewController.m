@@ -57,7 +57,7 @@ NSString * address = @"10 adresse des jonquilles";
     
     self.bluetoothmanager = [[HACentralManager alloc] init];
     
-    self.helpok.hidden = !self.bluetoothmanager.needHelp;
+    [self.helpok setHidden:!self.bluetoothmanager.needHelp];
     
     self.bluetoothmanager.delegate = self;
 }
@@ -136,6 +136,11 @@ NSString * address = @"10 adresse des jonquilles";
 }
 
 
+
+- (IBAction)PositiveAnswerForHelp:(id)sender {
+
+
+}
 /******************************************************************************************************************************
  *
  *
@@ -149,7 +154,12 @@ NSString * address = @"10 adresse des jonquilles";
 
 -(void)helpValueChanged:(BOOL)newValue
 {
-    self.helpok.hidden = !newValue;
+    [self.helpok setHidden:!newValue];
+    
+    UILocalNotification *localNotif = [[UILocalNotification alloc] init];
+    localNotif.alertBody = @"quelqu'un a besoin de votre aide";
+    localNotif.alertAction = @"Appel à l'aide";
+    [[UIApplication sharedApplication] presentLocalNotificationNow:localNotif];
 }
 
 - (void)didReceiveMemoryWarning

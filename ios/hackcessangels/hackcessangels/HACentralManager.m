@@ -128,15 +128,17 @@
         if ([self.delegate respondsToSelector:@selector(helpValueChanged:)])
         {
             [self.delegate helpValueChanged:self.needHelp];
+        }else{
+            NSLog(@"Error");
         }
 
-        NSLog(@"%@", [[NSString alloc] initWithData:self.data encoding:NSUTF8StringEncoding]);
+        NSLog(@"%@", helpString);
         /* Récupération des datas ici */        
         
         // Response of central if ok
-         [peripheral writeValue:[@"YES" dataUsingEncoding:NSUTF8StringEncoding] forCharacteristic:characteristic type:CBCharacteristicWriteWithResponse];
-        
-        [peripheral setNotifyValue:NO forCharacteristic:characteristic];
+//         [peripheral writeValue:[@"YES" dataUsingEncoding:NSUTF8StringEncoding] forCharacteristic:characteristic type:CBCharacteristicWriteWithResponse];
+//        
+//        [peripheral setNotifyValue:NO forCharacteristic:characteristic];
         
         [self.centralManager cancelPeripheralConnection:peripheral];
     }
