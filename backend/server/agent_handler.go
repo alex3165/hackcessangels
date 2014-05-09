@@ -4,6 +4,9 @@ import (
 	"encoding/json"
 	"log"
 	"net/http"
+	"time"
+
+	"hackcessangels/backend/model"
 )
 
 func (s *Server) handleAgentPosition(w http.ResponseWriter, r *http.Request) {
@@ -45,7 +48,7 @@ func (s *Server) handleAgentPosition(w http.ResponseWriter, r *http.Request) {
 	}
 
 	switch r.Method {
-	case "POST":
+	case "PUT":
 		if data.Latitude == nil || data.Longitude == nil {
 			returnError(400, "latitude and longitude must be present", w)
 			return
@@ -150,6 +153,21 @@ func (s *Server) handleAgentRequests(w http.ResponseWriter, r *http.Request) {
 		}
 	case "POST":
 		// Sets the response to the help request
+		helpRequest, err := s.model.GetRequestById(data.RequestId)
+		if err != nil {
+			log.Print(err)
+			returnError(500, "Unable to get request", w)
+			return
+		}
+
+		if data.TakeRequest {
+			helpRequest.ResponderEmail = user.Email
+			helpRequest.ChangeStatus(model.AGENT_ANSWERED, time.Now())
+		} else if data.FinishRequest {
+			helpRequest.ChangeStatus(model.COMPLETED, time.Now())
+		}
+
+		json.NewEncoder(w).Encode(NewAPIRequestFromHelpRequest(helpRequest))
 		return
 	}
 
