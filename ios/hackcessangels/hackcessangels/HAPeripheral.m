@@ -19,6 +19,24 @@
         self.peripheralManager = [[CBPeripheralManager alloc] initWithDelegate:self queue:nil];
         
         [self.peripheralManager startAdvertising:@{ CBAdvertisementDataServiceUUIDsKey : @[[CBUUID UUIDWithString:HELP_SERVICE_UUID]] }];
+        
+        self.isResponse = NO;
+    }
+    
+    return self;
+}
+
+- (id)initForResponse
+{
+    self = [super init];
+    
+    
+    if (self) {
+        self.peripheralManager = [[CBPeripheralManager alloc] initWithDelegate:self queue:nil];
+        
+        [self.peripheralManager startAdvertising:@{ CBAdvertisementDataServiceUUIDsKey : @[[CBUUID UUIDWithString:RESPONSE_SERVICE_UUID]] }];
+        
+        self.isResponse = YES;
     }
     
     return self;
@@ -31,9 +49,17 @@
     }
     
     if (peripheral.state == CBPeripheralManagerStatePoweredOn) {
-        self.transferCharacteristic = [[CBMutableCharacteristic alloc] initWithType:[CBUUID UUIDWithString:HELP_CHARACTERISTIC_UUID] properties:CBCharacteristicPropertyNotify value:nil permissions:CBAttributePermissionsReadable|CBAttributePermissionsWriteable];
-        
-        CBMutableService *transferService = [[CBMutableService alloc] initWithType:[CBUUID UUIDWithString:HELP_SERVICE_UUID] primary:YES];
+        CBMutableService *transferService;
+        if (!self.isResponse) {
+            self.transferCharacteristic = [[CBMutableCharacteristic alloc] initWithType:[CBUUID UUIDWithString:HELP_CHARACTERISTIC_UUID] properties:CBCharacteristicPropertyNotify value:nil permissions:CBAttributePermissionsReadable|CBAttributePermissionsWriteable];
+            
+            transferService = [[CBMutableService alloc] initWithType:[CBUUID UUIDWithString:HELP_SERVICE_UUID] primary:YES];
+        }else{
+            self.transferCharacteristic = [[CBMutableCharacteristic alloc] initWithType:[CBUUID UUIDWithString:RESPONSE_CHARACTERISTIC_UUID] properties:CBCharacteristicPropertyNotify value:nil permissions:CBAttributePermissionsReadable|CBAttributePermissionsWriteable];
+            
+            transferService = [[CBMutableService alloc] initWithType:[CBUUID UUIDWithString:RESPONSE_SERVICE_UUID] primary:YES];
+        }
+
         
         transferService.characteristics = @[self.transferCharacteristic];
         
@@ -56,22 +82,9 @@
     [self sendData];
 }
 
-- (void)peripheralManager:(CBPeripheralManager *)peripheral didReceiveReadRequest:(CBATTRequest *)request{
-    
-}
-
-- (void)peripheral:(CBPeripheral *)peripheral
-didWriteValueForCharacteristic:(CBCharacteristic *)characteristic
-             error:(NSError *)error {
-    
-    if (error) {
-        NSLog(@"Error writing characteristic value: %@",
-              [error localizedDescription]);
-    }
-    
-    NSData *data = characteristic.value;
-    NSLog(@"%@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
-}
+//- (void)peripheralManager:(CBPeripheralManager *)peripheral didReceiveReadRequest:(CBATTRequest *)request{
+//    
+//}
 
 
 - (void)sendData {
