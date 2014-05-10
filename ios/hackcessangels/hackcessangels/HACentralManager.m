@@ -7,6 +7,7 @@
 //
 
 #import "HACentralManager.h"
+#import "HAUser.h"
 
 @implementation HACentralManager
 
@@ -17,8 +18,14 @@
     
     if (self) {
         self.centralManager = [[CBCentralManager alloc]initWithDelegate:self queue:nil];
-        //NSLog(@"ok on passe ici 1");
+        
+        /* On récupère le user, on l'encode en data */
+        HAUser *user = [HAUser userFromKeyChain];
         self.data = [[NSMutableData alloc]init];
+        NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc]initForWritingWithMutableData:self.data];
+        [archiver encodeObject:user forKey:@"user"];
+        /********************************************/
+        
         self.needHelp = false;
     }
     
@@ -121,15 +128,17 @@
         if ([self.delegate respondsToSelector:@selector(helpValueChanged:)])
         {
             [self.delegate helpValueChanged:self.needHelp];
+        }else{
+            NSLog(@"Error");
         }
 
-        //NSLog(@"%@", [[NSString alloc] initWithData:self.data encoding:NSUTF8StringEncoding]);
+        NSLog(@"%@", helpString);
         /* Récupération des datas ici */        
         
         // Response of central if ok
-         [peripheral writeValue:[@"YES" dataUsingEncoding:NSUTF8StringEncoding] forCharacteristic:characteristic type:CBCharacteristicWriteWithResponse];
-        
-        [peripheral setNotifyValue:NO forCharacteristic:characteristic];
+//         [peripheral writeValue:[@"YES" dataUsingEncoding:NSUTF8StringEncoding] forCharacteristic:characteristic type:CBCharacteristicWriteWithResponse];
+//        
+//        [peripheral setNotifyValue:NO forCharacteristic:characteristic];
         
         [self.centralManager cancelPeripheralConnection:peripheral];
     }

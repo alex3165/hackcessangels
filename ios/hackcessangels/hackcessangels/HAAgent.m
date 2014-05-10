@@ -9,6 +9,7 @@
 #import "HAAgent.h"
 #import "UICKeyChainStore.h"
 
+<<<<<<< HEAD
 NSString *const kServiceId = @"HAAgent";
 NSString *const kPasswordKey = @"password";
 NSString *const kImageKey = @"image";
@@ -16,6 +17,16 @@ NSString *const kNameKey = @"name";
 NSString *const kNumeroKey = @"phone";
 NSString *const kCookieKey = @"cookie";
 //NSString *const kGareKey = @"gare";
+=======
+NSString *const pServiceId = @"HAAgent";
+NSString *const pPasswordKey = @"password";
+NSString *const pImageKey = @"image";
+NSString *const pEmailKey = @"email";
+NSString *const pNameKey = @"name";
+NSString *const pNumeroKey = @"phone";
+NSString *const pCookieKey = @"cookie";
+NSString *const pGareKey = @"gare";
+>>>>>>> f93dac870d1d71ae5bc39e72b49e6e5c406be4da
 
 @implementation HAAgent
 
@@ -24,6 +35,7 @@ NSString *const kCookieKey = @"cookie";
     self = [super init];
     
     if (self) {
+        self.email = [dico objectForKey:@"email"];
         self.password = [dico objectForKey:@"password"];
         self.name = [dico objectForKey:@"name"];
         self.phone = [dico objectForKey:@"phone"];
@@ -37,13 +49,13 @@ NSString *const kCookieKey = @"cookie";
 }
 
 + (HAAgent*) agentFromKeyChain {
-    NSString *name = [UICKeyChainStore stringForKey:kNameKey service:kServiceId];
-    NSData *cookieData = [UICKeyChainStore dataForKey:kCookieKey service:kServiceId];
+    NSString *name = [UICKeyChainStore stringForKey:pNameKey service:pServiceId];
+    NSData *cookieData = [UICKeyChainStore dataForKey:pCookieKey service:pServiceId];
     if (!name || !cookieData) {
         return nil;
     }
     
-    HAAgent * = [[HAAgent alloc] initWithDictionary:@{@"name": name}];
+    HAAgent *agent = [[HAAgent alloc] initWithDictionary:@{@"name": name}];
     NSError *error;
     agent.cookie = [[NSHTTPCookie alloc] initWithProperties: [NSPropertyListSerialization propertyListWithData:cookieData options:NSPropertyListImmutable format:NULL error:&error]];
     if (error) {
@@ -55,14 +67,14 @@ NSString *const kCookieKey = @"cookie";
 
 - (void) saveAgentToKeyChain
 {
-    [UICKeyChainStore setString:self.name forKey:kNameKey service:kServiceId];
+    [UICKeyChainStore setString:self.name forKey:pNameKey service:pServiceId];
     
     NSError *error;
     NSData *cookieData = [NSPropertyListSerialization dataWithPropertyList:[self.cookie properties] format:NSPropertyListXMLFormat_v1_0 options:(NSPropertyListWriteOptions)nil error:&error];
     if (error) {
         NSLog(@"%@", error);
     }
-    [UICKeyChainStore setData:cookieData forKey:kCookieKey service:kServiceId];
+    [UICKeyChainStore setData:cookieData forKey:pCookieKey service:pServiceId];
     return;
 }
 

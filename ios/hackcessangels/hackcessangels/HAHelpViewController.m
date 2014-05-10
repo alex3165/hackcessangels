@@ -9,7 +9,11 @@
 #import "HAHelpViewController.h"
 #import "HALogViewController.h"
 #import "HAUserService.h"
+<<<<<<< HEAD
 #import "HAInfosViewController.h"
+=======
+#import "HAHelpInProcess.h"
+>>>>>>> f93dac870d1d71ae5bc39e72b49e6e5c406be4da
 
 @interface HAHelpViewController ()
 
@@ -37,6 +41,10 @@
     self.assistanceService = [[HAAssistanceService alloc] init];
     
     [self.assistanceService startHelpRequest:nil agentContacted:nil success:nil];
+    
+    HAHelpInProcess *inprocesscontroller = [[HAHelpInProcess alloc]init];
+    [self.navigationController pushViewController:inprocesscontroller animated:YES];
+    
 }
 
 - (IBAction)infos:(id)sender {

@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<<<<<<< HEAD
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="5uE-2O-GZe">
+=======
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="5uE-2O-GZe">
+>>>>>>> f93dac870d1d71ae5bc39e72b49e6e5c406be4da
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -8,19 +12,35 @@
         <scene sceneID="PXA-rM-bPT">
             <objects>
                 <viewController id="5uE-2O-GZe" customClass="HAMapViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="KCp-8j-STd"/>
+                        <viewControllerLayoutGuide type="bottom" id="3eM-ah-ZW1"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="blK-NG-XP2">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" id="wEP-7S-t28">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wEP-7S-t28">
                                 <rect key="frame" x="-2" y="0.0" width="322" height="568"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </mapView>
-                            <view contentMode="scaleToFill" id="A06-rY-h2n" customClass="HACallUserView">
+                            <button opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cMJ-8o-mmK">
+                                <rect key="frame" x="44" y="400" width="230" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="0.24973650380000001" blue="0.28540001580000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="J'aide">
+                                    <color key="titleColor" red="1" green="0.9590454075" blue="0.98450017960000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="PositiveAnswerForHelp:" destination="5uE-2O-GZe" eventType="touchUpInside" id="hUj-CW-mpu"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="A06-rY-h2n" customClass="HACallUserView">
                                 <rect key="frame" x="0.0" y="-270" width="320" height="314"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="2Rh-XA-dUr">
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Rh-XA-dUr">
                                         <rect key="frame" x="141" y="237" width="38" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="CALL">
@@ -31,11 +51,11 @@
                                             <action selector="callUser:" destination="A06-rY-h2n" eventType="touchUpInside" id="dpk-BX-s1S"/>
                                         </connections>
                                     </button>
-                                    <view contentMode="scaleToFill" id="XZ2-YW-VdY" customClass="HAHelpProfileView">
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XZ2-YW-VdY" customClass="HAHelpProfileView">
                                         <rect key="frame" x="0.0" y="200" width="320" height="114"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Ajx-jg-3xP">
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ajx-jg-3xP">
                                                 <rect key="frame" x="142" y="85" width="35" height="22"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="35"/>
@@ -60,15 +80,6 @@
                                     <outletCollection property="gestureRecognizers" destination="V6V-Sk-Kgd" appends="YES" id="1mc-JV-104"/>
                                 </connections>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="cMJ-8o-mmK">
-                                <rect key="frame" x="45" y="508" width="230" height="40"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="0.24973650380000001" blue="0.28540001580000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="J'aide">
-                                    <color key="titleColor" red="1" green="0.9590454075" blue="0.98450017960000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -94,6 +105,13 @@
         <scene sceneID="0Gc-Kf-DIK">
             <objects>
                 <viewController id="4aJ-If-ycD" customClass="HAAgentViewController" sceneMemberID="viewController">
+<<<<<<< HEAD
+=======
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="9N3-Js-w1t"/>
+                        <viewControllerLayoutGuide type="bottom" id="rK2-kN-qgr"/>
+                    </layoutGuides>
+>>>>>>> f93dac870d1d71ae5bc39e72b49e6e5c406be4da
                     <view key="view" contentMode="scaleToFill" id="j0U-Ts-Htp">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -174,7 +192,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k4o-7I-Vle" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1076" y="-345"/>
+            <point key="canvasLocation" x="1024" y="-501"/>
         </scene>
     </scenes>
     <resources>

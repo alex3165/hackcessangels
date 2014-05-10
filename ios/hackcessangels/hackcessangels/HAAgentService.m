@@ -47,7 +47,7 @@
         // No user logged in. How is this possible?
         NSMutableDictionary* details = [NSMutableDictionary dictionary];
         [details setValue:@"No known agent; login required" forKey:NSLocalizedDescriptionKey];
-        failure([[NSError alloc] initWithDomain:@"agent" code:401 agentInfo:details]);
+        //failure([[NSError alloc] initWithDomain:@"agent" code:401 agentInfo:details]);
         return;
     }
     
@@ -71,8 +71,8 @@
             success(agent);
         }
     } failure:^(id obj, NSError *error) {
-        NSError* newError = [[NSError alloc] initWithDomain:@"server" code:[[(NSDictionary*) obj objectForKey:@"status"] intValue] agentInfo:error.agentInfo];
-        failure(newError);
+        //NSError* newError = [[NSError alloc] initWithDomain:@"server" code:[[(NSDictionary*) obj objectForKey:@"status"] intValue] agentInfo:error.agentInfo];
+        //failure(newError);
     }];
 }
 
@@ -81,15 +81,15 @@
     HARestRequests* requestService = [[HARestRequests alloc] init];
     
     NSMutableDictionary* parameters = [[NSMutableDictionary alloc] init];
-    [parameters setObject:agent.name forKey:kNameKey];
+    [parameters setObject:agent.name forKey:pNameKey];
     
     // Set a new password only if it changed by the agent
     if (agent.password != nil && agent.password.length != 0) {
-        [parameters setObject:agent.password forKey:kPasswordKey];
+        [parameters setObject:agent.password forKey:pPasswordKey];
     }
     // Set a new numero only if it changed by the agent
     if (agent.phone != nil && agent.phone.length != 0) {
-        [parameters setObject:agent.phone forKey:kNumeroKey];
+        [parameters setObject:agent.phone forKey:pNumeroKey];
     }
     
     // Name is a required property
@@ -97,13 +97,13 @@
         // No user logged in. How is this possible?
         NSMutableDictionary* details = [NSMutableDictionary dictionary];
         [details setValue:@"Name must be set" forKey:NSLocalizedDescriptionKey];
-        failure([[NSError alloc] initWithDomain:@"update" code:400 agentInfo:details]);
+        //failure([[NSError alloc] initWithDomain:@"update" code:400 agentInfo:details]);
     }
     
-    [parameters setObject:agent.name forKey:kNameKey];
-    [parameters setObject:agent.gare forKey:kGareKey];
+    [parameters setObject:agent.name forKey:pNameKey];
+    [parameters setObject:agent.gare forKey:pGareKey];
     if (agent.image != nil) {
-        [parameters setObject:[agent.image base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength] forKey:kImageKey];
+        [parameters setObject:[agent.image base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength] forKey:pImageKey];
     }
     
     [requestService PUTrequest:@"agent" withParameters: [[NSDictionary alloc] initWithObjectsAndKeys:parameters, @"data", nil] success:^(id obj, NSHTTPURLResponse *response) {
@@ -119,9 +119,9 @@
     [dcRestRequest POSTrequest:@"agent" withParameters:@{@"name" : name, @"password":password} success:success failure:failure];
 }
 
-- (void)loginWithNameAndPassword:(NSString *)name password:(NSString *)password success:(HARestRequestsSuccess)success failure:(HARestRequestsFailure)failure {
+- (void)loginWithEmailAndPassword:(NSString *)email password:(NSString *)password success:(HARestRequestsSuccess)success failure:(HARestRequestsFailure)failure {
     HARestRequests* dcRestRequest = [[HARestRequests alloc] init];
-    [dcRestRequest POSTrequest:@"agent/login" withParameters:@{@"name" : name, @"password":password} success:^(id object, NSHTTPURLResponse* response){
+    [dcRestRequest POSTrequest:@"agent/login" withParameters:@{@"email" : email, @"password":password} success:^(id object, NSHTTPURLResponse* response){
         
         NSDictionary *agentSetting = [NSDictionary dictionaryWithObjectsAndKeys:email,@"email", nil];
         
@@ -136,9 +136,9 @@
     } failure:failure];
 }
 
-- (void)deleteAgentWithName:(NSString *)name success:(HARestRequestsSuccess)success failure:(HARestRequestsFailure)failure {
+- (void)deleteAgentWithEmail:(NSString *)email success:(HARestRequestsSuccess)success failure:(HARestRequestsFailure)failure {
     HARestRequests* dcRestRequest = [[HARestRequests alloc] init];
-    [dcRestRequest DELETErequest:@"agent" withParameters:@{@"name" : name} success:success failure:failure];
+    [dcRestRequest DELETErequest:@"agent" withParameters:@{@"email" : email} success:success failure:failure];
 }
 
 @end
