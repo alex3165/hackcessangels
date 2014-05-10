@@ -384,15 +384,12 @@
 				04F5A81418C8AC5E00ED0CC6 /* HAUserViewController.h */,
 				04F5A81518C8AC5E00ED0CC6 /* HAUserViewController.m */,
 				22601F151886E2DE008B0179 /* Main.storyboard */,
-<<<<<<< HEAD
 				0423993819128C6100CA61E3 /* HAInfosViewController.h */,
 				0423993919128C6100CA61E3 /* HAInfosViewController.m */,
 				0423993B19128D3C00CA61E3 /* HAAccesViewController.h */,
 				0423993C19128D3C00CA61E3 /* HAAccesViewController.m */,
-=======
 				22A440E4191CE3B5003FC0BA /* HAHelpInProcess.h */,
 				22A440E5191CE3B5003FC0BA /* HAHelpInProcess.m */,
->>>>>>> f93dac870d1d71ae5bc39e72b49e6e5c406be4da
 			);
 			name = User;
 			sourceTree = "<group>";
