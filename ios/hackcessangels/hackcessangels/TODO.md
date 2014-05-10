@@ -2,7 +2,9 @@
  /*
  
  - Adapter l'UI aux maquettes
+ 
  - Page 'À PROPOS' et page 'ACCES+'
+ 
  - Au demarrage de l'appli HackcessAngelsAgents (etienne):
     - Demander au serveur les requetes actives (step 2: limiter a une gare)
     - Afficher une notification locale si une requete active existe

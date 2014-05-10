@@ -9,6 +9,7 @@
 #import "HAHelpViewController.h"
 #import "HALogViewController.h"
 #import "HAUserService.h"
+#import "HAInfosViewController.h"
 
 @interface HAHelpViewController ()
 
@@ -38,6 +39,17 @@
     [self.assistanceService startHelpRequest:nil agentContacted:nil success:nil];
 }
 
+- (IBAction)infos:(id)sender {
+    
+   // self.viewDidLoad = [[HAInfosViewController alloc] init];
+    
+}
+
+- (IBAction)accesplus:(id)sender {
+    
+    // self.viewDidLoad = [[HAInfosViewController alloc] init];
+    
+}
 
 /******************************************************************************************************************************
  *

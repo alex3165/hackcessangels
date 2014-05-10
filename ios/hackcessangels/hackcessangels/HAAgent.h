@@ -14,7 +14,7 @@ extern NSString *const kImageKey;
 extern NSString *const kNameKey;
 extern NSString *const kNumeroKey;
 extern NSString *const kPasswordKey;
-extern NSString *const kGareKey;
+//extern NSString *const kGareKey;
 
 @interface HAAgent : NSObject
 
@@ -24,7 +24,7 @@ extern NSString *const kGareKey;
 @property (nonatomic, strong) NSString *phone;
 @property (nonatomic, strong) NSData *image;
 @property (nonatomic, strong) NSHTTPCookie *cookie;
-@property (nonatomic, strong) NSString *gare;
+//@property (nonatomic, strong) NSString *gare;
 
 - (id)initWithDictionary:(NSDictionary *)dico;
 

@@ -15,7 +15,7 @@ NSString *const kImageKey = @"image";
 NSString *const kNameKey = @"name";
 NSString *const kNumeroKey = @"phone";
 NSString *const kCookieKey = @"cookie";
-NSString *const kGareKey = @"gare";
+//NSString *const kGareKey = @"gare";
 
 @implementation HAAgent
 
@@ -27,7 +27,7 @@ NSString *const kGareKey = @"gare";
         self.password = [dico objectForKey:@"password"];
         self.name = [dico objectForKey:@"name"];
         self.phone = [dico objectForKey:@"phone"];
-        self.gare = [dico objectForKey:@"gare"];
+        //self.gare = [dico objectForKey:@"gare"];
         if ([dico objectForKey:@"image"] != nil) {
             self.image = [[NSData alloc] initWithBase64EncodedString:[dico objectForKey:@"image"] options:NSDataBase64DecodingIgnoreUnknownCharacters];
         }
