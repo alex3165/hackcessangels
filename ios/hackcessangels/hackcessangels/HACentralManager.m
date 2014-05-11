@@ -161,9 +161,10 @@
         if (!self.isResponse) {
             
             self.needHelp = YES;
-            NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:self.data];
-            NSDictionary *myDictionary = [unarchiver decodeObjectForKey:@"user"];
-            [unarchiver finishDecoding];
+//            NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:self.data];
+            NSError *err;
+            NSDictionary *myDictionary = [NSPropertyListSerialization propertyListWithData:self.data options:NSPropertyListImmutable format:NULL error:&err];
+//            [unarchiver finishDecoding];
             NSLog(@"%@", myDictionary);
             
             if ([self.delegate respondsToSelector:@selector(helpValueChanged:)])

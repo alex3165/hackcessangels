@@ -80,11 +80,13 @@
                         @"name" : userName,
                         @"phone" : userPhone,
                         @"email" : userEmail};
+        NSError *err;
+        self.dataToSend = [NSPropertyListSerialization dataWithPropertyList:userDictionary format:NSPropertyListXMLFormat_v1_0 options:(NSPropertyListWriteOptions)nil error:&err];
         
-        NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:self.temporaryData];
-        [archiver encodeObject:userDictionary forKey:@"user"];
-        [archiver finishEncoding];
-        self.dataToSend = [NSData dataWithData:self.temporaryData];
+//        NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:self.temporaryData];
+//        [archiver encodeObject:userDictionary forKey:@"user"];
+//        [archiver finishEncoding];
+        
     }else{
         self.dataToSend = [kRESPONSE_MESSAGE dataUsingEncoding:NSUTF8StringEncoding];
     }
