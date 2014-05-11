@@ -71,16 +71,20 @@
     if (!self.isResponse) {
         //self.dataToSend = [kHELP_MESSAGE dataUsingEncoding:NSUTF8StringEncoding];
         self.actualUser = [HAUser userFromKeyChain];
+
+        NSString *userName = self.actualUser.name == nil ? @"inconnue" : self.actualUser.name;
+        NSString *userPhone = self.actualUser.phone == nil ? @"inconnue" : self.actualUser.phone;
+        NSString *userEmail = self.actualUser.email == nil ? @"inconnue" : self.actualUser.email;
         
         NSDictionary *userDictionary = @{
-                        @"name" : self.actualUser.name,
-                        @"phone" : self.actualUser.phone,
-                        @"email" : self.actualUser.email};
+                        @"name" : userName,
+                        @"phone" : userPhone,
+                        @"email" : userEmail};
         
-        NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:self.dataToSend];
+        NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:self.temporaryData];
         [archiver encodeObject:userDictionary forKey:@"user"];
         [archiver finishEncoding];
-        
+        self.dataToSend = [NSData dataWithData:self.temporaryData];
     }else{
         self.dataToSend = [kRESPONSE_MESSAGE dataUsingEncoding:NSUTF8StringEncoding];
     }
