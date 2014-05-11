@@ -20,17 +20,33 @@
         self.centralManager = [[CBCentralManager alloc]initWithDelegate:self queue:nil];
         
         /* On récupère le user, on l'encode en data */
-        HAUser *user = [HAUser userFromKeyChain];
+//        HAUser *user = [HAUser userFromKeyChain];
         self.data = [[NSMutableData alloc]init];
-        NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc]initForWritingWithMutableData:self.data];
-        [archiver encodeObject:user forKey:@"user"];
+//        NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc]initForWritingWithMutableData:self.data];
+//        [archiver encodeObject:user forKey:@"user"];
         /********************************************/
-        
+        self.isResponse = NO;
         self.needHelp = false;
     }
     
     return self;
 }
+
+- (id)initForResponse
+{
+    self = [super init];
+    
+    
+    if (self) {
+        self.centralManager = [[CBCentralManager alloc]initWithDelegate:self queue:nil];
+        
+        self.isResponse = YES;
+
+    }
+    
+    return self;
+}
+
 
 - (void)centralManagerDidUpdateState:(CBCentralManager *)central{
     
@@ -41,8 +57,12 @@
     
     if (central.state == CBCentralManagerStatePoweredOn) {
         
-        // Scan for devices
-        [self.centralManager scanForPeripheralsWithServices:@[[CBUUID UUIDWithString:HELP_SERVICE_UUID]] options:@{ CBCentralManagerScanOptionAllowDuplicatesKey : @NO }];
+        if (!self.isResponse) {
+            [self.centralManager scanForPeripheralsWithServices:@[[CBUUID UUIDWithString:HELP_SERVICE_UUID]] options:@{ CBCentralManagerScanOptionAllowDuplicatesKey: @NO }];
+        }else{
+            [self.centralManager scanForPeripheralsWithServices:@[[CBUUID UUIDWithString:RESPONSE_SERVICE_UUID]] options:@{ CBCentralManagerScanOptionAllowDuplicatesKey: @NO }];
+        }
+        
         NSLog(@"Scanning started");
     }
 }
@@ -79,8 +99,11 @@
     [self.data setLength:0];
     
     peripheral.delegate = self;
-    
-    [peripheral discoverServices:@[[CBUUID UUIDWithString:HELP_SERVICE_UUID]]];
+    if (!self.isResponse) {
+        [peripheral discoverServices:@[[CBUUID UUIDWithString:HELP_SERVICE_UUID]]];
+    }else{
+        [peripheral discoverServices:@[[CBUUID UUIDWithString:RESPONSE_SERVICE_UUID]]];
+    }
 }
 
 // Check for services
@@ -92,7 +115,13 @@
     }
     
     for (CBService *service in peripheral.services) {
-        [peripheral discoverCharacteristics:@[[CBUUID UUIDWithString:HELP_CHARACTERISTIC_UUID]] forService:service];
+        // characteristic for help
+        if ([service.UUID isEqual:[CBUUID UUIDWithString:HELP_SERVICE_UUID]]) {
+            [peripheral discoverCharacteristics:@[[CBUUID UUIDWithString:HELP_CHARACTERISTIC_UUID]] forService:service];
+        }else if ([service.UUID isEqual:[CBUUID UUIDWithString:RESPONSE_SERVICE_UUID]]){
+            [peripheral discoverCharacteristics:@[[CBUUID UUIDWithString:RESPONSE_CHARACTERISTIC_UUID]] forService:service];
+        }
+        
     }
     // Discover other characteristics
 }
@@ -104,14 +133,24 @@
         return;
     }
     
-    for (CBCharacteristic *characteristic in service.characteristics) {
-        if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:HELP_CHARACTERISTIC_UUID]]) {
-            [peripheral setNotifyValue:YES forCharacteristic:characteristic];
+    if ([service.UUID isEqual:[CBUUID UUIDWithString:HELP_SERVICE_UUID]]) {
+        for (CBCharacteristic *characteristic in service.characteristics) {
+            if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:HELP_CHARACTERISTIC_UUID]]) {
+                [peripheral setNotifyValue:YES forCharacteristic:characteristic];
+            }
+        }
+    }else if ([service.UUID isEqual:[CBUUID UUIDWithString:RESPONSE_SERVICE_UUID]]) {
+        for (CBCharacteristic *characteristic in service.characteristics) {
+            if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:RESPONSE_CHARACTERISTIC_UUID]]) {
+                [peripheral setNotifyValue:YES forCharacteristic:characteristic];
+            }
         }
     }
+
 }
 
 - (void)peripheral:(CBPeripheral *)peripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error {
+    
     if (error) {
         NSLog(@"Error");
         return;
@@ -121,24 +160,24 @@
     
     // Have we got everything we need?
     if ([stringFromData isEqualToString:@"EOM"]) {
-        NSString *helpString = [[NSString alloc] initWithData:self.data encoding:NSUTF8StringEncoding];
         
-        self.needHelp = ([helpString isEqualToString:kHELP_MESSAGE]);
+        NSString *msgFromData = [[NSString alloc] initWithData:self.data encoding:NSUTF8StringEncoding];
         
-        if ([self.delegate respondsToSelector:@selector(helpValueChanged:)])
-        {
-            [self.delegate helpValueChanged:self.needHelp];
-        }else{
-            NSLog(@"Error");
+        if ([msgFromData isEqualToString:kHELP_MESSAGE]) {
+            self.needHelp = ([msgFromData isEqualToString:kHELP_MESSAGE]);
+            
+            if ([self.delegate respondsToSelector:@selector(helpValueChanged:)])
+            {
+                [self.delegate helpValueChanged:self.needHelp];
+            }else{
+                NSLog(@"Error");
+            }
+            
+            NSLog(@"%@", msgFromData);
+        }else if ([msgFromData isEqualToString:kRESPONSE_MESSAGE]){
+            NSLog(@"ok l'appel à l'aide a été pris en compte");
         }
 
-        NSLog(@"%@", helpString);
-        /* Récupération des datas ici */        
-        
-        // Response of central if ok
-//         [peripheral writeValue:[@"YES" dataUsingEncoding:NSUTF8StringEncoding] forCharacteristic:characteristic type:CBCharacteristicWriteWithResponse];
-//        
-//        [peripheral setNotifyValue:NO forCharacteristic:characteristic];
         
         [self.centralManager cancelPeripheralConnection:peripheral];
     }
@@ -149,6 +188,9 @@
 - (void)peripheral:(CBPeripheral *)peripheral didUpdateNotificationStateForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error {
     
     if (![characteristic.UUID isEqual:[CBUUID UUIDWithString:HELP_CHARACTERISTIC_UUID]]) {
+        return;
+    }
+    if (![characteristic.UUID isEqual:[CBUUID UUIDWithString:RESPONSE_CHARACTERISTIC_UUID]]) {
         return;
     }
     
@@ -165,7 +207,11 @@
     self.discoveredPeripheral = nil;
     
     // scan again for any new service
-    [self.centralManager scanForPeripheralsWithServices:@[[CBUUID UUIDWithString:HELP_SERVICE_UUID]] options:@{ CBCentralManagerScanOptionAllowDuplicatesKey : @NO }];
+    if (!self.isResponse) {
+        [self.centralManager scanForPeripheralsWithServices:@[[CBUUID UUIDWithString:HELP_SERVICE_UUID]] options:@{ CBCentralManagerScanOptionAllowDuplicatesKey : @NO }];
+    }else{
+        [self.centralManager scanForPeripheralsWithServices:@[[CBUUID UUIDWithString:HELP_CHARACTERISTIC_UUID]] options:@{ CBCentralManagerScanOptionAllowDuplicatesKey : @NO }];
+    }
 }
 
 - (void)cleanup {
@@ -176,6 +222,12 @@
             if (service.characteristics != nil) {
                 for (CBCharacteristic *characteristic in service.characteristics) {
                     if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:HELP_CHARACTERISTIC_UUID]]) {
+                        if (characteristic.isNotifying) {
+                            [self.discoveredPeripheral setNotifyValue:NO forCharacteristic:characteristic];
+                            return;
+                        }
+                    }
+                    else if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:RESPONSE_CHARACTERISTIC_UUID]]){
                         if (characteristic.isNotifying) {
                             [self.discoveredPeripheral setNotifyValue:NO forCharacteristic:characteristic];
                             return;

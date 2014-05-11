@@ -24,4 +24,6 @@
 @property (strong, nonatomic) NSMutableData *data;
 @property (nonatomic, assign) BOOL needHelp;
 
+@property (nonatomic, assign) BOOL isResponse;
+
 @end

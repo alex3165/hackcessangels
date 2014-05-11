@@ -20,4 +20,6 @@
 @property (strong, nonatomic) NSData *dataToSend;
 @property (nonatomic, readwrite) NSInteger sendDataIndex;
 
+@property (nonatomic, assign) BOOL isResponse;
+
 @end
