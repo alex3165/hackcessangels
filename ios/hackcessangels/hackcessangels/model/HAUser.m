@@ -12,7 +12,6 @@
 NSString *const kServiceId = @"HAUser";
 NSString *const kPasswordKey = @"password";
 NSString *const kEmailKey = @"email";
-//NSString *const kLoginKey = @"login";
 NSString *const kDescriptionKey = @"description";
 NSString *const kImageKey = @"image";
 NSString *const kNameKey = @"name";
@@ -69,4 +68,22 @@ NSString *const kCookieKey = @"cookie";
     [UICKeyChainStore setData:cookieData forKey:kCookieKey service:kServiceId];
     return;
 }
+
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    if (self = [super init]) {
+        self.name = [aDecoder decodeObjectForKey:@"name"];
+        self.phone = [aDecoder decodeObjectForKey:@"phone"];
+        self.email = [aDecoder decodeObjectForKey:@"email"];
+    }
+    return self;
+}
+
+- (void)encodeWithCoder:(NSCoder *)aCoder
+{
+    [aCoder encodeObject:self.name forKey:@"name"];
+    [aCoder encodeObject:self.email forKey:@"email"];
+    [aCoder encodeObject:self.phone forKey:@"phone"];
+}
+
 @end

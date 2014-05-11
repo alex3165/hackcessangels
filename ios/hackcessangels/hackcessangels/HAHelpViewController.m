@@ -9,6 +9,7 @@
 #import "HAHelpViewController.h"
 #import "HALogViewController.h"
 #import "HAUserService.h"
+#import "HAInfosViewController.h"
 #import "HAHelpInProcess.h"
 #import "HAAccesViewController.h"
 #import "HAInfosViewController.h"

@@ -68,9 +68,26 @@
 }
 
 - (void)peripheralManager:(CBPeripheralManager *)peripheral central:(CBCentral *)central didSubscribeToCharacteristic:(CBCharacteristic *)characteristic {
-    
-    self.dataToSend = [kHELP_MESSAGE dataUsingEncoding:NSUTF8StringEncoding];
+    if (!self.isResponse) {
+        //self.dataToSend = [kHELP_MESSAGE dataUsingEncoding:NSUTF8StringEncoding];
+        self.actualUser = [HAUser userFromKeyChain];
 
+        NSString *userName = self.actualUser.name == nil ? @"inconnue" : self.actualUser.name;
+        NSString *userPhone = self.actualUser.phone == nil ? @"inconnue" : self.actualUser.phone;
+        NSString *userEmail = self.actualUser.email == nil ? @"inconnue" : self.actualUser.email;
+        
+        NSDictionary *userDictionary = @{
+                        @"name" : userName,
+                        @"phone" : userPhone,
+                        @"email" : userEmail};
+        
+        NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:self.temporaryData];
+        [archiver encodeObject:userDictionary forKey:@"user"];
+        [archiver finishEncoding];
+        self.dataToSend = [NSData dataWithData:self.temporaryData];
+    }else{
+        self.dataToSend = [kRESPONSE_MESSAGE dataUsingEncoding:NSUTF8StringEncoding];
+    }
     /* Data to send here */
     
     self.sendDataIndex = 0;
@@ -82,10 +99,8 @@
     [self sendData];
 }
 
-//- (void)peripheralManager:(CBPeripheralManager *)peripheral didReceiveReadRequest:(CBATTRequest *)request{
-//    
-//}
 
+#pragma mark - data send snippet
 
 - (void)sendData {
     

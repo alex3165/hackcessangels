@@ -7,7 +7,6 @@
 //
 
 #import "HACentralManager.h"
-#import "HAUser.h"
 
 @implementation HACentralManager
 
@@ -19,12 +18,8 @@
     if (self) {
         self.centralManager = [[CBCentralManager alloc]initWithDelegate:self queue:nil];
         
-        /* On récupère le user, on l'encode en data */
-//        HAUser *user = [HAUser userFromKeyChain];
         self.data = [[NSMutableData alloc]init];
-//        NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc]initForWritingWithMutableData:self.data];
-//        [archiver encodeObject:user forKey:@"user"];
-        /********************************************/
+
         self.isResponse = NO;
         self.needHelp = false;
     }
@@ -161,10 +156,15 @@
     // Have we got everything we need?
     if ([stringFromData isEqualToString:@"EOM"]) {
         
-        NSString *msgFromData = [[NSString alloc] initWithData:self.data encoding:NSUTF8StringEncoding];
-        
-        if ([msgFromData isEqualToString:kHELP_MESSAGE]) {
-            self.needHelp = ([msgFromData isEqualToString:kHELP_MESSAGE]);
+        //NSString *msgFromData = [[NSString alloc] initWithData:self.data encoding:NSUTF8StringEncoding];
+        NSLog(@"Ok on a les datas");
+        if (!self.isResponse) {
+            
+            self.needHelp = YES;
+            NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:self.data];
+            NSDictionary *myDictionary = [unarchiver decodeObjectForKey:@"user"];
+            [unarchiver finishDecoding];
+            NSLog(@"%@", myDictionary);
             
             if ([self.delegate respondsToSelector:@selector(helpValueChanged:)])
             {
@@ -173,10 +173,11 @@
                 NSLog(@"Error");
             }
             
-            NSLog(@"%@", msgFromData);
-        }else if ([msgFromData isEqualToString:kRESPONSE_MESSAGE]){
-            NSLog(@"ok l'appel à l'aide a été pris en compte");
+            //NSLog(@"%@", msgFromData);
         }
+//        else if ([msgFromData isEqualToString:kRESPONSE_MESSAGE]){
+//            NSLog(@"ok l'appel à l'aide a été pris en compte");
+//        }
 
         
         [self.centralManager cancelPeripheralConnection:peripheral];
