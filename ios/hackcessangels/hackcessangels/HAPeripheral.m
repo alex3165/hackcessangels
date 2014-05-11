@@ -69,7 +69,18 @@
 
 - (void)peripheralManager:(CBPeripheralManager *)peripheral central:(CBCentral *)central didSubscribeToCharacteristic:(CBCharacteristic *)characteristic {
     if (!self.isResponse) {
-        self.dataToSend = [kHELP_MESSAGE dataUsingEncoding:NSUTF8StringEncoding];
+        //self.dataToSend = [kHELP_MESSAGE dataUsingEncoding:NSUTF8StringEncoding];
+        self.actualUser = [HAUser userFromKeyChain];
+        
+        NSDictionary *userDictionary = @{
+                        @"name" : self.actualUser.name,
+                        @"phone" : self.actualUser.phone,
+                        @"email" : self.actualUser.email};
+        
+        NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:self.dataToSend];
+        [archiver encodeObject:userDictionary forKey:@"user"];
+        [archiver finishEncoding];
+        
     }else{
         self.dataToSend = [kRESPONSE_MESSAGE dataUsingEncoding:NSUTF8StringEncoding];
     }
@@ -84,10 +95,8 @@
     [self sendData];
 }
 
-//- (void)peripheralManager:(CBPeripheralManager *)peripheral didReceiveReadRequest:(CBATTRequest *)request{
-//    
-//}
 
+#pragma mark - data send snippet
 
 - (void)sendData {
     
