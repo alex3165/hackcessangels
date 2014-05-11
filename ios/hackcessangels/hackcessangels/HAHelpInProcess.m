@@ -26,7 +26,26 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    
+    // Set the width of the line
+    CGContextSetLineWidth(context, 2.0);
+    
+    //Make the circle
+    // 150 = x coordinate
+    // 150 = y coordinate
+    // 100 = radius of circle
+    // 0   = starting angle
+    // 2*M_PI = end angle
+    // YES = draw clockwise
+    CGContextBeginPath(context);
+    CGContextAddArc(context, 150, 150, 100, 0, 2*M_PI, YES);
+    CGContextClosePath(context);
+    
+    CGContextSetRGBFillColor(context, 0.0, 0.0, 1.0, 1.0); //blue
+    CGContextSetRGBStrokeColor(context, 1.0, 0.0, 0.0, 1.0); //red
+    
+    CGContextDrawPath(context, kCGPathFillStroke);
 }
 
 - (void)didReceiveMemoryWarning

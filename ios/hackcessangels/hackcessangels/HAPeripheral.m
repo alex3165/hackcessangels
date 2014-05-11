@@ -68,9 +68,11 @@
 }
 
 - (void)peripheralManager:(CBPeripheralManager *)peripheral central:(CBCentral *)central didSubscribeToCharacteristic:(CBCharacteristic *)characteristic {
-    
-    self.dataToSend = [kHELP_MESSAGE dataUsingEncoding:NSUTF8StringEncoding];
-
+    if (!self.isResponse) {
+        self.dataToSend = [kHELP_MESSAGE dataUsingEncoding:NSUTF8StringEncoding];
+    }else{
+        self.dataToSend = [kRESPONSE_MESSAGE dataUsingEncoding:NSUTF8StringEncoding];
+    }
     /* Data to send here */
     
     self.sendDataIndex = 0;

@@ -20,10 +20,11 @@
         self.centralManager = [[CBCentralManager alloc]initWithDelegate:self queue:nil];
         
         /* On récupère le user, on l'encode en data */
-//        HAUser *user = [HAUser userFromKeyChain];
+        HAUser *user = [HAUser userFromKeyChain];
         self.data = [[NSMutableData alloc]init];
-//        NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc]initForWritingWithMutableData:self.data];
-//        [archiver encodeObject:user forKey:@"user"];
+        NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc]initForWritingWithMutableData:self.data];
+        [archiver encodeObject:user forKey:@"user"];
+        [archiver finishEncoding];
         /********************************************/
         self.isResponse = NO;
         self.needHelp = false;
