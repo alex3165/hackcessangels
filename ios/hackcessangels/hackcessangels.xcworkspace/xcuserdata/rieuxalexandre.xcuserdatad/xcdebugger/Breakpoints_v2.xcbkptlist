@@ -79,8 +79,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "38"
             endingLineNumber = "38"
-            landmarkName = "-helpme:"
-            landmarkType = "5">
+            landmarkName = "@implementation HAHelpViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

@@ -9,15 +9,6 @@
 #import "HAAgent.h"
 #import "UICKeyChainStore.h"
 
-<<<<<<< HEAD
-NSString *const kServiceId = @"HAAgent";
-NSString *const kPasswordKey = @"password";
-NSString *const kImageKey = @"image";
-NSString *const kNameKey = @"name";
-NSString *const kNumeroKey = @"phone";
-NSString *const kCookieKey = @"cookie";
-//NSString *const kGareKey = @"gare";
-=======
 NSString *const pServiceId = @"HAAgent";
 NSString *const pPasswordKey = @"password";
 NSString *const pImageKey = @"image";
@@ -26,7 +17,6 @@ NSString *const pNameKey = @"name";
 NSString *const pNumeroKey = @"phone";
 NSString *const pCookieKey = @"cookie";
 NSString *const pGareKey = @"gare";
->>>>>>> f93dac870d1d71ae5bc39e72b49e6e5c406be4da
 
 @implementation HAAgent
 
