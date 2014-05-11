@@ -11,6 +11,8 @@
 #import "HAUserService.h"
 #import "HAInfosViewController.h"
 #import "HAHelpInProcess.h"
+#import "HAAccesViewController.h"
+#import "HAInfosViewController.h"
 
 @interface HAHelpViewController ()
 
@@ -44,16 +46,18 @@
     
 }
 
-- (IBAction)infos:(id)sender {
+- (IBAction)infos:(BOOL)animated {
     
-   // self.viewDidLoad = [[HAInfosViewController alloc] init];
+    HAInfosViewController *infosViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"infosViewController"];
+    [self presentViewController:infosViewController animated:animated completion:nil];
     
+   
 }
 
-- (IBAction)accesplus:(id)sender {
+- (IBAction)accesplus:(BOOL)animated  {
     
-    // self.viewDidLoad = [[HAInfosViewController alloc] init];
-    
+    HAAccesViewController *accesViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"accesViewController"];
+    [self presentViewController:accesViewController animated:animated completion:nil];
 }
 
 /******************************************************************************************************************************
