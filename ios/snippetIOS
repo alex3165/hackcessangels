@@ -1,0 +1,4 @@
+UILocalNotification *localNotif = [[UILocalNotification alloc] init];
+  localNotif.alertBody = @"Les téléchargements sont terminées, vos livres sont disponibles dans votre bibliothèque";
+  localNotif.alertAction = @"Bibliothèque";
+  [[UIApplication sharedApplication] presentLocalNotificationNow:localNotif];
