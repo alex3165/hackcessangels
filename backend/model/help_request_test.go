@@ -24,7 +24,7 @@ func TestRequestLifcycle(t *testing.T) {
 		t.Error(err)
 	}
 
-	if req.RequesterEmail != u.Email || time.Now().Sub(req.RequestCreationTime) > time.Minute || req.IsActive != true {
+	if req.RequesterEmail != u.Email || time.Now().Sub(req.RequestCreationTime) > time.Minute || req.LastStatus != NEW {
 		t.Errorf("Request not filled: %+v", req)
 	}
 
@@ -41,12 +41,6 @@ func TestRequestLifcycle(t *testing.T) {
 
 	if req.RequesterPosition.Coordinates[0] != 2.10 {
 		t.Errorf("Request not saved: %+v", req)
-	}
-
-	req.Deactivate()
-
-	if req.IsActive != false {
-		t.Errorf("Request still active: %+v", req)
 	}
 }
 
@@ -72,7 +66,7 @@ func TestFindActiveRequests(t *testing.T) {
 		t.Error(err)
 	}
 
-	if req.RequesterEmail != u.Email || time.Now().Sub(req.RequestCreationTime) > time.Minute || req.IsActive != true {
+	if req.RequesterEmail != u.Email || time.Now().Sub(req.RequestCreationTime) > time.Minute || req.LastStatus != NEW {
 		t.Errorf("Request not filled: %+v", req)
 	}
 
