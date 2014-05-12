@@ -24,7 +24,7 @@ func TestRequestLifcycle(t *testing.T) {
 		t.Error(err)
 	}
 
-	if req.RequesterEmail != u.Email || time.Now().Sub(req.RequestCreationTime) > time.Minute || req.LastStatus != NEW {
+	if req.RequesterEmail != u.Email || time.Now().Sub(req.RequestCreationTime) > time.Minute || req.CurrentState != NEW {
 		t.Errorf("Request not filled: %+v", req)
 	}
 
@@ -66,7 +66,7 @@ func TestFindActiveRequests(t *testing.T) {
 		t.Error(err)
 	}
 
-	if req.RequesterEmail != u.Email || time.Now().Sub(req.RequestCreationTime) > time.Minute || req.LastStatus != NEW {
+	if req.RequesterEmail != u.Email || time.Now().Sub(req.RequestCreationTime) > time.Minute || req.CurrentState != NEW {
 		t.Errorf("Request not filled: %+v", req)
 	}
 

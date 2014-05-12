@@ -1,7 +1,7 @@
 package model
 
 import (
-    "time"
+	"time"
 
 	"labix.org/v2/mgo/bson"
 )
@@ -18,7 +18,7 @@ const (
 )
 
 const (
-    kStationTimeout time.Duration = 60 * time.Minute
+	kStationTimeout time.Duration = 60 * time.Minute
 )
 
 type User struct {
@@ -35,9 +35,9 @@ type User struct {
 
 	PushToken string
 
-	IsAgent        bool
-	CurrentStation *bson.ObjectId
-    LastStationUpdate time.Time
+	IsAgent           bool
+	CurrentStation    *bson.ObjectId
+	LastStationUpdate time.Time
 
 	m *Model `bson:"-"`
 }
@@ -56,10 +56,10 @@ func (u *User) GetStation() (*Station, error) {
 	if !u.IsAgent || u.CurrentStation == nil {
 		return nil, nil
 	}
-    if time.Now().Sub(u.LastStationUpdate) > kStationTimeout {
-        u.CurrentStation = nil
-        return nil, u.Save()
-    }
+	if time.Now().Sub(u.LastStationUpdate) > kStationTimeout {
+		u.CurrentStation = nil
+		return nil, u.Save()
+	}
 	var station *Station
 	err := u.m.stations.FindId(*u.CurrentStation).One(station)
 	return station, err

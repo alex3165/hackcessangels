@@ -40,8 +40,8 @@ const (
 	AGENT_ANSWERED
 	// This request has been completed
 	COMPLETED
-    // Request finished and report filled
-    REPORT_FILLED
+	// Request finished and report filled
+	REPORT_FILLED
 )
 
 type HelpRequestStatus struct {
@@ -59,7 +59,7 @@ type HelpRequest struct {
 	RequesterPosition     *PointGeometry
 	RequesterPosPrecision float64
 	RequesterLastUpdate   time.Time
-	LastStatus            HelpRequestState
+	CurrentState          HelpRequestState
 
 	// Status of the request, in chronological order. The last object is the
 	// current state. The rest is kept for auditing.
@@ -86,7 +86,7 @@ func (hr *HelpRequest) Save() error {
 }
 
 func (hr *HelpRequest) ChangeStatus(newState HelpRequestState, time time.Time) error {
-    hr.LastStatus = newState
+	hr.CurrentState = newState
 	status := HelpRequestStatus{
 		State: newState,
 		Time:  time,
@@ -130,8 +130,8 @@ func (hr *HelpRequest) GetUser() (*User, error) {
 func (m *Model) GetActiveRequestsByStation(s *Station) ([]*HelpRequest, error) {
 	helpRequests := make([]*HelpRequest, 0)
 	err := m.helpRequests.Find(bson.M{
-        "lastStatus": bson.M{"$in": []HelpRequestState{NEW,
-        AGENTS_CONTACTED, RETRY, AGENT_ANSWERED}},
+		"currentstate": bson.M{"$in": []HelpRequestState{NEW,
+			AGENTS_CONTACTED, RETRY, AGENT_ANSWERED}},
 		"requesterposition": bson.M{
 			"$near": bson.M{
 				"$geometry": bson.M{
@@ -155,9 +155,9 @@ func (m *Model) GetRequestById(id string) (*HelpRequest, error) {
 func (m *Model) GetActiveRequestByRequester(user *User) (*HelpRequest, error) {
 	hr := new(HelpRequest)
 	err := m.helpRequests.Find(bson.M{"requesteremail": user.Email,
-        "lastStatus": bson.M{"$in": []HelpRequestState{NEW,
-        AGENTS_CONTACTED, RETRY, AGENT_ANSWERED}},
-    }).One(&hr)
+		"currentstate": bson.M{"$in": []HelpRequestState{NEW,
+			AGENTS_CONTACTED, RETRY, AGENT_ANSWERED}},
+	}).One(&hr)
 	hr.m = m
 	return hr, err
 }
@@ -172,6 +172,6 @@ func (m *Model) GetOrCreateActiveRequestByRequester(user *User) (*HelpRequest, e
 		RequestCreationTime: time.Now(),
 		RequesterEmail:      user.Email,
 		m:                   m}
-    hr.ChangeStatus(NEW, time.Now())
+	hr.ChangeStatus(NEW, hr.RequestCreationTime)
 	return hr, nil
 }

@@ -12,7 +12,7 @@ import (
 type APIRequest struct {
 	Id string
 
-	IsActive bool
+	CurrentState model.HelpRequestState
 
 	User  *ApiUser
 	Agent *ApiUser
@@ -24,7 +24,7 @@ type APIRequest struct {
 
 func NewAPIRequestFromHelpRequest(hr *model.HelpRequest) *APIRequest {
 	apiRequest := new(APIRequest)
-	apiRequest.IsActive = hr.IsActive
+	apiRequest.CurrentState = hr.CurrentState
 	agent, err := hr.GetAgent()
 	if err == nil {
 		apiRequest.Agent = NewApiUser(agent, false)
