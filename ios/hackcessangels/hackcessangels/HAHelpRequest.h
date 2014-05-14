@@ -12,11 +12,15 @@
 #import "HAAgent.h"
 
 typedef enum HAHelpRequestStatus : NSUInteger {
-    kUnknown,
-    kCalling,
+    kNew,
+    kAgentsContacted,
+    kNoAgents,
+    kRetry,
+    kCancelled,
+    kAbandonned,
     kAgentAnswered,
-    kReportRequested,
-    kComplete
+    kRequestCompleted,
+    kReportFilled
 } HAHelpRequestStatus;
 
 @interface HAHelpRequest : NSObject
@@ -29,5 +33,7 @@ typedef enum HAHelpRequestStatus : NSUInteger {
 
 @property(nonatomic, strong) HAUser* user;
 @property(nonatomic, strong) HAAgent* agent;
+
+- (id)initWithDictionary:(NSDictionary *)data;
 
 @end

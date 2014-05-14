@@ -36,6 +36,8 @@ const (
 	RETRY
 	// Request has been cancelled by the user (before any agent answered)
 	CANCELLED
+	// Request has been abandoned by the user (no retry)
+	ABANDONED
 	// An agent has answered this request
 	AGENT_ANSWERED
 	// This request has been completed
