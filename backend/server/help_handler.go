@@ -17,6 +17,7 @@ type APIRequest struct {
 	User  *ApiUser
 	Agent *ApiUser
 
+	// Longitude, latitude and precision of the user requesting help
 	Longitude float64
 	Latitude  float64
 	Precision float64

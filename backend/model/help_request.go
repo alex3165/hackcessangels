@@ -27,23 +27,23 @@ type HelpRequestState int
 
 const (
 	// This is a new, unprocessed request
-	NEW HelpRequestState = iota
+	NEW HelpRequestState = 0
 	// Agents has been contacted
-	AGENTS_CONTACTED
+	AGENTS_CONTACTED = 1
 	// No agents are available at this location
-	NO_AGENTS
+	NO_AGENTS = 2
 	// Request has been retried by the user
-	RETRY
+	RETRY = 3
 	// Request has been cancelled by the user (before any agent answered)
-	CANCELLED
+	CANCELLED = 4
 	// Request has been abandoned by the user (no retry)
-	ABANDONED
+	ABANDONED = 5
 	// An agent has answered this request
-	AGENT_ANSWERED
+	AGENT_ANSWERED = 6
 	// This request has been completed
-	COMPLETED
+	COMPLETED = 7
 	// Request finished and report filled
-	REPORT_FILLED
+	REPORT_FILLED = 8
 )
 
 type HelpRequestStatus struct {
@@ -52,6 +52,18 @@ type HelpRequestStatus struct {
 	// Time this request entered the above state
 	Time time.Time
 }
+
+type HelpRequestReportType int
+
+const (
+	UNKNOWN     HelpRequestReportType = 0
+	ASSISTANCE                        = 1
+	WHEELCHAIR                        = 2
+	ORIENTATION                       = 3
+	REASSURING                        = 4
+	INFORMATION                       = 5
+	OTHER                             = 6
+)
 
 type HelpRequest struct {
 	Id                  bson.ObjectId `bson:"_id,omitempty"`
@@ -69,6 +81,9 @@ type HelpRequest struct {
 
 	ResponderEmail      string
 	ResponderLastUpdate time.Time
+
+	ReportType    HelpRequestReportType
+	ReportComment string
 
 	m *Model `bson:"-"`
 }
