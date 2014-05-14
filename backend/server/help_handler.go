@@ -47,7 +47,9 @@ func (s *Server) handleHelp(w http.ResponseWriter, r *http.Request) {
 		Latitude      *float64 `json:"latitude,omitempty"`
 		Longitude     *float64 `json:"longitude,omitempty"`
 		Precision     *float64 `json:"precision,omitempty"`
+		Retry         *bool    `json:"retry,omitempty"`
 	}
+
 	w.Header().Add("Content-Type", "application/json")
 	err := getJSONRequest(r, &data)
 	if err != nil {
@@ -118,6 +120,14 @@ func (s *Server) handleHelp(w http.ResponseWriter, r *http.Request) {
 		helpRequest.SetRequesterPosition(*data.Longitude, *data.Latitude)
 		if data.Precision != nil {
 			helpRequest.RequesterPosPrecision = *data.Precision
+		}
+		if data.Retry != nil {
+			// User requested this request to be retried, or abandoned.
+			if *data.Retry {
+				helpRequest.ChangeStatus(model.RETRY, time.Now())
+			} else {
+				helpRequest.ChangeStatus(model.ABANDONED, time.Now())
+			}
 		}
 		err = helpRequest.Save()
 		if err != nil {
