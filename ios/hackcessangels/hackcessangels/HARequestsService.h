@@ -8,13 +8,18 @@
 
 #import <Foundation/Foundation.h>
 #import "HARestRequests.h"
+#import "HAHelpRequest.h"
 
+typedef void(^HAHelpRequestServiceListSuccess)(NSArray *helpRequestList);
+typedef void(^HAHelpRequestServiceSuccess)(HAHelpRequest *helpRequest);
+typedef void(^HAHelpRequestServiceFailure)(NSError *error);
 
 @interface HARequestsService : NSObject
 
-- (void)savePosition:(double)longitude latitude:(double)latitude success:(HARestRequestsSuccess)success failure:(HARestRequestsFailure)failure;
-- (void)getRequests:(HARestRequestsSuccess)success failure:(HARestRequestsFailure)failure;
-- (void)takeRequest:(HARestRequestsSuccess)success failure:(HARestRequestsFailure)failure;
+- (void)savePosition:(double)longitude latitude:(double)latitude precision:(double)precision success:(HARestRequestsSuccess)success failure:(HARestRequestsFailure)failure;
+- (void)getRequests:(HAHelpRequestServiceListSuccess)success failure:(HAHelpRequestServiceFailure)failure;
+- (void)takeRequest:(NSString*) requestId success:(HAHelpRequestServiceSuccess)success failure:(HAHelpRequestServiceFailure)failure;
+- (void)finishRequest:(NSString*) requestId success:(HAHelpRequestServiceSuccess)success failure:(HAHelpRequestServiceFailure)failure;
 
 /* Renommage des constantes HAAgent + commentaire des failures du service, service utile ? --> pattern Factory*/
 /* Pas compris le PUT */

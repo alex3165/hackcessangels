@@ -12,10 +12,7 @@
 #import "HAAgent.h"
 
 @interface HARequestsService()
-    @property(nonatomic, strong) Reachability* reach;
-    @property(nonatomic, strong) HALocationService* locationService;
     @property(nonatomic, strong) HARestRequests* restRequest;
-    @property(nonatomic, strong) NSString* idRequest;
 @end
 
 @implementation HARequestsService
@@ -23,13 +20,6 @@
 - (HARequestsService*)init {
     self = [super init];
     if (self) {
-        // Allocate a reachability object
-        self.reach = [Reachability reachabilityWithHostname:@"polaris.membrives.fr"];
-        
-        // Start the notifier, which will cause the reachability object to retain itself!
-        [self.reach startNotifier];
-        
-        self.locationService = [[HALocationService alloc] init];
         self.restRequest = [[HARestRequests alloc]init];
     }
     return self;
@@ -39,23 +29,38 @@
 - (void)savePosition:(double)longitude latitude:(double)latitude precision:(double)precision success:(HARestRequestsSuccess)success failure:(HARestRequestsFailure)failure{
     [self.restRequest PUTrequest:@"agent/position" withParameters:@{@"longitude": [NSNumber numberWithDouble: longitude],@"latitude": [NSNumber numberWithDouble: latitude], @"precision" : [NSNumber numberWithDouble:precision]} success:success failure:failure];
 }
+
 /* GET : récupérer les requêtes en cours */
-- (void)getRequests:(HARestRequestsSuccess)success failure:(HARestRequestsFailure)failure{
+- (void)getRequests:(HAHelpRequestServiceListSuccess)success failure:(HAHelpRequestServiceFailure)failure{
     [self.restRequest GETrequest:@"agent/requests" withParameters:@{@"": @""} success:^(id obj, NSHTTPURLResponse *response){
-        
-        self.idRequest = obj; // obj considéré comme un string
-        
-        // dictionnary : "id", "lat", "long", "precision", "isActive", {HAUser}, {HAAgent}
-        
-    } failure:failure];
+        // obj is a list of dictionnaries, each one representing a single help request.
+        NSMutableArray* rawHelpRequests = [[NSMutableArray alloc] initWithArray: obj];
+        NSMutableArray* helpRequests;
+
+        for (id rawRequest in rawHelpRequests) {
+            [helpRequests addObject: [[HAHelpRequest alloc] initWithDictionary:rawRequest]];
+        }
+
+        success(helpRequests);
+    } failure:^(id obj, NSError* error) {
+        failure(error);
+    }];
 }
 
-// get, params: request ID
+- (void)takeRequest:(NSString*) requestId success:(HAHelpRequestServiceSuccess)success failure:(HAHelpRequestServiceFailure)failure{
+    [self.restRequest POSTrequest:@"agent/requests" withParameters:@{@"Id":requestId, @"TakeRequest": @true} success:^(id obj, NSHTTPURLResponse *response){
+        success([[HAHelpRequest alloc] initWithDictionary:obj]);
+    } failure:^(id obj, NSError* error) {
+        failure(error);
+    }];
+}
 
-/* POST : prendre une requête en cours avec l'id de la requête et le nom de l'agent */
-- (void)takeRequest:(HARestRequestsSuccess)success failure:(HARestRequestsFailure)failure{
-    HAAgent *agent = [HAAgent agentFromKeyChain];
-    [self.restRequest POSTrequest:@"agent/requests" withParameters:@{@"idReq":self.idRequest} success:success failure:failure];
+- (void)finishRequest:(NSString*) requestId success:(HAHelpRequestServiceSuccess)success failure:(HAHelpRequestServiceFailure)failure{
+    [self.restRequest POSTrequest:@"agent/requests" withParameters:@{@"Id":requestId, @"FinishRequest": @true} success:^(id obj, NSHTTPURLResponse *response){
+        success([[HAHelpRequest alloc] initWithDictionary:obj]);
+    } failure:^(id obj, NSError* error) {
+        failure(error);
+    }];
 }
 
 @end

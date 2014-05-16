@@ -114,7 +114,7 @@
     }];
 }
 
-- (void)createAgentWithNameAndPassword:(NSString *)name password:(NSString *)password success:(HARestRequestsSuccess)success failure:(HARestRequestsFailure)failure {
+- (void)createAgentWithEmailAndPassword:(NSString *)name password:(NSString *)password success:(HARestRequestsSuccess)success failure:(HARestRequestsFailure)failure {
     HARestRequests* dcRestRequest = [[HARestRequests alloc] init];
     [dcRestRequest POSTrequest:@"agent" withParameters:@{@"name" : name, @"password":password} success:success failure:failure];
 }
