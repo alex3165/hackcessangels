@@ -57,7 +57,7 @@ NSString *const pGareKey = @"gare";
 
 - (void) saveAgentToKeyChain
 {
-    [UICKeyChainStore setString:self.name forKey:pNameKey service:pServiceId];
+    [UICKeyChainStore setString:self.email forKey:pNameKey service:pServiceId];
     
     NSError *error;
     NSData *cookieData = [NSPropertyListSerialization dataWithPropertyList:[self.cookie properties] format:NSPropertyListXMLFormat_v1_0 options:(NSPropertyListWriteOptions)nil error:&error];
