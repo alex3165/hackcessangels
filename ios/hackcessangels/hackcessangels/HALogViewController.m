@@ -14,7 +14,7 @@
 
 @property (nonatomic, strong) NSString * textEmail;
 @property (nonatomic, strong) NSString * textPassword;
-@property (nonatomic, strong) HAHelpViewController *helpController;
+@property (nonatomic, strong) HACheckCredentials checkCredentials;
 
 @end
 
@@ -32,11 +32,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	
-    self.userService = [HAUserService sharedInstance];
-    self.helpController = [[HAHelpViewController alloc]init];
-    
-    [self checkLoginWithUser]; // on check si on a un user de stocké
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -70,26 +65,17 @@
     
 }
 
-- (IBAction)validateForm:(id)sender
-{
-    // On fait la requête pour vérifier si le user enregistré sur le serveur est bon.
-    [self.userService loginWithEmailAndPassword:self.email.text password:self.password.text success:^(NSDictionary *dico, id obj){
-        [self checkLoginWithUser]; // ----- check du User créé
-        
-    } failure:^(id obj, NSError *error) {
-        NSLog(@"%@",error);
-    }];
+- (void)setCheckCredentialsBlock:(HACheckCredentials)checkCredentials {
+    self.checkCredentials = checkCredentials;
 }
 
-- (void)checkLoginWithUser{
-    
-    // on récupère le user stocké dans keychainStore
-    HAUser *userFromKeychain = [HAUser userFromKeyChain];
-    
-    if (userFromKeychain) { // si on a un user on push vers l'autre view
+- (IBAction)validateForm:(id)sender
+{
+    self.checkCredentials(self.email.text, self.password.text, ^() {
         [self dismissViewControllerAnimated:YES completion:nil];
-    }
-
+    }, ^( NSError *error) {
+        NSLog(@"%@",error);
+    });
 }
 
 @end

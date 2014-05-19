@@ -69,6 +69,7 @@
 		8FBEAE42192100DA0097E151 /* HAHelpRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FBEAE41192100DA0097E151 /* HAHelpRequest.m */; };
 		8FBEAE43192100DA0097E151 /* HAHelpRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FBEAE41192100DA0097E151 /* HAHelpRequest.m */; };
 		8FBEAE4419212BAF0097E151 /* HAAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = 0414A35819098BFB00D23472 /* HAAgent.m */; };
+		8FBEAE47192A42190097E151 /* HAAgentHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FBEAE46192A42190097E151 /* HAAgentHomeViewController.m */; };
 		8FCE639F18AD5E3E00D4C957 /* HAUserService.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FCE639E18AD5E3E00D4C957 /* HAUserService.m */; };
 		8FCE63A018AD5E3E00D4C957 /* HAUserService.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FCE639E18AD5E3E00D4C957 /* HAUserService.m */; };
 		A1330B0718AD62B5002B1828 /* HAUser.m in Sources */ = {isa = PBXBuildFile; fileRef = A1330B0618AD62B5002B1828 /* HAUser.m */; };
@@ -181,6 +182,9 @@
 		8F88460818BFBBB400595CA2 /* HALocationService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HALocationService.m; path = hackcessangels/HALocationService.m; sourceTree = SOURCE_ROOT; };
 		8FBEAE40192100DA0097E151 /* HAHelpRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HAHelpRequest.h; path = hackcessangels/HAHelpRequest.h; sourceTree = SOURCE_ROOT; };
 		8FBEAE41192100DA0097E151 /* HAHelpRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HAHelpRequest.m; path = hackcessangels/HAHelpRequest.m; sourceTree = SOURCE_ROOT; };
+		8FBEAE45192A42190097E151 /* HAAgentHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HAAgentHomeViewController.h; path = hackcessangels/HAAgentHomeViewController.h; sourceTree = SOURCE_ROOT; };
+		8FBEAE46192A42190097E151 /* HAAgentHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HAAgentHomeViewController.m; path = hackcessangels/HAAgentHomeViewController.m; sourceTree = SOURCE_ROOT; };
+		8FBEAE49192A4B120097E151 /* HAAbstractLoginService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HAAbstractLoginService.h; path = hackcessangels/HAAbstractLoginService.h; sourceTree = SOURCE_ROOT; };
 		8FCE639D18AD5E3E00D4C957 /* HAUserService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HAUserService.h; path = hackcessangels/services/HAUserService.h; sourceTree = SOURCE_ROOT; };
 		8FCE639E18AD5E3E00D4C957 /* HAUserService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HAUserService.m; path = hackcessangels/services/HAUserService.m; sourceTree = SOURCE_ROOT; };
 		A1330B0518AD62B5002B1828 /* HAUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HAUser.h; path = hackcessangels/model/HAUser.h; sourceTree = SOURCE_ROOT; };
@@ -263,8 +267,6 @@
 				22601F3B18871EAC008B0179 /* HATileOverlay.h */,
 				22601F3C18871EAC008B0179 /* HATileOverlay.m */,
 				22601F3D18871EAC008B0179 /* HATileOverlayView.h */,
-				8F400A2618F1AE6C006B8342 /* HARestRequests.h */,
-				8F400A2718F1AE6C006B8342 /* HARestRequests.m */,
 				22601F3E18871EAC008B0179 /* HATileOverlayView.m */,
 				22130C00188966E500191955 /* HALocalisation.h */,
 				22130C01188966E500191955 /* HALocalisation.m */,
@@ -375,6 +377,8 @@
 				8F400A2218EDE323006B8342 /* HAHelpProfileView.h */,
 				8F400A2318EDE323006B8342 /* HAHelpProfileView.m */,
 				22601F181886E2DE008B0179 /* HAMapViewController.h */,
+				8FBEAE45192A42190097E151 /* HAAgentHomeViewController.h */,
+				8FBEAE46192A42190097E151 /* HAAgentHomeViewController.m */,
 				22601F191886E2DE008B0179 /* HAMapViewController.m */,
 				0414A3531909890F00D23472 /* HAAgentViewController.h */,
 				0414A3541909890F00D23472 /* HAAgentViewController.m */,
@@ -386,6 +390,7 @@
 		8F57723D18DB7E6400D42D4F /* User */ = {
 			isa = PBXGroup;
 			children = (
+				8FBEAE48192A4AE70097E151 /* Services */,
 				222E375A18BA521C00E3B720 /* HAHelpViewController.h */,
 				222E375B18BA521C00E3B720 /* HAHelpViewController.m */,
 				04F5A81418C8AC5E00ED0CC6 /* HAUserViewController.h */,
@@ -415,15 +420,25 @@
 			name = Shared;
 			sourceTree = "<group>";
 		};
-		8FCE639C18AD5DEF00D4C957 /* services */ = {
+		8FBEAE48192A4AE70097E151 /* Services */ = {
 			isa = PBXGroup;
 			children = (
 				8FCE639D18AD5E3E00D4C957 /* HAUserService.h */,
 				8FCE639E18AD5E3E00D4C957 /* HAUserService.m */,
+			);
+			name = Services;
+			sourceTree = "<group>";
+		};
+		8FCE639C18AD5DEF00D4C957 /* services */ = {
+			isa = PBXGroup;
+			children = (
 				22DA835618B288610014CCA5 /* HAAssistanceService.h */,
 				22DA835718B288610014CCA5 /* HAAssistanceService.m */,
 				8F88460718BFBBB400595CA2 /* HALocationService.h */,
 				8F88460818BFBBB400595CA2 /* HALocationService.m */,
+				8F400A2618F1AE6C006B8342 /* HARestRequests.h */,
+				8F400A2718F1AE6C006B8342 /* HARestRequests.m */,
+				8FBEAE49192A4B120097E151 /* HAAbstractLoginService.h */,
 			);
 			name = services;
 			sourceTree = "<group>";
@@ -504,7 +519,7 @@
 		22601EF81886E2DE008B0179 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "RIEUX Alexandre";
 				TargetAttributes = {
 					22601EFF1886E2DE008B0179 = {
@@ -744,6 +759,7 @@
 				A150295618DB7A81008FC4F1 /* main.m in Sources */,
 				A150295918DB7A81008FC4F1 /* HAAssistanceService.m in Sources */,
 				228D8F03190FE5D2002AE6E2 /* HAUser.m in Sources */,
+				8FBEAE47192A42190097E151 /* HAAgentHomeViewController.m in Sources */,
 				8F400A2418EDE323006B8342 /* HAHelpProfileView.m in Sources */,
 				228D8F06190FE830002AE6E2 /* HARequestsService.m in Sources */,
 				8FBEAE43192100DA0097E151 /* HAHelpRequest.m in Sources */,
@@ -796,7 +812,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -835,7 +850,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -898,7 +912,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B81C1F48A9394E3D818E00EB /* Pods-HackcessAngelsTests.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/HackcessAngels.app/HackcessAngels";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -923,7 +936,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B81C1F48A9394E3D818E00EB /* Pods-HackcessAngelsTests.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/HackcessAngels.app/HackcessAngels";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				FRAMEWORK_SEARCH_PATHS = (

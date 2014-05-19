@@ -99,6 +99,7 @@
 - (void)showModalLoginWithAnimation:(BOOL)animated
 {
     HALogViewController *logViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"loginViewController"];
+    [logViewController setCheckCredentialsBlock:[[HAUserService sharedInstance] getCheckCredentialsBlock]];
     [self presentViewController:logViewController animated:animated completion:nil];
 }
 

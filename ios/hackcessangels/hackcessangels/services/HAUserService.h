@@ -9,11 +9,12 @@
 #import <Foundation/Foundation.h>
 #import "HARestRequests.h"
 #import "HAUser.h"
+#import "HAAbstractLoginService.h"
 
 typedef void(^HAUserServiceSuccess)(HAUser *user);
 typedef void(^HAUserServiceFailure)(NSError *error);
 
-@interface HAUserService : NSObject
+@interface HAUserService : NSObject<HAAbstractLoginService>
 
 + (id)sharedInstance;
 
