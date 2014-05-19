@@ -70,6 +70,7 @@
 		8FBEAE43192100DA0097E151 /* HAHelpRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FBEAE41192100DA0097E151 /* HAHelpRequest.m */; };
 		8FBEAE4419212BAF0097E151 /* HAAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = 0414A35819098BFB00D23472 /* HAAgent.m */; };
 		8FBEAE47192A42190097E151 /* HAAgentHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FBEAE46192A42190097E151 /* HAAgentHomeViewController.m */; };
+		8FBEAE4F192A62370097E151 /* HACurrentStationService.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FBEAE4E192A62370097E151 /* HACurrentStationService.m */; };
 		8FCE639F18AD5E3E00D4C957 /* HAUserService.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FCE639E18AD5E3E00D4C957 /* HAUserService.m */; };
 		8FCE63A018AD5E3E00D4C957 /* HAUserService.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FCE639E18AD5E3E00D4C957 /* HAUserService.m */; };
 		A1330B0718AD62B5002B1828 /* HAUser.m in Sources */ = {isa = PBXBuildFile; fileRef = A1330B0618AD62B5002B1828 /* HAUser.m */; };
@@ -185,6 +186,8 @@
 		8FBEAE45192A42190097E151 /* HAAgentHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HAAgentHomeViewController.h; path = hackcessangels/HAAgentHomeViewController.h; sourceTree = SOURCE_ROOT; };
 		8FBEAE46192A42190097E151 /* HAAgentHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HAAgentHomeViewController.m; path = hackcessangels/HAAgentHomeViewController.m; sourceTree = SOURCE_ROOT; };
 		8FBEAE49192A4B120097E151 /* HAAbstractLoginService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HAAbstractLoginService.h; path = hackcessangels/HAAbstractLoginService.h; sourceTree = SOURCE_ROOT; };
+		8FBEAE4D192A62370097E151 /* HACurrentStationService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HACurrentStationService.h; path = hackcessangels/HACurrentStationService.h; sourceTree = SOURCE_ROOT; };
+		8FBEAE4E192A62370097E151 /* HACurrentStationService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HACurrentStationService.m; path = hackcessangels/HACurrentStationService.m; sourceTree = SOURCE_ROOT; };
 		8FCE639D18AD5E3E00D4C957 /* HAUserService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HAUserService.h; path = hackcessangels/services/HAUserService.h; sourceTree = SOURCE_ROOT; };
 		8FCE639E18AD5E3E00D4C957 /* HAUserService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HAUserService.m; path = hackcessangels/services/HAUserService.m; sourceTree = SOURCE_ROOT; };
 		A1330B0518AD62B5002B1828 /* HAUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HAUser.h; path = hackcessangels/model/HAUser.h; sourceTree = SOURCE_ROOT; };
@@ -248,6 +251,8 @@
 				0414A35C19098FBB00D23472 /* HAAgentService.m */,
 				228D8F04190FE830002AE6E2 /* HARequestsService.h */,
 				228D8F05190FE830002AE6E2 /* HARequestsService.m */,
+				8FBEAE4D192A62370097E151 /* HACurrentStationService.h */,
+				8FBEAE4E192A62370097E151 /* HACurrentStationService.m */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -744,6 +749,7 @@
 				A150294B18DB7A81008FC4F1 /* HAUserViewController.m in Sources */,
 				8F57723B18DB7DE600D42D4F /* HAHelpViewController.m in Sources */,
 				A150294D18DB7A81008FC4F1 /* HAMapViewController.m in Sources */,
+				8FBEAE4F192A62370097E151 /* HACurrentStationService.m in Sources */,
 				A150294F18DB7A81008FC4F1 /* HALocationService.m in Sources */,
 				0414A35D19098FBB00D23472 /* HAAgentService.m in Sources */,
 				0414A35919098BFB00D23472 /* HAAgent.m in Sources */,
