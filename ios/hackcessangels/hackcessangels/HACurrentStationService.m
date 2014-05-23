@@ -14,8 +14,11 @@
 
 @property (nonatomic, strong) HALocationService* locationService;
 @property (nonatomic, strong) HARestRequests* restRequest;
+@property (nonatomic, weak) NSTimer* timer;
 
 @end
+
+NSTimeInterval const kTimeInterval = 15 * 60.0;
 
 @implementation HACurrentStationService
 
@@ -29,11 +32,17 @@
 }
 
 - (void) startReportingLocation {
-    [self.locationService setUpdateCallback:^(CLLocation *newLocation) {
-        // It should be OK to have a circular reference here because we are breaking the cycle in HALocationService::stopAreaTracking.
-        [self reportLocation];
-    }];
+    [self performSelectorInBackground:@selector(startReportingLocationInBackground) withObject:nil];
+}
+
+- (void) startReportingLocationInBackground {
     [self.locationService startAreaTracking];
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:kTimeInterval target:self selector:@selector(reportingTimerFired:) userInfo:nil repeats:YES];
+    
+}
+
+- (void) reportingTimerFired:(NSTimer*) timer {
+    [self reportLocation];
 }
 
 - (void) reportLocation {
@@ -44,11 +53,13 @@
                           success:^(id obj, NSHTTPURLResponse *response) {
     }
                           failure:^(id obj, NSError *error) {
+                              NSLog(@"%@",error);
     }];
 }
 
 - (void) stopReportingLocation {
     [self.locationService stopAreaTracking];
+    [self.timer invalidate];
 }
 
 @end
