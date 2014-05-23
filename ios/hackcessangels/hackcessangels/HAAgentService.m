@@ -14,7 +14,7 @@
 
 @property (nonatomic, strong) HAAgent* currentAgent;
 
-- (void)getAgentWithName:(NSString*) name success:(HAAgentServiceSuccess)success failure:(HAAgentServiceFailure)failure;
+- (void)getAgentWithEmail:(NSString*) name success:(HAAgentServiceSuccess)success failure:(HAAgentServiceFailure)failure;
 
 @end
 
@@ -51,16 +51,16 @@
         return;
     }
     
-    [self getAgentWithName:agent.email success:^(HAAgent *agent) {
+    [self getAgentWithEmail:agent.email success:^(HAAgent *agent) {
         self.currentAgent = agent;
         success(agent);
     } failure:failure];
     return;
 }
 
-- (void)getAgentWithName:(NSString*) name success:(HAAgentServiceSuccess)success failure:(HAAgentServiceFailure)failure {
+- (void)getAgentWithEmail:(NSString*) email success:(HAAgentServiceSuccess)success failure:(HAAgentServiceFailure)failure {
     HARestRequests* haRestRequest = [[HARestRequests alloc] init];
-    [haRestRequest GETrequest:@"user" withParameters:@{@"name" : name} success:^(id obj, NSHTTPURLResponse* response){
+    [haRestRequest GETrequest:@"user" withParameters:@{@"email" : email} success:^(id obj, NSHTTPURLResponse* response){
         // TODO: Do a proper merge of the two objects
         HAAgent *agent = [[HAAgent alloc] initWithDictionary:obj];
         HAAgent *original = [HAAgent agentFromKeyChain];

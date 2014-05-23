@@ -39,13 +39,13 @@ NSString *const pGareKey = @"gare";
 }
 
 + (HAAgent*) agentFromKeyChain {
-    NSString *name = [UICKeyChainStore stringForKey:pNameKey service:pServiceId];
+    NSString *email = [UICKeyChainStore stringForKey:pEmailKey service:pServiceId];
     NSData *cookieData = [UICKeyChainStore dataForKey:pCookieKey service:pServiceId];
-    if (!name || !cookieData) {
+    if (!email || !cookieData) {
         return nil;
     }
     
-    HAAgent *agent = [[HAAgent alloc] initWithDictionary:@{@"name": name}];
+    HAAgent *agent = [[HAAgent alloc] initWithDictionary:@{@"email": email}];
     NSError *error;
     agent.cookie = [[NSHTTPCookie alloc] initWithProperties: [NSPropertyListSerialization propertyListWithData:cookieData options:NSPropertyListImmutable format:NULL error:&error]];
     if (error) {
@@ -57,7 +57,7 @@ NSString *const pGareKey = @"gare";
 
 - (void) saveAgentToKeyChain
 {
-    [UICKeyChainStore setString:self.email forKey:pNameKey service:pServiceId];
+    [UICKeyChainStore setString:self.email forKey:pEmailKey service:pServiceId];
     
     NSError *error;
     NSData *cookieData = [NSPropertyListSerialization dataWithPropertyList:[self.cookie properties] format:NSPropertyListXMLFormat_v1_0 options:(NSPropertyListWriteOptions)nil error:&error];
