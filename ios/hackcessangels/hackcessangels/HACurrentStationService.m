@@ -32,13 +32,17 @@ NSTimeInterval const kTimeInterval = 15 * 60.0;
 }
 
 - (void) startReportingLocation {
-    [self performSelectorInBackground:@selector(startReportingLocationInBackground) withObject:nil];
+    [self performSelectorInBackground:@selector(reportingLocationInBackground) withObject:nil];
 }
 
-- (void) startReportingLocationInBackground {
+- (void) reportingLocationInBackground {
     [self.locationService startAreaTracking];
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:kTimeInterval target:self selector:@selector(reportingTimerFired:) userInfo:nil repeats:YES];
+
+    NSRunLoop* currentRunLoop = [NSRunLoop currentRunLoop];
     
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:kTimeInterval target:self selector:@selector(reportingTimerFired:) userInfo:nil repeats:YES];
+
+    [currentRunLoop run];
 }
 
 - (void) reportingTimerFired:(NSTimer*) timer {
@@ -46,6 +50,10 @@ NSTimeInterval const kTimeInterval = 15 * 60.0;
 }
 
 - (void) reportLocation {
+    if (self.locationService.location == nil) {
+        return;
+    }
+    
     [self.restRequest POSTrequest:@"agent/position" withParameters:
   @{@"latitude": [NSNumber numberWithDouble: self.locationService.location.coordinate.latitude],
     @"longitude": [NSNumber numberWithDouble: self.locationService.location.coordinate.longitude],
