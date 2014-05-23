@@ -33,7 +33,9 @@ func NewApiUser(u *model.User, private bool) *ApiUser {
 	au.Disability = &u.Disability
 	au.DisabilityType = &u.DisabilityType
 	au.Phone = &u.Phone
-	au.Image = &u.Image
+	if len(u.Image) != 0 {
+		au.Image = &u.Image
+	}
 	au.IsAgent = &u.IsAgent
 	if private {
 		au.PushToken = &u.PushToken
