@@ -10,9 +10,13 @@ type DisabilityType int
 
 const (
 	Unknown DisabilityType = iota
-	Physical
-	Vision
-	Hearing
+	Physical_wheelchair
+    Physical_powerchair
+    Physical_walk
+	Vision_blind
+    Vision_lowvision
+	Hearing_call
+    Hearing_SMS
 	Mental
 	Other
 )
