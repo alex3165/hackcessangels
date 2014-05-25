@@ -21,7 +21,7 @@
     @property(nonatomic, strong) NSTimer* timer;
     @property(nonatomic, strong) HALocationService* locationService;
     @property(nonatomic,strong) HAPeripheral* peripheralService;
-
+    @property(nonatomic,strong) HACentralManager* managerService;
     @property(nonatomic, assign) BOOL requestInFlight;
 
     @property(nonatomic, strong) HAAssistanceRequestAbort abortCallback;
@@ -91,8 +91,8 @@
     } else {
         // Set an advertising
         //NSLog(@"Bluetooth activate");
-        self.peripheralService = [[HAPeripheral alloc]init];
-        //[self.peripheralService.peripheralManager startAdvertising:@{ CBAdvertisementDataServiceUUIDsKey : @[[CBUUID UUIDWithString:HELP_SERVICE_UUID]] }];
+        self.peripheralService = [[HAPeripheral alloc]init]; // envoi l'appel à l'aide bluetooth
+        self.managerService = [[HACentralManager alloc]initForResponse]; // écoute si il y a une réponse
     }
 }
 

@@ -8,16 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-#import "HAUserService.h"
-#import "HAUser.h"
+#import "HAAbstractLoginService.h"
 
 @interface HALogViewController : UIViewController
 
-@property (nonatomic, strong) HAUserService *userService;
-@property (nonatomic, strong) HAUser *actualUser;
-
 @property (weak, nonatomic) IBOutlet UITextField *email;
 @property (weak, nonatomic) IBOutlet UITextField *password;
+
+- (void)setCheckCredentialsBlock:(HACheckCredentials) checkCredentials;
 
 - (IBAction)saisieReturn:(id)sender;
 - (IBAction)touchOutside:(id)sender;

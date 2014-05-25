@@ -11,11 +11,12 @@
 #import <Foundation/Foundation.h>
 #import "HARestRequests.h"
 #import "HAAgent.h"
+#import "HAAbstractLoginService.h"
 
 typedef void(^HAAgentServiceSuccess)(HAAgent *agent);
 typedef void(^HAAgentServiceFailure)(NSError *error);
 
-@interface HAAgentService : NSObject
+@interface HAAgentService : NSObject<HAAbstractLoginService>
 
 + (id)sharedInstance;
 

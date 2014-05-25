@@ -17,7 +17,13 @@
 @property (strong, nonatomic) CBMutableCharacteristic *transferCharacteristic;
 
 @property (nonatomic, strong) HAUser *actualUser;
+@property (nonatomic, strong) NSMutableData *temporaryData;
 @property (strong, nonatomic) NSData *dataToSend;
 @property (nonatomic, readwrite) NSInteger sendDataIndex;
+
+@property (nonatomic, assign) BOOL isResponse;
+
+//-(void)encodeUser:(HAUser *)user mutableData:(NSMutableData *) data;
+- (id)initForResponse;
 
 @end

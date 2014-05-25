@@ -83,6 +83,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="UFK-dg-dOi">
+                                <rect key="frame" x="32" y="324" width="63" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="A propos">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="infos:" destination="8aD-4F-5Sx" eventType="touchUpInside" id="TW4-km-IAO"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="VhU-9v-a1h">
+                                <rect key="frame" x="226" y="324" width="56" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Accès +">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="accesplus:" destination="8aD-4F-5Sx" eventType="touchUpInside" id="WC6-KJ-cfr"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="TdY-uj-XIK">
                                 <rect key="frame" x="73" y="208" width="174" height="69"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -114,12 +134,54 @@
                     </view>
                     <navigationItem key="navigationItem" id="w8a-pP-DdI"/>
                     <connections>
+                        <outlet property="accesplus" destination="VhU-9v-a1h" id="SW9-nR-E88"/>
                         <outlet property="helpme" destination="TdY-uj-XIK" id="4C9-XE-PbR"/>
+                        <outlet property="infos" destination="UFK-dg-dOi" id="Iet-rG-vG3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mHI-fN-MKC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="953" y="-162"/>
+        </scene>
+        <!--Help In Process-->
+        <scene sceneID="Qhe-mX-hcy">
+            <objects>
+                <viewController id="NSD-k3-dK7" customClass="HAHelpInProcess" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Bct-Jn-Yw5">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="APPEL EN COURS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="zrO-22-xBQ">
+                                <rect key="frame" x="87" y="155" width="147" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <navigationBar contentMode="scaleToFill" id="sfX-ro-Aq6">
+                                <rect key="frame" x="0.0" y="29" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Appel" id="W4V-Ac-MsN"/>
+                                </items>
+                            </navigationBar>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Zsv-tL-Lcv">
+                                <rect key="frame" x="107" y="502" width="107" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Annuler">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" id="BLQ-OQ-UJC">
+                                <rect key="frame" x="150" y="303" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
+                        </subviews>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eKI-E7-uek" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1593" y="-162"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="i1N-Gy-esT">
@@ -272,6 +334,53 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Ue-IO-PbU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="787" y="-838"/>
+        </scene>
+        <!--Acces View Controller-->
+        <scene sceneID="REF-bG-XlQ">
+            <objects>
+                <viewController storyboardIdentifier="accesViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Uo4-DB-43d" customClass="HAAccesViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="m44-B3-dUX">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Page Accès +" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="OBn-9R-DJI">
+                                <rect key="frame" x="107" y="279" width="107" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="xLi-EZ-Fru"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WOP-qT-nvd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="953" y="604"/>
+        </scene>
+        <!--Infos View Controller-->
+        <scene sceneID="h41-RH-bwK">
+            <objects>
+                <viewController storyboardIdentifier="infosViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="7ec-Xz-DnJ" customClass="HAInfosViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ti2-5S-HQC">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="On retrouve ici les informations " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="tKA-SD-JSa">
+                                <rect key="frame" x="36" y="29" width="248" height="246"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="paJ-dZ-aah"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="B6L-OF-ihO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1593" y="638"/>
         </scene>
     </scenes>
     <resources>

@@ -118,7 +118,7 @@
     HARestRequests* dcRestRequest = [[HARestRequests alloc] init];
     [dcRestRequest POSTrequest:@"user" withParameters:@{@"email" : email, @"password":password} success:success failure:failure];
 }
-    
+
 - (void)loginWithEmailAndPassword:(NSString *)email password:(NSString *)password success:(HARestRequestsSuccess)success failure:(HARestRequestsFailure)failure {
     HARestRequests* dcRestRequest = [[HARestRequests alloc] init];
     [dcRestRequest POSTrequest:@"user/login" withParameters:@{@"email" : email, @"password":password} success:^(id object, NSHTTPURLResponse* response){
@@ -134,6 +134,19 @@
         [user saveUserToKeyChain];
         success(user, response);
     } failure:failure];
+}
+
+- (HACheckCredentials)getCheckCredentialsBlock {
+    return ^(NSString* login, NSString* password,
+             HALoginSuccess success,
+             HALoginFailure failure) {
+        HAUserService* service = [HAUserService sharedInstance];
+        [service loginWithEmailAndPassword:login password:password success:^(NSDictionary *dico, id obj){
+            success();
+        } failure:^(id obj, NSError *error) {
+            failure(error);
+        }];
+    };
 }
 
 - (void)deleteUserWithEmail:(NSString *)email success:(HARestRequestsSuccess)success failure:(HARestRequestsFailure)failure {

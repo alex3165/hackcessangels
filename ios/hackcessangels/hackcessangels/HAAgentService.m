@@ -14,7 +14,7 @@
 
 @property (nonatomic, strong) HAAgent* currentAgent;
 
-- (void)getAgentWithName:(NSString*) name success:(HAAgentServiceSuccess)success failure:(HAAgentServiceFailure)failure;
+- (void)getAgentWithEmail:(NSString*) name success:(HAAgentServiceSuccess)success failure:(HAAgentServiceFailure)failure;
 
 @end
 
@@ -47,20 +47,20 @@
         // No user logged in. How is this possible?
         NSMutableDictionary* details = [NSMutableDictionary dictionary];
         [details setValue:@"No known agent; login required" forKey:NSLocalizedDescriptionKey];
-        //failure([[NSError alloc] initWithDomain:@"agent" code:401 agentInfo:details]);
+        failure([[NSError alloc] initWithDomain:@"user" code:401 userInfo:details]);
         return;
     }
     
-    [self getAgentWithName:agent.email success:^(HAAgent *agent) {
+    [self getAgentWithEmail:agent.email success:^(HAAgent *agent) {
         self.currentAgent = agent;
         success(agent);
     } failure:failure];
     return;
 }
 
-- (void)getAgentWithName:(NSString*) name success:(HAAgentServiceSuccess)success failure:(HAAgentServiceFailure)failure {
+- (void)getAgentWithEmail:(NSString*) email success:(HAAgentServiceSuccess)success failure:(HAAgentServiceFailure)failure {
     HARestRequests* haRestRequest = [[HARestRequests alloc] init];
-    [haRestRequest GETrequest:@"agent" withParameters:@{@"name" : name} success:^(id obj, NSHTTPURLResponse* response){
+    [haRestRequest GETrequest:@"user" withParameters:@{@"email" : email} success:^(id obj, NSHTTPURLResponse* response){
         // TODO: Do a proper merge of the two objects
         HAAgent *agent = [[HAAgent alloc] initWithDictionary:obj];
         HAAgent *original = [HAAgent agentFromKeyChain];
@@ -71,8 +71,8 @@
             success(agent);
         }
     } failure:^(id obj, NSError *error) {
-        //NSError* newError = [[NSError alloc] initWithDomain:@"server" code:[[(NSDictionary*) obj objectForKey:@"status"] intValue] agentInfo:error.agentInfo];
-        //failure(newError);
+        NSError* newError = [[NSError alloc] initWithDomain:@"server" code:[[(NSDictionary*) obj objectForKey:@"status"] intValue] userInfo:error.userInfo];
+        failure(newError);
     }];
 }
 
@@ -106,7 +106,7 @@
         [parameters setObject:[agent.image base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength] forKey:pImageKey];
     }
     
-    [requestService PUTrequest:@"agent" withParameters: [[NSDictionary alloc] initWithObjectsAndKeys:parameters, @"data", nil] success:^(id obj, NSHTTPURLResponse *response) {
+    [requestService PUTrequest:@"user" withParameters: [[NSDictionary alloc] initWithObjectsAndKeys:parameters, @"data", nil] success:^(id obj, NSHTTPURLResponse *response) {
         self.currentAgent = [[HAAgent alloc] initWithDictionary:obj];
         success(self.currentAgent);
     } failure:^(id obj, NSError *error) {
@@ -114,14 +114,14 @@
     }];
 }
 
-- (void)createAgentWithNameAndPassword:(NSString *)name password:(NSString *)password success:(HARestRequestsSuccess)success failure:(HARestRequestsFailure)failure {
+- (void)createAgentWithEmailAndPassword:(NSString *)name password:(NSString *)password success:(HARestRequestsSuccess)success failure:(HARestRequestsFailure)failure {
     HARestRequests* dcRestRequest = [[HARestRequests alloc] init];
-    [dcRestRequest POSTrequest:@"agent" withParameters:@{@"name" : name, @"password":password} success:success failure:failure];
+    [dcRestRequest POSTrequest:@"user" withParameters:@{@"name" : name, @"password":password} success:success failure:failure];
 }
 
 - (void)loginWithEmailAndPassword:(NSString *)email password:(NSString *)password success:(HARestRequestsSuccess)success failure:(HARestRequestsFailure)failure {
     HARestRequests* dcRestRequest = [[HARestRequests alloc] init];
-    [dcRestRequest POSTrequest:@"agent/login" withParameters:@{@"email" : email, @"password":password} success:^(id object, NSHTTPURLResponse* response){
+    [dcRestRequest POSTrequest:@"user/login" withParameters:@{@"email" : email, @"password":password} success:^(id object, NSHTTPURLResponse* response){
         
         NSDictionary *agentSetting = [NSDictionary dictionaryWithObjectsAndKeys:email,@"email", nil];
         
@@ -136,9 +136,22 @@
     } failure:failure];
 }
 
+- (HACheckCredentials)getCheckCredentialsBlock {
+    return ^(NSString* login, NSString* password,
+             HALoginSuccess success,
+             HALoginFailure failure) {
+        HAAgentService* service = [HAAgentService sharedInstance];
+        [service loginWithEmailAndPassword:login password:password success:^(NSDictionary *dico, id obj){
+            success();
+        } failure:^(id obj, NSError *error) {
+            failure(error);
+        }];
+    };
+}
+
 - (void)deleteAgentWithEmail:(NSString *)email success:(HARestRequestsSuccess)success failure:(HARestRequestsFailure)failure {
     HARestRequests* dcRestRequest = [[HARestRequests alloc] init];
-    [dcRestRequest DELETErequest:@"agent" withParameters:@{@"email" : email} success:success failure:failure];
+    [dcRestRequest DELETErequest:@"user" withParameters:@{@"email" : email} success:success failure:failure];
 }
 
 @end

@@ -15,8 +15,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextInput;
 @property (weak, nonatomic) IBOutlet UIImageView *image;
 @property (weak, nonatomic) IBOutlet UITextField *nameTextInput;
-@property (weak, nonatomic) IBOutlet UITextField *gareTextInput;
 @property (weak, nonatomic) IBOutlet UITextField *numeroTextInput;
+@property (weak, nonatomic) IBOutlet UITextField *gareTextInput;
 @property (nonatomic,weak) IBOutlet UIScrollView *scroll;
 
 @property (weak, nonatomic) IBOutlet UIButton *save;

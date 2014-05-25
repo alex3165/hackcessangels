@@ -29,7 +29,7 @@ NSString *const pGareKey = @"gare";
         self.password = [dico objectForKey:@"password"];
         self.name = [dico objectForKey:@"name"];
         self.phone = [dico objectForKey:@"phone"];
-        self.gare = [dico objectForKey:@"gare"];
+        //self.gare = [dico objectForKey:@"gare"];
         if ([dico objectForKey:@"image"] != nil) {
             self.image = [[NSData alloc] initWithBase64EncodedString:[dico objectForKey:@"image"] options:NSDataBase64DecodingIgnoreUnknownCharacters];
         }
@@ -39,13 +39,13 @@ NSString *const pGareKey = @"gare";
 }
 
 + (HAAgent*) agentFromKeyChain {
-    NSString *name = [UICKeyChainStore stringForKey:pNameKey service:pServiceId];
+    NSString *email = [UICKeyChainStore stringForKey:pEmailKey service:pServiceId];
     NSData *cookieData = [UICKeyChainStore dataForKey:pCookieKey service:pServiceId];
-    if (!name || !cookieData) {
+    if (!email || !cookieData) {
         return nil;
     }
     
-    HAAgent *agent = [[HAAgent alloc] initWithDictionary:@{@"name": name}];
+    HAAgent *agent = [[HAAgent alloc] initWithDictionary:@{@"email": email}];
     NSError *error;
     agent.cookie = [[NSHTTPCookie alloc] initWithProperties: [NSPropertyListSerialization propertyListWithData:cookieData options:NSPropertyListImmutable format:NULL error:&error]];
     if (error) {
@@ -57,7 +57,7 @@ NSString *const pGareKey = @"gare";
 
 - (void) saveAgentToKeyChain
 {
-    [UICKeyChainStore setString:self.name forKey:pNameKey service:pServiceId];
+    [UICKeyChainStore setString:self.email forKey:pEmailKey service:pServiceId];
     
     NSError *error;
     NSData *cookieData = [NSPropertyListSerialization dataWithPropertyList:[self.cookie properties] format:NSPropertyListXMLFormat_v1_0 options:(NSPropertyListWriteOptions)nil error:&error];
