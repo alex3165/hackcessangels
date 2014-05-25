@@ -17,6 +17,7 @@ type ApiUser struct {
 	Description    *string               `json:"description,omitempty"`
 	Image          *[]byte               `json:"image,omitempty"`
 	Phone          *string               `json:"phone,omitempty"`
+	EmergencyPhone *string               `json:"phoneUrgence,omitempty"`
 	Disability     *string               `json:"disability,omitempty"`
 	DisabilityType *model.DisabilityType `json:"disabilityType,omitempty"`
 	PushToken      *string               `json:"pushToken,omitempty"`
@@ -33,6 +34,7 @@ func NewApiUser(u *model.User, private bool) *ApiUser {
 	au.Disability = &u.Disability
 	au.DisabilityType = &u.DisabilityType
 	au.Phone = &u.Phone
+	au.EmergencyPhone = &u.EmergencyPhone
 	if len(u.Image) != 0 {
 		au.Image = &u.Image
 	}
@@ -67,6 +69,9 @@ func (au *ApiUser) fillStorageUser(u *model.User) (err error) {
 	}
 	if au.Phone != nil {
 		u.Phone = *au.Phone
+	}
+	if au.EmergencyPhone != nil {
+		u.EmergencyPhone = *au.EmergencyPhone
 	}
 	if au.Image != nil {
 		u.Image = *au.Image

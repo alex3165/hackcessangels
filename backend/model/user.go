@@ -11,12 +11,12 @@ type DisabilityType int
 const (
 	Unknown DisabilityType = iota
 	Physical_wheelchair
-    Physical_powerchair
-    Physical_walk
+	Physical_powerchair
+	Physical_walk
 	Vision_blind
-    Vision_lowvision
+	Vision_lowvision
 	Hearing_call
-    Hearing_SMS
+	Hearing_SMS
 	Mental
 	Other
 )
@@ -29,10 +29,11 @@ type User struct {
 	Email string
 	LoggedAccount
 
-	Name        string
-	Description string
-	Image       []byte
-	Phone       string
+	Name           string
+	Description    string
+	Image          []byte
+	Phone          string
+	EmergencyPhone string
 
 	Disability     string
 	DisabilityType DisabilityType
