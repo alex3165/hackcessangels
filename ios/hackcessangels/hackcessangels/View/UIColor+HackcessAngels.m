@@ -10,11 +10,11 @@
 
 @implementation UIColor (HackcessAngels)
 
-+ (UIColor *)HA_graybg
++ (UIColor *)HA_graybg // nuance rouge
 {
     return [UIColor colorWithRed:247.0f/255.0f green:245.0f/255.0f blue:244.0f/255.0f alpha:1.0];
 }
-+ (UIColor *)HA_grayblue
++ (UIColor *)HA_grayblue // Profil --> nuance bleu verte
 {
     return [UIColor colorWithRed:236.0f/255.0f green:240.0f/255.0f blue:241.0f/255.0f alpha:1.0];
 }
