@@ -14,7 +14,7 @@
 #import "HAInfosViewController.h"
 #import "HAAccesViewController.h"
 
-@interface HAHelpViewController : UIViewController
+@interface HAHelpViewController : UIViewController <UITabBarDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *helpme;
 

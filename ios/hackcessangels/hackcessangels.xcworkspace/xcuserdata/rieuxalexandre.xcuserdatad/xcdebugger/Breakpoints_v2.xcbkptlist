@@ -153,12 +153,12 @@
                   symbolName = "-[HAPeripheral peripheralManagerDidUpdateState:]"
                   moduleName = "HackcessAngels"
                   urlString = "file:///Users/rieuxalexandre/Documents/developpement/hackcessangels/ios/HackcessAngels/HackcessAngels/HAPeripheral.m"
-                  timestampString = "422718463.046727"
+                  timestampString = "422724270.581227"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "66"
                   endingLineNumber = "66"
-                  offsetFromSymbolStart = "1115">
+                  offsetFromSymbolStart = "1252">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -167,12 +167,12 @@
                   symbolName = "-[HAPeripheral peripheralManagerDidUpdateState:]"
                   moduleName = "HackcessAngels"
                   urlString = "file:///Users/rieuxalexandre/Documents/developpement/hackcessangels/ios/HackcessAngels/HackcessAngels/HAPeripheral.m"
-                  timestampString = "422718463.046918"
+                  timestampString = "422724270.581517"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "66"
                   endingLineNumber = "66"
-                  offsetFromSymbolStart = "1227">
+                  offsetFromSymbolStart = "1336">
                </Location>
             </Locations>
          </BreakpointContent>
