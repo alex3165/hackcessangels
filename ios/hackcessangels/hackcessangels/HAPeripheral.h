@@ -24,5 +24,6 @@
 @property (nonatomic, assign) BOOL isResponse;
 
 //-(void)encodeUser:(HAUser *)user mutableData:(NSMutableData *) data;
+- (id)initForResponse;
 
 @end

@@ -156,7 +156,7 @@
     // Have we got everything we need?
     if ([stringFromData isEqualToString:@"EOM"]) {
         
-        //NSString *msgFromData = [[NSString alloc] initWithData:self.data encoding:NSUTF8StringEncoding];
+        NSString *msgFromData = [[NSString alloc] initWithData:self.data encoding:NSUTF8StringEncoding];
         NSLog(@"Ok on a les datas");
         if (!self.isResponse) {
             
@@ -175,6 +175,8 @@
             }
             
             //NSLog(@"%@", msgFromData);
+        }else if([msgFromData isEqualToString:kRESPONSE_MESSAGE]){
+            NSLog(@"quelqu'un va venir vous aider");
         }
 //        else if ([msgFromData isEqualToString:kRESPONSE_MESSAGE]){
 //            NSLog(@"ok l'appel à l'aide a été pris en compte");
@@ -217,7 +219,6 @@
 }
 
 - (void)cleanup {
-    
     // See if we are subscribed to a characteristic on the peripheral
     if (self.discoveredPeripheral.services != nil) {
         for (CBService *service in self.discoveredPeripheral.services) {

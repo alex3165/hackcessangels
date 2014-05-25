@@ -15,9 +15,9 @@
 
 
 @interface HAMapViewController () <HACentralManagerDelegate>
-@property (nonatomic, weak) IBOutlet HAHelpProfileView *helpProfileView;
-@property (nonatomic, weak) IBOutlet HACallUserView *callUserView;
-@property (nonatomic, weak) IBOutlet UIPanGestureRecognizer *gestureRecognizer;
+    @property (nonatomic, weak) IBOutlet HAHelpProfileView *helpProfileView;
+    @property (nonatomic, weak) IBOutlet HACallUserView *callUserView;
+    @property (nonatomic, weak) IBOutlet UIPanGestureRecognizer *gestureRecognizer;
 @end
 
 
@@ -138,8 +138,15 @@ NSString * address = @"10 adresse des jonquilles";
 
 
 - (IBAction)PositiveAnswerForHelp:(id)sender {
-
-
+    
+    [self.bluetoothmanager cleanup]; // on arette d'écouter si il y a des méssages
+    if (self.peripheralForResponse == nil) {
+        self.peripheralForResponse = [[HAPeripheral alloc] initForResponse]; // envoi une réponse positive si l'agent appui sur "j'aide"
+    }else{
+        NSLog(@"Du calme avec la réponse d'appel à l'aide");
+    }
+    //self.peripheralForResponse = [[HAPeripheral alloc] initForResponse]; // envoi une réponse positive si l'agent appui sur "j'aide"
+    
 }
 /******************************************************************************************************************************
  *
@@ -155,7 +162,6 @@ NSString * address = @"10 adresse des jonquilles";
 -(void)helpValueChanged:(BOOL)newValue
 {
     [self.helpok setHidden:!newValue];
-    
     UILocalNotification *localNotif = [[UILocalNotification alloc] init];
     localNotif.alertBody = @"quelqu'un a besoin de votre aide";
     localNotif.alertAction = @"Appel à l'aide";

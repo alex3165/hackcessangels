@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "HARestRequests.h"
 #import "HAPeripheral.h"
+#import "HACentralManager.h"
 
 // Block called when the request is aborted (typically, no response from any agent within X minutes).
 typedef void(^HAAssistanceRequestAbort)();
@@ -20,6 +21,7 @@ typedef void(^HAAssistanceRequestAgentContacted)(NSString* agentName);
 typedef void(^HAAssistanceRequestSuccess)();
 
 @interface HAAssistanceService : NSObject
+
 - (void)startHelpRequest:(HAAssistanceRequestAbort) abort agentContacted:(HAAssistanceRequestAgentContacted) agentContacted success:(HAAssistanceRequestSuccess) success;
 - (void)stopHelpRequest;
 

@@ -26,4 +26,7 @@
 
 @property (nonatomic, assign) BOOL isResponse;
 
+- (id)initForResponse;
+- (void)cleanup;
+
 @end

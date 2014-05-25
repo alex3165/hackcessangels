@@ -68,6 +68,7 @@
 }
 
 - (void)peripheralManager:(CBPeripheralManager *)peripheral central:(CBCentral *)central didSubscribeToCharacteristic:(CBCharacteristic *)characteristic {
+    
     if (!self.isResponse) {
         //self.dataToSend = [kHELP_MESSAGE dataUsingEncoding:NSUTF8StringEncoding];
         self.actualUser = [HAUser userFromKeyChain];
@@ -80,6 +81,7 @@
                         @"name" : userName,
                         @"phone" : userPhone,
                         @"email" : userEmail};
+        // typeHandicap - longitude - latitude - (image)
         NSError *err;
         self.dataToSend = [NSPropertyListSerialization dataWithPropertyList:userDictionary format:NSPropertyListXMLFormat_v1_0 options:(NSPropertyListWriteOptions)nil error:&err];
         
