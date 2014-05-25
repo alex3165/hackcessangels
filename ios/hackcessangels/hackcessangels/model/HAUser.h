@@ -8,6 +8,19 @@
 
 #import <Foundation/Foundation.h>
 
+typedef enum HAUserDisability : NSUInteger {
+       Unknown,
+       Physical_wheelchair,
+       Physical_powerchair,
+       Physical_walk,
+       Vision_blind,
+       Vision_lowvision,
+       Hearing_call,
+       Hearing_SMS,
+       Mental,
+       Other
+} HAUSerDisability ;
+
 extern NSString *const kServiceId;
 extern NSString *const kPasswordKey;
 extern NSString *const kEmailKey;
@@ -24,6 +37,7 @@ extern NSString *const kNumeroKey;
 @property (nonatomic, strong) NSString *description;
 @property (nonatomic, strong) NSString *phone;
 @property (nonatomic, strong) NSString *disability;
+@property (nonatomic, assign) enum  HAUserDisability disabilityType;
 @property (nonatomic, strong) NSData *image;
 @property (nonatomic, strong) NSHTTPCookie *cookie;
 
