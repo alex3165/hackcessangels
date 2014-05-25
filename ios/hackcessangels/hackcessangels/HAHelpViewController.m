@@ -13,6 +13,7 @@
 #import "HAHelpInProcess.h"
 #import "HAAccesViewController.h"
 #import "HAInfosViewController.h"
+#import "UIColor+HackcessAngels.h"
 
 @interface HAHelpViewController ()
 
@@ -33,6 +34,13 @@
 {
     [super viewDidLoad];
     [self checkUser];
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    self.navigationController.navigationBar.backgroundColor = [UIColor blackColor];
+    self.view.backgroundColor = [UIColor HA_graybg];
 }
 
 - (IBAction)helpme:(id)sender {
@@ -99,6 +107,7 @@
 - (void)showModalLoginWithAnimation:(BOOL)animated
 {
     HALogViewController *logViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"loginViewController"];
+    [logViewController setCheckCredentialsBlock:[[HAUserService sharedInstance] getCheckCredentialsBlock]];
     [self presentViewController:logViewController animated:animated completion:nil];
 }
 

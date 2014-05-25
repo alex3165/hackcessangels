@@ -1,19 +1,28 @@
 //
-//  AppDelegate.m
-//  HackcessAngels
-//
-//  Created by RIEUX Alexandre on 15/01/2014.
-//  Copyright (c) 2014 RIEUX Alexandre. All rights reserved.
+//  AppDelegateAgents.m
+//  HackcessAngelsAgents
 //
 
-#import "AppDelegate.h"
+#import "AppDelegateAgents.h"
 
-@implementation AppDelegate
+#import "HACurrentStationService.h"
+
+@interface AppDelegateAgents()
+
+@property (nonatomic, strong) HACurrentStationService* currentStationService;
+
+@end
+
+@implementation AppDelegateAgents
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [[UINavigationBar appearance] setTintColor:[UIColor redColor]];
     [[UINavigationBar appearance] setBackgroundColor:[UIColor redColor]];
+    
+    // Periodically report location to server.
+    self.currentStationService = [[HACurrentStationService alloc] init];
+    [self.currentStationService startReportingLocation];
     
     // Override point for customization after application launch.
     return YES;

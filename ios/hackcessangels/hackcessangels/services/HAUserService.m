@@ -136,6 +136,19 @@
     } failure:failure];
 }
 
+- (HACheckCredentials)getCheckCredentialsBlock {
+    return ^(NSString* login, NSString* password,
+             HALoginSuccess success,
+             HALoginFailure failure) {
+        HAUserService* service = [HAUserService sharedInstance];
+        [service loginWithEmailAndPassword:login password:password success:^(NSDictionary *dico, id obj){
+            success();
+        } failure:^(id obj, NSError *error) {
+            failure(error);
+        }];
+    };
+}
+
 - (void)deleteUserWithEmail:(NSString *)email success:(HARestRequestsSuccess)success failure:(HARestRequestsFailure)failure {
     HARestRequests* dcRestRequest = [[HARestRequests alloc] init];
     [dcRestRequest DELETErequest:@"user" withParameters:@{@"email" : email} success:success failure:failure];

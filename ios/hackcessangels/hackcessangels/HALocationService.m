@@ -39,6 +39,7 @@
 
 - (void) stopLocation {
     [self.locationManager stopUpdatingLocation];
+    self.update = nil;
 }
 
 - (bool) startAreaTracking {
@@ -59,6 +60,7 @@
 
 - (void) stopAreaTracking {
     [self.locationManager stopMonitoringSignificantLocationChanges];
+    self.update = nil;
 }
 
 - (void) setUpdateCallback:(HALocationServiceLocationUpdate)updated {
