@@ -13,9 +13,20 @@
 // Libs
 #import "AFNetworking.h"
 
+typedef enum HAUserSimpleDisability : NSUInteger {
+    kAuditif,
+    kMoteur,
+    kVisuel,
+    kCognitif,
+    kAutre
+} HAUserSimpleDisability;
+
 @interface HAUserViewController : UIViewController <UINavigationControllerDelegate,UIImagePickerControllerDelegate,UIScrollViewDelegate>
 
-@property (weak, nonatomic) UIPickerView *pickerView;
+
+
+
+@property (weak, nonatomic) IBOutlet UIPickerView *pickerView;
 
 @property (weak, nonatomic) IBOutlet UILabel *emailLabel;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextInput;
