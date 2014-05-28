@@ -129,6 +129,16 @@
                                     <segue destination="4Kq-j2-Pec" kind="push" id="Xvr-gc-ee5"/>
                                 </connections>
                             </button>
+                            <tabBar contentMode="scaleToFill" id="TdS-B9-f2l">
+                                <rect key="frame" x="0.0" y="519" width="320" height="49"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <items>
+                                    <tabBarItem title="Informations" image="informations30x30" id="RJ8-4k-8Mu"/>
+                                    <tabBarItem title="Profil" image="profil30x30" id="MyW-0F-qmk"/>
+                                    <tabBarItem title="Assistance" image="plus30x30" id="jVO-JX-6yg"/>
+                                </items>
+                            </tabBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -349,7 +359,7 @@
                                             <action selector="autre:" destination="4Kq-j2-Pec" eventType="touchUpInside" id="fDg-4G-TeC"/>
                                         </connections>
                                     </button>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="2CD6287D-83FD-425A-911C-BEC460FE1717" id="rwS-Pm-HWo">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="F63C59F2-13BC-4D52-9177-FD17A343B737" id="rwS-Pm-HWo">
                                         <rect key="frame" x="0.0" y="87" width="164" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
@@ -522,7 +532,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="2CD6287D-83FD-425A-911C-BEC460FE1717" width="210" height="210">
+        <image name="F63C59F2-13BC-4D52-9177-FD17A343B737" width="210" height="210">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOzxYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBEW
 GxwgISksLzU4VSRudWxs1AkKCwwNDg8QViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBzV05TQ29sb3KA
@@ -2801,8 +2811,11 @@ AAIThgAAAAAAAAQBAAAAAAAAAD8AAAAAAAAAAAAAAAAAAhOIA
         </image>
         <image name="cognitif" width="72" height="69"/>
         <image name="fauteil" width="72" height="71"/>
+        <image name="informations30x30" width="30" height="30"/>
         <image name="malEntendant" width="72" height="69"/>
         <image name="malVoyant" width="72" height="71"/>
+        <image name="plus30x30" width="30" height="30"/>
+        <image name="profil30x30" width="30" height="30"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
