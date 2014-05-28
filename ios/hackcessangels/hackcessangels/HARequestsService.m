@@ -25,11 +25,6 @@
     return self;
 }
 
-/* PUT : Envoi de la position agent */
-- (void)savePosition:(double)longitude latitude:(double)latitude precision:(double)precision success:(HARestRequestsSuccess)success failure:(HARestRequestsFailure)failure{
-    [self.restRequest PUTrequest:@"agent/position" withParameters:@{@"longitude": [NSNumber numberWithDouble: longitude],@"latitude": [NSNumber numberWithDouble: latitude], @"precision" : [NSNumber numberWithDouble:precision]} success:success failure:failure];
-}
-
 /* GET : récupérer les requêtes en cours */
 - (void)getRequests:(HAHelpRequestServiceListSuccess)success failure:(HAHelpRequestServiceFailure)failure{
     [self.restRequest GETrequest:@"agent/requests" withParameters:@{@"": @""} success:^(id obj, NSHTTPURLResponse *response){

@@ -16,7 +16,6 @@ typedef void(^HAHelpRequestServiceFailure)(NSError *error);
 
 @interface HARequestsService : NSObject
 
-- (void)savePosition:(double)longitude latitude:(double)latitude precision:(double)precision success:(HARestRequestsSuccess)success failure:(HARestRequestsFailure)failure;
 - (void)getRequests:(HAHelpRequestServiceListSuccess)success failure:(HAHelpRequestServiceFailure)failure;
 - (void)takeRequest:(NSString*) requestId success:(HAHelpRequestServiceSuccess)success failure:(HAHelpRequestServiceFailure)failure;
 - (void)finishRequest:(NSString*) requestId success:(HAHelpRequestServiceSuccess)success failure:(HAHelpRequestServiceFailure)failure;
