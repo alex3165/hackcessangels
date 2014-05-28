@@ -10,4 +10,6 @@
 
 @interface HAAgentHomeViewController : UIViewController
 
+- (IBAction) verifyHelpRequests:(id)sender;
+
 @end
