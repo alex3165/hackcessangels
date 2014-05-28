@@ -36,12 +36,17 @@ NSTimeInterval const kTimeInterval = 15 * 60.0;
 }
 
 - (void) reportingLocationInBackground {
+    [self.locationService setUpdateCallback:^(CLLocation *newLocation) {
+        [self.locationService setUpdateCallback:nil];
+        [self reportLocation];
+    }];
+    
     [self.locationService startAreaTracking];
 
     NSRunLoop* currentRunLoop = [NSRunLoop currentRunLoop];
     
     self.timer = [NSTimer scheduledTimerWithTimeInterval:kTimeInterval target:self selector:@selector(reportingTimerFired:) userInfo:nil repeats:YES];
-
+    
     [currentRunLoop run];
 }
 
@@ -53,6 +58,11 @@ NSTimeInterval const kTimeInterval = 15 * 60.0;
     if (self.locationService.location == nil) {
         return;
     }
+    
+    DLog(@"Agent reporting location: latitude %+.6f, longitude %+.6f, accuracy %+.6f\n",
+         self.locationService.location.coordinate.latitude,
+         self.locationService.location.coordinate.longitude,
+         self.locationService.location.horizontalAccuracy);
     
     [self.restRequest POSTrequest:@"agent/position" withParameters:
   @{@"latitude": [NSNumber numberWithDouble: self.locationService.location.coordinate.latitude],
