@@ -78,9 +78,9 @@ func (s *Server) handleAgentPosition(w http.ResponseWriter, r *http.Request) {
 
 func (s *Server) handleAgentRequests(w http.ResponseWriter, r *http.Request) {
 	var data struct {
-		RequestId     string
-		TakeRequest   bool
-		FinishRequest bool
+		RequestId     string `json:"requestid,omitempty"`
+		TakeRequest   bool   `json:"takerequest,omitempty"`
+		FinishRequest bool   `json:"finishrequest,omitempty"`
 	}
 
 	w.Header().Add("Content-Type", "application/json")

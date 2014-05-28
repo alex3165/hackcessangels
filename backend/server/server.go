@@ -37,7 +37,7 @@ func NewServer() *Server {
 			securecookie.GenerateRandomKey(32)),
 	}
 
-	r.HandleFunc("/api/agent", s.handleAgentRequests)
+	r.HandleFunc("/api/agent/requests", s.handleAgentRequests)
 	r.HandleFunc("/api/agent/position", s.handleAgentPosition)
 	r.HandleFunc("/api/help", s.handleHelp)
 	r.HandleFunc("/api/user", s.handleUser)
