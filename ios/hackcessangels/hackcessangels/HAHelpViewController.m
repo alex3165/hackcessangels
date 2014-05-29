@@ -10,9 +10,11 @@
 #import "HALogViewController.h"
 #import "HAUserService.h"
 #import "UIColor+HackcessAngels.h"
+#import "PocketSVG.h"
 
 @interface HAHelpViewController ()
-
+    @property (nonatomic, strong) HAUser *user;
+    @property (nonatomic, strong) NSMutableString *helloUser;
 @end
 
 @implementation HAHelpViewController
@@ -21,7 +23,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+
     }
     return self;
 }
@@ -30,24 +32,31 @@
 {
     [super viewDidLoad];
     [self checkUser];
+    [self customToolBar];
+    self.navigationController.navigationBar.backgroundColor = [UIColor blackColor];
+    self.view.backgroundColor = [UIColor HA_graybg];
 }
 
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    self.navigationController.navigationBar.backgroundColor = [UIColor blackColor];
-    self.view.backgroundColor = [UIColor HA_graybg];
 }
 
 - (IBAction)helpme:(id)sender {
     
     self.assistanceService = [[HAAssistanceService alloc] init];
-    
     [self.assistanceService startHelpRequest:nil agentContacted:nil success:nil];
     
-//    HAHelpInProcess *inprocesscontroller = [[HAHelpInProcess alloc]init];
-//    [self.navigationController pushViewController:inprocesscontroller animated:YES];
-    
+}
+
+
+-(void) customToolBar{
+    //[self.toolBar setFrame:CGRectMake(0, 380, 320, 80)];
+//    UIImage* imgItem1 = [UIImage imageWithContentsOfFile:@"profil44"];
+//    NSMutableArray *barButtonArray = [[NSMutableArray alloc] init];
+//    UIBarButtonItem* item = [[UIBarButtonItem alloc] initWithImage:imgItem1 style:UIBarButtonItemStyleBordered target: nil action: nil];
+//    [barButtonArray addObject:item];
+//    [self.toolBar setItems:barButtonArray animated:YES];
 }
 
 /******************************************************************************************************************************

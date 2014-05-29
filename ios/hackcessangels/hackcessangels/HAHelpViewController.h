@@ -15,17 +15,13 @@
 @interface HAHelpViewController : UIViewController <UITabBarDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *helpme;
-
-
-@property (weak, nonatomic) IBOutlet UIButton *infos;
-@property (weak, nonatomic) IBOutlet UIButton *accesplus;
+@property (weak, nonatomic) IBOutlet UIToolbar *toolBar;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 
 @property (nonatomic, strong) HAAssistanceService *assistanceService;
 @property (nonatomic, strong) HAUserService *userService;
-@property (nonatomic,strong) HAMapViewController *mapController;
+@property (nonatomic, strong) HAMapViewController *mapController;
 
-//@property (nonatomic,strong) HAInfosViewController *infosService;
-//@property (nonatomic,strong) HAAccesViewController *accesService;
-
+-(void) customToolBar;
 
 @end

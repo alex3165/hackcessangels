@@ -31,8 +31,7 @@
  Phase 2 :
 
  /*
-
- - Menage CentralManager et PeripheralManager
+ 
  - Toolbar avec profil clickable
 
  */
