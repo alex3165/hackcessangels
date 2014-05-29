@@ -45,7 +45,7 @@ func NewModel(server string, databaseName string) (*Model, error) {
         return nil, err
     }
 	m.stations = m.db.C("stations")
-	err = m.helpRequests.EnsureIndex(mgo.Index{
+	err = m.stations.EnsureIndex(mgo.Index{
 		Key:  []string{"$2dsphere:center"},
 		Bits: 26,
 	})
