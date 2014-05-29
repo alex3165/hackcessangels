@@ -9,10 +9,6 @@
 #import "HAHelpViewController.h"
 #import "HALogViewController.h"
 #import "HAUserService.h"
-#import "HAInfosViewController.h"
-#import "HAHelpInProcess.h"
-#import "HAAccesViewController.h"
-#import "HAInfosViewController.h"
 #import "UIColor+HackcessAngels.h"
 
 @interface HAHelpViewController ()
@@ -49,23 +45,9 @@
     
     [self.assistanceService startHelpRequest:nil agentContacted:nil success:nil];
     
-    HAHelpInProcess *inprocesscontroller = [[HAHelpInProcess alloc]init];
-    [self.navigationController pushViewController:inprocesscontroller animated:YES];
+//    HAHelpInProcess *inprocesscontroller = [[HAHelpInProcess alloc]init];
+//    [self.navigationController pushViewController:inprocesscontroller animated:YES];
     
-}
-
-- (IBAction)infos:(BOOL)animated {
-    
-    HAInfosViewController *infosViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"infosViewController"];
-    [self presentViewController:infosViewController animated:animated completion:nil];
-    
-   
-}
-
-- (IBAction)accesplus:(BOOL)animated  {
-    
-    HAAccesViewController *accesViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"accesViewController"];
-    [self presentViewController:accesViewController animated:animated completion:nil];
 }
 
 /******************************************************************************************************************************

@@ -25,3 +25,14 @@
  - Si Agent appui sur j'aide et qu'il n'y a pas de réseau proposer la réponse bluetooth
  
  */
+ 
+ 
+
+ Phase 2 :
+
+ /*
+
+ - Menage CentralManager et PeripheralManager
+ - Toolbar avec profil clickable
+
+ */

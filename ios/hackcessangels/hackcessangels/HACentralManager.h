@@ -12,7 +12,7 @@
 
 @protocol HACentralManagerDelegate <NSObject>
 
-- (void)helpValueChanged:(BOOL)newValue;
+- (void)helpValueChanged:(BOOL)newValue user:(NSDictionary *)user uuid:(NSUUID *)uuid characteristic:(CBCharacteristic *)characteristique;
 
 @end
 
@@ -25,6 +25,8 @@
 @property (nonatomic, assign) BOOL needHelp;
 
 @property (nonatomic, assign) BOOL isResponse;
+
+- (void)takeRequest:(NSUUID *)uuid characteristic:(CBCharacteristic *)characteristic;
 
 - (id)initForResponse;
 - (void)cleanup;

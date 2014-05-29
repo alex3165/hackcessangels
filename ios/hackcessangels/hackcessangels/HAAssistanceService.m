@@ -92,7 +92,7 @@
         // Set an advertising
         //NSLog(@"Bluetooth activate");
         self.peripheralService = [[HAPeripheral alloc]init]; // envoi l'appel à l'aide bluetooth
-        self.managerService = [[HACentralManager alloc]initForResponse]; // écoute si il y a une réponse
+        //self.managerService = [[HACentralManager alloc]initForResponse]; // écoute si il y a une réponse
     }
 }
 

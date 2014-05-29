@@ -58,20 +58,20 @@
             [self.centralManager scanForPeripheralsWithServices:@[[CBUUID UUIDWithString:RESPONSE_SERVICE_UUID]] options:@{ CBCentralManagerScanOptionAllowDuplicatesKey: @NO }];
         }
         
-        NSLog(@"Scanning started");
+        //NSLog(@"Scanning started");
     }
 }
 
 // called whenever a device is discovered
 - (void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary *)advertisementData RSSI:(NSNumber *)RSSI{
-    NSLog(@"Discovered %@ at %@", peripheral.name, RSSI);
+    //NSLog(@"Discovered %@ at %@", peripheral.name, RSSI);
     
     if (self.discoveredPeripheral != peripheral) {
         // Save a local copy of the peripheral, so CoreBluetooth doesn't get rid of it
         self.discoveredPeripheral = peripheral;
         
         // And connect
-        NSLog(@"Connecting to peripheral %@", peripheral);
+        //NSLog(@"Connecting to peripheral %@", peripheral);
         [self.centralManager connectPeripheral:peripheral options:nil];
     }
 }
@@ -86,7 +86,7 @@
 // Stop scaning process
 // Check for services and characteristics
 - (void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral{
-    NSLog(@"Connected");
+    //NSLog(@"Connected");
     
     [self.centralManager stopScan];
     NSLog(@"Scanning stopped");
@@ -127,7 +127,6 @@
         NSLog(@"Error during characteristics test");
         return;
     }
-    
     if ([service.UUID isEqual:[CBUUID UUIDWithString:HELP_SERVICE_UUID]]) {
         for (CBCharacteristic *characteristic in service.characteristics) {
             if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:HELP_CHARACTERISTIC_UUID]]) {
@@ -167,13 +166,12 @@
 //            [unarchiver finishDecoding];
             NSLog(@"%@", myDictionary);
             
-            if ([self.delegate respondsToSelector:@selector(helpValueChanged:)])
+            if ([self.delegate respondsToSelector:@selector(helpValueChanged:user:uuid:characteristic:)])
             {
-                [self.delegate helpValueChanged:self.needHelp];
+                [self.delegate helpValueChanged:self.needHelp user:myDictionary uuid:peripheral.identifier  characteristic:characteristic];
             }else{
                 NSLog(@"Error");
             }
-            
             //NSLog(@"%@", msgFromData);
         }else if([msgFromData isEqualToString:kRESPONSE_MESSAGE]){
             NSLog(@"quelqu'un va venir vous aider");
@@ -187,6 +185,30 @@
     }
     
     [self.data appendData:characteristic.value];
+}
+
+-(void)takeRequest:(NSUUID *)uuid characteristic:(CBCharacteristic *)characteristic{
+    NSArray *peripherals = [self.centralManager retrievePeripheralsWithIdentifiers:[NSArray arrayWithObjects: uuid, nil]];
+    CBPeripheral *peripheral = [peripherals firstObject];
+    
+    for(CBService *service in peripheral.services)
+    {
+        if([service.UUID isEqual:[CBUUID UUIDWithString:HELP_SERVICE_UUID]])
+        {
+            for(CBCharacteristic *charac in service.characteristics)
+            {
+                if([charac.UUID isEqual:[CBUUID UUIDWithString:HELP_CHARACTERISTIC_UUID]])
+                {
+                    NSString *positiveAnswer = @"ok je vais t'aider";
+                    NSData *positive = [positiveAnswer dataUsingEncoding:NSUTF8StringEncoding];
+                    
+                    [peripheral writeValue:positive forCharacteristic:charac type:CBCharacteristicWriteWithoutResponse];
+                    NSLog(@"Message envoyé");
+                }
+            }
+        }
+    }
+    
 }
 
 - (void)peripheral:(CBPeripheral *)peripheral didUpdateNotificationStateForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error {

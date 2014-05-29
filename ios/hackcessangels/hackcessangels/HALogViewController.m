@@ -37,7 +37,7 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    self.navigationController.navigationBar.backgroundColor = [UIColor blackColor];
+    self.navigationController.navigationBar.backgroundColor = [UIColor whiteColor];
     self.view.backgroundColor = [UIColor HA_graybg];
 }
 

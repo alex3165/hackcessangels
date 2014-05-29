@@ -51,7 +51,7 @@
     if (peripheral.state == CBPeripheralManagerStatePoweredOn) {
         CBMutableService *transferService;
         if (!self.isResponse) {
-            self.transferCharacteristic = [[CBMutableCharacteristic alloc] initWithType:[CBUUID UUIDWithString:HELP_CHARACTERISTIC_UUID] properties:CBCharacteristicPropertyNotify value:nil permissions:CBAttributePermissionsReadable|CBAttributePermissionsWriteable];
+            self.transferCharacteristic = [[CBMutableCharacteristic alloc] initWithType:[CBUUID UUIDWithString:HELP_CHARACTERISTIC_UUID] properties:CBCharacteristicPropertyNotify|CBCharacteristicPropertyWriteWithoutResponse value:nil permissions:CBAttributePermissionsReadable|CBAttributePermissionsWriteable];
             
             transferService = [[CBMutableService alloc] initWithType:[CBUUID UUIDWithString:HELP_SERVICE_UUID] primary:YES];
         }else{
@@ -97,6 +97,13 @@
     self.sendDataIndex = 0;
     
     [self sendData];
+}
+
+- (void)peripheralManager:(CBPeripheralManager *)peripheral didReceiveWriteRequests:(NSArray *)requests{
+    //NSLog(@"%@",requests);
+    CBATTRequest *myRequest = [requests firstObject];
+    NSString *myString = [[NSString alloc] initWithData:myRequest.value encoding:NSUTF8StringEncoding];
+    NSLog(@"Les données : %@", myString);
 }
 
 - (void)peripheralManagerIsReadyToUpdateSubscribers:(CBPeripheralManager *)peripheral {

@@ -11,8 +11,6 @@
 #import "HAAssistanceService.h"
 #import "HAUserService.h"
 #import "HAMapViewController.h"
-#import "HAInfosViewController.h"
-#import "HAAccesViewController.h"
 
 @interface HAHelpViewController : UIViewController <UITabBarDelegate>
 
@@ -26,8 +24,8 @@
 @property (nonatomic, strong) HAUserService *userService;
 @property (nonatomic,strong) HAMapViewController *mapController;
 
-@property (nonatomic,strong) HAInfosViewController *infosService;
-@property (nonatomic,strong) HAAccesViewController *accesService;
+//@property (nonatomic,strong) HAInfosViewController *infosService;
+//@property (nonatomic,strong) HAAccesViewController *accesService;
 
 
 @end
