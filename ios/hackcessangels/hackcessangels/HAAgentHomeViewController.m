@@ -9,10 +9,12 @@
 #import "HAAgentHomeViewController.h"
 #import "HALogViewController.h"
 #import "HAAgentService.h"
+#import "HARequestsService.h"
 
 @interface HAAgentHomeViewController ()
 
 @property(nonatomic, strong) HAAgentService* agentService;
+@property(nonatomic, strong) HARequestsService* requestsService;
 
 @end
 
@@ -22,7 +24,6 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
     }
     return self;
 }
@@ -30,6 +31,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.requestsService = [[HARequestsService alloc] init];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -41,6 +43,16 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - Actions
+
+- (IBAction) verifyHelpRequests:(id)sender {
+    [self.requestsService getRequests:^(NSArray *helpRequestList) {
+        DLog(@"%@", helpRequestList);
+    } failure:^(NSError *error) {
+        NSLog(@"%@", error);
+    } ];
 }
 
 /******************************************************************************************************************************

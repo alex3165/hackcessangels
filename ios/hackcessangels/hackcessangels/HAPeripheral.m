@@ -26,22 +26,6 @@
     return self;
 }
 
-- (id)initForResponse
-{
-    self = [super init];
-    
-    
-    if (self) {
-        self.peripheralManager = [[CBPeripheralManager alloc] initWithDelegate:self queue:nil];
-        
-        [self.peripheralManager startAdvertising:@{ CBAdvertisementDataServiceUUIDsKey : @[[CBUUID UUIDWithString:RESPONSE_SERVICE_UUID]] }];
-        
-        self.isResponse = YES;
-    }
-    
-    return self;
-}
-
 - (void)peripheralManagerDidUpdateState:(CBPeripheralManager *)peripheral{
     
     if (peripheral.state != CBPeripheralManagerStatePoweredOn) {
@@ -50,16 +34,9 @@
     
     if (peripheral.state == CBPeripheralManagerStatePoweredOn) {
         CBMutableService *transferService;
-        if (!self.isResponse) {
-            self.transferCharacteristic = [[CBMutableCharacteristic alloc] initWithType:[CBUUID UUIDWithString:HELP_CHARACTERISTIC_UUID] properties:CBCharacteristicPropertyNotify value:nil permissions:CBAttributePermissionsReadable|CBAttributePermissionsWriteable];
+        self.transferCharacteristic = [[CBMutableCharacteristic alloc] initWithType:[CBUUID UUIDWithString:HELP_CHARACTERISTIC_UUID] properties:CBCharacteristicPropertyNotify|CBCharacteristicPropertyWriteWithoutResponse value:nil permissions:CBAttributePermissionsReadable|CBAttributePermissionsWriteable];
             
-            transferService = [[CBMutableService alloc] initWithType:[CBUUID UUIDWithString:HELP_SERVICE_UUID] primary:YES];
-        }else{
-            self.transferCharacteristic = [[CBMutableCharacteristic alloc] initWithType:[CBUUID UUIDWithString:RESPONSE_CHARACTERISTIC_UUID] properties:CBCharacteristicPropertyNotify value:nil permissions:CBAttributePermissionsReadable|CBAttributePermissionsWriteable];
-            
-            transferService = [[CBMutableService alloc] initWithType:[CBUUID UUIDWithString:RESPONSE_SERVICE_UUID] primary:YES];
-        }
-
+        transferService = [[CBMutableService alloc] initWithType:[CBUUID UUIDWithString:HELP_SERVICE_UUID] primary:YES];
         
         transferService.characteristics = @[self.transferCharacteristic];
         
@@ -68,35 +45,33 @@
 }
 
 - (void)peripheralManager:(CBPeripheralManager *)peripheral central:(CBCentral *)central didSubscribeToCharacteristic:(CBCharacteristic *)characteristic {
-    
-    if (!self.isResponse) {
-        //self.dataToSend = [kHELP_MESSAGE dataUsingEncoding:NSUTF8StringEncoding];
+
         self.actualUser = [HAUser userFromKeyChain];
 
         NSString *userName = self.actualUser.name == nil ? @"inconnue" : self.actualUser.name;
         NSString *userPhone = self.actualUser.phone == nil ? @"inconnue" : self.actualUser.phone;
         NSString *userEmail = self.actualUser.email == nil ? @"inconnue" : self.actualUser.email;
-        
+
         NSDictionary *userDictionary = @{
                         @"name" : userName,
                         @"phone" : userPhone,
                         @"email" : userEmail};
         // typeHandicap - longitude - latitude - (image)
         NSError *err;
+        
         self.dataToSend = [NSPropertyListSerialization dataWithPropertyList:userDictionary format:NSPropertyListXMLFormat_v1_0 options:(NSPropertyListWriteOptions)nil error:&err];
-        
-//        NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:self.temporaryData];
-//        [archiver encodeObject:userDictionary forKey:@"user"];
-//        [archiver finishEncoding];
-        
-    }else{
-        self.dataToSend = [kRESPONSE_MESSAGE dataUsingEncoding:NSUTF8StringEncoding];
-    }
-    /* Data to send here */
     
     self.sendDataIndex = 0;
     
     [self sendData];
+}
+
+- (void)peripheralManager:(CBPeripheralManager *)peripheral didReceiveWriteRequests:(NSArray *)requests{
+    
+    CBATTRequest *myRequest = [requests firstObject];
+    NSString *myString = [[NSString alloc] initWithData:myRequest.value encoding:NSUTF8StringEncoding];
+    
+    NSLog(@"Les données : %@", myString);
 }
 
 - (void)peripheralManagerIsReadyToUpdateSubscribers:(CBPeripheralManager *)peripheral {

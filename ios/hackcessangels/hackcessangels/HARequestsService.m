@@ -27,7 +27,7 @@
 
 /* GET : récupérer les requêtes en cours */
 - (void)getRequests:(HAHelpRequestServiceListSuccess)success failure:(HAHelpRequestServiceFailure)failure{
-    [self.restRequest GETrequest:@"agent/requests" withParameters:@{@"": @""} success:^(id obj, NSHTTPURLResponse *response){
+    [self.restRequest GETrequest:@"agent/requests" withParameters:nil success:^(id obj, NSHTTPURLResponse *response){
         // obj is a list of dictionnaries, each one representing a single help request.
         NSMutableArray* rawHelpRequests = [[NSMutableArray alloc] initWithArray: obj];
         NSMutableArray* helpRequests;

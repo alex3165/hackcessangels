@@ -10,8 +10,6 @@
 		0414A3551909890F00D23472 /* HAAgentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0414A3541909890F00D23472 /* HAAgentViewController.m */; };
 		0414A35919098BFB00D23472 /* HAAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = 0414A35819098BFB00D23472 /* HAAgent.m */; };
 		0414A35D19098FBB00D23472 /* HAAgentService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0414A35C19098FBB00D23472 /* HAAgentService.m */; };
-		0423993A19128C6100CA61E3 /* HAInfosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0423993919128C6100CA61E3 /* HAInfosViewController.m */; };
-		0423993D19128D3C00CA61E3 /* HAAccesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0423993C19128D3C00CA61E3 /* HAAccesViewController.m */; };
 		043F17AC1901A37900D23C3F /* HACallUserView.m in Sources */ = {isa = PBXBuildFile; fileRef = 043F17A918FC30BB00D23C3F /* HACallUserView.m */; };
 		04F5A81718C8AC5E00ED0CC6 /* HAUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F5A81518C8AC5E00ED0CC6 /* HAUserViewController.m */; };
 		22085DDD18883EAE00A4BE75 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22085DDC18883EAE00A4BE75 /* CoreLocation.framework */; };
@@ -25,30 +23,6 @@
 		2244C95618FA8B55000B3C33 /* profil.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2244C95518FA8B55000B3C33 /* profil.jpg */; };
 		2244C95718FA8B55000B3C33 /* profil.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2244C95518FA8B55000B3C33 /* profil.jpg */; };
 		2244C95818FA8B55000B3C33 /* profil.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2244C95518FA8B55000B3C33 /* profil.jpg */; };
-		225345841932074000080669 /* assistance.svg in Resources */ = {isa = PBXBuildFile; fileRef = 2253457E1932074000080669 /* assistance.svg */; };
-		225345851932074000080669 /* assistance.svg in Resources */ = {isa = PBXBuildFile; fileRef = 2253457E1932074000080669 /* assistance.svg */; };
-		225345861932074000080669 /* assistance.svg in Resources */ = {isa = PBXBuildFile; fileRef = 2253457E1932074000080669 /* assistance.svg */; };
-		225345871932074000080669 /* informations.svg in Resources */ = {isa = PBXBuildFile; fileRef = 2253457F1932074000080669 /* informations.svg */; };
-		225345881932074000080669 /* informations.svg in Resources */ = {isa = PBXBuildFile; fileRef = 2253457F1932074000080669 /* informations.svg */; };
-		225345891932074000080669 /* informations.svg in Resources */ = {isa = PBXBuildFile; fileRef = 2253457F1932074000080669 /* informations.svg */; };
-		2253458A1932074000080669 /* plandesgares.svg in Resources */ = {isa = PBXBuildFile; fileRef = 225345801932074000080669 /* plandesgares.svg */; };
-		2253458B1932074000080669 /* plandesgares.svg in Resources */ = {isa = PBXBuildFile; fileRef = 225345801932074000080669 /* plandesgares.svg */; };
-		2253458C1932074000080669 /* plandesgares.svg in Resources */ = {isa = PBXBuildFile; fileRef = 225345801932074000080669 /* plandesgares.svg */; };
-		2253458D1932074000080669 /* profil.svg in Resources */ = {isa = PBXBuildFile; fileRef = 225345811932074000080669 /* profil.svg */; };
-		2253458E1932074000080669 /* profil.svg in Resources */ = {isa = PBXBuildFile; fileRef = 225345811932074000080669 /* profil.svg */; };
-		2253458F1932074000080669 /* profil.svg in Resources */ = {isa = PBXBuildFile; fileRef = 225345811932074000080669 /* profil.svg */; };
-		225345901932074000080669 /* recommandations.svg in Resources */ = {isa = PBXBuildFile; fileRef = 225345821932074000080669 /* recommandations.svg */; };
-		225345911932074000080669 /* recommandations.svg in Resources */ = {isa = PBXBuildFile; fileRef = 225345821932074000080669 /* recommandations.svg */; };
-		225345921932074000080669 /* recommandations.svg in Resources */ = {isa = PBXBuildFile; fileRef = 225345821932074000080669 /* recommandations.svg */; };
-		225345931932074000080669 /* toutesinterventions.svg in Resources */ = {isa = PBXBuildFile; fileRef = 225345831932074000080669 /* toutesinterventions.svg */; };
-		225345941932074000080669 /* toutesinterventions.svg in Resources */ = {isa = PBXBuildFile; fileRef = 225345831932074000080669 /* toutesinterventions.svg */; };
-		225345951932074000080669 /* toutesinterventions.svg in Resources */ = {isa = PBXBuildFile; fileRef = 225345831932074000080669 /* toutesinterventions.svg */; };
-		225345971932075100080669 /* logo sncf in Resources */ = {isa = PBXBuildFile; fileRef = 225345961932075100080669 /* logo sncf */; };
-		225345981932075100080669 /* logo sncf in Resources */ = {isa = PBXBuildFile; fileRef = 225345961932075100080669 /* logo sncf */; };
-		225345991932075100080669 /* logo sncf in Resources */ = {isa = PBXBuildFile; fileRef = 225345961932075100080669 /* logo sncf */; };
-		2253459D193244FD00080669 /* HATabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2253459C193244FD00080669 /* HATabBarController.m */; };
-		2253459E193244FD00080669 /* HATabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2253459C193244FD00080669 /* HATabBarController.m */; };
-		2253459F193244FD00080669 /* HATabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2253459C193244FD00080669 /* HATabBarController.m */; };
 		22601F041886E2DE008B0179 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22601F031886E2DE008B0179 /* Foundation.framework */; };
 		22601F061886E2DE008B0179 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22601F051886E2DE008B0179 /* CoreGraphics.framework */; };
 		22601F081886E2DE008B0179 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22601F071886E2DE008B0179 /* UIKit.framework */; };
@@ -69,9 +43,6 @@
 		228D8F03190FE5D2002AE6E2 /* HAUser.m in Sources */ = {isa = PBXBuildFile; fileRef = A1330B0618AD62B5002B1828 /* HAUser.m */; };
 		228D8F06190FE830002AE6E2 /* HARequestsService.m in Sources */ = {isa = PBXBuildFile; fileRef = 228D8F05190FE830002AE6E2 /* HARequestsService.m */; };
 		2297633818E4A58400CDE26A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22601F151886E2DE008B0179 /* Main.storyboard */; };
-		22A440E6191CE3B5003FC0BA /* HAHelpInProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A440E5191CE3B5003FC0BA /* HAHelpInProcess.m */; };
-		22A440E7191CE3B5003FC0BA /* HAHelpInProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A440E5191CE3B5003FC0BA /* HAHelpInProcess.m */; };
-		22A440E8191CEA1C003FC0BA /* HAHelpInProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A440E5191CE3B5003FC0BA /* HAHelpInProcess.m */; };
 		22C9AB3618E20FDC008ED8D7 /* HACentralManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C9AB3518E20FDC008ED8D7 /* HACentralManager.m */; };
 		22C9AB3718E20FDC008ED8D7 /* HACentralManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C9AB3518E20FDC008ED8D7 /* HACentralManager.m */; };
 		22C9AB3818E20FDC008ED8D7 /* HACentralManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C9AB3518E20FDC008ED8D7 /* HACentralManager.m */; };
@@ -80,6 +51,33 @@
 		22C9AB3E18E229D4008ED8D7 /* HAPeripheral.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C9AB3B18E229D4008ED8D7 /* HAPeripheral.m */; };
 		22DA835818B288610014CCA5 /* HAAssistanceService.m in Sources */ = {isa = PBXBuildFile; fileRef = 22DA835718B288610014CCA5 /* HAAssistanceService.m */; };
 		22DA835918B288610014CCA5 /* HAAssistanceService.m in Sources */ = {isa = PBXBuildFile; fileRef = 22DA835718B288610014CCA5 /* HAAssistanceService.m */; };
+		22E64AE819379FA500851BB8 /* assistance44.png in Resources */ = {isa = PBXBuildFile; fileRef = 22E64AE219379FA500851BB8 /* assistance44.png */; };
+		22E64AE919379FA500851BB8 /* assistance44.png in Resources */ = {isa = PBXBuildFile; fileRef = 22E64AE219379FA500851BB8 /* assistance44.png */; };
+		22E64AEA19379FA500851BB8 /* assistance44.png in Resources */ = {isa = PBXBuildFile; fileRef = 22E64AE219379FA500851BB8 /* assistance44.png */; };
+		22E64AEB19379FA500851BB8 /* informations44.png in Resources */ = {isa = PBXBuildFile; fileRef = 22E64AE319379FA500851BB8 /* informations44.png */; };
+		22E64AEC19379FA500851BB8 /* informations44.png in Resources */ = {isa = PBXBuildFile; fileRef = 22E64AE319379FA500851BB8 /* informations44.png */; };
+		22E64AED19379FA500851BB8 /* informations44.png in Resources */ = {isa = PBXBuildFile; fileRef = 22E64AE319379FA500851BB8 /* informations44.png */; };
+		22E64AEE19379FA500851BB8 /* plandesgares44.png in Resources */ = {isa = PBXBuildFile; fileRef = 22E64AE419379FA500851BB8 /* plandesgares44.png */; };
+		22E64AEF19379FA500851BB8 /* plandesgares44.png in Resources */ = {isa = PBXBuildFile; fileRef = 22E64AE419379FA500851BB8 /* plandesgares44.png */; };
+		22E64AF019379FA500851BB8 /* plandesgares44.png in Resources */ = {isa = PBXBuildFile; fileRef = 22E64AE419379FA500851BB8 /* plandesgares44.png */; };
+		22E64AF119379FA500851BB8 /* profil44.png in Resources */ = {isa = PBXBuildFile; fileRef = 22E64AE519379FA500851BB8 /* profil44.png */; };
+		22E64AF219379FA500851BB8 /* profil44.png in Resources */ = {isa = PBXBuildFile; fileRef = 22E64AE519379FA500851BB8 /* profil44.png */; };
+		22E64AF319379FA500851BB8 /* profil44.png in Resources */ = {isa = PBXBuildFile; fileRef = 22E64AE519379FA500851BB8 /* profil44.png */; };
+		22E64AF419379FA500851BB8 /* recommandations44.png in Resources */ = {isa = PBXBuildFile; fileRef = 22E64AE619379FA500851BB8 /* recommandations44.png */; };
+		22E64AF519379FA500851BB8 /* recommandations44.png in Resources */ = {isa = PBXBuildFile; fileRef = 22E64AE619379FA500851BB8 /* recommandations44.png */; };
+		22E64AF619379FA500851BB8 /* recommandations44.png in Resources */ = {isa = PBXBuildFile; fileRef = 22E64AE619379FA500851BB8 /* recommandations44.png */; };
+		22E64AF719379FA500851BB8 /* toutesinterventions44.png in Resources */ = {isa = PBXBuildFile; fileRef = 22E64AE719379FA500851BB8 /* toutesinterventions44.png */; };
+		22E64AF819379FA500851BB8 /* toutesinterventions44.png in Resources */ = {isa = PBXBuildFile; fileRef = 22E64AE719379FA500851BB8 /* toutesinterventions44.png */; };
+		22E64AF919379FA500851BB8 /* toutesinterventions44.png in Resources */ = {isa = PBXBuildFile; fileRef = 22E64AE719379FA500851BB8 /* toutesinterventions44.png */; };
+		22E64AFC1937A4C200851BB8 /* logoSncf4S.png in Resources */ = {isa = PBXBuildFile; fileRef = 22E64AFA1937A4C200851BB8 /* logoSncf4S.png */; };
+		22E64AFD1937A4C200851BB8 /* logoSncf4S.png in Resources */ = {isa = PBXBuildFile; fileRef = 22E64AFA1937A4C200851BB8 /* logoSncf4S.png */; };
+		22E64AFE1937A4C200851BB8 /* logoSncf4S.png in Resources */ = {isa = PBXBuildFile; fileRef = 22E64AFA1937A4C200851BB8 /* logoSncf4S.png */; };
+		22E64AFF1937A4C200851BB8 /* logoSncf5S.png in Resources */ = {isa = PBXBuildFile; fileRef = 22E64AFB1937A4C200851BB8 /* logoSncf5S.png */; };
+		22E64B001937A4C200851BB8 /* logoSncf5S.png in Resources */ = {isa = PBXBuildFile; fileRef = 22E64AFB1937A4C200851BB8 /* logoSncf5S.png */; };
+		22E64B011937A4C200851BB8 /* logoSncf5S.png in Resources */ = {isa = PBXBuildFile; fileRef = 22E64AFB1937A4C200851BB8 /* logoSncf5S.png */; };
+		22E64B031937A62F00851BB8 /* help.png in Resources */ = {isa = PBXBuildFile; fileRef = 22E64B021937A62F00851BB8 /* help.png */; };
+		22E64B041937A62F00851BB8 /* help.png in Resources */ = {isa = PBXBuildFile; fileRef = 22E64B021937A62F00851BB8 /* help.png */; };
+		22E64B051937A62F00851BB8 /* help.png in Resources */ = {isa = PBXBuildFile; fileRef = 22E64B021937A62F00851BB8 /* help.png */; };
 		8F400A2418EDE323006B8342 /* HAHelpProfileView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F400A2318EDE323006B8342 /* HAHelpProfileView.m */; };
 		8F400A2518EDE323006B8342 /* HAHelpProfileView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F400A2318EDE323006B8342 /* HAHelpProfileView.m */; };
 		8F400A2818F1AE6C006B8342 /* HARestRequests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F400A2718F1AE6C006B8342 /* HARestRequests.m */; };
@@ -144,10 +142,6 @@
 		0414A35819098BFB00D23472 /* HAAgent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HAAgent.m; path = hackcessangels/HAAgent.m; sourceTree = SOURCE_ROOT; };
 		0414A35B19098FBB00D23472 /* HAAgentService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HAAgentService.h; path = hackcessangels/HAAgentService.h; sourceTree = SOURCE_ROOT; };
 		0414A35C19098FBB00D23472 /* HAAgentService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HAAgentService.m; path = hackcessangels/HAAgentService.m; sourceTree = SOURCE_ROOT; };
-		0423993819128C6100CA61E3 /* HAInfosViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HAInfosViewController.h; path = hackcessangels/HAInfosViewController.h; sourceTree = SOURCE_ROOT; };
-		0423993919128C6100CA61E3 /* HAInfosViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HAInfosViewController.m; path = hackcessangels/HAInfosViewController.m; sourceTree = SOURCE_ROOT; };
-		0423993B19128D3C00CA61E3 /* HAAccesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HAAccesViewController.h; path = hackcessangels/HAAccesViewController.h; sourceTree = SOURCE_ROOT; };
-		0423993C19128D3C00CA61E3 /* HAAccesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HAAccesViewController.m; path = hackcessangels/HAAccesViewController.m; sourceTree = SOURCE_ROOT; };
 		043F17A818FC30BB00D23C3F /* HACallUserView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HACallUserView.h; path = hackcessangels/HACallUserView.h; sourceTree = SOURCE_ROOT; };
 		043F17A918FC30BB00D23C3F /* HACallUserView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HACallUserView.m; path = hackcessangels/HACallUserView.m; sourceTree = SOURCE_ROOT; };
 		043F17AB1901A22F00D23C3F /* HackcessAngels copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "HackcessAngels copy-Info.plist"; sourceTree = SOURCE_ROOT; };
@@ -163,15 +157,6 @@
 		222E375F18BA5B2F00E3B720 /* HALogViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HALogViewController.h; sourceTree = "<group>"; };
 		222E376018BA5B2F00E3B720 /* HALogViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HALogViewController.m; sourceTree = "<group>"; };
 		2244C95518FA8B55000B3C33 /* profil.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = profil.jpg; sourceTree = "<group>"; };
-		2253457E1932074000080669 /* assistance.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = assistance.svg; sourceTree = "<group>"; };
-		2253457F1932074000080669 /* informations.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = informations.svg; sourceTree = "<group>"; };
-		225345801932074000080669 /* plandesgares.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = plandesgares.svg; sourceTree = "<group>"; };
-		225345811932074000080669 /* profil.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = profil.svg; sourceTree = "<group>"; };
-		225345821932074000080669 /* recommandations.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = recommandations.svg; sourceTree = "<group>"; };
-		225345831932074000080669 /* toutesinterventions.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = toutesinterventions.svg; sourceTree = "<group>"; };
-		225345961932075100080669 /* logo sncf */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "logo sncf"; sourceTree = "<group>"; };
-		2253459B193244FD00080669 /* HATabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HATabBarController.h; sourceTree = "<group>"; };
-		2253459C193244FD00080669 /* HATabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HATabBarController.m; sourceTree = "<group>"; };
 		22601F001886E2DE008B0179 /* HackcessAngels.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HackcessAngels.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22601F031886E2DE008B0179 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		22601F051886E2DE008B0179 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -197,8 +182,6 @@
 		22601F3E18871EAC008B0179 /* HATileOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HATileOverlayView.m; sourceTree = "<group>"; };
 		228D8F04190FE830002AE6E2 /* HARequestsService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HARequestsService.h; sourceTree = "<group>"; };
 		228D8F05190FE830002AE6E2 /* HARequestsService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HARequestsService.m; sourceTree = "<group>"; };
-		22A440E4191CE3B5003FC0BA /* HAHelpInProcess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HAHelpInProcess.h; sourceTree = "<group>"; };
-		22A440E5191CE3B5003FC0BA /* HAHelpInProcess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HAHelpInProcess.m; sourceTree = "<group>"; };
 		22C9AB3418E20FDC008ED8D7 /* HACentralManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HACentralManager.h; sourceTree = "<group>"; };
 		22C9AB3518E20FDC008ED8D7 /* HACentralManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HACentralManager.m; sourceTree = "<group>"; };
 		22C9AB3918E21083008ED8D7 /* HASERVICES.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HASERVICES.h; sourceTree = "<group>"; };
@@ -206,6 +189,15 @@
 		22C9AB3B18E229D4008ED8D7 /* HAPeripheral.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HAPeripheral.m; sourceTree = "<group>"; };
 		22DA835618B288610014CCA5 /* HAAssistanceService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HAAssistanceService.h; sourceTree = "<group>"; };
 		22DA835718B288610014CCA5 /* HAAssistanceService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HAAssistanceService.m; sourceTree = "<group>"; };
+		22E64AE219379FA500851BB8 /* assistance44.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = assistance44.png; sourceTree = "<group>"; };
+		22E64AE319379FA500851BB8 /* informations44.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = informations44.png; sourceTree = "<group>"; };
+		22E64AE419379FA500851BB8 /* plandesgares44.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plandesgares44.png; sourceTree = "<group>"; };
+		22E64AE519379FA500851BB8 /* profil44.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profil44.png; sourceTree = "<group>"; };
+		22E64AE619379FA500851BB8 /* recommandations44.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = recommandations44.png; sourceTree = "<group>"; };
+		22E64AE719379FA500851BB8 /* toutesinterventions44.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = toutesinterventions44.png; sourceTree = "<group>"; };
+		22E64AFA1937A4C200851BB8 /* logoSncf4S.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logoSncf4S.png; sourceTree = "<group>"; };
+		22E64AFB1937A4C200851BB8 /* logoSncf5S.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logoSncf5S.png; sourceTree = "<group>"; };
+		22E64B021937A62F00851BB8 /* help.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = help.png; sourceTree = "<group>"; };
 		75B5CDE6C7954202AF2565B3 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		8F400A2218EDE323006B8342 /* HAHelpProfileView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HAHelpProfileView.h; path = hackcessangels/HAHelpProfileView.h; sourceTree = SOURCE_ROOT; };
 		8F400A2318EDE323006B8342 /* HAHelpProfileView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HAHelpProfileView.m; path = hackcessangels/HAHelpProfileView.m; sourceTree = SOURCE_ROOT; };
@@ -377,13 +369,15 @@
 		22601F0A1886E2DE008B0179 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				2253457E1932074000080669 /* assistance.svg */,
-				225345961932075100080669 /* logo sncf */,
-				2253457F1932074000080669 /* informations.svg */,
-				225345801932074000080669 /* plandesgares.svg */,
-				225345811932074000080669 /* profil.svg */,
-				225345821932074000080669 /* recommandations.svg */,
-				225345831932074000080669 /* toutesinterventions.svg */,
+				22E64B021937A62F00851BB8 /* help.png */,
+				22E64AFA1937A4C200851BB8 /* logoSncf4S.png */,
+				22E64AFB1937A4C200851BB8 /* logoSncf5S.png */,
+				22E64AE219379FA500851BB8 /* assistance44.png */,
+				22E64AE319379FA500851BB8 /* informations44.png */,
+				22E64AE419379FA500851BB8 /* plandesgares44.png */,
+				22E64AE519379FA500851BB8 /* profil44.png */,
+				22E64AE619379FA500851BB8 /* recommandations44.png */,
+				22E64AE719379FA500851BB8 /* toutesinterventions44.png */,
 				2244C95518FA8B55000B3C33 /* profil.jpg */,
 				043F17AB1901A22F00D23C3F /* HackcessAngels copy-Info.plist */,
 				22601F0B1886E2DE008B0179 /* HackcessAngels-Info.plist */,
@@ -427,9 +421,9 @@
 				8F400A2218EDE323006B8342 /* HAHelpProfileView.h */,
 				8F400A2318EDE323006B8342 /* HAHelpProfileView.m */,
 				22601F181886E2DE008B0179 /* HAMapViewController.h */,
+				22601F191886E2DE008B0179 /* HAMapViewController.m */,
 				8FBEAE45192A42190097E151 /* HAAgentHomeViewController.h */,
 				8FBEAE46192A42190097E151 /* HAAgentHomeViewController.m */,
-				22601F191886E2DE008B0179 /* HAMapViewController.m */,
 				0414A3531909890F00D23472 /* HAAgentViewController.h */,
 				0414A3541909890F00D23472 /* HAAgentViewController.m */,
 				8F57723818DB7D5600D42D4F /* Agent.storyboard */,
@@ -449,12 +443,6 @@
 				04F5A81418C8AC5E00ED0CC6 /* HAUserViewController.h */,
 				04F5A81518C8AC5E00ED0CC6 /* HAUserViewController.m */,
 				22601F151886E2DE008B0179 /* Main.storyboard */,
-				0423993819128C6100CA61E3 /* HAInfosViewController.h */,
-				0423993919128C6100CA61E3 /* HAInfosViewController.m */,
-				0423993B19128D3C00CA61E3 /* HAAccesViewController.h */,
-				0423993C19128D3C00CA61E3 /* HAAccesViewController.m */,
-				22A440E4191CE3B5003FC0BA /* HAHelpInProcess.h */,
-				22A440E5191CE3B5003FC0BA /* HAHelpInProcess.m */,
 			);
 			name = User;
 			sourceTree = "<group>";
@@ -499,8 +487,6 @@
 			children = (
 				A1B80AA618D243A3004EE4EA /* UIColor+HackcessAngels.h */,
 				A1B80AA718D243A3004EE4EA /* UIColor+HackcessAngels.m */,
-				2253459B193244FD00080669 /* HATabBarController.h */,
-				2253459C193244FD00080669 /* HATabBarController.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -587,7 +573,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 22601EFB1886E2DE008B0179 /* Build configuration list for PBXProject "hackcessangels" */;
+			buildConfigurationList = 22601EFB1886E2DE008B0179 /* Build configuration list for PBXProject "HackcessAngels" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -612,18 +598,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				225345841932074000080669 /* assistance.svg in Resources */,
-				225345871932074000080669 /* informations.svg in Resources */,
-				2253458D1932074000080669 /* profil.svg in Resources */,
+				22E64AF419379FA500851BB8 /* recommandations44.png in Resources */,
+				22E64AEB19379FA500851BB8 /* informations44.png in Resources */,
 				A1B80AA418D23DBF004EE4EA /* TODO.md in Resources */,
-				225345971932075100080669 /* logo sncf in Resources */,
 				22601F1C1886E2DE008B0179 /* Images.xcassets in Resources */,
-				225345901932074000080669 /* recommandations.svg in Resources */,
+				22E64AF119379FA500851BB8 /* profil44.png in Resources */,
+				22E64AF719379FA500851BB8 /* toutesinterventions44.png in Resources */,
+				22E64B031937A62F00851BB8 /* help.png in Resources */,
 				2244C95618FA8B55000B3C33 /* profil.jpg in Resources */,
-				225345931932074000080669 /* toutesinterventions.svg in Resources */,
+				22E64AFC1937A4C200851BB8 /* logoSncf4S.png in Resources */,
 				22601F0E1886E2DE008B0179 /* InfoPlist.strings in Resources */,
 				22601F171886E2DE008B0179 /* Main.storyboard in Resources */,
-				2253458A1932074000080669 /* plandesgares.svg in Resources */,
+				22E64AFF1937A4C200851BB8 /* logoSncf5S.png in Resources */,
+				22E64AEE19379FA500851BB8 /* plandesgares44.png in Resources */,
+				22E64AE819379FA500851BB8 /* assistance44.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -631,18 +619,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				225345861932074000080669 /* assistance.svg in Resources */,
-				225345891932074000080669 /* informations.svg in Resources */,
-				2253458F1932074000080669 /* profil.svg in Resources */,
+				22E64AF619379FA500851BB8 /* recommandations44.png in Resources */,
+				22E64AED19379FA500851BB8 /* informations44.png in Resources */,
 				A1B064A618BFCBE60078EED5 /* user.json in Resources */,
-				225345991932075100080669 /* logo sncf in Resources */,
 				22601F2D1886E2DE008B0179 /* InfoPlist.strings in Resources */,
-				225345921932074000080669 /* recommandations.svg in Resources */,
+				22E64AF319379FA500851BB8 /* profil44.png in Resources */,
+				22E64AF919379FA500851BB8 /* toutesinterventions44.png in Resources */,
+				22E64B051937A62F00851BB8 /* help.png in Resources */,
 				2244C95818FA8B55000B3C33 /* profil.jpg in Resources */,
-				225345951932074000080669 /* toutesinterventions.svg in Resources */,
+				22E64AFE1937A4C200851BB8 /* logoSncf4S.png in Resources */,
 				8F57723A18DB7D5600D42D4F /* Agent.storyboard in Resources */,
 				222E375E18BA52E100E3B720 /* Main.storyboard in Resources */,
-				2253458C1932074000080669 /* plandesgares.svg in Resources */,
+				22E64B011937A4C200851BB8 /* logoSncf5S.png in Resources */,
+				22E64AF019379FA500851BB8 /* plandesgares44.png in Resources */,
+				22E64AEA19379FA500851BB8 /* assistance44.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -650,19 +640,21 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22E64AF819379FA500851BB8 /* toutesinterventions44.png in Resources */,
+				22E64AEF19379FA500851BB8 /* plandesgares44.png in Resources */,
 				A150296318DB7A81008FC4F1 /* TODO.md in Resources */,
-				225345941932074000080669 /* toutesinterventions.svg in Resources */,
-				225345911932074000080669 /* recommandations.svg in Resources */,
-				225345981932075100080669 /* logo sncf in Resources */,
+				22E64AFD1937A4C200851BB8 /* logoSncf4S.png in Resources */,
+				22E64B001937A4C200851BB8 /* logoSncf5S.png in Resources */,
 				2297633818E4A58400CDE26A /* Main.storyboard in Resources */,
-				2253458E1932074000080669 /* profil.svg in Resources */,
+				22E64AF219379FA500851BB8 /* profil44.png in Resources */,
 				A150296418DB7A81008FC4F1 /* Images.xcassets in Resources */,
-				225345851932074000080669 /* assistance.svg in Resources */,
+				22E64AF519379FA500851BB8 /* recommandations44.png in Resources */,
+				22E64AE919379FA500851BB8 /* assistance44.png in Resources */,
 				8F57723918DB7D5600D42D4F /* Agent.storyboard in Resources */,
+				22E64B041937A62F00851BB8 /* help.png in Resources */,
 				A150296518DB7A81008FC4F1 /* InfoPlist.strings in Resources */,
+				22E64AEC19379FA500851BB8 /* informations44.png in Resources */,
 				2244C95718FA8B55000B3C33 /* profil.jpg in Resources */,
-				225345881932074000080669 /* informations.svg in Resources */,
-				2253458B1932074000080669 /* plandesgares.svg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -771,18 +763,14 @@
 				222E376118BA5B2F00E3B720 /* HALogViewController.m in Sources */,
 				8F88460918BFBBB400595CA2 /* HALocationService.m in Sources */,
 				8F400A2818F1AE6C006B8342 /* HARestRequests.m in Sources */,
-				2253459D193244FD00080669 /* HATabBarController.m in Sources */,
 				22601F4018871EAC008B0179 /* HATileOverlayView.m in Sources */,
 				22C9AB3618E20FDC008ED8D7 /* HACentralManager.m in Sources */,
 				8FBEAE42192100DA0097E151 /* HAHelpRequest.m in Sources */,
 				8FBEAE4419212BAF0097E151 /* HAAgent.m in Sources */,
-				0423993A19128C6100CA61E3 /* HAInfosViewController.m in Sources */,
 				8FCE639F18AD5E3E00D4C957 /* HAUserService.m in Sources */,
-				22A440E6191CE3B5003FC0BA /* HAHelpInProcess.m in Sources */,
 				22601F141886E2DE008B0179 /* AppDelegate.m in Sources */,
 				22C9AB3C18E229D4008ED8D7 /* HAPeripheral.m in Sources */,
 				22130C02188966E500191955 /* HALocalisation.m in Sources */,
-				0423993D19128D3C00CA61E3 /* HAAccesViewController.m in Sources */,
 				A1B80AA818D243A3004EE4EA /* UIColor+HackcessAngels.m in Sources */,
 				22601F101886E2DE008B0179 /* main.m in Sources */,
 				A1330B0718AD62B5002B1828 /* HAUser.m in Sources */,
@@ -798,10 +786,8 @@
 			files = (
 				22601F2F1886E2DE008B0179 /* HackcessAngelsTests.m in Sources */,
 				222E375D18BA521C00E3B720 /* HAHelpViewController.m in Sources */,
-				2253459F193244FD00080669 /* HATabBarController.m in Sources */,
 				222E376218BA5B2F00E3B720 /* HALogViewController.m in Sources */,
 				8F400A2518EDE323006B8342 /* HAHelpProfileView.m in Sources */,
-				22A440E7191CE3B5003FC0BA /* HAHelpInProcess.m in Sources */,
 				A1AC4C5418B69AD2002EE7E6 /* HAUserServicesTests.m in Sources */,
 				8FCE63A018AD5E3E00D4C957 /* HAUserService.m in Sources */,
 				22C9AB3818E20FDC008ED8D7 /* HACentralManager.m in Sources */,
@@ -833,7 +819,6 @@
 				22C9AB3D18E229D4008ED8D7 /* HAPeripheral.m in Sources */,
 				A150295418DB7A81008FC4F1 /* HALocalisation.m in Sources */,
 				A150295518DB7A81008FC4F1 /* UIColor+HackcessAngels.m in Sources */,
-				2253459E193244FD00080669 /* HATabBarController.m in Sources */,
 				8F57723718DB7D0A00D42D4F /* HALogViewController.m in Sources */,
 				A150295918DB7A81008FC4F1 /* HAAssistanceService.m in Sources */,
 				228D8F03190FE5D2002AE6E2 /* HAUser.m in Sources */,
@@ -841,7 +826,6 @@
 				8F400A2418EDE323006B8342 /* HAHelpProfileView.m in Sources */,
 				228D8F06190FE830002AE6E2 /* HARequestsService.m in Sources */,
 				8FBEAE43192100DA0097E151 /* HAHelpRequest.m in Sources */,
-				22A440E8191CEA1C003FC0BA /* HAHelpInProcess.m in Sources */,
 				0414A3551909890F00D23472 /* HAAgentViewController.m in Sources */,
 				A150295A18DB7A81008FC4F1 /* HATileOverlay.m in Sources */,
 				043F17AC1901A37900D23C3F /* HACallUserView.m in Sources */,
@@ -1063,7 +1047,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		22601EFB1886E2DE008B0179 /* Build configuration list for PBXProject "hackcessangels" */ = {
+		22601EFB1886E2DE008B0179 /* Build configuration list for PBXProject "HackcessAngels" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				22601F301886E2DE008B0179 /* Debug */,
