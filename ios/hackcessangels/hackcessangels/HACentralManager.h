@@ -12,7 +12,7 @@
 
 @protocol HACentralManagerDelegate <NSObject>
 
-- (void)helpValueChanged:(BOOL)newValue;
+- (void)helpValueChanged:(BOOL)newValue user:(NSDictionary *)user uuid:(NSUUID *)uuid;
 
 @end
 
@@ -24,9 +24,8 @@
 @property (strong, nonatomic) NSMutableData *data;
 @property (nonatomic, assign) BOOL needHelp;
 
-@property (nonatomic, assign) BOOL isResponse;
+- (void)takeRequest:(NSUUID *)uuid;
 
-- (id)initForResponse;
 - (void)cleanup;
 
 @end
