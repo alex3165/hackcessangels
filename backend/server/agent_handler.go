@@ -86,7 +86,7 @@ func (s *Server) handleAgentRequests(w http.ResponseWriter, r *http.Request) {
 	w.Header().Add("Content-Type", "application/json")
 	err := getJSONRequest(r, &data)
 	if err != nil {
-		log.Print(err)
+        log.Print("Error while parsing request:", err)
 		returnError(400, "Invalid request", w)
 		return
 	}
