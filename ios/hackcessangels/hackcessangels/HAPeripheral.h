@@ -21,6 +21,9 @@
 @property (strong, nonatomic) NSData *dataToSend;
 @property (nonatomic, readwrite) NSInteger sendDataIndex;
 
-@property (nonatomic, assign) BOOL isResponse;
+@property (nonatomic, assign) double lat;
+@property (nonatomic, assign) double longitude;
+//-(void)setPositionUser:(double)lat longitude:(double)longitude;
+- (id)initWithLongAndLat:(double)longitude latitude:(double)latitude;
 
 @end
