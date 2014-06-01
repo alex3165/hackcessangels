@@ -122,7 +122,7 @@ func (s *Server) handleAgentRequests(w http.ResponseWriter, r *http.Request) {
 		if len(data.RequestId) == 0 {
 			station, err := user.GetStation()
 			if err != nil {
-				log.Print(err)
+                log.Print("Getting station: ", err)
 				returnError(500, "Unable to get station", w)
 				return
 			}
@@ -132,7 +132,7 @@ func (s *Server) handleAgentRequests(w http.ResponseWriter, r *http.Request) {
 			}
 			requests, err := s.model.GetActiveRequestsByStation(station)
 			if err != nil {
-				log.Print(err)
+                log.Print("Active requests: ", err)
 				returnError(500, "Unable to get active requests", w)
 				return
 			}
