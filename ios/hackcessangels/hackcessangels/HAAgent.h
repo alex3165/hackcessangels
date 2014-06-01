@@ -33,4 +33,6 @@ extern NSString *const pGareKey;
 + (HAAgent*) agentFromKeyChain;
 - (void) saveAgentToKeyChain;
 
+- (NSDictionary*) toPropertyList;
+
 @end

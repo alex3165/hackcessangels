@@ -16,6 +16,7 @@ NSString *const kDescriptionKey = @"description";
 NSString *const kImageKey = @"image";
 NSString *const kNameKey = @"name";
 NSString *const kNumeroKey = @"phone";
+NSString *const kDisabilityKey = @"disability";
 NSString *const kCookieKey = @"cookie";
 
 @implementation HAUser
@@ -67,6 +68,20 @@ NSString *const kCookieKey = @"cookie";
     }
     [UICKeyChainStore setData:cookieData forKey:kCookieKey service:kServiceId];
     return;
+}
+
+- (NSDictionary*) toPropertyList {
+    NSMutableDictionary* parameters = [[NSMutableDictionary alloc] init];
+    [parameters setObject:self.email forKey:kEmailKey];
+    [parameters setObject:self.name forKey:kNameKey];
+    [parameters setObject:self.phone forKey:kNumeroKey];
+    [parameters setObject:self.description forKey:kDescriptionKey];
+    [parameters setObject:self.disability forKey:kDisabilityKey];
+    
+    if (self.image != nil) {
+        [parameters setObject:[self.image base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength] forKey:kImageKey];
+    }
+    return parameters;
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder

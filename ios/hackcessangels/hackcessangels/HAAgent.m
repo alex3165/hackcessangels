@@ -15,6 +15,7 @@ NSString *const pImageKey = @"image";
 NSString *const pEmailKey = @"email";
 NSString *const pNameKey = @"name";
 NSString *const pNumeroKey = @"phone";
+NSString *const kDisabilityKey = @"disability";
 NSString *const pCookieKey = @"cookie";
 NSString *const pGareKey = @"gare";
 
@@ -68,5 +69,16 @@ NSString *const pGareKey = @"gare";
     return;
 }
 
+- (NSDictionary*) toPropertyList {
+    NSMutableDictionary* parameters = [[NSMutableDictionary alloc] init];
+    [parameters setObject:self.email forKey:kEmailKey];
+    [parameters setObject:self.name forKey:kNameKey];
+    [parameters setObject:self.phone forKey:kNumeroKey];
+    
+    if (self.image != nil) {
+        [parameters setObject:[self.image base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength] forKey:kImageKey];
+    }
+    return parameters;
+}
 
 @end

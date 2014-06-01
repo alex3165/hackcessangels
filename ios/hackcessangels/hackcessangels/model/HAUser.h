@@ -46,4 +46,6 @@ extern NSString *const kNumeroKey;
 + (HAUser*) userFromKeyChain;
 - (void) saveUserToKeyChain;
 
+- (NSDictionary*) toPropertyList;
+
 @end
