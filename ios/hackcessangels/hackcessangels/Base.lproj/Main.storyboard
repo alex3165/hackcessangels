@@ -88,7 +88,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hge-Zu-9QD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-159" y="-624"/>
+            <point key="canvasLocation" x="367" y="-856"/>
         </scene>
         <!--Help View Controller-->
         <scene sceneID="nLl-qc-qC0">
@@ -99,13 +99,13 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="TdY-uj-XIK">
-                                <rect key="frame" x="74" y="179" width="172" height="172"/>
+                                <rect key="frame" x="74" y="182" width="172" height="172"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <accessibility key="accessibilityConfiguration" hint="helpMe" label="helpMe">
                                     <accessibilityTraits key="traits" none="YES" button="YES" image="YES" playsSound="YES"/>
                                 </accessibility>
                                 <color key="tintColor" white="0.66666666666666663" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <state key="normal" image="help.png">
+                                <state key="normal" backgroundImage="help.png">
                                     <color key="titleColor" red="0.55215352773666382" green="0.80127763748168945" blue="0.80535542964935303" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                     <color key="titleShadowColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
                                 </state>
@@ -324,7 +324,7 @@
                                             <action selector="autre:" destination="4Kq-j2-Pec" eventType="touchUpInside" id="fDg-4G-TeC"/>
                                         </connections>
                                     </button>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="6E745AAE-642E-4D41-8D2A-8434F7B48CBC" id="rwS-Pm-HWo">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AF386AF1-0EAA-4639-AC29-ED2719B2AE2C" id="rwS-Pm-HWo">
                                         <rect key="frame" x="0.0" y="87" width="164" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
@@ -450,7 +450,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="6E745AAE-642E-4D41-8D2A-8434F7B48CBC" width="210" height="210">
+        <image name="AF386AF1-0EAA-4639-AC29-ED2719B2AE2C" width="210" height="210">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOzxYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBEW
 GxwgISksLzU4VSRudWxs1AkKCwwNDg8QViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBzV05TQ29sb3KA

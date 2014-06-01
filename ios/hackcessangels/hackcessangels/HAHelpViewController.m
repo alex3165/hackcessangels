@@ -69,6 +69,8 @@
     
     [self.userService getCurrentUser:^(HAUser *user) {
         DLog(@"Success");
+        NSString *helloName = [NSString stringWithFormat:@"Bonjour %@", user.name];
+        self.titleLabel.text = helloName;
     } failure:^(NSError *error) {
         if (error.code == 401 || error.code == 404) {
             [self showModalLoginWithAnimation:NO];

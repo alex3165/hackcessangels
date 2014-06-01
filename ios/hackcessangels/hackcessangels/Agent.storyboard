@@ -160,7 +160,7 @@
                     </connections>
                 </panGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="561" y="-261"/>
+            <point key="canvasLocation" x="557" y="-261"/>
         </scene>
         <!--Agent View Controller-->
         <scene sceneID="0Gc-Kf-DIK">
