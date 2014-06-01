@@ -55,6 +55,20 @@
     } ];
 }
 
+- (IBAction) createFakeHelpRequest:(id)sender {
+    UILocalNotification *localNotif = [[UILocalNotification alloc] init];
+    localNotif.alertBody = @"quelqu'un a besoin de votre aide";
+    localNotif.alertAction = @"Appel à l'aide";
+    HAHelpRequest* fakeHelpRequest = [[HAHelpRequest alloc] init];
+    fakeHelpRequest.user = [[HAUser alloc] init];
+    fakeHelpRequest.user.name = @"Michel Martin";
+    fakeHelpRequest.latitude = 48.83938;
+    fakeHelpRequest.longitude = 2.27067;
+    NSDictionary* userInfo = [NSDictionary dictionaryWithObjectsAndKeys:[fakeHelpRequest toPropertyList], @"helpRequest", nil];
+    localNotif.userInfo = userInfo;
+    [[UIApplication sharedApplication] presentLocalNotificationNow:localNotif];
+}
+
 /******************************************************************************************************************************
  *
  * Service

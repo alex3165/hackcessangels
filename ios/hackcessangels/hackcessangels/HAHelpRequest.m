@@ -37,4 +37,14 @@ NSString *const kStatusKey = @"CurrentState";
     return self;
 }
 
+- (NSDictionary*) toPropertyList {
+    NSMutableDictionary* dico = [[NSMutableDictionary alloc] init];
+    [dico setValue:self.Id forKey:kIdKey];
+    [dico setValue:[NSNumber numberWithDouble:self.latitude] forKey:kLatitudeKey];
+    [dico setValue:[NSNumber numberWithDouble:self.longitude] forKey:kLongitudeKey];
+    [dico setValue:[NSNumber numberWithDouble:self.precision] forKey:kPrecisionKey];
+    [dico setValue:[NSNumber numberWithInt:self.status] forKey:kStatusKey];
+    return dico;
+}
+
 @end

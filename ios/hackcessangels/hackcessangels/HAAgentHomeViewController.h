@@ -11,5 +11,6 @@
 @interface HAAgentHomeViewController : UIViewController
 
 - (IBAction) verifyHelpRequests:(id)sender;
+- (IBAction) createFakeHelpRequest:(id)sender;
 
 @end

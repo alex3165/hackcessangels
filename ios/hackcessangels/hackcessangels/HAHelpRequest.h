@@ -36,4 +36,6 @@ typedef enum HAHelpRequestStatus : NSUInteger {
 
 - (id)initWithDictionary:(NSDictionary *)data;
 
+- (NSDictionary*) toPropertyList;
+
 @end
