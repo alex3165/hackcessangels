@@ -29,6 +29,7 @@ extern NSString *const kDescriptionKey;
 extern NSString *const kImageKey;
 extern NSString *const kNameKey;
 extern NSString *const kNumeroKey;
+extern NSString *const kPhoneUrgenceKey;
 @interface HAUser : NSObject
 
 @property (nonatomic, strong) NSString *email;
@@ -36,6 +37,7 @@ extern NSString *const kNumeroKey;
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *description;
 @property (nonatomic, strong) NSString *phone;
+@property (nonatomic, strong) NSString *phoneUrgence;
 @property (nonatomic, strong) NSString *disability;
 @property (nonatomic, assign) enum  HAUserDisability disabilityType;
 @property (nonatomic, strong) NSData *image;
