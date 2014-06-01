@@ -50,6 +50,14 @@
 - (IBAction) verifyHelpRequests:(id)sender {
     [self.requestsService getRequests:^(NSArray *helpRequestList) {
         DLog(@"%@", helpRequestList);
+        for (HAHelpRequest* helpRequest in helpRequestList) {
+            UILocalNotification *localNotif = [[UILocalNotification alloc] init];
+            localNotif.alertBody = [NSString stringWithFormat:@"%@ a besoin d'aide", helpRequest.user.name];
+            localNotif.alertAction = @"Aide'gare: Appel à l'aide";
+            NSDictionary* userInfo = [NSDictionary dictionaryWithObjectsAndKeys:[helpRequest toPropertyList], @"helpRequest", nil];
+            localNotif.userInfo = userInfo;
+            [[UIApplication sharedApplication] presentLocalNotificationNow:localNotif];
+        }
     } failure:^(NSError *error) {
         NSLog(@"%@", error);
     } ];
