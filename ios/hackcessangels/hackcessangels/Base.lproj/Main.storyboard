@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="ycK-0M-K7o">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="ycK-0M-K7o">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -143,11 +143,19 @@
                                 <rect key="frame" x="135" y="389" width="50" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Appuyez pour demander de l'aide" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="KoK-oM-Kvp">
+                                <rect key="frame" x="20" y="463" width="280" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                     </view>
                     <navigationItem key="navigationItem" id="w8a-pP-DdI"/>
                     <connections>
                         <outlet property="helpme" destination="TdY-uj-XIK" id="4C9-XE-PbR"/>
+                        <outlet property="statusLabel" destination="KoK-oM-Kvp" id="g02-Ct-lyn"/>
                         <outlet property="titleLabel" destination="xTK-0u-rzZ" id="aK1-yN-jV8"/>
                         <outlet property="toolBar" destination="QCG-ck-u6j" id="V65-eR-HAZ"/>
                     </connections>
@@ -560,7 +568,7 @@
                                             <action selector="autre:" destination="4Kq-j2-Pec" eventType="touchUpInside" id="fDg-4G-TeC"/>
                                         </connections>
                                     </button>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="24AF17B0-86F2-4057-9265-15AAD11EDC3F" id="rwS-Pm-HWo">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="0678F000-700F-4AC1-A88E-3D692179FBBF" id="rwS-Pm-HWo">
                                         <rect key="frame" x="0.0" y="87" width="164" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
@@ -704,7 +712,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="24AF17B0-86F2-4057-9265-15AAD11EDC3F" width="210" height="210">
+        <image name="0678F000-700F-4AC1-A88E-3D692179FBBF" width="210" height="210">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOzxYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBEW
 GxwgISksLzU4VSRudWxs1AkKCwwNDg8QViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBzV05TQ29sb3KA

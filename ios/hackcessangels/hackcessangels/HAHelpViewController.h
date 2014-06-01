@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *helpme;
 @property (weak, nonatomic) IBOutlet UIToolbar *toolBar;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *statusLabel;
 
 @property (nonatomic, strong) HAAssistanceService *assistanceService;
 @property (nonatomic, strong) HAUserService *userService;
