@@ -18,7 +18,7 @@
 
 @end
 
-NSTimeInterval const kTimeInterval = 15 * 60.0;
+NSTimeInterval const kTimeInterval = 5;// * 60.0;
 
 @implementation HACurrentStationService
 
@@ -58,11 +58,6 @@ NSTimeInterval const kTimeInterval = 15 * 60.0;
     if (self.locationService.location == nil) {
         return;
     }
-    
-    DLog(@"Agent reporting location: latitude %+.6f, longitude %+.6f, accuracy %+.6f\n",
-         self.locationService.location.coordinate.latitude,
-         self.locationService.location.coordinate.longitude,
-         self.locationService.location.horizontalAccuracy);
     
     [self.restRequest POSTrequest:@"agent/position" withParameters:
   @{@"latitude": [NSNumber numberWithDouble: self.locationService.location.coordinate.latitude],

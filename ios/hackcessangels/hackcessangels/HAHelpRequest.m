@@ -12,8 +12,8 @@ NSString *const kIdKey = @"Id";
 NSString *const kLatitudeKey = @"Latitude";
 NSString *const kLongitudeKey = @"Longitude";
 NSString *const kPrecisionKey = @"Precision";
-NSString *const kAgentKey = @"Agent";
-NSString *const kUserKey = @"User";
+NSString *const kAgentKey = @"agent";
+NSString *const kUserKey = @"user";
 NSString *const kStatusKey = @"CurrentState";
 
 @implementation HAHelpRequest
@@ -26,10 +26,10 @@ NSString *const kStatusKey = @"CurrentState";
         self.latitude = [[data objectForKey:kLatitudeKey] doubleValue];
         self.longitude = [[data objectForKey:kLongitudeKey] doubleValue];
         self.precision = [[data objectForKey:kPrecisionKey] doubleValue];
-        if ([data objectForKey:kAgentKey]) {
+        if ([data objectForKey:kAgentKey] != nil) {
             self.agent = [[HAAgent alloc] initWithDictionary:[data objectForKey:kAgentKey]];
         }
-        if ([data objectForKey:kUserKey]) {
+        if ([data objectForKey:kUserKey] != nil) {
             self.user = [[HAUser alloc] initWithDictionary:[data objectForKey:kUserKey]];
         }
         self.status = [[data objectForKey:kStatusKey] integerValue];

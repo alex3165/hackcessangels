@@ -30,7 +30,7 @@
     [self.restRequest GETrequest:@"agent/requests" withParameters:nil success:^(id obj, NSHTTPURLResponse *response){
         // obj is a list of dictionnaries, each one representing a single help request.
         NSMutableArray* rawHelpRequests = [[NSMutableArray alloc] initWithArray: obj];
-        NSMutableArray* helpRequests;
+        NSMutableArray* helpRequests = [[NSMutableArray alloc] init];
 
         for (id rawRequest in rawHelpRequests) {
             [helpRequests addObject: [[HAHelpRequest alloc] initWithDictionary:rawRequest]];
