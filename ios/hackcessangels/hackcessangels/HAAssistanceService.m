@@ -28,9 +28,8 @@
     // The help request currently in flight; nil otherwise.
     @property(nonatomic, strong) HAHelpRequest* currentHelpRequest;
 
-    @property(nonatomic, strong) HAAssistanceRequestAbort abortCallback;
-    @property(nonatomic, strong) HAAssistanceRequestAgentContacted agentContactedCallback;
-    @property(nonatomic, strong) HAAssistanceRequestSuccess successCallback;
+    @property(nonatomic, strong) HAAssistanceRequestUpdate updateCallback;
+    @property(nonatomic, strong) HARestRequestsFailure failureCallback;
 @end
 
 @implementation HAAssistanceService
@@ -50,22 +49,29 @@
     return self;
 }
 
-- (void) startHelpRequest:(HAAssistanceRequestAbort)abort agentContacted:(HAAssistanceRequestAgentContacted)agentContacted success:(HAAssistanceRequestSuccess)success {
+- (void) startHelpRequest:(HAAssistanceRequestUpdate)update failure:(HARestRequestsFailure)failure {
+    self.updateCallback = update;
+    self.failureCallback = failure;
+    
+    [self.locationService setUpdateCallback:^(CLLocation *newLocation) {
+        self.timer = [[NSTimer alloc]
+                      initWithFireDate:[NSDate date]
+                      interval:30
+                      target:self
+                      selector:@selector(timerFired)
+                      userInfo:nil
+                      repeats:YES];
+        
+        [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:NSDefaultRunLoopMode];
+        [self.locationService setUpdateCallback:nil];
+    }];
+    
     [self.locationService startLocation];
 
-    self.timer = [[NSTimer alloc]
-                  initWithFireDate:[NSDate dateWithTimeIntervalSinceNow:1]
-                  interval:10
-                  target:self
-                  selector:@selector(timerFired)
-                  userInfo:nil
-                  repeats:YES];
-
-    [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:NSDefaultRunLoopMode];
 }
 
 - (void) timerFired {
-    [self helpMe:[self.locationService currentLongitude] latitude:[self.locationService currentLatitude] success:^(id obj, NSHTTPURLResponse *response) {
+    [self helpMe:self.locationService.location success:^(id obj, NSHTTPURLResponse *response) {
         self.currentHelpRequest = [[HAHelpRequest alloc] initWithDictionary:obj];
     } failure:^(id obj, NSError *error) {
         DLog(@"failure");
@@ -82,22 +88,27 @@
     self.requestInFlight = false;
 }
 
-- (void)helpMe:(double)longitude latitude:(double)latitude success:(HARestRequestsSuccess)success failure:(HARestRequestsFailure)failure {
+- (void)helpMe:(CLLocation*)location success:(HARestRequestsSuccess)success failure:(HARestRequestsFailure)failure{
     //NSLog(@"%hhd attention le test de connection est faussé pour test bluetooth",self.reach.isReachable);
     if (self.reach.isReachable) {
         HARestRequests* restRequest = [[HARestRequests alloc] init];
-    
+        
         if (!self.requestInFlight) {
-            [restRequest POSTrequest:@"help" withParameters:@{@"longitude" : [NSNumber numberWithDouble: longitude], @"latitude" : [NSNumber numberWithDouble:latitude]} success:success failure:failure];
+            [restRequest POSTrequest:@"help" withParameters:
+             @{@"longitude": [NSNumber numberWithDouble: location.coordinate.longitude],
+               @"latitude": [NSNumber numberWithDouble:location.coordinate.latitude],
+               @"precision": [NSNumber numberWithDouble:location.horizontalAccuracy]} success:success failure:failure];
             self.requestInFlight = true;
         } else {
-            [restRequest PUTrequest:@"help" withParameters:@{@"id" : self.currentHelpRequest.Id,
-                                                             @"longitude" : [NSNumber numberWithDouble: longitude],
-                                                             @"latitude" : [NSNumber numberWithDouble:latitude]} success:success failure:failure];
+            [restRequest PUTrequest:@"help" withParameters:
+             @{@"id" : self.currentHelpRequest.Id,
+               @"longitude": [NSNumber numberWithDouble: location.coordinate.longitude],
+               @"latitude": [NSNumber numberWithDouble:location.coordinate.latitude],
+               @"precision": [NSNumber numberWithDouble:location.horizontalAccuracy]} success:success failure:failure];
         }
     } else {
         NSLog(@"désolé vous n'avez pas de connexion à internet, nous allons quand même essayer avec le bluetooth");
-        self.peripheralService = [[HAPeripheral alloc]initWithLongAndLat:longitude latitude:latitude]; // envoi l'appel à l'aide bluetooth
+        self.peripheralService = [[HAPeripheral alloc]initWithLongAndLat:location.coordinate.longitude latitude:location.coordinate.latitude]; // envoi l'appel à l'aide bluetooth
     }
 }
 

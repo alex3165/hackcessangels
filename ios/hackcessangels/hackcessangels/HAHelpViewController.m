@@ -14,6 +14,8 @@
 @interface HAHelpViewController ()
     @property (nonatomic, strong) HAUser *user;
     @property (nonatomic, strong) NSMutableString *helloUser;
+
+    @property (nonatomic, strong) HAHelpRequest* helpRequest;
 @end
 
 @implementation HAHelpViewController
@@ -42,14 +44,22 @@
 }
 
 - (IBAction)helpme:(id)sender {
-    
     self.assistanceService = [[HAAssistanceService alloc] init];
-    [self.assistanceService startHelpRequest:nil agentContacted:nil success:nil];
-    
+    [self.assistanceService startHelpRequest:^(HAHelpRequest *helpRequest) {
+        self.helpRequest = helpRequest;
+    } failure:^(id obj, NSError *error) {
+        DLog("Erreur dans la demande d'assistance: %@", error);
+    }];
 }
 
 
 -(void) customToolBar{
+}
+
+-(void) updateDisplay {
+    if (self.helpRequest == nil) {
+        self.statusLabel.text = @"";
+    }
 }
 
 /******************************************************************************************************************************

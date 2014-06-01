@@ -30,6 +30,7 @@ extern NSString *const kImageKey;
 extern NSString *const kNameKey;
 extern NSString *const kNumeroKey;
 extern NSString *const kPhoneUrgenceKey;
+
 @interface HAUser : NSObject
 
 @property (nonatomic, strong) NSString *email;
