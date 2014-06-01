@@ -18,7 +18,6 @@ PODS:
   - AFNetworking/UIKit (2.1.0):
     - AFNetworking/NSURLConnection
   - OHHTTPStubs (3.1.0)
-  - PocketSVG (0.6)
   - Reachability (3.1.1)
   - TPKeyboardAvoiding (1.2.3)
   - UICKeyChainStore (1.0.4)
@@ -27,7 +26,6 @@ PODS:
 DEPENDENCIES:
   - AFNetworking
   - OHHTTPStubs
-  - PocketSVG
   - Reachability
   - TPKeyboardAvoiding
   - UICKeyChainStore
@@ -36,7 +34,6 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   AFNetworking: 7c33510b46f994bc75b75c6e63c1d83414ca40f2
   OHHTTPStubs: 8b032ab399e356050010ed34613ee1761c6c8ae3
-  PocketSVG: 9551e9e8e44ee1e62b6d8c41398dac44020c168c
   Reachability: 8e9635e3cb4f98e7f825e51147f677ecc694d0e7
   TPKeyboardAvoiding: ca26afa683d829cb96fe69b887fc8be4178f0b9a
   UICKeyChainStore: fefa2a092e3bee36330c64bd7f7e6b7d49ff62ad

@@ -10,7 +10,6 @@
 #import "HALogViewController.h"
 #import "HAUserService.h"
 #import "UIColor+HackcessAngels.h"
-#import "PocketSVG.h"
 
 @interface HAHelpViewController ()
     @property (nonatomic, strong) HAUser *user;
@@ -51,12 +50,6 @@
 
 
 -(void) customToolBar{
-    //[self.toolBar setFrame:CGRectMake(0, 380, 320, 80)];
-//    UIImage* imgItem1 = [UIImage imageWithContentsOfFile:@"profil44"];
-//    NSMutableArray *barButtonArray = [[NSMutableArray alloc] init];
-//    UIBarButtonItem* item = [[UIBarButtonItem alloc] initWithImage:imgItem1 style:UIBarButtonItemStyleBordered target: nil action: nil];
-//    [barButtonArray addObject:item];
-//    [self.toolBar setItems:barButtonArray animated:YES];
 }
 
 /******************************************************************************************************************************

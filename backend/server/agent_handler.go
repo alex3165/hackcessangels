@@ -48,7 +48,7 @@ func (s *Server) handleAgentPosition(w http.ResponseWriter, r *http.Request) {
 	}
 
 	switch r.Method {
-	case "PUT":
+	case "POST":
 		if data.Latitude == nil || data.Longitude == nil {
 			returnError(400, "latitude and longitude must be present", w)
 			return
@@ -71,6 +71,8 @@ func (s *Server) handleAgentPosition(w http.ResponseWriter, r *http.Request) {
 		} else {
 			user.CurrentStation = &station.Id
 		}
+        user.LastStationUpdate = time.Now()
+        user.Save()
 		json.NewEncoder(w).Encode(station)
 		return
 	}

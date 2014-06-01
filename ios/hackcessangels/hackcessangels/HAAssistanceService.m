@@ -96,12 +96,9 @@
                                                              @"latitude" : [NSNumber numberWithDouble:latitude]} success:success failure:failure];
         }
     } else {
-        // Set an advertising
-        //NSLog(@"Bluetooth activate");
-        self.peripheralService = [[HAPeripheral alloc]init]; // envoi l'appel à l'aide bluetooth
-        //self.managerService = [[HACentralManager alloc]initForResponse]; // écoute si il y a une réponse
+        NSLog(@"désolé vous n'avez pas de connexion à internet, nous allons quand même essayer avec le bluetooth");
+        self.peripheralService = [[HAPeripheral alloc]initWithLongAndLat:longitude latitude:latitude]; // envoi l'appel à l'aide bluetooth
     }
 }
-
 
 @end
