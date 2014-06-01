@@ -48,12 +48,6 @@
 #define COCOAPODS_VERSION_MINOR_AFNetworking_UIKit 1
 #define COCOAPODS_VERSION_PATCH_AFNetworking_UIKit 0
 
-// PocketSVG
-#define COCOAPODS_POD_AVAILABLE_PocketSVG
-#define COCOAPODS_VERSION_MAJOR_PocketSVG 0
-#define COCOAPODS_VERSION_MINOR_PocketSVG 6
-#define COCOAPODS_VERSION_PATCH_PocketSVG 0
-
 // Reachability
 #define COCOAPODS_POD_AVAILABLE_Reachability
 #define COCOAPODS_VERSION_MAJOR_Reachability 3

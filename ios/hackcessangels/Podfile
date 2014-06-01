@@ -4,7 +4,6 @@ pod 'AFNetworking'
 pod 'UICKeyChainStore'
 pod 'TPKeyboardAvoiding'
 pod 'Reachability'
-pod 'PocketSVG'
 
 target :HackcessAngelsTests do
   pod 'XCTAsyncTestCase'
