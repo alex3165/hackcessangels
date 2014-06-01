@@ -37,14 +37,20 @@ func NewModel(server string, databaseName string) (*Model, error) {
 	m.db = m.session.DB(databaseName)
 	m.users = m.db.C("users")
 	m.helpRequests = m.db.C("helpRequests")
-	m.helpRequests.EnsureIndex(mgo.Index{
+	err = m.helpRequests.EnsureIndex(mgo.Index{
 		Key:  []string{"$2dsphere:requesterposition"},
 		Bits: 26,
 	})
+    if err != nil {
+        return nil, err
+    }
 	m.stations = m.db.C("stations")
-	m.helpRequests.EnsureIndex(mgo.Index{
+	err = m.stations.EnsureIndex(mgo.Index{
 		Key:  []string{"$2dsphere:center"},
 		Bits: 26,
 	})
+    if err != nil {
+        return nil, err
+    }
 	return m, nil
 }

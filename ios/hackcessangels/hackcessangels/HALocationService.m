@@ -9,10 +9,8 @@
 #import "HALocationService.h"
 
 @interface HALocationService ()
-
-@property(nonatomic, strong) CLLocationManager *locationManager;
-@property(nonatomic, strong) HALocationServiceLocationUpdate update;
-
+    @property(nonatomic, strong) CLLocationManager *locationManager;
+    @property(nonatomic, strong) HALocationServiceLocationUpdate update;
 @end
 
 @implementation HALocationService

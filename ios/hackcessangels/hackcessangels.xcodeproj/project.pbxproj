@@ -218,6 +218,7 @@
 		8FBFC37D192FD67F00FC0004 /* AppDelegateAgents.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegateAgents.m; path = hackcessangels/AppDelegateAgents.m; sourceTree = SOURCE_ROOT; };
 		8FCE639D18AD5E3E00D4C957 /* HAUserService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HAUserService.h; path = hackcessangels/services/HAUserService.h; sourceTree = SOURCE_ROOT; };
 		8FCE639E18AD5E3E00D4C957 /* HAUserService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HAUserService.m; path = hackcessangels/services/HAUserService.m; sourceTree = SOURCE_ROOT; };
+		8FF9DC681936552B00105C2C /* GarePontGarigliano.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = GarePontGarigliano.gpx; path = hackcessangelsTests/GarePontGarigliano.gpx; sourceTree = SOURCE_ROOT; };
 		A1330B0518AD62B5002B1828 /* HAUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HAUser.h; path = hackcessangels/model/HAUser.h; sourceTree = SOURCE_ROOT; };
 		A1330B0618AD62B5002B1828 /* HAUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HAUser.m; path = hackcessangels/model/HAUser.m; sourceTree = SOURCE_ROOT; };
 		A1330B0918AD632E002B1828 /* HAUserTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HAUserTests.m; path = hackcessangelsTests/HAUserTests.m; sourceTree = SOURCE_ROOT; };
@@ -402,6 +403,7 @@
 		22601F291886E2DE008B0179 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				8FF9DC681936552B00105C2C /* GarePontGarigliano.gpx */,
 				22601F2A1886E2DE008B0179 /* HackcessAngelsTests-Info.plist */,
 				22601F2B1886E2DE008B0179 /* InfoPlist.strings */,
 			);

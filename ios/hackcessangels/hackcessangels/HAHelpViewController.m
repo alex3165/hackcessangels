@@ -10,7 +10,6 @@
 #import "HALogViewController.h"
 #import "HAUserService.h"
 #import "UIColor+HackcessAngels.h"
-#import "PocketSVG.h"
 
 @interface HAHelpViewController ()
     @property (nonatomic, strong) HAUser *user;
