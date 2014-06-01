@@ -44,12 +44,14 @@
     
     HAAgent* agent = [HAAgent agentFromKeyChain];
     if (!agent) {
-        // No user logged in. How is this possible?
+        // No user logged in.
         NSMutableDictionary* details = [NSMutableDictionary dictionary];
         [details setValue:@"No known agent; login required" forKey:NSLocalizedDescriptionKey];
         failure([[NSError alloc] initWithDomain:@"user" code:401 userInfo:details]);
         return;
     }
+    
+    [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookie:agent.cookie];
     
     [self getAgentWithEmail:agent.email success:^(HAAgent *agent) {
         self.currentAgent = agent;

@@ -15,9 +15,10 @@
 
 
 @interface HAMapViewController () <HACentralManagerDelegate>
-@property (nonatomic, weak) IBOutlet HAHelpProfileView *helpProfileView;
-@property (nonatomic, weak) IBOutlet HACallUserView *callUserView;
-@property (nonatomic, weak) IBOutlet UIPanGestureRecognizer *gestureRecognizer;
+    @property (nonatomic, weak) IBOutlet HAHelpProfileView *helpProfileView;
+    @property (nonatomic, weak) IBOutlet HACallUserView *callUserView;
+    @property (nonatomic, weak) IBOutlet UIPanGestureRecognizer *gestureRecognizer;
+    @property (nonatomic, strong) NSUUID *uuid;
 @end
 
 
@@ -138,8 +139,7 @@ NSString * address = @"10 adresse des jonquilles";
 
 
 - (IBAction)PositiveAnswerForHelp:(id)sender {
-
-
+    [self.bluetoothmanager takeRequest:self.uuid];
 }
 /******************************************************************************************************************************
  *
@@ -149,13 +149,13 @@ NSString * address = @"10 adresse des jonquilles";
  *
  *****************************************************************************************************************************/
 
-
 #pragma mark - Delegate
 
--(void)helpValueChanged:(BOOL)newValue
+- (void)helpValueChanged:(BOOL)newValue user:(NSDictionary *)user uuid:(NSUUID *)uuid
 {
     [self.helpok setHidden:!newValue];
-    
+    self.uuid = uuid;
+    /* notification d'appel à l'aide */
     UILocalNotification *localNotif = [[UILocalNotification alloc] init];
     localNotif.alertBody = @"quelqu'un a besoin de votre aide";
     localNotif.alertAction = @"Appel à l'aide";

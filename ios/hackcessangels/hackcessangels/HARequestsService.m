@@ -25,17 +25,12 @@
     return self;
 }
 
-/* PUT : Envoi de la position agent */
-- (void)savePosition:(double)longitude latitude:(double)latitude precision:(double)precision success:(HARestRequestsSuccess)success failure:(HARestRequestsFailure)failure{
-    [self.restRequest PUTrequest:@"agent/position" withParameters:@{@"longitude": [NSNumber numberWithDouble: longitude],@"latitude": [NSNumber numberWithDouble: latitude], @"precision" : [NSNumber numberWithDouble:precision]} success:success failure:failure];
-}
-
 /* GET : récupérer les requêtes en cours */
 - (void)getRequests:(HAHelpRequestServiceListSuccess)success failure:(HAHelpRequestServiceFailure)failure{
-    [self.restRequest GETrequest:@"agent/requests" withParameters:@{@"": @""} success:^(id obj, NSHTTPURLResponse *response){
+    [self.restRequest GETrequest:@"agent/requests" withParameters:nil success:^(id obj, NSHTTPURLResponse *response){
         // obj is a list of dictionnaries, each one representing a single help request.
         NSMutableArray* rawHelpRequests = [[NSMutableArray alloc] initWithArray: obj];
-        NSMutableArray* helpRequests;
+        NSMutableArray* helpRequests = [[NSMutableArray alloc] init];
 
         for (id rawRequest in rawHelpRequests) {
             [helpRequests addObject: [[HAHelpRequest alloc] initWithDictionary:rawRequest]];

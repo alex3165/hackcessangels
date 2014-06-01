@@ -17,9 +17,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [[UINavigationBar appearance] setTintColor:[UIColor redColor]];
-    [[UINavigationBar appearance] setBackgroundColor:[UIColor redColor]];
-    
     // Periodically report location to server.
     self.currentStationService = [[HACurrentStationService alloc] init];
     [self.currentStationService startReportingLocation];

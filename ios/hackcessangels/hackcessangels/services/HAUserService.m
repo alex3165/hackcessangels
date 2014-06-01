@@ -44,13 +44,14 @@
     
     HAUser* user = [HAUser userFromKeyChain];
     if (!user) {
-        // No user logged in. How is this possible?
         NSMutableDictionary* details = [NSMutableDictionary dictionary];
         [details setValue:@"No known user; login required" forKey:NSLocalizedDescriptionKey];
         failure([[NSError alloc] initWithDomain:@"user" code:401 userInfo:details]);
         return;
     }
     
+    [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookie:user.cookie];
+     
     [self getUserWithEmail:user.email success:^(HAUser *user) {
         self.currentUser = user;
         success(user);

@@ -18,7 +18,7 @@
 
 @end
 
-NSTimeInterval const kTimeInterval = 15 * 60.0;
+NSTimeInterval const kTimeInterval = 5;// * 60.0;
 
 @implementation HACurrentStationService
 
@@ -36,12 +36,17 @@ NSTimeInterval const kTimeInterval = 15 * 60.0;
 }
 
 - (void) reportingLocationInBackground {
+    [self.locationService setUpdateCallback:^(CLLocation *newLocation) {
+        [self.locationService setUpdateCallback:nil];
+        [self reportLocation];
+    }];
+    
     [self.locationService startAreaTracking];
 
     NSRunLoop* currentRunLoop = [NSRunLoop currentRunLoop];
     
     self.timer = [NSTimer scheduledTimerWithTimeInterval:kTimeInterval target:self selector:@selector(reportingTimerFired:) userInfo:nil repeats:YES];
-
+    
     [currentRunLoop run];
 }
 

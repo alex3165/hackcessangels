@@ -44,6 +44,8 @@ const (
 	COMPLETED = 7
 	// Request finished and report filled
 	REPORT_FILLED = 8
+	// Not in a station
+	NOT_IN_STATION = 9
 )
 
 type HelpRequestStatus struct {
@@ -102,6 +104,22 @@ func (hr *HelpRequest) Save() error {
 	return err
 }
 
+// CheckStatus verifies that the status of a request should not be changed.
+// For instance, if a request is running for more than N minutes, it is automatically abandonned or completed.
+func (hr *HelpRequest) CheckStatus() error {
+    switch (hr.CurrentState) {
+    case NEW, AGENTS_CONTACTED, RETRY, AGENT_ANSWERED:
+        // Maximum 2 minutes
+        if time.Now().Sub(hr.RequesterLastUpdate) > 10 * time.Minute {
+            return hr.ChangeStatus(ABANDONED, time.Now())
+        }
+        if station, _ := hr.GetStation(); station == nil {
+            return hr.ChangeStatus(NOT_IN_STATION, time.Now())
+        }
+    }
+    return nil
+}
+
 func (hr *HelpRequest) ChangeStatus(newState HelpRequestState, time time.Time) error {
 	hr.CurrentState = newState
 	status := HelpRequestStatus{
@@ -144,6 +162,11 @@ func (hr *HelpRequest) GetUser() (*User, error) {
 	}
 }
 
+// Return the station where this help request is located
+func (hr *HelpRequest) GetStation() (*Station, error) {
+    return hr.m.FindStationByLocation(hr.RequesterPosition.Coordinates[0], hr.RequesterPosition.Coordinates[1], hr.RequesterPosPrecision)
+}
+
 func (m *Model) GetActiveRequestsByStation(s *Station) ([]*HelpRequest, error) {
 	helpRequests := make([]*HelpRequest, 0)
 	err := m.helpRequests.Find(bson.M{
@@ -159,12 +182,17 @@ func (m *Model) GetActiveRequestsByStation(s *Station) ([]*HelpRequest, error) {
 			},
 		},
 	}).All(&helpRequests)
+
+    // Add the pointer to the model object to all help requests: it is not in the database.
+    for _, hr := range helpRequests {
+        hr.m = m
+    }
 	return helpRequests, err
 }
 
 func (m *Model) GetRequestById(id string) (*HelpRequest, error) {
 	hr := new(HelpRequest)
-	err := m.helpRequests.FindId(id).One(&hr)
+	err := m.helpRequests.FindId(bson.ObjectIdHex(id)).One(&hr)
 	hr.m = m
 	return hr, err
 }

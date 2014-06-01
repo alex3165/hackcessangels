@@ -48,7 +48,7 @@ func (s *Server) handleAgentPosition(w http.ResponseWriter, r *http.Request) {
 	}
 
 	switch r.Method {
-	case "PUT":
+	case "POST":
 		if data.Latitude == nil || data.Longitude == nil {
 			returnError(400, "latitude and longitude must be present", w)
 			return
@@ -71,6 +71,8 @@ func (s *Server) handleAgentPosition(w http.ResponseWriter, r *http.Request) {
 		} else {
 			user.CurrentStation = &station.Id
 		}
+        user.LastStationUpdate = time.Now()
+        user.Save()
 		json.NewEncoder(w).Encode(station)
 		return
 	}
@@ -78,15 +80,15 @@ func (s *Server) handleAgentPosition(w http.ResponseWriter, r *http.Request) {
 
 func (s *Server) handleAgentRequests(w http.ResponseWriter, r *http.Request) {
 	var data struct {
-		RequestId     string
-		TakeRequest   bool
-		FinishRequest bool
+		RequestId     string `json:"requestid,omitempty"`
+		TakeRequest   bool   `json:"takerequest,omitempty"`
+		FinishRequest bool   `json:"finishrequest,omitempty"`
 	}
 
 	w.Header().Add("Content-Type", "application/json")
 	err := getJSONRequest(r, &data)
 	if err != nil {
-		log.Print(err)
+        log.Print("Error while parsing request:", err)
 		returnError(400, "Invalid request", w)
 		return
 	}
@@ -120,7 +122,7 @@ func (s *Server) handleAgentRequests(w http.ResponseWriter, r *http.Request) {
 		if len(data.RequestId) == 0 {
 			station, err := user.GetStation()
 			if err != nil {
-				log.Print(err)
+                log.Print("Getting station: ", err)
 				returnError(500, "Unable to get station", w)
 				return
 			}
@@ -130,7 +132,7 @@ func (s *Server) handleAgentRequests(w http.ResponseWriter, r *http.Request) {
 			}
 			requests, err := s.model.GetActiveRequestsByStation(station)
 			if err != nil {
-				log.Print(err)
+                log.Print("Active requests: ", err)
 				returnError(500, "Unable to get active requests", w)
 				return
 			}

@@ -31,7 +31,12 @@
         
         //TOP LABEL
         self.nom.text = user.name;
-        self.image.image = [[UIImage alloc] initWithData:user.image];
+       
+       self.image.layer.cornerRadius = self.image.frame.size.height /2;
+        self.image.layer.masksToBounds = YES;
+        self.image.layer.borderWidth = 0;
+         self.image.image = [[UIImage alloc] initWithData:user.image];
+        
         
         //mes numéros
          self.phone.text=user.phone;
@@ -53,30 +58,41 @@
         
         //faire un enum
       //  self.handicap=user.disabilityType;
-        /*
+        
          switch (user.disabilityType) {
-         case Physical_wheelchair:[self.handicapInfos.text=@"Je suis en chaise roulante"]
-         case    Physical_powerchair:[self.handicapInfos.text=@"Je suis en chaise électrique"]
-         case  Physical_walk:[self.handicapInfos.text=@"J'ai des problèmes de marche."]
-         [self.handicap.text=@"Handicap moteur"];
-         break;
-         case   Vision_blind :[self.handicapInfos.text=@"Je suis aveugle."]
-         case   Vision_lowvision:[self.handicapInfos.text=@"J'ai une mauvaise vue"]
-         [self.handicap.text=@"Handicap visuel"];
-         break;
-         case Hearing_call:[self.handicapInfos.text=@"Je répond aux appels."]
-         case   Hearing_SMS:[self.handicapInfos.text=@"Je répond aux sms."]
-         [self.handicap.text=@"Handicap auditif"]
-         break;
+             case Physical_wheelchair:
+                 self.handicapInfos.text=@"Handicap moteur. Je suis en chaise roulante";
+             break;
+             case    Physical_powerchair:
+                 self.handicapInfos.text=@" Handicap moteur. Je suis en chaise électrique";
+             break;
+             case  Physical_walk:
+                 self.handicapInfos.text=@"Handicap moteur. J'ai des problèmes de marche.";
+             break;
+             case   Vision_blind :
+                 self.handicapInfos.text=@"Handicap visuel. Je suis aveugle.";
+              break;
+             case   Vision_lowvision:
+                 self.handicapInfos.text=@"Handicap visuel. J'ai une mauvaise vue";
+              break;
+
+
+             case Hearing_call:
+                 self.handicapInfos.text=@"Handicap auditif. Je répond aux appels.";
+                 break;
+             case   Hearing_SMS:self.handicapInfos.text=@"Handicap auditif. Je répond aux sms.";
+             
+            break;
          case   Mental:
-         [self.handicap.text=@"Handicap Mental"]
+                 self.handicapInfos.text=@"Handicap Mental";
          break;
          case   Other :
-         [self.handicap.text=@"Handicap Autre"]
+                 self.handicapInfos.text=@"Handicap Autre";
          break;
          case Unknown:
+                 self.handicapInfos.text=@" PAS de Handicap.";
          break;
-         }*/
+         }
         
         
     } failure:^(NSError *error) {

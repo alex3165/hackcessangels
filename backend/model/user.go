@@ -2,6 +2,7 @@ package model
 
 import (
 	"time"
+    "log"
 
 	"labix.org/v2/mgo/bson"
 )
@@ -11,12 +12,12 @@ type DisabilityType int
 const (
 	Unknown DisabilityType = iota
 	Physical_wheelchair
-    Physical_powerchair
-    Physical_walk
+	Physical_powerchair
+	Physical_walk
 	Vision_blind
-    Vision_lowvision
+	Vision_lowvision
 	Hearing_call
-    Hearing_SMS
+	Hearing_SMS
 	Mental
 	Other
 )
@@ -29,10 +30,11 @@ type User struct {
 	Email string
 	LoggedAccount
 
-	Name        string
-	Description string
-	Image       []byte
-	Phone       string
+	Name           string
+	Description    string
+	Image          []byte
+	Phone          string
+	EmergencyPhone string
 
 	Disability     string
 	DisabilityType DisabilityType
@@ -64,9 +66,9 @@ func (u *User) GetStation() (*Station, error) {
 		u.CurrentStation = nil
 		return nil, u.Save()
 	}
-	var station *Station
-	err := u.m.stations.FindId(*u.CurrentStation).One(station)
-	return station, err
+	var station Station
+	err := u.m.stations.FindId(*u.CurrentStation).One(&station)
+	return &station, err
 }
 
 func (m *Model) CreateUser(email, password string) (*User, error) {
@@ -84,10 +86,11 @@ func (m *Model) CreateUser(email, password string) (*User, error) {
 }
 
 func (m *Model) GetUserByEmail(email string) (*User, error) {
-	u := &User{}
+    var u User
+    log.Print("GetUserByEmail: ", email)
 	if err := m.users.Find(bson.M{"email": email}).One(&u); err != nil {
 		return nil, err
 	}
 	u.m = m
-	return u, nil
+	return &u, nil
 }
