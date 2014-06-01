@@ -44,7 +44,7 @@
 - (IBAction)helpme:(id)sender {
     
     self.assistanceService = [[HAAssistanceService alloc] init];
-    [self.assistanceService startHelpRequest:nil agentContacted:nil success:nil];
+    [self.assistanceService startHelpRequest:nil failure:nil];
     
 }
 

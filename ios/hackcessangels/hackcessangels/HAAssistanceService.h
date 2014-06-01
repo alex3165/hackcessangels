@@ -6,24 +6,21 @@
 //  Copyright (c) 2014 RIEUX Alexandre. All rights reserved.
 //
 
+#import <CoreLocation/CoreLocation.h>
 #import <Foundation/Foundation.h>
+
 #import "HARestRequests.h"
 #import "HAPeripheral.h"
 #import "HACentralManager.h"
+#import "HAHelpRequest.h"
 
-// Block called when the request is aborted (typically, no response from any agent within X minutes).
-typedef void(^HAAssistanceRequestAbort)();
-
-// Block called when an agent answered the request, but it is still not completed.
-typedef void(^HAAssistanceRequestAgentContacted)(NSString* agentName);
-
-// Block called when the assistance request finished successfully (end of request after agent contacted).
-typedef void(^HAAssistanceRequestSuccess)();
+// Block called when the request is updated (after a call to the server).
+typedef void(^HAAssistanceRequestUpdate)(HAHelpRequest* helpRequest);
 
 @interface HAAssistanceService : NSObject
 
-- (void)startHelpRequest:(HAAssistanceRequestAbort) abort agentContacted:(HAAssistanceRequestAgentContacted) agentContacted success:(HAAssistanceRequestSuccess) success;
+- (void)startHelpRequest:(HAAssistanceRequestUpdate) update failure:(HARestRequestsFailure) failure;
 - (void)stopHelpRequest;
 
-- (void)helpMe:(double)longitude latitude:(double)latitude success:(HARestRequestsSuccess)success failure:(HARestRequestsFailure)failure;
+- (void)helpMe:(CLLocation*)location success:(HARestRequestsSuccess)success failure:(HARestRequestsFailure)failure;
 @end
