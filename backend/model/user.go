@@ -2,6 +2,7 @@ package model
 
 import (
 	"time"
+    "log"
 
 	"labix.org/v2/mgo/bson"
 )
@@ -65,9 +66,9 @@ func (u *User) GetStation() (*Station, error) {
 		u.CurrentStation = nil
 		return nil, u.Save()
 	}
-	var station *Station
-	err := u.m.stations.FindId(*u.CurrentStation).One(station)
-	return station, err
+	var station Station
+	err := u.m.stations.FindId(*u.CurrentStation).One(&station)
+	return &station, err
 }
 
 func (m *Model) CreateUser(email, password string) (*User, error) {
@@ -85,10 +86,11 @@ func (m *Model) CreateUser(email, password string) (*User, error) {
 }
 
 func (m *Model) GetUserByEmail(email string) (*User, error) {
-	u := &User{}
+    var u User
+    log.Print("GetUserByEmail: ", email)
 	if err := m.users.Find(bson.M{"email": email}).One(&u); err != nil {
 		return nil, err
 	}
 	u.m = m
-	return u, nil
+	return &u, nil
 }
