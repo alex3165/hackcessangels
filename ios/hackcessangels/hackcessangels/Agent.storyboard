@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="Qb8-bn-O3d">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="gOi-Eh-AMW">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -7,13 +7,13 @@
         <!--Agent Home View Controller-->
         <scene sceneID="m1d-wo-DK5">
             <objects>
-                <viewController id="Qb8-bn-O3d" customClass="HAAgentHomeViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="agentHomeViewController" id="Qb8-bn-O3d" customClass="HAAgentHomeViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kNU-kD-B8s">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ueR-Pa-hI3">
-                                <rect key="frame" x="20" y="285" width="280" height="22"/>
+                                <rect key="frame" x="20" y="142" width="280" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="Verifier les demandes en cours"/>
@@ -63,20 +63,32 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="VUC-Eq-fv1">
+                                <rect key="frame" x="20" y="193" width="280" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Créer une demande d'aide">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="createFakeHelpRequest:" destination="Qb8-bn-O3d" eventType="touchUpInside" id="VsD-fn-7Q6"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="XMO-vV-iHw"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DfT-md-jpB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="127" y="-261"/>
+            <point key="canvasLocation" x="613" y="-261"/>
         </scene>
         <!--Map View Controller-->
         <scene sceneID="PXA-rM-bPT">
             <objects>
-                <viewController id="5uE-2O-GZe" customClass="HAMapViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="agentMapViewController" id="5uE-2O-GZe" customClass="HAMapViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="blK-NG-XP2">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -160,7 +172,7 @@
                     </connections>
                 </panGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="557" y="-261"/>
+            <point key="canvasLocation" x="1105" y="-261"/>
         </scene>
         <!--Agent View Controller-->
         <scene sceneID="0Gc-Kf-DIK">
@@ -246,7 +258,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k4o-7I-Vle" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1024" y="-501"/>
+            <point key="canvasLocation" x="613" y="440"/>
         </scene>
         <!--Log View Controller-->
         <scene sceneID="PEe-ff-sov">
@@ -318,6 +330,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DCJ-Kj-9ui" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="127" y="440"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="kIe-Y2-iq9">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gOi-Eh-AMW" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="P37-NX-1pn">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Qb8-bn-O3d" kind="relationship" relationship="rootViewController" id="Khc-n1-AQ6"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YDW-L8-LWv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="127" y="-261"/>
         </scene>
     </scenes>
     <resources>

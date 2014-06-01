@@ -50,9 +50,31 @@
 - (IBAction) verifyHelpRequests:(id)sender {
     [self.requestsService getRequests:^(NSArray *helpRequestList) {
         DLog(@"%@", helpRequestList);
+        for (HAHelpRequest* helpRequest in helpRequestList) {
+            UILocalNotification *localNotif = [[UILocalNotification alloc] init];
+            localNotif.alertBody = [NSString stringWithFormat:@"%@ a besoin d'aide", helpRequest.user.name];
+            localNotif.alertAction = @"Aide'gare: Appel à l'aide";
+            NSDictionary* userInfo = [NSDictionary dictionaryWithObjectsAndKeys:[helpRequest toPropertyList], @"helpRequest", nil];
+            localNotif.userInfo = userInfo;
+            [[UIApplication sharedApplication] presentLocalNotificationNow:localNotif];
+        }
     } failure:^(NSError *error) {
         NSLog(@"%@", error);
     } ];
+}
+
+- (IBAction) createFakeHelpRequest:(id)sender {
+    UILocalNotification *localNotif = [[UILocalNotification alloc] init];
+    localNotif.alertBody = @"quelqu'un a besoin de votre aide";
+    localNotif.alertAction = @"Appel à l'aide";
+    HAHelpRequest* fakeHelpRequest = [[HAHelpRequest alloc] init];
+    fakeHelpRequest.user = [[HAUser alloc] init];
+    fakeHelpRequest.user.name = @"Michel Martin";
+    fakeHelpRequest.latitude = 48.83938;
+    fakeHelpRequest.longitude = 2.27067;
+    NSDictionary* userInfo = [NSDictionary dictionaryWithObjectsAndKeys:[fakeHelpRequest toPropertyList], @"helpRequest", nil];
+    localNotif.userInfo = userInfo;
+    [[UIApplication sharedApplication] presentLocalNotificationNow:localNotif];
 }
 
 /******************************************************************************************************************************

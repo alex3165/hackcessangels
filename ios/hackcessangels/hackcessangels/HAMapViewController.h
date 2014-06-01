@@ -11,6 +11,7 @@
 
 // model
 #import "HATileOverlay.h"
+#import "HAHelpRequest.h"
 
 // services
 
@@ -27,5 +28,7 @@
 @property (nonatomic, weak) IBOutlet MKMapView *map;
 @property (nonatomic, weak) IBOutlet UIButton *helpok;
 //@property (nonatomic, assign) BOOL notification;
+
+@property (nonatomic, strong) HAHelpRequest *helpRequest;
 
 @end

@@ -6,6 +6,9 @@
 #import "AppDelegateAgents.h"
 
 #import "HACurrentStationService.h"
+#import "HAHelpRequest.h"
+#import "HAMapViewController.h"
+#import "HAAgentHomeViewController.h"
 
 @interface AppDelegateAgents()
 
@@ -18,13 +21,31 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Periodically report location to server.
-    self.currentStationService = [[HACurrentStationService alloc] init];
-    [self.currentStationService startReportingLocation];
+    if (self.currentStationService == nil) {
+        self.currentStationService = [[HACurrentStationService alloc] init];
+        [self.currentStationService startReportingLocation];
+    }
+    
+    // In case of notification, load the right view controller
+    UILocalNotification *localNotif =
+    [launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey];
+    if (localNotif) {
+        [self application:application didReceiveLocalNotification:localNotif];
+    }
     
     // Override point for customization after application launch.
     return YES;
 }
-							
+
+- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {
+    HAHelpRequest *helpRequest = [[HAHelpRequest alloc] initWithDictionary: [notification.userInfo valueForKey:@"helpRequest"]];
+    UINavigationController *navigationController = (UINavigationController *) self.window.rootViewController;
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Agent" bundle:nil];
+    HAMapViewController *mapViewController = (HAMapViewController *)[storyboard instantiateViewControllerWithIdentifier:@"agentMapViewController"];
+    mapViewController.helpRequest = helpRequest;
+    [navigationController pushViewController:mapViewController animated:FALSE];
+}
+
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

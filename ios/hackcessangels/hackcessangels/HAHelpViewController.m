@@ -97,4 +97,14 @@
     [self presentViewController:logViewController animated:animated completion:nil];
 }
 
+
+
+-(void) showProfil: (id)sender
+{
+    HALogViewController *logViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"userProfilController"];
+   // [logViewController setCheckCredentialsBlock:[[HAUserService sharedInstance] getCheckCredentialsBlock]];
+    [self presentViewController:logViewController animated:NO completion:nil];
+}
+
+
 @end
