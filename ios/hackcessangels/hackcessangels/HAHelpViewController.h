@@ -24,4 +24,6 @@
 
 -(void) customToolBar;
 
+- (IBAction) showProfil:(id)sender;
+
 @end

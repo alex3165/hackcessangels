@@ -32,6 +32,7 @@ NSString *const kCookieKey = @"cookie";
         self.phone = [dico objectForKey:@"phone"];
         self.description = [dico objectForKey:@"description"];
         self.disability = [dico objectForKey:@"disability"];
+        self.phoneUrgence = [dico objectForKey:@"phoneUrgence"];
         if ([dico objectForKey:@"image"] != nil) {
             self.image = [[NSData alloc] initWithBase64EncodedString:[dico objectForKey:@"image"] options:NSDataBase64DecodingIgnoreUnknownCharacters];
         }
