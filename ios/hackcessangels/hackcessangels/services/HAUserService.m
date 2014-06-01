@@ -81,19 +81,6 @@
 - (void)updateUser:(HAUser *)user success:(HAUserServiceSuccess)success failure:(HAUserServiceFailure)failure {
     HARestRequests* requestService = [[HARestRequests alloc] init];
     
-    NSMutableDictionary* parameters = [[NSMutableDictionary alloc] init];
-    [parameters setObject:user.email forKey:kEmailKey];
-    
-    // Set a new password only if it changed by the user
-    if (user.password != nil && user.password.length != 0) {
-        [parameters setObject:user.password forKey:kPasswordKey];
-    }
-    // Set a new numero only if it changed by the user
-    if (user.phone != nil && user.phone.length != 0) {
-        [parameters setObject:user.phone forKey:kNumeroKey];
-    }
-    
-    // Name is a required property
     if (user.name == nil || user.name.length == 0) {
         // No user logged in. How is this possible?
         NSMutableDictionary* details = [NSMutableDictionary dictionary];
@@ -101,11 +88,7 @@
         failure([[NSError alloc] initWithDomain:@"update" code:400 userInfo:details]);
     }
     
-    [parameters setObject:user.name forKey:kNameKey];
-    [parameters setObject:user.description forKey:kDescriptionKey];
-    if (user.image != nil) {
-        [parameters setObject:[user.image base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength] forKey:kImageKey];
-    }
+    NSDictionary* parameters = [user toPropertyList];
     
     [requestService PUTrequest:@"user" withParameters: [[NSDictionary alloc] initWithObjectsAndKeys:parameters, @"data", nil] success:^(id obj, NSHTTPURLResponse *response) {
         self.currentUser = [[HAUser alloc] initWithDictionary:obj];

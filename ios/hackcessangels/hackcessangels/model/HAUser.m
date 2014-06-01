@@ -16,7 +16,9 @@ NSString *const kDescriptionKey = @"description";
 NSString *const kImageKey = @"image";
 NSString *const kNameKey = @"name";
 NSString *const kNumeroKey = @"phone";
+NSString *const kEmergencyKey = @"phoneUrgence";
 NSString *const kDisabilityKey = @"disability";
+NSString *const kDisabilityTypeKey = @"disabilityType";
 NSString *const kCookieKey = @"cookie";
 
 @implementation HAUser
@@ -26,15 +28,16 @@ NSString *const kCookieKey = @"cookie";
     self = [super init];
     
     if (self) {
-        self.email = [dico objectForKey:@"email"];
-        self.password = [dico objectForKey:@"password"];
-        self.name = [dico objectForKey:@"name"];
-        self.phone = [dico objectForKey:@"phone"];
-        self.description = [dico objectForKey:@"description"];
-        self.disability = [dico objectForKey:@"disability"];
-        self.phoneUrgence = [dico objectForKey:@"phoneUrgence"];
-        if ([dico objectForKey:@"image"] != nil) {
-            self.image = [[NSData alloc] initWithBase64EncodedString:[dico objectForKey:@"image"] options:NSDataBase64DecodingIgnoreUnknownCharacters];
+        self.email = [dico objectForKey:kEmailKey];
+        self.password = [dico objectForKey:kPasswordKey];
+        self.name = [dico objectForKey:kNameKey];
+        self.phone = [dico objectForKey:kNumeroKey];
+        self.description = [dico objectForKey:kDescriptionKey];
+        self.disability = [dico objectForKey:kDisabilityKey];
+        self.disabilityType = [[dico objectForKey:kDisabilityTypeKey] integerValue];
+        self.phoneUrgence = [dico objectForKey:kEmergencyKey];
+        if ([dico objectForKey:kImageKey] != nil) {
+            self.image = [[NSData alloc] initWithBase64EncodedString:[dico objectForKey:kImageKey] options:NSDataBase64DecodingIgnoreUnknownCharacters];
         }
     }
     
@@ -78,6 +81,12 @@ NSString *const kCookieKey = @"cookie";
     [parameters setObject:self.phone forKey:kNumeroKey];
     [parameters setObject:self.description forKey:kDescriptionKey];
     [parameters setObject:self.disability forKey:kDisabilityKey];
+    [parameters setObject:[NSNumber numberWithInt: self.disabilityType] forKey:kDisabilityTypeKey];
+    
+    // Set a new password only if it changed by the user
+    if (self.password != nil && self.password.length != 0) {
+        [parameters setObject:self.password forKey:kPasswordKey];
+    }
     
     if (self.image != nil) {
         [parameters setObject:[self.image base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength] forKey:kImageKey];
