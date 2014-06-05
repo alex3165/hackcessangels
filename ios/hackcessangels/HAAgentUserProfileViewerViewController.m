@@ -8,13 +8,13 @@
 //
 //
 
-#import "EIUserProfilSendViewController.h"
+#import "HAAgentUserProfileViewerViewController.h"
 
-@interface EIUserProfilSendViewController ()
+@interface HAAgentUserProfileViewerViewController ()
 
 @end
 
-@implementation EIUserProfilSendViewController
+@implementation HAAgentUserProfileViewerViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
