@@ -1,7 +1,7 @@
 //
-//  EIUserProfilSendViewController.h
+//  HAAgentUserProfileViewerViewController.h
 //
-//  EIUserProfilViewController.h
+//  HAAgentUserProfileViewerViewController.h
 //  hackcessangels
 //
 //  Created by Mac on 28/05/2014.
@@ -11,7 +11,7 @@
 #import <UIKit/UIKit.h>
 #import "HARestRequests.h"
 #import "HAUserService.h"
-@interface EIUserProfilSendViewController : UIViewController
+@interface HAAgentUserProfileViewerViewController : UIViewController
 
 
 @property (weak, nonatomic) IBOutlet UILabel *topLabel;

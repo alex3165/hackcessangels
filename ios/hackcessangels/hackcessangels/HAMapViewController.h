@@ -18,8 +18,7 @@
 #import "HACentralManager.h"
 #import "HAPeripheral.h"
 
-@interface HAMapViewController : UIViewController <MKMapViewDelegate>
-
+@interface HAMapViewController : UIViewController <MKMapViewDelegate, UIGestureRecognizerDelegate>
 
 @property (nonatomic, strong) HATileOverlay *overlay;
 @property (nonatomic, strong) HACentralManager *bluetoothmanager;
