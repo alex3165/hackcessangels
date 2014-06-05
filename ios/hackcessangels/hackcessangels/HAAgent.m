@@ -70,9 +70,15 @@ NSString *const pGareKey = @"gare";
 
 - (NSDictionary*) toPropertyList {
     NSMutableDictionary* parameters = [[NSMutableDictionary alloc] init];
-    [parameters setObject:self.email forKey:pEmailKey];
-    [parameters setObject:self.name forKey:pNameKey];
-    [parameters setObject:self.phone forKey:pNumeroKey];
+    if (self.email) {
+        [parameters setObject:self.email forKey:pEmailKey];
+    }
+    if (self.name) {
+        [parameters setObject:self.name forKey:pNameKey];
+    }
+    if (self.phone) {
+        [parameters setObject:self.phone forKey:pNumeroKey];
+    }
     
     if (self.image != nil) {
         [parameters setObject:[self.image base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength] forKey:pImageKey];

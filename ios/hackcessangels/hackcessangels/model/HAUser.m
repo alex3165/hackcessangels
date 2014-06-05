@@ -76,11 +76,21 @@ NSString *const kCookieKey = @"cookie";
 
 - (NSDictionary*) toPropertyList {
     NSMutableDictionary* parameters = [[NSMutableDictionary alloc] init];
-    [parameters setObject:self.email forKey:kEmailKey];
-    [parameters setObject:self.name forKey:kNameKey];
-    [parameters setObject:self.phone forKey:kNumeroKey];
-    [parameters setObject:self.description forKey:kDescriptionKey];
-    [parameters setObject:self.disability forKey:kDisabilityKey];
+    if (self.email) {
+        [parameters setObject:self.email forKey:kEmailKey];
+    }
+    if (self.name) {
+        [parameters setObject:self.name forKey:kNameKey];
+    }
+    if (self.phone) {
+        [parameters setObject:self.phone forKey:kNumeroKey];
+    }
+    if (self.description) {
+        [parameters setObject:self.description forKey:kDescriptionKey];
+    }
+    if (self.disability) {
+        [parameters setObject:self.disability forKey:kDisabilityKey];
+    }
     [parameters setObject:[NSNumber numberWithInt: self.disabilityType] forKey:kDisabilityTypeKey];
     
     // Set a new password only if it changed by the user
