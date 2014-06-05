@@ -12,7 +12,6 @@
 		0414A35D19098FBB00D23472 /* HAAgentService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0414A35C19098FBB00D23472 /* HAAgentService.m */; };
 		043F17AC1901A37900D23C3F /* HACallUserView.m in Sources */ = {isa = PBXBuildFile; fileRef = 043F17A918FC30BB00D23C3F /* HACallUserView.m */; };
 		04D14F2A19366D2100ED1B27 /* EIUserProfilViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D14F2919366D2100ED1B27 /* EIUserProfilViewController.m */; };
-		04D14F2D193675EF00ED1B27 /* HAAgentUserProfileViewerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D14F2C193675EF00ED1B27 /* HAAgentUserProfileViewerViewController.m */; };
 		04F5A81718C8AC5E00ED0CC6 /* HAUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F5A81518C8AC5E00ED0CC6 /* HAUserViewController.m */; };
 		22085DDD18883EAE00A4BE75 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22085DDC18883EAE00A4BE75 /* CoreLocation.framework */; };
 		22130BFF188964C200191955 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22130BFE188964C200191955 /* MapKit.framework */; };
@@ -88,7 +87,6 @@
 		8F57723A18DB7D5600D42D4F /* Agent.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8F57723818DB7D5600D42D4F /* Agent.storyboard */; };
 		8F57723B18DB7DE600D42D4F /* HAHelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 222E375B18BA521C00E3B720 /* HAHelpViewController.m */; };
 		8F88460918BFBBB400595CA2 /* HALocationService.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F88460818BFBBB400595CA2 /* HALocationService.m */; };
-		8F8A61EB1909877E005E0F9A /* HAMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22601F191886E2DE008B0179 /* HAMapViewController.m */; };
 		8F9AFFA01901A3660027DE84 /* HARestRequests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F400A2718F1AE6C006B8342 /* HARestRequests.m */; };
 		8FBEAE42192100DA0097E151 /* HAHelpRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FBEAE41192100DA0097E151 /* HAHelpRequest.m */; };
 		8FBEAE43192100DA0097E151 /* HAHelpRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FBEAE41192100DA0097E151 /* HAHelpRequest.m */; };
@@ -99,6 +97,7 @@
 		8FBFC37F192FD69F00FC0004 /* AppDelegateAgents.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FBFC37D192FD67F00FC0004 /* AppDelegateAgents.m */; };
 		8FCE639F18AD5E3E00D4C957 /* HAUserService.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FCE639E18AD5E3E00D4C957 /* HAUserService.m */; };
 		8FCE63A018AD5E3E00D4C957 /* HAUserService.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FCE639E18AD5E3E00D4C957 /* HAUserService.m */; };
+		8FFCDF2B1940F3B700C7F376 /* HAAgentUserProfileViewerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D14F2C193675EF00ED1B27 /* HAAgentUserProfileViewerViewController.m */; };
 		A1330B0718AD62B5002B1828 /* HAUser.m in Sources */ = {isa = PBXBuildFile; fileRef = A1330B0618AD62B5002B1828 /* HAUser.m */; };
 		A1330B0A18AD632E002B1828 /* HAUserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A1330B0918AD632E002B1828 /* HAUserTests.m */; };
 		A150294B18DB7A81008FC4F1 /* HAUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F5A81518C8AC5E00ED0CC6 /* HAUserViewController.m */; };
@@ -770,7 +769,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8F8A61EB1909877E005E0F9A /* HAMapViewController.m in Sources */,
 				04F5A81718C8AC5E00ED0CC6 /* HAUserViewController.m in Sources */,
 				222E376118BA5B2F00E3B720 /* HALogViewController.m in Sources */,
 				8F88460918BFBBB400595CA2 /* HALocationService.m in Sources */,
@@ -785,7 +783,6 @@
 				22C9AB3C18E229D4008ED8D7 /* HAPeripheral.m in Sources */,
 				22130C02188966E500191955 /* HALocalisation.m in Sources */,
 				A1B80AA818D243A3004EE4EA /* UIColor+HackcessAngels.m in Sources */,
-				04D14F2D193675EF00ED1B27 /* HAAgentUserProfileViewerViewController.m in Sources */,
 				22601F101886E2DE008B0179 /* main.m in Sources */,
 				A1330B0718AD62B5002B1828 /* HAUser.m in Sources */,
 				222E375C18BA521C00E3B720 /* HAHelpViewController.m in Sources */,
@@ -828,6 +825,7 @@
 				228D8F02190FE5A0002AE6E2 /* HAUserService.m in Sources */,
 				8F9AFFA01901A3660027DE84 /* HARestRequests.m in Sources */,
 				A150295018DB7A81008FC4F1 /* HATileOverlayView.m in Sources */,
+				8FFCDF2B1940F3B700C7F376 /* HAAgentUserProfileViewerViewController.m in Sources */,
 				22C9AB3718E20FDC008ED8D7 /* HACentralManager.m in Sources */,
 				8FBFC37F192FD69F00FC0004 /* AppDelegateAgents.m in Sources */,
 				22C9AB3D18E229D4008ED8D7 /* HAPeripheral.m in Sources */,

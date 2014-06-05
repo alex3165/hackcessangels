@@ -26,26 +26,10 @@
 
 CLLocationCoordinate2D coordinate;
 
-// Localisation de test
-NSString * latitude = @"48.8566140";
-NSString * longitude = @"2.3522219";
-NSString * crimeDescription = @"Marc Fogel";
-NSString * address = @"10 adresse des jonquilles";
-
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        self.overlay = [[HATileOverlay alloc] initOverlay];
-        [self.map addOverlay:self.overlay];
-        MKMapRect visibleRect = [self.map mapRectThatFits:self.overlay.boundingMapRect];
-        visibleRect.size.width /= 2;
-        visibleRect.size.height /= 2;
-        visibleRect.origin.x += visibleRect.size.width / 2;
-        visibleRect.origin.y += visibleRect.size.height / 2;
-        self.map.visibleMapRect = visibleRect;
-        [self.map setUserTrackingMode:true];
     }
     return self;
 }
@@ -61,6 +45,43 @@ NSString * address = @"10 adresse des jonquilles";
     [self.helpok setHidden:!self.bluetoothmanager.needHelp];
     
     self.bluetoothmanager.delegate = self;
+    
+    self.overlay = [[HATileOverlay alloc] initOverlay];
+    [self.map addOverlay:self.overlay];
+    [self.map setUserTrackingMode:MKUserTrackingModeFollow];
+    if (self.helpRequest) {
+        [self.map addAnnotation:self.helpRequest];
+    }
+}
+
+- (MKAnnotationView *)mapView:(MKMapView *)mapView
+            viewForAnnotation:(id <MKAnnotation>)annotation
+{
+    // If the annotation is the user location, just return nil.
+    if ([annotation isKindOfClass:[MKUserLocation class]])
+        return nil;
+    
+    // Handle any custom annotations.
+    if ([annotation isKindOfClass:[HAHelpRequest class]])
+    {
+        // Try to dequeue an existing pin view first.
+        MKPinAnnotationView* pinView = (MKPinAnnotationView*)[self.map dequeueReusableAnnotationViewWithIdentifier:@"HAHelpRequestAnnotationView"];
+        
+        if (!pinView)
+        {
+            // If an existing pin view was not available, create one.
+            MKPinAnnotationView* pinView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"HAHelpRequestAnnotationView"];
+            pinView.pinColor = MKPinAnnotationColorPurple;
+            pinView.animatesDrop = YES;
+            pinView.canShowCallout = YES;
+        } else {
+            pinView.annotation = annotation;
+        }
+        
+        return pinView;
+    }
+    
+    return nil;
 }
 
 - (IBAction)_panRecogPanned:(id)sender {
