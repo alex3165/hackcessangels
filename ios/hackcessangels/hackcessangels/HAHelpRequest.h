@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <MapKit/MapKit.h>
 
 #import "HAUser.h"
 #import "HAAgent.h"
@@ -23,7 +24,7 @@ typedef enum HAHelpRequestStatus : NSUInteger {
     kReportFilled
 } HAHelpRequestStatus;
 
-@interface HAHelpRequest : NSObject
+@interface HAHelpRequest : NSObject <MKAnnotation>
 
 @property(nonatomic, strong) NSString* Id;
 @property(nonatomic, assign) double latitude;
@@ -33,6 +34,10 @@ typedef enum HAHelpRequestStatus : NSUInteger {
 
 @property(nonatomic, strong) HAUser* user;
 @property(nonatomic, strong) HAAgent* agent;
+
+// Delegate
+@property (nonatomic, readonly) CLLocationCoordinate2D coordinate;
+@property (nonatomic, readonly, copy) NSString *title;
 
 - (id)initWithDictionary:(NSDictionary *)data;
 

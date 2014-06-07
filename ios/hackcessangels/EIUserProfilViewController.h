@@ -16,7 +16,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *numeros;
 
 //LABLES USER
-@property (weak, nonatomic) IBOutlet UILabel *nom;
+@property (weak, nonatomic) IBOutlet UILabel *nomPrenom;
 @property (weak, nonatomic) IBOutlet UILabel *prenom;
 @property (weak, nonatomic) IBOutlet UILabel *handicap;
 @property (weak, nonatomic) IBOutlet UILabel *handicapAutre;

@@ -30,7 +30,7 @@
     [[HAUserService sharedInstance] getCurrentUser:^(HAUser *user) {
         
         //TOP LABEL
-        self.nom.text = user.name;
+    self.nomPrenom.text = user.name;
        
        self.image.layer.cornerRadius = self.image.frame.size.height /2;
         self.image.layer.masksToBounds = YES;

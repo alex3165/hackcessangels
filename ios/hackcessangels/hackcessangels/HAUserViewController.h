@@ -21,10 +21,7 @@ typedef enum HAUserSimpleDisability : NSUInteger {
     kAutre
 } HAUserSimpleDisability;
 
-@interface HAUserViewController : UIViewController <UINavigationControllerDelegate,UIImagePickerControllerDelegate,UIScrollViewDelegate>
-
-
-
+@interface HAUserViewController : UIViewController <UINavigationControllerDelegate,UIImagePickerControllerDelegate,UIScrollViewDelegate, UIGestureRecognizerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIPickerView *pickerView;
 

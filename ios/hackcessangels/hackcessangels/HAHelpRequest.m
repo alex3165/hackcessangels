@@ -17,6 +17,8 @@ NSString *const kUserKey = @"user";
 NSString *const kStatusKey = @"CurrentState";
 
 @implementation HAHelpRequest
+@synthesize coordinate;
+@synthesize title;
 
 - (id)initWithDictionary:(NSDictionary *)data {
     self = [super init];
@@ -33,6 +35,11 @@ NSString *const kStatusKey = @"CurrentState";
             self.user = [[HAUser alloc] initWithDictionary:[data objectForKey:kUserKey]];
         }
         self.status = [[data objectForKey:kStatusKey] integerValue];
+        
+        coordinate = CLLocationCoordinate2DMake(self.latitude, self.longitude);
+        if (self.user) {
+            title = self.user.name;
+        }
     }
     return self;
 }

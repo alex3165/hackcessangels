@@ -12,7 +12,6 @@
 		0414A35D19098FBB00D23472 /* HAAgentService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0414A35C19098FBB00D23472 /* HAAgentService.m */; };
 		043F17AC1901A37900D23C3F /* HACallUserView.m in Sources */ = {isa = PBXBuildFile; fileRef = 043F17A918FC30BB00D23C3F /* HACallUserView.m */; };
 		04D14F2A19366D2100ED1B27 /* EIUserProfilViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D14F2919366D2100ED1B27 /* EIUserProfilViewController.m */; };
-		04D14F2D193675EF00ED1B27 /* EIUserProfilSendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D14F2C193675EF00ED1B27 /* EIUserProfilSendViewController.m */; };
 		04F5A81718C8AC5E00ED0CC6 /* HAUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F5A81518C8AC5E00ED0CC6 /* HAUserViewController.m */; };
 		22085DDD18883EAE00A4BE75 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22085DDC18883EAE00A4BE75 /* CoreLocation.framework */; };
 		22130BFF188964C200191955 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22130BFE188964C200191955 /* MapKit.framework */; };
@@ -53,24 +52,6 @@
 		22C9AB3E18E229D4008ED8D7 /* HAPeripheral.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C9AB3B18E229D4008ED8D7 /* HAPeripheral.m */; };
 		22DA835818B288610014CCA5 /* HAAssistanceService.m in Sources */ = {isa = PBXBuildFile; fileRef = 22DA835718B288610014CCA5 /* HAAssistanceService.m */; };
 		22DA835918B288610014CCA5 /* HAAssistanceService.m in Sources */ = {isa = PBXBuildFile; fileRef = 22DA835718B288610014CCA5 /* HAAssistanceService.m */; };
-		22E64AE819379FA500851BB8 /* assistance44.png in Resources */ = {isa = PBXBuildFile; fileRef = 22E64AE219379FA500851BB8 /* assistance44.png */; };
-		22E64AE919379FA500851BB8 /* assistance44.png in Resources */ = {isa = PBXBuildFile; fileRef = 22E64AE219379FA500851BB8 /* assistance44.png */; };
-		22E64AEA19379FA500851BB8 /* assistance44.png in Resources */ = {isa = PBXBuildFile; fileRef = 22E64AE219379FA500851BB8 /* assistance44.png */; };
-		22E64AEB19379FA500851BB8 /* informations44.png in Resources */ = {isa = PBXBuildFile; fileRef = 22E64AE319379FA500851BB8 /* informations44.png */; };
-		22E64AEC19379FA500851BB8 /* informations44.png in Resources */ = {isa = PBXBuildFile; fileRef = 22E64AE319379FA500851BB8 /* informations44.png */; };
-		22E64AED19379FA500851BB8 /* informations44.png in Resources */ = {isa = PBXBuildFile; fileRef = 22E64AE319379FA500851BB8 /* informations44.png */; };
-		22E64AEE19379FA500851BB8 /* plandesgares44.png in Resources */ = {isa = PBXBuildFile; fileRef = 22E64AE419379FA500851BB8 /* plandesgares44.png */; };
-		22E64AEF19379FA500851BB8 /* plandesgares44.png in Resources */ = {isa = PBXBuildFile; fileRef = 22E64AE419379FA500851BB8 /* plandesgares44.png */; };
-		22E64AF019379FA500851BB8 /* plandesgares44.png in Resources */ = {isa = PBXBuildFile; fileRef = 22E64AE419379FA500851BB8 /* plandesgares44.png */; };
-		22E64AF119379FA500851BB8 /* profil44.png in Resources */ = {isa = PBXBuildFile; fileRef = 22E64AE519379FA500851BB8 /* profil44.png */; };
-		22E64AF219379FA500851BB8 /* profil44.png in Resources */ = {isa = PBXBuildFile; fileRef = 22E64AE519379FA500851BB8 /* profil44.png */; };
-		22E64AF319379FA500851BB8 /* profil44.png in Resources */ = {isa = PBXBuildFile; fileRef = 22E64AE519379FA500851BB8 /* profil44.png */; };
-		22E64AF419379FA500851BB8 /* recommandations44.png in Resources */ = {isa = PBXBuildFile; fileRef = 22E64AE619379FA500851BB8 /* recommandations44.png */; };
-		22E64AF519379FA500851BB8 /* recommandations44.png in Resources */ = {isa = PBXBuildFile; fileRef = 22E64AE619379FA500851BB8 /* recommandations44.png */; };
-		22E64AF619379FA500851BB8 /* recommandations44.png in Resources */ = {isa = PBXBuildFile; fileRef = 22E64AE619379FA500851BB8 /* recommandations44.png */; };
-		22E64AF719379FA500851BB8 /* toutesinterventions44.png in Resources */ = {isa = PBXBuildFile; fileRef = 22E64AE719379FA500851BB8 /* toutesinterventions44.png */; };
-		22E64AF819379FA500851BB8 /* toutesinterventions44.png in Resources */ = {isa = PBXBuildFile; fileRef = 22E64AE719379FA500851BB8 /* toutesinterventions44.png */; };
-		22E64AF919379FA500851BB8 /* toutesinterventions44.png in Resources */ = {isa = PBXBuildFile; fileRef = 22E64AE719379FA500851BB8 /* toutesinterventions44.png */; };
 		22E64AFC1937A4C200851BB8 /* logoSncf4S.png in Resources */ = {isa = PBXBuildFile; fileRef = 22E64AFA1937A4C200851BB8 /* logoSncf4S.png */; };
 		22E64AFD1937A4C200851BB8 /* logoSncf4S.png in Resources */ = {isa = PBXBuildFile; fileRef = 22E64AFA1937A4C200851BB8 /* logoSncf4S.png */; };
 		22E64AFE1937A4C200851BB8 /* logoSncf4S.png in Resources */ = {isa = PBXBuildFile; fileRef = 22E64AFA1937A4C200851BB8 /* logoSncf4S.png */; };
@@ -88,7 +69,6 @@
 		8F57723A18DB7D5600D42D4F /* Agent.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8F57723818DB7D5600D42D4F /* Agent.storyboard */; };
 		8F57723B18DB7DE600D42D4F /* HAHelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 222E375B18BA521C00E3B720 /* HAHelpViewController.m */; };
 		8F88460918BFBBB400595CA2 /* HALocationService.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F88460818BFBBB400595CA2 /* HALocationService.m */; };
-		8F8A61EB1909877E005E0F9A /* HAMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22601F191886E2DE008B0179 /* HAMapViewController.m */; };
 		8F9AFFA01901A3660027DE84 /* HARestRequests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F400A2718F1AE6C006B8342 /* HARestRequests.m */; };
 		8FBEAE42192100DA0097E151 /* HAHelpRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FBEAE41192100DA0097E151 /* HAHelpRequest.m */; };
 		8FBEAE43192100DA0097E151 /* HAHelpRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FBEAE41192100DA0097E151 /* HAHelpRequest.m */; };
@@ -99,6 +79,7 @@
 		8FBFC37F192FD69F00FC0004 /* AppDelegateAgents.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FBFC37D192FD67F00FC0004 /* AppDelegateAgents.m */; };
 		8FCE639F18AD5E3E00D4C957 /* HAUserService.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FCE639E18AD5E3E00D4C957 /* HAUserService.m */; };
 		8FCE63A018AD5E3E00D4C957 /* HAUserService.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FCE639E18AD5E3E00D4C957 /* HAUserService.m */; };
+		8FFCDF2B1940F3B700C7F376 /* HAAgentUserProfileViewerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D14F2C193675EF00ED1B27 /* HAAgentUserProfileViewerViewController.m */; };
 		A1330B0718AD62B5002B1828 /* HAUser.m in Sources */ = {isa = PBXBuildFile; fileRef = A1330B0618AD62B5002B1828 /* HAUser.m */; };
 		A1330B0A18AD632E002B1828 /* HAUserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A1330B0918AD632E002B1828 /* HAUserTests.m */; };
 		A150294B18DB7A81008FC4F1 /* HAUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F5A81518C8AC5E00ED0CC6 /* HAUserViewController.m */; };
@@ -149,8 +130,8 @@
 		043F17AB1901A22F00D23C3F /* HackcessAngels copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "HackcessAngels copy-Info.plist"; sourceTree = SOURCE_ROOT; };
 		04D14F2819366D2100ED1B27 /* EIUserProfilViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EIUserProfilViewController.h; sourceTree = "<group>"; };
 		04D14F2919366D2100ED1B27 /* EIUserProfilViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EIUserProfilViewController.m; sourceTree = "<group>"; };
-		04D14F2B193675EF00ED1B27 /* EIUserProfilSendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EIUserProfilSendViewController.h; sourceTree = "<group>"; };
-		04D14F2C193675EF00ED1B27 /* EIUserProfilSendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EIUserProfilSendViewController.m; sourceTree = "<group>"; };
+		04D14F2B193675EF00ED1B27 /* HAAgentUserProfileViewerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HAAgentUserProfileViewerViewController.h; path = ../HAAgentUserProfileViewerViewController.h; sourceTree = "<group>"; };
+		04D14F2C193675EF00ED1B27 /* HAAgentUserProfileViewerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HAAgentUserProfileViewerViewController.m; path = ../HAAgentUserProfileViewerViewController.m; sourceTree = "<group>"; };
 		04F5A81418C8AC5E00ED0CC6 /* HAUserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HAUserViewController.h; path = hackcessangels/HAUserViewController.h; sourceTree = SOURCE_ROOT; };
 		04F5A81518C8AC5E00ED0CC6 /* HAUserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HAUserViewController.m; path = hackcessangels/HAUserViewController.m; sourceTree = SOURCE_ROOT; };
 		18DAFC5302E94F25AE48D512 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -195,12 +176,6 @@
 		22C9AB3B18E229D4008ED8D7 /* HAPeripheral.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HAPeripheral.m; sourceTree = "<group>"; };
 		22DA835618B288610014CCA5 /* HAAssistanceService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HAAssistanceService.h; sourceTree = "<group>"; };
 		22DA835718B288610014CCA5 /* HAAssistanceService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HAAssistanceService.m; sourceTree = "<group>"; };
-		22E64AE219379FA500851BB8 /* assistance44.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = assistance44.png; sourceTree = "<group>"; };
-		22E64AE319379FA500851BB8 /* informations44.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = informations44.png; sourceTree = "<group>"; };
-		22E64AE419379FA500851BB8 /* plandesgares44.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plandesgares44.png; sourceTree = "<group>"; };
-		22E64AE519379FA500851BB8 /* profil44.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profil44.png; sourceTree = "<group>"; };
-		22E64AE619379FA500851BB8 /* recommandations44.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = recommandations44.png; sourceTree = "<group>"; };
-		22E64AE719379FA500851BB8 /* toutesinterventions44.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = toutesinterventions44.png; sourceTree = "<group>"; };
 		22E64AFA1937A4C200851BB8 /* logoSncf4S.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logoSncf4S.png; sourceTree = "<group>"; };
 		22E64AFB1937A4C200851BB8 /* logoSncf5S.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logoSncf5S.png; sourceTree = "<group>"; };
 		22E64B021937A62F00851BB8 /* help.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = help.png; sourceTree = "<group>"; };
@@ -326,8 +301,6 @@
 		22601EF71886E2DE008B0179 = {
 			isa = PBXGroup;
 			children = (
-				04D14F2B193675EF00ED1B27 /* EIUserProfilSendViewController.h */,
-				04D14F2C193675EF00ED1B27 /* EIUserProfilSendViewController.m */,
 				04D14F2819366D2100ED1B27 /* EIUserProfilViewController.h */,
 				04D14F2919366D2100ED1B27 /* EIUserProfilViewController.m */,
 				22601F091886E2DE008B0179 /* HackcessAngels */,
@@ -383,12 +356,6 @@
 				22E64B021937A62F00851BB8 /* help.png */,
 				22E64AFA1937A4C200851BB8 /* logoSncf4S.png */,
 				22E64AFB1937A4C200851BB8 /* logoSncf5S.png */,
-				22E64AE219379FA500851BB8 /* assistance44.png */,
-				22E64AE319379FA500851BB8 /* informations44.png */,
-				22E64AE419379FA500851BB8 /* plandesgares44.png */,
-				22E64AE519379FA500851BB8 /* profil44.png */,
-				22E64AE619379FA500851BB8 /* recommandations44.png */,
-				22E64AE719379FA500851BB8 /* toutesinterventions44.png */,
 				2244C95518FA8B55000B3C33 /* profil.jpg */,
 				043F17AB1901A22F00D23C3F /* HackcessAngels copy-Info.plist */,
 				22601F0B1886E2DE008B0179 /* HackcessAngels-Info.plist */,
@@ -438,6 +405,8 @@
 				8FBEAE46192A42190097E151 /* HAAgentHomeViewController.m */,
 				0414A3531909890F00D23472 /* HAAgentViewController.h */,
 				0414A3541909890F00D23472 /* HAAgentViewController.m */,
+				04D14F2B193675EF00ED1B27 /* HAAgentUserProfileViewerViewController.h */,
+				04D14F2C193675EF00ED1B27 /* HAAgentUserProfileViewerViewController.m */,
 				8F57723818DB7D5600D42D4F /* Agent.storyboard */,
 			);
 			name = Agent;
@@ -610,20 +579,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				22E64AF419379FA500851BB8 /* recommandations44.png in Resources */,
-				22E64AEB19379FA500851BB8 /* informations44.png in Resources */,
 				A1B80AA418D23DBF004EE4EA /* TODO.md in Resources */,
 				22601F1C1886E2DE008B0179 /* Images.xcassets in Resources */,
-				22E64AF119379FA500851BB8 /* profil44.png in Resources */,
-				22E64AF719379FA500851BB8 /* toutesinterventions44.png in Resources */,
 				22E64B031937A62F00851BB8 /* help.png in Resources */,
 				2244C95618FA8B55000B3C33 /* profil.jpg in Resources */,
 				22E64AFC1937A4C200851BB8 /* logoSncf4S.png in Resources */,
 				22601F0E1886E2DE008B0179 /* InfoPlist.strings in Resources */,
 				22601F171886E2DE008B0179 /* Main.storyboard in Resources */,
 				22E64AFF1937A4C200851BB8 /* logoSncf5S.png in Resources */,
-				22E64AEE19379FA500851BB8 /* plandesgares44.png in Resources */,
-				22E64AE819379FA500851BB8 /* assistance44.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -631,20 +594,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				22E64AF619379FA500851BB8 /* recommandations44.png in Resources */,
-				22E64AED19379FA500851BB8 /* informations44.png in Resources */,
 				A1B064A618BFCBE60078EED5 /* user.json in Resources */,
 				22601F2D1886E2DE008B0179 /* InfoPlist.strings in Resources */,
-				22E64AF319379FA500851BB8 /* profil44.png in Resources */,
-				22E64AF919379FA500851BB8 /* toutesinterventions44.png in Resources */,
 				22E64B051937A62F00851BB8 /* help.png in Resources */,
 				2244C95818FA8B55000B3C33 /* profil.jpg in Resources */,
 				22E64AFE1937A4C200851BB8 /* logoSncf4S.png in Resources */,
 				8F57723A18DB7D5600D42D4F /* Agent.storyboard in Resources */,
 				222E375E18BA52E100E3B720 /* Main.storyboard in Resources */,
 				22E64B011937A4C200851BB8 /* logoSncf5S.png in Resources */,
-				22E64AF019379FA500851BB8 /* plandesgares44.png in Resources */,
-				22E64AEA19379FA500851BB8 /* assistance44.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -652,20 +609,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				22E64AF819379FA500851BB8 /* toutesinterventions44.png in Resources */,
-				22E64AEF19379FA500851BB8 /* plandesgares44.png in Resources */,
 				A150296318DB7A81008FC4F1 /* TODO.md in Resources */,
 				22E64AFD1937A4C200851BB8 /* logoSncf4S.png in Resources */,
 				22E64B001937A4C200851BB8 /* logoSncf5S.png in Resources */,
 				2297633818E4A58400CDE26A /* Main.storyboard in Resources */,
-				22E64AF219379FA500851BB8 /* profil44.png in Resources */,
 				A150296418DB7A81008FC4F1 /* Images.xcassets in Resources */,
-				22E64AF519379FA500851BB8 /* recommandations44.png in Resources */,
-				22E64AE919379FA500851BB8 /* assistance44.png in Resources */,
 				8F57723918DB7D5600D42D4F /* Agent.storyboard in Resources */,
 				22E64B041937A62F00851BB8 /* help.png in Resources */,
 				A150296518DB7A81008FC4F1 /* InfoPlist.strings in Resources */,
-				22E64AEC19379FA500851BB8 /* informations44.png in Resources */,
 				2244C95718FA8B55000B3C33 /* profil.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -770,7 +721,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8F8A61EB1909877E005E0F9A /* HAMapViewController.m in Sources */,
 				04F5A81718C8AC5E00ED0CC6 /* HAUserViewController.m in Sources */,
 				222E376118BA5B2F00E3B720 /* HALogViewController.m in Sources */,
 				8F88460918BFBBB400595CA2 /* HALocationService.m in Sources */,
@@ -785,7 +735,6 @@
 				22C9AB3C18E229D4008ED8D7 /* HAPeripheral.m in Sources */,
 				22130C02188966E500191955 /* HALocalisation.m in Sources */,
 				A1B80AA818D243A3004EE4EA /* UIColor+HackcessAngels.m in Sources */,
-				04D14F2D193675EF00ED1B27 /* EIUserProfilSendViewController.m in Sources */,
 				22601F101886E2DE008B0179 /* main.m in Sources */,
 				A1330B0718AD62B5002B1828 /* HAUser.m in Sources */,
 				222E375C18BA521C00E3B720 /* HAHelpViewController.m in Sources */,
@@ -828,6 +777,7 @@
 				228D8F02190FE5A0002AE6E2 /* HAUserService.m in Sources */,
 				8F9AFFA01901A3660027DE84 /* HARestRequests.m in Sources */,
 				A150295018DB7A81008FC4F1 /* HATileOverlayView.m in Sources */,
+				8FFCDF2B1940F3B700C7F376 /* HAAgentUserProfileViewerViewController.m in Sources */,
 				22C9AB3718E20FDC008ED8D7 /* HACentralManager.m in Sources */,
 				8FBFC37F192FD69F00FC0004 /* AppDelegateAgents.m in Sources */,
 				22C9AB3D18E229D4008ED8D7 /* HAPeripheral.m in Sources */,
