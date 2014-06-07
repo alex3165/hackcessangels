@@ -63,6 +63,8 @@
 		22E64B031937A62F00851BB8 /* help.png in Resources */ = {isa = PBXBuildFile; fileRef = 22E64B021937A62F00851BB8 /* help.png */; };
 		22E64B041937A62F00851BB8 /* help.png in Resources */ = {isa = PBXBuildFile; fileRef = 22E64B021937A62F00851BB8 /* help.png */; };
 		22E64B051937A62F00851BB8 /* help.png in Resources */ = {isa = PBXBuildFile; fileRef = 22E64B021937A62F00851BB8 /* help.png */; };
+		22E95BDF1943592C0002B96C /* EnCours.png in Resources */ = {isa = PBXBuildFile; fileRef = 22E95BDD1943592C0002B96C /* EnCours.png */; };
+		22E95BE01943592C0002B96C /* NonAboutie.png in Resources */ = {isa = PBXBuildFile; fileRef = 22E95BDE1943592C0002B96C /* NonAboutie.png */; };
 		8F400A2418EDE323006B8342 /* HAHelpProfileView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F400A2318EDE323006B8342 /* HAHelpProfileView.m */; };
 		8F400A2518EDE323006B8342 /* HAHelpProfileView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F400A2318EDE323006B8342 /* HAHelpProfileView.m */; };
 		8F400A2818F1AE6C006B8342 /* HARestRequests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F400A2718F1AE6C006B8342 /* HARestRequests.m */; };
@@ -182,6 +184,8 @@
 		22E64AFA1937A4C200851BB8 /* logoSncf4S.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logoSncf4S.png; sourceTree = "<group>"; };
 		22E64AFB1937A4C200851BB8 /* logoSncf5S.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logoSncf5S.png; sourceTree = "<group>"; };
 		22E64B021937A62F00851BB8 /* help.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = help.png; sourceTree = "<group>"; };
+		22E95BDD1943592C0002B96C /* EnCours.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EnCours.png; sourceTree = "<group>"; };
+		22E95BDE1943592C0002B96C /* NonAboutie.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NonAboutie.png; sourceTree = "<group>"; };
 		75B5CDE6C7954202AF2565B3 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		8F400A2218EDE323006B8342 /* HAHelpProfileView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HAHelpProfileView.h; path = hackcessangels/HAHelpProfileView.h; sourceTree = SOURCE_ROOT; };
 		8F400A2318EDE323006B8342 /* HAHelpProfileView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HAHelpProfileView.m; path = hackcessangels/HAHelpProfileView.m; sourceTree = SOURCE_ROOT; };
@@ -357,6 +361,8 @@
 			isa = PBXGroup;
 			children = (
 				224CD30319433D8800ACEEE9 /* Avenir.ttc */,
+				22E95BDD1943592C0002B96C /* EnCours.png */,
+				22E95BDE1943592C0002B96C /* NonAboutie.png */,
 				22E64B021937A62F00851BB8 /* help.png */,
 				22E64AFA1937A4C200851BB8 /* logoSncf4S.png */,
 				22E64AFB1937A4C200851BB8 /* logoSncf5S.png */,
@@ -584,12 +590,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				A1B80AA418D23DBF004EE4EA /* TODO.md in Resources */,
+				22E95BDF1943592C0002B96C /* EnCours.png in Resources */,
 				22601F1C1886E2DE008B0179 /* Images.xcassets in Resources */,
 				224CD30419433D8800ACEEE9 /* Avenir.ttc in Resources */,
 				22E64B031937A62F00851BB8 /* help.png in Resources */,
 				2244C95618FA8B55000B3C33 /* profil.jpg in Resources */,
 				22E64AFC1937A4C200851BB8 /* logoSncf4S.png in Resources */,
 				22601F0E1886E2DE008B0179 /* InfoPlist.strings in Resources */,
+				22E95BE01943592C0002B96C /* NonAboutie.png in Resources */,
 				22601F171886E2DE008B0179 /* Main.storyboard in Resources */,
 				22E64AFF1937A4C200851BB8 /* logoSncf5S.png in Resources */,
 			);

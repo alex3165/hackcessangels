@@ -34,7 +34,7 @@
     [super viewDidLoad];
     [self checkUser];
     [self customToolBar];
-    self.navigationController.navigationBar.backgroundColor = [UIColor blackColor];
+    self.titleLabel.textColor = [UIColor HA_purple];
     self.view.backgroundColor = [UIColor HA_graybg];
 }
 
