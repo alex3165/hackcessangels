@@ -38,6 +38,10 @@ CLLocationCoordinate2D coordinate;
 {
     [super viewDidLoad];
     
+    self.userPicture.layer.cornerRadius = self.userPicture.frame.size.height /2;
+    self.userPicture.layer.masksToBounds = YES;
+    self.userPicture.layer.borderWidth = 0;
+    
     [self.gestureRecognizer setDelegate:self];
     
     self.bluetoothmanager = [[HACentralManager alloc] init];

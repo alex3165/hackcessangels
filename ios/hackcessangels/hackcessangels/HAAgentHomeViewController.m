@@ -10,6 +10,7 @@
 #import "HALogViewController.h"
 #import "HAAgentService.h"
 #import "HARequestsService.h"
+#import "UIColor+HackcessAngels.h"
 
 @interface HAAgentHomeViewController ()
 
@@ -31,6 +32,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.view.backgroundColor = [UIColor HA_graybg];
+    self.helloUser.textColor = [UIColor HA_purple];
     self.requestsService = [[HARequestsService alloc] init];
 }
 
@@ -91,6 +94,8 @@
     self.agentService = [HAAgentService sharedInstance];
     
     [self.agentService getCurrentAgent:^(HAAgent *agent) {
+        NSString *helloName = [NSString stringWithFormat:@"Bonjour %@", agent.name];
+        self.helloUser.text = helloName;
         DLog(@"Success");
     } failure:^(NSError *error) {
         if (error.code == 401 || error.code == 404) {

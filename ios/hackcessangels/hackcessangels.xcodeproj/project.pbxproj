@@ -24,6 +24,8 @@
 		2244C95618FA8B55000B3C33 /* profil.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2244C95518FA8B55000B3C33 /* profil.jpg */; };
 		2244C95718FA8B55000B3C33 /* profil.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2244C95518FA8B55000B3C33 /* profil.jpg */; };
 		2244C95818FA8B55000B3C33 /* profil.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2244C95518FA8B55000B3C33 /* profil.jpg */; };
+		224CD30419433D8800ACEEE9 /* Avenir.ttc in Resources */ = {isa = PBXBuildFile; fileRef = 224CD30319433D8800ACEEE9 /* Avenir.ttc */; };
+		224CD30519433D8800ACEEE9 /* Avenir.ttc in Resources */ = {isa = PBXBuildFile; fileRef = 224CD30319433D8800ACEEE9 /* Avenir.ttc */; };
 		22601F041886E2DE008B0179 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22601F031886E2DE008B0179 /* Foundation.framework */; };
 		22601F061886E2DE008B0179 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22601F051886E2DE008B0179 /* CoreGraphics.framework */; };
 		22601F081886E2DE008B0179 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22601F071886E2DE008B0179 /* UIKit.framework */; };
@@ -144,6 +146,7 @@
 		222E375F18BA5B2F00E3B720 /* HALogViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HALogViewController.h; sourceTree = "<group>"; };
 		222E376018BA5B2F00E3B720 /* HALogViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HALogViewController.m; sourceTree = "<group>"; };
 		2244C95518FA8B55000B3C33 /* profil.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = profil.jpg; sourceTree = "<group>"; };
+		224CD30319433D8800ACEEE9 /* Avenir.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = Avenir.ttc; sourceTree = "<group>"; };
 		22601F001886E2DE008B0179 /* HackcessAngels.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HackcessAngels.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22601F031886E2DE008B0179 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		22601F051886E2DE008B0179 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -353,6 +356,7 @@
 		22601F0A1886E2DE008B0179 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				224CD30319433D8800ACEEE9 /* Avenir.ttc */,
 				22E64B021937A62F00851BB8 /* help.png */,
 				22E64AFA1937A4C200851BB8 /* logoSncf4S.png */,
 				22E64AFB1937A4C200851BB8 /* logoSncf5S.png */,
@@ -581,6 +585,7 @@
 			files = (
 				A1B80AA418D23DBF004EE4EA /* TODO.md in Resources */,
 				22601F1C1886E2DE008B0179 /* Images.xcassets in Resources */,
+				224CD30419433D8800ACEEE9 /* Avenir.ttc in Resources */,
 				22E64B031937A62F00851BB8 /* help.png in Resources */,
 				2244C95618FA8B55000B3C33 /* profil.jpg in Resources */,
 				22E64AFC1937A4C200851BB8 /* logoSncf4S.png in Resources */,
@@ -613,6 +618,7 @@
 				22E64AFD1937A4C200851BB8 /* logoSncf4S.png in Resources */,
 				22E64B001937A4C200851BB8 /* logoSncf5S.png in Resources */,
 				2297633818E4A58400CDE26A /* Main.storyboard in Resources */,
+				224CD30519433D8800ACEEE9 /* Avenir.ttc in Resources */,
 				A150296418DB7A81008FC4F1 /* Images.xcassets in Resources */,
 				8F57723918DB7D5600D42D4F /* Agent.storyboard in Resources */,
 				22E64B041937A62F00851BB8 /* help.png in Resources */,
