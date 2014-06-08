@@ -14,7 +14,6 @@
 @interface HAHelpViewController ()
     @property (nonatomic, strong) HAUser *user;
     @property (nonatomic, strong) NSMutableString *helloUser;
-
     @property (nonatomic, strong) HAHelpRequest* helpRequest;
 @end
 
@@ -33,9 +32,15 @@
 {
     [super viewDidLoad];
     [self checkUser];
-    [self customToolBar];
+    [[self.cancelHelp layer] setBorderWidth:1.0f];
+    [[self.cancelHelp layer] setBorderColor:[UIColor HA_red].CGColor];
     self.titleLabel.textColor = [UIColor HA_purple];
+    self.whoStatus.textColor = [UIColor HA_purple];
+    self.whatStatus.textColor = [UIColor HA_green];
     self.view.backgroundColor = [UIColor HA_graybg];
+    self.timeNotification.backgroundColor = [UIColor HA_purple];
+    self.timeNotification.textColor = [UIColor HA_graybg];
+    [self requestAgentAnsweredStatus];
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -52,16 +57,75 @@
     }];
 }
 
-
--(void) customToolBar{
+- (void)requestAgentAnsweredStatus {
+    self.titleLabel.hidden = true;
+    self.whatStatus.hidden = false;
+    self.whoStatus.hidden = false;
+    self.cancelHelp.hidden = false;
+    self.urgencyNumber.hidden = true;
+    self.timeNotification.hidden = false;
+    self.helpme.userInteractionEnabled = NO;
+    UIImage *imageHelpInFlight = [UIImage imageNamed:@"EnCours.png"];
+    [self.helpme setBackgroundImage:imageHelpInFlight forState:UIControlStateNormal];
+    /* Loading spinner */
+    UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    spinner.center = CGPointMake(160, 290);
+    spinner.tag = 12;
+    spinner.color = [UIColor whiteColor];
+    spinner.transform = CGAffineTransformMakeScale(2.4,2.4);
+    [self.view addSubview:spinner];
+    [spinner startAnimating];
 }
 
--(void) updateDisplay {
-    if (self.helpRequest == nil) {
-        self.statusLabel.text = @"";
-    }
+-(void)requestAgentTryAgainStatus {
+    self.titleLabel.hidden = true;
+    self.timeNotification.hidden = true;
+    self.urgencyNumber.hidden = true;
+    self.helpme.userInteractionEnabled = YES;
+    NSString *agentStatus = [NSString stringWithFormat:@"Les agents sont occupés."];
+    self.whoStatus.hidden = false;
+    self.whoStatus.text = agentStatus;
+    NSString *whatStatus = [NSString stringWithFormat:@"Votre demande n'a pas pu aboutir."];
+    self.whatStatus.hidden = false;
+    self.whatStatus.text = whatStatus;
+    self.whatStatus.textColor = [UIColor HA_red];
+    UIImage *imageHelpFailed = [UIImage imageNamed:@"NonAboutie.png"];
+    [self.helpme setBackgroundImage:imageHelpFailed forState:UIControlStateNormal];
+}
+-(void) requestAgentFailedAgainStatus{
+    self.titleLabel.hidden = true;
+    self.timeNotification.hidden = true;
+    self.urgencyNumber.hidden = false;
+    NSString *agentStatus = [NSString stringWithFormat:@"Les agents sont occupés."];
+    self.whoStatus.hidden = false;
+    self.whoStatus.text = agentStatus;
+    NSString *whatStatus = [NSString stringWithFormat:@"En cas de danger ou malaise,"];
+    self.whatStatus.hidden = false;
+    self.whatStatus.text = whatStatus;
+    self.whatStatus.textColor = [UIColor HA_red];
+    UIImage *imageHelpFailed = [UIImage imageNamed:@"NonAboutie.png"];
+    [self.helpme setBackgroundImage:imageHelpFailed forState:UIControlStateNormal];
+}
+-(void)defaultRequestAgentStatus {
+    self.whatStatus.hidden = true;
+    self.whoStatus.hidden = true;
+    self.timeNotification.hidden = true;
+    self.titleLabel.hidden = false;
+    self.urgencyNumber.hidden = true;
+    UIImage *imageHelp = [UIImage imageNamed:@"help.png"];
+    [self.helpme setBackgroundImage:imageHelp forState:UIControlStateNormal];
 }
 
+-(void)requestAgentCancelStatus{
+    self.whoStatus.hidden = false;
+    NSString *whoStatus = [NSString stringWithFormat:@"Demande d'aide annulée"];
+    self.whoStatus.text = whoStatus;
+    self.whatStatus.hidden = true;
+    self.timeNotification.hidden = true;
+    self.titleLabel.hidden = true;
+    UIImage *imageHelp = [UIImage imageNamed:@"help.png"];
+    [self.helpme setBackgroundImage:imageHelp forState:UIControlStateNormal];
+}
 /******************************************************************************************************************************
  *
  *

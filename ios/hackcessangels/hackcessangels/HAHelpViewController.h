@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import <QuartzCore/QuartzCore.h>
 #import "HAAssistanceService.h"
 #import "HAUserService.h"
 #import "HAMapViewController.h"
@@ -17,13 +17,21 @@
 @property (weak, nonatomic) IBOutlet UIButton *helpme;
 @property (weak, nonatomic) IBOutlet UIToolbar *toolBar;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
-@property (weak, nonatomic) IBOutlet UILabel *statusLabel;
+@property (weak, nonatomic) IBOutlet UIButton *cancelHelp;
+@property (weak, nonatomic) IBOutlet UIButton *urgencyNumber;
+@property (weak, nonatomic) IBOutlet UILabel *whoStatus;
+@property (weak, nonatomic) IBOutlet UILabel *whatStatus;
+@property (weak, nonatomic) IBOutlet UILabel *timeNotification;
 
 @property (nonatomic, strong) HAAssistanceService *assistanceService;
 @property (nonatomic, strong) HAUserService *userService;
 @property (nonatomic, strong) HAMapViewController *mapController;
 
--(void) customToolBar;
+-(void) defaultRequestAgentStatus;
+-(void) requestAgentAnsweredStatus;
+-(void) requestAgentTryAgainStatus;
+-(void) requestAgentFailedAgainStatus;
+-(void) requestAgentCancelStatus;
 
 - (IBAction) showProfil:(id)sender;
 

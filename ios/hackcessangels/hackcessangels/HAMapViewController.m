@@ -69,6 +69,9 @@ CLLocationCoordinate2D coordinate;
         // TODO(etienne): add a field in HAHelpRequest to know the provenance of the request (bluetooth/server)
         [self.helpok setHidden:!self.bluetoothmanager.needHelp];
     } else {
+        self.userName.text = self.helpRequest.user.name;
+        self.userDisability.text = self.helpRequest.user.disability;
+        
         [self.helpok setHidden:![self.helpRequest needsHelp]];
     }
 }
@@ -118,7 +121,7 @@ CLLocationCoordinate2D coordinate;
             //newFrame.origin.y = MIN (_panRecog.view.frame.origin.y + translation.y, FILTER_OPEN_ORIGIN_Y);
             //newFrame.origin.y = MAX (newFrame.origin.y, FILTER_INITIAL_ORIGIN_Y);
             newFrame.origin.y = self.gestureRecognizer.view.frame.origin.y + translation.y;
-            if (newFrame.origin.y > 0) {
+            if (newFrame.origin.y > -20) {
                 return;
             }
             
