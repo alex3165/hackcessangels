@@ -39,10 +39,12 @@
 
 - (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {
     HAHelpRequest *helpRequest = [[HAHelpRequest alloc] initWithDictionary: [notification.userInfo valueForKey:@"helpRequest"]];
-    UINavigationController *navigationController = (UINavigationController *) self.window.rootViewController;
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Agent" bundle:nil];
+    UITabBarController *tabBarController = (UITabBarController*) self.window.rootViewController;
+    UINavigationController *navigationController = (UINavigationController *) tabBarController.viewControllers[1];
     HAMapViewController *mapViewController = (HAMapViewController *)[storyboard instantiateViewControllerWithIdentifier:@"agentMapViewController"];
     mapViewController.helpRequest = helpRequest;
+    [tabBarController setSelectedIndex:1];
     [navigationController pushViewController:mapViewController animated:FALSE];
 }
 
