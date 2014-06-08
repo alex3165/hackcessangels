@@ -75,6 +75,7 @@
     fakeHelpRequest.user.name = @"Michel Martin";
     fakeHelpRequest.latitude = 48.83938;
     fakeHelpRequest.longitude = 2.27067;
+    fakeHelpRequest.Id = @"deadbeef";
     NSDictionary* userInfo = [NSDictionary dictionaryWithObjectsAndKeys:[fakeHelpRequest toPropertyList], @"helpRequest", nil];
     localNotif.userInfo = userInfo;
     [[UIApplication sharedApplication] presentLocalNotificationNow:localNotif];

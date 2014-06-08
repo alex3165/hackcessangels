@@ -12,6 +12,7 @@
 #import "HAUser.h"
 #import "HAHelpProfileView.h"
 #import "HACallUserView.h"
+#import "HARequestsService.h"
 
 
 @interface HAMapViewController () <HACentralManagerDelegate>
@@ -19,6 +20,8 @@
     @property (nonatomic, weak) IBOutlet HACallUserView *callUserView;
     @property (nonatomic, weak) IBOutlet UIPanGestureRecognizer *gestureRecognizer;
     @property (nonatomic, strong) NSUUID *uuid;
+
+    @property (nonatomic, strong) HARequestsService* requestService;
 @end
 
 
@@ -38,6 +41,8 @@ CLLocationCoordinate2D coordinate;
 {
     [super viewDidLoad];
     
+    self.requestService = [[HARequestsService alloc] init];
+    
     self.userPicture.layer.cornerRadius = self.userPicture.frame.size.height /2;
     self.userPicture.layer.masksToBounds = YES;
     self.userPicture.layer.borderWidth = 0;
@@ -46,8 +51,6 @@ CLLocationCoordinate2D coordinate;
     
     self.bluetoothmanager = [[HACentralManager alloc] init];
     
-    [self.helpok setHidden:!self.bluetoothmanager.needHelp];
-    
     self.bluetoothmanager.delegate = self;
     
     self.overlay = [[HATileOverlay alloc] initOverlay];
@@ -55,6 +58,18 @@ CLLocationCoordinate2D coordinate;
     [self.map setUserTrackingMode:MKUserTrackingModeFollow];
     if (self.helpRequest) {
         [self.map addAnnotation:self.helpRequest];
+    }
+    [self updateDisplay];
+}
+
+// This method should be used for all code that takes self.helpRequest and updates the content of the screen (profile, map, etc...) with it
+- (void) updateDisplay {
+    if (self.helpRequest == nil) {
+        // No help request: it comes from Bluetooth
+        // TODO(etienne): add a field in HAHelpRequest to know the provenance of the request (bluetooth/server)
+        [self.helpok setHidden:!self.bluetoothmanager.needHelp];
+    } else {
+        [self.helpok setHidden:![self.helpRequest needsHelp]];
     }
 }
 
@@ -165,7 +180,14 @@ CLLocationCoordinate2D coordinate;
 
 - (IBAction)PositiveAnswerForHelp:(id)sender {
     [self.bluetoothmanager takeRequest:self.uuid];
+    [self.requestService takeRequest:self.helpRequest success:^(HAHelpRequest *helpRequest) {
+        self.helpRequest = helpRequest;
+        [self updateDisplay];
+    } failure:^(NSError *error) {
+        DLog(@"Failure taking the request: %@", error);
+    }];
 }
+
 /******************************************************************************************************************************
  *
  *

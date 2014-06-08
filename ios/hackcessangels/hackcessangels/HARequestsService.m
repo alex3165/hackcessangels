@@ -42,16 +42,26 @@
     }];
 }
 
-- (void)takeRequest:(NSString*) requestId success:(HAHelpRequestServiceSuccess)success failure:(HAHelpRequestServiceFailure)failure{
-    [self.restRequest POSTrequest:@"agent/requests" withParameters:@{@"Id":requestId, @"TakeRequest": @true} success:^(id obj, NSHTTPURLResponse *response){
+- (void)updateRequest:(HAHelpRequest *)request success:(HAHelpRequestServiceSuccess)success failure:(HAHelpRequestServiceFailure)failure {
+    [self.restRequest GETrequest:@"agent/requests" withParameters:@{@"requestid": request.Id} success:^(id obj, NSHTTPURLResponse *response){
+        // obj is a single help request, as we are requesting a request with a specific ID.
+        HAHelpRequest *helpRequest = [[HAHelpRequest alloc] initWithDictionary:obj];
+        success(helpRequest);
+    } failure:^(id obj, NSError* error) {
+        failure(error);
+    }];
+}
+
+- (void)takeRequest:(HAHelpRequest *)request success:(HAHelpRequestServiceSuccess)success failure:(HAHelpRequestServiceFailure)failure {
+    [self.restRequest POSTrequest:@"agent/requests" withParameters:@{@"Id":request.Id, @"TakeRequest": @true} success:^(id obj, NSHTTPURLResponse *response){
         success([[HAHelpRequest alloc] initWithDictionary:obj]);
     } failure:^(id obj, NSError* error) {
         failure(error);
     }];
 }
 
-- (void)finishRequest:(NSString*) requestId success:(HAHelpRequestServiceSuccess)success failure:(HAHelpRequestServiceFailure)failure{
-    [self.restRequest POSTrequest:@"agent/requests" withParameters:@{@"Id":requestId, @"FinishRequest": @true} success:^(id obj, NSHTTPURLResponse *response){
+- (void)finishRequest:(HAHelpRequest*) request success:(HAHelpRequestServiceSuccess)success failure:(HAHelpRequestServiceFailure)failure{
+    [self.restRequest POSTrequest:@"agent/requests" withParameters:@{@"Id":request.Id, @"FinishRequest": @true} success:^(id obj, NSHTTPURLResponse *response){
         success([[HAHelpRequest alloc] initWithDictionary:obj]);
     } failure:^(id obj, NSError* error) {
         failure(error);
