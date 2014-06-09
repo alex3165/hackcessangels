@@ -23,4 +23,5 @@ typedef void(^HAAssistanceRequestUpdate)(HAHelpRequest* helpRequest);
 - (void)stopHelpRequest;
 
 - (void)helpMe:(CLLocation*)location success:(HARestRequestsSuccess)success failure:(HARestRequestsFailure)failure;
+- (void)cancelHelp;
 @end

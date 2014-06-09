@@ -108,7 +108,8 @@
         }
     } else {
         NSLog(@"désolé vous n'avez pas de connexion à internet, nous allons quand même essayer avec le bluetooth");
-        self.peripheralService = [[HAPeripheral alloc]initWithLongAndLat:location.coordinate.longitude latitude:location.coordinate.latitude]; // envoi l'appel à l'aide bluetooth
+        // alert utilisateur
+        self.peripheralService = [[HAPeripheral alloc]initWithLongAndLat:location.coordinate.longitude latitude:location.coordinate.latitude];
     }
 }
 

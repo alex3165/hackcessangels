@@ -8,6 +8,7 @@
 
 #import "HAHelpViewController.h"
 #import "HALogViewController.h"
+#import "HAHelpSuccessViewController.h"
 #import "HAUserService.h"
 #import "UIColor+HackcessAngels.h"
 
@@ -33,6 +34,7 @@
     [super viewDidLoad];
     [self checkUser];
     [[self.cancelHelp layer] setBorderWidth:1.0f];
+    [[self.cancelHelp layer] setCornerRadius:5.0f];
     [[self.cancelHelp layer] setBorderColor:[UIColor HA_red].CGColor];
     self.titleLabel.textColor = [UIColor HA_purple];
     self.whoStatus.textColor = [UIColor HA_purple];
@@ -40,7 +42,6 @@
     self.view.backgroundColor = [UIColor HA_graybg];
     self.timeNotification.backgroundColor = [UIColor HA_purple];
     self.timeNotification.textColor = [UIColor HA_graybg];
-    [self requestAgentTryAgainStatus];
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -50,26 +51,45 @@
 
 - (IBAction)helpme:(id)sender {
     self.assistanceService = [[HAAssistanceService alloc] init];
-    [self.assistanceService startHelpRequest:^(HAHelpRequest *helpRequest) {
-        self.helpRequest = helpRequest;
-        switch (self.helpRequest.status) {
-            case kCancelled:
-                [self requestAgentCancelStatus];
-                break;
-            case kAbandonned:
-            case kAgentAnswered:
-            case kRequestCompleted:
-            case kReportFilled:
-                break;
-            default:
-                break;
-        }
-    } failure:^(id obj, NSError *error) {
-        DLog("Erreur dans la demande d'assistance: %@", error);
-    }];
+    HAHelpSuccessViewController *helpSuccessViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"helpSuccess"];
+    [helpSuccessViewController getHAHelpRequest:self.helpRequest];
+    [self presentViewController:helpSuccessViewController animated:YES completion:nil];
+    
+//    [self.assistanceService startHelpRequest:^(HAHelpRequest *helpRequest) {
+//        self.helpRequest = helpRequest;
+//        HAHelpSuccessViewController *helpSuccessViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"helpSuccess"];
+//
+//        switch (self.helpRequest.status) {
+//            case kAgentsContacted:
+//                [self requestAgentContactedStatus];
+//            case kRetry:
+//                [self requestAgentContactedStatus];
+//            case kCancelled:
+//                [self requestAgentCancelStatus];
+//            case kTimeout:
+//                [self requestAgentTryAgainStatus];
+//            case kAbandonned:
+//                [self requestAgentFailedAgainStatus];
+//            case kAgentAnswered:
+//                [helpSuccessViewController getHAHelpRequest:self.helpRequest];
+//                [self presentViewController:helpSuccessViewController animated:YES completion:nil];
+//            case kNotInStation:
+//                // Faire la vue vous n'êtes pas dans la station
+//            default:
+//                [self defaultRequestAgentStatus];
+//                break;
+//        }
+//    } failure:^(id obj, NSError *error) {
+//        DLog("Erreur dans la demande d'assistance: %@", error);
+//    }];
 }
 
-- (void)requestAgentAnsweredStatus {
+-(IBAction)cancelHelp:(id)sender{
+    self.assistanceService = [[HAAssistanceService alloc] init];
+    [self.assistanceService stopHelpRequest];
+}
+
+- (void)requestAgentContactedStatus {
     self.titleLabel.hidden = true;
     self.whatStatus.hidden = false;
     self.whoStatus.hidden = false;
