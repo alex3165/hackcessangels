@@ -34,7 +34,7 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor HA_graybg];
     self.helloUser.textColor = [UIColor HA_purple];
-    self.requestsService = [[HARequestsService alloc] init];
+    self.requestsService = [HARequestsService sharedInstance];
 }
 
 - (void)viewDidAppear:(BOOL)animated {

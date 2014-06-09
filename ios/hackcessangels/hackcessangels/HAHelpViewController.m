@@ -40,7 +40,7 @@
     self.view.backgroundColor = [UIColor HA_graybg];
     self.timeNotification.backgroundColor = [UIColor HA_purple];
     self.timeNotification.textColor = [UIColor HA_graybg];
-    [self requestAgentAnsweredStatus];
+    [self requestAgentTryAgainStatus];
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -52,6 +52,18 @@
     self.assistanceService = [[HAAssistanceService alloc] init];
     [self.assistanceService startHelpRequest:^(HAHelpRequest *helpRequest) {
         self.helpRequest = helpRequest;
+        switch (self.helpRequest.status) {
+            case kCancelled:
+                [self requestAgentCancelStatus];
+                break;
+            case kAbandonned:
+            case kAgentAnswered:
+            case kRequestCompleted:
+            case kReportFilled:
+                break;
+            default:
+                break;
+        }
     } failure:^(id obj, NSError *error) {
         DLog("Erreur dans la demande d'assistance: %@", error);
     }];
@@ -67,7 +79,6 @@
     self.helpme.userInteractionEnabled = NO;
     UIImage *imageHelpInFlight = [UIImage imageNamed:@"EnCours.png"];
     [self.helpme setBackgroundImage:imageHelpInFlight forState:UIControlStateNormal];
-    /* Loading spinner */
     UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     spinner.center = CGPointMake(160, 290);
     spinner.tag = 12;
@@ -113,6 +124,7 @@
     self.titleLabel.hidden = false;
     self.urgencyNumber.hidden = true;
     UIImage *imageHelp = [UIImage imageNamed:@"help.png"];
+    self.helpme.userInteractionEnabled = YES;
     [self.helpme setBackgroundImage:imageHelp forState:UIControlStateNormal];
 }
 

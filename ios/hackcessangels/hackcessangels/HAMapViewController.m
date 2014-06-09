@@ -41,7 +41,7 @@ CLLocationCoordinate2D coordinate;
 {
     [super viewDidLoad];
     
-    self.requestService = [[HARequestsService alloc] init];
+    self.requestService = [HARequestsService sharedInstance];
     
     self.userPicture.layer.cornerRadius = self.userPicture.frame.size.height /2;
     self.userPicture.layer.masksToBounds = YES;
