@@ -53,7 +53,7 @@
 }
 
 - (void)takeRequest:(HAHelpRequest *)request success:(HAHelpRequestServiceSuccess)success failure:(HAHelpRequestServiceFailure)failure {
-    [self.restRequest POSTrequest:@"agent/requests" withParameters:@{@"Id":request.Id, @"TakeRequest": @true} success:^(id obj, NSHTTPURLResponse *response){
+    [self.restRequest POSTrequest:@"agent/requests" withParameters:@{@"requestid":request.Id, @"TakeRequest": @YES} success:^(id obj, NSHTTPURLResponse *response){
         success([[HAHelpRequest alloc] initWithDictionary:obj]);
     } failure:^(id obj, NSError* error) {
         failure(error);
@@ -61,7 +61,7 @@
 }
 
 - (void)finishRequest:(HAHelpRequest*) request success:(HAHelpRequestServiceSuccess)success failure:(HAHelpRequestServiceFailure)failure{
-    [self.restRequest POSTrequest:@"agent/requests" withParameters:@{@"Id":request.Id, @"FinishRequest": @true} success:^(id obj, NSHTTPURLResponse *response){
+    [self.restRequest POSTrequest:@"agent/requests" withParameters:@{@"requestid":request.Id, @"FinishRequest": @YES} success:^(id obj, NSHTTPURLResponse *response){
         success([[HAHelpRequest alloc] initWithDictionary:obj]);
     } failure:^(id obj, NSError* error) {
         failure(error);
