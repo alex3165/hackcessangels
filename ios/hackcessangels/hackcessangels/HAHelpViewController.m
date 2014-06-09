@@ -124,6 +124,7 @@
     self.titleLabel.hidden = false;
     self.urgencyNumber.hidden = true;
     UIImage *imageHelp = [UIImage imageNamed:@"help.png"];
+    self.helpme.userInteractionEnabled = YES;
     [self.helpme setBackgroundImage:imageHelp forState:UIControlStateNormal];
 }
 
