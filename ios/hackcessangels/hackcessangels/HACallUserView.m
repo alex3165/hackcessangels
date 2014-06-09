@@ -36,7 +36,7 @@
 
 - (void) hideProfile {
     CGRect frame = self.frame;
-    frame.origin.y = -270;
+    frame.origin.y = -220;
     [UIView animateWithDuration:1.0 animations:^{
         [self setFrame:frame];
     }];
