@@ -49,6 +49,7 @@ func (s *Server) handleHelp(w http.ResponseWriter, r *http.Request) {
 		Longitude     *float64 `json:"longitude,omitempty"`
 		Precision     *float64 `json:"precision,omitempty"`
 		Retry         *bool    `json:"retry,omitempty"`
+		Cancel        *bool    `json:"cancel,omitempty"`
 	}
 
 	w.Header().Add("Content-Type", "application/json")
@@ -111,24 +112,30 @@ func (s *Server) handleHelp(w http.ResponseWriter, r *http.Request) {
 			log.Printf("Error while getting active request: %+v", err)
 			returnError(404, "Couldn't get request", w)
 		}
-		if data.Longitude == nil {
+		if data.Longitude == nil && data.Latitude != nil {
 			returnError(400, "Invalid request: longitude missing", w)
 			return
 		}
-		if data.Latitude == nil {
+		if data.Latitude == nil && data.Longitude != nil {
 			returnError(400, "Invalid request: latitude missing", w)
 			return
 		}
-		helpRequest.SetRequesterPosition(*data.Longitude, *data.Latitude)
+		if data.Latitude != nil && data.Longitude != nil {
+			helpRequest.SetRequesterPosition(*data.Longitude, *data.Latitude)
+		}
 		if data.Precision != nil {
 			helpRequest.RequesterPosPrecision = *data.Precision
 		}
 		if data.Retry != nil {
-			// User requested this request to be retried, or abandoned.
+			// User requested this request to be retried.
 			if *data.Retry {
 				helpRequest.ChangeStatus(model.RETRY, time.Now())
-			} else {
-				helpRequest.ChangeStatus(model.ABANDONED, time.Now())
+			}
+		}
+		if data.Cancel != nil {
+			// User requested this request to be cancelled.
+			if *data.Cancel {
+				helpRequest.ChangeStatus(model.CANCELLED, time.Now())
 			}
 		}
 		err = helpRequest.Save()
