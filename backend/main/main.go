@@ -1,14 +1,14 @@
 package main
 
 import (
+	"flag"
 	"log"
-    "flag"
 
 	"hackcessangels/backend/server"
 )
 
 func main() {
-    flag.Parse()
+	flag.Parse()
 	server := server.NewServer()
 	log.Fatal(server.Run())
 

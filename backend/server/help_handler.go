@@ -14,8 +14,8 @@ type APIRequest struct {
 
 	CurrentState model.HelpRequestState
 
-    User  *ApiUser `json:"user,omitempty"`
-    Agent *ApiUser `json:"agent,omitempty"`
+	User  *ApiUser `json:"user,omitempty"`
+	Agent *ApiUser `json:"agent,omitempty"`
 
 	// Longitude, latitude and precision of the user requesting help
 	Longitude float64
@@ -25,7 +25,7 @@ type APIRequest struct {
 
 func NewAPIRequestFromHelpRequest(hr *model.HelpRequest) *APIRequest {
 	apiRequest := new(APIRequest)
-    apiRequest.Id = hr.Id.Hex()
+	apiRequest.Id = hr.Id.Hex()
 	apiRequest.CurrentState = hr.CurrentState
 	agent, err := hr.GetAgent()
 	if err == nil {
@@ -96,7 +96,7 @@ func (s *Server) handleHelp(w http.ResponseWriter, r *http.Request) {
 		if data.Precision != nil {
 			helpRequest.RequesterPosPrecision = *data.Precision
 		}
-        helpRequest.CheckStatus()
+		helpRequest.CheckStatus()
 		err = helpRequest.Save()
 		if err != nil {
 			log.Printf("Error while saving help request: %+v", err)
