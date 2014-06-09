@@ -191,6 +191,9 @@ func (m *Model) GetActiveRequestsByStation(s *Station) ([]*HelpRequest, error) {
 }
 
 func (m *Model) GetRequestById(id string) (*HelpRequest, error) {
+    if !bson.IsObjectIdHex(id) {
+        return nil, errors.New(id + " not an object ID")
+    }
 	hr := new(HelpRequest)
 	err := m.helpRequests.FindId(bson.ObjectIdHex(id)).One(&hr)
 	hr.m = m

@@ -17,8 +17,9 @@ typedef void(^HAHelpRequestServiceFailure)(NSError *error);
 @interface HARequestsService : NSObject
 
 - (void)getRequests:(HAHelpRequestServiceListSuccess)success failure:(HAHelpRequestServiceFailure)failure;
-- (void)takeRequest:(NSString*) requestId success:(HAHelpRequestServiceSuccess)success failure:(HAHelpRequestServiceFailure)failure;
-- (void)finishRequest:(NSString*) requestId success:(HAHelpRequestServiceSuccess)success failure:(HAHelpRequestServiceFailure)failure;
+- (void)updateRequest:(HAHelpRequest*) request success:(HAHelpRequestServiceSuccess)success failure:(HAHelpRequestServiceFailure)failure;
+- (void)takeRequest:(HAHelpRequest*) request success:(HAHelpRequestServiceSuccess)success failure:(HAHelpRequestServiceFailure)failure;
+- (void)finishRequest:(HAHelpRequest*) request success:(HAHelpRequestServiceSuccess)success failure:(HAHelpRequestServiceFailure)failure;
 
 /* Renommage des constantes HAAgent + commentaire des failures du service, service utile ? --> pattern Factory*/
 /* Pas compris le PUT */

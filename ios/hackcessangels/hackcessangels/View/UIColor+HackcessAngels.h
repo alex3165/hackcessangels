@@ -11,6 +11,7 @@
 @interface UIColor (HackcessAngels)
 
 + (UIColor *)HA_graybg;
++ (UIColor *)HA_graylogin;
 + (UIColor *)HA_purple;
 + (UIColor *)HA_red;
 + (UIColor *)HA_green;

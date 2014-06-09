@@ -44,6 +44,21 @@ NSString *const kStatusKey = @"CurrentState";
     return self;
 }
 
+- (bool) needsHelp {
+    switch (self.status) {
+        case kCancelled:
+        case kAbandonned:
+        case kAgentAnswered:
+        case kRequestCompleted:
+        case kReportFilled:
+            return false;
+            break;
+        default:
+            return true;
+            break;
+    }
+}
+
 - (NSDictionary*) toPropertyList {
     NSMutableDictionary* dico = [[NSMutableDictionary alloc] init];
     [dico setValue:self.Id forKey:kIdKey];

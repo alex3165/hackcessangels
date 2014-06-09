@@ -37,7 +37,15 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    self.navigationController.navigationBar.backgroundColor = [UIColor whiteColor];
+    
+    [[self.loginContainer layer] setBorderWidth:1.0f];
+    [[self.loginContainer layer] setBorderColor:(__bridge CGColorRef)([UIColor HA_graylogin])];
+    
+    [[self.valider layer] setBorderWidth:1.0f];
+    [[self.valider layer] setBorderColor:(__bridge CGColorRef)([UIColor HA_graylogin])];
+    
+    self.loginTitle.textColor = [UIColor HA_purple];
+    
     self.view.backgroundColor = [UIColor HA_graybg];
 }
 

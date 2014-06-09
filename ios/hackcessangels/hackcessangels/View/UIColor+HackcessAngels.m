@@ -12,7 +12,7 @@
 
 + (UIColor *)HA_graybg // nuance rouge
 {
-    return [UIColor colorWithRed:237.0f/255.0f green:231.0f/255.0f blue:228.0f/255.0f alpha:1.0];
+    return [UIColor colorWithRed:242.0f/255.0f green:241.0f/255.0f blue:240.0f/255.0f alpha:1.0];
 }
 + (UIColor *)HA_grayblue // Profil --> nuance bleu verte
 {
@@ -31,6 +31,10 @@
 + (UIColor*)HA_green
 {
     return [UIColor colorWithRed:0.0f/255.0f green:155.0f/255.0f blue:162.0f/255.0f alpha:1.0];
+}
+
++ (UIColor *)HA_graylogin{
+    return [UIColor colorWithRed:167.0f/255.0f green:169.0f/255.0f blue:172.0f/255.0f alpha:1.0];
 }
 
 @end

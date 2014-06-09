@@ -40,6 +40,8 @@ typedef enum HAHelpRequestStatus : NSUInteger {
 @property (nonatomic, readonly, copy) NSString *title;
 
 - (id)initWithDictionary:(NSDictionary *)data;
+// Return true if the requester still needs assistance; false otherwise.
+- (bool) needsHelp;
 
 - (NSDictionary*) toPropertyList;
 
