@@ -49,7 +49,7 @@
 }
 
 - (IBAction)helpme:(id)sender {
-    self.assistanceService = [[HAAssistanceService alloc] init];
+    self.assistanceService = [HAAssistanceService sharedInstance];
     [self.assistanceService startHelpRequest:^(HAHelpRequest *helpRequest) {
         self.helpRequest = helpRequest;
         switch (self.helpRequest.status) {

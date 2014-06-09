@@ -19,6 +19,8 @@ typedef void(^HAAssistanceRequestUpdate)(HAHelpRequest* helpRequest);
 
 @interface HAAssistanceService : NSObject
 
++ (id) sharedInstance;
+
 - (void)startHelpRequest:(HAAssistanceRequestUpdate) update failure:(HARestRequestsFailure) failure;
 - (void)stopHelpRequest;
 

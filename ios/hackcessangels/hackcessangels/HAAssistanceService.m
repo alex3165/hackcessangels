@@ -34,6 +34,17 @@
 
 @implementation HAAssistanceService
 
++ (id)sharedInstance {
+    static HAAssistanceService *sharedAssistanceService = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedAssistanceService = [[self alloc] init];
+        sharedAssistanceService.currentHelpRequest = nil;
+    });
+    return sharedAssistanceService;
+}
+
+
 - (HAAssistanceService*)init {
     self = [super init];
     if (self) {
