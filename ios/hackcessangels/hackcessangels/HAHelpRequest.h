@@ -21,7 +21,9 @@ typedef enum HAHelpRequestStatus : NSUInteger {
     kAbandonned,
     kAgentAnswered,
     kRequestCompleted,
-    kReportFilled
+    kReportFilled,
+    kNotInStation,
+    kTimeout
 } HAHelpRequestStatus;
 
 @interface HAHelpRequest : NSObject <MKAnnotation>

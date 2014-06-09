@@ -40,7 +40,7 @@
     self.view.backgroundColor = [UIColor HA_graybg];
     self.timeNotification.backgroundColor = [UIColor HA_purple];
     self.timeNotification.textColor = [UIColor HA_graybg];
-    [self requestAgentAnsweredStatus];
+    [self defaultRequestAgentStatus];
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -113,6 +113,7 @@
     self.titleLabel.hidden = false;
     self.urgencyNumber.hidden = true;
     UIImage *imageHelp = [UIImage imageNamed:@"help.png"];
+    self.helpme.userInteractionEnabled = YES;
     [self.helpme setBackgroundImage:imageHelp forState:UIControlStateNormal];
 }
 

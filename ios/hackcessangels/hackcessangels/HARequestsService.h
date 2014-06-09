@@ -16,6 +16,8 @@ typedef void(^HAHelpRequestServiceFailure)(NSError *error);
 
 @interface HARequestsService : NSObject
 
++ (id)sharedInstance;
+
 - (void)getRequests:(HAHelpRequestServiceListSuccess)success failure:(HAHelpRequestServiceFailure)failure;
 - (void)updateRequest:(HAHelpRequest*) request success:(HAHelpRequestServiceSuccess)success failure:(HAHelpRequestServiceFailure)failure;
 - (void)takeRequest:(HAHelpRequest*) request success:(HAHelpRequestServiceSuccess)success failure:(HAHelpRequestServiceFailure)failure;
