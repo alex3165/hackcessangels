@@ -21,6 +21,11 @@ type Server struct {
 }
 
 func NewServer() *Server {
+	return NewServerWithCookieStore(securecookie.GenerateRandomKey(64),
+		securecookie.GenerateRandomKey(32))
+}
+
+func NewServerWithCookieStore(hashKey []byte, blockKey []byte) *Server {
 	r := mux.NewRouter()
 	s := &Server{
 		DatabaseServer: "localhost",
@@ -32,9 +37,7 @@ func NewServer() *Server {
 			WriteTimeout:   30 * time.Second,
 			MaxHeaderBytes: 1 << 20,
 		},
-		store: sessions.NewCookieStore(
-			securecookie.GenerateRandomKey(64),
-			securecookie.GenerateRandomKey(32)),
+		store: sessions.NewCookieStore(hashKey, blockKey),
 	}
 
 	r.HandleFunc("/api/agent/requests", s.handleAgentRequests)

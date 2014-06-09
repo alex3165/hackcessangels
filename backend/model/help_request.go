@@ -36,7 +36,7 @@ const (
 	RETRY = 3
 	// Request has been cancelled by the user (before any agent answered)
 	CANCELLED = 4
-	// Request has been abandoned by the user (no retry)
+	// Request has been abandoned by the user
 	ABANDONED = 5
 	// An agent has answered this request
 	AGENT_ANSWERED = 6
@@ -46,6 +46,8 @@ const (
 	REPORT_FILLED = 8
 	// Not in a station
 	NOT_IN_STATION = 9
+	// Timeout when contacting agents; retry or abort
+	TIMEOUT = 10
 )
 
 type HelpRequestStatus struct {
@@ -65,6 +67,12 @@ const (
 	REASSURING                        = 4
 	INFORMATION                       = 5
 	OTHER                             = 6
+)
+
+const (
+	REQUEST_TIMEOUT      time.Duration = 10 * time.Minute
+	RETRY_TIMEOUT        time.Duration = 10 * time.Minute
+	INTERVENTION_TIMEOUT time.Duration = 10 * time.Minute
 )
 
 type HelpRequest struct {
@@ -107,17 +115,39 @@ func (hr *HelpRequest) Save() error {
 // CheckStatus verifies that the status of a request should not be changed.
 // For instance, if a request is running for more than N minutes, it is automatically abandonned or completed.
 func (hr *HelpRequest) CheckStatus() error {
-    switch (hr.CurrentState) {
-    case NEW, AGENTS_CONTACTED, RETRY, AGENT_ANSWERED:
-        // Maximum 2 minutes
-        if time.Now().Sub(hr.RequesterLastUpdate) > 10 * time.Minute {
-            return hr.ChangeStatus(ABANDONED, time.Now())
-        }
-        if station, _ := hr.GetStation(); station == nil {
-            return hr.ChangeStatus(NOT_IN_STATION, time.Now())
-        }
-    }
-    return nil
+	switch hr.CurrentState {
+	case NEW, AGENTS_CONTACTED:
+		// Maximum 10 minutes
+		if time.Now().Sub(hr.RequestCreationTime) > REQUEST_TIMEOUT {
+			return hr.ChangeStatus(TIMEOUT, time.Now())
+		}
+		if station, _ := hr.GetStation(); station == nil {
+			return hr.ChangeStatus(NOT_IN_STATION, time.Now())
+		}
+		break
+	case AGENT_ANSWERED:
+		if time.Now().Sub(hr.Status[len(hr.Status)-1].Time) > INTERVENTION_TIMEOUT {
+			return hr.ChangeStatus(COMPLETED, time.Now())
+		}
+		if station, _ := hr.GetStation(); station == nil {
+			return hr.ChangeStatus(COMPLETED, time.Now())
+		}
+	case TIMEOUT:
+		if time.Now().Sub(hr.Status[len(hr.Status)-1].Time) > RETRY_TIMEOUT {
+			return hr.ChangeStatus(ABANDONED, time.Now())
+		}
+		if station, _ := hr.GetStation(); station == nil {
+			return hr.ChangeStatus(CANCELLED, time.Now())
+		}
+	case RETRY:
+		if time.Now().Sub(hr.Status[len(hr.Status)-1].Time) > REQUEST_TIMEOUT {
+			return hr.ChangeStatus(ABANDONED, time.Now())
+		}
+		if station, _ := hr.GetStation(); station == nil {
+			return hr.ChangeStatus(CANCELLED, time.Now())
+		}
+	}
+	return nil
 }
 
 func (hr *HelpRequest) ChangeStatus(newState HelpRequestState, time time.Time) error {
@@ -164,7 +194,7 @@ func (hr *HelpRequest) GetUser() (*User, error) {
 
 // Return the station where this help request is located
 func (hr *HelpRequest) GetStation() (*Station, error) {
-    return hr.m.FindStationByLocation(hr.RequesterPosition.Coordinates[0], hr.RequesterPosition.Coordinates[1], hr.RequesterPosPrecision)
+	return hr.m.FindStationByLocation(hr.RequesterPosition.Coordinates[0], hr.RequesterPosition.Coordinates[1], hr.RequesterPosPrecision)
 }
 
 func (m *Model) GetActiveRequestsByStation(s *Station) ([]*HelpRequest, error) {
@@ -183,17 +213,17 @@ func (m *Model) GetActiveRequestsByStation(s *Station) ([]*HelpRequest, error) {
 		},
 	}).All(&helpRequests)
 
-    // Add the pointer to the model object to all help requests: it is not in the database.
-    for _, hr := range helpRequests {
-        hr.m = m
-    }
+	// Add the pointer to the model object to all help requests: it is not in the database.
+	for _, hr := range helpRequests {
+		hr.m = m
+	}
 	return helpRequests, err
 }
 
 func (m *Model) GetRequestById(id string) (*HelpRequest, error) {
-    if !bson.IsObjectIdHex(id) {
-        return nil, errors.New(id + " not an object ID")
-    }
+	if !bson.IsObjectIdHex(id) {
+		return nil, errors.New(id + " not an object ID")
+	}
 	hr := new(HelpRequest)
 	err := m.helpRequests.FindId(bson.ObjectIdHex(id)).One(&hr)
 	hr.m = m

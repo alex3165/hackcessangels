@@ -47,6 +47,8 @@
 		228D8F03190FE5D2002AE6E2 /* HAUser.m in Sources */ = {isa = PBXBuildFile; fileRef = A1330B0618AD62B5002B1828 /* HAUser.m */; };
 		228D8F06190FE830002AE6E2 /* HARequestsService.m in Sources */ = {isa = PBXBuildFile; fileRef = 228D8F05190FE830002AE6E2 /* HARequestsService.m */; };
 		2297633818E4A58400CDE26A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22601F151886E2DE008B0179 /* Main.storyboard */; };
+		22A90D691945B169007D116F /* HAHelpSuccessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A90D681945B169007D116F /* HAHelpSuccessViewController.m */; };
+		22A90D6A1945B169007D116F /* HAHelpSuccessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A90D681945B169007D116F /* HAHelpSuccessViewController.m */; };
 		22C9AB3618E20FDC008ED8D7 /* HACentralManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C9AB3518E20FDC008ED8D7 /* HACentralManager.m */; };
 		22C9AB3718E20FDC008ED8D7 /* HACentralManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C9AB3518E20FDC008ED8D7 /* HACentralManager.m */; };
 		22C9AB3818E20FDC008ED8D7 /* HACentralManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C9AB3518E20FDC008ED8D7 /* HACentralManager.m */; };
@@ -177,6 +179,8 @@
 		22601F3E18871EAC008B0179 /* HATileOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HATileOverlayView.m; sourceTree = "<group>"; };
 		228D8F04190FE830002AE6E2 /* HARequestsService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HARequestsService.h; sourceTree = "<group>"; };
 		228D8F05190FE830002AE6E2 /* HARequestsService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HARequestsService.m; sourceTree = "<group>"; };
+		22A90D671945B169007D116F /* HAHelpSuccessViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HAHelpSuccessViewController.h; sourceTree = "<group>"; };
+		22A90D681945B169007D116F /* HAHelpSuccessViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HAHelpSuccessViewController.m; sourceTree = "<group>"; };
 		22C9AB3418E20FDC008ED8D7 /* HACentralManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HACentralManager.h; sourceTree = "<group>"; };
 		22C9AB3518E20FDC008ED8D7 /* HACentralManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HACentralManager.m; sourceTree = "<group>"; };
 		22C9AB3918E21083008ED8D7 /* HASERVICES.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HASERVICES.h; sourceTree = "<group>"; };
@@ -436,6 +440,8 @@
 				8FBEAE48192A4AE70097E151 /* Services */,
 				222E375A18BA521C00E3B720 /* HAHelpViewController.h */,
 				222E375B18BA521C00E3B720 /* HAHelpViewController.m */,
+				22A90D671945B169007D116F /* HAHelpSuccessViewController.h */,
+				22A90D681945B169007D116F /* HAHelpSuccessViewController.m */,
 				04F5A81418C8AC5E00ED0CC6 /* HAUserViewController.h */,
 				04F5A81518C8AC5E00ED0CC6 /* HAUserViewController.m */,
 				22601F151886E2DE008B0179 /* Main.storyboard */,
@@ -759,6 +765,7 @@
 				A1330B0718AD62B5002B1828 /* HAUser.m in Sources */,
 				222E375C18BA521C00E3B720 /* HAHelpViewController.m in Sources */,
 				22DA835818B288610014CCA5 /* HAAssistanceService.m in Sources */,
+				22A90D691945B169007D116F /* HAHelpSuccessViewController.m in Sources */,
 				22601F3F18871EAC008B0179 /* HATileOverlay.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -767,6 +774,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22A90D6A1945B169007D116F /* HAHelpSuccessViewController.m in Sources */,
 				22601F2F1886E2DE008B0179 /* HackcessAngelsTests.m in Sources */,
 				222E375D18BA521C00E3B720 /* HAHelpViewController.m in Sources */,
 				222E376218BA5B2F00E3B720 /* HALogViewController.m in Sources */,

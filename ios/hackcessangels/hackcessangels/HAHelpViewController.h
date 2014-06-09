@@ -28,11 +28,12 @@
 @property (nonatomic, strong) HAMapViewController *mapController;
 
 -(void) defaultRequestAgentStatus;
--(void) requestAgentAnsweredStatus;
+-(void) requestAgentContactedStatus;
 -(void) requestAgentTryAgainStatus;
 -(void) requestAgentFailedAgainStatus;
 -(void) requestAgentCancelStatus;
 
 - (IBAction) showProfil:(id)sender;
+-(IBAction)cancelHelp:(id)sender;
 
 @end

@@ -28,11 +28,22 @@
     // The help request currently in flight; nil otherwise.
     @property(nonatomic, strong) HAHelpRequest* currentHelpRequest;
 
-    @property(nonatomic, strong) HAAssistanceRequestUpdate updateCallback;
-    @property(nonatomic, strong) HARestRequestsFailure failureCallback;
+    @property(nonatomic, strong) NSMutableArray* updateCallbacks;
+    @property(nonatomic, strong) NSMutableArray* failureCallbacks;
 @end
 
 @implementation HAAssistanceService
+
++ (id)sharedInstance {
+    static HAAssistanceService *sharedAssistanceService = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedAssistanceService = [[self alloc] init];
+        sharedAssistanceService.currentHelpRequest = nil;
+    });
+    return sharedAssistanceService;
+}
+
 
 - (HAAssistanceService*)init {
     self = [super init];
@@ -50,8 +61,8 @@
 }
 
 - (void) startHelpRequest:(HAAssistanceRequestUpdate)update failure:(HARestRequestsFailure)failure {
-    self.updateCallback = update;
-    self.failureCallback = failure;
+    self.updateCallbacks = [[NSMutableArray alloc] initWithObjects:update, nil];
+    self.failureCallbacks = [[NSMutableArray alloc] initWithObjects:failure, nil];
     
     [self.locationService setUpdateCallback:^(CLLocation *newLocation) {
         self.timer = [[NSTimer alloc]
@@ -70,11 +81,22 @@
 
 }
 
+- (void) registerForUpdates:(HAAssistanceRequestUpdate)update failure:(HARestRequestsFailure)failure {
+    [self.updateCallbacks addObject:update];
+    [self.failureCallbacks addObject:failure];
+}
+
 - (void) timerFired {
     [self helpMe:self.locationService.location success:^(id obj, NSHTTPURLResponse *response) {
         self.currentHelpRequest = [[HAHelpRequest alloc] initWithDictionary:obj];
+        for (HAAssistanceRequestUpdate update in self.updateCallbacks) {
+            update(self.currentHelpRequest);
+        }
     } failure:^(id obj, NSError *error) {
         DLog(@"failure");
+        for (HARestRequestsFailure failure in self.failureCallbacks) {
+            failure(obj, error);
+        }
     }];
 }
 
@@ -108,7 +130,8 @@
         }
     } else {
         NSLog(@"désolé vous n'avez pas de connexion à internet, nous allons quand même essayer avec le bluetooth");
-        self.peripheralService = [[HAPeripheral alloc]initWithLongAndLat:location.coordinate.longitude latitude:location.coordinate.latitude]; // envoi l'appel à l'aide bluetooth
+        // alert utilisateur
+        self.peripheralService = [[HAPeripheral alloc]initWithLongAndLat:location.coordinate.longitude latitude:location.coordinate.latitude];
     }
 }
 

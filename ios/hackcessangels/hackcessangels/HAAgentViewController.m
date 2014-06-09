@@ -34,7 +34,6 @@
 
 - (void)viewDidLoad
 {
-    //{
         [super viewDidLoad];
         [[UITextField appearance] setFont:[UIFont fontWithName:@"Times" size:16]];
         //self.automaticallyAdjustsScrollViewInsets = NO;

@@ -17,6 +17,15 @@
 
 @implementation HARequestsService
 
++ (id)sharedInstance {
+    static HARequestsService *sharedRequestService = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedRequestService = [[self alloc] init];
+    });
+    return sharedRequestService;
+}
+
 - (HARequestsService*)init {
     self = [super init];
     if (self) {
