@@ -49,7 +49,6 @@ func (s *Server) handleHelp(w http.ResponseWriter, r *http.Request) {
 		Longitude     *float64 `json:"longitude,omitempty"`
 		Precision     *float64 `json:"precision,omitempty"`
 		Retry         *bool    `json:"retry,omitempty"`
-		Cancel        *bool    `json:"cancel,omitempty"`
 	}
 
 	w.Header().Add("Content-Type", "application/json")
@@ -130,12 +129,6 @@ func (s *Server) handleHelp(w http.ResponseWriter, r *http.Request) {
 			// User requested this request to be retried.
 			if *data.Retry {
 				helpRequest.ChangeStatus(model.RETRY, time.Now())
-			}
-		}
-		if data.Cancel != nil {
-			// User requested this request to be cancelled.
-			if *data.Cancel {
-				helpRequest.ChangeStatus(model.CANCELLED, time.Now())
 			}
 		}
 		err = helpRequest.Save()
