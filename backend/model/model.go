@@ -41,16 +41,16 @@ func NewModel(server string, databaseName string) (*Model, error) {
 		Key:  []string{"$2dsphere:requesterposition"},
 		Bits: 26,
 	})
-    if err != nil {
-        return nil, err
-    }
+	if err != nil {
+		return nil, err
+	}
 	m.stations = m.db.C("stations")
 	err = m.stations.EnsureIndex(mgo.Index{
 		Key:  []string{"$2dsphere:center"},
 		Bits: 26,
 	})
-    if err != nil {
-        return nil, err
-    }
+	if err != nil {
+		return nil, err
+	}
 	return m, nil
 }

@@ -51,6 +51,8 @@ NSString *const kStatusKey = @"CurrentState";
         case kAgentAnswered:
         case kRequestCompleted:
         case kReportFilled:
+        case kRetry:
+        case kTimeout:
             return false;
             break;
         default:

@@ -22,8 +22,10 @@
     @property (nonatomic, strong) NSUUID *uuid;
 
     @property (nonatomic, strong) HARequestsService* requestService;
+    @property (nonatomic, weak) NSTimer* timer;
 @end
 
+NSTimeInterval const kRequestUpdateTimeInterval = 5;// * 60.0;
 
 @implementation HAMapViewController
 
@@ -58,8 +60,22 @@ CLLocationCoordinate2D coordinate;
     [self.map setUserTrackingMode:MKUserTrackingModeFollow];
     if (self.helpRequest) {
         [self.map addAnnotation:self.helpRequest];
+        self.timer = [NSTimer timerWithTimeInterval:kRequestUpdateTimeInterval target:self selector:@selector(updateHelpRequest) userInfo:nil repeats:@YES];
     }
     [self updateDisplay];
+}
+
+- (void) updateTimerFired:(NSTimer*) timer {
+    [self updateHelpRequest];
+}
+
+- (void) updateHelpRequest {
+    [self.requestService updateRequest:self.helpRequest success:^(HAHelpRequest *helpRequest) {
+        self.helpRequest = helpRequest;
+        [self updateDisplay];
+    } failure:^(NSError *error) {
+        DLog(@"Error while updating help request: %@", error);
+    }];
 }
 
 // This method should be used for all code that takes self.helpRequest and updates the content of the screen (profile, map, etc...) with it

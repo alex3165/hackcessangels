@@ -95,7 +95,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "152"
             endingLineNumber = "152"
-            landmarkName = "-requestAgentCancelStatus"
+            landmarkName = "-requestAgentFailedAgainStatus"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -111,7 +111,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "153"
             endingLineNumber = "153"
-            landmarkName = "-requestAgentCancelStatus"
+            landmarkName = "-requestAgentFailedAgainStatus"
             landmarkType = "5">
             <Locations>
                <Location
@@ -171,7 +171,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "72"
             endingLineNumber = "72"
-            landmarkName = "-updateDisplay"
+            landmarkName = "-updateHelpRequest"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

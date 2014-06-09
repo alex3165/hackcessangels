@@ -14,8 +14,8 @@ type APIRequest struct {
 
 	CurrentState model.HelpRequestState
 
-    User  *ApiUser `json:"user,omitempty"`
-    Agent *ApiUser `json:"agent,omitempty"`
+	User  *ApiUser `json:"user,omitempty"`
+	Agent *ApiUser `json:"agent,omitempty"`
 
 	// Longitude, latitude and precision of the user requesting help
 	Longitude float64
@@ -25,7 +25,7 @@ type APIRequest struct {
 
 func NewAPIRequestFromHelpRequest(hr *model.HelpRequest) *APIRequest {
 	apiRequest := new(APIRequest)
-    apiRequest.Id = hr.Id.Hex()
+	apiRequest.Id = hr.Id.Hex()
 	apiRequest.CurrentState = hr.CurrentState
 	agent, err := hr.GetAgent()
 	if err == nil {
@@ -96,7 +96,7 @@ func (s *Server) handleHelp(w http.ResponseWriter, r *http.Request) {
 		if data.Precision != nil {
 			helpRequest.RequesterPosPrecision = *data.Precision
 		}
-        helpRequest.CheckStatus()
+		helpRequest.CheckStatus()
 		err = helpRequest.Save()
 		if err != nil {
 			log.Printf("Error while saving help request: %+v", err)
@@ -111,24 +111,24 @@ func (s *Server) handleHelp(w http.ResponseWriter, r *http.Request) {
 			log.Printf("Error while getting active request: %+v", err)
 			returnError(404, "Couldn't get request", w)
 		}
-		if data.Longitude == nil {
+		if data.Longitude == nil && data.Latitude != nil {
 			returnError(400, "Invalid request: longitude missing", w)
 			return
 		}
-		if data.Latitude == nil {
+		if data.Latitude == nil && data.Longitude != nil {
 			returnError(400, "Invalid request: latitude missing", w)
 			return
 		}
-		helpRequest.SetRequesterPosition(*data.Longitude, *data.Latitude)
+		if data.Latitude != nil && data.Longitude != nil {
+			helpRequest.SetRequesterPosition(*data.Longitude, *data.Latitude)
+		}
 		if data.Precision != nil {
 			helpRequest.RequesterPosPrecision = *data.Precision
 		}
 		if data.Retry != nil {
-			// User requested this request to be retried, or abandoned.
+			// User requested this request to be retried.
 			if *data.Retry {
 				helpRequest.ChangeStatus(model.RETRY, time.Now())
-			} else {
-				helpRequest.ChangeStatus(model.ABANDONED, time.Now())
 			}
 		}
 		err = helpRequest.Save()
