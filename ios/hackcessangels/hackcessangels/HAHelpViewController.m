@@ -53,36 +53,34 @@
 - (IBAction)helpme:(id)sender {
     self.assistanceService = [[HAAssistanceService alloc] init];
     HAHelpSuccessViewController *helpSuccessViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"helpSuccess"];
-    [helpSuccessViewController getHAHelpRequest:self.helpRequest];
-    [self presentViewController:helpSuccessViewController animated:YES completion:nil];
     
-//    [self.assistanceService startHelpRequest:^(HAHelpRequest *helpRequest) {
-//        self.helpRequest = helpRequest;
-//        HAHelpSuccessViewController *helpSuccessViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"helpSuccess"];
-//
-//        switch (self.helpRequest.status) {
-//            case kAgentsContacted:
-//                [self requestAgentContactedStatus];
-//            case kRetry:
-//                [self requestAgentContactedStatus];
-//            case kCancelled:
-//                [self requestAgentCancelStatus];
-//            case kTimeout:
-//                [self requestAgentTryAgainStatus];
-//            case kAbandonned:
-//                [self requestAgentFailedAgainStatus];
-//            case kAgentAnswered:
-//                [helpSuccessViewController getHAHelpRequest:self.helpRequest];
-//                [self presentViewController:helpSuccessViewController animated:YES completion:nil];
-//            case kNotInStation:
-//                // Faire la vue vous n'êtes pas dans la station
-//            default:
-//                [self defaultRequestAgentStatus];
-//                break;
-//        }
-//    } failure:^(id obj, NSError *error) {
-//        DLog("Erreur dans la demande d'assistance: %@", error);
-//    }];
+    [self.assistanceService startHelpRequest:^(HAHelpRequest *helpRequest) {
+        self.helpRequest = helpRequest;
+        HAHelpSuccessViewController *helpSuccessViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"helpSuccess"];
+
+        switch (self.helpRequest.status) {
+            case kAgentsContacted:
+                [self requestAgentContactedStatus];
+            case kRetry:
+                [self requestAgentContactedStatus];
+            case kCancelled:
+                [self requestAgentCancelStatus];
+            case kTimeout:
+                [self requestAgentTryAgainStatus];
+            case kAbandonned:
+                [self requestAgentFailedAgainStatus];
+            case kAgentAnswered:
+                [helpSuccessViewController getHAHelpRequest:self.helpRequest];
+                [self presentViewController:helpSuccessViewController animated:YES completion:nil];
+            case kNotInStation:
+                // Faire la vue vous n'êtes pas dans la station
+            default:
+                [self defaultRequestAgentStatus];
+                break;
+        }
+    } failure:^(id obj, NSError *error) {
+        DLog("Erreur dans la demande d'assistance: %@", error);
+    }];
 }
 
 -(IBAction)cancelHelp:(id)sender{
