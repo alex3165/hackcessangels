@@ -32,7 +32,7 @@ typedef enum HAUserSimpleDisability : NSUInteger {
 @property (weak, nonatomic) IBOutlet UITextView *descriptionTextInput;
 @property (weak, nonatomic) IBOutlet UITextField *numeroTextInput;
 @property (weak, nonatomic) IBOutlet UITextField *handicapAutre;
-@property (nonatomic,weak) IBOutlet UIScrollView *scroll;
+@property (weak, nonatomic) IBOutlet UIScrollView *scroll;
 
 
 @property (weak, nonatomic) IBOutlet UIButton *buttonMalVoyant;
@@ -53,6 +53,7 @@ typedef enum HAUserSimpleDisability : NSUInteger {
 - (IBAction) cognitif:(id)sender;
 - (IBAction) visuel:(id)sender;
 - (IBAction) autre:(id)sender;
+- (IBAction) takePicture:(id) sender;
 
 @end
 
