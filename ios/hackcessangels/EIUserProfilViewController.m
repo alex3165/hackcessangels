@@ -27,6 +27,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.modifier.layer.borderWidth = 0.5f;
+    self.modifier.layer.cornerRadius = 5;
+    
     [[HAUserService sharedInstance] getCurrentUser:^(HAUser *user) {
         
         //TOP LABEL

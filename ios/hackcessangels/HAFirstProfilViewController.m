@@ -8,7 +8,9 @@
 
 #import "HAFirstProfilViewController.h"
 #import "HAUserViewController.h"
+#import "HAUserService.h"
 
+#import "HAUser.h"
 @interface HAFirstProfilViewController ()
 
 @end
@@ -58,9 +60,10 @@
 
 -(void) viewtwo {
 
-    [[HAUserService sharedInstance] getCurrentUser:^(HAUser *user) {
+
+        [[HAUserService sharedInstance] updateUser:^(HAUser *user) success:^(HAUserServiceSuccess) failure:(HAUserServiceFailure)failure {
         
-        if (self.handicapAuditif.isSelected){
+            if (self.handicapAuditif.isSelected){
             //user.disabilityType=Hearing_call;
             UIPickerView *pickerAuditif;
             
@@ -91,7 +94,7 @@
              user.disabilityType=Other;
         
         }
-
+        
         
     } failure:^(NSError *error) {
         UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Erreur" message:@"Serveur injoignable" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
