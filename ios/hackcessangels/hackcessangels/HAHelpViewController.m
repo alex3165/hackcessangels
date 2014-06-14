@@ -52,26 +52,30 @@
 
 - (IBAction)helpme:(id)sender {
     self.assistanceService = [[HAAssistanceService alloc] init];
-    HAHelpSuccessViewController *helpSuccessViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"helpSuccess"];
     
     [self.assistanceService startHelpRequest:^(HAHelpRequest *helpRequest) {
         self.helpRequest = helpRequest;
         HAHelpSuccessViewController *helpSuccessViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"helpSuccess"];
-
+        
         switch (self.helpRequest.status) {
+            case kNew:
+            case kRetry:
             case kAgentsContacted:
                 [self requestAgentContactedStatus];
-            case kRetry:
-                [self requestAgentContactedStatus];
+                break;
             case kCancelled:
                 [self requestAgentCancelStatus];
+                break;
             case kTimeout:
                 [self requestAgentTryAgainStatus];
+                break;
             case kAbandonned:
                 [self requestAgentFailedAgainStatus];
+                break;
             case kAgentAnswered:
-                [helpSuccessViewController getHAHelpRequest:self.helpRequest];
+                helpSuccessViewController.helpRequest = self.helpRequest;
                 [self presentViewController:helpSuccessViewController animated:YES completion:nil];
+                break;
             case kNotInStation:
                 // Faire la vue vous n'êtes pas dans la station
             default:

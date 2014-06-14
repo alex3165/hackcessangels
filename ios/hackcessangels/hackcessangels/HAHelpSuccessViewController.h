@@ -14,12 +14,11 @@
 @interface HAHelpSuccessViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UILabel *whoStatus;
-@property (weak, nonatomic) IBOutlet UILabel *whatStatus;
 @property (weak, nonatomic) IBOutlet UIButton *cancelHelp;
 @property (weak, nonatomic) IBOutlet UIImageView *agentPicture;
 @property (nonatomic, strong) HAAssistanceService *assistanceService;
+@property (strong, nonatomic) HAHelpRequest* helpRequest;
 
 -(IBAction)cancelHelp:(id)sender;
--(void)getHAHelpRequest:(HAHelpRequest *)helpRequest;
 
 @end

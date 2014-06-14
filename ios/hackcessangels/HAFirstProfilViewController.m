@@ -59,7 +59,7 @@
 }
 
 -(void) viewtwo {
-
+/*
 
         [[HAUserService sharedInstance] updateUser:^(HAUser *user) success:^(HAUserServiceSuccess) failure:(HAUserServiceFailure)failure {
         
@@ -101,7 +101,7 @@
         [alert show];
     }];
     
-    
+    */
     
 }
 
