@@ -90,8 +90,8 @@
         [parameters setObject:agent.password forKey:pPasswordKey];
     }
     // Set a new numero only if it changed by the agent
-    if (agent.phone != nil && agent.phone.length != 0) {
-        [parameters setObject:agent.phone forKey:pNumeroKey];
+    if (agent.sncfId != nil && agent.sncfId.length != 0) {
+        [parameters setObject:agent.sncfId forKey:pNumeroKey];
     }
     
     // Name is a required property
@@ -103,7 +103,10 @@
     }
     
     [parameters setObject:agent.name forKey:pNameKey];
-    [parameters setObject:agent.gare forKey:pGareKey];
+    
+    if (agent.gare != nil && agent.gare.length != 0) {
+        [parameters setObject:agent.gare forKey:pGareKey];
+    }
     if (agent.image != nil) {
         [parameters setObject:[agent.image base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength] forKey:pImageKey];
     }

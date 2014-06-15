@@ -22,7 +22,7 @@ extern NSString *const pGareKey;
 @property (nonatomic, strong) NSString *password;
 @property (nonatomic, strong) NSString *email;
 @property (nonatomic, strong) NSString *name;
-@property (nonatomic, strong) NSString *phone;
+@property (nonatomic, strong) NSString *sncfId;
 @property (nonatomic, strong) NSData *image;
 @property (nonatomic, strong) NSHTTPCookie *cookie;
 @property (nonatomic, strong) NSString *gare;

@@ -10,13 +10,11 @@
 #import "HATileOverlay.h"
 #import "HATileOverlayView.h"
 #import "HAUser.h"
-#import "HAHelpProfileView.h"
 #import "HACallUserView.h"
 #import "HARequestsService.h"
 
 
 @interface HAMapViewController () <HACentralManagerDelegate>
-    @property (nonatomic, weak) IBOutlet HAHelpProfileView *helpProfileView;
     @property (nonatomic, weak) IBOutlet HACallUserView *callUserView;
     @property (nonatomic, weak) IBOutlet UIPanGestureRecognizer *gestureRecognizer;
     @property (nonatomic, strong) NSUUID *uuid;
