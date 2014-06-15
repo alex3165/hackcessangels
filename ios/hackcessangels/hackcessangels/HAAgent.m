@@ -14,7 +14,7 @@ NSString *const pPasswordKey = @"password";
 NSString *const pImageKey = @"image";
 NSString *const pEmailKey = @"email";
 NSString *const pNameKey = @"name";
-NSString *const pNumeroKey = @"phone";
+NSString *const pNumeroKey = @"sncfid";
 NSString *const pCookieKey = @"cookie";
 NSString *const pGareKey = @"gare";
 
@@ -28,7 +28,7 @@ NSString *const pGareKey = @"gare";
         self.email = [dico objectForKey:@"email"];
         self.password = [dico objectForKey:@"password"];
         self.name = [dico objectForKey:@"name"];
-        self.phone = [dico objectForKey:@"phone"];
+        self.sncfId = [dico objectForKey:@"phone"];
         //self.gare = [dico objectForKey:@"gare"];
         if ([dico objectForKey:@"image"] != nil) {
             self.image = [[NSData alloc] initWithBase64EncodedString:[dico objectForKey:@"image"] options:NSDataBase64DecodingIgnoreUnknownCharacters];
@@ -76,8 +76,13 @@ NSString *const pGareKey = @"gare";
     if (self.name) {
         [parameters setObject:self.name forKey:pNameKey];
     }
-    if (self.phone) {
-        [parameters setObject:self.phone forKey:pNumeroKey];
+    if (self.sncfId) {
+        [parameters setObject:self.sncfId forKey:pNumeroKey];
+    }
+    
+    // Set a new password only if it changed by the user
+    if (self.password != nil && self.password.length != 0) {
+        [parameters setObject:self.password forKey:pPasswordKey];
     }
     
     if (self.image != nil) {

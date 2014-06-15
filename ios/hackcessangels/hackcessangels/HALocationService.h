@@ -12,7 +12,7 @@
 typedef void(^HALocationServiceLocationUpdate)(CLLocation* newLocation);
 
 @interface HALocationService : NSObject <CLLocationManagerDelegate>
-@property(nonatomic, strong) CLLocation* location;
+@property(nonatomic, readonly) CLLocation* location;
 
 // Subscribe to the most precise location updates.
 - (bool) startLocation;

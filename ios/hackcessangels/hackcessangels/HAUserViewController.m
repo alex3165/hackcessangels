@@ -105,7 +105,7 @@
     [super viewDidAppear:animated];
 }
 
--(void) takePicture:(id) sender
+-(IBAction) takePicture:(id) sender
 {
     UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
     

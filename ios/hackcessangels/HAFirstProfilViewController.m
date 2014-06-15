@@ -59,7 +59,7 @@
 }
 
 -(void) viewtwo {
-
+/*
 
         [[HAUserService sharedInstance] getCurrentUser:^(HAUser *user)  {
         
@@ -107,7 +107,7 @@
         [alert show];
     }];
     
-    
+    */
     
 }
 

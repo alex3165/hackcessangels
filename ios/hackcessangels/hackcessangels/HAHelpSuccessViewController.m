@@ -12,6 +12,8 @@
 
 @end
 
+NSString *const agentAnnounceFormatString = @"L'agent SNCF %@ arrive";
+
 @implementation HAHelpSuccessViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -27,7 +29,7 @@
 {
     [super viewDidLoad];
     self.whoStatus.textColor = [UIColor HA_purple];
-    self.whatStatus.textColor = [UIColor HA_green];
+    [self setHAHelpRequest:self.helpRequest];
     [[self.cancelHelp layer] setBorderWidth:1.0f];
     [[self.cancelHelp layer] setCornerRadius:5.0f];
     [[self.cancelHelp layer] setBorderColor:[UIColor HA_red].CGColor];
@@ -39,15 +41,14 @@
 }
 
 -(IBAction)cancelHelp:(id)sender{
-    self.assistanceService = [[HAAssistanceService alloc] init];
+    self.assistanceService = [HAAssistanceService sharedInstance];
     [self.assistanceService stopHelpRequest];
 }
 
--(void)getHAHelpRequest:(HAHelpRequest *)helpRequest{
-    UIImage *agentPicture = [UIImage imageWithData:helpRequest.user.image];
+-(void)setHAHelpRequest:(HAHelpRequest *)helpRequest{
+    UIImage *agentPicture = [UIImage imageWithData:helpRequest.agent.image];
     [self.agentPicture setImage:agentPicture];
-    NSString *whoStatus = [NSString stringWithFormat:@"L'agent SNCF %@", helpRequest.agent.name];
-    self.whoStatus.text = whoStatus;
+    [self.whoStatus setText: [NSString stringWithFormat:agentAnnounceFormatString, helpRequest.agent.name]];
 }
 
 @end

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="qhe-hd-3la">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="14A238x" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="ycK-0M-K7o">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -222,17 +222,11 @@
                                 <rect key="frame" x="52" y="75" width="216" height="216"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
-                            <label appearanceType="aqua" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="L'agent SNCF Stephane" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6wQ-13-yQ9">
-                                <rect key="frame" x="52" y="322" width="216" height="43"/>
+                            <label appearanceType="aqua" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="L'agent SNCF Stephane arrive" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="216" translatesAutoresizingMaskIntoConstraints="NO" id="6wQ-13-yQ9">
+                                <rect key="frame" x="52" y="322" width="216" height="93"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="18"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label appearanceType="aqua" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="arrive" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sA7-nS-jbS">
-                                <rect key="frame" x="52" y="363" width="216" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="18"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button appearanceType="aqua" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Ka-ZC-xor">
@@ -256,7 +250,6 @@
                     <connections>
                         <outlet property="agentPicture" destination="lKg-pv-aRI" id="RQC-hQ-2Ee"/>
                         <outlet property="cancelHelp" destination="2Ka-ZC-xor" id="VXP-1v-Jfh"/>
-                        <outlet property="whatStatus" destination="sA7-nS-jbS" id="yBF-si-3Nu"/>
                         <outlet property="whoStatus" destination="6wQ-13-yQ9" id="m4k-7b-4pQ"/>
                     </connections>
                 </viewController>
@@ -285,8 +278,8 @@
                                 <color key="textColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CNU-No-znw">
-                                <rect key="frame" x="92" y="77" width="137" height="114"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CNU-No-znw">
+                                <rect key="frame" x="96" y="70" width="128" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="NomPrenom User" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eta-T0-tD2">
@@ -610,22 +603,38 @@
                                             <outlet property="delegate" destination="4Kq-j2-Pec" id="0IR-GH-3fl"/>
                                         </connections>
                                     </pickerView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="G7y-0Q-fSa">
+                                        <rect key="frame" x="20" y="70" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NkI-Av-QJJ">
+                                        <rect key="frame" x="156" y="119" width="144" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Changez votre photo">
+                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="takePicture:" destination="4Kq-j2-Pec" eventType="touchUpInside" id="6Tz-y4-TPy"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Edition du profil" id="8Eh-fx-mex">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="eYu-C9-nhw">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="MXV-Mj-czf">
+                    <navigationItem key="navigationItem" title="Edition du profil" id="abq-wb-9fa">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="89a-cf-emc">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Sww-KP-89o">
                                 <rect key="frame" x="233" y="5" width="71" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <state key="normal" title="OK">
+                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="saveAndDismiss:" destination="4Kq-j2-Pec" eventType="touchUpInside" id="uva-ld-svb"/>
+                                    <action selector="saveAndDismiss:" destination="4Kq-j2-Pec" eventType="touchUpInside" id="9yM-Hk-C9r"/>
                                 </connections>
                             </button>
                         </barButtonItem>
@@ -638,11 +647,11 @@
                         <outlet property="buttonMalVoyant" destination="s0w-g8-DvJ" id="QSH-Rn-56h"/>
                         <outlet property="descriptionTextInput" destination="8Cq-R0-dMl" id="Zgf-4n-L3I"/>
                         <outlet property="handicapAutre" destination="ch5-V8-F8r" id="wuK-7j-DA5"/>
+                        <outlet property="image" destination="G7y-0Q-fSa" id="8i8-WI-brj"/>
                         <outlet property="nameTextInput" destination="4RV-II-Hph" id="aNA-s9-Axm"/>
                         <outlet property="numeroTextInput" destination="Cf9-Qq-QPI" id="uhR-gT-CkP"/>
                         <outlet property="passwordTextInput" destination="gJQ-yz-4Mu" id="y7c-4C-WPp"/>
                         <outlet property="pickerView" destination="E3u-i8-8iv" id="IRJ-G0-iGS"/>
-                        <outlet property="save" destination="MXV-Mj-czf" id="LMT-lP-gPB"/>
                         <outlet property="scroll" destination="KZR-gj-bbd" id="5IG-ER-4pO"/>
                     </connections>
                 </viewController>
