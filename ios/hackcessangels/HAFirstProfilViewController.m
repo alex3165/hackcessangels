@@ -61,21 +61,24 @@
 -(void) viewtwo {
 
 
-        [[HAUserService sharedInstance] updateUser:^(HAUser *user) success:^(HAUserServiceSuccess) failure:(HAUserServiceFailure)failure {
+        [[HAUserService sharedInstance] getCurrentUser:^(HAUser *user)  {
         
             if (self.handicapAuditif.isSelected){
             //user.disabilityType=Hearing_call;
             UIPickerView *pickerAuditif;
-            
+            [self.handicapAuditif setBackgroundColor:[UIColor purpleColor]];
             [pickerAuditif setFrame:CGRectMake(self.view2.frame.size.width/2, 0, self.view2.frame.size.width/2, self.view2.frame.size.height/2)];
             
         
         }
         else if (self.handicapCognitif.isSelected){
+            
+            [self.handicapCognitif setBackgroundColor:[UIColor purpleColor]];
             user.disabilityType=Mental;
             
         }
         else if (self.handicapVisuel.isSelected){
+            [self.handicapVisuel setBackgroundColor:[UIColor purpleColor]];
             UIPickerView *pickerVisuel;
             
             [pickerVisuel setFrame:CGRectMake(self.view2.frame.size.width/2, 0, self.view2.frame.size.width/2, self.view2.frame.size.height/2)];
@@ -83,6 +86,7 @@
             
         }
         else if (self.handicapMoteur.isSelected){
+            [self.handicapMoteur setBackgroundColor:[UIColor purpleColor]];
             UIPickerView *pickerMoteur;
             
             [pickerMoteur setFrame:CGRectMake(self.view2.frame.size.width/2, 0, self.view2.frame.size.width/2, self.view2.frame.size.height/2)];
@@ -91,6 +95,8 @@
             
         }
         else {
+            
+            [self.handicapAutre setBackgroundColor:[UIColor purpleColor]];
              user.disabilityType=Other;
         
         }
@@ -122,6 +128,13 @@
 }
 
 - (IBAction)button1:(id)sender  {
+   // [self.view1 removeFromSuperview];
+    [self.view addSubview:self.view1];
+    [self view2];
+    
+}
+
+- (IBAction)button12:(id)sender  {
     [self.view1 removeFromSuperview];
     [self.view addSubview:self.view2];
     [self view2];
@@ -173,6 +186,34 @@
     
     //Allez sur la page d'accueil
 }
+
+
+- (IBAction)backToInfos:(id)sender  {
+    
+    [self.view4 removeFromSuperview];
+    
+    [self.view addSubview:self.view3];
+    [self view3];
+}
+
+- (IBAction)backToHandicap:(id)sender  {
+    
+    [self.view3 removeFromSuperview];
+    
+    [self.view addSubview:self.view2];
+    [self view2];
+}
+
+- (IBAction)backToNom:(id)sender  {
+    
+    [self.view2 removeFromSuperview];
+    
+    [self.view addSubview:self.view1];
+    [self view1];
+}
+
+
+
 
 - (IBAction)saisieReturn:(id)sender {
     

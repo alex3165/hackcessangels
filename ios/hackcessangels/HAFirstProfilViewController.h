@@ -37,4 +37,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *buttonPhoto;
 @property (weak, nonatomic) IBOutlet UIButton *ignorePhoto;
 
+
+
 @end
