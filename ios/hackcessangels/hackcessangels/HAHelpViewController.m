@@ -17,6 +17,10 @@
     @property (nonatomic, strong) HAUser *user;
     @property (nonatomic, strong) NSMutableString *helloUser;
     @property (nonatomic, strong) HAHelpRequest* helpRequest;
+
+    @property (nonatomic, strong) HAAssistanceService *assistanceService;
+    @property (nonatomic, strong) HAUserService *userService;
+    @property (nonatomic, strong) UIActivityIndicatorView *spinner;
 @end
 
 @implementation HAHelpViewController
@@ -42,6 +46,8 @@
     self.view.backgroundColor = [UIColor HA_graybg];
     self.timeNotification.backgroundColor = [UIColor HA_purple];
     self.timeNotification.textColor = [UIColor HA_graybg];
+    
+    self.assistanceService = [HAAssistanceService sharedInstance];
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -51,8 +57,6 @@
 }
 
 - (IBAction)helpme:(id)sender {
-    self.assistanceService = [[HAAssistanceService alloc] init];
-    
     [self.assistanceService startHelpRequest:^(HAHelpRequest *helpRequest) {
         self.helpRequest = helpRequest;
         HAHelpSuccessViewController *helpSuccessViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"helpSuccess"];
@@ -88,8 +92,9 @@
 }
 
 -(IBAction)cancelHelp:(id)sender{
-    self.assistanceService = [[HAAssistanceService alloc] init];
     [self.assistanceService stopHelpRequest];
+    [self requestAgentCancelStatus];
+    [NSTimer scheduledTimerWithTimeInterval:15 target:self selector:@selector(defaultRequestAgentStatus) userInfo:nil repeats:NO];
 }
 
 - (void)requestAgentContactedStatus {
@@ -102,13 +107,13 @@
     self.helpme.userInteractionEnabled = NO;
     UIImage *imageHelpInFlight = [UIImage imageNamed:@"EnCours.png"];
     [self.helpme setBackgroundImage:imageHelpInFlight forState:UIControlStateNormal];
-    UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    spinner.center = CGPointMake(160, 290);
-    spinner.tag = 12;
-    spinner.color = [UIColor whiteColor];
-    spinner.transform = CGAffineTransformMakeScale(2.4,2.4);
-    [self.view addSubview:spinner];
-    [spinner startAnimating];
+    self.spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    self.spinner.center = CGPointMake(160, 290);
+    self.spinner.tag = 12;
+    self.spinner.color = [UIColor whiteColor];
+    self.spinner.transform = CGAffineTransformMakeScale(2.4,2.4);
+    [self.view addSubview: self.spinner];
+    [self.spinner startAnimating];
 }
 
 -(void)requestAgentTryAgainStatus {
@@ -146,6 +151,7 @@
     self.timeNotification.hidden = true;
     self.titleLabel.hidden = false;
     self.urgencyNumber.hidden = true;
+    self.cancelHelp.hidden = true;
     UIImage *imageHelp = [UIImage imageNamed:@"help.png"];
     self.helpme.userInteractionEnabled = YES;
     [self.helpme setBackgroundImage:imageHelp forState:UIControlStateNormal];
@@ -158,8 +164,13 @@
     self.whatStatus.hidden = true;
     self.timeNotification.hidden = true;
     self.titleLabel.hidden = true;
+    self.cancelHelp.hidden = true;
+    self.urgencyNumber.hidden = true;
     UIImage *imageHelp = [UIImage imageNamed:@"help.png"];
     [self.helpme setBackgroundImage:imageHelp forState:UIControlStateNormal];
+    [self.spinner removeFromSuperview];
+    self.spinner = nil;
+    [self checkUser];
 }
 /******************************************************************************************************************************
  *
