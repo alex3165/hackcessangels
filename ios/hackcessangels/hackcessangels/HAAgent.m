@@ -80,6 +80,11 @@ NSString *const pGareKey = @"gare";
         [parameters setObject:self.sncfId forKey:pNumeroKey];
     }
     
+    // Set a new password only if it changed by the user
+    if (self.password != nil && self.password.length != 0) {
+        [parameters setObject:self.password forKey:pPasswordKey];
+    }
+    
     if (self.image != nil) {
         [parameters setObject:[self.image base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength] forKey:pImageKey];
     }

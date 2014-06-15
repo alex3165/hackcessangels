@@ -82,34 +82,16 @@
 - (void)updateAgent:(HAAgent *)agent success:(HAAgentServiceSuccess)success failure:(HAAgentServiceFailure)failure {
     HARestRequests* requestService = [[HARestRequests alloc] init];
     
-    NSMutableDictionary* parameters = [[NSMutableDictionary alloc] init];
-    [parameters setObject:agent.name forKey:pNameKey];
-    
-    // Set a new password only if it changed by the agent
-    if (agent.password != nil && agent.password.length != 0) {
-        [parameters setObject:agent.password forKey:pPasswordKey];
-    }
-    // Set a new numero only if it changed by the agent
-    if (agent.sncfId != nil && agent.sncfId.length != 0) {
-        [parameters setObject:agent.sncfId forKey:pNumeroKey];
-    }
-    
     // Name is a required property
     if (agent.name == nil || agent.name.length == 0) {
         // No user logged in. How is this possible?
         NSMutableDictionary* details = [NSMutableDictionary dictionary];
         [details setValue:@"Name must be set" forKey:NSLocalizedDescriptionKey];
-        //failure([[NSError alloc] initWithDomain:@"update" code:400 agentInfo:details]);
+        failure([[NSError alloc] initWithDomain:@"update" code:400 userInfo:details]);
+        return;
     }
     
-    [parameters setObject:agent.name forKey:pNameKey];
-    
-    if (agent.gare != nil && agent.gare.length != 0) {
-        [parameters setObject:agent.gare forKey:pGareKey];
-    }
-    if (agent.image != nil) {
-        [parameters setObject:[agent.image base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength] forKey:pImageKey];
-    }
+    NSDictionary* parameters = [agent toPropertyList];
     
     [requestService PUTrequest:@"user" withParameters: [[NSDictionary alloc] initWithObjectsAndKeys:parameters, @"data", nil] success:^(id obj, NSHTTPURLResponse *response) {
         self.currentAgent = [[HAAgent alloc] initWithDictionary:obj];
