@@ -33,7 +33,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self checkUser];
     [[self.cancelHelp layer] setBorderWidth:1.0f];
     [[self.cancelHelp layer] setCornerRadius:5.0f];
     [[self.cancelHelp layer] setBorderColor:[UIColor HA_red].CGColor];
@@ -48,6 +47,7 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    [self checkUser];
 }
 
 - (IBAction)helpme:(id)sender {
