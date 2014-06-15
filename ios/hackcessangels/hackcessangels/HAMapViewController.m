@@ -12,6 +12,7 @@
 #import "HAUser.h"
 #import "HACallUserView.h"
 #import "HARequestsService.h"
+#import "HAAgentUserProfileViewerViewController.h"
 
 
 @interface HAMapViewController () <HACentralManagerDelegate>
@@ -83,9 +84,43 @@ CLLocationCoordinate2D coordinate;
         // TODO(etienne): add a field in HAHelpRequest to know the provenance of the request (bluetooth/server)
         [self.helpok setHidden:!self.bluetoothmanager.needHelp];
     } else {
+        // Display user infos
         self.userName.text = self.helpRequest.user.name;
-        self.userDisability.text = self.helpRequest.user.disability;
         
+        self.userPicture.image = [UIImage imageWithData:self.helpRequest.user.image];
+        
+        switch (self.helpRequest.user.disabilityType) {
+            case Physical_wheelchair:
+                self.userDisability.text=@"Handicap moteur. Je suis en chaise roulante";
+                break;
+            case    Physical_powerchair:
+                self.userDisability.text=@" Handicap moteur. Je suis en chaise électrique";
+                break;
+            case  Physical_walk:
+                self.userDisability.text=@"Handicap moteur. J'ai des problèmes de marche.";
+                break;
+            case   Vision_blind :
+                self.userDisability.text=@"Handicap visuel. Je suis aveugle.";
+                break;
+            case   Vision_lowvision:
+                self.userDisability.text=@"Handicap visuel. J'ai une mauvaise vue";
+                break;
+            case Hearing_call:
+                self.userDisability.text=@"Handicap auditif. Je répond aux appels.";
+                break;
+            case Hearing_SMS:
+                self.userDisability.text=@"Handicap auditif. Je répond aux sms.";
+                break;
+            case Mental:
+                self.userDisability.text=@"Handicap Mental";
+                break;
+            case Other:
+                self.userDisability.text=@"Handicap Autre";
+                break;
+            case Unknown:
+                self.userDisability.text=@"Handicap inconnu";
+                break;
+        }
         [self.helpok setHidden:![self.helpRequest needsHelp]];
     }
 }
@@ -193,7 +228,12 @@ CLLocationCoordinate2D coordinate;
     return view ;
 }
 
+-(IBAction)showCompleteProfil:(id)sender{
+   HAAgentUserProfileViewerViewController * completeProfilController = [[UIStoryboard storyboardWithName:@"Agent" bundle:nil] instantiateViewControllerWithIdentifier:@"completeProfil"];
+    [completeProfilController passHaRequest:self.helpRequest];
+    [self.navigationController pushViewController:completeProfilController animated:YES];
 
+}
 
 - (IBAction)PositiveAnswerForHelp:(id)sender {
     [self.bluetoothmanager takeRequest:self.uuid];
