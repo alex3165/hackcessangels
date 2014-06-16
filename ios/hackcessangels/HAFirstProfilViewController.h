@@ -8,12 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HAFirstProfilViewController : UIViewController
+@interface HAFirstProfilViewController : UIViewController <UIAlertViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *viewInit;
+
+@property (weak, nonatomic) IBOutlet UIButton *buttonInit;
+
+@property (weak, nonatomic) IBOutlet UIView *viewLog;
 @property (weak, nonatomic) IBOutlet UITextField *mail;
 @property (weak, nonatomic) IBOutlet UITextField *password;
-@property (weak, nonatomic) IBOutlet UIButton *buttonInit;
+@property (weak, nonatomic) IBOutlet UIButton *buttonLog;
 
 
 @property (weak, nonatomic) IBOutlet UIView *view1;
@@ -33,7 +37,7 @@
 
 
 @property (weak, nonatomic) IBOutlet UIView *view3;
-@property (weak, nonatomic) IBOutlet UITextField *handicapInfos;
+@property (weak, nonatomic) IBOutlet UITextView *handicapInfos;
 @property (weak, nonatomic) IBOutlet UIButton *button3;
 
 @property (weak, nonatomic) IBOutlet UIView *view4;
