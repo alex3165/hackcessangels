@@ -10,6 +10,10 @@
 
 @interface HAFirstProfilViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UIView *viewInit;
+@property (weak, nonatomic) IBOutlet UITextField *mail;
+@property (weak, nonatomic) IBOutlet UITextField *password;
+@property (weak, nonatomic) IBOutlet UIButton *buttonInit;
 
 
 @property (weak, nonatomic) IBOutlet UIView *view1;

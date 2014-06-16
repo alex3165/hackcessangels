@@ -65,7 +65,20 @@
     [super viewDidAppear:animated];
 }
 
+
+    -(void) takePicture:(id) sender
+    {
+        UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
+        
+        [imagePicker setSourceType:UIImagePickerControllerSourceTypeCamera];
+        
+        [imagePicker setDelegate:self];
+        
+        [self presentModalViewController:imagePicker animated:YES];
+    }
+
 - (IBAction)saisieReturn:(id)sender {
+
     
     [sender resignFirstResponder];
 }
