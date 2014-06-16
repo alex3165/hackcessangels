@@ -69,7 +69,7 @@
     {
         UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
         
-        [imagePicker setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
+        [imagePicker setSourceType:UIImagePickerControllerSourceTypeCamera];
         
         [imagePicker setDelegate:self];
         
