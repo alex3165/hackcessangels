@@ -23,8 +23,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *whatStatus;
 @property (weak, nonatomic) IBOutlet UILabel *timeNotification;
 
-@property (nonatomic, strong) HAAssistanceService *assistanceService;
-@property (nonatomic, strong) HAUserService *userService;
 @property (nonatomic, strong) HAMapViewController *mapController;
 
 -(void) defaultRequestAgentStatus;

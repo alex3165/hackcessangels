@@ -66,8 +66,6 @@
 }
 
 - (void) locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
-    // If it's a relatively recent event, turn off updates to save power.
-    self.location = [locations lastObject];
     // If the event is recent, do something with it.
     DLog(@"latitude %+.6f, longitude %+.6f, accuracy %+.6f\n",
           self.location.coordinate.latitude,
@@ -78,12 +76,8 @@
     }
 }
 
-- (double) currentLongitude {
-    return self.location.coordinate.longitude;
-}
-
-- (double) currentLatitude {
-    return self.location.coordinate.latitude;
+- (CLLocation*) location {
+    return self.locationManager.location;
 }
 
 @end

@@ -41,7 +41,10 @@ NSTimeInterval const kTimeInterval = 5;// * 60.0;
         [self reportLocation];
     }];
     
-    [self.locationService startAreaTracking];
+    if (![self.locationService startAreaTracking]) {
+        NSLog(@"Unable to start area tracking");
+        return;
+    }
 
     NSRunLoop* currentRunLoop = [NSRunLoop currentRunLoop];
     
@@ -59,10 +62,11 @@ NSTimeInterval const kTimeInterval = 5;// * 60.0;
         return;
     }
     
-    [self.restRequest POSTrequest:@"agent/position" withParameters:
-  @{@"latitude": [NSNumber numberWithDouble: self.locationService.location.coordinate.latitude],
-    @"longitude": [NSNumber numberWithDouble: self.locationService.location.coordinate.longitude],
-    @"precision": [NSNumber numberWithDouble:self.locationService.location.horizontalAccuracy]}
+    NSDictionary *requestData = @{@"latitude": [NSNumber numberWithDouble: self.locationService.location.coordinate.latitude],
+                                 @"longitude": [NSNumber numberWithDouble: self.locationService.location.coordinate.longitude],
+                                 @"precision": [NSNumber numberWithDouble: self.locationService.location.horizontalAccuracy]};
+    
+    [self.restRequest POSTrequest:@"agent/position" withParameters:requestData
                           success:^(id obj, NSHTTPURLResponse *response) {
     }
                           failure:^(id obj, NSError *error) {
