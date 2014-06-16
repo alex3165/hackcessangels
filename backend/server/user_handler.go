@@ -21,6 +21,7 @@ type ApiUser struct {
 	Disability     *string               `json:"disability,omitempty"`
 	DisabilityType *model.DisabilityType `json:"disabilityType,omitempty"`
 	PushToken      *string               `json:"pushToken,omitempty"`
+	AgentId        *string               `json:"agentId,omitempty"`
 	IsAgent        *bool                 `json:"is_agent,omitempty"`
 }
 
@@ -39,6 +40,9 @@ func NewApiUser(u *model.User, private bool) *ApiUser {
 		au.Image = &u.Image
 	}
 	au.IsAgent = &u.IsAgent
+    if u.IsAgent {
+        au.AgentId = &u.AgentId
+    }
 	if private {
 		au.PushToken = &u.PushToken
 	}
@@ -79,6 +83,9 @@ func (au *ApiUser) fillStorageUser(u *model.User) (err error) {
 	if au.PushToken != nil {
 		u.PushToken = *au.PushToken
 	}
+    if au.AgentId != nil {
+        u.AgentId = *au.AgentId
+    }
 	if au.IsAgent != nil {
 		u.IsAgent = *au.IsAgent
 	}
