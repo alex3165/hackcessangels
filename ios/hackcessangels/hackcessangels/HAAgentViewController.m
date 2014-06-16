@@ -66,17 +66,6 @@
 }
 
 
-    -(void) takePicture:(id) sender
-    {
-        UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
-        
-        [imagePicker setSourceType:UIImagePickerControllerSourceTypeCamera];
-        
-        [imagePicker setDelegate:self];
-        
-        [self presentModalViewController:imagePicker animated:YES];
-    }
-
 - (IBAction)saisieReturn:(id)sender {
 
     
@@ -96,7 +85,7 @@
     
     [imagePicker setDelegate:self];
     
-    [self presentModalViewController:imagePicker animated:YES];
+    [self presentViewController:imagePicker animated:YES completion:nil];
 }
 
 -(void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
@@ -104,7 +93,7 @@
     UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
     
     [self.image setImage:image];
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)cancelAndDismiss:(id)sender {

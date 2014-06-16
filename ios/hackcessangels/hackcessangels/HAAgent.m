@@ -14,7 +14,7 @@ NSString *const pPasswordKey = @"password";
 NSString *const pImageKey = @"image";
 NSString *const pEmailKey = @"email";
 NSString *const pNameKey = @"name";
-NSString *const pNumeroKey = @"sncfid";
+NSString *const pNumeroKey = @"agentId";
 NSString *const pCookieKey = @"cookie";
 NSString *const pGareKey = @"gare";
 
@@ -28,7 +28,7 @@ NSString *const pGareKey = @"gare";
         self.email = [dico objectForKey:@"email"];
         self.password = [dico objectForKey:@"password"];
         self.name = [dico objectForKey:@"name"];
-        self.sncfId = [dico objectForKey:@"phone"];
+        self.sncfId = [dico objectForKey:pNumeroKey];
         //self.gare = [dico objectForKey:@"gare"];
         if ([dico objectForKey:@"image"] != nil) {
             self.image = [[NSData alloc] initWithBase64EncodedString:[dico objectForKey:@"image"] options:NSDataBase64DecodingIgnoreUnknownCharacters];
