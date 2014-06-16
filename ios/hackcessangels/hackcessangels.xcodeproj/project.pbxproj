@@ -152,7 +152,7 @@
 		222E376018BA5B2F00E3B720 /* HALogViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HALogViewController.m; sourceTree = "<group>"; };
 		2244C95518FA8B55000B3C33 /* profil.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = profil.jpg; sourceTree = "<group>"; };
 		224CD30319433D8800ACEEE9 /* Avenir.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = Avenir.ttc; sourceTree = "<group>"; };
-		22601F001886E2DE008B0179 /* HackcessAngels.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HackcessAngels.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		22601F001886E2DE008B0179 /* Aide'Gare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Aide'Gare.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		22601F031886E2DE008B0179 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		22601F051886E2DE008B0179 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		22601F071886E2DE008B0179 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -213,7 +213,7 @@
 		A1330B0518AD62B5002B1828 /* HAUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HAUser.h; path = hackcessangels/model/HAUser.h; sourceTree = SOURCE_ROOT; };
 		A1330B0618AD62B5002B1828 /* HAUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HAUser.m; path = hackcessangels/model/HAUser.m; sourceTree = SOURCE_ROOT; };
 		A1330B0918AD632E002B1828 /* HAUserTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HAUserTests.m; path = hackcessangelsTests/HAUserTests.m; sourceTree = SOURCE_ROOT; };
-		A150296B18DB7A81008FC4F1 /* HackcessAngels copy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HackcessAngels copy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A150296B18DB7A81008FC4F1 /* Aide'Gare Agents.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Aide'Gare Agents.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1AC4C5318B69AD2002EE7E6 /* HAUserServicesTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HAUserServicesTests.m; path = hackcessangelsTests/HAUserServicesTests.m; sourceTree = SOURCE_ROOT; };
 		A1B064A518BFCBE60078EED5 /* user.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = user.json; path = hackcessangelsTests/user.json; sourceTree = SOURCE_ROOT; };
 		A1B80AA318D23DBF004EE4EA /* TODO.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = TODO.md; path = hackcessangels/TODO.md; sourceTree = SOURCE_ROOT; };
@@ -327,9 +327,9 @@
 		22601F011886E2DE008B0179 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				22601F001886E2DE008B0179 /* HackcessAngels.app */,
+				22601F001886E2DE008B0179 /* Aide'Gare.app */,
 				22601F211886E2DE008B0179 /* HackcessAngelsTests.xctest */,
-				A150296B18DB7A81008FC4F1 /* HackcessAngels copy.app */,
+				A150296B18DB7A81008FC4F1 /* Aide'Gare Agents.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -506,7 +506,7 @@
 			);
 			name = HackcessAngels;
 			productName = HackcessAngels;
-			productReference = 22601F001886E2DE008B0179 /* HackcessAngels.app */;
+			productReference = 22601F001886E2DE008B0179 /* Aide'Gare.app */;
 			productType = "com.apple.product-type.application";
 		};
 		22601F201886E2DE008B0179 /* HackcessAngelsTests */ = {
@@ -545,7 +545,7 @@
 			);
 			name = HackcessAngelsAgents;
 			productName = HackcessAngels;
-			productReference = A150296B18DB7A81008FC4F1 /* HackcessAngels copy.app */;
+			productReference = A150296B18DB7A81008FC4F1 /* Aide'Gare Agents.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -934,7 +934,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HackcessAngels/HackcessAngels-Prefix.pch";
 				INFOPLIST_FILE = "HackcessAngels/HackcessAngels-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Aide'Gare";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -949,7 +949,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HackcessAngels/HackcessAngels-Prefix.pch";
 				INFOPLIST_FILE = "HackcessAngels/HackcessAngels-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Aide'Gare";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -1008,7 +1008,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HackcessAngels/HackcessAngels-Prefix.pch";
 				INFOPLIST_FILE = "HackcessAngels copy-Info.plist";
-				PRODUCT_NAME = "HackcessAngels copy";
+				PRODUCT_NAME = "Aide'Gare Agents";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1023,7 +1023,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HackcessAngels/HackcessAngels-Prefix.pch";
 				INFOPLIST_FILE = "HackcessAngels copy-Info.plist";
-				PRODUCT_NAME = "HackcessAngels copy";
+				PRODUCT_NAME = "Aide'Gare Agents";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

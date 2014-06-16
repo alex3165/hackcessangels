@@ -9,8 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "HARestRequests.h"
 
-@interface HAAgentViewController : UIViewController<UINavigationControllerDelegate,UIImagePickerControllerDelegate,UIScrollViewDelegate>
-
+@interface HAAgentViewController : UIViewController<UINavigationControllerDelegate,UIImagePickerControllerDelegate,UIScrollViewDelegate, UIGestureRecognizerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextInput;
 @property (weak, nonatomic) IBOutlet UIImageView *image;

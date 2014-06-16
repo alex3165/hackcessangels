@@ -42,6 +42,7 @@ type User struct {
 	PushToken string
 
 	IsAgent           bool
+    AgentId           string
 	CurrentStation    *bson.ObjectId
 	LastStationUpdate time.Time
 
