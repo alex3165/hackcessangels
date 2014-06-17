@@ -9,6 +9,8 @@
 #import "HAFirstProfilViewController.h"
 #import "HAUserViewController.h"
 #import "HAUserService.h"
+#import "HARestRequests.h"
+#import "HARequestsService.h"
 
 #import "HAUser.h"
 @interface HAFirstProfilViewController ()
@@ -157,7 +159,15 @@
     HAUserService *userService = [[HAUserService alloc] init];
     
     [userService createUserWithEmailAndPassword:self.mail.text password:self.password.text success:^(id obj, id obj2){
-
+        
+        [userService loginWithEmailAndPassword:self.mail.text password:self.password.text success:^(id obj, id obj2){
+            
+        }
+         
+                                       failure:^(id obj, NSError *error) {
+                                           
+                                           UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Erreur" message:@"Serveur injoignable" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
+                                           [alert show];} ];
         
     } failure:^(id obj, NSError *error) {
         UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Erreur" message:@"Serveur injoignable" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
@@ -166,15 +176,6 @@
         
     } ];
 
-    
-    [userService loginWithEmailAndPassword:self.mail.text password:self.password.text success:^(id obj, id obj2){
-        
-    }
-     
-                                   failure:^(id obj, NSError *error) {
-                                       
-                                       UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Erreur" message:@"Serveur injoignable" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
-                                       [alert show];} ];
 }
 
 - (IBAction)buttonInit:(id)sender  {
