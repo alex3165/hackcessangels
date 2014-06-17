@@ -159,7 +159,7 @@
     HAUserService *userService = [[HAUserService alloc] init];
     
     [userService createUserWithEmailAndPassword:self.mail.text password:self.password.text success:^(id obj, id obj2){
-        
+
         [userService loginWithEmailAndPassword:self.mail.text password:self.password.text success:^(id obj, id obj2){
             
         }
@@ -168,13 +168,24 @@
                                            
                                            UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Erreur" message:@"Serveur injoignable" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
                                            [alert show];} ];
-        
+
+        [userService loginWithEmailAndPassword:self.mail.text password:self.password.text success:^(id obj, id obj2){
+            [self.viewLog removeFromSuperview];
+            [self.view addSubview:self.view1];
+        }
+                                       failure:^(id obj, NSError *error) {
+                                           UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Erreur" message:@"Serveur injoignable" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
+                                           [alert show];
+                                       }
+         ];
+
     } failure:^(id obj, NSError *error) {
         UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Erreur" message:@"Serveur injoignable" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
         [alert show];
         
         
     } ];
+
 
 }
 
@@ -202,10 +213,6 @@
 
 - (IBAction)button1:(id)sender  {
     [self createUserAndLog];
-    [self.viewLog removeFromSuperview];
-    [self.view addSubview:self.view1];
-    
-    
 }
 
 - (IBAction)button12:(id)sender  {
