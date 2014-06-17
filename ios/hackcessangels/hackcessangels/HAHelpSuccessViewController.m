@@ -43,6 +43,7 @@ NSString *const agentAnnounceFormatString = @"L'agent SNCF %@ arrive";
 -(IBAction)cancelHelp:(id)sender{
     self.assistanceService = [HAAssistanceService sharedInstance];
     [self.assistanceService stopHelpRequest];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 -(void)setHAHelpRequest:(HAHelpRequest *)helpRequest{
