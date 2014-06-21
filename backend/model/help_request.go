@@ -79,6 +79,7 @@ type HelpRequest struct {
 	Id                  bson.ObjectId `bson:"_id,omitempty"`
 	RequestCreationTime time.Time
 
+    RequestStation        *bson.ObjectId
 	RequesterEmail        string
 	RequesterPosition     *PointGeometry
 	RequesterPosPrecision float64
@@ -99,7 +100,9 @@ type HelpRequest struct {
 }
 
 func (hr *HelpRequest) BroadcastStatus() {
-	// Do nothing, yet
+    for _, observer := range hr.m.helpRequestObservers {
+        observer.NotifyHelpRequestChanged(hr)
+    }
 }
 
 func (hr *HelpRequest) SetRequesterPosition(longitude, latitude float64) {
@@ -109,6 +112,7 @@ func (hr *HelpRequest) SetRequesterPosition(longitude, latitude float64) {
 
 func (hr *HelpRequest) Save() error {
 	_, err := hr.m.helpRequests.UpsertId(hr.Id, hr)
+    go hr.BroadcastStatus()
 	return err
 }
 
@@ -194,7 +198,9 @@ func (hr *HelpRequest) GetUser() (*User, error) {
 
 // Return the station where this help request is located
 func (hr *HelpRequest) GetStation() (*Station, error) {
-	return hr.m.FindStationByLocation(hr.RequesterPosition.Coordinates[0], hr.RequesterPosition.Coordinates[1], hr.RequesterPosPrecision)
+    return hr.m.FindStationByLocation(hr.RequesterPosition.Coordinates[0],
+        hr.RequesterPosition.Coordinates[1],
+        hr.RequesterPosPrecision)
 }
 
 func (m *Model) GetActiveRequestsByStation(s *Station) ([]*HelpRequest, error) {

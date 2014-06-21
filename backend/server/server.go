@@ -9,6 +9,7 @@ import (
 	"github.com/gorilla/sessions"
 
 	"hackcessangels/backend/model"
+	"hackcessangels/backend/service"
 )
 
 type Server struct {
@@ -16,8 +17,9 @@ type Server struct {
 	Database       string
 	HTTPServer     *http.Server
 
-	model *model.Model
-	store *sessions.CookieStore
+	model   *model.Model
+	store   *sessions.CookieStore
+	service *service.AgentService
 }
 
 func NewServer() *Server {
@@ -60,6 +62,11 @@ func (s *Server) init() error {
 	if err != nil {
 		return err
 	}
+	s.service, err = service.NewAgentService(s.model)
+	if err != nil {
+		return err
+	}
+
 	return nil
 }
 
