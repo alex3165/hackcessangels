@@ -26,6 +26,10 @@
 @property (weak, nonatomic) IBOutlet UITextField *phone;
 @property (weak, nonatomic) IBOutlet UIButton *button1;
 
+@property (strong, nonatomic)    NSArray *items;
+ @property (strong, nonatomic) IBOutlet UIPickerView *pickerView;
+
+
 
 @property (weak, nonatomic) IBOutlet UIView *view2;
 @property (weak, nonatomic) IBOutlet UIButton *handicapAuditif;
@@ -44,6 +48,16 @@
 @property (weak, nonatomic) IBOutlet UIImageView *image;
 @property (weak, nonatomic) IBOutlet UIButton *buttonPhoto;
 @property (weak, nonatomic) IBOutlet UIButton *ignorePhoto;
+
+
+- (IBAction) buttonAuditif:(id)sender;
+- (IBAction) buttonMoteur:(id)sender;
+- (IBAction) buttonVision:(id)sender;
+
+@property BOOL auditifSelected;
+@property BOOL moteurSelected;
+@property BOOL visionSelected;
+
 
 
 
