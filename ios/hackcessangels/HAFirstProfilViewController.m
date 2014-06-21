@@ -44,7 +44,7 @@
 
 
 -(void) setUserNameAndPhone {
-    [self.view addSubview:self.view1];
+
 
     [[HAUserService sharedInstance] getCurrentUser:^(HAUser *user) {
       
@@ -54,11 +54,9 @@
             //mes numéros
             self.phone.text=user.phone;
             self.urgencePhone.text=user.phoneUrgence;
-            
-            
-            UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Bravo" message:@"Profil édité" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
-            [alert show];
-            [[self navigationController] popViewControllerAnimated:YES];
+            [self.view1 removeFromSuperview];
+            [self.view addSubview:self.view2];
+
         } failure:^(NSError *error) {
             UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Erreur" message:@"Profil non édité" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
             [alert show];
@@ -111,6 +109,8 @@
              user.disabilityType=Other;
         
         }
+                [self.view2 removeFromSuperview];
+                [self.view addSubview:self.view3];
  
         } failure:^(NSError *error) {
             UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Erreur" message:@"Profil non édité" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
@@ -133,10 +133,9 @@
         [[HAUserService sharedInstance] updateUser:user success:^(HAUser* user) {
             
                self.handicapInfos.text=user.description;
-            
-            UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Bravo" message:@"Profil édité" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
-            [alert show];
-            [[self navigationController] popViewControllerAnimated:YES];
+            [self.view3 removeFromSuperview];
+            [self.view addSubview:self.view4];
+
         
         } failure:^(NSError *error) {
             UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Erreur" message:@"Profil non édité" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
@@ -161,23 +160,14 @@
     [userService createUserWithEmailAndPassword:self.mail.text password:self.password.text success:^(id obj, id obj2){
 
         [userService loginWithEmailAndPassword:self.mail.text password:self.password.text success:^(id obj, id obj2){
-            
+            [self.viewLog removeFromSuperview];
+            [self.view addSubview:self.view1];
         }
          
                                        failure:^(id obj, NSError *error) {
                                            
                                            UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Erreur" message:@"Serveur injoignable" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
                                            [alert show];} ];
-
-        [userService loginWithEmailAndPassword:self.mail.text password:self.password.text success:^(id obj, id obj2){
-            [self.viewLog removeFromSuperview];
-            [self.view addSubview:self.view1];
-        }
-                                       failure:^(id obj, NSError *error) {
-                                           UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Erreur" message:@"Serveur injoignable" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
-                                           [alert show];
-                                       }
-         ];
 
     } failure:^(id obj, NSError *error) {
         UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Erreur" message:@"Serveur injoignable" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
@@ -217,23 +207,19 @@
 
 - (IBAction)button12:(id)sender  {
     [self setUserNameAndPhone];
-    [self.view1 removeFromSuperview];
-    [self.view addSubview:self.view2];
+
 
 }
 
 - (IBAction)button2:(id)sender  {
        [self setUserHandicap];
-     [self.view2 removeFromSuperview];
-    [self.view addSubview:self.view3];
+
     
 }
 
 - (IBAction)button3:(id)sender  {
     [self setUserHandicapInfos];
-    [self.view3 removeFromSuperview];
-    [self.view addSubview:self.view4];
-    
+
 }
 
 - (IBAction)buttonPhoto:(id)sender  {

@@ -26,7 +26,6 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *image;
 
-
 //BUTTON TO HAUserViewController
 @property (weak, nonatomic) IBOutlet UIButton *modifier;
 @property (weak, nonatomic) IBOutlet UIButton *callPhone;
