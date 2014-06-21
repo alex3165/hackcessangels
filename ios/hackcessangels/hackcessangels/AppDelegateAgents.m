@@ -32,9 +32,22 @@
     if (localNotif) {
         [self application:application didReceiveLocalNotification:localNotif];
     }
-    
+    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:
+     (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
     // Override point for customization after application launch.
     return YES;
+}
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    NSLog(@"APN device token: %@", deviceToken);
+    NSString *deviceTokenString = [NSString stringWithFormat:@"%@",deviceToken];
+    NSLog(@"%@",deviceTokenString);
+}
+
+- (void)application:(UIApplication*)application didFailToRegisterForRemoteNotificationsWithError:(NSError*)error
+{
+    
+    NSLog(@"Failed to get token, error: %@", error);
 }
 
 - (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {

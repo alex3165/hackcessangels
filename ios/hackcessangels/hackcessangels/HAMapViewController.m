@@ -85,10 +85,14 @@ CLLocationCoordinate2D coordinate;
         [self.helpok setHidden:!self.bluetoothmanager.needHelp];
     } else {
         // Display user infos
+        self.userDisability.hidden = FALSE;
+        self.completeProfil.hidden = FALSE;
+        self.userPicture.hidden = FALSE;
+        self.userName.hidden = FALSE;
+        
         self.userName.text = self.helpRequest.user.name;
-        
         self.userPicture.image = [UIImage imageWithData:self.helpRequest.user.image];
-        
+
         switch (self.helpRequest.user.disabilityType) {
             case Physical_wheelchair:
                 self.userDisability.text=@"Handicap moteur. Je suis en chaise roulante";

@@ -33,6 +33,9 @@ NSString *const agentAnnounceFormatString = @"L'agent SNCF %@ arrive";
     [[self.cancelHelp layer] setBorderWidth:1.0f];
     [[self.cancelHelp layer] setCornerRadius:5.0f];
     [[self.cancelHelp layer] setBorderColor:[UIColor HA_red].CGColor];
+    self.agentPicture.layer.cornerRadius = self.agentPicture.frame.size.height /2;
+    self.agentPicture.layer.masksToBounds = YES;
+    self.agentPicture.layer.borderWidth = 0;
 }
 
 - (void)didReceiveMemoryWarning
@@ -43,6 +46,7 @@ NSString *const agentAnnounceFormatString = @"L'agent SNCF %@ arrive";
 -(IBAction)cancelHelp:(id)sender{
     self.assistanceService = [HAAssistanceService sharedInstance];
     [self.assistanceService stopHelpRequest];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 -(void)setHAHelpRequest:(HAHelpRequest *)helpRequest{
