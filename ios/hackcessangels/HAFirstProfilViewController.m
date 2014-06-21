@@ -47,13 +47,15 @@
 
 
     [[HAUserService sharedInstance] getCurrentUser:^(HAUser *user) {
+        
+        user.name=self.nomPrenom.text;
+        //mes numéros
+       user.phone=self.phone.text;
+        user.phoneUrgence=self.urgencePhone.text;
       
         [[HAUserService sharedInstance] updateUser:user success:^(HAUser* user) {
             
-            self.nomPrenom.text = user.name;
-            //mes numéros
-            self.phone.text=user.phone;
-            self.urgencePhone.text=user.phoneUrgence;
+ 
             [self.view1 removeFromSuperview];
             [self.view addSubview:self.view2];
 
@@ -69,46 +71,180 @@
 
 }
 
+
+-(void)buttonAuditif:(id)sender {
+    _auditifSelected=1;
+    _moteurSelected=0;
+    _visionSelected=0;
+     [self.handicapAuditif setBackgroundColor:[UIColor purpleColor]];
+    [self.handicapMoteur setBackgroundColor:[UIColor clearColor]];
+    [self.handicapVisuel setBackgroundColor:[UIColor clearColor]];
+
+    [self.handicapMoteur setFrame:CGRectMake(self.handicapMoteur.frame.origin.x, self.handicapMoteur.frame.origin.y +50, self.handicapMoteur.frame.size.width, self.handicapMoteur.frame.size.height)];
+    
+    [self.handicapVisuel setFrame:CGRectMake(self.handicapVisuel.frame.origin.x, self.handicapVisuel.frame.origin.y +50, self.handicapVisuel.frame.size.width, self.handicapVisuel.frame.size.height)];
+    
+    
+    _items =[[NSArray alloc]initWithObjects:@"Je préfère recevoir un SMS",@"Je peux recevoir un appel",nil];
+    
+
+    //_pickerView.transform = CGAffineTransformMakeScale(0.75f, 0.75f);
+    
+    _pickerView.delegate = self;
+    
+    _pickerView.dataSource = self;
+    
+    _pickerView.showsSelectionIndicator = YES;
+    
+    _pickerView.backgroundColor = [UIColor clearColor];
+    
+    [_pickerView selectRow:1 inComponent:0 animated:YES];
+    self.pickerView.hidden=false;
+
+}
+
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView;
+{
+    
+    return 1;
+    
+}
+
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+{
+    if (_auditifSelected){
+        
+        return 2;
+    }
+    if (_moteurSelected){
+        
+        return 3;
+    }
+    
+    if (_visionSelected){
+        
+        return 2;
+    }
+    else {
+        return 0;
+        
+    }
+}
+
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+    
+    
+    return [_items objectAtIndex:row];
+    
+    
+}
+
+
+-(void)buttonVision:(id)sender {
+    
+    
+    _auditifSelected=0;
+    _moteurSelected=0;
+    _visionSelected=1;
+       [self.handicapVisuel setBackgroundColor:[UIColor purpleColor]];
+    [self.handicapMoteur setBackgroundColor:[UIColor whiteColor]];
+    [self.handicapAuditif setBackgroundColor:[UIColor whiteColor]];
+    UIPickerView *pickerViewVision;
+    
+    _items =[[NSArray alloc]initWithObjects:@"Je suis malvoyante",@"Je suis aveugle",nil];
+    
+    _pickerView=[[UIPickerView alloc] initWithFrame:CGRectMake(0,100,self.view2.frame.size.width,self.view2.frame.size.height - 100)];
+    
+    _pickerView.transform = CGAffineTransformMakeScale(0.75f, 0.75f);
+    
+    _pickerView.delegate = self;
+    
+    _pickerView.dataSource = self;
+    
+    _pickerView.showsSelectionIndicator = YES;
+    
+    _pickerView.backgroundColor = [UIColor clearColor];
+    
+    [_pickerView selectRow:1 inComponent:0 animated:YES];
+
+        self.pickerView.hidden=false;
+    
+    
+    
+}
+
+-(void)buttonMoteur:(id)sender{
+    
+    _auditifSelected=0;
+    _moteurSelected=1;
+    _visionSelected=0;
+      [self.handicapMoteur setBackgroundColor:[UIColor purpleColor]];
+    [self.handicapVisuel setBackgroundColor:[UIColor whiteColor]];
+      [self.handicapAuditif setBackgroundColor:[UIColor whiteColor]];
+    
+    _items =[[NSArray alloc]initWithObjects:@"Fauteuil roulant manuel",@"Fauteuil roulant électrique",@"Difficultés de marche",nil];
+    
+    _pickerView=[[UIPickerView alloc] initWithFrame:CGRectMake(0,100,self.view2.frame.size.width,self.view2.frame.size.height - 100)];
+    
+    _pickerView.transform = CGAffineTransformMakeScale(0.75f, 0.75f);
+    
+    _pickerView.delegate = self;
+    
+    _pickerView.dataSource = self;
+    
+    _pickerView.showsSelectionIndicator = YES;
+    
+    _pickerView.backgroundColor = [UIColor clearColor];
+    
+    [_pickerView selectRow:1 inComponent:0 animated:YES];
+          self.pickerView.hidden=false;
+}
+
+
+
 -(void) setUserHandicap {
 
         [[HAUserService sharedInstance] getCurrentUser:^(HAUser *user)  {
-            [[HAUserService sharedInstance] updateUser:user success:^(HAUser* user) {
+            
+            if (_auditifSelected){
                 
+                int res=[_pickerView selectedRowInComponent:0];
+                
+                user.disabilityType= 6 + res;
+ 
+            }
+            else if (self.handicapCognitif.isSelected){
+                
+                [self.handicapCognitif setBackgroundColor:[UIColor purpleColor]];
+                user.disabilityType=Mental;
+                
+            }
+            else if (_visionSelected){
+             
+               
+                int res=[_pickerView selectedRowInComponent:0];
+                
+                user.disabilityType= 4 + res;
+                
+            }
+            else if (_moteurSelected){
+              
+                int res=[_pickerView selectedRowInComponent:0];
+                
+                user.disabilityType= 1 + res;
+                
+            }
+            else {
+                
+             
+                user.disabilityType=Other;
+                
+            }
             
-            if (self.handicapAuditif.isSelected){
-            user.disabilityType=Hearing_call;
             
-            UIPickerView *pickerAuditif;
-            [self.handicapAuditif setBackgroundColor:[UIColor purpleColor]];
-            //[pickerAuditif setFrame:CGRectMake(self.view2.frame.size.width/2, 0, self.view2.frame.size.width/2, self.view2.frame.size.height/2)];
-        }
-        else if (self.handicapCognitif.isSelected){
-            
-            [self.handicapCognitif setBackgroundColor:[UIColor purpleColor]];
-            user.disabilityType=Mental;
-            
-        }
-        else if (self.handicapVisuel.isSelected){
-            [self.handicapVisuel setBackgroundColor:[UIColor purpleColor]];
-            UIPickerView *pickerVisuel;
-            
-           // [pickerVisuel setFrame:CGRectMake(self.view2.frame.size.width/2, 0, self.view2.frame.size.width/2, self.view2.frame.size.height/2)];
-            user.disabilityType=Vision_blind;
-            
-        }
-        else if (self.handicapMoteur.isSelected){
-            [self.handicapMoteur setBackgroundColor:[UIColor purpleColor]];
-           // UIPickerView *pickerMoteur;
-            
-           // [pickerMoteur setFrame:CGRectMake(self.view2.frame.size.width/2, 0, self.view2.frame.size.width/2, self.view2.frame.size.height/2)];
+            [[HAUserService sharedInstance] updateUser:user success:^(HAUser* user) {
 
-        }
-        else {
-            
-            [self.handicapAutre setBackgroundColor:[UIColor purpleColor]];
-             user.disabilityType=Other;
-        
-        }
                 [self.view2 removeFromSuperview];
                 [self.view addSubview:self.view3];
  
@@ -128,11 +264,11 @@
 -(void) setUserHandicapInfos {
 
     [[HAUserService sharedInstance] getCurrentUser:^(HAUser *user) {
-        
+          user.description=self.handicapInfos.text;
      
         [[HAUserService sharedInstance] updateUser:user success:^(HAUser* user) {
             
-               self.handicapInfos.text=user.description;
+          
             [self.view3 removeFromSuperview];
             [self.view addSubview:self.view4];
 
@@ -175,7 +311,6 @@
         
         
     } ];
-
 
 }
 
@@ -301,9 +436,10 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     [self dismissViewControllerAnimated:YES completion:^{
         [[HAUserService sharedInstance] getCurrentUser:^(HAUser *user) {
             
-           
+          user.image =  UIImageJPEGRepresentation(self.image.image, 0.90);
+            
             [[HAUserService sharedInstance] updateUser:user success:^(HAUser* user) {
-                 self.image.image = [[UIImage alloc] initWithData:user.image];
+                
                 UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Bravo" message:@"Profil édité" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
                 [alert show];
                 [[self navigationController] popViewControllerAnimated:YES];
@@ -359,6 +495,9 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     
     [sender resignFirstResponder];
 }
+
+
+
 
 
 @end
