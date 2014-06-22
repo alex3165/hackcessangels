@@ -23,7 +23,7 @@
     // Periodically report location to server.
     if (self.currentStationService == nil) {
         self.currentStationService = [[HACurrentStationService alloc] init];
-        [self.currentStationService startReportingLocation];
+        [self.currentStationService connectToServer];
     }
     
     // In case of notification, load the right view controller

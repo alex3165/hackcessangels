@@ -8,17 +8,21 @@
 
 #import "HACurrentStationService.h"
 #import "HALocationService.h"
-#import "HARestRequests.h"
+#import "HAAgentService.h"
+
+#include <stdlib.h>
 
 @interface HACurrentStationService()
 
 @property (nonatomic, strong) HALocationService* locationService;
-@property (nonatomic, strong) HARestRequests* restRequest;
-@property (nonatomic, weak) NSTimer* timer;
 
+@property (nonatomic, strong) NSInputStream *inputStream;
+@property (nonatomic, strong) NSOutputStream *outputStream;
+@property (nonatomic, strong) NSMutableString *communicationLog;
+@property (nonatomic, assign) BOOL loginSent;
 @end
 
-NSTimeInterval const kTimeInterval = 5;// * 60.0;
+const uint8_t newline[] = "\n";
 
 @implementation HACurrentStationService
 
@@ -26,57 +30,167 @@ NSTimeInterval const kTimeInterval = 5;// * 60.0;
     self = [super init];
     if (self) {
         self.locationService = [[HALocationService alloc] init];
-        self.restRequest = [[HARestRequests alloc] init];
+        self.loginSent = false;
     }
     return self;
 }
 
-- (void) startReportingLocation {
-    [self performSelectorInBackground:@selector(reportingLocationInBackground) withObject:nil];
+- (void)connectToServer {
+    [self.locationService startAreaTracking];
+    if (!self.inputStream) {
+        // Connect to server
+        CFReadStreamRef readStream;
+        CFWriteStreamRef writeStream;
+        CFStreamCreatePairWithSocketToHost(NULL, (__bridge CFStringRef)(@"aidegare.membrives.fr"), 5001, &readStream, &writeStream);
+        
+        // Negotiate SSL connection
+        NSDictionary *settings = [ [NSDictionary alloc ]
+                                  initWithObjectsAndKeys:
+                                  [NSNumber numberWithBool:NO], kCFStreamSSLAllowsExpiredCertificates,
+                                  [NSNumber numberWithBool:NO], kCFStreamSSLAllowsExpiredRoots,
+                                  [NSNumber numberWithBool:NO], kCFStreamSSLAllowsAnyRoot,
+                                  [NSNumber numberWithBool:YES], kCFStreamSSLValidatesCertificateChain,
+                                  [NSNull null], kCFStreamSSLPeerName,
+                                  kCFStreamSocketSecurityLevelNegotiatedSSL,
+                                  kCFStreamSSLLevel,
+                                  nil ];
+        CFReadStreamSetProperty((CFReadStreamRef)readStream,
+                                kCFStreamPropertySSLSettings, (CFTypeRef)settings);
+        CFWriteStreamSetProperty((CFWriteStreamRef)writeStream,
+                                 kCFStreamPropertySSLSettings, (CFTypeRef)settings);
+        
+        // Set input streams
+        self.communicationLog = [[NSMutableString alloc] init];
+        self.inputStream = (__bridge_transfer NSInputStream *)readStream;
+        self.outputStream = (__bridge_transfer NSOutputStream *)writeStream;
+        [self.inputStream setProperty:NSStreamNetworkServiceTypeVoIP forKey:NSStreamNetworkServiceType];
+        
+        // 3
+        [self.inputStream setDelegate:self];
+        [self.outputStream setDelegate:self];
+        [self.inputStream scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
+        [self.outputStream scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
+        
+        // 4
+        [self.inputStream open];
+        [self.outputStream open];
+        
+        [[HAAgentService sharedInstance] getCurrentAgent:^(HAAgent *agent) {
+            [self sendLogin:agent];
+        } failure:^(NSError *error) {
+            DLog(@"%@", error);
+        }];
+        
+        // 5
+        [[UIApplication sharedApplication] setKeepAliveTimeout:600 handler:^{
+            [self sendPosition];
+        }];
+    }
 }
 
-- (void) reportingLocationInBackground {
-    [self.locationService setUpdateCallback:^(CLLocation *newLocation) {
-        [self.locationService setUpdateCallback:nil];
-        [self reportLocation];
-    }];
-    
-    if (![self.locationService startAreaTracking]) {
-        NSLog(@"Unable to start area tracking");
+#pragma mark - Communication methods
+
+- (void)sendLogin:(HAAgent*) agent {
+    if (!self.outputStream) {
+        DLog(@"No open connection");
         return;
     }
-
-    NSRunLoop* currentRunLoop = [NSRunLoop currentRunLoop];
     
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:kTimeInterval target:self selector:@selector(reportingTimerFired:) userInfo:nil repeats:YES];
-    
-    [currentRunLoop run];
+    NSDictionary *loginData = @{@"Login": agent.email};
+    NSError *error;
+    [NSJSONSerialization writeJSONObject:loginData toStream:self.outputStream options:0 error:&error];
+    if (error != nil) {
+        DLog(@"%@", error);
+        return;
+    }
+    [self.outputStream write:newline maxLength:strlen((char *)newline)];
 }
 
-- (void) reportingTimerFired:(NSTimer*) timer {
-    [self reportLocation];
-}
-
-- (void) reportLocation {
+- (void)sendPosition {
+    // Abort if no connection is present.
+    // TODO(etienne): we should probably reopen the connection
+    if (!self.outputStream) {
+        DLog(@"No open connection");
+        return;
+    }
+    
+    // Abort if no position data is available
     if (self.locationService.location == nil) {
+        DLog(@"No location available");
         return;
     }
     
-    NSDictionary *requestData = @{@"latitude": [NSNumber numberWithDouble: self.locationService.location.coordinate.latitude],
-                                 @"longitude": [NSNumber numberWithDouble: self.locationService.location.coordinate.longitude],
-                                 @"precision": [NSNumber numberWithDouble: self.locationService.location.horizontalAccuracy]};
-    
-    [self.restRequest POSTrequest:@"agent/position" withParameters:requestData
-                          success:^(id obj, NSHTTPURLResponse *response) {
+    NSDictionary *positionData = @{@"Latitude": [NSNumber numberWithDouble:self.locationService.location.coordinate.latitude],
+                                   @"Longitude": [NSNumber numberWithDouble:self.locationService.location.coordinate.longitude],
+                                   @"Precision": [NSNumber numberWithDouble:self.locationService.location.horizontalAccuracy]};
+    NSError *error;
+    [NSJSONSerialization writeJSONObject:positionData toStream:self.outputStream options:0 error:&error];
+    if (error != nil) {
+        DLog(@"%@", error);
+        return;
     }
-                          failure:^(id obj, NSError *error) {
-                              NSLog(@"%@",error);
-    }];
+    // The server expects a newline to end the client's message.
+    [self.outputStream write:newline maxLength:strlen((char *)newline)];
 }
 
-- (void) stopReportingLocation {
-    [self.locationService stopAreaTracking];
-    [self.timer invalidate];
-}
+#pragma mark - NSStreamDelegate
 
+- (void)stream:(NSStream *)aStream handleEvent:(NSStreamEvent)eventCode
+{
+    switch (eventCode) {
+        case NSStreamEventNone:
+            // do nothing.
+            break;
+            
+        case NSStreamEventEndEncountered:
+            NSLog(@"Connection Closed");
+            self.inputStream = nil;
+            self.outputStream = nil;
+            
+            // We need to reopen the connection, but first wait a bit so we are not
+            [NSTimer scheduledTimerWithTimeInterval:arc4random_uniform(60) target:self selector:@selector(connectToServer) userInfo:nil repeats:NO];
+            break;
+            
+        case NSStreamEventErrorOccurred:
+            NSLog(@"Had error: %@", aStream.streamError);
+            break;
+            
+        case NSStreamEventHasBytesAvailable:
+            if (aStream == self.inputStream)
+            {
+                uint8_t buffer[1024];
+                NSInteger bytesRead = [self.inputStream read:buffer maxLength:1024];
+                NSData *data = [NSData dataWithBytes:buffer length:bytesRead];
+                
+                NSError *error;
+                NSDictionary *incomingData = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
+                DLog(@"Received: %@", incomingData);
+                
+                if ([[incomingData objectForKey:@"KeepAlive"] boolValue] == YES) {
+                    [self sendPosition];
+                }
+            }
+            break;
+            
+        case NSStreamEventHasSpaceAvailable:
+            if (aStream == self.outputStream && false)
+            {
+                if (aStream == self.outputStream)
+                {
+                    NSLog(@"Ping sent");
+                }
+            }
+            break;
+            
+        case NSStreamEventOpenCompleted:
+            if (aStream == self.inputStream)
+            {
+                NSLog(@"Connection Opened");
+            }
+            break;
+            
+        default:
+            break;
+    }
+}
 @end
