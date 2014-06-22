@@ -125,12 +125,12 @@ func readFromClient(reader *bufio.Reader) (c ClientMessage, err error) {
 }
 
 func (s *AgentService) NotifyHelpRequestChanged(hr *model.HelpRequest) {
-    stationId := hr.RequestStation
-    if stationId == nil {
-        return
-    }
-    connectedAgents:= s.GetAgentsInStation(StationId(*stationId))
-    for _, agent := range connectedAgents {
-        agent.UpdateHelpRequests()
-    }
+	stationId := hr.RequestStation
+	if stationId == nil {
+		return
+	}
+	connectedAgents := s.GetAgentsInStation(StationId(*stationId))
+	for _, agent := range connectedAgents {
+		agent.UpdateHelpRequests()
+	}
 }

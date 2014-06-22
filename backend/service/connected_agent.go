@@ -23,7 +23,7 @@ type StationId bson.ObjectId
 // to the HackcessAngels network.
 type ConnectedAgent struct {
 	login   AgentLogin
-	station StationId
+	station *StationId
 
 	connection     net.Conn
 	readWriter     *bufio.ReadWriter
@@ -32,7 +32,7 @@ type ConnectedAgent struct {
 }
 
 func (ca *ConnectedAgent) String() string {
-	return fmt.Sprintf("Agent %s in station %s", ca.login, ca.station)
+	return fmt.Sprintf("Agent %s in station %s", ca.login, *ca.station)
 }
 
 func (ca *ConnectedAgent) handleConnection() {
@@ -59,22 +59,30 @@ func (ca *ConnectedAgent) handleConnection() {
 				*message.Longitude,
 				*message.Latitude,
 				*message.Precision)
+			log.Printf("Longitude %f, latitude %f, precision %f, station %+v, err %v",
+				*message.Longitude, *message.Latitude, *message.Precision,
+				station, err)
 			if err != nil {
 				log.Println("Error getting location:", err)
 				continue
 			}
+			user, err := ca.service.model.GetUserByEmail(string(ca.login))
+			if err != nil {
+				log.Print(err)
+				continue
+			}
 			if station == nil {
 				ca.service.RemoveAgentFromStation(ca.login)
+				user.CurrentStation = nil
+				ca.station = nil
 			} else {
 				ca.service.SetAgentStation(ca.login, StationId(station.Id))
+				stationId := StationId(station.Id)
+				ca.station = &stationId
+				user.CurrentStation = &station.Id
 			}
-            user, err := ca.service.model.GetUserByEmail(string(ca.login))
-            if err != nil {
-                log.Print(err)
-            }
-            user.CurrentStation = &station.Id
-            user.LastStationUpdate = time.Now()
-            user.Save()
+			user.LastStationUpdate = time.Now()
+			user.Save()
 		}
 	}
 }

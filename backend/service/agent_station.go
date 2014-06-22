@@ -63,11 +63,12 @@ func (manager *AgentStationManager) SetAgentStation(login AgentLogin, station St
 	manager.RLock()
 	agent := manager.agents[login]
 	manager.RUnlock()
-	if agent.station == station {
+	if agent.station != nil && *agent.station == station {
 		return
 	}
 	manager.RemoveAgentFromStation(login)
 	manager.Lock()
+	agent.station = &station
 	stationMap, ok := manager.stations[station]
 	if !ok {
 		stationMap = make(map[AgentLogin]bool)
