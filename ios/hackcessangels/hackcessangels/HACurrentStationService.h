@@ -8,10 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-@interface HACurrentStationService : NSObject
+@interface HACurrentStationService : NSObject<NSStreamDelegate>
 
-- (void) startReportingLocation;
-- (void) reportLocation;
-- (void) stopReportingLocation;
+- (void) connectToServer;
 
 @end

@@ -126,7 +126,7 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="3VJ-JW-uHW"/>
                                     <barButtonItem image="profil" id="63a-Gh-dQQ">
                                         <connections>
-                                            <segue destination="Vc2-jK-s4z" kind="push" id="HNM-Ep-IU5"/>
+                                            <segue destination="Vc2-jK-s4z" kind="modal" id="HNM-Ep-IU5"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="tXd-Sq-GTt"/>
@@ -720,7 +720,7 @@
                                         </state>
                                         <connections>
                                             <action selector="ignorePhoto:" destination="qhe-hd-3la" eventType="touchUpInside" id="rcb-1m-Lc2"/>
-                                            <segue destination="8aD-4F-5Sx" kind="push" id="0ky-CL-CMZ"/>
+                                            <segue destination="8aD-4F-5Sx" kind="modal" id="0ky-CL-CMZ"/>
                                         </connections>
                                     </button>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Complétez votre profil pour nous permettre de vous aider au mieux. " textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="BIA-Mb-VJf">
@@ -746,7 +746,7 @@
                                 </subviews>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                             </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="K7H-XW-pEH" userLabel="ViewInfos">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="K7H-XW-pEH" userLabel="ViewInfos" customClass="TPKeyboardAvoidingScrollView">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
@@ -772,7 +772,7 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Entrez vos informations" translatesAutoresizingMaskIntoConstraints="NO" id="A6f-fG-MgG">
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="A6f-fG-MgG">
                                                 <rect key="frame" x="0.0" y="92" width="280" height="128"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -782,7 +782,7 @@
                                         </subviews>
                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                     </view>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Complétez votre profil pour nous permettre de vous aider au mieux. " textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="fbB-zc-rSc">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="Complétez votre profil pour nous permettre de vous aider au mieux. " textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fbB-zc-rSc">
                                         <rect key="frame" x="20" y="68" width="280" height="53"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -790,7 +790,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text=" &quot;APP&quot;" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="bS2-Nk-3uf">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text=" &quot;APP&quot;" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bS2-Nk-3uf">
                                         <rect key="frame" x="68" y="20" width="184" height="36"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -813,7 +813,7 @@
                                 </subviews>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                             </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="T8j-HO-tPM" userLabel="View1">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="T8j-HO-tPM" userLabel="View1" customClass="TPKeyboardAvoidingScrollView">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
@@ -843,7 +843,7 @@
                                                 <rect key="frame" x="0.0" y="136" width="280" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                                                 <connections>
                                                     <action selector="saisieReturn:" destination="qhe-hd-3la" eventType="touchUpOutside" id="cyl-4e-bzb"/>
                                                     <action selector="saisieReturn:" destination="qhe-hd-3la" eventType="editingDidEndOnExit" id="ksp-Vd-VBT"/>
@@ -876,7 +876,7 @@
                                                 <rect key="frame" x="0.0" y="244" width="280" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                                                 <connections>
                                                     <action selector="saisieReturn:" destination="qhe-hd-3la" eventType="editingDidEndOnExit" id="ap8-0n-qBy"/>
                                                     <action selector="saisieReturn:" destination="qhe-hd-3la" eventType="touchUpOutside" id="wDf-2l-nNR"/>
@@ -961,7 +961,7 @@
                                         <rect key="frame" x="20" y="269" width="280" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                         <connections>
                                             <action selector="saisieReturn:" destination="qhe-hd-3la" eventType="editingDidEndOnExit" id="AWk-2U-QfO"/>
                                             <action selector="saisieReturn:" destination="qhe-hd-3la" eventType="touchUpOutside" id="JrL-SU-64U"/>
@@ -974,11 +974,6 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="570"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OY8-hz-0QV">
-                                        <rect key="frame" x="20" y="80" width="280" height="353"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                    </view>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TLv-l4-nUy">
                                         <rect key="frame" x="20" y="435" width="280" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1012,7 +1007,7 @@
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3eB-1L-iWv">
-                                        <rect key="frame" x="19" y="104" width="258" height="69"/>
+                                        <rect key="frame" x="21" y="104" width="256" height="69"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="18"/>
                                         <state key="normal" title="        Handicap cognitif" image="cognitif">
@@ -1022,9 +1017,12 @@
                                         <state key="selected">
                                             <color key="titleColor" red="0.57647058819999997" green="0.15686274510000001" blue="0.46274509800000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="buttonMental:" destination="qhe-hd-3la" eventType="touchUpInside" id="uLh-tv-5k7"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WfD-sh-EdK">
-                                        <rect key="frame" x="11" y="175" width="267" height="69"/>
+                                        <rect key="frame" x="21" y="175" width="256" height="69"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="18"/>
                                         <state key="normal" title="         Handicap auditif" image="malEntendant">
@@ -1039,7 +1037,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OVS-5T-3cr">
-                                        <rect key="frame" x="19" y="318" width="246" height="71"/>
+                                        <rect key="frame" x="21" y="318" width="256" height="71"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="18"/>
                                         <state key="normal" title="         Handicap visuel" image="malVoyant">
@@ -1054,7 +1052,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DHT-lZ-K31">
-                                        <rect key="frame" x="10" y="247" width="267" height="69"/>
+                                        <rect key="frame" x="21" y="247" width="256" height="69"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="18"/>
                                         <state key="normal" title="       Handicap moteur" image="fauteil">
@@ -1086,14 +1084,6 @@
                                             <action selector="backToNom:" destination="qhe-hd-3la" eventType="touchUpInside" id="dS6-Rk-9U7"/>
                                         </connections>
                                     </button>
-                                    <pickerView hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7vL-gF-TOC">
-                                        <rect key="frame" x="0.0" y="350" width="320" height="162"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                        <connections>
-                                            <outlet property="dataSource" destination="qhe-hd-3la" id="ROb-J3-U50"/>
-                                            <outlet property="delegate" destination="qhe-hd-3la" id="BAS-ad-vSY"/>
-                                        </connections>
-                                    </pickerView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
@@ -1178,7 +1168,6 @@
                         <outlet property="nomPrenom" destination="1ah-CD-hpR" id="Hc6-d4-vcU"/>
                         <outlet property="password" destination="t1A-X6-arV" id="QcE-Dh-Uxl"/>
                         <outlet property="phone" destination="OgS-uh-z7z" id="Wbp-hn-0Bq"/>
-                        <outlet property="pickerView" destination="7vL-gF-TOC" id="5g4-UI-bFH"/>
                         <outlet property="urgencePhone" destination="P5K-qJ-4dd" id="kLk-FL-Cdi"/>
                         <outlet property="view1" destination="T8j-HO-tPM" id="LQf-Yr-X0u"/>
                         <outlet property="view2" destination="nbd-vS-rrl" id="OWJ-gf-BQf"/>
