@@ -119,6 +119,12 @@ func (hr *HelpRequest) Save() error {
 // CheckStatus verifies that the status of a request should not be changed.
 // For instance, if a request is running for more than N minutes, it is automatically abandonned or completed.
 func (hr *HelpRequest) CheckStatus() error {
+    if hr.RequestStation == nil {
+        station, _ := hr.GetStation()
+        if station != nil {
+            hr.RequestStation = &station.Id
+        }
+    }
 	switch hr.CurrentState {
 	case NEW, AGENTS_CONTACTED:
 		// Maximum 10 minutes
@@ -198,6 +204,13 @@ func (hr *HelpRequest) GetUser() (*User, error) {
 
 // Return the station where this help request is located
 func (hr *HelpRequest) GetStation() (*Station, error) {
+    return hr.m.FindStationByLocation(hr.RequesterPosition.Coordinates[0],
+        hr.RequesterPosition.Coordinates[1],
+        hr.RequesterPosPrecision)
+}
+
+// Return the station where this help request is located
+func (hr *HelpRequest) GetInitialStation() (*Station, error) {
     return hr.m.FindStationByLocation(hr.RequesterPosition.Coordinates[0],
         hr.RequesterPosition.Coordinates[1],
         hr.RequesterPosPrecision)
