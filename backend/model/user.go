@@ -1,7 +1,6 @@
 package model
 
 import (
-	"log"
 	"time"
 
 	"labix.org/v2/mgo/bson"
@@ -88,7 +87,6 @@ func (m *Model) CreateUser(email, password string) (*User, error) {
 
 func (m *Model) GetUserByEmail(email string) (*User, error) {
 	var u User
-	log.Print("GetUserByEmail: ", email)
 	if err := m.users.Find(bson.M{"email": email}).One(&u); err != nil {
 		return nil, err
 	}

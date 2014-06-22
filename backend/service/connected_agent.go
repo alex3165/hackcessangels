@@ -71,18 +71,23 @@ func (ca *ConnectedAgent) handleConnection() {
 				log.Print(err)
 				continue
 			}
+            arrivedInStation := false
 			if station == nil {
 				ca.service.RemoveAgentFromStation(ca.login)
 				user.CurrentStation = nil
 				ca.station = nil
 			} else {
-				ca.service.SetAgentStation(ca.login, StationId(station.Id))
+                arrivedInStation = ca.service.SetAgentStation(
+                    ca.login, StationId(station.Id))
 				stationId := StationId(station.Id)
 				ca.station = &stationId
 				user.CurrentStation = &station.Id
 			}
 			user.LastStationUpdate = time.Now()
 			user.Save()
+            if arrivedInStation {
+                go ca.UpdateHelpRequests()
+            }
 		}
 	}
 }

@@ -59,12 +59,12 @@ func (manager *AgentStationManager) GetAgentsInStation(station StationId) []*Con
 	return connectedAgents
 }
 
-func (manager *AgentStationManager) SetAgentStation(login AgentLogin, station StationId) {
+func (manager *AgentStationManager) SetAgentStation(login AgentLogin, station StationId) bool {
 	manager.RLock()
 	agent := manager.agents[login]
 	manager.RUnlock()
 	if agent.station != nil && *agent.station == station {
-		return
+		return false
 	}
 	manager.RemoveAgentFromStation(login)
 	manager.Lock()
@@ -76,6 +76,7 @@ func (manager *AgentStationManager) SetAgentStation(login AgentLogin, station St
 	}
 	stationMap[login] = true
 	manager.Unlock()
+    return true
 }
 
 func (manager *AgentStationManager) AddAgent(agent *ConnectedAgent) {
