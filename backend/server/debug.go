@@ -26,6 +26,13 @@ Users (API):
 {{end}}
 </ul>
 <br/>
+Agents connectés:
+<ul>
+{{range .ConnectedAgents}}
+    <li>{{.}}</li>
+{{end}}
+</ul>
+<br/>
 Requetes (base de données):
 <ul>
 {{range .HelpRequests}}
@@ -60,13 +67,25 @@ func (s *Server) handleDebug(w http.ResponseWriter, r *http.Request) {
 	}
 
 	type TmplData struct {
-		Users    []*model.User
-		APIUsers []string
+		Users           []*model.User
+		APIUsers        []string
+		ConnectedAgents []string
 
 		HelpRequests []*model.HelpRequest
 	}
+	data := TmplData{
+		Users:           users,
+		APIUsers:        apiUsers,
+		ConnectedAgents: make([]string, 0, 0),
+		HelpRequests:    helpRequests,
+	}
 
-	err = debugTmpl.Execute(w, TmplData{Users: users, APIUsers: apiUsers, HelpRequests: helpRequests})
+	agents := s.service.GetAllAgents()
+	for _, agent := range agents {
+		data.ConnectedAgents = append(data.ConnectedAgents, agent.String())
+	}
+
+	err = debugTmpl.Execute(w, data)
 	if err != nil {
 		log.Print(err)
 	}
