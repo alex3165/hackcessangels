@@ -9,17 +9,18 @@
 #import "HACurrentStationService.h"
 #import "HALocationService.h"
 #import "HAAgentService.h"
+#import "HARequestsService.h"
 
 #include <stdlib.h>
 
 @interface HACurrentStationService()
 
 @property (nonatomic, strong) HALocationService* locationService;
+@property (nonatomic, strong) HARequestsService* requestsService;
 
 @property (nonatomic, strong) NSInputStream *inputStream;
 @property (nonatomic, strong) NSOutputStream *outputStream;
 @property (nonatomic, strong) NSMutableString *communicationLog;
-@property (nonatomic, assign) BOOL loginSent;
 @end
 
 const uint8_t newline[] = "\n";
@@ -30,7 +31,7 @@ const uint8_t newline[] = "\n";
     self = [super init];
     if (self) {
         self.locationService = [[HALocationService alloc] init];
-        self.loginSent = false;
+        self.requestsService = [HARequestsService sharedInstance];
     }
     return self;
 }
@@ -41,10 +42,10 @@ const uint8_t newline[] = "\n";
         // Connect to server
         CFReadStreamRef readStream;
         CFWriteStreamRef writeStream;
-        CFStreamCreatePairWithSocketToHost(NULL, (__bridge CFStringRef)(@"aidegare.membrives.fr"), 5001, &readStream, &writeStream);
+        CFStreamCreatePairWithSocketToHost(NULL, (__bridge CFStringRef)(@"localhost"), 5001, &readStream, &writeStream);
         
         // Negotiate SSL connection
-        NSDictionary *settings = [ [NSDictionary alloc ]
+        NSDictionary *settings = [[NSDictionary alloc]
                                   initWithObjectsAndKeys:
                                   [NSNumber numberWithBool:NO], kCFStreamSSLAllowsExpiredCertificates,
                                   [NSNumber numberWithBool:NO], kCFStreamSSLAllowsExpiredRoots,
@@ -54,10 +55,14 @@ const uint8_t newline[] = "\n";
                                   kCFStreamSocketSecurityLevelNegotiatedSSL,
                                   kCFStreamSSLLevel,
                                   nil ];
+        
         CFReadStreamSetProperty((CFReadStreamRef)readStream,
                                 kCFStreamPropertySSLSettings, (CFTypeRef)settings);
         CFWriteStreamSetProperty((CFWriteStreamRef)writeStream,
                                  kCFStreamPropertySSLSettings, (CFTypeRef)settings);
+        
+        CFReadStreamSetProperty(readStream, kCFStreamNetworkServiceType,kCFStreamNetworkServiceTypeVoIP);
+        CFWriteStreamSetProperty(writeStream, kCFStreamNetworkServiceType, kCFStreamNetworkServiceTypeVoIP);
         
         // Set input streams
         self.communicationLog = [[NSMutableString alloc] init];
@@ -168,6 +173,12 @@ const uint8_t newline[] = "\n";
                 
                 if ([[incomingData objectForKey:@"KeepAlive"] boolValue] == YES) {
                     [self sendPosition];
+                } else if ([[incomingData objectForKey:@"UpdateRequestsNow"] boolValue] == YES) {
+                    [self.requestsService getRequests:^(NSArray *helpRequestList) {
+                        DLog(@"%@", helpRequestList);
+                    } failure:^(NSError *error) {
+                        NSLog(@"%@", error);
+                    }];
                 }
             }
             break;

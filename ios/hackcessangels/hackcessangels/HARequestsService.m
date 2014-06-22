@@ -13,6 +13,8 @@
 
 @interface HARequestsService()
     @property(nonatomic, strong) HARestRequests* restRequest;
+
+    @property(nonatomic, strong) NSMutableDictionary* helpRequests;
 @end
 
 @implementation HARequestsService
@@ -30,6 +32,7 @@
     self = [super init];
     if (self) {
         self.restRequest = [[HARestRequests alloc]init];
+        self.helpRequests = [[NSMutableDictionary alloc] init];
     }
     return self;
 }
@@ -41,10 +44,38 @@
         NSMutableArray* rawHelpRequests = [[NSMutableArray alloc] initWithArray: obj];
         NSMutableArray* helpRequests = [[NSMutableArray alloc] init];
 
+        // Convert all raw dictionaries into Objective-C objects.
         for (id rawRequest in rawHelpRequests) {
             [helpRequests addObject: [[HAHelpRequest alloc] initWithDictionary:rawRequest]];
         }
 
+        // We find which requests are new and which we already know.
+        NSMutableDictionary* newHelpRequestsDict = [[NSMutableDictionary alloc] init];
+        for (HAHelpRequest* helpRequest in helpRequests) {
+            [newHelpRequestsDict objectForKey:helpRequest.Id];
+            if ([self.helpRequests objectForKey:helpRequest.Id] == nil) {
+                // This request is new; we have to create a local notification to alert the agent of the new request if the user still needs help.
+                if ([helpRequest needsHelp]) {
+                    UILocalNotification *localNotif = [[UILocalNotification alloc] init];
+                    localNotif.alertBody = [NSString stringWithFormat:@"%@ a besoin de votre aide", helpRequest.user.name];
+                    localNotif.alertAction = @"Aide'gare: Appel à l'aide";
+                    NSDictionary* userInfo = [NSDictionary dictionaryWithObjectsAndKeys:[helpRequest toPropertyList], @"helpRequest", nil];
+                    localNotif.userInfo = userInfo;
+                    [[UIApplication sharedApplication] presentLocalNotificationNow:localNotif];
+                    helpRequest.notification = localNotif;
+                }
+            } else {
+                HAHelpRequest* storedHelpRequest = [self.helpRequests objectForKey:helpRequest.Id];
+                // This is an update of an existing request.
+                if (![storedHelpRequest needsHelp]) {
+                    // The user does not need help. Cancel any pending local notification
+                    if (storedHelpRequest.notification != nil) {
+                        [[UIApplication sharedApplication] cancelLocalNotification:storedHelpRequest.notification];
+                    }
+                }
+            }
+        }
+        self.helpRequests = newHelpRequestsDict;
         success(helpRequests);
     } failure:^(id obj, NSError* error) {
         failure(error);

@@ -33,7 +33,6 @@
 		<string>bluetooth-central</string>
 		<string>bluetooth-peripheral</string>
 		<string>location</string>
-		<string>remote-notification</string>
 		<string>voip</string>
 	</array>
 	<key>UIMainStoryboardFile</key>
