@@ -33,6 +33,20 @@
     [super viewDidLoad];
     [self viewInit];
     
+    _frameAuditif = [_handicapAuditif frame];
+    _frameVisuel = [_handicapVisuel frame];
+    _frameMoteur = [_handicapMoteur frame];
+    
+    
+    _frameAuditif.origin.y += 100;  // change the location
+         _frameMoteur.origin.y += 100;
+    _frameVisuel.origin.y += 100; // change the size
+    
+    
+    [_handicapAuditif setFrame:_frameAuditif];
+    [_handicapMoteur setFrame:_frameMoteur];
+    [_handicapVisuel setFrame:_frameVisuel];
+    
     // Do any additional setup after loading the view.
 }
 
@@ -72,110 +86,40 @@
 }
 
 
--(void)buttonAuditif:(id)sender {
+- (IBAction)buttonAuditif:(id)sender  {
     _auditifSelected=1;
     _moteurSelected=0;
     _visionSelected=0;
-     [self.handicapAuditif setBackgroundColor:[UIColor purpleColor]];
-    [self.handicapMoteur setBackgroundColor:[UIColor clearColor]];
-    [self.handicapVisuel setBackgroundColor:[UIColor clearColor]];
-
-    [self.handicapMoteur setFrame:CGRectMake(self.handicapMoteur.frame.origin.x, self.handicapMoteur.frame.origin.y +50, self.handicapMoteur.frame.size.width, self.handicapMoteur.frame.size.height)];
-    
-    [self.handicapVisuel setFrame:CGRectMake(self.handicapVisuel.frame.origin.x, self.handicapVisuel.frame.origin.y +50, self.handicapVisuel.frame.size.width, self.handicapVisuel.frame.size.height)];
-    
-    
-    _items =[[NSArray alloc]initWithObjects:@"Je préfère recevoir un SMS",@"Je peux recevoir un appel",nil];
-    
-
-    //_pickerView.transform = CGAffineTransformMakeScale(0.75f, 0.75f);
-    
-    _pickerView.delegate = self;
-    
-    _pickerView.dataSource = self;
-    
-    _pickerView.showsSelectionIndicator = YES;
-    
-    _pickerView.backgroundColor = [UIColor clearColor];
-    
-    [_pickerView selectRow:1 inComponent:0 animated:YES];
-    self.pickerView.hidden=false;
-
+    _actionSheetAuditif = [[UIActionSheet alloc] initWithTitle:@"Handicap Auditif"
+                                                             delegate:self
+                                                    cancelButtonTitle:@"Cancel"
+                                               destructiveButtonTitle:nil
+                                                    otherButtonTitles:@"Je préfère recevoir un SMS",@"Je peux recevoir un appel", nil];
+    [_actionSheetAuditif showInView:self.view];
 }
-
-- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView;
-{
-    
-    return 1;
-    
-}
-
-- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
-{
-    if (_auditifSelected){
-        
-        return 2;
-    }
-    if (_moteurSelected){
-        
-        return 3;
-    }
-    
-    if (_visionSelected){
-        
-        return 2;
-    }
-    else {
-        return 0;
-        
-    }
-}
-
-- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
-{
-    
-    
-    return [_items objectAtIndex:row];
-    
-    
-}
-
 
 -(void)buttonVision:(id)sender {
-    
-    
+
     _auditifSelected=0;
     _moteurSelected=0;
     _visionSelected=1;
-       [self.handicapVisuel setBackgroundColor:[UIColor purpleColor]];
+    
+    [self.handicapVisuel setBackgroundColor:[UIColor purpleColor]];
     [self.handicapMoteur setBackgroundColor:[UIColor whiteColor]];
     [self.handicapAuditif setBackgroundColor:[UIColor whiteColor]];
-    UIPickerView *pickerViewVision;
+    _actionSheetVision = [[UIActionSheet alloc] initWithTitle:@"Handicap Auditif"
+                                                             delegate:self
+                                                    cancelButtonTitle:@"Cancel"
+                                               destructiveButtonTitle:nil
+                                                    otherButtonTitles:@"Je suis malvoyante",@"Je suis aveugle", nil];
+    [_actionSheetVision showInView:self.view];
     
-    _items =[[NSArray alloc]initWithObjects:@"Je suis malvoyante",@"Je suis aveugle",nil];
-    
-    _pickerView=[[UIPickerView alloc] initWithFrame:CGRectMake(0,100,self.view2.frame.size.width,self.view2.frame.size.height - 100)];
-    
-    _pickerView.transform = CGAffineTransformMakeScale(0.75f, 0.75f);
-    
-    _pickerView.delegate = self;
-    
-    _pickerView.dataSource = self;
-    
-    _pickerView.showsSelectionIndicator = YES;
-    
-    _pickerView.backgroundColor = [UIColor clearColor];
-    
-    [_pickerView selectRow:1 inComponent:0 animated:YES];
 
-        self.pickerView.hidden=false;
-    
-    
     
 }
 
 -(void)buttonMoteur:(id)sender{
-    
+
     _auditifSelected=0;
     _moteurSelected=1;
     _visionSelected=0;
@@ -183,65 +127,27 @@
     [self.handicapVisuel setBackgroundColor:[UIColor whiteColor]];
       [self.handicapAuditif setBackgroundColor:[UIColor whiteColor]];
     
-    _items =[[NSArray alloc]initWithObjects:@"Fauteuil roulant manuel",@"Fauteuil roulant électrique",@"Difficultés de marche",nil];
     
-    _pickerView=[[UIPickerView alloc] initWithFrame:CGRectMake(0,100,self.view2.frame.size.width,self.view2.frame.size.height - 100)];
+    _actionSheetMoteur = [[UIActionSheet alloc] initWithTitle:@"Handicap Auditif"
+                                                             delegate:self
+                                                    cancelButtonTitle:@"Cancel"
+                                               destructiveButtonTitle:nil
+                                                    otherButtonTitles:@"Fauteuil roulant manuel",@"Fauteuil roulant électrique", @"Difficultés de marche", nil];
     
-    _pickerView.transform = CGAffineTransformMakeScale(0.75f, 0.75f);
     
-    _pickerView.delegate = self;
-    
-    _pickerView.dataSource = self;
-    
-    _pickerView.showsSelectionIndicator = YES;
-    
-    _pickerView.backgroundColor = [UIColor clearColor];
-    
-    [_pickerView selectRow:1 inComponent:0 animated:YES];
-          self.pickerView.hidden=false;
+    [_actionSheetMoteur showInView:self.view];
+
 }
 
 
 
--(void) setUserHandicap {
+
+
+-(void) setUserHandicap :(HAUSerDisability)disability{
 
         [[HAUserService sharedInstance] getCurrentUser:^(HAUser *user)  {
-            
-            if (_auditifSelected){
-                
-                int res=[_pickerView selectedRowInComponent:0];
-                
-                user.disabilityType= 6 + res;
- 
-            }
-            else if (self.handicapCognitif.isSelected){
-                
-                [self.handicapCognitif setBackgroundColor:[UIColor purpleColor]];
-                user.disabilityType=Mental;
-                
-            }
-            else if (_visionSelected){
-             
-               
-                int res=[_pickerView selectedRowInComponent:0];
-                
-                user.disabilityType= 4 + res;
-                
-            }
-            else if (_moteurSelected){
-              
-                int res=[_pickerView selectedRowInComponent:0];
-                
-                user.disabilityType= 1 + res;
-                
-            }
-            else {
-                
-             
-                user.disabilityType=Other;
-                
-            }
-            
+            user.disabilityType=disability;
+            user.disability=_handicapAutre.text;
             
             [[HAUserService sharedInstance] updateUser:user success:^(HAUser* user) {
 
@@ -347,8 +253,8 @@
 }
 
 - (IBAction)button2:(id)sender  {
-       [self setUserHandicap];
-
+    [self setUserHandicap:Other];
+    
     
 }
 
@@ -360,22 +266,68 @@
 - (IBAction)buttonPhoto:(id)sender  {
 
     
-    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Choisir une photo"
+    _actionSheetPhoto = [[UIActionSheet alloc] initWithTitle:@"Choisir une photo"
                                                              delegate:self
                                                     cancelButtonTitle:@"Cancel"
                                                destructiveButtonTitle:nil
                                                     otherButtonTitles:@"Appareil-photo",@"Bibliothèque", nil];
-    [actionSheet showInView:self.view];
+    [_actionSheetPhoto showInView:self.view];
+}
+
+
+-(IBAction) buttonMental :(id) sender {
+    [self setUserHandicap:Mental];
+
 }
 
 
 
 - (void) actionSheet: (UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex{
+    
+    
+    
+    
+    if (actionSheet==_actionSheetPhoto) {
     if (buttonIndex == 0)
         [self takeAPicture];
     else
-        [self takePictureFromLibrary];
+        [self takePictureFromLibrary]; }
+    
+    
+    else if ( actionSheet==_actionSheetVision ) {
+        if (buttonIndex == 0) {
+            [self setUserHandicap:Vision_lowvision];}
+        else{
+              [self setUserHandicap:Vision_blind];
+         }
+    
+    }
+    else if ( actionSheet==_actionSheetMoteur ) {
+       
+        if (buttonIndex == 0){
+            [self setUserHandicap:Physical_wheelchair];}
+        else if (buttonIndex == 1)
+           [self setUserHandicap:Physical_powerchair];
+        else {
+         [self setUserHandicap:Physical_walk];
+        }
+            
+    }
+
+    else if ( actionSheet==_actionSheetAuditif ) {
+        if (buttonIndex == 0) {
+            [self setUserHandicap:Hearing_SMS];}
+        else{
+            [self setUserHandicap:Hearing_call];
+        }
+
+    }
+    
+    
 }
+
+
+
 
 -(void)takeAPicture{
     NSLog(@"CHEESE");
@@ -427,6 +379,8 @@
                                           delegate:self cancelButtonTitle:@"Ok"
                                  otherButtonTitles:nil];
     [alert show];
+    
+    
 }
 
 -(void)imagePickerController:
@@ -435,8 +389,8 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     [self dismissViewControllerAnimated:YES completion:^{
         [[HAUserService sharedInstance] getCurrentUser:^(HAUser *user) {
-            
-          user.image =  UIImageJPEGRepresentation(self.image.image, 0.90);
+            UIImage *pickedImage = [info objectForKey:UIImagePickerControllerOriginalImage];
+          user.image =  UIImageJPEGRepresentation(pickedImage, 0.90);
             
             [[HAUserService sharedInstance] updateUser:user success:^(HAUser* user) {
                 
