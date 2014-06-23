@@ -133,8 +133,8 @@
 		043F17A818FC30BB00D23C3F /* HACallUserView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HACallUserView.h; path = hackcessangels/HACallUserView.h; sourceTree = SOURCE_ROOT; };
 		043F17A918FC30BB00D23C3F /* HACallUserView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HACallUserView.m; path = hackcessangels/HACallUserView.m; sourceTree = SOURCE_ROOT; };
 		043F17AB1901A22F00D23C3F /* HackcessAngels copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "HackcessAngels copy-Info.plist"; sourceTree = SOURCE_ROOT; };
-		04CFDD4A1945AD5500391C21 /* HAFirstProfilViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HAFirstProfilViewController.h; sourceTree = "<group>"; };
-		04CFDD4B1945AD5500391C21 /* HAFirstProfilViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HAFirstProfilViewController.m; sourceTree = "<group>"; };
+		04CFDD4A1945AD5500391C21 /* HAFirstProfilViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HAFirstProfilViewController.h; path = ../HAFirstProfilViewController.h; sourceTree = "<group>"; };
+		04CFDD4B1945AD5500391C21 /* HAFirstProfilViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HAFirstProfilViewController.m; path = ../HAFirstProfilViewController.m; sourceTree = "<group>"; };
 		04D14F2819366D2100ED1B27 /* EIUserProfilViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EIUserProfilViewController.h; sourceTree = "<group>"; };
 		04D14F2919366D2100ED1B27 /* EIUserProfilViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EIUserProfilViewController.m; sourceTree = "<group>"; };
 		04D14F2B193675EF00ED1B27 /* HAAgentUserProfileViewerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HAAgentUserProfileViewerViewController.h; path = ../HAAgentUserProfileViewerViewController.h; sourceTree = "<group>"; };
@@ -311,8 +311,6 @@
 		22601EF71886E2DE008B0179 = {
 			isa = PBXGroup;
 			children = (
-				04CFDD4A1945AD5500391C21 /* HAFirstProfilViewController.h */,
-				04CFDD4B1945AD5500391C21 /* HAFirstProfilViewController.m */,
 				04D14F2819366D2100ED1B27 /* EIUserProfilViewController.h */,
 				04D14F2919366D2100ED1B27 /* EIUserProfilViewController.m */,
 				22601F091886E2DE008B0179 /* HackcessAngels */,
@@ -436,6 +434,8 @@
 				222E375B18BA521C00E3B720 /* HAHelpViewController.m */,
 				22A90D671945B169007D116F /* HAHelpSuccessViewController.h */,
 				22A90D681945B169007D116F /* HAHelpSuccessViewController.m */,
+				04CFDD4A1945AD5500391C21 /* HAFirstProfilViewController.h */,
+				04CFDD4B1945AD5500391C21 /* HAFirstProfilViewController.m */,
 				04F5A81418C8AC5E00ED0CC6 /* HAUserViewController.h */,
 				04F5A81518C8AC5E00ED0CC6 /* HAUserViewController.m */,
 				22601F151886E2DE008B0179 /* Main.storyboard */,
@@ -558,6 +558,7 @@
 				ORGANIZATIONNAME = "RIEUX Alexandre";
 				TargetAttributes = {
 					22601EFF1886E2DE008B0179 = {
+						DevelopmentTeam = TNTAN9T4DZ;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 0;
@@ -934,10 +935,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HackcessAngels/HackcessAngels-Prefix.pch";
 				INFOPLIST_FILE = "HackcessAngels/HackcessAngels-Info.plist";
 				PRODUCT_NAME = "Aide'Gare";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -949,10 +953,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HackcessAngels/HackcessAngels-Prefix.pch";
 				INFOPLIST_FILE = "HackcessAngels/HackcessAngels-Info.plist";
 				PRODUCT_NAME = "Aide'Gare";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

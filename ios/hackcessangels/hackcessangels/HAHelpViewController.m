@@ -9,9 +9,12 @@
 #import "HAHelpViewController.h"
 #import "HALogViewController.h"
 #import "HAHelpSuccessViewController.h"
-#import "HAUserService.h"
+//#import "HAUserService.h"
 #import "HAUserViewController.h"
 #import "UIColor+HackcessAngels.h"
+#import "HAFirstProfilViewController.h"
+
+static NSString* const hasRunAppOnceKey = @"hasRunAppOnceKey";
 
 @interface HAHelpViewController ()
     @property (nonatomic, strong) HAUser *user;
@@ -193,7 +196,17 @@
         self.titleLabel.text = helloName;
     } failure:^(NSError *error) {
         if (error.code == 401 || error.code == 404) {
-            [self showModalLoginWithAnimation:NO];
+            
+            NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+    // test si c'est la première utilisation de l'app si oui on ouvre le registration controller sinon le login controller
+            if ([defaults boolForKey:hasRunAppOnceKey] == NO)
+            {
+                [self showModalRegistrationWithAnimation:NO];
+                [defaults setBool:YES forKey:hasRunAppOnceKey];
+            }else{
+                [self showModalLoginWithAnimation:NO];
+            }
+            
         }
     }];
 }
@@ -217,6 +230,11 @@
     [self presentViewController:logViewController animated:animated completion:nil];
 }
 
+- (void)showModalRegistrationWithAnimation:(BOOL)animated
+{
+    HAFirstProfilViewController *firstViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"modifyUserProfil"];
+    [self presentViewController:firstViewController animated:animated completion:nil];
+}
 
 
 -(void) showProfil: (id)sender
