@@ -44,6 +44,19 @@ NSString *const kStatusKey = @"CurrentState";
     return self;
 }
 
+- (bool) finished {
+    switch (self.status) {
+        case kCancelled:
+        case kAbandonned:
+        case kRequestCompleted:
+            return true;
+            break;
+        default:
+            return false;
+            break;
+    }
+}
+
 - (bool) needsHelp {
     switch (self.status) {
         case kCancelled:

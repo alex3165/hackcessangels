@@ -13,6 +13,7 @@
 #import "HACallUserView.h"
 #import "HARequestsService.h"
 #import "HAAgentUserProfileViewerViewController.h"
+#import "HAAgentHomeViewController.h"
 
 
 @interface HAMapViewController () <HACentralManagerDelegate>
@@ -84,6 +85,12 @@ CLLocationCoordinate2D coordinate;
         // TODO(etienne): add a field in HAHelpRequest to know the provenance of the request (bluetooth/server)
         [self.helpok setHidden:!self.bluetoothmanager.needHelp];
     } else {
+        if ([self.helpRequest finished]) {
+            [self.timer invalidate];
+            UITabBarController *tabBarController = (UITabBarController*)[[[UIApplication sharedApplication] keyWindow] rootViewController];
+            [tabBarController setSelectedIndex:0];
+            return;
+        }
         // Display user infos
         self.userDisability.hidden = FALSE;
         self.completeProfil.hidden = FALSE;
