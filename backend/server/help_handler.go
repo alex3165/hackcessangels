@@ -97,7 +97,7 @@ func (s *Server) handleHelp(w http.ResponseWriter, r *http.Request) {
 			helpRequest.RequesterPosPrecision = *data.Precision
 		}
 		helpRequest.CheckStatus()
-		err = helpRequest.Save()
+		err = helpRequest.Save(true)
 		if err != nil {
 			log.Printf("Error while saving help request: %+v", err)
 			returnError(500, "Couldn't save request", w)
@@ -131,7 +131,7 @@ func (s *Server) handleHelp(w http.ResponseWriter, r *http.Request) {
 				helpRequest.ChangeStatus(model.RETRY, time.Now())
 			}
 		}
-		err = helpRequest.Save()
+		err = helpRequest.Save(true)
 		if err != nil {
 			log.Printf("Error while saving help request: %+v", err)
 			returnError(500, "Couldn't save request", w)

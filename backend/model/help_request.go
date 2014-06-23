@@ -110,9 +110,11 @@ func (hr *HelpRequest) SetRequesterPosition(longitude, latitude float64) {
 	hr.RequesterLastUpdate = time.Now()
 }
 
-func (hr *HelpRequest) Save() error {
+func (hr *HelpRequest) Save(broadcast bool) error {
 	_, err := hr.m.helpRequests.UpsertId(hr.Id, hr)
-    go hr.BroadcastStatus()
+    if broadcast {
+        go hr.BroadcastStatus()
+    }
 	return err
 }
 
@@ -167,7 +169,7 @@ func (hr *HelpRequest) ChangeStatus(newState HelpRequestState, time time.Time) e
 		Time:  time,
 	}
 	hr.Status = append(hr.Status, status)
-	return hr.Save()
+	return hr.Save(true)
 }
 
 // Return the agent responding to the request, or nil of no-one answered.

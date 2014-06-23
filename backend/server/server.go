@@ -66,6 +66,7 @@ func (s *Server) init() error {
 	if err != nil {
 		return err
 	}
+    s.model.RegisterHelpRequestObserver(s.service)
 
 	return nil
 }
