@@ -45,6 +45,8 @@ typedef enum HAHelpRequestStatus : NSUInteger {
 - (id)initWithDictionary:(NSDictionary *)data;
 // Return true if the requester still needs assistance; false otherwise.
 - (bool) needsHelp;
+// Return true if the request is finished
+- (bool) finished;
 
 - (NSDictionary*) toPropertyList;
 

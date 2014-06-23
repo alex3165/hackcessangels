@@ -42,7 +42,7 @@ const uint8_t newline[] = "\n";
         // Connect to server
         CFReadStreamRef readStream;
         CFWriteStreamRef writeStream;
-        CFStreamCreatePairWithSocketToHost(NULL, (__bridge CFStringRef)(@"localhost"), 5001, &readStream, &writeStream);
+        CFStreamCreatePairWithSocketToHost(NULL, (__bridge CFStringRef)(@"aidegare.membrives.fr"), 5001, &readStream, &writeStream);
         
         // Negotiate SSL connection
         NSDictionary *settings = [[NSDictionary alloc]
