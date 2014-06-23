@@ -31,8 +31,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self viewInit];
+    NSLog(@"%hhd", _modifyLoggedTransfer);
+    if (self.modifyLoggedTransfer==1) {
+        
+        [self.view addSubview:_view1];
+    }
     
+    else {
+    [self viewInit];
+    }
+
     _frameAuditif = [_handicapAuditif frame];
     _frameVisuel = [_handicapVisuel frame];
     _frameMoteur = [_handicapMoteur frame];
@@ -56,11 +64,14 @@
     // Dispose of any resources that can be recreated.
 }
 
+//méthode ac ha user qui remplit les champs
+
 
 -(void) setUserNameAndPhone {
 
 
     [[HAUserService sharedInstance] getCurrentUser:^(HAUser *user) {
+        
         
         user.name=self.nomPrenom.text;
         //mes numéros
@@ -439,7 +450,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     [self.view2 removeFromSuperview];
     
     [self.view addSubview:self.view1];
-    [self view1];
+   
 }
 
 

@@ -10,7 +10,7 @@
 #import "HAUserService.h"
 #import "HAUser.h"
 #import "HALogViewController.h"
-
+#import "HAFirstProfilViewController.h"
 @interface HAUserViewController ()
 
 @property (nonatomic, strong) NSString * textEmail;
@@ -37,6 +37,7 @@
     
     [sender resignFirstResponder];
 }
+
 
 - (IBAction)touchOutside:(id)sender {
     
@@ -335,5 +336,7 @@ HAUserSimpleDisability i;
     
     self.pickerView.hidden=!self.pickerView.hidden;
 }
+
+
 
 @end

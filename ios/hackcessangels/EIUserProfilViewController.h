@@ -7,7 +7,7 @@
 #import <UIKit/UIKit.h>
 #import "HARestRequests.h"
 #import "HAUserService.h"
-@interface EIUserProfilViewController : UIViewController
+@interface EIUserProfilViewController : UIViewController <UIScrollViewDelegate>
 
 //LABELS TITRES
 
@@ -29,6 +29,7 @@
 //BUTTON TO HAUserViewController
 @property (weak, nonatomic) IBOutlet UIButton *modifier;
 @property (weak, nonatomic) IBOutlet UIButton *callPhone;
+@property (weak, nonatomic) IBOutlet UIScrollView *scroll;
 
 
 

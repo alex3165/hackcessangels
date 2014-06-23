@@ -8,7 +8,7 @@
 
 #import "EIUserProfilViewController.h"
 #import "HAUserViewController.h"
-
+#import "HAFirstProfilViewController.h"
 @interface EIUserProfilViewController ()
 
 @end
@@ -33,6 +33,10 @@
 }
 
 - (void) viewDidAppear:(BOOL)animated {
+
+        [self.scroll setScrollEnabled:YES];
+        self.scroll.contentSize =CGSizeMake(320, 1100);
+
     [super viewDidAppear:animated];
     
     [[HAUserService sharedInstance] getCurrentUser:^(HAUser *user) {
@@ -113,10 +117,46 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)modifier:(id)sender  {
+-(void) setUserInfos : (HAUser*)user {
     
-    HAUserViewController *modifyProfilViewController = [[UIStoryboard storyboardWithName:@"modifyUserProfil" bundle:nil] instantiateViewControllerWithIdentifier:@"accesViewController"];
-    [self presentViewController:modifyProfilViewController animated:NO completion:nil];
+
+    
+}
+
+
+-(IBAction)modifyProfil:(id)sender{
+    
+    [self performSegueWithIdentifier:@"modifyUserProfil" sender:self];
+    
+}
+
+-(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    if ([[segue identifier] isEqualToString:@"modifyUserProfil"])
+    {
+        // Get reference to the destination view controller
+        HAFirstProfilViewController *modifyprofil = [segue destinationViewController];
+        
+        [[HAUserService sharedInstance] getCurrentUser:^(HAUser *user) {
+            
+      
+            modifyprofil.nomPrenom.text = self.nomPrenom.text;
+            modifyprofil.phone.text=self.phone.text;
+            modifyprofil.urgencePhone.text=self.urgencePhone.text;
+            modifyprofil.handicapInfos.text=  self.infos.text;
+            
+    
+            
+            modifyprofil.handicapAutre.text=  self.handicapAutre.text;
+            modifyprofil.modifyLoggedTransfer=1;
+            
+        } failure:^(NSError *error) {
+            UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Erreur" message:@"Serveur injoignable" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
+            [alert show];
+        }];
+        
+        
+    }
 }
 
 @end

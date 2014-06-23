@@ -55,6 +55,7 @@ typedef enum HAUserSimpleDisability : NSUInteger {
 - (IBAction) autre:(id)sender;
 - (IBAction) takePicture:(id) sender;
 
+
 @end
 
 

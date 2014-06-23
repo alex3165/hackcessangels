@@ -71,7 +71,7 @@
 @property BOOL auditifSelected;
 @property BOOL moteurSelected;
 @property BOOL visionSelected;
-
+@property BOOL modifyLoggedTransfer;
 
 //stocker la position des Pickers pour les remettre  leur place
 
