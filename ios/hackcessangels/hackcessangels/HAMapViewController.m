@@ -125,7 +125,8 @@ CLLocationCoordinate2D coordinate;
                 self.userDisability.text=@"Handicap inconnu";
                 break;
         }
-        [self.helpok setHidden:![self.helpRequest needsHelp]];
+        bool needsHelp = [self.helpRequest needsHelp];
+        [self.helpok setHidden:!needsHelp];
     }
 }
 

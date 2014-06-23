@@ -52,13 +52,14 @@
         // We find which requests are new and which we already know.
         NSMutableDictionary* newHelpRequestsDict = [[NSMutableDictionary alloc] init];
         for (HAHelpRequest* helpRequest in helpRequests) {
-            [newHelpRequestsDict objectForKey:helpRequest.Id];
+            [newHelpRequestsDict setObject:helpRequest forKey:helpRequest.Id];
             if ([self.helpRequests objectForKey:helpRequest.Id] == nil) {
                 // This request is new; we have to create a local notification to alert the agent of the new request if the user still needs help.
                 if ([helpRequest needsHelp]) {
                     UILocalNotification *localNotif = [[UILocalNotification alloc] init];
                     localNotif.alertBody = [NSString stringWithFormat:@"%@ a besoin de votre aide", helpRequest.user.name];
                     localNotif.alertAction = @"Aide'gare: Appel à l'aide";
+                    localNotif.soundName = UILocalNotificationDefaultSoundName;
                     NSDictionary* userInfo = [NSDictionary dictionaryWithObjectsAndKeys:[helpRequest toPropertyList], @"helpRequest", nil];
                     localNotif.userInfo = userInfo;
                     [[UIApplication sharedApplication] presentLocalNotificationNow:localNotif];
