@@ -84,6 +84,11 @@ CLLocationCoordinate2D coordinate;
         // No help request: it comes from Bluetooth
         // TODO(etienne): add a field in HAHelpRequest to know the provenance of the request (bluetooth/server)
         [self.helpok setHidden:!self.bluetoothmanager.needHelp];
+        // Display user infos
+        self.completeProfil.hidden = FALSE;
+        self.userName.hidden = FALSE;
+        self.userDisability.hidden = FALSE;
+        
     } else {
         if ([self.helpRequest finished]) {
             [self.timer invalidate];
@@ -270,10 +275,15 @@ CLLocationCoordinate2D coordinate;
 - (void)helpValueChanged:(BOOL)newValue user:(NSDictionary *)user uuid:(NSUUID *)uuid
 {
     [self.helpok setHidden:!newValue];
+    self.userName.text = [user objectForKey:@"name"];
+    self.userDisability.text = [user objectForKey:@"disability"];
+    
     self.uuid = uuid;
+    
     /* notification d'appel à l'aide */
     UILocalNotification *localNotif = [[UILocalNotification alloc] init];
-    localNotif.alertBody = @"quelqu'un a besoin de votre aide";
+    NSString *alertBody = [NSString stringWithFormat:@"%@ a besoin de votre aide",[user objectForKey:@"name"]];
+    localNotif.alertBody = alertBody;
     localNotif.alertAction = @"Appel à l'aide";
     [[UIApplication sharedApplication] presentLocalNotificationNow:localNotif];
 }

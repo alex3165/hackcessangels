@@ -47,6 +47,7 @@
 		228D8F03190FE5D2002AE6E2 /* HAUser.m in Sources */ = {isa = PBXBuildFile; fileRef = A1330B0618AD62B5002B1828 /* HAUser.m */; };
 		228D8F06190FE830002AE6E2 /* HARequestsService.m in Sources */ = {isa = PBXBuildFile; fileRef = 228D8F05190FE830002AE6E2 /* HARequestsService.m */; };
 		2297633818E4A58400CDE26A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22601F151886E2DE008B0179 /* Main.storyboard */; };
+		229C93E11959C0FA00F22B84 /* novotel.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 229C93E01959C0FA00F22B84 /* novotel.gpx */; };
 		22A90D691945B169007D116F /* HAHelpSuccessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A90D681945B169007D116F /* HAHelpSuccessViewController.m */; };
 		22A90D6A1945B169007D116F /* HAHelpSuccessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A90D681945B169007D116F /* HAHelpSuccessViewController.m */; };
 		22C9AB3618E20FDC008ED8D7 /* HACentralManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C9AB3518E20FDC008ED8D7 /* HACentralManager.m */; };
@@ -177,6 +178,7 @@
 		22601F3E18871EAC008B0179 /* HATileOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HATileOverlayView.m; sourceTree = "<group>"; };
 		228D8F04190FE830002AE6E2 /* HARequestsService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HARequestsService.h; sourceTree = "<group>"; };
 		228D8F05190FE830002AE6E2 /* HARequestsService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HARequestsService.m; sourceTree = "<group>"; };
+		229C93E01959C0FA00F22B84 /* novotel.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = novotel.gpx; path = ../../../../../Downloads/novotel.gpx; sourceTree = "<group>"; };
 		22A90D671945B169007D116F /* HAHelpSuccessViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HAHelpSuccessViewController.h; sourceTree = "<group>"; };
 		22A90D681945B169007D116F /* HAHelpSuccessViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HAHelpSuccessViewController.m; sourceTree = "<group>"; };
 		22C9AB3418E20FDC008ED8D7 /* HACentralManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HACentralManager.h; sourceTree = "<group>"; };
@@ -311,6 +313,7 @@
 		22601EF71886E2DE008B0179 = {
 			isa = PBXGroup;
 			children = (
+				229C93E01959C0FA00F22B84 /* novotel.gpx */,
 				04D14F2819366D2100ED1B27 /* EIUserProfilViewController.h */,
 				04D14F2919366D2100ED1B27 /* EIUserProfilViewController.m */,
 				22601F091886E2DE008B0179 /* HackcessAngels */,
@@ -609,6 +612,7 @@
 				22E95BE01943592C0002B96C /* NonAboutie.png in Resources */,
 				22601F171886E2DE008B0179 /* Main.storyboard in Resources */,
 				22E64AFF1937A4C200851BB8 /* logoSncf5S.png in Resources */,
+				229C93E11959C0FA00F22B84 /* novotel.gpx in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
