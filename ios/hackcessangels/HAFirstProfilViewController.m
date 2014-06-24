@@ -32,6 +32,10 @@
 {
     [super viewDidLoad];
     NSLog(@"%hhd", _modifyLoggedTransfer);
+     NSLog(@"%@", _nomPrenom.text);
+     NSLog(@"%@", _phone.text);
+    
+    
     if (self.modifyLoggedTransfer==1) {
         
         [self.view addSubview:_view1];

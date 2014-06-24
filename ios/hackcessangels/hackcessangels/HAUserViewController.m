@@ -102,7 +102,7 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [self.scroll setScrollEnabled:YES];
-    self.scroll.contentSize =CGSizeMake(320, 1100);
+    self.scroll.contentSize =CGSizeMake(320, 1200);
     [super viewDidAppear:animated];
 }
 

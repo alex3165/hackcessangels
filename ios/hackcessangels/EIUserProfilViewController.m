@@ -140,14 +140,14 @@
         [[HAUserService sharedInstance] getCurrentUser:^(HAUser *user) {
             
       
-            modifyprofil.nomPrenom.text = self.nomPrenom.text;
-            modifyprofil.phone.text=self.phone.text;
-            modifyprofil.urgencePhone.text=self.urgencePhone.text;
-            modifyprofil.handicapInfos.text=  self.infos.text;
+            modifyprofil.nomPrenom.text = _nomPrenom.text;
+            modifyprofil.phone.text=_phone.text;
+            modifyprofil.urgencePhone.text=_urgencePhone.text;
+            modifyprofil.handicapInfos.text=  _infos.text;
             
     
             
-            modifyprofil.handicapAutre.text=  self.handicapAutre.text;
+            modifyprofil.handicapAutre.text=  _handicapAutre.text;
             modifyprofil.modifyLoggedTransfer=1;
             
         } failure:^(NSError *error) {
