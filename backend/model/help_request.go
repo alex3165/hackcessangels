@@ -70,9 +70,9 @@ const (
 )
 
 const (
-	REQUEST_TIMEOUT      time.Duration = 10 * time.Minute
-	RETRY_TIMEOUT        time.Duration = 10 * time.Minute
-	INTERVENTION_TIMEOUT time.Duration = 10 * time.Minute
+	REQUEST_TIMEOUT      time.Duration = 1 * time.Minute
+	RETRY_TIMEOUT        time.Duration = 2 * time.Minute
+	INTERVENTION_TIMEOUT time.Duration = 15 * time.Minute
 )
 
 type HelpRequest struct {
