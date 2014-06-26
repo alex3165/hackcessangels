@@ -36,6 +36,14 @@ NSString *const agentAnnounceFormatString = @"L'agent SNCF %@ arrive";
     self.agentPicture.layer.cornerRadius = self.agentPicture.frame.size.height /2;
     self.agentPicture.layer.masksToBounds = YES;
     self.agentPicture.layer.borderWidth = 0;
+    self.assistanceService = [HAAssistanceService sharedInstance];
+    [[HAAssistanceService sharedInstance] registerForUpdates:^(HAHelpRequest *helpRequest) {
+        if ([helpRequest finished]) {
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }
+    } failure:^(id obj, NSError *error) {
+        DLog(@"%@", error);
+    }];
 }
 
 - (void)didReceiveMemoryWarning

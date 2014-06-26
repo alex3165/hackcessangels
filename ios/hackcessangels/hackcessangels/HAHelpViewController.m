@@ -9,7 +9,7 @@
 #import "HAHelpViewController.h"
 #import "HALogViewController.h"
 #import "HAHelpSuccessViewController.h"
-//#import "HAUserService.h"
+#import "HAUserService.h"
 #import "HAUserViewController.h"
 #import "UIColor+HackcessAngels.h"
 #import "HAFirstProfilViewController.h"
@@ -201,7 +201,7 @@ static NSString* const hasRunAppOnceKey = @"hasRunAppOnceKey";
     // test si c'est la première utilisation de l'app si oui on ouvre le registration controller sinon le login controller
             if ([defaults boolForKey:hasRunAppOnceKey] == NO)
             {
-                [self showModalRegistrationWithAnimation:NO];
+                [self showModalLoginWithAnimation:NO];
                 [defaults setBool:YES forKey:hasRunAppOnceKey];
             }else{
                 [self showModalLoginWithAnimation:NO];
@@ -229,13 +229,6 @@ static NSString* const hasRunAppOnceKey = @"hasRunAppOnceKey";
     [logViewController setCheckCredentialsBlock:[[HAUserService sharedInstance] getCheckCredentialsBlock]];
     [self presentViewController:logViewController animated:animated completion:nil];
 }
-
-- (void)showModalRegistrationWithAnimation:(BOOL)animated
-{
-    HAFirstProfilViewController *firstViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"modifyUserProfil"];
-    [self presentViewController:firstViewController animated:animated completion:nil];
-}
-
 
 -(void) showProfil: (id)sender
 {

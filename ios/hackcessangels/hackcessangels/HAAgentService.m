@@ -136,6 +136,17 @@
     };
 }
 
+- (void)disconnectAgent {
+    if (!self.currentAgent) {
+        return;
+    }
+    for (NSHTTPCookie* cookie in [[[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies] copy]) {
+        [[NSHTTPCookieStorage sharedHTTPCookieStorage] deleteCookie:cookie];
+    }
+    [self.currentAgent deleteAgentFromKeyChain];
+    self.currentAgent = nil;
+}
+
 - (void)deleteAgentWithEmail:(NSString *)email success:(HARestRequestsSuccess)success failure:(HARestRequestsFailure)failure {
     HARestRequests* dcRestRequest = [[HARestRequests alloc] init];
     [dcRestRequest DELETErequest:@"user" withParameters:@{@"email" : email} success:success failure:failure];

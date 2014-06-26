@@ -298,8 +298,23 @@
                                     <action selector="takePicture:" destination="4aJ-If-ycD" eventType="touchUpInside" id="euu-57-aMI"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="caD-GT-w0D">
+                                <rect key="frame" x="20" y="470" width="280" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Déconnection">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="disconnect:" destination="4aJ-If-ycD" eventType="touchUpInside" id="Aj4-4K-85d"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="caD-GT-w0D" secondAttribute="trailing" constant="20" id="2qx-DN-YoI"/>
+                            <constraint firstItem="RyA-Xf-ZeA" firstAttribute="top" secondItem="caD-GT-w0D" secondAttribute="bottom" constant="24" id="Cuy-eg-Dye"/>
+                            <constraint firstItem="caD-GT-w0D" firstAttribute="leading" secondItem="j0U-Ts-Htp" secondAttribute="leading" constant="20" id="HT5-Sb-3yt"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Aide'Gare" id="z74-oL-mog">
                         <barButtonItem key="leftBarButtonItem" style="plain" systemItem="cancel" id="ZNQ-rK-Fbp">

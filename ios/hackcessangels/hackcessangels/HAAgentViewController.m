@@ -122,4 +122,9 @@
     }];
 }
 
+- (IBAction)disconnect:(id)sender {
+    [[HAAgentService sharedInstance] disconnectAgent];
+    [[self navigationController] popViewControllerAnimated:YES];
+}
+
 @end
