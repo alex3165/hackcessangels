@@ -27,15 +27,15 @@
 @property (weak, nonatomic) IBOutlet UIButton *button1;
 
 @property (strong, nonatomic)    NSArray *items;
- @property (strong, nonatomic) IBOutlet UIPickerView *pickerView;
+@property (strong, nonatomic) IBOutlet UIPickerView *pickerView;
 
 @property  float *posYbtnAuditif;
 @property  float *posYbtnVisuel;
 @property  float *posYbtnMoteur;
 
- @property   CGRect frameAuditif;
- @property  CGRect frameVisuel;
- @property  CGRect frameMoteur;
+@property  CGRect frameAuditif;
+@property  CGRect frameVisuel;
+@property  CGRect frameMoteur;
 
 @property (strong, nonatomic)   UIActionSheet *actionSheetMoteur;
 @property (strong, nonatomic) UIActionSheet *actionSheetVision;

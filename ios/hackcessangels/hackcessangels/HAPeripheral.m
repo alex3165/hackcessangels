@@ -50,7 +50,40 @@
         NSString *userName = self.actualUser.name == nil ? @"inconnue" : self.actualUser.name;
         NSString *userPhone = self.actualUser.phone == nil ? @"inconnue" : self.actualUser.phone;
         NSString *userEmail = self.actualUser.email == nil ? @"inconnue" : self.actualUser.email;
-        NSString *userDisability = self.actualUser.disability == nil ? @"inconnue" : self.actualUser.disability;
+        NSString *userDisability;
+    
+        switch (self.actualUser.disabilityType) {
+        case Physical_wheelchair:
+            userDisability = @"Handicap moteur. Je suis en chaise roulante";
+            break;
+        case Physical_powerchair:
+            userDisability = @" Handicap moteur. Je suis en chaise électrique";
+            break;
+        case Physical_walk:
+            userDisability = @"Handicap moteur. J'ai des problèmes de marche.";
+            break;
+        case Vision_blind :
+            userDisability = @"Handicap visuel. Je suis aveugle.";
+            break;
+        case Vision_lowvision:
+            userDisability = @"Handicap visuel. J'ai une mauvaise vue";
+            break;
+        case Hearing_call:
+            userDisability = @"Handicap auditif. Je répond aux appels.";
+            break;
+        case Hearing_SMS:
+            userDisability = @"Handicap auditif. Je répond aux sms.";
+            break;
+        case Mental:
+            userDisability = @"Handicap Mental";
+            break;
+        case Other:
+            userDisability = @"Handicap Autre";
+            break;
+        case Unknown:
+            userDisability = @"Handicap inconnu";
+            break;
+        }
 
         NSDictionary *userDictionary = @{
                         @"name" : userName,

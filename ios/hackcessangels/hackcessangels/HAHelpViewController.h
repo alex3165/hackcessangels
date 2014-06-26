@@ -10,7 +10,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "HAAssistanceService.h"
 #import "HAUserService.h"
-#import "HAMapViewController.h"
+//#import "HAMapViewController.h"
 
 @interface HAHelpViewController : UIViewController <UITabBarDelegate>
 
@@ -23,7 +23,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *whatStatus;
 @property (weak, nonatomic) IBOutlet UILabel *timeNotification;
 
-@property (nonatomic, strong) HAMapViewController *mapController;
+//@property (nonatomic, strong) HAMapViewController *mapController;
 
 -(void) defaultRequestAgentStatus;
 -(void) requestAgentContactedStatus;
@@ -32,6 +32,6 @@
 -(void) requestAgentCancelStatus;
 
 - (IBAction) showProfil:(id)sender;
--(IBAction)cancelHelp:(id)sender;
+- (IBAction) cancelHelp:(id)sender;
 
 @end
