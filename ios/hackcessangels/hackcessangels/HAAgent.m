@@ -91,4 +91,8 @@ NSString *const pGareKey = @"gare";
     return parameters;
 }
 
+- (void) deleteAgentFromKeyChain {
+    [UICKeyChainStore removeAllItemsForService:pServiceId];
+}
+
 @end

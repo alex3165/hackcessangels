@@ -48,6 +48,7 @@ extern NSString *const kPhoneUrgenceKey;
 
 + (HAUser*) userFromKeyChain;
 - (void) saveUserToKeyChain;
+- (void) deleteUserFromKeyChain;
 
 - (NSDictionary*) toPropertyList;
 
