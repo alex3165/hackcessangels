@@ -105,7 +105,7 @@ NSString *const kCookieKey = @"cookie";
 }
 
 - (void) deleteUserFromKeyChain {
-    [UICKeyChainStore removeAllItems];
+    [UICKeyChainStore removeAllItemsForService:kServiceId];
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder

@@ -133,6 +133,17 @@
     };
 }
 
+- (void)disconnectUser {
+    if (!self.currentUser) {
+        return;
+    }
+    for (NSHTTPCookie* cookie in [[[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies] copy]) {
+        [[NSHTTPCookieStorage sharedHTTPCookieStorage] deleteCookie:cookie];
+    }
+    [self.currentUser deleteUserFromKeyChain];
+    self.currentUser = nil;
+}
+
 - (void)deleteUserWithEmail:(NSString *)email success:(HARestRequestsSuccess)success failure:(HARestRequestsFailure)failure {
     HARestRequests* dcRestRequest = [[HARestRequests alloc] init];
     [dcRestRequest DELETErequest:@"user" withParameters:@{@"email" : email} success:success failure:failure];
