@@ -42,13 +42,11 @@ CLLocationCoordinate2D coordinate;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
     self.requestService = [HARequestsService sharedInstance];
-    
     self.userPicture.layer.cornerRadius = self.userPicture.frame.size.height /2;
     self.userPicture.layer.masksToBounds = YES;
     self.userPicture.layer.borderWidth = 0;
-    
+    //self.callUserView.hidden = TRUE;
     [self.gestureRecognizer setDelegate:self];
     
     self.bluetoothmanager = [[HACentralManager alloc] init];
@@ -84,11 +82,6 @@ CLLocationCoordinate2D coordinate;
         // No help request: it comes from Bluetooth
         // TODO(etienne): add a field in HAHelpRequest to know the provenance of the request (bluetooth/server)
         [self.helpok setHidden:!self.bluetoothmanager.needHelp];
-        // Display user infos
-        self.completeProfil.hidden = FALSE;
-        self.userName.hidden = FALSE;
-        self.userDisability.hidden = FALSE;
-        
     } else {
         if ([self.helpRequest finished]) {
             [self.timer invalidate];
@@ -101,7 +94,7 @@ CLLocationCoordinate2D coordinate;
         self.completeProfil.hidden = FALSE;
         self.userPicture.hidden = FALSE;
         self.userName.hidden = FALSE;
-        
+        self.callUserView.hidden = FALSE;
         self.userName.text = self.helpRequest.user.name;
         self.userPicture.image = [UIImage imageWithData:self.helpRequest.user.image];
 
@@ -277,6 +270,10 @@ CLLocationCoordinate2D coordinate;
     [self.helpok setHidden:!newValue];
     self.userName.text = [user objectForKey:@"name"];
     self.userDisability.text = [user objectForKey:@"disability"];
+    
+    self.completeProfil.hidden = FALSE;
+    self.userName.hidden = FALSE;
+    self.userDisability.hidden = FALSE;
     
     self.uuid = uuid;
     

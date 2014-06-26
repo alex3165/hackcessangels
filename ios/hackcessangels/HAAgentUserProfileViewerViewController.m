@@ -27,14 +27,24 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    NSArray *namesplite = [self.helpRequest.user.name componentsSeparatedByString:@" "];
+    NSString *phoneButtonTitle = [NSString stringWithFormat:@" Appeler %@",[namesplite objectAtIndex:0]];
+    [self.Phone setTitle:phoneButtonTitle forState:UIControlStateNormal];
     
+    [[self.urgencePhone layer] setBorderWidth:2.0f];
+    [[self.urgencePhone layer] setBorderColor:[UIColor HA_purple].CGColor];
+    [[self.urgencePhone layer] setCornerRadius:8.0f];
     
-    //A METTRE A LA BONNE COULEUR
-    //[self.topLabel setBackgroundColor:[UIColor:blue]];
     self.name.text = self.helpRequest.user.name;
+    
     self.infos.text = self.helpRequest.user.description;
+    
     UIImage *userPicture = [UIImage imageWithData:self.helpRequest.user.image];
     [self.image setImage:userPicture];
+    self.image.layer.cornerRadius = self.image.frame.size.height /2;
+    self.image.layer.masksToBounds = YES;
+    self.image.layer.borderWidth = 0;
+    self.infos.text = self.helpRequest.user.description;
     
     switch (self.helpRequest.user.disabilityType) {
         case Physical_wheelchair:
@@ -57,6 +67,7 @@
             break;
         case Hearing_SMS:
             self.handicap.text=@"Handicap auditif. Je répond aux sms.";
+            [self.Phone setTitle:@"Envoyer un SMS" forState:UIControlStateNormal];
             break;
         case Mental:
             self.handicap.text=@"Handicap Mental";
@@ -81,6 +92,15 @@
 -(void) passHaRequest:(HAHelpRequest *)harequest{
     self.helpRequest = harequest;
 }
+
+-(IBAction)callUser:(id)sender {
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:self.helpRequest.user.phone]];
+}
+
+-(IBAction)callUserEmergency:(id)sender{
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:self.helpRequest.user.phoneUrgence]];
+}
+
 /*
  #pragma mark - Navigation
  

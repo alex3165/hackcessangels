@@ -24,19 +24,9 @@
     return self;
 }
 
-
-
--(IBAction)callUser:(id)sender {
-    
-    
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"tel:0668004086"]];
-    
-    
-};
-
 - (void) hideProfile {
     CGRect frame = self.frame;
-    frame.origin.y = -220;
+    frame.origin.y = -200;
     [UIView animateWithDuration:1.0 animations:^{
         [self setFrame:frame];
     }];
