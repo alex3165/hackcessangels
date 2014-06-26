@@ -24,8 +24,19 @@
                                         <rect key="frame" x="20" y="90" width="280" height="284"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0RC-hl-s4p">
+                                                <rect key="frame" x="70" y="225" width="140" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="Créer mon profil">
+                                                    <color key="titleColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <segue destination="qhe-hd-3la" kind="modal" id="eIl-bn-6EU"/>
+                                                </connections>
+                                            </button>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l98-aR-tX1">
-                                                <rect key="frame" x="70" y="190" width="140" height="41"/>
+                                                <rect key="frame" x="70" y="197" width="140" height="20"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <accessibility key="accessibilityConfiguration" hint="Valider" label="Valider">
                                                     <accessibilityTraits key="traits" none="YES" button="YES" playsSound="YES"/>
@@ -59,7 +70,7 @@
                                                     <action selector="saisieReturn:" destination="be3-Ta-TAs" eventType="editingDidEndOnExit" id="7d2-bZ-QDV"/>
                                                 </connections>
                                             </textField>
-                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="LOGIN" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Cm-Gn-8yr">
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Connexion" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Cm-Gn-8yr">
                                                 <rect key="frame" x="61" y="20" width="158" height="21"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <accessibility key="accessibilityConfiguration">
@@ -353,7 +364,20 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Clic'Gare" id="pTd-Jf-0T0">
-                        <barButtonItem key="backBarButtonItem" title="Retour" id="ZmY-8P-iVx"/>
+                        <barButtonItem key="backBarButtonItem" title="Retour" id="Zic-jM-qfy"/>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="Ien-IA-gpu">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Hv7-vq-iXi">
+                                <rect key="frame" x="214" y="5" width="90" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" title="Déconnexion">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="disconnect:" destination="Vc2-jK-s4z" eventType="touchUpInside" id="X0Q-Q1-h7u"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="handicapInfos" destination="dyA-um-7jO" id="Khw-8t-10p"/>
@@ -725,7 +749,6 @@
                                         </state>
                                         <connections>
                                             <action selector="ignorePhoto:" destination="qhe-hd-3la" eventType="touchUpInside" id="rcb-1m-Lc2"/>
-                                            <segue destination="8aD-4F-5Sx" kind="modal" id="0ky-CL-CMZ"/>
                                         </connections>
                                     </button>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Complétez votre profil pour nous permettre de vous aider au mieux. " textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="BIA-Mb-VJf">
@@ -1207,13 +1230,12 @@
         <image name="malVoyant" width="72" height="71"/>
         <image name="profil" width="30" height="30"/>
     </resources>
-    <color key="tintColor" red="0.55215352773666382" green="0.80127763748168945" blue="0.80535542964935303" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="0ky-CL-CMZ"/>
+        <segue reference="eIl-bn-6EU"/>
     </inferredMetricsTieBreakers>
 </document>
