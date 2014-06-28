@@ -32,7 +32,11 @@ type ConnectedAgent struct {
 }
 
 func (ca *ConnectedAgent) String() string {
-	return fmt.Sprintf("Agent %s in station %s", ca.login, *ca.station)
+	if ca.station != nil {
+		return fmt.Sprintf("Agent %s in station %s", ca.login, *ca.station)
+	} else {
+		return fmt.Sprintf("Agent %s outside a station", ca.login)
+	}
 }
 
 func (ca *ConnectedAgent) handleConnection() {
@@ -52,7 +56,6 @@ func (ca *ConnectedAgent) handleConnection() {
 		} else if err != nil {
 			log.Print("Error while reading from socket: ", err)
 			return
-			continue
 		}
 		if message.Latitude != nil && message.Longitude != nil && message.Precision != nil {
 			station, err := ca.service.model.FindStationByLocation(
@@ -71,46 +74,51 @@ func (ca *ConnectedAgent) handleConnection() {
 				log.Print(err)
 				continue
 			}
-            arrivedInStation := false
+			arrivedInStation := false
 			if station == nil {
 				ca.service.RemoveAgentFromStation(ca.login)
 				user.CurrentStation = nil
 				ca.station = nil
 			} else {
-                arrivedInStation = ca.service.SetAgentStation(
-                    ca.login, StationId(station.Id))
+				arrivedInStation = ca.service.SetAgentStation(
+					ca.login, StationId(station.Id))
 				stationId := StationId(station.Id)
 				ca.station = &stationId
 				user.CurrentStation = &station.Id
 			}
 			user.LastStationUpdate = time.Now()
 			user.Save()
-            if arrivedInStation {
-                go ca.UpdateHelpRequests()
-            }
+			if arrivedInStation {
+				go ca.UpdateHelpRequests()
+			}
 		}
 	}
 }
 
 func (ca *ConnectedAgent) handleKeepAlive() {
+	ca.sendKeepAlive()
 	for _ = range ca.keepAliveTimer.C {
-		message := ServerMessage{KeepAlive: true}
-		j, err := json.Marshal(message)
-		if err != nil {
-			log.Fatal(err)
-		}
-		_, err = ca.readWriter.Write(j)
-		if err != nil {
-			log.Print("Failed to send keep alive for agent", ca.login, ":", err)
-		}
-		_, err = ca.readWriter.Write([]byte("\n"))
-		if err != nil {
-			log.Print("Failed to send keep alive for agent", ca.login, ":", err)
-		}
-		err = ca.readWriter.Flush()
-		if err != nil {
-			log.Print("Failed to flush keep alive for agent", ca.login, ":", err)
-		}
+		ca.sendKeepAlive()
+	}
+}
+
+func (ca *ConnectedAgent) sendKeepAlive() {
+	message := ServerMessage{KeepAlive: true}
+	j, err := json.Marshal(message)
+	if err != nil {
+		log.Fatal(err)
+	}
+	_, err = ca.readWriter.Write(j)
+	if err != nil {
+		log.Print("Failed to send keep alive for agent", ca.login, ":", err)
+	}
+	_, err = ca.readWriter.Write([]byte("\n"))
+	if err != nil {
+		log.Print("Failed to send keep alive for agent", ca.login, ":", err)
+	}
+	err = ca.readWriter.Flush()
+	if err != nil {
+		log.Print("Failed to flush keep alive for agent", ca.login, ":", err)
 	}
 }
 

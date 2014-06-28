@@ -76,7 +76,7 @@ func (manager *AgentStationManager) SetAgentStation(login AgentLogin, station St
 	}
 	stationMap[login] = true
 	manager.Unlock()
-    return true
+	return true
 }
 
 func (manager *AgentStationManager) AddAgent(agent *ConnectedAgent) {

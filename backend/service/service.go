@@ -7,6 +7,7 @@ import (
 	"flag"
 	"log"
 	"net"
+	"time"
 
 	"hackcessangels/backend/model"
 )
@@ -83,10 +84,13 @@ func (s *AgentService) handleRequest(conn net.Conn) {
 	log.Println("New connection")
 	readWriter := bufio.NewReadWriter(bufio.NewReader(conn), bufio.NewWriter(conn))
 
+	conn.SetDeadline(time.Now().Add(10 * time.Second))
 	message, err := readFromClient(readWriter.Reader)
 	if err != nil {
+        log.Println("Error while reading initial data: ", err)
 		return
 	}
+	conn.SetDeadline(time.Time{})
 
 	if message.Login == nil {
 		log.Print("Agent connected without login")
