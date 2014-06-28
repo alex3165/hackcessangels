@@ -130,7 +130,7 @@
 
 -(IBAction)modifyProfil:(id)sender{
     
-    [self performSegueWithIdentifier:@"modifyUserProfil" sender:self];
+    [self performSegueWithIdentifier:@"userEdit" sender:self];
     
 }
 

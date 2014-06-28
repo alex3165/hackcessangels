@@ -135,8 +135,8 @@
 		043F17AB1901A22F00D23C3F /* HackcessAngels copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "HackcessAngels copy-Info.plist"; sourceTree = SOURCE_ROOT; };
 		04CFDD4A1945AD5500391C21 /* HAFirstProfilViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HAFirstProfilViewController.h; path = ../HAFirstProfilViewController.h; sourceTree = "<group>"; };
 		04CFDD4B1945AD5500391C21 /* HAFirstProfilViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HAFirstProfilViewController.m; path = ../HAFirstProfilViewController.m; sourceTree = "<group>"; };
-		04D14F2819366D2100ED1B27 /* EIUserProfilViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EIUserProfilViewController.h; sourceTree = "<group>"; };
-		04D14F2919366D2100ED1B27 /* EIUserProfilViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EIUserProfilViewController.m; sourceTree = "<group>"; };
+		04D14F2819366D2100ED1B27 /* EIUserProfilViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EIUserProfilViewController.h; path = ../EIUserProfilViewController.h; sourceTree = "<group>"; };
+		04D14F2919366D2100ED1B27 /* EIUserProfilViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EIUserProfilViewController.m; path = ../EIUserProfilViewController.m; sourceTree = "<group>"; };
 		04D14F2B193675EF00ED1B27 /* HAAgentUserProfileViewerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HAAgentUserProfileViewerViewController.h; path = ../HAAgentUserProfileViewerViewController.h; sourceTree = "<group>"; };
 		04D14F2C193675EF00ED1B27 /* HAAgentUserProfileViewerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HAAgentUserProfileViewerViewController.m; path = ../HAAgentUserProfileViewerViewController.m; sourceTree = "<group>"; };
 		04F5A81418C8AC5E00ED0CC6 /* HAUserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HAUserViewController.h; path = hackcessangels/HAUserViewController.h; sourceTree = SOURCE_ROOT; };
@@ -311,8 +311,6 @@
 		22601EF71886E2DE008B0179 = {
 			isa = PBXGroup;
 			children = (
-				04D14F2819366D2100ED1B27 /* EIUserProfilViewController.h */,
-				04D14F2919366D2100ED1B27 /* EIUserProfilViewController.m */,
 				22601F091886E2DE008B0179 /* HackcessAngels */,
 				22601F281886E2DE008B0179 /* HackcessAngelsTests */,
 				22601F021886E2DE008B0179 /* Frameworks */,
@@ -438,6 +436,8 @@
 				04CFDD4B1945AD5500391C21 /* HAFirstProfilViewController.m */,
 				04F5A81418C8AC5E00ED0CC6 /* HAUserViewController.h */,
 				04F5A81518C8AC5E00ED0CC6 /* HAUserViewController.m */,
+				04D14F2819366D2100ED1B27 /* EIUserProfilViewController.h */,
+				04D14F2919366D2100ED1B27 /* EIUserProfilViewController.m */,
 				22601F151886E2DE008B0179 /* Main.storyboard */,
 			);
 			name = User;
@@ -573,7 +573,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 22601EFB1886E2DE008B0179 /* Build configuration list for PBXProject "HackcessAngels" */;
+			buildConfigurationList = 22601EFB1886E2DE008B0179 /* Build configuration list for PBXProject "hackcessangels" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -1047,7 +1047,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		22601EFB1886E2DE008B0179 /* Build configuration list for PBXProject "HackcessAngels" */ = {
+		22601EFB1886E2DE008B0179 /* Build configuration list for PBXProject "hackcessangels" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				22601F301886E2DE008B0179 /* Debug */,
