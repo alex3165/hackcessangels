@@ -35,20 +35,28 @@
 - (void)viewDidLoad
 {
         [super viewDidLoad];
-        [[UITextField appearance] setFont:[UIFont fontWithName:@"Times" size:16]];
+        self.image.layer.cornerRadius = self.image.frame.size.height /2;
+        self.image.layer.masksToBounds = YES;
+        self.image.layer.borderWidth = 0;
         //self.automaticallyAdjustsScrollViewInsets = NO;
         [[HAAgentService sharedInstance] getCurrentAgent:^(HAAgent *agent) {
             
+            self.gareLabel.text = agent.gare;
+            self.numAgentLabel.text = agent.sncfId;
+            self.nameLabel.text = agent.name;
+            
             self.nameTextInput.text = agent.name;
             self.gareTextInput.text = agent.gare;
-            self.numeroTextInput.text=agent.sncfId;
+            self.numeroTextInput.text = agent.sncfId;
+            
             self.image.image = [[UIImage alloc] initWithData:agent.image];
+            
         } failure:^(NSError *error) {
+
             UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Erreur" message:@"Serveur injoignable" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
             [alert show];
+
         }];
-        
-        
         
         UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc]
                                                  initWithTarget:self action:@selector(takePicture:)];
@@ -60,9 +68,7 @@
     
 -(void)viewDidAppear:(BOOL)animated
 {
-    [self.scroll setScrollEnabled:YES];
-    self.scroll.contentSize =CGSizeMake(320, 800);
-    [super viewDidAppear:animated];
+
 }
 
 
@@ -98,6 +104,22 @@
 
 - (IBAction)cancelAndDismiss:(id)sender {
     [[self navigationController] popViewControllerAnimated:YES];
+}
+
+- (IBAction)editProfil:(id)sender {
+    
+    self.save.hidden = FALSE;
+    self.passwordSectionLabel.hidden = FALSE;
+    self.disconnect.hidden = TRUE;
+    self.passwordTextInput.hidden = FALSE;
+    self.gareTextInput.hidden = FALSE;
+    self.gareLabel.hidden = TRUE;
+    self.numeroTextInput.hidden = FALSE;
+    self.numAgentLabel.hidden = TRUE;
+    self.nameLabel.hidden = TRUE;
+    self.nameTextInput.hidden = FALSE;
+    self.navigationItem.rightBarButtonItem.enabled = FALSE;
+    self.changePicture.hidden = FALSE;
 }
 
 - (IBAction)saveAndDismiss:(id)sender {
