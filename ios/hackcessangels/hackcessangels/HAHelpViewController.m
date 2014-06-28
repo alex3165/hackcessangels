@@ -114,13 +114,15 @@ static NSString* const hasRunAppOnceKey = @"hasRunAppOnceKey";
     self.helpme.userInteractionEnabled = NO;
     UIImage *imageHelpInFlight = [UIImage imageNamed:@"EnCours.png"];
     [self.helpme setBackgroundImage:imageHelpInFlight forState:UIControlStateNormal];
-    self.spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    self.spinner.center = self.helpme.center;
-    self.spinner.tag = 12;
-    self.spinner.color = [UIColor whiteColor];
-    self.spinner.transform = CGAffineTransformMakeScale(2.4,2.4);
-    [self.view addSubview: self.spinner];
-    [self.spinner startAnimating];
+    if (self.spinner == nil) {
+        self.spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        self.spinner.center = self.helpme.center;
+        self.spinner.tag = 12;
+        self.spinner.color = [UIColor whiteColor];
+        self.spinner.transform = CGAffineTransformMakeScale(2.4,2.4);
+        [self.view addSubview: self.spinner];
+        [self.spinner startAnimating];
+    }
 }
 
 -(void)requestAgentTryAgainStatus {
@@ -154,6 +156,8 @@ static NSString* const hasRunAppOnceKey = @"hasRunAppOnceKey";
     self.whatStatus.textColor = [UIColor HA_red];
     UIImage *imageHelpFailed = [UIImage imageNamed:@"NonAboutie.png"];
     [self.helpme setBackgroundImage:imageHelpFailed forState:UIControlStateNormal];
+    [self.spinner removeFromSuperview];
+    self.spinner = nil;
 }
 
 -(void)defaultRequestAgentStatus {
@@ -166,6 +170,8 @@ static NSString* const hasRunAppOnceKey = @"hasRunAppOnceKey";
     UIImage *imageHelp = [UIImage imageNamed:@"help.png"];
     self.helpme.userInteractionEnabled = YES;
     [self.helpme setBackgroundImage:imageHelp forState:UIControlStateNormal];
+    [self.spinner removeFromSuperview];
+    self.spinner = nil;
     self.helpRequest = nil;
 }
 

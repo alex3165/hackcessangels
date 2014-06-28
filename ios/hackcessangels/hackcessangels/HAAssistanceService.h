@@ -31,5 +31,4 @@ typedef void(^HAAssistanceRequestUpdate)(HAHelpRequest* helpRequest);
 - (void)helpMe:(CLLocation*)location success:(HARestRequestsSuccess)success failure:(HARestRequestsFailure)failure;
 // Retry an help request. Should only be called when an help request is in flight.
 - (void)retryHelp;
-- (void)cancelHelp;
 @end

@@ -26,7 +26,7 @@
 @property (nonatomic, strong) Reachability *reachability;
 @property (nonatomic, strong) NSTimer *timer;
 @property (nonatomic, assign) BOOL connected;
-
+@property (nonatomic, assign) BOOL spaceAvailable;
 @end
 
 const uint8_t newline[] = "\n";
@@ -61,6 +61,7 @@ const int kRetryIntervalInSeconds = 10;
     [self.locationService startAreaTracking];
     self.reachability = [Reachability reachabilityWithHostname:@"aidegare.membrives.fr"];
     [self.reachability startNotifier];
+    self.spaceAvailable = false;
     [self connectToServerInternal];
 }
 
@@ -118,25 +119,31 @@ const int kRetryIntervalInSeconds = 10;
 #pragma mark - Communication methods
 
 - (void)sendLogin:(HAAgent*) agent {
-    if (!self.outputStream || [self.outputStream streamStatus] != NSStreamStatusOpen) {
+    if (!self.outputStream || [self.outputStream streamStatus] != NSStreamStatusOpen || !self.spaceAvailable) {
         DLog(@"No open connection");
+        [self.inputStream close];
+        [self.outputStream close];
         return;
     }
     
     NSDictionary *loginData = @{@"Login": agent.email};
     NSError *error;
     [NSJSONSerialization writeJSONObject:loginData toStream:self.outputStream options:0 error:&error];
+    self.spaceAvailable = false;
     if (error != nil) {
         DLog(@"%@", error);
         return;
     }
     [self.outputStream write:newline maxLength:strlen((char *)newline)];
+    self.spaceAvailable = false;
 }
 
 - (void)sendPosition {
     // Abort if no connection is present.
-    if (!self.outputStream || [self.outputStream streamStatus] != NSStreamStatusOpen) {
+    if (!self.outputStream || [self.outputStream streamStatus] != NSStreamStatusOpen || !self.spaceAvailable) {
         DLog(@"No open connection");
+        [self.inputStream close];
+        [self.outputStream close];
         [self connectToServerInternal];
         return;
     }
@@ -158,6 +165,7 @@ const int kRetryIntervalInSeconds = 10;
     }
     // The server expects a newline to end the client's message.
     [self.outputStream write:newline maxLength:strlen((char *)newline)];
+    self.spaceAvailable = false;
 }
 
 #pragma mark - NSStreamDelegate
@@ -207,6 +215,7 @@ const int kRetryIntervalInSeconds = 10;
             
         case NSStreamEventHasSpaceAvailable:
             if (aStream == self.outputStream) {
+                self.spaceAvailable = true;
                 if (!self.connected) {
                     [[HAAgentService sharedInstance] getCurrentAgent:^(HAAgent *agent) {
                         [self sendLogin:agent];

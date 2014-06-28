@@ -94,6 +94,12 @@ const int kTimerRefreshInterval = 20;  // in seconds
         for (HAAssistanceRequestUpdate update in self.updateCallbacks) {
             update(self.currentHelpRequest);
         }
+        if ([self.currentHelpRequest finished]) {
+            [self.timer invalidate];
+            [self.locationService stopLocation];
+            self.requestInFlight = false;
+            self.currentHelpRequest = nil;
+        }
     } failure:^(id obj, NSError *error) {
         DLog(@"failure");
         for (HARestRequestsFailure failure in self.failureCallbacks) {
