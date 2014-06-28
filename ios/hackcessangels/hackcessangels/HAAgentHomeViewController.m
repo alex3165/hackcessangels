@@ -51,6 +51,7 @@
 #pragma mark - Actions
 
 - (IBAction) verifyHelpRequests:(id)sender {
+    [self.requestsService getRequests:nil failure:nil];
 }
 
 - (IBAction) createFakeHelpRequest:(id)sender {
