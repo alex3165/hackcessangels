@@ -10,6 +10,7 @@
 
 @interface HACurrentStationService : NSObject<NSStreamDelegate>
 
++ (id)sharedInstance;
 - (void) connectToServer;
 
 @end

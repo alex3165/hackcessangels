@@ -123,10 +123,14 @@
     
 }
 
+-(IBAction)disconnect:(id)sender {
+    [[HAUserService sharedInstance] disconnectUser];
+    [[self navigationController] popViewControllerAnimated:YES];
+}
 
 -(IBAction)modifyProfil:(id)sender{
     
-    [self performSegueWithIdentifier:@"modifyUserProfil" sender:self];
+    [self performSegueWithIdentifier:@"userEdit" sender:self];
     
 }
 

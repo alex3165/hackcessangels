@@ -13,9 +13,6 @@
 
 @interface HACallUserView : UIView
 
-
-@property (weak, nonatomic) IBOutlet UIButton *callUser;
-
 - (void) hideProfile;
 - (void) showProfile;
 

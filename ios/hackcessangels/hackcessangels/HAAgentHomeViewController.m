@@ -31,6 +31,7 @@
 
 - (void)viewDidLoad
 {
+    [self.tabBarController.tabBar setSelectedImageTintColor:[UIColor HA_purple]];
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor HA_graybg];
     self.helloUser.textColor = [UIColor HA_purple];
@@ -51,6 +52,7 @@
 #pragma mark - Actions
 
 - (IBAction) verifyHelpRequests:(id)sender {
+    [self.requestsService getRequests:nil failure:nil];
 }
 
 - (IBAction) createFakeHelpRequest:(id)sender {
@@ -59,7 +61,13 @@
     localNotif.alertAction = @"Appel à l'aide";
     HAHelpRequest* fakeHelpRequest = [[HAHelpRequest alloc] init];
     fakeHelpRequest.user = [[HAUser alloc] init];
+    NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: @"http://api.randomuser.me/portraits/women/31.jpg"]];
+    fakeHelpRequest.user.image = imageData;
     fakeHelpRequest.user.name = @"Michel Martin";
+    fakeHelpRequest.user.disabilityType = 7;
+    fakeHelpRequest.user.description = @" blablabla hello hello hello";
+    fakeHelpRequest.user.phone = @"0689637482";
+    fakeHelpRequest.user.phoneUrgence = @"0493827482";
     fakeHelpRequest.latitude = 48.83938;
     fakeHelpRequest.longitude = 2.27067;
     fakeHelpRequest.Id = @"deadbeef";

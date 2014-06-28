@@ -31,6 +31,7 @@ typedef void(^HAUserServiceFailure)(NSError *error);
                     success:(HARestRequestsSuccess)success
                     failure:(HARestRequestsFailure)failure;
 
+- (void)disconnectUser;
 
 - (void)deleteUserWithEmail:(NSString*) email success:(HARestRequestsSuccess)success
                           failure:(HARestRequestsFailure)failure;

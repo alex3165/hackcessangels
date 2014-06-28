@@ -12,6 +12,7 @@
 #import "HARestRequests.h"
 #import "HAUserService.h"
 #import "HAHelpRequest.h"
+#import "UIColor+HackcessAngels.h"
 
 @interface HAAgentUserProfileViewerViewController : UIViewController
 
@@ -26,9 +27,13 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *Phone;
 
-
 @property (weak, nonatomic) IBOutlet UIImageView *image;
+
 -(void) passHaRequest:(HAHelpRequest *)harequest;
+
+-(IBAction)callUserEmergency:(id)sender;
+
+-(IBAction)callUser:(id)sender;
 
 @end
 

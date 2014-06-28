@@ -73,8 +73,21 @@
                     if (storedHelpRequest.notification != nil) {
                         [[UIApplication sharedApplication] cancelLocalNotification:storedHelpRequest.notification];
                     }
+                } else if (storedHelpRequest.status == kRetry) {
+                    [[UIApplication sharedApplication] cancelLocalNotification:storedHelpRequest.notification];
+                    UILocalNotification *localNotif = [[UILocalNotification alloc] init];
+                    localNotif.alertBody = [NSString stringWithFormat:@"%@ a besoin de votre aide", helpRequest.user.name];
+                    localNotif.alertAction = @"Aide'gare: Appel à l'aide";
+                    localNotif.soundName = UILocalNotificationDefaultSoundName;
+                    NSDictionary* userInfo = [NSDictionary dictionaryWithObjectsAndKeys:[helpRequest toPropertyList], @"helpRequest", nil];
+                    localNotif.userInfo = userInfo;
+                    [[UIApplication sharedApplication] presentLocalNotificationNow:localNotif];
+                    helpRequest.notification = localNotif;
                 }
             }
+        }
+        if ([helpRequests count] == 0) {
+            [[UIApplication sharedApplication] cancelAllLocalNotifications];
         }
         self.helpRequests = newHelpRequestsDict;
         success(helpRequests);

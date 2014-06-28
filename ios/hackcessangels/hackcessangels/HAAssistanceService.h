@@ -22,11 +22,14 @@ typedef void(^HAAssistanceRequestUpdate)(HAHelpRequest* helpRequest);
 + (id) sharedInstance;
 
 - (void)startHelpRequest:(HAAssistanceRequestUpdate) update failure:(HARestRequestsFailure) failure;
+// Cancel an help request. Should only be called when an help request is in flight.
 - (void)stopHelpRequest;
 
 // Call to register a block that will be called for every update of the underlying HAHelpRequest.
 - (void)registerForUpdates:(HAAssistanceRequestUpdate) update failure:(HARestRequestsFailure) failure;
 
 - (void)helpMe:(CLLocation*)location success:(HARestRequestsSuccess)success failure:(HARestRequestsFailure)failure;
+// Retry an help request. Should only be called when an help request is in flight.
+- (void)retryHelp;
 - (void)cancelHelp;
 @end

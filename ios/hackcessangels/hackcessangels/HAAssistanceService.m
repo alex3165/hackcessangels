@@ -32,6 +32,8 @@
     @property(nonatomic, strong) NSMutableArray* failureCallbacks;
 @end
 
+const int kTimerRefreshInterval = 20;  // in seconds
+
 @implementation HAAssistanceService
 
 + (id)sharedInstance {
@@ -49,7 +51,7 @@
     self = [super init];
     if (self) {
         // Allocate a reachability object
-        self.reach = [Reachability reachabilityWithHostname:@"polaris.membrives.fr"];
+        self.reach = [Reachability reachabilityWithHostname:@"aidegare.membrives.fr"];
         
         // Start the notifier, which will cause the reachability object to retain itself!
         [self.reach startNotifier];
@@ -67,7 +69,7 @@
     [self.locationService setUpdateCallback:^(CLLocation *newLocation) {
         self.timer = [[NSTimer alloc]
                       initWithFireDate:[NSDate date]
-                      interval:30
+                      interval:kTimerRefreshInterval
                       target:self
                       selector:@selector(timerFired)
                       userInfo:nil
@@ -105,9 +107,9 @@
     [self.locationService stopLocation];
     
     HARestRequests* restRequest = [[HARestRequests alloc] init];
-    [restRequest DELETErequest:@"request" withParameters:@{} success:nil failure:nil];
-    
+    [restRequest DELETErequest:@"request" withParameters:@{@"id" : self.currentHelpRequest.Id} success:nil failure:nil];
     self.requestInFlight = false;
+    self.currentHelpRequest = nil;
 }
 
 - (void)helpMe:(CLLocation*)location success:(HARestRequestsSuccess)success failure:(HARestRequestsFailure)failure{
@@ -133,6 +135,21 @@
         // alert utilisateur
         self.peripheralService = [[HAPeripheral alloc]initWithLongAndLat:location.coordinate.longitude latitude:location.coordinate.latitude];
     }
+}
+
+- (void)retryHelp {
+    HARestRequests* restRequest = [[HARestRequests alloc] init];
+    [restRequest PUTrequest:@"help" withParameters:@{@"id" : self.currentHelpRequest.Id, @"retry": @YES} success:^(id obj, NSHTTPURLResponse *response) {
+        self.currentHelpRequest = [[HAHelpRequest alloc] initWithDictionary:obj];
+        for (HAAssistanceRequestUpdate update in self.updateCallbacks) {
+            update(self.currentHelpRequest);
+        }
+    } failure:^(id obj, NSError *error) {
+        DLog(@"failure");
+        for (HARestRequestsFailure failure in self.failureCallbacks) {
+            failure(obj, error);
+        }
+    }];
 }
 
 @end

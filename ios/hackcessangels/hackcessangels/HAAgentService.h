@@ -33,6 +33,7 @@ typedef void(^HAAgentServiceFailure)(NSError *error);
                           success:(HARestRequestsSuccess)success
                           failure:(HARestRequestsFailure)failure;
 
+- (void)disconnectAgent;
 
 - (void)deleteAgentWithEmail:(NSString*) email success:(HARestRequestsSuccess)success
                     failure:(HARestRequestsFailure)failure;
