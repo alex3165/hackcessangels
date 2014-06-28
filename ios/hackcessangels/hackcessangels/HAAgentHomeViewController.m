@@ -31,6 +31,7 @@
 
 - (void)viewDidLoad
 {
+    [self.tabBarController.tabBar setSelectedImageTintColor:[UIColor HA_purple]];
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor HA_graybg];
     self.helloUser.textColor = [UIColor HA_purple];
@@ -62,7 +63,7 @@
     NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: @"http://api.randomuser.me/portraits/women/31.jpg"]];
     fakeHelpRequest.user.image = imageData;
     fakeHelpRequest.user.name = @"Michel Martin";
-    fakeHelpRequest.user.disabilityType = 0;
+    fakeHelpRequest.user.disabilityType = 7;
     fakeHelpRequest.user.description = @" blablabla hello hello hello";
     fakeHelpRequest.user.phone = @"0689637482";
     fakeHelpRequest.user.phoneUrgence = @"0493827482";

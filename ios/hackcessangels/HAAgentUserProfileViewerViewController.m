@@ -94,11 +94,18 @@
 }
 
 -(IBAction)callUser:(id)sender {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:self.helpRequest.user.phone]];
+    if (self.helpRequest.user.disabilityType == Hearing_SMS) {
+        NSString *SmsNum = [NSString stringWithFormat:@"sms:%@", self.helpRequest.user.phone];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:SmsNum]];
+    }else{
+        NSString *CallNum = [NSString stringWithFormat:@"tel:%@", self.helpRequest.user.phone];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:CallNum]];
+    }
 }
 
 -(IBAction)callUserEmergency:(id)sender{
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:self.helpRequest.user.phoneUrgence]];
+        NSString *CallNum = [NSString stringWithFormat:@"tel:%@", self.helpRequest.user.phoneUrgence];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:CallNum]];
 }
 
 /*

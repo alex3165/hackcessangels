@@ -65,21 +65,8 @@
     
         //self.image.agentInteractionEnabled = YES;    [self.image addGestureRecognizer:tapRecognizer];
 }
-    
--(void)viewDidAppear:(BOOL)animated
-{
-
-}
-
 
 - (IBAction)saisieReturn:(id)sender {
-
-    
-    [sender resignFirstResponder];
-}
-
-- (IBAction)touchOutside:(id)sender {
-    
     [sender resignFirstResponder];
 }
 
@@ -128,7 +115,7 @@
         agent.password = self.passwordTextInput.text;
         agent.sncfId = self.numeroTextInput.text;
         agent.image = UIImageJPEGRepresentation(self.image.image, 0.90);
-        
+        agent.gare = self.gareTextInput.text;
         
         [[HAAgentService sharedInstance] updateAgent:agent success:^(HAAgent* agent) {
             UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Bravo" message:@"Profil édité" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];

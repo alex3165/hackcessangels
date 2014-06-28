@@ -29,7 +29,6 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *editButton;
 
 - (IBAction) saisieReturn:(id)sender;
-- (IBAction) touchOutside:(id)sender;
 - (IBAction) saveAndDismiss:(id)sender;
 - (IBAction) cancelAndDismiss:(id)sender;
 - (IBAction) takePicture:(id) sender;
