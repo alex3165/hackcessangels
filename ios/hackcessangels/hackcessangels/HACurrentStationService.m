@@ -58,10 +58,6 @@ const int kRetryIntervalInSeconds = 10;
         [self sendPosition];
     }];
     
-    if (self.connected) {
-        return;
-    }
-    self.connected = true;
     [self.locationService startAreaTracking];
     self.reachability = [Reachability reachabilityWithHostname:@"aidegare.membrives.fr"];
     [self.reachability startNotifier];
@@ -210,24 +206,21 @@ const int kRetryIntervalInSeconds = 10;
             break;
             
         case NSStreamEventHasSpaceAvailable:
-            if (aStream == self.outputStream && false)
-            {
-                if (aStream == self.outputStream)
-                {
-                    NSLog(@"Ping sent");
+            if (aStream == self.outputStream) {
+                if (!self.connected) {
+                    [[HAAgentService sharedInstance] getCurrentAgent:^(HAAgent *agent) {
+                        [self sendLogin:agent];
+                    } failure:^(NSError *error) {
+                        DLog(@"%@", error);
+                    }];
                 }
+                self.connected = true;
             }
             break;
             
         case NSStreamEventOpenCompleted:
             if (aStream == self.inputStream) {
                 NSLog(@"Connection Opened");
-            } else if (aStream == self.outputStream) {
-                [[HAAgentService sharedInstance] getCurrentAgent:^(HAAgent *agent) {
-                    [self sendLogin:agent];
-                } failure:^(NSError *error) {
-                    DLog(@"%@", error);
-                }];
             }
             break;
         default:
