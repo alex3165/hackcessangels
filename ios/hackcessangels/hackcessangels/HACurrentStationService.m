@@ -61,7 +61,6 @@ const int kRetryIntervalInSeconds = 10;
     [self.locationService startAreaTracking];
     self.reachability = [Reachability reachabilityWithHostname:@"aidegare.membrives.fr"];
     [self.reachability startNotifier];
-    self.spaceAvailableForWriting = false;
     [self connectToServerInternal];
 }
 
