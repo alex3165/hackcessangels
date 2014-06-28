@@ -49,7 +49,7 @@
     self = [super init];
     if (self) {
         // Allocate a reachability object
-        self.reach = [Reachability reachabilityWithHostname:@"polaris.membrives.fr"];
+        self.reach = [Reachability reachabilityWithHostname:@"aidegare.membrives.fr"];
         
         // Start the notifier, which will cause the reachability object to retain itself!
         [self.reach startNotifier];

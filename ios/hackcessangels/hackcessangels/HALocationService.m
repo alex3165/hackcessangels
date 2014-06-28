@@ -51,7 +51,6 @@
     self.locationManager.delegate = self;
     self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
     
-    
     [self.locationManager startMonitoringSignificantLocationChanges];
     return TRUE;
 }
@@ -66,6 +65,7 @@
 }
 
 - (void) locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
+    _location = [locations lastObject];
     // If the event is recent, do something with it.
     DLog(@"latitude %+.6f, longitude %+.6f, accuracy %+.6f\n",
           self.location.coordinate.latitude,
@@ -76,8 +76,8 @@
     }
 }
 
-- (CLLocation*) location {
-    return self.locationManager.location;
+- (void) locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
+    DLog(@"Failed to update location due to %@", error);
 }
 
 @end

@@ -22,7 +22,7 @@
 {
     // Periodically report location to server.
     if (self.currentStationService == nil) {
-        self.currentStationService = [[HACurrentStationService alloc] init];
+        self.currentStationService = [HACurrentStationService sharedInstance];
         [self.currentStationService connectToServer];
     }
     

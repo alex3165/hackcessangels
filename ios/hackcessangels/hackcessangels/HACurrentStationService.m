@@ -11,6 +11,8 @@
 #import "HAAgentService.h"
 #import "HARequestsService.h"
 
+#import "Reachability.h"
+
 #include <stdlib.h>
 
 @interface HACurrentStationService()
@@ -21,25 +23,60 @@
 @property (nonatomic, strong) NSInputStream *inputStream;
 @property (nonatomic, strong) NSOutputStream *outputStream;
 @property (nonatomic, strong) NSMutableString *communicationLog;
+@property (nonatomic, strong) Reachability *reachability;
+@property (nonatomic, strong) NSTimer *timer;
+@property (nonatomic, assign) BOOL connected;
+
 @end
 
 const uint8_t newline[] = "\n";
+const int kRetryIntervalInSeconds = 10;
 
 @implementation HACurrentStationService
 
++ (id)sharedInstance {
+    static HACurrentStationService *sharedStationService = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedStationService = [[self alloc] init];
+    });
+    return sharedStationService;
+}
 - (HACurrentStationService*) init {
     self = [super init];
     if (self) {
         self.locationService = [[HALocationService alloc] init];
         self.requestsService = [HARequestsService sharedInstance];
+        self.connected = false;
     }
     return self;
 }
 
 - (void)connectToServer {
+    // Do a keep-alive
+    [[UIApplication sharedApplication] setKeepAliveTimeout:600 handler:^{
+        [self sendPosition];
+    }];
+    
+    if (self.connected) {
+        return;
+    }
+    self.connected = true;
     [self.locationService startAreaTracking];
-    if (!self.inputStream) {
+    self.reachability = [Reachability reachabilityWithHostname:@"aidegare.membrives.fr"];
+    [self.reachability startNotifier];
+    [self connectToServerInternal];
+}
+
+- (void)connectToServerInternal {
+    if (!self.reachability.isReachable) {
+        // Retry in kRetryIntervalInSeconds if there is no connection available.
+        [NSTimer scheduledTimerWithTimeInterval:kRetryIntervalInSeconds target:self selector:@selector(connectToServerInternal) userInfo:nil repeats:NO];
+        return;
+    }
+    if (!self.inputStream || [self.inputStream streamStatus] != NSStreamStatusOpen) {
         // Connect to server
+        DLog(@"Connecting to server");
         CFReadStreamRef readStream;
         CFWriteStreamRef writeStream;
         CFStreamCreatePairWithSocketToHost(NULL, (__bridge CFStringRef)(@"aidegare.membrives.fr"), 5001, &readStream, &writeStream);
@@ -79,24 +116,13 @@ const uint8_t newline[] = "\n";
         // 4
         [self.inputStream open];
         [self.outputStream open];
-        
-        [[HAAgentService sharedInstance] getCurrentAgent:^(HAAgent *agent) {
-            [self sendLogin:agent];
-        } failure:^(NSError *error) {
-            DLog(@"%@", error);
-        }];
-        
-        // 5
-        [[UIApplication sharedApplication] setKeepAliveTimeout:600 handler:^{
-            [self sendPosition];
-        }];
     }
 }
 
 #pragma mark - Communication methods
 
 - (void)sendLogin:(HAAgent*) agent {
-    if (!self.outputStream) {
+    if (!self.outputStream || [self.outputStream streamStatus] != NSStreamStatusOpen) {
         DLog(@"No open connection");
         return;
     }
@@ -113,9 +139,9 @@ const uint8_t newline[] = "\n";
 
 - (void)sendPosition {
     // Abort if no connection is present.
-    // TODO(etienne): we should probably reopen the connection
-    if (!self.outputStream) {
+    if (!self.outputStream || [self.outputStream streamStatus] != NSStreamStatusOpen) {
         DLog(@"No open connection");
+        [self connectToServerInternal];
         return;
     }
     
@@ -148,16 +174,16 @@ const uint8_t newline[] = "\n";
             break;
             
         case NSStreamEventEndEncountered:
-            NSLog(@"Connection Closed");
-            self.inputStream = nil;
-            self.outputStream = nil;
-            
-            // We need to reopen the connection, but first wait a bit so we are not
-            [NSTimer scheduledTimerWithTimeInterval:arc4random_uniform(60) target:self selector:@selector(connectToServer) userInfo:nil repeats:NO];
-            break;
-            
         case NSStreamEventErrorOccurred:
-            NSLog(@"Had error: %@", aStream.streamError);
+            NSLog(@"Connection Closed: %@", aStream.streamError);
+            
+            // We need to reopen the connection, but first wait a bit so we are not overloading the server.
+            if (aStream == self.inputStream) {
+                [NSTimer scheduledTimerWithTimeInterval:kRetryIntervalInSeconds target:self selector:@selector(connectToServerInternal) userInfo:nil repeats:NO];
+            }
+            
+            [self.inputStream close];
+            [self.outputStream close];
             break;
             
         case NSStreamEventHasBytesAvailable:
@@ -194,12 +220,16 @@ const uint8_t newline[] = "\n";
             break;
             
         case NSStreamEventOpenCompleted:
-            if (aStream == self.inputStream)
-            {
+            if (aStream == self.inputStream) {
                 NSLog(@"Connection Opened");
+            } else if (aStream == self.outputStream) {
+                [[HAAgentService sharedInstance] getCurrentAgent:^(HAAgent *agent) {
+                    [self sendLogin:agent];
+                } failure:^(NSError *error) {
+                    DLog(@"%@", error);
+                }];
             }
             break;
-            
         default:
             break;
     }
