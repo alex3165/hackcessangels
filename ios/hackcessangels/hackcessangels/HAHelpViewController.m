@@ -60,6 +60,10 @@ static NSString* const hasRunAppOnceKey = @"hasRunAppOnceKey";
 }
 
 - (IBAction)helpme:(id)sender {
+    if (self.helpRequest != nil && self.helpRequest.status == kTimeout) {
+        [self.assistanceService retryHelp];
+        [self requestAgentContactedStatus];
+    }
     [self.assistanceService startHelpRequest:^(HAHelpRequest *helpRequest) {
         self.helpRequest = helpRequest;
         HAHelpSuccessViewController *helpSuccessViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"helpSuccess"];
@@ -111,7 +115,7 @@ static NSString* const hasRunAppOnceKey = @"hasRunAppOnceKey";
     UIImage *imageHelpInFlight = [UIImage imageNamed:@"EnCours.png"];
     [self.helpme setBackgroundImage:imageHelpInFlight forState:UIControlStateNormal];
     self.spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    self.spinner.center = CGPointMake(160, 290);
+    self.spinner.center = self.helpme.center;
     self.spinner.tag = 12;
     self.spinner.color = [UIColor whiteColor];
     self.spinner.transform = CGAffineTransformMakeScale(2.4,2.4);
@@ -133,7 +137,10 @@ static NSString* const hasRunAppOnceKey = @"hasRunAppOnceKey";
     self.whatStatus.textColor = [UIColor HA_red];
     UIImage *imageHelpFailed = [UIImage imageNamed:@"NonAboutie.png"];
     [self.helpme setBackgroundImage:imageHelpFailed forState:UIControlStateNormal];
+    [self.spinner removeFromSuperview];
+    self.spinner = nil;
 }
+
 -(void) requestAgentFailedAgainStatus{
     self.titleLabel.hidden = true;
     self.timeNotification.hidden = true;
@@ -148,6 +155,7 @@ static NSString* const hasRunAppOnceKey = @"hasRunAppOnceKey";
     UIImage *imageHelpFailed = [UIImage imageNamed:@"NonAboutie.png"];
     [self.helpme setBackgroundImage:imageHelpFailed forState:UIControlStateNormal];
 }
+
 -(void)defaultRequestAgentStatus {
     self.whatStatus.hidden = true;
     self.whoStatus.hidden = true;
@@ -158,6 +166,7 @@ static NSString* const hasRunAppOnceKey = @"hasRunAppOnceKey";
     UIImage *imageHelp = [UIImage imageNamed:@"help.png"];
     self.helpme.userInteractionEnabled = YES;
     [self.helpme setBackgroundImage:imageHelp forState:UIControlStateNormal];
+    self.helpRequest = nil;
 }
 
 -(void)requestAgentCancelStatus{
@@ -194,6 +203,7 @@ static NSString* const hasRunAppOnceKey = @"hasRunAppOnceKey";
         DLog(@"Success");
         NSString *helloName = [NSString stringWithFormat:@"Bonjour %@", user.name];
         self.titleLabel.text = helloName;
+        [self defaultRequestAgentStatus];
     } failure:^(NSError *error) {
         if (error.code == 401 || error.code == 404) {
             
