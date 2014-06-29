@@ -13,7 +13,7 @@ import (
 )
 
 const (
-	keepAliveTimeout = time.Second * 10
+	keepAliveTimeout = time.Minute * 5
 )
 
 type AgentLogin string

@@ -131,6 +131,12 @@ func (s *Server) handleHelp(w http.ResponseWriter, r *http.Request) {
 				helpRequest.ChangeStatus(model.RETRY, time.Now())
 			}
 		}
+		err = helpRequest.CheckStatus()
+		if err != nil {
+			log.Printf("Error while updating help request: %+v", err)
+			returnError(500, "Couldn't update request", w)
+			return
+		}
 		err = helpRequest.Save(true)
 		if err != nil {
 			log.Printf("Error while saving help request: %+v", err)
