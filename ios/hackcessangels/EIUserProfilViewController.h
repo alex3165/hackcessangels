@@ -32,7 +32,7 @@
 @property (weak, nonatomic) IBOutlet UIScrollView *scroll;
 
 
-
+@property (nonatomic, strong) HAUser *user;
 
 
 
