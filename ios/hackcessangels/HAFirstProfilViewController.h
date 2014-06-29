@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HAFirstProfilViewController : UIViewController <UIAlertViewDelegate, UIActionSheetDelegate>
+@interface HAFirstProfilViewController : UIViewController <UIAlertViewDelegate, UIActionSheetDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *viewInit;
 

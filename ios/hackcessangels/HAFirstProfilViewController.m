@@ -31,7 +31,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    NSLog(@"%hhd", _modifyLoggedTransfer);
+     NSLog(@"%hhd", _modifyLoggedTransfer);
      NSLog(@"%@", _nomPrenom.text);
      NSLog(@"%@", _phone.text);
     
