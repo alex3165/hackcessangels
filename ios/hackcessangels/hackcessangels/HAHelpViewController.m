@@ -43,6 +43,7 @@ static NSString* const hasRunAppOnceKey = @"hasRunAppOnceKey";
     [[self.cancelHelp layer] setBorderWidth:1.0f];
     [[self.cancelHelp layer] setCornerRadius:5.0f];
     [[self.cancelHelp layer] setBorderColor:[UIColor HA_red].CGColor];
+    [[self.urgencyNumber layer] setCornerRadius:5.0f];
     self.titleLabel.textColor = [UIColor HA_purple];
     self.whoStatus.textColor = [UIColor HA_purple];
     self.whatStatus.textColor = [UIColor HA_green];
@@ -193,12 +194,20 @@ static NSString* const hasRunAppOnceKey = @"hasRunAppOnceKey";
 
 -(void) outOfGareStatus{
     self.whoStatus.hidden = false;
+    self.urgencyNumber.hidden = false;
     NSString *whoStatus = [NSString stringWithFormat:@"Vous n'êtes pas dans une gare SNCF Transilien"];
     self.whoStatus.text = whoStatus;
     self.whatStatus.hidden = false;
     NSString *whatStatus = [NSString stringWithFormat:@"Si vous êtes en difficulté,"];
     self.whatStatus.text = whatStatus;
 }
+
+-(IBAction)emergencyCall:(id)sender{
+    
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"tel: 3117"]];
+    
+}
+
 /******************************************************************************************************************************
  *
  *

@@ -7,7 +7,6 @@
 //
 
 #import "EIUserProfilViewController.h"
-#import "HAUserViewController.h"
 #import "HAFirstProfilViewController.h"
 @interface EIUserProfilViewController ()
 

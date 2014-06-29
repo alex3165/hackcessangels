@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="MZd-BZ-RlH">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="l3m-2w-h3E">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -9,7 +9,7 @@
             <objects>
                 <viewController storyboardIdentifier="agentHomeViewController" id="Qb8-bn-O3d" customClass="HAAgentHomeViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kNU-kD-B8s">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ueR-Pa-hI3">
@@ -110,7 +110,7 @@
             <objects>
                 <viewController id="3KK-yH-COV" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NJw-0o-1A3">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label appearanceType="aqua" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Page informations" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dZT-Ta-gr7">
@@ -133,11 +133,11 @@
             <objects>
                 <viewController storyboardIdentifier="agentMapViewController" id="5uE-2O-GZe" customClass="HAMapViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="blK-NG-XP2">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" id="wEP-7S-t28">
-                                <rect key="frame" x="-1" y="0.0" width="322" height="568"/>
+                                <rect key="frame" x="-1" y="0.0" width="322" height="480"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </mapView>
                             <button opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="cMJ-8o-mmK">
@@ -234,7 +234,7 @@
             <objects>
                 <viewController id="4aJ-If-ycD" customClass="HAAgentViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="j0U-Ts-Htp">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="Qoo-TI-2G2" customClass="TPKeyboardAvoidingScrollView">
@@ -422,15 +422,15 @@
             <objects>
                 <viewController storyboardIdentifier="loginViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="l3m-2w-h3E" customClass="HALogViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="A9e-15-hQ9">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="Ne3-22-Dd3" customClass="TPKeyboardAvoidingScrollView">
-                                <rect key="frame" x="0.0" y="-6" width="320" height="574"/>
+                                <rect key="frame" x="0.0" y="-94" width="320" height="574"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <subviews>
                                     <view appearanceType="aqua" contentMode="scaleToFill" id="Ht0-0W-G69">
-                                        <rect key="frame" x="20" y="58" width="280" height="336"/>
+                                        <rect key="frame" x="20" y="161" width="280" height="336"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nom d'utilisateur" minimumFontSize="16" id="Pw6-dr-Mef" userLabel="Login">
@@ -500,6 +500,8 @@
                     <navigationItem key="navigationItem" title="Aide'Gare" id="xbL-WP-caP"/>
                     <connections>
                         <outlet property="email" destination="Pw6-dr-Mef" id="N5E-bi-V49"/>
+                        <outlet property="loginContainer" destination="Ht0-0W-G69" id="d22-aR-PSD"/>
+                        <outlet property="loginTitle" destination="RNK-Ov-fUx" id="u4A-3D-xef"/>
                         <outlet property="password" destination="4ci-3P-OZl" id="G0D-wx-6PH"/>
                         <outlet property="valider" destination="Laz-Xj-gZY" id="X51-bH-6hv"/>
                     </connections>
@@ -552,7 +554,7 @@
             <objects>
                 <viewController storyboardIdentifier="completeProfil" useStoryboardIdentifierAsRestorationIdentifier="YES" id="0SL-v0-OVr" customClass="HAAgentUserProfileViewerViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zN5-d8-I48">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="dx2-1b-Snx">
@@ -689,6 +691,6 @@
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4"/>
+        <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
 </document>

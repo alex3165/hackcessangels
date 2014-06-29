@@ -7,7 +7,6 @@
 //
 
 #import "HAFirstProfilViewController.h"
-#import "HAUserViewController.h"
 #import "HAUserService.h"
 #import "HARestRequests.h"
 #import "HARequestsService.h"
