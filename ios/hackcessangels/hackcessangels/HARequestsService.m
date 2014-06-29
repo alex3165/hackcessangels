@@ -97,7 +97,7 @@
 }
 
 - (void)updateRequest:(HAHelpRequest *)request success:(HAHelpRequestServiceSuccess)success failure:(HAHelpRequestServiceFailure)failure {
-    [self.restRequest GETrequest:@"agent/requests" withParameters:@{@"requestid": request.Id} success:^(id obj, NSHTTPURLResponse *response){
+    [self.restRequest GETrequest:@"agent/requests" withParameters:@{@"RequestId": request.Id} success:^(id obj, NSHTTPURLResponse *response){
         // obj is a single help request, as we are requesting a request with a specific ID.
         HAHelpRequest *helpRequest = [[HAHelpRequest alloc] initWithDictionary:obj];
         success(helpRequest);
@@ -107,7 +107,7 @@
 }
 
 - (void)takeRequest:(HAHelpRequest *)request success:(HAHelpRequestServiceSuccess)success failure:(HAHelpRequestServiceFailure)failure {
-    [self.restRequest POSTrequest:@"agent/requests" withParameters:@{@"requestid":request.Id, @"TakeRequest": @YES} success:^(id obj, NSHTTPURLResponse *response){
+    [self.restRequest POSTrequest:@"agent/requests" withParameters:@{@"requestid":request.Id, @"takerequest": @YES} success:^(id obj, NSHTTPURLResponse *response){
         success([[HAHelpRequest alloc] initWithDictionary:obj]);
     } failure:^(id obj, NSError* error) {
         failure(error);
@@ -115,7 +115,7 @@
 }
 
 - (void)finishRequest:(HAHelpRequest*) request success:(HAHelpRequestServiceSuccess)success failure:(HAHelpRequestServiceFailure)failure{
-    [self.restRequest POSTrequest:@"agent/requests" withParameters:@{@"requestid":request.Id, @"FinishRequest": @YES} success:^(id obj, NSHTTPURLResponse *response){
+    [self.restRequest POSTrequest:@"agent/requests" withParameters:@{@"requestid":request.Id, @"finishrequest": @YES} success:^(id obj, NSHTTPURLResponse *response){
         success([[HAHelpRequest alloc] initWithDictionary:obj]);
     } failure:^(id obj, NSError* error) {
         failure(error);
