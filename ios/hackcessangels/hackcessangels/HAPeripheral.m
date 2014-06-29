@@ -44,59 +44,28 @@
 }
 
 - (void)peripheralManager:(CBPeripheralManager *)peripheral central:(CBCentral *)central didSubscribeToCharacteristic:(CBCharacteristic *)characteristic {
-
-        self.actualUser = [HAUser userFromKeyChain];
-
-        NSString *userName = self.actualUser.name == nil ? @"inconnue" : self.actualUser.name;
-        NSString *userPhone = self.actualUser.phone == nil ? @"inconnue" : self.actualUser.phone;
-        NSString *userEmail = self.actualUser.email == nil ? @"inconnue" : self.actualUser.email;
-        NSString *userDisability;
     
-        switch (self.actualUser.disabilityType) {
-        case Physical_wheelchair:
-            userDisability = @"Handicap moteur. Je suis en chaise roulante";
-            break;
-        case Physical_powerchair:
-            userDisability = @" Handicap moteur. Je suis en chaise électrique";
-            break;
-        case Physical_walk:
-            userDisability = @"Handicap moteur. J'ai des problèmes de marche.";
-            break;
-        case Vision_blind :
-            userDisability = @"Handicap visuel. Je suis aveugle.";
-            break;
-        case Vision_lowvision:
-            userDisability = @"Handicap visuel. J'ai une mauvaise vue";
-            break;
-        case Hearing_call:
-            userDisability = @"Handicap auditif. Je répond aux appels.";
-            break;
-        case Hearing_SMS:
-            userDisability = @"Handicap auditif. Je répond aux sms.";
-            break;
-        case Mental:
-            userDisability = @"Handicap Mental";
-            break;
-        case Other:
-            userDisability = @"Handicap Autre";
-            break;
-        case Unknown:
-            userDisability = @"Handicap inconnu";
-            break;
-        }
-
-        NSDictionary *userDictionary = @{
-                        @"name" : userName,
-                        @"phone" : userPhone,
-                        @"email" : userEmail,
-                        @"disability" : userDisability,
-                        @"longitude" : [[NSNumber alloc] initWithDouble:self.longitude],
-                        @"latitude" : [[NSNumber alloc] initWithDouble:self.lat]
-                        };
-
-        NSError *err;
-        
-        self.dataToSend = [NSPropertyListSerialization dataWithPropertyList:userDictionary format:NSPropertyListXMLFormat_v1_0 options:(NSPropertyListWriteOptions)nil error:&err];
+    self.actualUser = [HAUser userFromKeyChain];
+    
+    NSString *userName = self.actualUser.name == nil ? @"inconnue" : self.actualUser.name;
+    NSString *userPhone = self.actualUser.phone == nil ? @"inconnue" : self.actualUser.phone;
+    NSString *userEmail = self.actualUser.email == nil ? @"inconnue" : self.actualUser.email;
+    NSString *userDisability;
+    
+    userDisability = [self.actualUser getDisabilityString];
+    
+    NSDictionary *userDictionary = @{
+                                     @"name" : userName,
+                                     @"phone" : userPhone,
+                                     @"email" : userEmail,
+                                     @"disability" : userDisability,
+                                     @"longitude" : [[NSNumber alloc] initWithDouble:self.longitude],
+                                     @"latitude" : [[NSNumber alloc] initWithDouble:self.lat]
+                                     };
+    
+    NSError *err;
+    
+    self.dataToSend = [NSPropertyListSerialization dataWithPropertyList:userDictionary format:NSPropertyListXMLFormat_v1_0 options:(NSPropertyListWriteOptions)nil error:&err];
     
     self.sendDataIndex = 0;
     

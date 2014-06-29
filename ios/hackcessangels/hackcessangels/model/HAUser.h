@@ -46,10 +46,17 @@ extern NSString *const kPhoneUrgenceKey;
 
 - (id)initWithDictionary:(NSDictionary *)dico;
 
+// Get the current user from the device keychain.
 + (HAUser*) userFromKeyChain;
+// Save this user to the keychain, possibly erasing any previous saves
 - (void) saveUserToKeyChain;
+// Delete saved user from the keychain
 - (void) deleteUserFromKeyChain;
 
+// Convenience method that returns the description string associated with this user disability
+- (NSString*) getDisabilityString;
+
+// Return this user data in property list format, suitable for serialization
 - (NSDictionary*) toPropertyList;
 
 @end
