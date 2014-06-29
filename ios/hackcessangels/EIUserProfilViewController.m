@@ -30,6 +30,8 @@
     
     //self.modifier.layer.borderWidth = 0.5f;
     self.modifier.layer.cornerRadius = 5;
+    
+    
 }
 
 - (void) viewDidAppear:(BOOL)animated {
@@ -40,7 +42,7 @@
     [super viewDidAppear:animated];
     
     [[HAUserService sharedInstance] getCurrentUser:^(HAUser *user) {
-        
+        self.user=user;
         //TOP LABEL
         self.nomPrenom.text = user.name;
         
@@ -65,44 +67,8 @@
         
         //faire un enum
         //  self.handicap=user.disabilityType;
-        
-        switch (user.disabilityType) {
-            case Physical_wheelchair:
-                self.handicapInfos.text=@"Handicap moteur. Je suis en chaise roulante";
-                break;
-            case    Physical_powerchair:
-                self.handicapInfos.text=@" Handicap moteur. Je suis en chaise électrique";
-                break;
-            case  Physical_walk:
-                self.handicapInfos.text=@"Handicap moteur. J'ai des problèmes de marche.";
-                break;
-            case   Vision_blind :
-                self.handicapInfos.text=@"Handicap visuel. Je suis aveugle.";
-                break;
-            case   Vision_lowvision:
-                self.handicapInfos.text=@"Handicap visuel. J'ai une mauvaise vue";
-                break;
-                
-                
-            case Hearing_call:
-                self.handicapInfos.text=@"Handicap auditif. Je répond aux appels.";
-                break;
-            case Hearing_SMS:
-                self.handicapInfos.text=@"Handicap auditif. Je répond aux sms.";
-                break;
-                
-            case Mental:
-                self.handicapInfos.text=@"Handicap Mental";
-                break;
-                
-            case Other:
-                self.handicapInfos.text=@"Handicap Autre";
-                break;
-                
-            case Unknown:
-                self.handicapInfos.text=@"Handicap inconnu";
-                break;
-        }
+        // TODO(etienne): Where to display custom string for "other" disability type?
+        self.handicapInfos.text = [user getDisabilityString];
         
         
     } failure:^(NSError *error) {
@@ -129,10 +95,8 @@
 }
 
 -(IBAction)modifyProfil:(id)sender{
-    
-    HAUserViewController *userViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"userEdit"];
-    [self.navigationController pushViewController:userViewController animated:YES];
-    //[self performSegueWithIdentifier:@"userEdit" sender:self];
+
+    [self performSegueWithIdentifier:@"modifyUserProfil" sender:self];
     
 }
 
@@ -142,26 +106,9 @@
     {
         // Get reference to the destination view controller
         HAFirstProfilViewController *modifyprofil = [segue destinationViewController];
-        
-        [[HAUserService sharedInstance] getCurrentUser:^(HAUser *user) {
-            
-      
-            modifyprofil.nomPrenom.text = _nomPrenom.text;
-            modifyprofil.phone.text=_phone.text;
-            modifyprofil.urgencePhone.text=_urgencePhone.text;
-            modifyprofil.handicapInfos.text=  _infos.text;
-            
-    
-            
-            modifyprofil.handicapAutre.text=  _handicapAutre.text;
-            modifyprofil.modifyLoggedTransfer=1;
-            
-        } failure:^(NSError *error) {
-            UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Erreur" message:@"Serveur injoignable" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
-            [alert show];
-        }];
-        
-        
+        modifyprofil.user=self.user;
+
+
     }
 }
 

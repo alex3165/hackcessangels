@@ -25,7 +25,7 @@
     @property (nonatomic, weak) NSTimer* timer;
 @end
 
-NSTimeInterval const kRequestUpdateTimeInterval = 5;// * 60.0;
+NSTimeInterval const kRequestUpdateTimeInterval = 15;
 
 @implementation HAMapViewController
 
@@ -97,39 +97,7 @@ CLLocationCoordinate2D coordinate;
         self.callUserView.hidden = FALSE;
         self.userName.text = self.helpRequest.user.name;
         self.userPicture.image = [UIImage imageWithData:self.helpRequest.user.image];
-
-        switch (self.helpRequest.user.disabilityType) {
-            case Physical_wheelchair:
-                self.userDisability.text=@"Handicap moteur. Je suis en chaise roulante";
-                break;
-            case    Physical_powerchair:
-                self.userDisability.text=@" Handicap moteur. Je suis en chaise électrique";
-                break;
-            case  Physical_walk:
-                self.userDisability.text=@"Handicap moteur. J'ai des problèmes de marche.";
-                break;
-            case   Vision_blind :
-                self.userDisability.text=@"Handicap visuel. Je suis aveugle.";
-                break;
-            case   Vision_lowvision:
-                self.userDisability.text=@"Handicap visuel. J'ai une mauvaise vue";
-                break;
-            case Hearing_call:
-                self.userDisability.text=@"Handicap auditif. Je répond aux appels.";
-                break;
-            case Hearing_SMS:
-                self.userDisability.text=@"Handicap auditif. Je répond aux sms.";
-                break;
-            case Mental:
-                self.userDisability.text=@"Handicap Mental";
-                break;
-            case Other:
-                self.userDisability.text=@"Handicap Autre";
-                break;
-            case Unknown:
-                self.userDisability.text=@"Handicap inconnu";
-                break;
-        }
+        self.userDisability.text = [self.helpRequest.user getDisabilityString];
         bool needsHelp = [self.helpRequest needsHelp];
         [self.helpok setHidden:!needsHelp];
     }
