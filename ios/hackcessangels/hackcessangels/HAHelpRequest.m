@@ -49,6 +49,7 @@ NSString *const kStatusKey = @"CurrentState";
         case kCancelled:
         case kAbandonned:
         case kRequestCompleted:
+        case kNotInStation:
             return true;
             break;
         default:
@@ -64,6 +65,7 @@ NSString *const kStatusKey = @"CurrentState";
         case kAgentAnswered:
         case kRequestCompleted:
         case kReportFilled:
+        case kNotInStation:
             return false;
             break;
         default:
