@@ -84,7 +84,7 @@ func (s *AgentService) handleRequest(conn net.Conn) {
 	log.Println("New connection")
 	readWriter := bufio.NewReadWriter(bufio.NewReader(conn), bufio.NewWriter(conn))
 
-	conn.SetDeadline(time.Now().Add(10 * time.Second))
+	conn.SetDeadline(time.Now().Add(20 * time.Second))
 	message, err := readFromClient(readWriter.Reader)
 	if err != nil {
 		log.Println("Error while reading initial data: ", err)
