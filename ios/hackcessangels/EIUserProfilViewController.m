@@ -28,7 +28,7 @@
 {
     [super viewDidLoad];
     
-    self.modifier.layer.borderWidth = 0.5f;
+    //self.modifier.layer.borderWidth = 0.5f;
     self.modifier.layer.cornerRadius = 5;
     
     
@@ -95,7 +95,7 @@
 }
 
 -(IBAction)modifyProfil:(id)sender{
-    
+
     [self performSegueWithIdentifier:@"modifyUserProfil" sender:self];
     
 }

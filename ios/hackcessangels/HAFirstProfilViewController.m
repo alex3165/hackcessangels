@@ -31,8 +31,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    
     
     if (self.user!=nil) {
         [self.viewLog removeFromSuperview];
