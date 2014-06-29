@@ -3,11 +3,12 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "fauteil.png"
+      "filename" : "wheelchair.png"
     },
     {
       "idiom" : "universal",
-      "scale" : "2x"
+      "scale" : "2x",
+      "filename" : "wheelchair_retina.png"
     }
   ],
   "info" : {
