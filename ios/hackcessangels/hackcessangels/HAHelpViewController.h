@@ -30,6 +30,7 @@
 -(void) requestAgentTryAgainStatus;
 -(void) requestAgentFailedAgainStatus;
 -(void) requestAgentCancelStatus;
+-(void) outOfGareStatus;
 
 - (IBAction) showProfil:(id)sender;
 - (IBAction) cancelHelp:(id)sender;
