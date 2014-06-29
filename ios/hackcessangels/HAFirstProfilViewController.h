@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "HAUser.h"
 @interface HAFirstProfilViewController : UIViewController <UIAlertViewDelegate, UIActionSheetDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *viewInit;
@@ -73,6 +73,7 @@
 @property BOOL visionSelected;
 @property BOOL modifyLoggedTransfer;
 
+@property (nonatomic, strong) HAUser *user;
 //stocker la position des Pickers pour les remettre  leur place
 
 //changer la position du picker

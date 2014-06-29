@@ -31,14 +31,21 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    NSLog(@"%hhd", _modifyLoggedTransfer);
-     NSLog(@"%@", _nomPrenom.text);
-     NSLog(@"%@", _phone.text);
+
     
     
-    if (self.modifyLoggedTransfer==1) {
+    if (self.user!=nil) {
+        
+     self.nomPrenom.text = self.user.name;
+         self.phone.text=self.user.phone;
+         self.urgencePhone.text=self.user.phoneUrgence;
+        self.handicapInfos.text=self.user.description;
+         self.handicapAutre.text=self.user.disability;
         
         [self.view addSubview:_view1];
+        NSLog(@"%hhd", _modifyLoggedTransfer);
+        NSLog(@"%@", _nomPrenom.text);
+        NSLog(@"%@", _phone.text);
     }
     
     else {
@@ -445,7 +452,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     [self.view3 removeFromSuperview];
     
     [self.view addSubview:self.view2];
-    [self view2];
+   
 }
 
 - (IBAction)backToNom:(id)sender  {

@@ -30,6 +30,8 @@
     
     self.modifier.layer.borderWidth = 0.5f;
     self.modifier.layer.cornerRadius = 5;
+    
+    
 }
 
 - (void) viewDidAppear:(BOOL)animated {
@@ -40,7 +42,7 @@
     [super viewDidAppear:animated];
     
     [[HAUserService sharedInstance] getCurrentUser:^(HAUser *user) {
-        
+        self.user=user;
         //TOP LABEL
         self.nomPrenom.text = user.name;
         
@@ -94,7 +96,7 @@
 
 -(IBAction)modifyProfil:(id)sender{
     
-    [self performSegueWithIdentifier:@"userEdit" sender:self];
+    [self performSegueWithIdentifier:@"modifyUserProfil" sender:self];
     
 }
 
@@ -104,26 +106,9 @@
     {
         // Get reference to the destination view controller
         HAFirstProfilViewController *modifyprofil = [segue destinationViewController];
-        
-        [[HAUserService sharedInstance] getCurrentUser:^(HAUser *user) {
-            
-      
-            modifyprofil.nomPrenom.text = _nomPrenom.text;
-            modifyprofil.phone.text=_phone.text;
-            modifyprofil.urgencePhone.text=_urgencePhone.text;
-            modifyprofil.handicapInfos.text=  _infos.text;
-            
-    
-            
-            modifyprofil.handicapAutre.text=  _handicapAutre.text;
-            modifyprofil.modifyLoggedTransfer=1;
-            
-        } failure:^(NSError *error) {
-            UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Erreur" message:@"Serveur injoignable" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
-            [alert show];
-        }];
-        
-        
+        modifyprofil.user=self.user;
+
+
     }
 }
 
