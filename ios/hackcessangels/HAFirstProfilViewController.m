@@ -33,13 +33,37 @@
     [super viewDidLoad];
     
     if (self.user!=nil) {
+        [self.viewLog removeFromSuperview];
+        [self.viewInit removeFromSuperview];
         
      self.nomPrenom.text = self.user.name;
          self.phone.text=self.user.phone;
          self.urgencePhone.text=self.user.phoneUrgence;
         self.handicapInfos.text=self.user.description;
          self.handicapAutre.text=self.user.disability;
+       // self.handicap=self.user.disabilityType;
         
+        NSLog(@"%u HANDICAP", self.user.disabilityType );
+
+
+        if (self.user.disabilityType==1 || self.user.disabilityType==2 || self.user.disabilityType==3) {
+            [self.handicapMoteur setBackgroundColor:[UIColor purpleColor]];
+        }
+        else if (self.user.disabilityType==4 || self.user.disabilityType==4) {
+            [self.handicapVisuel setBackgroundColor:[UIColor purpleColor]];
+        }
+        else if (self.user.disabilityType==6 || self.user.disabilityType==7  ) {
+            [self.handicapAuditif setBackgroundColor:[UIColor purpleColor]];
+        }
+        else if (self.user.disabilityType==8) {
+            [self.handicapCognitif setBackgroundColor:[UIColor purpleColor]];
+        }
+        
+        else if (self.user.disabilityType==9) {
+            self.handicapAutre.text=@"Entrez votre handicap.";
+        }
+        
+
         [self.view addSubview:_view1];
         NSLog(@"%hhd", _modifyLoggedTransfer);
         NSLog(@"%@", _nomPrenom.text);
@@ -434,6 +458,8 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 
 - (IBAction)ignorePhoto:(id)sender  {
     [[self navigationController] popToRootViewControllerAnimated:YES];
+    
+    
 }
 
 
@@ -448,9 +474,9 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 - (IBAction)backToHandicap:(id)sender  {
     
     [self.view3 removeFromSuperview];
-    
+     [self.view4 removeFromSuperview];
     [self.view addSubview:self.view2];
-   
+
 }
 
 - (IBAction)backToNom:(id)sender  {
