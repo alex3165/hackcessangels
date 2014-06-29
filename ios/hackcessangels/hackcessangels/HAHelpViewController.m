@@ -190,6 +190,15 @@ static NSString* const hasRunAppOnceKey = @"hasRunAppOnceKey";
     self.spinner = nil;
     [self checkUser];
 }
+
+-(void) outOfGareStatus{
+    self.whoStatus.hidden = false;
+    NSString *whoStatus = [NSString stringWithFormat:@"Vous n'êtes pas dans une gare SNCF Transilien"];
+    self.whoStatus.text = whoStatus;
+    self.whatStatus.hidden = false;
+    NSString *whatStatus = [NSString stringWithFormat:@"Si vous êtes en difficulté,"];
+    self.whatStatus.text = whatStatus;
+}
 /******************************************************************************************************************************
  *
  *
