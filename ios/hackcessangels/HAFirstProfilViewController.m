@@ -155,7 +155,7 @@
                                                              delegate:self
                                                     cancelButtonTitle:@"Cancel"
                                                destructiveButtonTitle:nil
-                                                    otherButtonTitles:@"Je suis malvoyante",@"Je suis aveugle", nil];
+                                                    otherButtonTitles:@"Je suis malvoyant(e)",@"Je suis aveugle", nil];
     [_actionSheetVision showInView:self.view];
     
 
@@ -440,7 +440,11 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
                 
                 UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Bravo" message:@"Profil édité" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
                 [alert show];
-                [self.parentViewController dismissViewControllerAnimated:YES completion:nil];
+                if ([NSStringFromClass([self.parentViewController class]) isEqualToString:@"HALogViewController"]) {
+                    [self.parentViewController dismissViewControllerAnimated:YES completion:nil];
+                } else {
+                    [self dismissViewControllerAnimated:YES completion:nil];
+                }
             } failure:^(NSError *error) {
                 UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Erreur" message:@"Profil non édité" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
                 [alert show];
@@ -457,12 +461,15 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 }
 
 - (IBAction)ignorePhoto:(id)sender  {
-    [self.parentViewController dismissViewControllerAnimated:YES completion:nil];
+    if ([NSStringFromClass([self.parentViewController class]) isEqualToString:@"HALogViewController"]) {
+        [self.parentViewController dismissViewControllerAnimated:YES completion:nil];
+    } else {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
 }
 
 
 - (IBAction)backToInfos:(id)sender  {
-    
     [self.view4 removeFromSuperview];
     
     [self.view addSubview:self.view3];
