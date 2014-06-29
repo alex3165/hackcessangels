@@ -30,7 +30,7 @@
 @end
 
 const uint8_t newline[] = "\n";
-const int kRetryIntervalInSeconds = 10;
+const int kRetryIntervalInSeconds = 30;
 
 @implementation HACurrentStationService
 
