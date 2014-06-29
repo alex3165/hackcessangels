@@ -74,7 +74,6 @@ const int kTimerRefreshInterval = 20;  // in seconds
                       selector:@selector(timerFired)
                       userInfo:nil
                       repeats:YES];
-        
         [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:NSDefaultRunLoopMode];
         [self.locationService setUpdateCallback:nil];
     }];
