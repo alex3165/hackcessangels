@@ -110,6 +110,7 @@
 }
 
 - (IBAction)saveAndDismiss:(id)sender {
+    // TODO(etienne): add a spinner and disable save button while we are processing the request.
     [[HAAgentService sharedInstance] getCurrentAgent:^(HAAgent *agent) {
         agent.name = self.nameTextInput.text;
         agent.password = self.passwordTextInput.text;
