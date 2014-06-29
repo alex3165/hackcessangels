@@ -114,8 +114,9 @@
         [[HAUserService sharedInstance] updateUser:user success:^(HAUser* user) {
             
  
-            [self.view1 removeFromSuperview];
-            [self.view addSubview:self.view2];
+            self.view1.hidden=YES;
+            self.view2.hidden=NO;
+
 
         } failure:^(NSError *error) {
             UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Erreur" message:@"Profil non édité" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
@@ -190,13 +191,15 @@
 -(void) setUserHandicap :(HAUSerDisability)disability{
 
         [[HAUserService sharedInstance] getCurrentUser:^(HAUser *user)  {
-            user.disabilityType=disability;
+
             user.disability=_handicapAutre.text;
+            user.disabilityType=disability;
+           
             
             [[HAUserService sharedInstance] updateUser:user success:^(HAUser* user) {
-
-                [self.view2 removeFromSuperview];
-                [self.view addSubview:self.view3];
+                self.view2.hidden=YES;
+                self.view3.hidden=NO;
+         
  
         } failure:^(NSError *error) {
             UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Erreur" message:@"Profil non édité" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
@@ -218,9 +221,9 @@
      
         [[HAUserService sharedInstance] updateUser:user success:^(HAUser* user) {
             
-          
-            [self.view3 removeFromSuperview];
-            [self.view addSubview:self.view4];
+          self.view3.hidden=YES;
+      self.view4.hidden=NO;
+
 
         
         } failure:^(NSError *error) {
@@ -246,8 +249,10 @@
     [userService createUserWithEmailAndPassword:self.mail.text password:self.password.text success:^(id obj, id obj2){
 
         [userService loginWithEmailAndPassword:self.mail.text password:self.password.text success:^(id obj, id obj2){
-            [self.viewLog removeFromSuperview];
-            [self.view addSubview:self.view1];
+            
+            self.viewLog.hidden=YES;
+            self.view1.hidden=NO;
+            
         }
          
                                        failure:^(id obj, NSError *error) {
@@ -276,11 +281,13 @@
     if([title isEqualToString:@"Accepter"])
     {
         NSLog(@"Button 1 was selected.");
-        [self.viewInit removeFromSuperview];
-        [self.view addSubview:self.viewLog];
+        self.viewInit.hidden=YES;
+        self.viewLog.hidden=NO;
+  
     }
     else if([title isEqualToString:@"Refuser"])
     {
+        
         [self.view addSubview:self.viewInit];
     }
     
@@ -470,25 +477,33 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 
 
 - (IBAction)backToInfos:(id)sender  {
-    [self.view4 removeFromSuperview];
+
+
+    self.view4.hidden=YES;
     
-    [self.view addSubview:self.view3];
-    [self view3];
+    self.view3.hidden=NO;
+
 }
 
 - (IBAction)backToHandicap:(id)sender  {
     
-    [self.view3 removeFromSuperview];
-     [self.view4 removeFromSuperview];
-    [self.view addSubview:self.view2];
+
+    
+    self.view3.hidden=YES;
+    self.view2.hidden=NO;
+
+
+    
+    
 
 }
 
 - (IBAction)backToNom:(id)sender  {
+    self.view2.hidden=YES;
     
-    [self.view2 removeFromSuperview];
-    
-    [self.view addSubview:self.view1];
+    self.view1.hidden=NO;
+   
+  
    
 }
 
