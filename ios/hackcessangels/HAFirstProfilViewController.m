@@ -440,7 +440,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
                 
                 UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Bravo" message:@"Profil édité" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
                 [alert show];
-                [[self navigationController] popToRootViewControllerAnimated:YES];
+                [self.parentViewController dismissViewControllerAnimated:YES completion:nil];
             } failure:^(NSError *error) {
                 UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Erreur" message:@"Profil non édité" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
                 [alert show];
@@ -457,9 +457,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 }
 
 - (IBAction)ignorePhoto:(id)sender  {
-    [[self navigationController] popToRootViewControllerAnimated:YES];
-    
-    
+    [self.parentViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 

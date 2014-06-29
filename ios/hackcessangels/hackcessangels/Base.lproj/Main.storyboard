@@ -331,6 +331,7 @@
                                         </state>
                                         <connections>
                                             <action selector="modifyProfil:" destination="Vc2-jK-s4z" eventType="touchUpInside" id="xda-qL-DpF"/>
+                                            <segue destination="qhe-hd-3la" kind="modal" identifier="modifyUserProfil" id="zgs-Yo-uFT"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jY0-Nv-7dc">
@@ -1271,4 +1272,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="zgs-Yo-uFT"/>
+    </inferredMetricsTieBreakers>
 </document>
