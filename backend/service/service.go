@@ -87,7 +87,7 @@ func (s *AgentService) handleRequest(conn net.Conn) {
 	conn.SetDeadline(time.Now().Add(10 * time.Second))
 	message, err := readFromClient(readWriter.Reader)
 	if err != nil {
-        log.Println("Error while reading initial data: ", err)
+		log.Println("Error while reading initial data: ", err)
 		return
 	}
 	conn.SetDeadline(time.Time{})
