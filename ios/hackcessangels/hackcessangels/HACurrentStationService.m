@@ -180,7 +180,7 @@ const int kRetryIntervalInSeconds = 10;
         case NSStreamEventEndEncountered:
         case NSStreamEventErrorOccurred:
             NSLog(@"Connection Closed: %@", aStream.streamError);
-            
+            self.connected = false;
             // We need to reopen the connection, but first wait a bit so we are not overloading the server.
             if (aStream == self.inputStream) {
                 [NSTimer scheduledTimerWithTimeInterval:kRetryIntervalInSeconds target:self selector:@selector(connectToServerInternal) userInfo:nil repeats:NO];
