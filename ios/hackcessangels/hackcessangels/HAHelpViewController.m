@@ -89,7 +89,8 @@ static NSString* const hasRunAppOnceKey = @"hasRunAppOnceKey";
                 [self presentViewController:helpSuccessViewController animated:YES completion:nil];
                 break;
             case kNotInStation:
-                // Faire la vue vous n'êtes pas dans la station
+                [self outOfGareStatus];
+                break;
             default:
                 [self defaultRequestAgentStatus];
                 break;
@@ -159,6 +160,7 @@ static NSString* const hasRunAppOnceKey = @"hasRunAppOnceKey";
     [self.helpme setBackgroundImage:imageHelpFailed forState:UIControlStateNormal];
     [self.spinner removeFromSuperview];
     self.spinner = nil;
+    [NSTimer scheduledTimerWithTimeInterval:15 target:self selector:@selector(defaultRequestAgentStatus) userInfo:nil repeats:NO];
 }
 
 -(void)defaultRequestAgentStatus {
@@ -200,6 +202,7 @@ static NSString* const hasRunAppOnceKey = @"hasRunAppOnceKey";
     self.whatStatus.hidden = false;
     NSString *whatStatus = [NSString stringWithFormat:@"Si vous êtes en difficulté,"];
     self.whatStatus.text = whatStatus;
+    [NSTimer scheduledTimerWithTimeInterval:30 target:self selector:@selector(defaultRequestAgentStatus) userInfo:nil repeats:NO];
 }
 
 -(IBAction)emergencyCall:(id)sender{

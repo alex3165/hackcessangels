@@ -24,6 +24,7 @@
     @property(nonatomic, strong) HAPeripheral* peripheralService;
     @property(nonatomic, strong) HACentralManager* managerService;
     @property(nonatomic, assign) BOOL requestInFlight;
+    @property(nonatomic, assign) BOOL coolOff;
 
     // The help request currently in flight; nil otherwise.
     @property(nonatomic, strong) HAHelpRequest* currentHelpRequest;
@@ -33,6 +34,7 @@
 @end
 
 const int kTimerRefreshInterval = 20;  // in seconds
+const int kCoolOffPeriod = 30;  // in seconds
 
 @implementation HAAssistanceService
 
@@ -67,6 +69,9 @@ const int kTimerRefreshInterval = 20;  // in seconds
     self.failureCallbacks = [[NSMutableArray alloc] initWithObjects:failure, nil];
     
     [self.locationService setUpdateCallback:^(CLLocation *newLocation) {
+        if (self.timer != nil) {
+            [self.timer invalidate];
+        }
         self.timer = [[NSTimer alloc]
                       initWithFireDate:[NSDate date]
                       interval:kTimerRefreshInterval
@@ -88,6 +93,11 @@ const int kTimerRefreshInterval = 20;  // in seconds
 }
 
 - (void) timerFired {
+    if (self.coolOff) {
+        [self.timer invalidate];
+        return;
+    }
+
     [self helpMe:self.locationService.location success:^(id obj, NSHTTPURLResponse *response) {
         self.currentHelpRequest = [[HAHelpRequest alloc] initWithDictionary:obj];
         for (HAAssistanceRequestUpdate update in self.updateCallbacks) {
@@ -96,8 +106,10 @@ const int kTimerRefreshInterval = 20;  // in seconds
         if ([self.currentHelpRequest finished]) {
             [self.timer invalidate];
             [self.locationService stopLocation];
-            self.requestInFlight = false;
+            self.requestInFlight = true;
             self.currentHelpRequest = nil;
+            self.coolOff = true;
+            [NSTimer scheduledTimerWithTimeInterval:kCoolOffPeriod target:self selector:@selector(endCoolOff) userInfo:nil repeats:NO];
         }
     } failure:^(id obj, NSError *error) {
         DLog(@"failure");
@@ -117,6 +129,10 @@ const int kTimerRefreshInterval = 20;  // in seconds
         self.requestInFlight = false;
         self.currentHelpRequest = nil;
     }
+}
+
+- (void) endCoolOff {
+    self.coolOff = false;
 }
 
 - (void)helpMe:(CLLocation*)location success:(HARestRequestsSuccess)success failure:(HARestRequestsFailure)failure{
