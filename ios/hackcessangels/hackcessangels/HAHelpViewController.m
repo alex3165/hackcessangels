@@ -108,8 +108,12 @@ static NSString* const hasRunAppOnceKey = @"hasRunAppOnceKey";
 
 - (void)requestAgentContactedStatus {
     self.titleLabel.hidden = true;
+    NSString *whatStatus = [NSString stringWithFormat:@"sont informés de votre demande"];
     self.whatStatus.hidden = false;
+    self.whatStatus.text = whatStatus;
+    NSString *agentStatus = [NSString stringWithFormat:@"Les agents de la gare"];
     self.whoStatus.hidden = false;
+    self.whoStatus.text = agentStatus;
     self.cancelHelp.hidden = false;
     self.urgencyNumber.hidden = true;
     self.timeNotification.hidden = false;
@@ -121,7 +125,7 @@ static NSString* const hasRunAppOnceKey = @"hasRunAppOnceKey";
         self.spinner.center = self.helpme.center;
         self.spinner.tag = 12;
         self.spinner.color = [UIColor whiteColor];
-        self.spinner.transform = CGAffineTransformMakeScale(2.4,2.4);
+        self.spinner.transform = CGAffineTransformMakeScale(1.6,1.6);
         [self.view addSubview: self.spinner];
         [self.spinner startAnimating];
     }
