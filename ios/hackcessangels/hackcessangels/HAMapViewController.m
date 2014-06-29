@@ -58,7 +58,7 @@ CLLocationCoordinate2D coordinate;
     [self.map setUserTrackingMode:MKUserTrackingModeFollow];
     if (self.helpRequest) {
         [self.map addAnnotation:self.helpRequest];
-        self.timer = [NSTimer timerWithTimeInterval:kRequestUpdateTimeInterval target:self selector:@selector(updateHelpRequest) userInfo:nil repeats:@YES];
+        self.timer = [NSTimer scheduledTimerWithTimeInterval:kRequestUpdateTimeInterval target:self selector:@selector(updateHelpRequest) userInfo:nil repeats:YES];
     }
     [self updateDisplay];
 }
@@ -111,13 +111,11 @@ CLLocationCoordinate2D coordinate;
         return nil;
     
     // Handle any custom annotations.
-    if ([annotation isKindOfClass:[HAHelpRequest class]])
-    {
+    if ([annotation isKindOfClass:[HAHelpRequest class]]) {
         // Try to dequeue an existing pin view first.
         MKPinAnnotationView* pinView = (MKPinAnnotationView*)[self.map dequeueReusableAnnotationViewWithIdentifier:@"HAHelpRequestAnnotationView"];
         
-        if (!pinView)
-        {
+        if (!pinView) {
             // If an existing pin view was not available, create one.
             MKPinAnnotationView* pinView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"HAHelpRequestAnnotationView"];
             pinView.pinColor = MKPinAnnotationColorPurple;

@@ -109,13 +109,15 @@ const int kTimerRefreshInterval = 20;  // in seconds
 }
 
 - (void) stopHelpRequest {
-    [self.timer invalidate];
-    [self.locationService stopLocation];
-    
-    HARestRequests* restRequest = [[HARestRequests alloc] init];
-    [restRequest DELETErequest:@"request" withParameters:@{@"id" : self.currentHelpRequest.Id} success:nil failure:nil];
-    self.requestInFlight = false;
-    self.currentHelpRequest = nil;
+    if (self.currentHelpRequest != nil) {
+        [self.timer invalidate];
+        [self.locationService stopLocation];
+        
+        HARestRequests* restRequest = [[HARestRequests alloc] init];
+        [restRequest DELETErequest:@"request" withParameters:@{@"id" : self.currentHelpRequest.Id} success:nil failure:nil];
+        self.requestInFlight = false;
+        self.currentHelpRequest = nil;
+    }
 }
 
 - (void)helpMe:(CLLocation*)location success:(HARestRequestsSuccess)success failure:(HARestRequestsFailure)failure{
