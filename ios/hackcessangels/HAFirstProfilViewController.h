@@ -57,7 +57,7 @@
 
 @property (weak, nonatomic) IBOutlet UIView *view4;
 
-
+@property (weak, nonatomic) NSString *handicap;
 
 
 @property (weak, nonatomic) IBOutlet UIButton *buttonPhoto;
