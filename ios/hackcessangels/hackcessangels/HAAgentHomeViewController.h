@@ -11,6 +11,7 @@
 @interface HAAgentHomeViewController : UIViewController
 
 @property (nonatomic, weak) IBOutlet UILabel *helloUser;
+@property (nonatomic, weak) IBOutlet UILabel *connectedLabel;
 
 - (IBAction) verifyHelpRequests:(id)sender;
 - (IBAction) createFakeHelpRequest:(id)sender;

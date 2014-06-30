@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface HACurrentStationService : NSObject<NSStreamDelegate>
+@property (nonatomic, readonly, assign) BOOL connected;
 
 + (id)sharedInstance;
 - (void) connectToServer;

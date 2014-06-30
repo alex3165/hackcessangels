@@ -125,7 +125,7 @@ const int kCoolOffPeriod = 30;  // in seconds
         [self.locationService stopLocation];
         
         HARestRequests* restRequest = [[HARestRequests alloc] init];
-        [restRequest DELETErequest:@"request" withParameters:@{@"id" : self.currentHelpRequest.Id} success:nil failure:nil];
+        [restRequest DELETErequest:@"help" withParameters:@{@"id" : self.currentHelpRequest.Id} success:nil failure:nil];
         self.requestInFlight = false;
         self.currentHelpRequest = nil;
     }

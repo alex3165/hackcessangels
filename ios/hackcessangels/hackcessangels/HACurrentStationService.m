@@ -25,7 +25,6 @@
 @property (nonatomic, strong) NSMutableString *communicationLog;
 @property (nonatomic, strong) Reachability *reachability;
 @property (nonatomic, strong) NSTimer *timer;
-@property (nonatomic, assign) BOOL connected;
 @property (nonatomic, assign) BOOL spaceAvailable;
 @end
 
@@ -47,7 +46,7 @@ const int kRetryIntervalInSeconds = 30;
     if (self) {
         self.locationService = [[HALocationService alloc] init];
         self.requestsService = [HARequestsService sharedInstance];
-        self.connected = false;
+        _connected = false;
     }
     return self;
 }
@@ -72,6 +71,7 @@ const int kRetryIntervalInSeconds = 30;
         return;
     }
     if (!self.inputStream || [self.inputStream streamStatus] != NSStreamStatusOpen) {
+        _connected = false;
         // Connect to server
         DLog(@"Connecting to server");
         CFReadStreamRef readStream;
@@ -180,7 +180,7 @@ const int kRetryIntervalInSeconds = 30;
         case NSStreamEventEndEncountered:
         case NSStreamEventErrorOccurred:
             NSLog(@"Connection Closed: %@", aStream.streamError);
-            self.connected = false;
+            _connected = false;
             // We need to reopen the connection, but first wait a bit so we are not overloading the server.
             if (aStream == self.inputStream) {
                 [NSTimer scheduledTimerWithTimeInterval:kRetryIntervalInSeconds target:self selector:@selector(connectToServerInternal) userInfo:nil repeats:NO];
@@ -223,7 +223,7 @@ const int kRetryIntervalInSeconds = 30;
                         DLog(@"%@", error);
                     }];
                 }
-                self.connected = true;
+                _connected = true;
             }
             break;
             
