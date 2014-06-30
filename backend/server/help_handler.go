@@ -44,7 +44,7 @@ func NewAPIRequestFromHelpRequest(hr *model.HelpRequest) *APIRequest {
 
 func (s *Server) handleHelp(w http.ResponseWriter, r *http.Request) {
 	var data struct {
-		HelpRequestId *string  `json:"id,omitempty"`
+        HelpRequestId *string  `json:"id,omitempty" schema:"id,omitempty"`
 		Latitude      *float64 `json:"latitude,omitempty"`
 		Longitude     *float64 `json:"longitude,omitempty"`
 		Precision     *float64 `json:"precision,omitempty"`
@@ -146,7 +146,7 @@ func (s *Server) handleHelp(w http.ResponseWriter, r *http.Request) {
 		json.NewEncoder(w).Encode(NewAPIRequestFromHelpRequest(helpRequest))
 		return
 	case "DELETE":
-		helpRequest, err := s.model.GetActiveRequestByRequester(user)
+		helpRequest, err := s.model.GetRequestById(*data.HelpRequestId)
 		if err != nil {
 			log.Printf("Error while getting active request: %+v", err)
 			returnError(404, "Couldn't get request", w)
