@@ -36,7 +36,7 @@
 //    make a call to the server to get the full user object. If the server contact fails, fails.
 //  - Otherwise, fails.
 - (void)getCurrentAgent:(HAAgentServiceSuccess)success failure:(HAAgentServiceFailure)failure {
-    if (self.currentAgent != nil) {
+    if (self.currentAgent != nil && self.currentAgent.email != nil && [self.currentAgent.email length] != 0) {
         // We already have a user, just return it.
         success(self.currentAgent);
         return;

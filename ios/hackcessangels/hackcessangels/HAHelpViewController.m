@@ -43,6 +43,7 @@ static NSString* const hasRunAppOnceKey = @"hasRunAppOnceKey";
     [[self.cancelHelp layer] setBorderWidth:1.0f];
     [[self.cancelHelp layer] setCornerRadius:5.0f];
     [[self.cancelHelp layer] setBorderColor:[UIColor HA_red].CGColor];
+    [[self.urgencyNumber layer] setCornerRadius:5.0f];
     self.titleLabel.textColor = [UIColor HA_purple];
     self.whoStatus.textColor = [UIColor HA_purple];
     self.whatStatus.textColor = [UIColor HA_green];
@@ -88,7 +89,8 @@ static NSString* const hasRunAppOnceKey = @"hasRunAppOnceKey";
                 [self presentViewController:helpSuccessViewController animated:YES completion:nil];
                 break;
             case kNotInStation:
-                // Faire la vue vous n'êtes pas dans la station
+                [self outOfGareStatus];
+                break;
             default:
                 [self defaultRequestAgentStatus];
                 break;
@@ -106,8 +108,12 @@ static NSString* const hasRunAppOnceKey = @"hasRunAppOnceKey";
 
 - (void)requestAgentContactedStatus {
     self.titleLabel.hidden = true;
+    NSString *whatStatus = [NSString stringWithFormat:@"sont informés de votre demande"];
     self.whatStatus.hidden = false;
+    self.whatStatus.text = whatStatus;
+    NSString *agentStatus = [NSString stringWithFormat:@"Les agents de la gare"];
     self.whoStatus.hidden = false;
+    self.whoStatus.text = agentStatus;
     self.cancelHelp.hidden = false;
     self.urgencyNumber.hidden = true;
     self.timeNotification.hidden = false;
@@ -119,7 +125,7 @@ static NSString* const hasRunAppOnceKey = @"hasRunAppOnceKey";
         self.spinner.center = self.helpme.center;
         self.spinner.tag = 12;
         self.spinner.color = [UIColor whiteColor];
-        self.spinner.transform = CGAffineTransformMakeScale(2.4,2.4);
+        self.spinner.transform = CGAffineTransformMakeScale(1.6,1.6);
         [self.view addSubview: self.spinner];
         [self.spinner startAnimating];
     }
@@ -158,6 +164,7 @@ static NSString* const hasRunAppOnceKey = @"hasRunAppOnceKey";
     [self.helpme setBackgroundImage:imageHelpFailed forState:UIControlStateNormal];
     [self.spinner removeFromSuperview];
     self.spinner = nil;
+    [NSTimer scheduledTimerWithTimeInterval:15 target:self selector:@selector(defaultRequestAgentStatus) userInfo:nil repeats:NO];
 }
 
 -(void)defaultRequestAgentStatus {
@@ -193,12 +200,21 @@ static NSString* const hasRunAppOnceKey = @"hasRunAppOnceKey";
 
 -(void) outOfGareStatus{
     self.whoStatus.hidden = false;
+    self.urgencyNumber.hidden = false;
     NSString *whoStatus = [NSString stringWithFormat:@"Vous n'êtes pas dans une gare SNCF Transilien"];
     self.whoStatus.text = whoStatus;
     self.whatStatus.hidden = false;
     NSString *whatStatus = [NSString stringWithFormat:@"Si vous êtes en difficulté,"];
     self.whatStatus.text = whatStatus;
+    [NSTimer scheduledTimerWithTimeInterval:30 target:self selector:@selector(defaultRequestAgentStatus) userInfo:nil repeats:NO];
 }
+
+-(IBAction)emergencyCall:(id)sender{
+    
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"tel: 3117"]];
+    
+}
+
 /******************************************************************************************************************************
  *
  *

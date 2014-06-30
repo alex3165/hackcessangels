@@ -10,6 +10,7 @@
 #import "HALogViewController.h"
 #import "HAAgentService.h"
 #import "HARequestsService.h"
+#import "HACurrentStationService.h"
 #import "UIColor+HackcessAngels.h"
 
 @interface HAAgentHomeViewController ()
@@ -41,6 +42,8 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [self checkUser];
+    HACurrentStationService *service = [HACurrentStationService sharedInstance];
+    self.connectedLabel.hidden = !service.connected;
 }
 
 - (void)didReceiveMemoryWarning

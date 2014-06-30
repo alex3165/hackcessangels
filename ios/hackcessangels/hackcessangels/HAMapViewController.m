@@ -14,6 +14,7 @@
 #import "HARequestsService.h"
 #import "HAAgentUserProfileViewerViewController.h"
 #import "HAAgentHomeViewController.h"
+#import "HAAgentService.h"
 
 
 @interface HAMapViewController () <HACentralManagerDelegate>
@@ -23,6 +24,7 @@
 
     @property (nonatomic, strong) HARequestsService* requestService;
     @property (nonatomic, weak) NSTimer* timer;
+    @property (nonatomic, strong) HAAgent *me;
 @end
 
 NSTimeInterval const kRequestUpdateTimeInterval = 15;
@@ -42,6 +44,11 @@ CLLocationCoordinate2D coordinate;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [[HAAgentService sharedInstance] getCurrentAgent:^(HAAgent *agent) {
+        self.me = agent;
+    } failure:^(NSError *error) {
+        DLog(@"%@", error);
+    }];
     self.requestService = [HARequestsService sharedInstance];
     self.userPicture.layer.cornerRadius = self.userPicture.frame.size.height /2;
     self.userPicture.layer.masksToBounds = YES;
@@ -99,7 +106,19 @@ CLLocationCoordinate2D coordinate;
         self.userPicture.image = [UIImage imageWithData:self.helpRequest.user.image];
         self.userDisability.text = [self.helpRequest.user getDisabilityString];
         bool needsHelp = [self.helpRequest needsHelp];
-        [self.helpok setHidden:!needsHelp];
+        if (!needsHelp) {
+            if ([self.me.email isEqualToString:self.helpRequest.agent.email]) {
+                [self.helpok setHidden:NO];
+                [self.helpok setEnabled:NO];
+                self.helpok.titleLabel.text = @"J'aide !";
+            } else {
+                [self.helpok setHidden:YES];
+            }
+        } else {
+            [self.helpok setHidden:NO];
+            [self.helpok setEnabled:YES];
+            self.helpok.titleLabel.text = @"Aider l'utilisateur";
+        }
     }
 }
 

@@ -7,12 +7,12 @@
 //
 
 #import "HAFirstProfilViewController.h"
-#import "HAUserViewController.h"
 #import "HAUserService.h"
 #import "HARestRequests.h"
 #import "HARequestsService.h"
-
+#import "HALogViewController.h"
 #import "HAUser.h"
+
 @interface HAFirstProfilViewController ()
 
 @end
@@ -98,11 +98,8 @@
         user.phoneUrgence=self.urgencePhone.text;
         
         [[HAUserService sharedInstance] updateUser:user success:^(HAUser* user) {
-            
-            
             self.view1.hidden=YES;
             self.view2.hidden=NO;
-            
             
         } failure:^(NSError *error) {
             UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Erreur" message:@"Profil non édité" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
@@ -113,7 +110,6 @@
         [alert show];
     }];
 }
-
 
 - (IBAction)buttonAuditif:(id)sender  {
     _auditifSelected=1;
@@ -242,15 +238,12 @@
 {
     NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
     
-    if([title isEqualToString:@"Accepter"])
-    {
+    if([title isEqualToString:@"Accepter"]) {
         NSLog(@"Button 1 was selected.");
         self.viewInit.hidden=YES;
         self.viewLog.hidden=NO;
   
-    }
-    else if([title isEqualToString:@"Refuser"])
-    {
+    } else if([title isEqualToString:@"Refuser"]) {
         
         [self.view addSubview:self.viewInit];
     }
@@ -378,8 +371,10 @@
                 
                 UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Bravo" message:@"Profil édité" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
                 [alert show];
-                if ([NSStringFromClass([self.parentViewController class]) isEqualToString:@"HALogViewController"]) {
-                    [self.parentViewController dismissViewControllerAnimated:YES completion:nil];
+                if ([[self presentingViewController] class] == [HALogViewController class]) {
+                    ((HALogViewController*)[self presentingViewController]).email.text = self.mail.text;
+                     ((HALogViewController*)[self presentingViewController]).password.text = self.password.text;
+                    [self dismissViewControllerAnimated:YES completion:nil];
                 } else {
                     [self dismissViewControllerAnimated:YES completion:nil];
                 }
@@ -387,8 +382,7 @@
                 UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Erreur" message:@"Profil non édité" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
                 [alert show];
             }];
-            
-            
+
         } failure:^(NSError *error) {
             UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Erreur" message:@"Serveur injoignable" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
             [alert show];
@@ -399,8 +393,10 @@
 }
 
 - (IBAction)ignorePhoto:(id)sender  {
-    if ([NSStringFromClass([self.parentViewController class]) isEqualToString:@"HALogViewController"]) {
-        [self.parentViewController dismissViewControllerAnimated:YES completion:nil];
+    if ([[self presentingViewController] class] == [HALogViewController class]) {
+        ((HALogViewController*)[self presentingViewController]).email.text = self.mail.text;
+        ((HALogViewController*)[self presentingViewController]).password.text = self.password.text;
+        [self dismissViewControllerAnimated:YES completion:nil];
     } else {
         [self dismissViewControllerAnimated:YES completion:nil];
     }

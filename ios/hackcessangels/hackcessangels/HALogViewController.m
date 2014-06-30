@@ -37,10 +37,10 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    
-    [[self.loginContainer layer] setBorderWidth:1.0f];
+
+    [[self.loginContainer layer] setBorderWidth:2.0f];
     [[self.loginContainer layer] setBorderColor:(__bridge CGColorRef)([UIColor HA_graylogin])];
-    
+    self.loginContainer.layer.cornerRadius = 5;
     [[self.valider layer] setBorderWidth:1.0f];
     [[self.valider layer] setBorderColor:(__bridge CGColorRef)([UIColor HA_graylogin])];
     

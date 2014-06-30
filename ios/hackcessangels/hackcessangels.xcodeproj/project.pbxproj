@@ -13,7 +13,6 @@
 		043F17AC1901A37900D23C3F /* HACallUserView.m in Sources */ = {isa = PBXBuildFile; fileRef = 043F17A918FC30BB00D23C3F /* HACallUserView.m */; };
 		04CFDD4C1945AD5500391C21 /* HAFirstProfilViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04CFDD4B1945AD5500391C21 /* HAFirstProfilViewController.m */; };
 		04D14F2A19366D2100ED1B27 /* EIUserProfilViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D14F2919366D2100ED1B27 /* EIUserProfilViewController.m */; };
-		04F5A81718C8AC5E00ED0CC6 /* HAUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F5A81518C8AC5E00ED0CC6 /* HAUserViewController.m */; };
 		22085DDD18883EAE00A4BE75 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22085DDC18883EAE00A4BE75 /* CoreLocation.framework */; };
 		22130BFF188964C200191955 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22130BFE188964C200191955 /* MapKit.framework */; };
 		22130C02188966E500191955 /* HALocalisation.m in Sources */ = {isa = PBXBuildFile; fileRef = 22130C01188966E500191955 /* HALocalisation.m */; };
@@ -87,7 +86,6 @@
 		8FFCDF2B1940F3B700C7F376 /* HAAgentUserProfileViewerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D14F2C193675EF00ED1B27 /* HAAgentUserProfileViewerViewController.m */; };
 		A1330B0718AD62B5002B1828 /* HAUser.m in Sources */ = {isa = PBXBuildFile; fileRef = A1330B0618AD62B5002B1828 /* HAUser.m */; };
 		A1330B0A18AD632E002B1828 /* HAUserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A1330B0918AD632E002B1828 /* HAUserTests.m */; };
-		A150294B18DB7A81008FC4F1 /* HAUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F5A81518C8AC5E00ED0CC6 /* HAUserViewController.m */; };
 		A150294D18DB7A81008FC4F1 /* HAMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22601F191886E2DE008B0179 /* HAMapViewController.m */; };
 		A150294F18DB7A81008FC4F1 /* HALocationService.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F88460818BFBBB400595CA2 /* HALocationService.m */; };
 		A150295018DB7A81008FC4F1 /* HATileOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22601F3E18871EAC008B0179 /* HATileOverlayView.m */; };
@@ -139,8 +137,6 @@
 		04D14F2919366D2100ED1B27 /* EIUserProfilViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EIUserProfilViewController.m; path = ../EIUserProfilViewController.m; sourceTree = "<group>"; };
 		04D14F2B193675EF00ED1B27 /* HAAgentUserProfileViewerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HAAgentUserProfileViewerViewController.h; path = ../HAAgentUserProfileViewerViewController.h; sourceTree = "<group>"; };
 		04D14F2C193675EF00ED1B27 /* HAAgentUserProfileViewerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HAAgentUserProfileViewerViewController.m; path = ../HAAgentUserProfileViewerViewController.m; sourceTree = "<group>"; };
-		04F5A81418C8AC5E00ED0CC6 /* HAUserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HAUserViewController.h; path = hackcessangels/HAUserViewController.h; sourceTree = SOURCE_ROOT; };
-		04F5A81518C8AC5E00ED0CC6 /* HAUserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HAUserViewController.m; path = hackcessangels/HAUserViewController.m; sourceTree = SOURCE_ROOT; };
 		18DAFC5302E94F25AE48D512 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		22085DDC18883EAE00A4BE75 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		22130BFE188964C200191955 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -434,8 +430,6 @@
 				22A90D681945B169007D116F /* HAHelpSuccessViewController.m */,
 				04CFDD4A1945AD5500391C21 /* HAFirstProfilViewController.h */,
 				04CFDD4B1945AD5500391C21 /* HAFirstProfilViewController.m */,
-				04F5A81418C8AC5E00ED0CC6 /* HAUserViewController.h */,
-				04F5A81518C8AC5E00ED0CC6 /* HAUserViewController.m */,
 				04D14F2819366D2100ED1B27 /* EIUserProfilViewController.h */,
 				04D14F2919366D2100ED1B27 /* EIUserProfilViewController.m */,
 				22601F151886E2DE008B0179 /* Main.storyboard */,
@@ -744,7 +738,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				04F5A81718C8AC5E00ED0CC6 /* HAUserViewController.m in Sources */,
 				222E376118BA5B2F00E3B720 /* HALogViewController.m in Sources */,
 				8F88460918BFBBB400595CA2 /* HALocationService.m in Sources */,
 				8F400A2818F1AE6C006B8342 /* HARestRequests.m in Sources */,
@@ -791,7 +784,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A150294B18DB7A81008FC4F1 /* HAUserViewController.m in Sources */,
 				8F57723B18DB7DE600D42D4F /* HAHelpViewController.m in Sources */,
 				A150294D18DB7A81008FC4F1 /* HAMapViewController.m in Sources */,
 				8FBEAE4F192A62370097E151 /* HACurrentStationService.m in Sources */,
