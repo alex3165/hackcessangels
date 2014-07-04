@@ -95,7 +95,7 @@ func (s *Server) handleDebug(w http.ResponseWriter, r *http.Request) {
 
 	agents := s.service.GetAllAgents()
 	for _, agent := range agents {
-		data.ConnectedAgents = append(data.ConnectedAgents, agent.String())
+		data.ConnectedAgents = append(data.ConnectedAgents, agent.String(s.model))
 	}
 
 	err = debugTmpl.Execute(w, data)

@@ -9,6 +9,8 @@ import (
 	"net"
 	"time"
 
+	"hackcessangels/backend/model"
+
 	"labix.org/v2/mgo/bson"
 )
 
@@ -32,9 +34,13 @@ type ConnectedAgent struct {
 	stopChannel    chan bool
 }
 
-func (ca *ConnectedAgent) String() string {
+func (ca *ConnectedAgent) String(m *model.Model) string {
 	if ca.station != nil {
-		return fmt.Sprintf("Agent %s in station %s", ca.login, *ca.station)
+		if station, err := m.FindStationById(bson.ObjectId(*ca.station)); err != nil {
+			return fmt.Sprintf("Agent %s in station %s", ca.login, station.Name)
+		} else {
+			return fmt.Sprintf("Agent %s in unknown station %s", ca.login, *ca.station)
+		}
 	} else {
 		return fmt.Sprintf("Agent %s outside a station", ca.login)
 	}
