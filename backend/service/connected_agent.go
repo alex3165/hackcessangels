@@ -48,7 +48,7 @@ func (ca *ConnectedAgent) handleConnection() {
 	ca.stopChannel = make(chan bool, 1)
 	defer ca.service.RemoveAgent(ca.login)
 	defer ca.connection.Close()
-	defer func() { stop <- true }()
+	defer func() { ca.stopChannel <- true }()
 	defer ca.keepAliveTimer.Stop()
 
 	for {
@@ -102,10 +102,10 @@ func (ca *ConnectedAgent) handleKeepAlive() {
 	ca.sendKeepAlive()
 	for {
 		select {
-		case time := <-ca.keepAliveTimer.C:
+		case _ = <-ca.keepAliveTimer.C:
 			ca.sendKeepAlive()
 			break
-		case stop := <-ca.stopChannel:
+		case _ = <-ca.stopChannel:
 			return
 		}
 	}
