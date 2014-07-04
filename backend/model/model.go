@@ -12,11 +12,11 @@ type Model struct {
 	helpRequests *mgo.Collection
 	stations     *mgo.Collection
 
-    helpRequestObservers []HelpRequestObserver
+	helpRequestObservers []HelpRequestObserver
 }
 
 type HelpRequestObserver interface {
-    NotifyHelpRequestChanged(hr *HelpRequest)
+	NotifyHelpRequestChanged(hr *HelpRequest)
 }
 
 func (m *Model) Delete() {
@@ -28,13 +28,13 @@ func (m *Model) Close() {
 }
 
 func (m *Model) RegisterHelpRequestObserver(observer HelpRequestObserver) {
-    m.helpRequestObservers = append(m.helpRequestObservers, observer)
+	m.helpRequestObservers = append(m.helpRequestObservers, observer)
 }
 
 func NewModel(server string, databaseName string) (*Model, error) {
 	m := &Model{}
 
-    m.helpRequestObservers = make([]HelpRequestObserver, 0, 0)
+	m.helpRequestObservers = make([]HelpRequestObserver, 0, 0)
 
 	var err error
 

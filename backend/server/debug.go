@@ -1,17 +1,16 @@
 package server
 
 import (
+	"bytes"
 	"encoding/json"
 	"html/template"
+	"image/jpeg"
 	"log"
 	"net/http"
-    "image/jpeg"
-    "bytes"
 
-    "github.com/nfnt/resize"
+	"github.com/nfnt/resize"
 
 	"hackcessangels/backend/model"
-
 )
 
 var (
@@ -56,23 +55,23 @@ func (s *Server) handleDebug(w http.ResponseWriter, r *http.Request) {
 
 	apiUsers := make([]string, len(users), len(users))
 	for i, user := range users {
-        // Try to decode image
-        if user.Image != nil && len(user.Image) != 0 {
-            reader := bytes.NewReader(user.Image)
-            image, err := jpeg.Decode(reader)
-            if err != nil {
-                log.Println(user.Email)
-                log.Println(err.Error())
-                log.Println(image)
-                panic(err)
-            }
-            _ = resize.Thumbnail(128, 128, image, resize.Bicubic)
-        }
+		// Try to decode image
+		if user.Image != nil && len(user.Image) != 0 {
+			reader := bytes.NewReader(user.Image)
+			image, err := jpeg.Decode(reader)
+			if err != nil {
+				log.Println(user.Email)
+				log.Println(err.Error())
+				log.Println(image)
+				panic(err)
+			}
+			_ = resize.Thumbnail(128, 128, image, resize.Bicubic)
+		}
 
-        apiUser := NewApiUser(user, true)
-        if apiUser.Image != nil {
-            *apiUser.Image = []byte("Image present")
-        }
+		apiUser := NewApiUser(user, true)
+		if apiUser.Image != nil {
+			*apiUser.Image = []byte("Image present")
+		}
 		b, err := json.Marshal(apiUser)
 		if err == nil {
 			apiUsers[i] = string(b)

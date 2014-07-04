@@ -29,6 +29,7 @@ type ConnectedAgent struct {
 	readWriter     *bufio.ReadWriter
 	keepAliveTimer *time.Ticker
 	service        *AgentService
+	stopChannel    chan bool
 }
 
 func (ca *ConnectedAgent) String() string {
@@ -44,8 +45,10 @@ func (ca *ConnectedAgent) handleConnection() {
 	go ca.handleKeepAlive()
 
 	// Ensure that cleanup will happen
+	ca.stopChannel = make(chan bool, 1)
 	defer ca.service.RemoveAgent(ca.login)
 	defer ca.connection.Close()
+	defer func() { stop <- true }()
 	defer ca.keepAliveTimer.Stop()
 
 	for {
@@ -97,8 +100,14 @@ func (ca *ConnectedAgent) handleConnection() {
 
 func (ca *ConnectedAgent) handleKeepAlive() {
 	ca.sendKeepAlive()
-	for _ = range ca.keepAliveTimer.C {
-		ca.sendKeepAlive()
+	for {
+		select {
+		case time := <-ca.keepAliveTimer.C:
+			ca.sendKeepAlive()
+			break
+		case stop := <-ca.stopChannel:
+			return
+		}
 	}
 }
 

@@ -44,7 +44,7 @@ func NewAPIRequestFromHelpRequest(hr *model.HelpRequest) *APIRequest {
 
 func (s *Server) handleHelp(w http.ResponseWriter, r *http.Request) {
 	var data struct {
-        HelpRequestId *string  `json:"id,omitempty" schema:"id,omitempty"`
+		HelpRequestId *string  `json:"id,omitempty" schema:"id,omitempty"`
 		Latitude      *float64 `json:"latitude,omitempty"`
 		Longitude     *float64 `json:"longitude,omitempty"`
 		Precision     *float64 `json:"precision,omitempty"`

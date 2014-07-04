@@ -79,7 +79,7 @@ type HelpRequest struct {
 	Id                  bson.ObjectId `bson:"_id,omitempty"`
 	RequestCreationTime time.Time
 
-    RequestStation        *bson.ObjectId
+	RequestStation        *bson.ObjectId
 	RequesterEmail        string
 	RequesterPosition     *PointGeometry
 	RequesterPosPrecision float64
@@ -100,9 +100,9 @@ type HelpRequest struct {
 }
 
 func (hr *HelpRequest) BroadcastStatus() {
-    for _, observer := range hr.m.helpRequestObservers {
-        observer.NotifyHelpRequestChanged(hr)
-    }
+	for _, observer := range hr.m.helpRequestObservers {
+		observer.NotifyHelpRequestChanged(hr)
+	}
 }
 
 func (hr *HelpRequest) SetRequesterPosition(longitude, latitude float64) {
@@ -112,21 +112,21 @@ func (hr *HelpRequest) SetRequesterPosition(longitude, latitude float64) {
 
 func (hr *HelpRequest) Save(broadcast bool) error {
 	_, err := hr.m.helpRequests.UpsertId(hr.Id, hr)
-    if broadcast {
-        go hr.BroadcastStatus()
-    }
+	if broadcast {
+		go hr.BroadcastStatus()
+	}
 	return err
 }
 
 // CheckStatus verifies that the status of a request should not be changed.
 // For instance, if a request is running for more than N minutes, it is automatically abandonned or completed.
 func (hr *HelpRequest) CheckStatus() error {
-    if hr.RequestStation == nil {
-        station, _ := hr.GetStation()
-        if station != nil {
-            hr.RequestStation = &station.Id
-        }
-    }
+	if hr.RequestStation == nil {
+		station, _ := hr.GetStation()
+		if station != nil {
+			hr.RequestStation = &station.Id
+		}
+	}
 	switch hr.CurrentState {
 	case NEW, AGENTS_CONTACTED:
 		// Maximum 10 minutes
@@ -206,16 +206,16 @@ func (hr *HelpRequest) GetUser() (*User, error) {
 
 // Return the station where this help request is located
 func (hr *HelpRequest) GetStation() (*Station, error) {
-    return hr.m.FindStationByLocation(hr.RequesterPosition.Coordinates[0],
-        hr.RequesterPosition.Coordinates[1],
-        hr.RequesterPosPrecision)
+	return hr.m.FindStationByLocation(hr.RequesterPosition.Coordinates[0],
+		hr.RequesterPosition.Coordinates[1],
+		hr.RequesterPosPrecision)
 }
 
 // Return the station where this help request is located
 func (hr *HelpRequest) GetInitialStation() (*Station, error) {
-    return hr.m.FindStationByLocation(hr.RequesterPosition.Coordinates[0],
-        hr.RequesterPosition.Coordinates[1],
-        hr.RequesterPosPrecision)
+	return hr.m.FindStationByLocation(hr.RequesterPosition.Coordinates[0],
+		hr.RequesterPosition.Coordinates[1],
+		hr.RequesterPosPrecision)
 }
 
 func (m *Model) GetActiveRequestsByStation(s *Station) ([]*HelpRequest, error) {

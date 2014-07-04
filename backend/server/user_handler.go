@@ -1,13 +1,13 @@
 package server
 
 import (
+	"bytes"
 	"encoding/json"
+	"image/jpeg"
 	"log"
 	"net/http"
-    "bytes"
-    "image/jpeg"
 
-    "github.com/nfnt/resize"
+	"github.com/nfnt/resize"
 
 	"hackcessangels/backend/model"
 )
@@ -62,9 +62,9 @@ func (au *ApiUser) fillStorageUser(u *model.User) (err error) {
 	}
 	if au.Password != nil {
 		err = u.SetPassword(*au.Password)
-        if err != nil {
-            return err
-        }
+		if err != nil {
+			return err
+		}
 	}
 	if au.Name != nil {
 		u.Name = *au.Name
@@ -85,19 +85,19 @@ func (au *ApiUser) fillStorageUser(u *model.User) (err error) {
 		u.EmergencyPhone = *au.EmergencyPhone
 	}
 	if au.Image != nil && len(*au.Image) != 0 {
-        reader := bytes.NewReader(*au.Image)
-        image, err := jpeg.Decode(reader)
-        if err != nil {
-            return err
-        }
-        if (image.Bounds().Dx() > 128 || image.Bounds().Dy() > 128) {
-            resizedImage := resize.Thumbnail(128, 128, image, resize.Bicubic)
-            out := new(bytes.Buffer)
-            jpeg.Encode(out, resizedImage, nil)
-            u.Image = out.Bytes()
-        } else {
-            u.Image = *au.Image
-        }
+		reader := bytes.NewReader(*au.Image)
+		image, err := jpeg.Decode(reader)
+		if err != nil {
+			return err
+		}
+		if image.Bounds().Dx() > 128 || image.Bounds().Dy() > 128 {
+			resizedImage := resize.Thumbnail(128, 128, image, resize.Bicubic)
+			out := new(bytes.Buffer)
+			jpeg.Encode(out, resizedImage, nil)
+			u.Image = out.Bytes()
+		} else {
+			u.Image = *au.Image
+		}
 	}
 	if au.PushToken != nil {
 		u.PushToken = *au.PushToken

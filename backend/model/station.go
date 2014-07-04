@@ -54,7 +54,6 @@ func (m *Model) FindStationById(id bson.ObjectId) (*Station, error) {
 	return stations[0], nil
 }
 
-
 func (m *Model) FindStationByLocation(longitude, latitude, precision float64) (*Station, error) {
 	stations := make([]*Station, 0)
 	err := m.stations.Find(bson.M{

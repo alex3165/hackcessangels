@@ -1,6 +1,7 @@
 package service
 
 import (
+	"log"
 	"sync"
 )
 
@@ -63,6 +64,9 @@ func (manager *AgentStationManager) SetAgentStation(login AgentLogin, station St
 	manager.RLock()
 	agent := manager.agents[login]
 	manager.RUnlock()
+	if agent == nil {
+		log.Print("Unable to find agent ", login, " in connected agents")
+	}
 	if agent.station != nil && *agent.station == station {
 		return false
 	}
