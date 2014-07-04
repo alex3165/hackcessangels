@@ -36,7 +36,7 @@ type ConnectedAgent struct {
 
 func (ca *ConnectedAgent) String(m *model.Model) string {
 	if ca.station != nil {
-		if station, err := m.FindStationById(bson.ObjectId(*ca.station)); err != nil {
+		if station, err := m.FindStationById(bson.ObjectId(*ca.station)); err == nil {
 			return fmt.Sprintf("Agent %s in station %s", ca.login, station.Name)
 		} else {
 			return fmt.Sprintf("Agent %s in unknown station %s", ca.login, *ca.station)
