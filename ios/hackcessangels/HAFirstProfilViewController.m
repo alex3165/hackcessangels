@@ -231,7 +231,7 @@
             UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Erreur" message:@"Serveur injoignable" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
             [alert show];} ];
     } failure:^(id obj, NSError *error) {
-        UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Erreur" message:@"Serveur injoignable" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
+        UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Erreur" message:@"Veuillez remplir les champs" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
         [alert show];
     } ];
 }
