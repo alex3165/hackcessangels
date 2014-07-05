@@ -30,6 +30,14 @@
     return self;
 }
 
+- (void) dealloc
+{
+    // If you don't remove yourself as an observer, the Notification Center
+    // will continue to try and send notification objects to the deallocated
+    // object.
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 - (void)viewDidLoad
 {
     [self.tabBarController.tabBar setSelectedImageTintColor:[UIColor HA_purple]];
@@ -37,13 +45,20 @@
     self.view.backgroundColor = [UIColor HA_graybg];
     self.helloUser.textColor = [UIColor HA_purple];
     self.requestsService = [HARequestsService sharedInstance];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(connectionStatusChanged)
+                                                 name:@"ConnectionStatusNotification"
+                                               object:nil];
+}
+
+- (void) connectionStatusChanged {
+    HACurrentStationService* service = [HACurrentStationService sharedInstance];
+    self.connectedLabel.hidden = !service.connected;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [self checkUser];
-    HACurrentStationService *service = [HACurrentStationService sharedInstance];
-    self.connectedLabel.hidden = !service.connected;
 }
 
 - (void)didReceiveMemoryWarning

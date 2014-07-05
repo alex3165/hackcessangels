@@ -116,13 +116,18 @@ const int kRetryIntervalInSeconds = 30;
     }
 }
 
+- (void) disconnectFromServer {
+    _connected = false;
+    [self.inputStream close];
+    [self.outputStream close];
+}
+
 #pragma mark - Communication methods
 
 - (void)sendLogin:(HAAgent*) agent {
     if (!self.outputStream || [self.outputStream streamStatus] != NSStreamStatusOpen || !self.spaceAvailable) {
         DLog(@"No open connection");
-        [self.inputStream close];
-        [self.outputStream close];
+        [self disconnectFromServer];
         return;
     }
     
@@ -142,8 +147,7 @@ const int kRetryIntervalInSeconds = 30;
     // Abort if no connection is present.
     if (!self.outputStream || [self.outputStream streamStatus] != NSStreamStatusOpen || !self.spaceAvailable) {
         DLog(@"No open connection");
-        [self.inputStream close];
-        [self.outputStream close];
+        [self disconnectFromServer];
         [self connectToServerInternal];
         return;
     }
@@ -180,14 +184,12 @@ const int kRetryIntervalInSeconds = 30;
         case NSStreamEventEndEncountered:
         case NSStreamEventErrorOccurred:
             NSLog(@"Connection Closed: %@", aStream.streamError);
-            _connected = false;
             // We need to reopen the connection, but first wait a bit so we are not overloading the server.
             if (aStream == self.inputStream) {
                 [NSTimer scheduledTimerWithTimeInterval:kRetryIntervalInSeconds target:self selector:@selector(connectToServerInternal) userInfo:nil repeats:NO];
             }
             
-            [self.inputStream close];
-            [self.outputStream close];
+            [self disconnectFromServer];
             break;
             
         case NSStreamEventHasBytesAvailable:
@@ -203,12 +205,19 @@ const int kRetryIntervalInSeconds = 30;
                 
                 if ([[incomingData objectForKey:@"KeepAlive"] boolValue] == YES) {
                     [self sendPosition];
-                } else if ([[incomingData objectForKey:@"UpdateRequestsNow"] boolValue] == YES) {
+                }
+                if ([[incomingData objectForKey:@"UpdateRequestsNow"] boolValue] == YES) {
                     [self.requestsService getRequests:^(NSArray *helpRequestList) {
                         DLog(@"%@", helpRequestList);
                     } failure:^(NSError *error) {
                         NSLog(@"%@", error);
                     }];
+                }
+                if ([incomingData objectForKey:@"StationName"]) {
+                    _stationName = [[incomingData objectForKey:@"StationName"] stringValue];
+                    [[NSNotificationCenter defaultCenter]
+                     postNotificationName:@"ConnectionStatusNotification"
+                     object:self];
                 }
             }
             break;
@@ -218,12 +227,15 @@ const int kRetryIntervalInSeconds = 30;
                 self.spaceAvailable = true;
                 if (!self.connected) {
                     [[HAAgentService sharedInstance] getCurrentAgent:^(HAAgent *agent) {
+                        _connected = true;
                         [self sendLogin:agent];
+                        [[NSNotificationCenter defaultCenter]
+                         postNotificationName:@"ConnectionStatusNotification"
+                         object:self];
                     } failure:^(NSError *error) {
                         DLog(@"%@", error);
                     }];
                 }
-                _connected = true;
             }
             break;
             

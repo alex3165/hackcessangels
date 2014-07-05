@@ -9,6 +9,7 @@
 #import "HAAgentViewController.h"
 #import "HAAgentService.h"
 #import "HAAgent.h"
+#import "HACurrentStationService.h"
 
 @interface HAAgentViewController ()
 
@@ -134,6 +135,7 @@
 
 - (IBAction)disconnect:(id)sender {
     [[HAAgentService sharedInstance] disconnectAgent];
+    [[HACurrentStationService sharedInstance] disconnectFromServer];
     [[self navigationController] popViewControllerAnimated:YES];
 }
 
