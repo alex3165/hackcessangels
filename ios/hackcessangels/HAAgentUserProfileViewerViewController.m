@@ -66,13 +66,13 @@
         NSString *SmsNum = [NSString stringWithFormat:@"sms:%@", self.helpRequest.user.phone];
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:SmsNum]];
     }else{
-        NSString *CallNum = [NSString stringWithFormat:@"tel:%@", self.helpRequest.user.phone];
+        NSString *CallNum = [NSString stringWithFormat:@"tel:#31#%@", self.helpRequest.user.phone];
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:CallNum]];
     }
 }
 
 -(IBAction)callUserEmergency:(id)sender{
-        NSString *CallNum = [NSString stringWithFormat:@"tel:%@", self.helpRequest.user.phoneUrgence];
+        NSString *CallNum = [NSString stringWithFormat:@"tel:#31#%@", self.helpRequest.user.phoneUrgence];
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:CallNum]];
 }
 
