@@ -121,6 +121,8 @@ static NSString* const hasRunAppOnceKey = @"hasRunAppOnceKey";
     self.helpme.userInteractionEnabled = NO;
     UIImage *imageHelpInFlight = [UIImage imageNamed:@"EnCours.png"];
     [self.helpme setBackgroundImage:imageHelpInFlight forState:UIControlStateNormal];
+    self.helpme.accessibilityLabel = @"Demande en cours";
+    self.helpme.accessibilityHint = @"";
     if (self.spinner == nil) {
         self.spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
         self.spinner.center = self.helpme.center;
@@ -146,6 +148,8 @@ static NSString* const hasRunAppOnceKey = @"hasRunAppOnceKey";
     self.whatStatus.textColor = [UIColor HA_red];
     UIImage *imageHelpFailed = [UIImage imageNamed:@"NonAboutie.png"];
     [self.helpme setBackgroundImage:imageHelpFailed forState:UIControlStateNormal];
+    self.helpme.accessibilityLabel = @"Réessayer de demander de l'aide";
+    self.helpme.accessibilityHint = @"Cliquer pour réessayer de demander de l'aide";
     [self.spinner removeFromSuperview];
     self.spinner = nil;
 }
@@ -163,6 +167,8 @@ static NSString* const hasRunAppOnceKey = @"hasRunAppOnceKey";
     self.whatStatus.textColor = [UIColor HA_red];
     UIImage *imageHelpFailed = [UIImage imageNamed:@"NonAboutie.png"];
     [self.helpme setBackgroundImage:imageHelpFailed forState:UIControlStateNormal];
+    self.helpme.accessibilityLabel = @"Réessayer de demander de l'aide";
+    self.helpme.accessibilityHint = @"Cliquer pour réessayer de demander de l'aide";
     [self.spinner removeFromSuperview];
     self.spinner = nil;
     [NSTimer scheduledTimerWithTimeInterval:15 target:self selector:@selector(defaultRequestAgentStatus) userInfo:nil repeats:NO];
@@ -176,6 +182,8 @@ static NSString* const hasRunAppOnceKey = @"hasRunAppOnceKey";
     self.urgencyNumber.hidden = true;
     self.cancelHelp.hidden = true;
     UIImage *imageHelp = [UIImage imageNamed:@"help.png"];
+    self.helpme.accessibilityLabel = @"Demander de l'aide";
+    self.helpme.accessibilityHint = @"Cliquer pour demander de l'aide";
     self.helpme.userInteractionEnabled = YES;
     [self.helpme setBackgroundImage:imageHelp forState:UIControlStateNormal];
     [self.spinner removeFromSuperview];
@@ -194,12 +202,15 @@ static NSString* const hasRunAppOnceKey = @"hasRunAppOnceKey";
     self.urgencyNumber.hidden = true;
     UIImage *imageHelp = [UIImage imageNamed:@"help.png"];
     [self.helpme setBackgroundImage:imageHelp forState:UIControlStateNormal];
+    self.helpme.accessibilityLabel = @"Demander de l'aide";
+    self.helpme.accessibilityHint = @"Cliquer pour demander de l'aide";
     [self.spinner removeFromSuperview];
     self.spinner = nil;
     [self checkUser];
 }
 
--(void) outOfGareStatus{
+-(void) outOfGareStatus {
+    self.titleLabel.hidden = true;
     self.whoStatus.hidden = false;
     self.urgencyNumber.hidden = false;
     NSString *whoStatus = [NSString stringWithFormat:@"Vous n'êtes pas dans une gare SNCF Transilien"];
@@ -207,6 +218,14 @@ static NSString* const hasRunAppOnceKey = @"hasRunAppOnceKey";
     self.whatStatus.hidden = false;
     NSString *whatStatus = [NSString stringWithFormat:@"Si vous êtes en difficulté,"];
     self.whatStatus.text = whatStatus;
+    UIImage *imageHelp = [UIImage imageNamed:@"help.png"];
+    [self.helpme setBackgroundImage:imageHelp forState:UIControlStateNormal];
+    self.helpme.accessibilityLabel = @"Demander de l'aide";
+    self.helpme.accessibilityHint = @"Cliquer pour demander de l'aide";
+    if (self.spinner) {
+        [self.spinner removeFromSuperview];
+        self.spinner = nil;
+    }
     [NSTimer scheduledTimerWithTimeInterval:30 target:self selector:@selector(defaultRequestAgentStatus) userInfo:nil repeats:NO];
 }
 
@@ -216,13 +235,13 @@ static NSString* const hasRunAppOnceKey = @"hasRunAppOnceKey";
     
 }
 
-/******************************************************************************************************************************
+/*****************************************************************************************************************
  *
  *
  * Service
  *
  *
- *****************************************************************************************************************************/
+ *****************************************************************************************************************/
 
 
 #pragma mark - Service
