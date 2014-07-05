@@ -10,8 +10,10 @@
 
 @interface HACurrentStationService : NSObject<NSStreamDelegate>
 @property (nonatomic, readonly, assign) BOOL connected;
+@property (nonatomic, readonly, strong) NSString* stationName;
 
 + (id)sharedInstance;
 - (void) connectToServer;
+- (void) disconnectFromServer;
 
 @end
