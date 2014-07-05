@@ -87,7 +87,10 @@ func (ca *ConnectedAgent) handleConnection() {
 			if station == nil {
 				ca.service.RemoveAgentFromStation(ca.login)
 				user.CurrentStation = nil
-				ca.station = nil
+				if ca.station != nil {
+					ca.station = nil
+					arrivedInStation = true
+				}
 			} else {
 				arrivedInStation = ca.service.SetAgentStation(
 					ca.login, StationId(station.Id))
@@ -98,6 +101,7 @@ func (ca *ConnectedAgent) handleConnection() {
 			user.LastStationUpdate = time.Now()
 			user.Save()
 			if arrivedInStation {
+				go ca.UpdateStationName(station)
 				go ca.UpdateHelpRequests()
 			}
 		}
@@ -134,6 +138,31 @@ func (ca *ConnectedAgent) sendKeepAlive() {
 	err = ca.readWriter.Flush()
 	if err != nil {
 		log.Print("Failed to flush keep alive for agent", ca.login, ":", err)
+	}
+}
+
+func (ca *ConnectedAgent) UpdateStationName(station *model.Station) {
+	message := ServerMessage{}
+	if station != nil {
+		message.StationName = &station.Name
+	} else {
+		message.StationName = new(string)
+	}
+	j, err := json.Marshal(message)
+	if err != nil {
+		log.Fatal(err)
+	}
+	_, err = ca.readWriter.Write(j)
+	if err != nil {
+		log.Print("Failed to update requests for agent", ca.login, ":", err)
+	}
+	_, err = ca.readWriter.Write([]byte("\n"))
+	if err != nil {
+		log.Print("Failed to update requests for agent", ca.login, ":", err)
+	}
+	err = ca.readWriter.Flush()
+	if err != nil {
+		log.Print("Failed to flush update requests for agent", ca.login, ":", err)
 	}
 }
 

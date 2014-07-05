@@ -70,7 +70,6 @@ func (s *Server) handleHelp(w http.ResponseWriter, r *http.Request) {
 		returnError(401, "Please log in", w)
 		return
 	}
-	log.Print(loggedEmail)
 	user, err := s.model.GetUserByEmail(loggedEmail)
 	if err != nil {
 		returnError(404, "Error while getting user data", w)

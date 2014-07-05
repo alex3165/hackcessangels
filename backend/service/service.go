@@ -69,6 +69,7 @@ func (s *AgentService) Listen() {
 type ServerMessage struct {
 	UpdateRequestsNow bool
 	KeepAlive         bool
+	StationName       *string `json:"StationName,omitempty"`
 }
 
 type ClientMessage struct {
@@ -105,6 +106,7 @@ func (s *AgentService) handleRequest(conn net.Conn) {
 		log.Print(*message.Login, "isn't an agent")
 		return
 	}
+	log.Print("Agent ", user.Email, " connected")
 
 	connectedAgent := ConnectedAgent{
 		login:      AgentLogin(user.Email),

@@ -73,6 +73,10 @@
     
 }
 
+- (IBAction)lostPassword:(id)sender {
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"mailto:hackcessangels@googlegroups.com?subject=Mot%20de%20passe%20perdu"]];
+}
+
 - (void)setCheckCredentialsBlock:(HACheckCredentials)checkCredentials {
     self.checkCredentials = checkCredentials;
 }
