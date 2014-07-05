@@ -29,7 +29,7 @@
 @end
 
 const uint8_t newline[] = "\n";
-const int kRetryIntervalInSeconds = 30;
+const int kRetryIntervalInSeconds = 10;
 
 @implementation HACurrentStationService
 
@@ -120,6 +120,9 @@ const int kRetryIntervalInSeconds = 30;
     _connected = false;
     [self.inputStream close];
     [self.outputStream close];
+    [[NSNotificationCenter defaultCenter]
+     postNotificationName:@"ConnectionStatusNotification"
+     object:self];
 }
 
 #pragma mark - Communication methods

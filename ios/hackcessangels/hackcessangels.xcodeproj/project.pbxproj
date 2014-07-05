@@ -67,6 +67,7 @@
 		22E64B051937A62F00851BB8 /* help.png in Resources */ = {isa = PBXBuildFile; fileRef = 22E64B021937A62F00851BB8 /* help.png */; };
 		22E95BDF1943592C0002B96C /* EnCours.png in Resources */ = {isa = PBXBuildFile; fileRef = 22E95BDD1943592C0002B96C /* EnCours.png */; };
 		22E95BE01943592C0002B96C /* NonAboutie.png in Resources */ = {isa = PBXBuildFile; fileRef = 22E95BDE1943592C0002B96C /* NonAboutie.png */; };
+		8F36E7ED196830A300E064E4 /* HAWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F36E7EC196830A300E064E4 /* HAWebViewController.m */; };
 		8F400A2818F1AE6C006B8342 /* HARestRequests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F400A2718F1AE6C006B8342 /* HARestRequests.m */; };
 		8F57723718DB7D0A00D42D4F /* HALogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 222E376018BA5B2F00E3B720 /* HALogViewController.m */; };
 		8F57723918DB7D5600D42D4F /* Agent.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8F57723818DB7D5600D42D4F /* Agent.storyboard */; };
@@ -188,6 +189,8 @@
 		22E95BDD1943592C0002B96C /* EnCours.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EnCours.png; sourceTree = "<group>"; };
 		22E95BDE1943592C0002B96C /* NonAboutie.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NonAboutie.png; sourceTree = "<group>"; };
 		75B5CDE6C7954202AF2565B3 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		8F36E7EB196830A300E064E4 /* HAWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HAWebViewController.h; path = hackcessangels/HAWebViewController.h; sourceTree = SOURCE_ROOT; };
+		8F36E7EC196830A300E064E4 /* HAWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HAWebViewController.m; path = hackcessangels/HAWebViewController.m; sourceTree = SOURCE_ROOT; };
 		8F400A2618F1AE6C006B8342 /* HARestRequests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HARestRequests.h; path = hackcessangels/HARestRequests.h; sourceTree = SOURCE_ROOT; };
 		8F400A2718F1AE6C006B8342 /* HARestRequests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HARestRequests.m; path = hackcessangels/HARestRequests.m; sourceTree = SOURCE_ROOT; };
 		8F57723818DB7D5600D42D4F /* Agent.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Agent.storyboard; path = hackcessangels/Agent.storyboard; sourceTree = SOURCE_ROOT; };
@@ -433,6 +436,8 @@
 				04D14F2819366D2100ED1B27 /* EIUserProfilViewController.h */,
 				04D14F2919366D2100ED1B27 /* EIUserProfilViewController.m */,
 				22601F151886E2DE008B0179 /* Main.storyboard */,
+				8F36E7EB196830A300E064E4 /* HAWebViewController.h */,
+				8F36E7EC196830A300E064E4 /* HAWebViewController.m */,
 			);
 			name = User;
 			sourceTree = "<group>";
@@ -752,6 +757,7 @@
 				22C9AB3C18E229D4008ED8D7 /* HAPeripheral.m in Sources */,
 				22130C02188966E500191955 /* HALocalisation.m in Sources */,
 				A1B80AA818D243A3004EE4EA /* UIColor+HackcessAngels.m in Sources */,
+				8F36E7ED196830A300E064E4 /* HAWebViewController.m in Sources */,
 				22601F101886E2DE008B0179 /* main.m in Sources */,
 				A1330B0718AD62B5002B1828 /* HAUser.m in Sources */,
 				222E375C18BA521C00E3B720 /* HAHelpViewController.m in Sources */,
