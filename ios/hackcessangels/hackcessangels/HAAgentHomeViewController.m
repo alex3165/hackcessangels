@@ -54,6 +54,12 @@
 - (void) connectionStatusChanged {
     HACurrentStationService* service = [HACurrentStationService sharedInstance];
     self.connectedLabel.hidden = !service.connected;
+    if (service.stationName) {
+        self.stationLabel.text = service.stationName;
+    } else {
+        self.stationLabel.text = @"En dehors d'une gare";
+    }
+    self.stationLabel.hidden = !service.connected;
 }
 
 - (void)viewDidAppear:(BOOL)animated {

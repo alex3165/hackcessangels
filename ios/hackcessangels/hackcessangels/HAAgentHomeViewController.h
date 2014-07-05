@@ -12,6 +12,7 @@
 
 @property (nonatomic, weak) IBOutlet UILabel *helloUser;
 @property (nonatomic, weak) IBOutlet UILabel *connectedLabel;
+@property (nonatomic, weak) IBOutlet UILabel *stationLabel;
 
 - (IBAction) verifyHelpRequests:(id)sender;
 - (IBAction) createFakeHelpRequest:(id)sender;

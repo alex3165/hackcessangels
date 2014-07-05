@@ -214,7 +214,12 @@ const int kRetryIntervalInSeconds = 30;
                     }];
                 }
                 if ([incomingData objectForKey:@"StationName"]) {
-                    _stationName = [[incomingData objectForKey:@"StationName"] stringValue];
+                    NSString* serverStationName = [incomingData objectForKey:@"StationName"];
+                    if ([serverStationName length] == 0) {
+                        _stationName = nil;
+                    } else {
+                        _stationName = serverStationName;
+                    }
                     [[NSNotificationCenter defaultCenter]
                      postNotificationName:@"ConnectionStatusNotification"
                      object:self];
