@@ -167,8 +167,8 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button hidden="YES" appearanceType="aqua" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LO5-rs-819">
-                                <rect key="frame" x="57" y="379" width="206" height="32"/>
+                            <button hidden="YES" appearanceType="aqua" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LO5-rs-819">
+                                <rect key="frame" x="57" y="376" width="206" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="14"/>
                                 <state key="normal" title="Annuler ma demande d'aide">
@@ -345,33 +345,38 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o8X-o8-Uwf">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                            <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o8X-o8-Uwf">
+                                <rect key="frame" x="0.0" y="18" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.96853536367416382" green="0.96869379281997681" blue="0.9685017466545105" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="barTintColor" red="0.96853536367416382" green="0.96869379281997681" blue="0.9685017466545105" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <fontDescription key="fontDescription" pointSize="0.0"/>
+                                </textAttributes>
                                 <items>
                                     <navigationItem title="Aide'Gare" id="RY1-Xi-ELQ">
-                                        <barButtonItem key="rightBarButtonItem" title="OK" id="uVH-B5-sU0">
+                                        <barButtonItem key="leftBarButtonItem" title="Retour" id="mQs-7y-u9q">
                                             <connections>
-                                                <action selector="back:" destination="UHI-wp-KsZ" id="AF5-Vj-shy"/>
+                                                <action selector="back:" destination="UHI-wp-KsZ" id="Lap-7D-310"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gfb-N4-ed9">
-                                <rect key="frame" x="0.0" y="44" width="320" height="436"/>
+                                <rect key="frame" x="0.0" y="62" width="320" height="418"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </webView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.96853536367416382" green="0.96869379281997681" blue="0.9685017466545105" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="gfb-N4-ed9" firstAttribute="top" secondItem="o8X-o8-Uwf" secondAttribute="bottom" id="5MU-EH-h1G"/>
+                            <constraint firstItem="gfb-N4-ed9" firstAttribute="top" secondItem="gZ9-kU-EeL" secondAttribute="bottom" constant="42" id="4dl-mE-qQn"/>
                             <constraint firstItem="o8X-o8-Uwf" firstAttribute="leading" secondItem="0d4-BC-uSd" secondAttribute="leading" id="6BQ-1l-ia8"/>
                             <constraint firstItem="gfb-N4-ed9" firstAttribute="leading" secondItem="0d4-BC-uSd" secondAttribute="leading" id="817-Eg-bkw"/>
+                            <constraint firstItem="iiQ-Mq-E8p" firstAttribute="top" secondItem="gfb-N4-ed9" secondAttribute="bottom" id="E3c-ef-8mu"/>
+                            <constraint firstItem="o8X-o8-Uwf" firstAttribute="top" secondItem="0d4-BC-uSd" secondAttribute="top" constant="18" id="MIs-7d-6BD"/>
                             <constraint firstAttribute="trailing" secondItem="gfb-N4-ed9" secondAttribute="trailing" id="bTN-Zm-Par"/>
-                            <constraint firstItem="iiQ-Mq-E8p" firstAttribute="top" secondItem="gfb-N4-ed9" secondAttribute="bottom" id="l1Y-l6-BIU"/>
-                            <constraint firstItem="o8X-o8-Uwf" firstAttribute="top" secondItem="0d4-BC-uSd" secondAttribute="top" id="sdA-ib-swr"/>
                             <constraint firstAttribute="trailing" secondItem="o8X-o8-Uwf" secondAttribute="trailing" id="uYu-PO-AgQ"/>
                         </constraints>
                     </view>

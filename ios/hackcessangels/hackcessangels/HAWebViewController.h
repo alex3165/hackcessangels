@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface HAWebViewController : UIViewController
-@property (nonatomic, weak) IBOutlet UIWebView* webView;
-@property (nonatomic, strong) NSURL* url;
+    @property (nonatomic, weak) IBOutlet UIWebView* webView;
+    @property (nonatomic, strong) NSURL* url;
+    //@property (nonatomic, weak) IBOutlet UINavigationBar *navbar;
 @end
