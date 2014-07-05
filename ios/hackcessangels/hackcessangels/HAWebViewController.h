@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface HAWebViewController : UIViewController
-@property (nonatomic, weak) IBOutlet UIWebView webView;
+@property (nonatomic, weak) IBOutlet UIWebView* webView;
 @property (nonatomic, strong) NSString* url;
 @end

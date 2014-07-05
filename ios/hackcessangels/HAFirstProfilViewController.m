@@ -230,7 +230,7 @@
 }
 
 - (IBAction)buttonInit:(id)sender  {
-     UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Mentions Légales" message:@"Veuillez accepter les mentions légales" delegate:self cancelButtonTitle:@"Accepter" otherButtonTitles:@"Refuser", nil];
+     UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Mentions Légales" message:@"Veuillez accepter les mentions légales" delegate:self cancelButtonTitle:@"Accepter" otherButtonTitles:@"Voir", @"Refuser", nil];
     [alert show];
 }
 
@@ -242,9 +242,9 @@
         NSLog(@"Button 1 was selected.");
         self.viewInit.hidden=YES;
         self.viewLog.hidden=NO;
-  
+    } else if ([title isEqualToString:@"Voir"]) {
+        [self displayCGU:nil];
     } else if([title isEqualToString:@"Refuser"]) {
-        
         [self.view addSubview:self.viewInit];
     }
     
@@ -419,6 +419,10 @@
 
 - (IBAction)saisieReturn:(id)sender {
     [sender resignFirstResponder];
+}
+
+- (IBAction)displayCGU:(id)sender {
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://aidegare.membrives.fr/static/cgu.html"]];
 }
 
 @end
