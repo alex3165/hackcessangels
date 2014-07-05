@@ -12,6 +12,7 @@
 #import "HARequestsService.h"
 #import "HALogViewController.h"
 #import "HAUser.h"
+#import "HAWebViewController.h"
 
 @interface HAFirstProfilViewController ()
 
@@ -65,8 +66,14 @@
     }
     
     else {
-        [self viewInit];
+        self.viewLog.hidden = true;
+        self.view1.hidden = true;
     }
+    
+    self.view2.hidden = true;
+    self.view3.hidden = true;
+    self.view4.hidden = true;
+    
     
     _frameAuditif = [_handicapAuditif frame];
     _frameVisuel = [_handicapVisuel frame];
@@ -230,7 +237,7 @@
 }
 
 - (IBAction)buttonInit:(id)sender  {
-     UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Mentions Légales" message:@"Veuillez accepter les mentions légales" delegate:self cancelButtonTitle:@"Accepter" otherButtonTitles:@"Voir", @"Refuser", nil];
+     UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Mentions Légales" message:@"Veuillez accepter les mentions légales" delegate:self cancelButtonTitle:@"Accepter" otherButtonTitles:@"Refuser", @"Voir les mentions", nil];
     [alert show];
 }
 
@@ -242,7 +249,7 @@
         NSLog(@"Button 1 was selected.");
         self.viewInit.hidden=YES;
         self.viewLog.hidden=NO;
-    } else if ([title isEqualToString:@"Voir"]) {
+    } else if ([title isEqualToString:@"Voir les mentions"]) {
         [self displayCGU:nil];
     } else if([title isEqualToString:@"Refuser"]) {
         [self.view addSubview:self.viewInit];
@@ -419,10 +426,14 @@
 
 - (IBAction)saisieReturn:(id)sender {
     [sender resignFirstResponder];
+    [self.view endEditing:YES];
 }
 
 - (IBAction)displayCGU:(id)sender {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://aidegare.membrives.fr/static/cgu.html"]];
+    HAWebViewController* webViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"webViewController"];
+    NSURL* baseUrl = [[NSBundle mainBundle] bundleURL];
+    webViewController.url = [baseUrl URLByAppendingPathComponent:@"cgu.html"];
+    [self presentViewController:webViewController animated:YES completion:nil];
 }
 
 @end
