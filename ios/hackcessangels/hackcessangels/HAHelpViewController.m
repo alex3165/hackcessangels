@@ -13,6 +13,7 @@
 #import "HAUserViewController.h"
 #import "UIColor+HackcessAngels.h"
 #import "HAFirstProfilViewController.h"
+#import "HAWebViewController.h"
 
 static NSString* const hasRunAppOnceKey = @"hasRunAppOnceKey";
 
@@ -278,5 +279,15 @@ static NSString* const hasRunAppOnceKey = @"hasRunAppOnceKey";
     [self presentViewController:userViewController animated:NO completion:nil];
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"information"]) {
+        HAWebViewController *view = [segue destinationViewController];
+        view.url = @"http://aidegare.membrives.fr/static/information.html";
+    } else if ([segue.identifier isEqualToString:@"assistance"]) {
+        HAWebViewController *view = [segue destinationViewController];
+        view.url = @"http://aidegare.membrives.fr/static/assistance.html";
+    }
+}
 
 @end
