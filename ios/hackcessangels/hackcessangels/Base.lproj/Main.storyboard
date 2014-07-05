@@ -336,7 +336,7 @@
         <!--Web View Controller-->
         <scene sceneID="IiP-H1-Pss">
             <objects>
-                <viewController id="UHI-wp-KsZ" customClass="HAWebViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="webViewController" id="UHI-wp-KsZ" customClass="HAWebViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="gZ9-kU-EeL"/>
                         <viewControllerLayoutGuide type="bottom" id="iiQ-Mq-E8p"/>
@@ -1025,7 +1025,7 @@
                                         <rect key="frame" x="30" y="442" width="260" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="15"/>
-                                        <state key="normal" title="Lire les CGU">
+                                        <state key="normal" title="Lire les mentions légales">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
