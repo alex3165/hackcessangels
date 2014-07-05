@@ -300,12 +300,13 @@ static NSString* const hasRunAppOnceKey = @"hasRunAppOnceKey";
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    NSURL* baseUrl = [[NSBundle mainBundle] bundleURL];
     if ([segue.identifier isEqualToString:@"information"]) {
         HAWebViewController *view = [segue destinationViewController];
-        view.url = @"http://aidegare.membrives.fr/static/information.html";
+        view.url = [baseUrl URLByAppendingPathComponent:@"uinfos.html"];
     } else if ([segue.identifier isEqualToString:@"assistance"]) {
         HAWebViewController *view = [segue destinationViewController];
-        view.url = @"http://aidegare.membrives.fr/static/assistance.html";
+        view.url = [baseUrl URLByAppendingPathComponent:@"assistance.html"];
     }
 }
 

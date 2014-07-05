@@ -376,6 +376,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="cyq-dV-faL"/>
+                    <connections>
+                        <outlet property="webView" destination="gfb-N4-ed9" id="Hav-WQ-8UD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3gV-F0-UUe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
