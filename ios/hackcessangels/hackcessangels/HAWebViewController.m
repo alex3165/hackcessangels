@@ -26,8 +26,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    //[self.navbar.layer setBorderWidth:1.0];// Just to make sure its working
-    //[self.navbar.layer setBorderColor:[[UIColor grayColor] CGColor]];
+    
+    self.navbar.clipsToBounds = YES;
+    CALayer *bottomBorder = [CALayer layer];
+    bottomBorder.borderColor = [UIColor lightGrayColor].CGColor;
+    bottomBorder.borderWidth = 1;
+    bottomBorder.frame = CGRectMake(-1, -1, CGRectGetWidth(self.navbar.frame)+4, CGRectGetHeight(self.navbar.frame)+1);
+    [self.navbar.layer addSublayer:bottomBorder];
+    
     NSURLRequest *request = [[NSURLRequest alloc] initWithURL:self.url];
     [self.webView loadRequest: request];
 }

@@ -345,13 +345,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gfb-N4-ed9">
+                                <rect key="frame" x="0.0" y="62" width="320" height="418"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </webView>
                             <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o8X-o8-Uwf">
                                 <rect key="frame" x="0.0" y="18" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.96853536367416382" green="0.96869379281997681" blue="0.9685017466545105" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="barTintColor" red="0.96853536367416382" green="0.96869379281997681" blue="0.9685017466545105" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <textAttributes key="titleTextAttributes">
-                                    <fontDescription key="fontDescription" pointSize="0.0"/>
+                                    <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="18"/>
                                 </textAttributes>
                                 <items>
                                     <navigationItem title="Aide'Gare" id="RY1-Xi-ELQ">
@@ -363,11 +368,6 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gfb-N4-ed9">
-                                <rect key="frame" x="0.0" y="62" width="320" height="418"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            </webView>
                         </subviews>
                         <color key="backgroundColor" red="0.96853536367416382" green="0.96869379281997681" blue="0.9685017466545105" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -382,6 +382,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="cyq-dV-faL"/>
                     <connections>
+                        <outlet property="navbar" destination="o8X-o8-Uwf" id="TUt-gO-WNX"/>
                         <outlet property="webView" destination="gfb-N4-ed9" id="Hav-WQ-8UD"/>
                     </connections>
                 </viewController>
@@ -389,7 +390,7 @@
             </objects>
             <point key="canvasLocation" x="428" y="513"/>
         </scene>
-        <!--User Profil View Controller - Clic'Gare-->
+        <!--User Profil View Controller - Aide'Gare-->
         <scene sceneID="eGQ-N4-qiu">
             <objects>
                 <viewController storyboardIdentifier="userProfilController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Vc2-jK-s4z" customClass="EIUserProfilViewController" sceneMemberID="viewController">
@@ -493,7 +494,7 @@
                             <constraint firstItem="gkR-y8-1EQ" firstAttribute="top" secondItem="Qen-MG-4BL" secondAttribute="bottom" constant="10" id="c5a-wL-Fgq"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Clic'Gare" id="pTd-Jf-0T0">
+                    <navigationItem key="navigationItem" title="Aide'Gare" id="pTd-Jf-0T0">
                         <barButtonItem key="backBarButtonItem" title="Retour" id="Zic-jM-qfy"/>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="Ien-IA-gpu">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Hv7-vq-iXi">
@@ -531,6 +532,9 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="gt1-wV-ELK">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="18"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -1081,7 +1085,7 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="eIl-bn-6EU"/>
         <segue reference="obS-Ba-QMH"/>
+        <segue reference="qFJ-kE-dzg"/>
     </inferredMetricsTieBreakers>
 </document>
