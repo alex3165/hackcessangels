@@ -10,7 +10,7 @@
 #import "HAUserService.h"
 #import "HAUser.h"
 #import "HALogViewController.h"
-
+#import "HAFirstProfilViewController.h"
 @interface HAUserViewController ()
 
 @property (nonatomic, strong) NSString * textEmail;
@@ -38,6 +38,7 @@
     [sender resignFirstResponder];
 }
 
+
 - (IBAction)touchOutside:(id)sender {
     
     [sender resignFirstResponder];
@@ -46,6 +47,24 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    [_scroll setScrollEnabled:YES];
+    _scroll.userInteractionEnabled = YES;
+    _scroll.delaysContentTouches = YES;
+    
+    [self.view addSubview:_scroll];
+    [_scroll addSubview:_scrollViewContent];
+    
+    _scroll.translatesAutoresizingMaskIntoConstraints  = NO;
+    _scrollViewContent.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    NSDictionary * viewsDictionary = NSDictionaryOfVariableBindings(_scroll, _scrollViewContent);
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[_scroll]|" options:0 metrics: 0 views:viewsDictionary]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[_scroll]|" options:0 metrics: 0 views:viewsDictionary]];
+    [_scroll addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[_scrollViewContent]|" options:0 metrics: 0 views:viewsDictionary]];
+    [_scroll addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[_scrollViewContent]|" options:0 metrics: 0 views:viewsDictionary]];
+
+    
     [[UITextField appearance] setFont:[UIFont fontWithName:@"Times" size:16]];
     //self.automaticallyAdjustsScrollViewInsets = NO;
     [[HAUserService sharedInstance] getCurrentUser:^(HAUser *user) {
@@ -101,7 +120,7 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [self.scroll setScrollEnabled:YES];
-    self.scroll.contentSize =CGSizeMake(320, 1100);
+    self.scroll.contentSize =CGSizeMake(320, 1200);
     [super viewDidAppear:animated];
 }
 
@@ -335,5 +354,7 @@ HAUserSimpleDisability i;
     
     self.pickerView.hidden=!self.pickerView.hidden;
 }
+
+
 
 @end

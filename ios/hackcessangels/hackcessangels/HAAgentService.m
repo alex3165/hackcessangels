@@ -36,7 +36,7 @@
 //    make a call to the server to get the full user object. If the server contact fails, fails.
 //  - Otherwise, fails.
 - (void)getCurrentAgent:(HAAgentServiceSuccess)success failure:(HAAgentServiceFailure)failure {
-    if (self.currentAgent != nil) {
+    if (self.currentAgent != nil && self.currentAgent.email != nil && [self.currentAgent.email length] != 0) {
         // We already have a user, just return it.
         success(self.currentAgent);
         return;
@@ -134,6 +134,17 @@
             failure(error);
         }];
     };
+}
+
+- (void)disconnectAgent {
+    if (!self.currentAgent) {
+        return;
+    }
+    for (NSHTTPCookie* cookie in [[[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies] copy]) {
+        [[NSHTTPCookieStorage sharedHTTPCookieStorage] deleteCookie:cookie];
+    }
+    [self.currentAgent deleteAgentFromKeyChain];
+    self.currentAgent = nil;
 }
 
 - (void)deleteAgentWithEmail:(NSString *)email success:(HARestRequestsSuccess)success failure:(HARestRequestsFailure)failure {

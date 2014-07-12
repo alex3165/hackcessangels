@@ -33,6 +33,7 @@ typedef enum HAHelpRequestStatus : NSUInteger {
 @property(nonatomic, assign) double longitude;
 @property(nonatomic, assign) double precision;
 @property(nonatomic, assign) HAHelpRequestStatus status;
+@property(nonatomic, strong) UILocalNotification* notification;
 
 @property(nonatomic, strong) HAUser* user;
 @property(nonatomic, strong) HAAgent* agent;
@@ -44,6 +45,8 @@ typedef enum HAHelpRequestStatus : NSUInteger {
 - (id)initWithDictionary:(NSDictionary *)data;
 // Return true if the requester still needs assistance; false otherwise.
 - (bool) needsHelp;
+// Return true if the request is finished
+- (bool) finished;
 
 - (NSDictionary*) toPropertyList;
 

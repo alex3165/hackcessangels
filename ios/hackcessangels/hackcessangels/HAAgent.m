@@ -25,9 +25,9 @@ NSString *const pGareKey = @"gare";
     self = [super init];
     
     if (self) {
-        self.email = [dico objectForKey:@"email"];
-        self.password = [dico objectForKey:@"password"];
-        self.name = [dico objectForKey:@"name"];
+        self.email = [dico objectForKey:pEmailKey];
+        self.password = [dico objectForKey:pPasswordKey];
+        self.name = [dico objectForKey:pNameKey];
         self.sncfId = [dico objectForKey:pNumeroKey];
         //self.gare = [dico objectForKey:@"gare"];
         if ([dico objectForKey:@"image"] != nil) {
@@ -79,16 +79,18 @@ NSString *const pGareKey = @"gare";
     if (self.sncfId) {
         [parameters setObject:self.sncfId forKey:pNumeroKey];
     }
-    
     // Set a new password only if it changed by the user
     if (self.password != nil && self.password.length != 0) {
         [parameters setObject:self.password forKey:pPasswordKey];
     }
-    
     if (self.image != nil) {
         [parameters setObject:[self.image base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength] forKey:pImageKey];
     }
     return parameters;
+}
+
+- (void) deleteAgentFromKeyChain {
+    [UICKeyChainStore removeAllItemsForService:pServiceId];
 }
 
 @end

@@ -11,6 +11,12 @@ type Model struct {
 	users        *mgo.Collection
 	helpRequests *mgo.Collection
 	stations     *mgo.Collection
+
+	helpRequestObservers []HelpRequestObserver
+}
+
+type HelpRequestObserver interface {
+	NotifyHelpRequestChanged(hr *HelpRequest)
 }
 
 func (m *Model) Delete() {
@@ -21,8 +27,14 @@ func (m *Model) Close() {
 	m.session.Close()
 }
 
+func (m *Model) RegisterHelpRequestObserver(observer HelpRequestObserver) {
+	m.helpRequestObservers = append(m.helpRequestObservers, observer)
+}
+
 func NewModel(server string, databaseName string) (*Model, error) {
 	m := &Model{}
+
+	m.helpRequestObservers = make([]HelpRequestObserver, 0, 0)
 
 	var err error
 

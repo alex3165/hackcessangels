@@ -8,10 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
-@interface HACurrentStationService : NSObject
+@interface HACurrentStationService : NSObject<NSStreamDelegate>
+@property (nonatomic, readonly, assign) BOOL connected;
+@property (nonatomic, readonly, strong) NSString* stationName;
 
-- (void) startReportingLocation;
-- (void) reportLocation;
-- (void) stopReportingLocation;
++ (id)sharedInstance;
+- (void) connectToServer;
+- (void) disconnectFromServer;
 
 @end

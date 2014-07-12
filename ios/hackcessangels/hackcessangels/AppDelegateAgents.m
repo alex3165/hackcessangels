@@ -22,8 +22,8 @@
 {
     // Periodically report location to server.
     if (self.currentStationService == nil) {
-        self.currentStationService = [[HACurrentStationService alloc] init];
-        [self.currentStationService startReportingLocation];
+        self.currentStationService = [HACurrentStationService sharedInstance];
+        [self.currentStationService connectToServer];
     }
     
     // In case of notification, load the right view controller
@@ -32,7 +32,6 @@
     if (localNotif) {
         [self application:application didReceiveLocalNotification:localNotif];
     }
-    
     // Override point for customization after application launch.
     return YES;
 }

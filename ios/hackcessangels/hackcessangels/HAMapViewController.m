@@ -13,6 +13,8 @@
 #import "HACallUserView.h"
 #import "HARequestsService.h"
 #import "HAAgentUserProfileViewerViewController.h"
+#import "HAAgentHomeViewController.h"
+#import "HAAgentService.h"
 
 
 @interface HAMapViewController () <HACentralManagerDelegate>
@@ -22,9 +24,10 @@
 
     @property (nonatomic, strong) HARequestsService* requestService;
     @property (nonatomic, weak) NSTimer* timer;
+    @property (nonatomic, strong) HAAgent *me;
 @end
 
-NSTimeInterval const kRequestUpdateTimeInterval = 5;// * 60.0;
+NSTimeInterval const kRequestUpdateTimeInterval = 15;
 
 @implementation HAMapViewController
 
@@ -41,13 +44,16 @@ CLLocationCoordinate2D coordinate;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    [[HAAgentService sharedInstance] getCurrentAgent:^(HAAgent *agent) {
+        self.me = agent;
+    } failure:^(NSError *error) {
+        DLog(@"%@", error);
+    }];
     self.requestService = [HARequestsService sharedInstance];
-    
     self.userPicture.layer.cornerRadius = self.userPicture.frame.size.height /2;
     self.userPicture.layer.masksToBounds = YES;
     self.userPicture.layer.borderWidth = 0;
-    
+    //self.callUserView.hidden = TRUE;
     [self.gestureRecognizer setDelegate:self];
     
     self.bluetoothmanager = [[HACentralManager alloc] init];
@@ -59,7 +65,7 @@ CLLocationCoordinate2D coordinate;
     [self.map setUserTrackingMode:MKUserTrackingModeFollow];
     if (self.helpRequest) {
         [self.map addAnnotation:self.helpRequest];
-        self.timer = [NSTimer timerWithTimeInterval:kRequestUpdateTimeInterval target:self selector:@selector(updateHelpRequest) userInfo:nil repeats:@YES];
+        self.timer = [NSTimer scheduledTimerWithTimeInterval:kRequestUpdateTimeInterval target:self selector:@selector(updateHelpRequest) userInfo:nil repeats:YES];
     }
     [self updateDisplay];
 }
@@ -84,44 +90,35 @@ CLLocationCoordinate2D coordinate;
         // TODO(etienne): add a field in HAHelpRequest to know the provenance of the request (bluetooth/server)
         [self.helpok setHidden:!self.bluetoothmanager.needHelp];
     } else {
-        // Display user infos
-        self.userName.text = self.helpRequest.user.name;
-        
-        self.userPicture.image = [UIImage imageWithData:self.helpRequest.user.image];
-        
-        switch (self.helpRequest.user.disabilityType) {
-            case Physical_wheelchair:
-                self.userDisability.text=@"Handicap moteur. Je suis en chaise roulante";
-                break;
-            case    Physical_powerchair:
-                self.userDisability.text=@" Handicap moteur. Je suis en chaise électrique";
-                break;
-            case  Physical_walk:
-                self.userDisability.text=@"Handicap moteur. J'ai des problèmes de marche.";
-                break;
-            case   Vision_blind :
-                self.userDisability.text=@"Handicap visuel. Je suis aveugle.";
-                break;
-            case   Vision_lowvision:
-                self.userDisability.text=@"Handicap visuel. J'ai une mauvaise vue";
-                break;
-            case Hearing_call:
-                self.userDisability.text=@"Handicap auditif. Je répond aux appels.";
-                break;
-            case Hearing_SMS:
-                self.userDisability.text=@"Handicap auditif. Je répond aux sms.";
-                break;
-            case Mental:
-                self.userDisability.text=@"Handicap Mental";
-                break;
-            case Other:
-                self.userDisability.text=@"Handicap Autre";
-                break;
-            case Unknown:
-                self.userDisability.text=@"Handicap inconnu";
-                break;
+        if ([self.helpRequest finished]) {
+            [self.timer invalidate];
+            UITabBarController *tabBarController = (UITabBarController*)[[[UIApplication sharedApplication] keyWindow] rootViewController];
+            [tabBarController setSelectedIndex:0];
+            return;
         }
-        [self.helpok setHidden:![self.helpRequest needsHelp]];
+        // Display user infos
+        self.userDisability.hidden = FALSE;
+        self.completeProfil.hidden = FALSE;
+        self.userPicture.hidden = FALSE;
+        self.userName.hidden = FALSE;
+        self.callUserView.hidden = FALSE;
+        self.userName.text = self.helpRequest.user.name;
+        self.userPicture.image = [UIImage imageWithData:self.helpRequest.user.image];
+        self.userDisability.text = [self.helpRequest.user getDisabilityString];
+        bool needsHelp = [self.helpRequest needsHelp];
+        if (!needsHelp) {
+            if ([self.me.email isEqualToString:self.helpRequest.agent.email]) {
+                [self.helpok setHidden:NO];
+                [self.helpok setEnabled:NO];
+                self.helpok.titleLabel.text = @"J'aide !";
+            } else {
+                [self.helpok setHidden:YES];
+            }
+        } else {
+            [self.helpok setHidden:NO];
+            [self.helpok setEnabled:YES];
+            self.helpok.titleLabel.text = @"Aider l'utilisateur";
+        }
     }
 }
 
@@ -133,13 +130,11 @@ CLLocationCoordinate2D coordinate;
         return nil;
     
     // Handle any custom annotations.
-    if ([annotation isKindOfClass:[HAHelpRequest class]])
-    {
+    if ([annotation isKindOfClass:[HAHelpRequest class]]) {
         // Try to dequeue an existing pin view first.
         MKPinAnnotationView* pinView = (MKPinAnnotationView*)[self.map dequeueReusableAnnotationViewWithIdentifier:@"HAHelpRequestAnnotationView"];
         
-        if (!pinView)
-        {
+        if (!pinView) {
             // If an existing pin view was not available, create one.
             MKPinAnnotationView* pinView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"HAHelpRequestAnnotationView"];
             pinView.pinColor = MKPinAnnotationColorPurple;
@@ -258,10 +253,19 @@ CLLocationCoordinate2D coordinate;
 - (void)helpValueChanged:(BOOL)newValue user:(NSDictionary *)user uuid:(NSUUID *)uuid
 {
     [self.helpok setHidden:!newValue];
+    self.userName.text = [user objectForKey:@"name"];
+    self.userDisability.text = [user objectForKey:@"disability"];
+    
+    self.completeProfil.hidden = FALSE;
+    self.userName.hidden = FALSE;
+    self.userDisability.hidden = FALSE;
+    
     self.uuid = uuid;
+    
     /* notification d'appel à l'aide */
     UILocalNotification *localNotif = [[UILocalNotification alloc] init];
-    localNotif.alertBody = @"quelqu'un a besoin de votre aide";
+    NSString *alertBody = [NSString stringWithFormat:@"%@ a besoin de votre aide",[user objectForKey:@"name"]];
+    localNotif.alertBody = alertBody;
     localNotif.alertAction = @"Appel à l'aide";
     [[UIApplication sharedApplication] presentLocalNotificationNow:localNotif];
 }

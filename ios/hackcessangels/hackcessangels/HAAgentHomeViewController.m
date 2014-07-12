@@ -10,6 +10,7 @@
 #import "HALogViewController.h"
 #import "HAAgentService.h"
 #import "HARequestsService.h"
+#import "HACurrentStationService.h"
 #import "UIColor+HackcessAngels.h"
 
 @interface HAAgentHomeViewController ()
@@ -29,12 +30,36 @@
     return self;
 }
 
+- (void) dealloc
+{
+    // If you don't remove yourself as an observer, the Notification Center
+    // will continue to try and send notification objects to the deallocated
+    // object.
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 - (void)viewDidLoad
 {
+    [self.tabBarController.tabBar setSelectedImageTintColor:[UIColor HA_purple]];
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor HA_graybg];
     self.helloUser.textColor = [UIColor HA_purple];
     self.requestsService = [HARequestsService sharedInstance];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(connectionStatusChanged)
+                                                 name:@"ConnectionStatusNotification"
+                                               object:nil];
+}
+
+- (void) connectionStatusChanged {
+    HACurrentStationService* service = [HACurrentStationService sharedInstance];
+    self.connectedLabel.hidden = !service.connected;
+    if (service.stationName) {
+        self.stationLabel.text = service.stationName;
+    } else {
+        self.stationLabel.text = @"En dehors d'une gare";
+    }
+    self.stationLabel.hidden = !service.connected;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -51,19 +76,7 @@
 #pragma mark - Actions
 
 - (IBAction) verifyHelpRequests:(id)sender {
-    [self.requestsService getRequests:^(NSArray *helpRequestList) {
-        DLog(@"%@", helpRequestList);
-        for (HAHelpRequest* helpRequest in helpRequestList) {
-            UILocalNotification *localNotif = [[UILocalNotification alloc] init];
-            localNotif.alertBody = [NSString stringWithFormat:@"%@ a besoin d'aide", helpRequest.user.name];
-            localNotif.alertAction = @"Aide'gare: Appel à l'aide";
-            NSDictionary* userInfo = [NSDictionary dictionaryWithObjectsAndKeys:[helpRequest toPropertyList], @"helpRequest", nil];
-            localNotif.userInfo = userInfo;
-            [[UIApplication sharedApplication] presentLocalNotificationNow:localNotif];
-        }
-    } failure:^(NSError *error) {
-        NSLog(@"%@", error);
-    } ];
+    [self.requestsService getRequests:nil failure:nil];
 }
 
 - (IBAction) createFakeHelpRequest:(id)sender {
@@ -72,7 +85,13 @@
     localNotif.alertAction = @"Appel à l'aide";
     HAHelpRequest* fakeHelpRequest = [[HAHelpRequest alloc] init];
     fakeHelpRequest.user = [[HAUser alloc] init];
+    NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: @"http://api.randomuser.me/portraits/women/31.jpg"]];
+    fakeHelpRequest.user.image = imageData;
     fakeHelpRequest.user.name = @"Michel Martin";
+    fakeHelpRequest.user.disabilityType = 7;
+    fakeHelpRequest.user.description = @" blablabla hello hello hello";
+    fakeHelpRequest.user.phone = @"0689637482";
+    fakeHelpRequest.user.phoneUrgence = @"0493827482";
     fakeHelpRequest.latitude = 48.83938;
     fakeHelpRequest.longitude = 2.27067;
     fakeHelpRequest.Id = @"deadbeef";

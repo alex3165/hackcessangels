@@ -44,7 +44,7 @@ func NewAPIRequestFromHelpRequest(hr *model.HelpRequest) *APIRequest {
 
 func (s *Server) handleHelp(w http.ResponseWriter, r *http.Request) {
 	var data struct {
-		HelpRequestId *string  `json:"id,omitempty"`
+		HelpRequestId *string  `json:"id,omitempty" schema:"id,omitempty"`
 		Latitude      *float64 `json:"latitude,omitempty"`
 		Longitude     *float64 `json:"longitude,omitempty"`
 		Precision     *float64 `json:"precision,omitempty"`
@@ -70,7 +70,6 @@ func (s *Server) handleHelp(w http.ResponseWriter, r *http.Request) {
 		returnError(401, "Please log in", w)
 		return
 	}
-	log.Print(loggedEmail)
 	user, err := s.model.GetUserByEmail(loggedEmail)
 	if err != nil {
 		returnError(404, "Error while getting user data", w)
@@ -97,7 +96,7 @@ func (s *Server) handleHelp(w http.ResponseWriter, r *http.Request) {
 			helpRequest.RequesterPosPrecision = *data.Precision
 		}
 		helpRequest.CheckStatus()
-		err = helpRequest.Save()
+		err = helpRequest.Save(true)
 		if err != nil {
 			log.Printf("Error while saving help request: %+v", err)
 			returnError(500, "Couldn't save request", w)
@@ -131,7 +130,13 @@ func (s *Server) handleHelp(w http.ResponseWriter, r *http.Request) {
 				helpRequest.ChangeStatus(model.RETRY, time.Now())
 			}
 		}
-		err = helpRequest.Save()
+		err = helpRequest.CheckStatus()
+		if err != nil {
+			log.Printf("Error while updating help request: %+v", err)
+			returnError(500, "Couldn't update request", w)
+			return
+		}
+		err = helpRequest.Save(true)
 		if err != nil {
 			log.Printf("Error while saving help request: %+v", err)
 			returnError(500, "Couldn't save request", w)
@@ -140,7 +145,7 @@ func (s *Server) handleHelp(w http.ResponseWriter, r *http.Request) {
 		json.NewEncoder(w).Encode(NewAPIRequestFromHelpRequest(helpRequest))
 		return
 	case "DELETE":
-		helpRequest, err := s.model.GetActiveRequestByRequester(user)
+		helpRequest, err := s.model.GetRequestById(*data.HelpRequestId)
 		if err != nil {
 			log.Printf("Error while getting active request: %+v", err)
 			returnError(404, "Couldn't get request", w)

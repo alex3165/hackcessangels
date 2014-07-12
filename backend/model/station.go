@@ -40,6 +40,20 @@ type Station struct {
 	m *Model `bson:"-"`
 }
 
+func (m *Model) FindStationById(id bson.ObjectId) (*Station, error) {
+	stations := make([]*Station, 0)
+	err := m.stations.FindId(id).All(&stations)
+	if err != nil {
+		return nil, err
+	}
+
+	if len(stations) == 0 {
+		return nil, nil
+	}
+
+	return stations[0], nil
+}
+
 func (m *Model) FindStationByLocation(longitude, latitude, precision float64) (*Station, error) {
 	stations := make([]*Station, 0)
 	err := m.stations.Find(bson.M{

@@ -24,7 +24,7 @@
         self.manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:urlrequests];
         self.manager.responseSerializer = [AFJSONResponseSerializer serializer];
         self.manager.requestSerializer = [AFJSONRequestSerializer serializer];
-        self.manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/html",nil];
+        self.manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/html",@"text/plain",nil];
     }
     
     return self;
@@ -111,9 +111,6 @@
         }
     }];
 }
-
-
-
 
 
 @end

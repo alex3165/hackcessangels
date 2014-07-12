@@ -44,26 +44,28 @@
 }
 
 - (void)peripheralManager:(CBPeripheralManager *)peripheral central:(CBCentral *)central didSubscribeToCharacteristic:(CBCharacteristic *)characteristic {
-
-        self.actualUser = [HAUser userFromKeyChain];
-
-        NSString *userName = self.actualUser.name == nil ? @"inconnue" : self.actualUser.name;
-        NSString *userPhone = self.actualUser.phone == nil ? @"inconnue" : self.actualUser.phone;
-        NSString *userEmail = self.actualUser.email == nil ? @"inconnue" : self.actualUser.email;
-        NSString *userDisability = self.actualUser.disability == nil ? @"inconnue" : self.actualUser.disability;
-
-        NSDictionary *userDictionary = @{
-                        @"name" : userName,
-                        @"phone" : userPhone,
-                        @"email" : userEmail,
-                        @"disability" : userDisability,
-                        @"longitude" : [[NSNumber alloc] initWithDouble:self.longitude],
-                        @"latitude" : [[NSNumber alloc] initWithDouble:self.lat]
-                        };
-
-        NSError *err;
-        
-        self.dataToSend = [NSPropertyListSerialization dataWithPropertyList:userDictionary format:NSPropertyListXMLFormat_v1_0 options:(NSPropertyListWriteOptions)nil error:&err];
+    
+    self.actualUser = [HAUser userFromKeyChain];
+    
+    NSString *userName = self.actualUser.name == nil ? @"inconnue" : self.actualUser.name;
+    NSString *userPhone = self.actualUser.phone == nil ? @"inconnue" : self.actualUser.phone;
+    NSString *userEmail = self.actualUser.email == nil ? @"inconnue" : self.actualUser.email;
+    NSString *userDisability;
+    
+    userDisability = [self.actualUser getDisabilityString];
+    
+    NSDictionary *userDictionary = @{
+                                     @"name" : userName,
+                                     @"phone" : userPhone,
+                                     @"email" : userEmail,
+                                     @"disability" : userDisability,
+                                     @"longitude" : [[NSNumber alloc] initWithDouble:self.longitude],
+                                     @"latitude" : [[NSNumber alloc] initWithDouble:self.lat]
+                                     };
+    
+    NSError *err;
+    
+    self.dataToSend = [NSPropertyListSerialization dataWithPropertyList:userDictionary format:NSPropertyListXMLFormat_v1_0 options:(NSPropertyListWriteOptions)nil error:&err];
     
     self.sendDataIndex = 0;
     

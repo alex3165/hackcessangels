@@ -139,8 +139,8 @@ func (s *Server) handleAgentRequests(w http.ResponseWriter, r *http.Request) {
 
 			apiRequests := make([]*APIRequest, 0)
 			for _, helpRequest := range requests {
-                helpRequest.CheckStatus()
-                helpRequest.Save()
+				helpRequest.CheckStatus()
+				helpRequest.Save(false)
 				apiRequests = append(apiRequests, NewAPIRequestFromHelpRequest(helpRequest))
 			}
 			json.NewEncoder(w).Encode(apiRequests)
@@ -152,8 +152,8 @@ func (s *Server) handleAgentRequests(w http.ResponseWriter, r *http.Request) {
 				returnError(500, "Unable to get request", w)
 				return
 			}
-            helpRequest.CheckStatus()
-            helpRequest.Save()
+			helpRequest.CheckStatus()
+			helpRequest.Save(false)
 			json.NewEncoder(w).Encode(NewAPIRequestFromHelpRequest(helpRequest))
 			return
 		}

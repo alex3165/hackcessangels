@@ -104,6 +104,36 @@ NSString *const kCookieKey = @"cookie";
     return parameters;
 }
 
+- (void) deleteUserFromKeyChain {
+    [UICKeyChainStore removeAllItemsForService:kServiceId];
+}
+
+- (NSString*) getDisabilityString {
+    switch (self.disabilityType) {
+        case Physical_wheelchair:
+            return @"Handicap moteur. Je suis en fauteuil roulant";
+        case Physical_powerchair:
+            return @"Handicap moteur. Je suis en fauteuil électrique";
+        case Physical_walk:
+            return @"Handicap moteur. J'ai des problèmes de marche";
+        case Vision_blind :
+            return @"Handicap visuel. Je suis aveugle";
+        case Vision_lowvision:
+            return @"Handicap visuel. Je suis malvoyant";
+        case Hearing_call:
+            return @"Handicap auditif. Je répond aux appels";
+        case Hearing_SMS:
+            return @"Handicap auditif. Je répond aux sms";
+        case Mental:
+            return @"Handicap mental";
+        case Other:
+            return @"Autre handicap";
+        case Unknown:
+        default:
+            return @"Handicap inconnu";
+    }
+}
+
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
     if (self = [super init]) {

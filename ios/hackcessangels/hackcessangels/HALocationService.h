@@ -25,8 +25,4 @@ typedef void(^HALocationServiceLocationUpdate)(CLLocation* newLocation);
 - (void) setUpdateCallback:(HALocationServiceLocationUpdate) updated;
 
 - (void) locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations;
-
-- (double) currentLongitude;
-- (double) currentLatitude;
-
 @end
