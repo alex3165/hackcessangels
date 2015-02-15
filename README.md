@@ -16,4 +16,4 @@ run : <pre>pod install</pre> to install the iOS dependencies
 - [Etienne Membrive](http://etienne.membrives.fr) | Developer
 - [Alexandre Rieux](http://alexrieux.fr) | Developer
 - [David Negrello](https://www.linkedin.com/profile/view?id=62596103) | Project manager
-- [Clément Marquet] | Project manager
+- Clément Marquet | Project manager
