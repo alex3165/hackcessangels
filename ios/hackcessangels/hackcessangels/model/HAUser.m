@@ -32,7 +32,7 @@ NSString *const kCookieKey = @"cookie";
         self.password = [dico objectForKey:kPasswordKey];
         self.name = [dico objectForKey:kNameKey];
         self.phone = [dico objectForKey:kNumeroKey];
-        self.description = [dico objectForKey:kDescriptionKey];
+        self.disabilityDescription = [dico objectForKey:kDescriptionKey];
         self.disability = [dico objectForKey:kDisabilityKey];
         self.disabilityType = [[dico objectForKey:kDisabilityTypeKey] integerValue];
         self.phoneUrgence = [dico objectForKey:kEmergencyKey];
@@ -85,8 +85,8 @@ NSString *const kCookieKey = @"cookie";
     if (self.phone) {
         [parameters setObject:self.phone forKey:kNumeroKey];
     }
-    if (self.description) {
-        [parameters setObject:self.description forKey:kDescriptionKey];
+    if (self.disabilityDescription) {
+        [parameters setObject:self.disabilityDescription forKey:kDescriptionKey];
     }
     if (self.disability) {
         [parameters setObject:self.disability forKey:kDisabilityKey];

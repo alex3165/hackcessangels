@@ -62,7 +62,7 @@
         self.handicapAutre.text=user.disability;
         
         //infos complémentaires
-        self.infos.text= user.description;
+        self.infos.text= user.disabilityDescription;
         
         //faire un enum
         //  self.handicap=user.disabilityType;

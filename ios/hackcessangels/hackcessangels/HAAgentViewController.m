@@ -49,7 +49,7 @@
             self.nameTextInput.text = agent.name;
             self.gareTextInput.text = agent.gare;
             self.numeroTextInput.text = agent.sncfId;
-            
+             
             self.image.image = [[UIImage alloc] initWithData:agent.image];
             
         } failure:^(NSError *error) {

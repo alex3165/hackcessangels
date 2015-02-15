@@ -39,7 +39,7 @@
         self.nomPrenom.text = self.user.name;
         self.phone.text=self.user.phone;
         self.urgencePhone.text=self.user.phoneUrgence;
-        self.handicapInfos.text=self.user.description;
+        self.handicapInfos.text=self.user.disabilityDescription;
         self.handicapAutre.text=self.user.disability;
         
         NSLog(@"%u HANDICAP", self.user.disabilityType );
@@ -202,7 +202,7 @@
 
 -(void) setUserHandicapInfos {
     [[HAUserService sharedInstance] getCurrentUser:^(HAUser *user) {
-        user.description=self.handicapInfos.text;
+        user.disabilityDescription=self.handicapInfos.text;
         [[HAUserService sharedInstance] updateUser:user success:^(HAUser* user) {
             self.view3.hidden=YES;
             self.view4.hidden=NO;

@@ -35,14 +35,14 @@
     
     self.name.text = self.helpRequest.user.name;
     
-    self.infos.text = self.helpRequest.user.description;
+    self.infos.text = self.helpRequest.user.disabilityDescription;
     
     UIImage *userPicture = [UIImage imageWithData:self.helpRequest.user.image];
     [self.image setImage:userPicture];
     self.image.layer.cornerRadius = self.image.frame.size.height /2;
     self.image.layer.masksToBounds = YES;
     self.image.layer.borderWidth = 0;
-    self.infos.text = self.helpRequest.user.description;
+    self.infos.text = self.helpRequest.user.disabilityDescription;
     self.handicap.text = [self.helpRequest.user getDisabilityString];
     
     // TODO(etienne): when calling, we should add the prefix to hide the caller ID.

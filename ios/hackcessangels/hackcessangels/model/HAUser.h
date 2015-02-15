@@ -36,7 +36,7 @@ extern NSString *const kPhoneUrgenceKey;
 @property (nonatomic, strong) NSString *email;
 @property (nonatomic, strong) NSString *password;
 @property (nonatomic, strong) NSString *name;
-@property (nonatomic, strong) NSString *description;
+@property (nonatomic, strong) NSString *disabilityDescription;
 @property (nonatomic, strong) NSString *phone;
 @property (nonatomic, strong) NSString *phoneUrgence;
 @property (nonatomic, strong) NSString *disability;

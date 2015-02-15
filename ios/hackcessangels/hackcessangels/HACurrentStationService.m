@@ -26,6 +26,7 @@
 @property (nonatomic, strong) Reachability *reachability;
 @property (nonatomic, strong) NSTimer *timer;
 @property (nonatomic, assign) BOOL spaceAvailable;
+
 @end
 
 const uint8_t newline[] = "\n";

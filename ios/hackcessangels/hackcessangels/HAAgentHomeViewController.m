@@ -89,7 +89,7 @@
     fakeHelpRequest.user.image = imageData;
     fakeHelpRequest.user.name = @"Michel Martin";
     fakeHelpRequest.user.disabilityType = 7;
-    fakeHelpRequest.user.description = @" blablabla hello hello hello";
+    fakeHelpRequest.user.disabilityDescription = @" blablabla hello hello hello";
     fakeHelpRequest.user.phone = @"0689637482";
     fakeHelpRequest.user.phoneUrgence = @"0493827482";
     fakeHelpRequest.latitude = 48.83938;

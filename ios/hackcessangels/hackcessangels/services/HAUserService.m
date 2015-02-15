@@ -107,10 +107,10 @@
     HARestRequests* dcRestRequest = [[HARestRequests alloc] init];
     [dcRestRequest POSTrequest:@"user/login" withParameters:@{@"email" : email, @"password":password} success:^(id object, NSHTTPURLResponse* response){
         
-        NSDictionary *userSetting = [NSDictionary dictionaryWithObjectsAndKeys:email,@"email", nil];
+        //NSDictionary *userSetting = [NSDictionary dictionaryWithObjectsAndKeys:email,@"email", nil];
         
         /* On crée le User et on le sauve */
-        HAUser* user = [[HAUser alloc] initWithDictionary:userSetting];
+        HAUser* user = [[HAUser alloc] initWithDictionary:object];
         NSArray* cookies = [NSHTTPCookie cookiesWithResponseHeaderFields:[response allHeaderFields] forURL:response.URL];
         if ([cookies count] != 0) {
             user.cookie = cookies[0];

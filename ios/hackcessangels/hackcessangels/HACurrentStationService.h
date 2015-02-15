@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface HACurrentStationService : NSObject<NSStreamDelegate>
+
 @property (nonatomic, readonly, assign) BOOL connected;
 @property (nonatomic, readonly, strong) NSString* stationName;
 

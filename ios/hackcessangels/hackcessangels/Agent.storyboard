@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="MZd-BZ-RlH">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="MZd-BZ-RlH">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <deployment defaultVersion="1792" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <scenes>
-        <!--Agent Home View Controller - Aide'Gare-->
+        <!--Aide'Gare-->
         <scene sceneID="m1d-wo-DK5">
             <objects>
                 <viewController storyboardIdentifier="agentHomeViewController" id="Qb8-bn-O3d" customClass="HAAgentHomeViewController" sceneMemberID="viewController">
@@ -20,7 +21,7 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView appearanceType="aqua" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoSncf4S.png" id="Pnl-Uk-f8E">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoSncf4S.png" id="Pnl-Uk-f8E">
                                 <rect key="frame" x="118" y="200" width="84" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -69,7 +70,7 @@
             </objects>
             <point key="canvasLocation" x="613" y="-261"/>
         </scene>
-        <!--Navigation Controller - carte d'intervention-->
+        <!--carte d'intervention-->
         <scene sceneID="xYp-4E-g0a">
             <objects>
                 <navigationController definesPresentationContext="YES" id="rWs-j4-DdG" sceneMemberID="viewController">
@@ -85,7 +86,7 @@
             </objects>
             <point key="canvasLocation" x="127" y="-991"/>
         </scene>
-        <!--Navigation Controller - informations-->
+        <!--informations-->
         <scene sceneID="e4u-N4-nDr">
             <objects>
                 <navigationController definesPresentationContext="YES" id="hB9-7z-Wr9" sceneMemberID="viewController">
@@ -101,7 +102,7 @@
             </objects>
             <point key="canvasLocation" x="127" y="-1745"/>
         </scene>
-        <!--View Controller - Aide Gare-->
+        <!--Aide Gare-->
         <scene sceneID="WrN-4M-jJO">
             <objects>
                 <viewController id="3KK-yH-COV" sceneMemberID="viewController">
@@ -172,7 +173,7 @@
             </objects>
             <point key="canvasLocation" x="613" y="-1745"/>
         </scene>
-        <!--Map View Controller - Aide'Gare-->
+        <!--Aide'Gare-->
         <scene sceneID="PXA-rM-bPT">
             <objects>
                 <viewController storyboardIdentifier="agentMapViewController" id="5uE-2O-GZe" customClass="HAMapViewController" sceneMemberID="viewController">
@@ -201,7 +202,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="314"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <imageView hidden="YES" appearanceType="aqua" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="KGQ-OZ-hFo">
+                                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="KGQ-OZ-hFo">
                                         <rect key="frame" x="114" y="71" width="92" height="92"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
@@ -214,21 +215,21 @@
                                             <action selector="hideProfile:" destination="RAb-Il-wZv" eventType="touchUpInside" id="vli-iL-yG1"/>
                                         </connections>
                                     </button>
-                                    <label hidden="YES" appearanceType="aqua" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jeanne Dupont" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1EP-4o-Rsr">
+                                    <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jeanne Dupont" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1EP-4o-Rsr">
                                         <rect key="frame" x="20" y="171" width="280" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="18"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label appearanceType="aqua" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Informations de l'utilisateur" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Sox-Va-E0A">
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Informations de l'utilisateur" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Sox-Va-E0A">
                                         <rect key="frame" x="20" y="195" width="280" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="16"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button hidden="YES" appearanceType="aqua" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="0cY-vb-DfB">
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="0cY-vb-DfB">
                                         <rect key="frame" x="70" y="237" width="180" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="16"/>
@@ -273,7 +274,7 @@
             </objects>
             <point key="canvasLocation" x="613" y="-991"/>
         </scene>
-        <!--Agent View Controller - Aide'Gare-->
+        <!--Aide'Gare-->
         <scene sceneID="0Gc-Kf-DIK">
             <objects>
                 <viewController id="4aJ-If-ycD" customClass="HAAgentViewController" sceneMemberID="viewController">
@@ -461,7 +462,7 @@
             </objects>
             <point key="canvasLocation" x="1122" y="-261"/>
         </scene>
-        <!--Log View Controller - Aide'Gare-->
+        <!--Aide'Gare-->
         <scene sceneID="PEe-ff-sov">
             <objects>
                 <viewController storyboardIdentifier="loginViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="l3m-2w-h3E" customClass="HALogViewController" sceneMemberID="viewController">
@@ -473,7 +474,7 @@
                                 <rect key="frame" x="0.0" y="-94" width="320" height="574"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <subviews>
-                                    <view appearanceType="aqua" contentMode="scaleToFill" id="Ht0-0W-G69">
+                                    <view contentMode="scaleToFill" id="Ht0-0W-G69">
                                         <rect key="frame" x="20" y="161" width="280" height="336"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
@@ -527,7 +528,7 @@
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button appearanceType="aqua" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="8Qr-4n-YlG">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="8Qr-4n-YlG">
                                                 <rect key="frame" x="61" y="260" width="158" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="15"/>
@@ -581,7 +582,7 @@
             </objects>
             <point key="canvasLocation" x="-437" y="-261"/>
         </scene>
-        <!--Navigation Controller - Toutes les interventions-->
+        <!--Toutes les interventions-->
         <scene sceneID="kIe-Y2-iq9">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gOi-Eh-AMW" sceneMemberID="viewController">
@@ -684,7 +685,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </scrollView>
-                            <view appearanceType="aqua" contentMode="scaleToFill" id="Psd-I5-rd8">
+                            <view contentMode="scaleToFill" id="Psd-I5-rd8">
                                 <rect key="frame" x="0.0" y="65" width="320" height="127"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
@@ -703,7 +704,7 @@
                                 <color key="backgroundColor" red="0.12596315145492554" green="0.56518232822418213" blue="0.60446131229400635" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" red="0.08225608617067337" green="0.56906968355178833" blue="0.59997564554214478" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
-                            <navigationBar appearanceType="aqua" contentMode="scaleToFill" id="jI4-l6-4a7">
+                            <navigationBar contentMode="scaleToFill" id="jI4-l6-4a7">
                                 <rect key="frame" x="0.0" y="21" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
@@ -738,10 +739,10 @@
         <image name="recommandations" width="30" height="30"/>
         <image name="toutesinterventions" width="30" height="30"/>
     </resources>
-    <color key="tintColor" red="0.15613886713981628" green="0.56128853559494019" blue="0.60894083976745605" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
+    <color key="tintColor" red="0.15613886713981628" green="0.56128853559494019" blue="0.60894083976745605" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
